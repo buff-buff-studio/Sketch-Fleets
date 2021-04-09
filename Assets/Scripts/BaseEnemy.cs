@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour
 {
-    #region Movement Vars
+    #region Public Fields
 
     public float moveSpeed = 10;
 
-    #endregion
-
-    #region Shooting Vars
-
     public Rigidbody projectile;
-    // The projectile that will be instantiated
 
     public float shootingCooldown = 1.5f;
-    // Value equals the amount of time between each shot/attack
 
     #endregion
 
@@ -25,26 +19,35 @@ public class BaseEnemy : MonoBehaviour
     {
         Movement();
         Shooting();
-
+    }
+    private void OnCollisionEnter()
+    {
+        Destroy(gameObject);
+        // Destroys enemy when a collision with another Rigidbody is detected
     }
 
     #endregion
 
-    #region Private Method - Movement
+    #region Private Methods
+
+    /// <summary>
+    /// <para>Método para a movimentação do inimigo</para>
+    /// Utiliza o public float moveSpeed para controlar a velocidade de movimento
+    /// </summary>
     private void Movement()
     {
         transform.Translate(-Vector3.right * moveSpeed * Time.deltaTime);
         // Makes the enemy move only on the X axis. Right now it moves from right to left only.
-
     }
 
-    #endregion
-
-    #region Private Method - Shooting
-
+    /// <summary>
+    /// <para>Método para o tiro/ataque inimigo</para>
+    /// Utiliza o public float shootingCooldown para determinar o tempo entre tiros
+    /// Utiliza o public Rigidbody projectile para determinar qual objeto será usado como projétil
+    /// </summary>
     private void Shooting()
     {
-        shootingCooldown -= Time.deltaTime; 
+        shootingCooldown -= Time.deltaTime;
 
         if (shootingCooldown <= 0)
         {
@@ -55,15 +58,6 @@ public class BaseEnemy : MonoBehaviour
             shootingCooldown = 1.5f;
             // Resets the timer for the next shot
         }
-    }
-
-    #endregion
-
-    #region Collision
-    private void OnCollisionEnter()
-    {
-        Destroy(gameObject);
-        // Destroys enemy when a collision with another Rigidbody is detected
     }
 
     #endregion
