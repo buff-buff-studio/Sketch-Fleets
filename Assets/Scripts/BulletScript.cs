@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    #region Var
     float velocity = 8;
+    #endregion
+
+    #region Unity Call Back
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// <para>Faz a bala ir para frente e ser destruida se sair do mapa</para>
+    /// </summary>
     void Update()
     {
         transform.position += (Vector3.right * velocity) * Time.deltaTime;
@@ -19,4 +25,5 @@ public class BulletScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion
 }

@@ -2,22 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script de movimento da nave
+/// </summary>
 public class ShipScript : MonoBehaviour
 {
-    public GlobalVar gv;
+    #region Public Fields
+    public ShipEvents gv;
     public GameObject bulletPrefab;
     public int ShipNum;
+    #endregion
+
+    #region Var
     SpriteRenderer sprite;
     bool select;
     bool bulletPos = false;
+    #endregion
+
+    #region Unity Call Back
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
     }
-
-    // Update is called once per frame
+    /// <summary>
+    /// <para>Movimento da nava e tiro da nave</para>
+    /// </summary>
     void Update()
     {
+        //Movimento da nave
         if (gv.shipSelect == ShipNum)
         {
             select = true;
@@ -60,6 +72,7 @@ public class ShipScript : MonoBehaviour
             select = false;
         }
 
+        //Demonstração que a nave esta selecionada
         if (select && sprite.color == Color.red)
         {
             sprite.color = Color.green;
@@ -69,4 +82,5 @@ public class ShipScript : MonoBehaviour
             sprite.color = Color.red;
         }
     }
+    #endregion
 }
