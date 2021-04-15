@@ -8,9 +8,9 @@ public class VolumeScript : MonoBehaviour
     #region Public Fields
 
     [SerializeField]
-    private string ExposedParam;
+    private string exposedParam;
     [SerializeField]
-    private AudioMixer Mixer;
+    private AudioMixer mixer;
     
     // Choose which mixer will have this method applied to it
 
@@ -24,7 +24,7 @@ public class VolumeScript : MonoBehaviour
     /// <param name="sliderValue">Turns the min and max value of the slider into a number between 0 and 80 decibels allowing for a more accurate sound setting.</param>
     public void SetVolume(float sliderValue)
     {
-        Mixer.SetFloat(ExposedParam, Mathf.Log10(sliderValue) * 20);
+        mixer.SetFloat(exposedParam, Mathf.Log10(sliderValue) * 20);
     }
 
     #endregion
