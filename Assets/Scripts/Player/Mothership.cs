@@ -7,23 +7,25 @@ public class Mothership : MonoBehaviour
 {
     #region Private Fields
     [SerializeField]
-    private FloatReference _life;
+    private FloatReference life;
     [SerializeField]
-    private FloatReference _speed;
+    private FloatReference speed;
     [SerializeField]
-    private FloatReference _bulletForce;
-    private int _cyanShips;
+    private FloatReference bulletForce;
+
+    private int cyanShips;
+
+    [SerializeField]
+    private FloatReference timeReload;
+    private bool shootTime = true;
     #endregion
     #region Public Fields
-    public GameObject bulletPrefab;
-    public Transform bulletSpawn;
+    public GameObject BulletPrefab;
+    public Transform BulletSpawn;
+    public Transform CyanShipsSpawner;
     #endregion
-    #region Unity Callback
-    void Start()
-    {
-        
-    }
 
+    #region Unity Callbacks
     void Update()
     {
         MothershipMovement();
@@ -31,54 +33,41 @@ public class Mothership : MonoBehaviour
         MothershipCyanShoot();
     }
     #endregion
+
     #region Commands Mothership
     /// <summary>
-    /// WASD move to up, down, left and right; Q and E rotate the ship
+    /// WASD move the ship
+    /// Ships look at mouse position
     /// </summary>
     private void MothershipMovement()
     {
-        float _timeVelocity = _speed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.W) && transform.position.y < 14)
-        {
-            transform.position += (Vector3.up * _timeVelocity);
-        }
+        float TimeVelocity = speed * Time.deltaTime;
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            transform.Translate(move * TimeVelocity, Space.World);
 
-        if (Input.GetKey(KeyCode.S) && transform.position.y > -14)
-        {
-            transform.position += (Vector3.down * _timeVelocity);
-        }
-
-        if (Input.GetKey(KeyCode.A) && transform.position.x > -23)
-        {
-            transform.position += (Vector3.left * _timeVelocity);
-        }
-
-        if (Input.GetKey(KeyCode.D) && transform.position.y < 23)
-        {
-            transform.position += (Vector3.right * _timeVelocity);
-        }
-
-        if (Input.GetKey(KeyCode.Q))
-        {
-            transform.eulerAngles += new Vector3(0, 0, _timeVelocity * 6);
-        }
-
-        if (Input.GetKey(KeyCode.E))
-        {
-            transform.eulerAngles -= new Vector3(0, 0, _timeVelocity * 6);
-        }
+        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        var angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
+
     /// <summary>
     /// Mouse 0 shoot with the Mothership
     /// </summary>
     private void MothershipShoot()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            GameObject bullet = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, transform.rotation);
-            bullet.GetComponent<Rigidbody2D>().AddForce(bulletSpawn.up * _bulletForce, ForceMode2D.Impulse);
+            if (shootTime)
+            {
+                GameObject bullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.position, transform.rotation);
+                bullet.GetComponent<Rigidbody2D>().AddForce(BulletSpawn.up * bulletForce, ForceMode2D.Impulse);
+
+                shootTime = false;
+                StartCoroutine(ShootTimer());
+            }
         }
     }
+
     /// <summary>
     /// Mouse 1 launch the cyan ship
     /// </summary>
@@ -86,16 +75,27 @@ public class Mothership : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            _cyanShips = GetComponent<GenerateShips>()._cyanShips;            
-            if (_cyanShips > 0)
+            cyanShips = GetComponent<ShipGenerator>().CyanShips;            
+            if (cyanShips > 0)
             {
-                Rigidbody2D _cyan = transform.GetChild(3).GetChild(2).GetComponent<Rigidbody2D>();
-                _cyan.AddForce(_cyan.transform.GetChild(1).up * _bulletForce, ForceMode2D.Impulse);
+                Rigidbody2D _cyan = CyanShipsSpawner.GetChild(2).GetComponent<Rigidbody2D>();
+                _cyan.AddForce(_cyan.transform.GetChild(1).up * bulletForce, ForceMode2D.Impulse);
                 _cyan.transform.parent = transform.parent;
-                GetComponent<GenerateShips>()._cyanShips--;
+                GetComponent<ShipGenerator>().CyanShips--;
             }
 
         }
+    }
+    #endregion
+
+    #region Shoot Reload
+    /// <summary>
+    /// Timer
+    /// </summary>
+    IEnumerator ShootTimer()
+    {
+        yield return new WaitForSeconds(timeReload);
+        shootTime = true;
     }
     #endregion
 }

@@ -5,11 +5,18 @@ using ManyTools.Variables;
 
 public class bulletScript : MonoBehaviour
 {
-    void Update()
+    public float Damage;
+    #region Collider
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (transform.position.x > 25)
+        if (col.gameObject.CompareTag("EndMap"))
         {
             Destroy(gameObject);
+        }else if (col.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject, 10);
+            transform.localScale = transform.localScale * .75f;
         }
     }
+    #endregion
 }

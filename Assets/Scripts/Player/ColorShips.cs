@@ -5,35 +5,31 @@ using ManyTools.Variables;
 
 public class ColorShips : MonoBehaviour
 {
+    /// <summary>
+    /// WIP CODE
+    /// </summary>
+
     #region Private Field
     [SerializeField]
-    private FloatReference _lifeShip;
+    private FloatReference lifeShip;
     #endregion
     #region Public Field
-    public float _life;
-    public float _lifeMax;
+    public float Life;
+    public float LifeMax;
     #endregion
-    #region Unity Callback
+
+    #region Unity Callbacks
     void Start()
     {
-        _life = _lifeShip;
-        _lifeMax = _lifeShip;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Life = lifeShip;
+        LifeMax = lifeShip;
     }
     #endregion
+
     #region Collider
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.tag == "EndMap")
-        {
-            Destroy(gameObject);
-        }
-        else if (col.tag == "Enemy")
+        if(col.gameObject.CompareTag("EndMap"))
         {
             Destroy(gameObject);
         }

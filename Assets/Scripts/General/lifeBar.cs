@@ -8,26 +8,30 @@ public class lifeBar : MonoBehaviour
 {
     #region Private Fields
     [SerializeField]
-    private FloatReference _life;
+    private FloatReference life;
     [SerializeField]
-    private ColorReference _color75;
+    private ColorReference color75;
     [SerializeField]
-    private ColorReference _color50;
+    private ColorReference color50;
     [SerializeField]
-    private ColorReference _color25;
-    private Image _lifeBarTotal;
-    private Image _lifeBarAtt;
-    private ColorShips _colorShip;
+    private ColorReference color25;
+    private Image lifeBarTotal;
+    private Image lifeBarAtt;
+    private ColorShips colorShip;
     #endregion
 
-    #region Unity Callback
+    #region Unity Callbacks
     private void Start()
     {
-        _lifeBarTotal = transform.GetChild(1).GetComponent<Image>();
-        _lifeBarAtt = transform.GetChild(3).GetComponent<Image>();
-        if (transform.parent.gameObject.name != "MotherShip")
+        if (transform.parent.gameObject.name != "Canvas")
         {
-            _colorShip = transform.parent.GetComponent<ColorShips>();
+            colorShip = transform.parent.GetComponent<ColorShips>();
+            lifeBarTotal = transform.GetChild(1).GetComponent<Image>();
+            lifeBarAtt = transform.GetChild(3).GetComponent<Image>();
+        }
+        else
+        {
+            lifeBarAtt = transform.GetChild(2).GetComponent<Image>();
         }
         lifeBarUpdate();
     }
@@ -38,42 +42,27 @@ public class lifeBar : MonoBehaviour
     /// </summary>
     public void lifeBarUpdate()
     {
-        if (transform.parent.gameObject.name == "MotherShip")
+        if (transform.parent.gameObject.name == "Canvas")
         {
-            _lifeBarAtt.fillAmount = _life / 100;
-            if (_life >= 75)
-            {
-                _lifeBarTotal.color = _color75;
-                _lifeBarAtt.color = _color75;
-            }
-            else if (_life >= 25)
-            {
-                _lifeBarTotal.color = _color50;
-                _lifeBarAtt.color = _color50;
-            }
-            else
-            {
-                _lifeBarTotal.color = _color25;
-                _lifeBarAtt.color = _color25;
-            }
+            lifeBarAtt.fillAmount = life / 100;
         }
         else
         {
-            _lifeBarAtt.fillAmount = _colorShip._life / _colorShip._lifeMax;
-            if (_colorShip._life >= _colorShip._lifeMax*.75f)
+            lifeBarAtt.fillAmount = colorShip.Life / colorShip.LifeMax;
+            if (colorShip.Life >= colorShip.LifeMax*.75f)
             {
-                _lifeBarTotal.color = _color75;
-                _lifeBarAtt.color = _color75;
+                lifeBarTotal.color = color75;
+                lifeBarAtt.color = color75;
             }
-            else if (_colorShip._life >= _colorShip._lifeMax*.25f)
+            else if (colorShip.Life >= colorShip.LifeMax*.25f)
             {
-                _lifeBarTotal.color = _color50;
-                _lifeBarAtt.color = _color50;
+                lifeBarTotal.color = color50;
+                lifeBarAtt.color = color50;
             }
             else
             {
-                _lifeBarTotal.color = _color25;
-                _lifeBarAtt.color = _color25;
+                lifeBarTotal.color = color25;
+                lifeBarAtt.color = color25;
             }
         }
     }
