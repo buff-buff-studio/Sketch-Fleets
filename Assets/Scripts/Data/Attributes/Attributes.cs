@@ -13,7 +13,7 @@ namespace SketchFleets.Data
 
         [Header("Core Properties")]
         [SerializeField]
-        protected StringReference objectName;
+        protected StringReference objectName = new StringReference("Name");
         [SerializeField]
         [Multiline]
         protected string description;
