@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b1e30d53dd4f37ab25a4a43916f3cc, type: 3}
+  m_Name: Mothership Attributes
+  m_EditorClassIdentifier: 
+  objectName:
+    _useConstant: 1
+    _constant: Player
+    _variable: {fileID: 0}
+  description: The Player Mothership
+  prefab: {fileID: 4678554487116897407, guid: 491fd67079b75774d904772a74d01960, type: 3}
+  maxHealth:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: 4273dadaabef4134ba1eb50dc2f9c63b, type: 2}
+  maxShield:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  damageMultiplier:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
+  speed:
+    _useConstant: 1
+    _constant: 10
+    _variable: {fileID: 0}
+  defense:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  fireCooldown:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
+  fire: {fileID: 11400000, guid: b0967743feca18e449eb47263e1ec0d8, type: 2}
+  shipByType:
+    _keyValueList:
+    - Key: Cyan
+      Value: {fileID: 1402592913153942963, guid: cd737f9e349579946bb5cc2e193d7533, type: 3}
+    - Key: Magenta
+      Value: {fileID: 6173356038226950253, guid: 8953d9ecd5f7e6e4f9d19b12d9a268cc, type: 3}
+    - Key: Yellow
+      Value: {fileID: 7663287417040055031, guid: c2b7a93e668e9b14e8e7488ca1037a43, type: 3}
+    _keyCollision: 0
+  extraSpawnSlots:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  spawnCooldownMultiplier:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
+  abilityCooldownMultiplier:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
+  spawnStatusBonus: []
