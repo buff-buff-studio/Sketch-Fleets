@@ -11,8 +11,19 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private BulletAttributes attributes;
 
+
     #endregion
 
+    #region Properties
+
+    public BulletAttributes Attributes
+    {
+        get => attributes;
+        set => attributes = value;
+    }
+
+    #endregion
+    
     #region Unity Callbacks
 
     private void Start()
@@ -23,7 +34,7 @@ public class BulletController : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * attributes.Speed, Space.Self);
+        transform.Translate(Vector3.forward * Time.deltaTime * Attributes.Speed, Space.Self);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
