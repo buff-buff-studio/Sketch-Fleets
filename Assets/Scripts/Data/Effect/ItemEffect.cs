@@ -11,9 +11,13 @@ namespace SketchFleets.Data
     public sealed class ItemEffect : StatusEffect
     {
         #region Private Fields
-
+        
+        [Header("Item-only Effects")]
+        [SerializeField]
         private IntReference spawnSlotBonus;
+        [SerializeField]
         private IntReference spawnCooldownMultiplierBonus;
+        [SerializeField]
         private IntReference abilityCooldownMultiplierBonus;
 
         #endregion

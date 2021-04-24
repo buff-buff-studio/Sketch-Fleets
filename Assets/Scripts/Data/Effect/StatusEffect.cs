@@ -54,6 +54,5 @@ namespace SketchFleets.Data
         }
 
         #endregion
-
     }
 }
