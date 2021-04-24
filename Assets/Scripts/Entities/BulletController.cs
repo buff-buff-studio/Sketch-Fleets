@@ -30,11 +30,13 @@ public class BulletController : MonoBehaviour
     {
         // Replace by pooling call
         Destroy(gameObject, 10f);
+        GetComponent<Rigidbody2D>().AddForce(transform.up * attributes.Speed, ForceMode2D.Impulse);
     }
 
     private void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * Attributes.Speed, Space.Self);
+        Debug.Log(attributes.Speed);
+        //transform.Translate(Vector3.forward * Time.deltaTime * Attributes.Speed, Space.Self);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
