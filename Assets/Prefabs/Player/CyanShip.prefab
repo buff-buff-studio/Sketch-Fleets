@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7116587407625614009}
   - component: {fileID: 1675363701567439310}
-  - component: {fileID: -3683171457516275349}
   - component: {fileID: 1683782003816548595}
   - component: {fileID: 3625890594598804130}
-  m_Layer: 6
+  - component: {fileID: -4229234713536237571}
+  m_Layer: 7
   m_Name: CyanShip
-  m_TagString: Untagged
+  m_TagString: CyanShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d5558926022982e44a05b5e7e2a581a0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3537736, g: 1, b: 0.77024215, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,24 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3683171457516275349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402592913153942963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682308bfe0a1d3c4fb06c5af659688e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeShip:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: 0e4d1ef9993191841bd9877407413e92, type: 2}
-  Life: 0
-  LifeMax: 0
 --- !u!61 &1683782003816548595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,6 +133,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4229234713536237571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402592913153942963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e104e488f1845047837fd89432ca8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: 4273dadaabef4134ba1eb50dc2f9c63b, type: 2}
+  shoot: 1
+  Damage: 50
 --- !u!1 &4827757275266429288
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 969869840984720386}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

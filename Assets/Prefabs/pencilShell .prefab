@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 373947945036896490}
   - component: {fileID: 4713191707251145263}
   - component: {fileID: 4618979822267471443}
+  - component: {fileID: 6701422747430550602}
   m_Layer: 0
   m_Name: 'pencilShell '
   m_TagString: Untagged
@@ -195,3 +196,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da745683dba9e947b0fcd50f321d24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pencilNum:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: d6a9e804e272a264290737db7ac36e9d, type: 2}
+  shellColor:
+    _useConstant: 0
+    _constant: {r: 0, g: 0, b: 0, a: 0}
+    _variable: {fileID: 11400000, guid: 1bc42a043e5678149974e3c5e32d0cc5, type: 2}
+--- !u!50 &6701422747430550602
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108485770172352479}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -9,18 +9,24 @@ public class ShipGenerator : MonoBehaviour
 {
     #region Private Fields
     [SerializeField]
-    private GameObject[] shipsGameObjects;
+    private List<GameObject> shipsGameObjects;
     [SerializeField]
     private int magentaShips;
     [SerializeField]
     private int yellowShips;
 
     [SerializeField]
-    private IntReference magentaNum;
+    private IntReference magentaPrice;
+    private int magentaPriceTotal;
     [SerializeField]
-    private IntReference cyanNum;
+    private IntReference cyanPrice;
     [SerializeField]
-    private IntReference yellowNum;
+    private IntReference yellowPrice;
+    private int yellowPriceTotal;
+
+    [SerializeField]
+    private FloatReference life;
+    private float lifeRegen;
 
     private bool magentaLoading = true;
     private bool cyanLoading = true;
@@ -47,27 +53,42 @@ public class ShipGenerator : MonoBehaviour
     public TextMeshProUGUI CyanTimer;
     public TextMeshProUGUI YellowTimer;
 
+    public TextMeshProUGUI MagentaPriceText;
+    public TextMeshProUGUI CyanPriceText;
+    public TextMeshProUGUI YellowPricText;
+
     public Image RegenIcon;
 
     public float MagentaReloadTime;
     public float CyanReloadTime;
     public float YellowReloadTime;
+
+    public lifeBar lb;
     #endregion
 
     #region Unity Callbacks
+    private void Start()
+    {
+        magentaPriceTotal = magentaPrice;
+        yellowPriceTotal = yellowPrice;
+    }
     void Update()
     {
         Regen();
         RegenLoading();
         ColorTimer();
-        
-        if (Input.GetKey(KeyCode.Space))
+        GraphitePrice();
+
+
+        if (Input.GetAxis("CircleOpen") == 1 && life > 0)
         {
             CircleShip.SetActive(true);
+            Time.timeScale = .5f;
         }
-        else
+        else if(life > 0)
         {
             CircleShip.SetActive(false);
+            Time.timeScale = 1;
         }
     }
     #endregion
@@ -82,26 +103,36 @@ public class ShipGenerator : MonoBehaviour
     {
         if(ShipPrefab.name == "MagentaShip")
         {
-            Ships += magentaNum;
-
-            for (int i = 0; i < magentaNum; i++)
+            if (magentaShips < 10)
             {
-                GameObject magenta = (GameObject)Instantiate(ShipPrefab, transform.position, transform.rotation);
+                Ships++;
+                GameObject magenta = (GameObject)Instantiate(ShipPrefab, MagentaSpawn.position, transform.rotation);
+
+                shipsGameObjects.Add(magenta);
 
                 magentaShips++;
-                magenta.transform.position = MagentaSpawn.GetChild(i).position;
 
-                magenta.transform.parent = MagentaSpawn;
-                shipsGameObjects[Ships - (magentaNum - i)] = magenta;
+                magenta.GetComponent<magentaAI>().Mothership = transform;
+
+                MagentaSpawn.parent.eulerAngles += new Vector3(0, 0, 36);
+
+                magenta.transform.parent = MagentaSpawn.parent.parent;
+
+                life.Value -= magentaPrice;
+                lifeRegen += magentaPrice;
+
+                magentaPriceTotal += 4;
+
+                magentaLoading = true;
+
+                CircleShip.SetActive(false);
             }
-            magentaLoading = true;
-            CircleShip.SetActive(false);
         }
         else if (ShipPrefab.name == "CyanShip")
         {
             if (CyanShips < 2)
             {
-                Ships += cyanNum;
+                Ships++;
 
                 GameObject cyan = (GameObject)Instantiate(ShipPrefab, transform.position, transform.rotation);
 
@@ -114,24 +145,32 @@ public class ShipGenerator : MonoBehaviour
                     cyan.transform.position = CyanSpawn.GetChild(1).position;
                 }
 
+                GetComponent<Mothership>().CyanShips.Add(cyan);
                 CyanShips++;
                 cyan.transform.parent = CyanSpawn;
-                shipsGameObjects[Ships - 1] = cyan;
+                shipsGameObjects.Add(cyan); 
+                life.Value -= cyanPrice;
+                lifeRegen += cyanPrice;
                 cyanLoading = true;
                 CircleShip.SetActive(false);
             }
         }
         else
         {
-            Ships += yellowNum;
+            Ships++;
 
             GameObject yellow = (GameObject)Instantiate(ShipPrefab, transform.position, transform.rotation);
 
             yellowShips++;
-            shipsGameObjects[Ships - 1] = yellow;
+            shipsGameObjects.Add(yellow);
+            life.Value -= yellowPrice;
+            lifeRegen += yellowPrice;
+            yellowPriceTotal += 5;
             yellowLoading = true;
             CircleShip.SetActive(false);
         }
+
+        lb.lifeBarUpdate();
     }
 
     private void ColorTimer()
@@ -144,7 +183,14 @@ public class ShipGenerator : MonoBehaviour
             }
             else if (magentaTime > 0)
             {
-                magentaTime -= 1 * Time.deltaTime;
+                if(Time.timeScale == 1)
+                {
+                    magentaTime -= 1 * Time.deltaTime;
+                }
+                else
+                {
+                    magentaTime -= 1 * Time.deltaTime * 2;
+                }
                 MagentaTimer.text = magentaTime.ToString("F") + "s";
                 MagentaTimer.transform.parent.GetComponent<Button>().interactable = false;
             }
@@ -165,7 +211,14 @@ public class ShipGenerator : MonoBehaviour
             }
             else if (cyanTime > 0)
             {
-                cyanTime -= 1 * Time.deltaTime;
+                if (Time.timeScale == 1)
+                {
+                    cyanTime -= 1 * Time.deltaTime;
+                }
+                else
+                {
+                    cyanTime -= 1 * Time.deltaTime * 2;
+                }
                 CyanTimer.text = cyanTime.ToString("F") + "s";
                 CyanTimer.transform.parent.GetComponent<Button>().interactable = false;
             }
@@ -186,7 +239,14 @@ public class ShipGenerator : MonoBehaviour
             }
             else if (yellowTime > 0)
             {
-                yellowTime -= 1 * Time.deltaTime;
+                if (Time.timeScale == 1)
+                {
+                    yellowTime -= 1 * Time.deltaTime;
+                }
+                else
+                {
+                    yellowTime -= 1 * Time.deltaTime * 2;
+                }
                 YellowTimer.text = yellowTime.ToString("F") + "s";
                 YellowTimer.transform.parent.GetComponent<Button>().interactable = false;
             }
@@ -199,6 +259,13 @@ public class ShipGenerator : MonoBehaviour
             }
         }
     }
+
+    private void GraphitePrice()
+    {
+        MagentaPriceText.text = magentaPriceTotal + "///";
+        CyanPriceText.text = cyanPrice + "///";
+        YellowPricText.text = yellowPriceTotal + "///";
+    }
     #endregion
 
     #region Ship Regenerate
@@ -207,14 +274,24 @@ public class ShipGenerator : MonoBehaviour
     /// </summary>
     public void Regen()
     {
-        if (Input.GetKeyUp(KeyCode.R) && regenLoad)
+        if (Input.GetAxis("Regen") == 1 && regenLoad)
         {
-            for (int i = 0; i < shipsGameObjects.Length; i++)
+            for (int i = 0; i < shipsGameObjects.Count; i++)
             {
                 Destroy(shipsGameObjects[i]);
             }
-            regenLoad = false;
+            life.Value += lifeRegen;
+
+            lifeRegen = 0;
+            CyanShips = 0;
+            magentaShips = 0;
             Ships = 0;
+            magentaPriceTotal = magentaPrice;
+            yellowPriceTotal = yellowPrice;
+
+            lb.lifeBarUpdate();
+            shipsGameObjects.Clear();
+            regenLoad = false;
         }
     }
 
@@ -234,6 +311,7 @@ public class ShipGenerator : MonoBehaviour
             else
             {
                 regenTimer = 30;
+                regenLoad = true;
             }
         }
     }

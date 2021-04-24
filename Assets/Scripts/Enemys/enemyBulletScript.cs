@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ManyTools.Variables;
 
-public class bulletScript : MonoBehaviour
+public class enemyBulletScript : MonoBehaviour
 {
     public float Damage;
+
+    #region Unity Callbacks
+    private void Start()
+    {
+        Destroy(gameObject, 5);
+    }
+    #endregion
+
     #region Collider
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("EndMap"))
         {
             Destroy(gameObject);
-        }else if (col.gameObject.CompareTag("Enemy"))
+        }
+        else if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject, 10);
             transform.localScale = transform.localScale * .75f;

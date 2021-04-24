@@ -53,13 +53,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3835828025824741969}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: -0, y: 2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3425927380390766191}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
 --- !u!1 &4318435963444011106
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,9 +70,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3425927380390766191}
   - component: {fileID: 6677277930830065202}
-  - component: {fileID: 6735742111643213292}
-  - component: {fileID: 2947116081503249082}
   - component: {fileID: 7492810237516301019}
+  - component: {fileID: 6735742111643213292}
   - component: {fileID: 7421767734453004532}
   m_Layer: 8
   m_Name: LimeEnemy
@@ -150,6 +149,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7492810237516301019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318435963444011106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc4f35e45f100f4b988d4729e87047d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limeH: 10
+  limeSpeed: 5
+  bulletSpawn:
+  - {fileID: 7141609286691484426}
+  - {fileID: 1462940444066245173}
+  - {fileID: 6992044509416843408}
+  - {fileID: 7813440369729517843}
+  bulletPrefab: {fileID: 4302579644872828459, guid: 463bdbbaf4f970343a99cac2cdab985c, type: 3}
+  healingArea: {fileID: 9124189077106684604, guid: 720e9bcce3d672040adfa954b1f91f26, type: 3}
+  LimeLife: 100
+  ShellPrefab: {fileID: 4108485770172352479, guid: 12680e9855c37684ea4f9c7f37017a4f, type: 3}
+  ShellColor: {r: 0.47450984, g: 0.87843144, b: 0.11764707, a: 1}
 --- !u!58 &6735742111643213292
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -166,48 +189,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.75
---- !u!114 &2947116081503249082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4318435963444011106}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682308bfe0a1d3c4fb06c5af659688e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeShip:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: eebd6b32f2d38674da8f9bb8685e2a54, type: 2}
-  Life: 0
-  LifeMax: 0
---- !u!114 &7492810237516301019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4318435963444011106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccc4f35e45f100f4b988d4729e87047d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  limeH: 10
-  limeSpeed: 5
-  limeLife: 250
-  bulletSpawn:
-  - {fileID: 7141609286691484426}
-  - {fileID: 1462940444066245173}
-  - {fileID: 6992044509416843408}
-  - {fileID: 7813440369729517843}
-  bulletPrefab: {fileID: 4302579644872828459, guid: 463bdbbaf4f970343a99cac2cdab985c, type: 3}
-  healingArea: {fileID: 9124189077106684604, guid: 720e9bcce3d672040adfa954b1f91f26, type: 3}
-  ShellPrefab: {fileID: 4108485770172352479, guid: 12680e9855c37684ea4f9c7f37017a4f, type: 3}
-  ShellColor: {r: 0.47450984, g: 0.87843144, b: 0.11764707, a: 1}
 --- !u!58 &7421767734453004532
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -277,10 +258,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7706608168323990816}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -2.3, y: -0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70710474, w: 0.7071089}
+  m_LocalPosition: {x: -2.300015, y: 0.00008742015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3425927380390766191}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
