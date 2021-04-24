@@ -1,5 +1,6 @@
 ﻿using ManyTools.Variables;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SketchFleets.Data
 {
@@ -10,27 +11,25 @@ namespace SketchFleets.Data
     {
         #region Private Fields
 
+        [Header("Core Properties")]
         [SerializeField]
-        protected StringReference _name;
+        protected StringReference objectName;
         [SerializeField]
         [Multiline]
-        protected string _description;
+        protected string description;
+        [SerializeField]
+        protected GameObject prefab;
 
         #endregion
 
         #region Properties
 
-        public string Description
-        {
-            get => _description;
-        }
+        public GameObject Prefab => prefab;
 
-        public StringReference Name
-        {
-            get => _name;
-        }
+        public string Description => description;
+
+        public StringReference Name => objectName;
 
         #endregion
-
     }
 }
