@@ -13,6 +13,7 @@ public class ColorShips : MonoBehaviour
     [SerializeField]
     private FloatReference lifeShip;
     #endregion
+    
     #region Public Field
     public float Life;
     public float LifeMax;
