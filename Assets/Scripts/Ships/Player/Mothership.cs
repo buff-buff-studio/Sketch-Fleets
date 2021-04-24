@@ -73,6 +73,7 @@ namespace SketchFleets.Entities
         private void Update()
         {
             Movement();
+            Look();
             Fire();
             MothershipCyanShoot();
 
@@ -82,7 +83,7 @@ namespace SketchFleets.Entities
 
         #endregion
 
-        #region Commands Mothership
+        #region Private Methods
 
         /// <summary>
         /// Moves and rotates the Mothership
@@ -101,8 +102,15 @@ namespace SketchFleets.Entities
             
             // Translates
             transformCache.Translate(movement * timeSpeed, Space.World);
+        }
+
+        /// <summary>
+        /// Makes the mothership look at the mouse
+        /// </summary>
+        private void Look()
+        {
             // Rotates
-            Vector3 dir = Input.mousePosition - mainCamera.WorldToScreenPoint(transformCache.position);
+            Vector3 dir = Input.mousePosition - mainCamera.WorldToScreenPoint(transform.position);
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
