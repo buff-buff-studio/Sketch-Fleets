@@ -15,16 +15,16 @@ namespace SketchFleets.Data
         [Header("Attributes")]
         [Tooltip("How much damage the bullet does if it hits an enemy directly.")]
         [SerializeField]
-        private FloatReference directDamage;
+        private FloatReference directDamage = new FloatReference(0);
         [Tooltip("How fast the bullet moves.")]
         [SerializeField]
-        private FloatReference speed;
+        private FloatReference speed = new FloatReference(10);
         [Tooltip("How large should the impact radius be for indirect damage.")]
         [SerializeField]
-        private FloatReference impactRadius;
+        private FloatReference impactRadius = new FloatReference(0);
         [Tooltip("How much damage should the bullet do if it hits an enemy indirectly.")]
         [SerializeField]
-        private FloatReference indirectDamage;
+        private FloatReference indirectDamage = new FloatReference(5);
 
         [Header("Visual Effects")]
         [Tooltip("The effect spawned when the bullet is fired.")]

@@ -15,10 +15,13 @@ namespace SketchFleets.Data
         [Header("Spawn Parameters")]
         [SerializeField]
         [Tooltip("How much graphite it takes to summon a ship")]
-        private IntReference graphiteCost;
+        private IntReference graphiteCost = new IntReference(100);
+        [SerializeField]
+        [Tooltip("How many active ships of this kind can there be at a time")]
+        private IntReference maximumShips = new IntReference(10);
         [SerializeField]
         [Tooltip("How long the player must wait before invoking another ship")]
-        private IntReference spawnCooldown;
+        private IntReference spawnCooldown = new IntReference(10);
 
         #endregion
 

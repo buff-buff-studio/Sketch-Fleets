@@ -10,7 +10,7 @@ namespace SketchFleets.Data
         menuName = CreateMenus.shipAttributesMenuName)]
     public class ShipAttributes : Attributes
     {
-        #region Private Fields
+        #region Protected Fields
 
         [Header("Attributes")]
         [SerializeField]
@@ -23,16 +23,16 @@ namespace SketchFleets.Data
         protected FloatReference damageMultiplier = new FloatReference(1);
         [SerializeField]
         protected FloatReference speed;
-        [Tooltip("The multiplier for the movement speed.")]
-        [SerializeField]
-        protected FloatReference speedMultiplier = new FloatReference(1);
         [Tooltip("An inverse multiplier for how much damage the ship takes with an attack.")]
         [SerializeField]
         protected FloatReference defense = new FloatReference(0);
+        [Tooltip("The cooldown in seconds between attacks")]
+        [SerializeField]
+        protected FloatReference fireCooldown = new FloatReference(1);
 
         [Tooltip("The prefab spawned by the ship by an attack.")]
         [SerializeField]
-        protected GameObject fire;
+        protected BulletAttributes fire;
 
         #endregion
 
@@ -58,14 +58,14 @@ namespace SketchFleets.Data
             get => speed;
         }
 
-        public FloatReference SpeedMultiplier
-        {
-            get => speedMultiplier;
-        }
-
-        public GameObject Fire
+        public BulletAttributes Fire
         {
             get => fire;
+        }
+
+        public float FireCooldown
+        {
+            get => fireCooldown;
         }
 
         #endregion

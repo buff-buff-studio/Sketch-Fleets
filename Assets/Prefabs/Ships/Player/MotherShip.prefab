@@ -123,24 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02a1787bcea4ec4fab85b1b223eeb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 0}
-  speed:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 0}
-  bulletForce:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 0}
-  timeReload:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 0}
-  BulletPrefab: {fileID: 8092150800717221310, guid: 283a6122975a1f940aa4d660190c9c45, type: 3}
-  BulletSpawn: {fileID: 0}
+  attributes: {fileID: 11400000, guid: dab52214d9edfd14a9cd1dfb36bb9e38, type: 2}
+  bulletSpawnPoint: {fileID: 0}
+  cyanShipsSpawnPoint: {fileID: 0}
 --- !u!114 &-5291089096505027240
 MonoBehaviour:
   m_ObjectHideFlags: 0
