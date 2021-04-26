@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 221314089079719726}
   bulletPrefab: {fileID: 6364302103545699407, guid: 67511b2655da38341915b646a44fb9a8, type: 3}
-  PurpleLife: 25
+  PurpleLife: 35
   ShellPrefab: {fileID: 4108485770172352479, guid: 12680e9855c37684ea4f9c7f37017a4f, type: 3}
   ShellColor: {r: 0.41960788, g: 0.1137255, b: 0.882353, a: 1}
 --- !u!60 &5999427801493006089
