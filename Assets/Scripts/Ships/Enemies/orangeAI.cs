@@ -8,8 +8,6 @@ public class orangeAI : MonoBehaviour
     [SerializeField]
     private float orangeSpeed;
     [SerializeField]
-    private float orangeLife;
-    [SerializeField]
     private int orangeGen = 3;
     [SerializeField]
     private Transform[] orangeSpawn;
@@ -19,9 +17,11 @@ public class orangeAI : MonoBehaviour
     #endregion
 
     #region Public Fields
+    public float OrangeLife;
     public Transform Mothership;
     public GameObject ShellPrefab;
     public Color ShellColor;
+    public bool InCam;
     #endregion
 
     #region Unity Callbacks
@@ -48,13 +48,16 @@ public class orangeAI : MonoBehaviour
     /// </summary>
     private void OrangeAI()
     {
-        var dir = Mothership.position;
-        var angle = Mathf.Atan2(dir.x, -dir.y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (InCam)
+        {
+            var dir = Mothership.position - transform.position;
+            var angle = Mathf.Atan2(dir.x, -dir.y) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        transform.position = Vector2.MoveTowards(transform.position, Mothership.position, orangeSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, Mothership.position, orangeSpeed * Time.deltaTime);
+        }
 
-        if(orangeLife <= 0)
+        if(OrangeLife <= 0)
         {
             if (orangeGen > 1)
             {
@@ -67,8 +70,8 @@ public class orangeAI : MonoBehaviour
                 orange1.GetComponent<orangeAI>().orangeGen--;
                 orange2.GetComponent<orangeAI>().orangeGen--;
 
-                orange1.GetComponent<orangeAI>().orangeLife = 75;
-                orange2.GetComponent<orangeAI>().orangeLife = 75;
+                orange1.GetComponent<orangeAI>().OrangeLife = 75;
+                orange2.GetComponent<orangeAI>().OrangeLife = 75;
 
                 orange1.GetComponent<orangeAI>().Mothership = Mothership;
                 orange2.GetComponent<orangeAI>().Mothership = Mothership;
@@ -89,7 +92,19 @@ public class orangeAI : MonoBehaviour
     {
         if (col.gameObject.CompareTag("bullet") && !inv)
         {
-            orangeLife -= col.GetComponent<BulletController>().Attributes.DirectDamage;
+            OrangeLife -= col.GetComponent<playerBulletScript>().Damage;
+            col.GetComponent<playerBulletScript>().Damage = 0;
+        }
+        else if (col.gameObject.CompareTag("EndMap"))
+        {
+            InCam = true;
+        }
+        else if (col.gameObject.CompareTag("CyanShip"))
+        {
+            if (!col.GetComponent<cyanAI>().shoot)
+            {
+                OrangeLife -= col.GetComponent<cyanAI>().Damage;
+            }
         }
     }
 

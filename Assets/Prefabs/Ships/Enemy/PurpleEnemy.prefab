@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3528808056350105842}
   - component: {fileID: 4889213819204626607}
-  - component: {fileID: 5331332657355586618}
-  - component: {fileID: 4005332294497117223}
+  - component: {fileID: 2691468942137785280}
+  - component: {fileID: 5999427801493006089}
+  - component: {fileID: 774902517113844721}
   m_Layer: 8
   m_Name: PurpleEnemy
   m_TagString: Enemy
@@ -29,7 +30,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 221314089079719726}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -84,8 +86,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5331332657355586618
-BoxCollider2D:
+--- !u!114 &2691468942137785280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638445650067007231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38506f9780fac0d4a8dc71b868de6ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpawn: {fileID: 221314089079719726}
+  bulletPrefab: {fileID: 6364302103545699407, guid: 67511b2655da38341915b646a44fb9a8, type: 3}
+  PurpleLife: 35
+  ShellPrefab: {fileID: 4108485770172352479, guid: 12680e9855c37684ea4f9c7f37017a4f, type: 3}
+  ShellColor: {r: 0.41960788, g: 0.1137255, b: 0.882353, a: 1}
+--- !u!60 &5999427801493006089
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638445650067007231}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.5, y: 1.95}
+      - {x: 0, y: -2.01}
+      - {x: 1.5, y: 1.95}
+--- !u!60 &774902517113844721
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,24 +154,38 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.09, y: 3.99}
-  m_EdgeRadius: 0
---- !u!114 &4005332294497117223
-MonoBehaviour:
+  m_Points:
+    m_Paths:
+    - - {x: -1.5, y: 1.95}
+      - {x: 0, y: -2.01}
+      - {x: 1.5, y: 1.95}
+--- !u!1 &5091115270572385565
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2638445650067007231}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682308bfe0a1d3c4fb06c5af659688e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeShip:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: eebd6b32f2d38674da8f9bb8685e2a54, type: 2}
-  Life: 0
-  LifeMax: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 221314089079719726}
+  m_Layer: 8
+  m_Name: bulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &221314089079719726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5091115270572385565}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -2.303, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3528808056350105842}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

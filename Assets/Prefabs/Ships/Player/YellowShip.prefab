@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6920816319260937904}
   - component: {fileID: 1730708037846599471}
-  - component: {fileID: -8083359969589423806}
-  - component: {fileID: 2379605371916080986}
+  - component: {fileID: 8390251188576990311}
   m_Layer: 6
   m_Name: YellowShip
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,26 +83,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8083359969589423806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7663287417040055031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682308bfe0a1d3c4fb06c5af659688e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeShip:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: c9ff5e350e7e9fe4094814c2f408f491, type: 2}
-  Life: 0
-  LifeMax: 0
---- !u!61 &2379605371916080986
-BoxCollider2D:
+--- !u!60 &8390251188576990311
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,7 +93,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -125,6 +106,9 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.07, y: 4.07}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: -2}
+      - {x: -2, y: 0}
+      - {x: 0, y: 2}
+      - {x: 2, y: 0}

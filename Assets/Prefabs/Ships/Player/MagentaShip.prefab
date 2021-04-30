@@ -10,12 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4740415697457544800}
   - component: {fileID: 3668310390866179645}
-  - component: {fileID: -4133105658515277131}
-  - component: {fileID: 4092993620820550312}
   - component: {fileID: -5322071859470756606}
   m_Layer: 6
   m_Name: MagentaShip
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,50 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4133105658515277131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6173356038226950253}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682308bfe0a1d3c4fb06c5af659688e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeShip:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: eebd6b32f2d38674da8f9bb8685e2a54, type: 2}
-  Life: 0
-  LifeMax: 0
---- !u!61 &4092993620820550312
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6173356038226950253}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.09, y: 3.99}
-  m_EdgeRadius: 0
 --- !u!114 &-5322071859470756606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +96,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 8092150800717221310, guid: 283a6122975a1f940aa4d660190c9c45, type: 3}
+  lifeMothership:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: 4273dadaabef4134ba1eb50dc2f9c63b, type: 2}
   timeReload:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 11400000, guid: 8cebba816f734bd4aac587ae1cf5f41a, type: 2}
+  Mothership: {fileID: 0}

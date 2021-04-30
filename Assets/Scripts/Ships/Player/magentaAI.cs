@@ -8,8 +8,12 @@ public class magentaAI : MonoBehaviour
     [SerializeField]
     private GameObject BulletPrefab;
     [SerializeField]
+    private FloatReference lifeMothership;
+    [SerializeField]
     private FloatReference timeReload;
     private bool shootTime = true;
+
+    public Transform Mothership;
     void Start()
     {
         
@@ -18,16 +22,24 @@ public class magentaAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(transform.parent.position, transform.parent.forward, 90f * Time.deltaTime);
+        if (lifeMothership > 0)
+        {
+            MagentaAI();
+            Shoot();
+        }
+    }
+
+    private void MagentaAI()
+    {
+        transform.RotateAround(Mothership.position, Mothership.forward, 90f * Time.deltaTime);
         var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         var angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        Shoot();
     }
 
     private void Shoot()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetAxis("Fire1") == 1 && Input.GetAxis("CircleOpen") == 0)
         {
             if (shootTime)
             {

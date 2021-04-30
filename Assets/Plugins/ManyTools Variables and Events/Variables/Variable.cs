@@ -24,6 +24,18 @@ namespace ManyTools.Variables
 
         #endregion
 
+        #region MonoBehaviour Implementation
+
+        private void OnEnable()
+        {
+            if (_onChangeEvent != null)
+            {
+                _runtimeOnChangeEvent = _onChangeEvent;
+            }
+        }
+
+        #endregion
+        
         #region Properties
 
         /// <summary>
