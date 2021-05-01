@@ -29,13 +29,9 @@ public class RubberScript : MonoBehaviour
     #region Collider
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("bullet"))
+        if (col.gameObject.CompareTag("bullet") || col.gameObject.CompareTag("EnemyBullet"))
         {
-            GetComponent<ObstacleScript>().Life -= col.GetComponent<playerBulletScript>().Damage;
-        }
-        else if (col.gameObject.CompareTag("EnemyBullet"))
-        {
-            GetComponent<ObstacleScript>().Life -= col.GetComponent<enemyBulletScript>().Damage;
+            GetComponent<ObstacleScript>().Life -= col.GetComponent<BulletController>().Attributes.DirectDamage;
         }
         else if (col.gameObject.CompareTag("Player"))
         {

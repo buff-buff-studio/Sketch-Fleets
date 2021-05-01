@@ -109,8 +109,7 @@ public class limeAI : MonoBehaviour
     {
         if (col.gameObject.CompareTag("bullet"))
         {
-            LimeLife -= col.GetComponent<playerBulletScript>().Damage;
-            col.GetComponent<playerBulletScript>().Damage = 0;
+            LimeLife -= col.GetComponent<BulletController>().Attributes.DirectDamage;
         }
         else if (col.gameObject.CompareTag("EndMap"))
         {

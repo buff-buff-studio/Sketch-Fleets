@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
+  m_Name: MagentaBullet
+  m_EditorClassIdentifier: 
+  objectName:
+    _useConstant: 1
+    _constant: Magenta Bullet
+    _variable: {fileID: 0}
+  description: A bullet fired by the magenta ship
+  prefab: {fileID: 8092150800717221310, guid: 283a6122975a1f940aa4d660190c9c45, type: 3}
+  directDamage:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  speed:
+    _useConstant: 1
+    _constant: 20
+    _variable: {fileID: 0}
+  impactRadius:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  indirectDamage:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
+  fireEffect: {fileID: 0}
+  hitEffect: {fileID: 0}

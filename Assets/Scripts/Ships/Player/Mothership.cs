@@ -1,6 +1,8 @@
 using UnityEngine;
 using SketchFleets.Data;
+using ManyTools.Variables;
 using UnityEngine.Serialization;
+using System.Collections.Generic;
 
 namespace SketchFleets.Entities
 {
@@ -18,7 +20,9 @@ namespace SketchFleets.Entities
         private Transform bulletSpawnPoint;
         [SerializeField, FormerlySerializedAs("CyanShipsSpawner")] 
         private Transform cyanShipsSpawnPoint;
-        
+        [SerializeField]
+        private FloatReference explosionDamage;
+
         private float currentHealth;
         private float currentSpeed;
         private float currentShield;
@@ -148,5 +152,14 @@ namespace SketchFleets.Entities
         }
 
         #endregion
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.gameObject.CompareTag("Enemy"))
+            {
+                attributes.MaxHealth.Value -= col.transform.localScale.x * explosionDamage;
+                Destroy(col.gameObject);
+            }
+        }
     }
 }
