@@ -148,6 +148,10 @@ public class Constelation
             Object.GetComponent<Button>().interactable = enabled;
         }
 
+        /// <summary>
+        /// Change current star mode
+        /// </summary>
+        /// <param name="mode"></param>
         public void SetMode(StarMode mode)
         {
             switch (mode)
