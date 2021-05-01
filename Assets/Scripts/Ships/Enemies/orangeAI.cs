@@ -92,8 +92,7 @@ public class orangeAI : MonoBehaviour
     {
         if (col.gameObject.CompareTag("bullet") && !inv)
         {
-            OrangeLife -= col.GetComponent<playerBulletScript>().Damage;
-            col.GetComponent<playerBulletScript>().Damage = 0;
+            OrangeLife -= col.GetComponent<BulletController>().Attributes.DirectDamage;
         }
         else if (col.gameObject.CompareTag("EndMap"))
         {

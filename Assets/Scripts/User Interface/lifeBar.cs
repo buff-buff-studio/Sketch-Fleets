@@ -10,11 +10,7 @@ public class lifeBar : MonoBehaviour
     [SerializeField]
     private FloatReference life;
     [SerializeField]
-    private ColorReference color75;
-    [SerializeField]
-    private ColorReference color50;
-    [SerializeField]
-    private ColorReference color25;
+    private GameObject deadMenu;
     private Image lifeBarTotal;
     private Image lifeBarAtt;
     #endregion
@@ -28,7 +24,15 @@ public class lifeBar : MonoBehaviour
 
     private void Update()
     {
-        lifeBarUpdate();
+        if (life > 0)
+        {
+            lifeBarUpdate();
+        }
+        else
+        {
+            deadMenu.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
     #endregion
     #region LifeBar

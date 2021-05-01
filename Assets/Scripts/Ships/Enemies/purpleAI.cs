@@ -22,7 +22,6 @@ public class purpleAI : MonoBehaviour
         StartCoroutine(ShootReload());   
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(PurpleLife <= 0)
@@ -55,8 +54,7 @@ public class purpleAI : MonoBehaviour
     {
         if (col.gameObject.CompareTag("bullet"))
         {
-            PurpleLife -= col.GetComponent<playerBulletScript>().Damage;
-            col.GetComponent<playerBulletScript>().Damage = 0;
+            PurpleLife -= col.GetComponent<BulletController>().Attributes.DirectDamage;
         }
         else if(col.gameObject.CompareTag("EndMap"))
         {

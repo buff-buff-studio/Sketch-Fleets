@@ -55,7 +55,7 @@ public class ShipGenerator : MonoBehaviour
 
     public TextMeshProUGUI MagentaPriceText;
     public TextMeshProUGUI CyanPriceText;
-    public TextMeshProUGUI YellowPricText;
+    public TextMeshProUGUI YellowPriceText;
 
     public Image RegenIcon;
 
@@ -64,6 +64,9 @@ public class ShipGenerator : MonoBehaviour
     public float YellowReloadTime;
 
     public lifeBar lb;
+
+    public Sprite regenSprite;
+    public Sprite regenSpriteLoad;
     #endregion
 
     #region Unity Callbacks
@@ -145,7 +148,6 @@ public class ShipGenerator : MonoBehaviour
                     cyan.transform.position = CyanSpawn.GetChild(1).position;
                 }
 
-                GetComponent<Mothership>().CyanShips.Add(cyan);
                 CyanShips++;
                 cyan.transform.parent = CyanSpawn;
                 shipsGameObjects.Add(cyan); 
@@ -180,6 +182,9 @@ public class ShipGenerator : MonoBehaviour
             if (magentaTime == 0)
             {
                 magentaTime = MagentaReloadTime;
+                MagentaTimer.transform.parent.GetComponent<Button>().interactable = false;
+                MagentaTimer.gameObject.SetActive(true);
+                MagentaPriceText.gameObject.SetActive(false);
             }
             else if (magentaTime > 0)
             {
@@ -192,13 +197,14 @@ public class ShipGenerator : MonoBehaviour
                     magentaTime -= 1 * Time.deltaTime * 2;
                 }
                 MagentaTimer.text = magentaTime.ToString("F") + "s";
-                MagentaTimer.transform.parent.GetComponent<Button>().interactable = false;
             }
             else
             {
                 magentaTime = 0;
                 magentaLoading = false;
                 MagentaTimer.transform.parent.GetComponent<Button>().interactable = true;
+                MagentaTimer.gameObject.SetActive(false);
+                MagentaPriceText.gameObject.SetActive(true);
                 MagentaTimer.text = "";
             }
         }
@@ -208,6 +214,9 @@ public class ShipGenerator : MonoBehaviour
             if(cyanTime == 0)
             {
                 cyanTime = CyanReloadTime;
+                CyanTimer.transform.parent.GetComponent<Button>().interactable = false;
+                CyanTimer.gameObject.SetActive(true);
+                CyanPriceText.gameObject.SetActive(false);
             }
             else if (cyanTime > 0)
             {
@@ -220,13 +229,14 @@ public class ShipGenerator : MonoBehaviour
                     cyanTime -= 1 * Time.deltaTime * 2;
                 }
                 CyanTimer.text = cyanTime.ToString("F") + "s";
-                CyanTimer.transform.parent.GetComponent<Button>().interactable = false;
             }
             else
             {
                 cyanTime = 0;
                 cyanLoading = false;
                 CyanTimer.transform.parent.GetComponent<Button>().interactable = true;
+                CyanTimer.gameObject.SetActive(false);
+                CyanPriceText.gameObject.SetActive(true);
                 CyanTimer.text = "";
             }
         }
@@ -236,6 +246,9 @@ public class ShipGenerator : MonoBehaviour
             if(yellowTime == 0)
             {
                 yellowTime = YellowReloadTime;
+                YellowTimer.transform.parent.GetComponent<Button>().interactable = false;
+                YellowTimer.gameObject.SetActive(true);
+                YellowPriceText.gameObject.SetActive(false);
             }
             else if (yellowTime > 0)
             {
@@ -248,13 +261,14 @@ public class ShipGenerator : MonoBehaviour
                     yellowTime -= 1 * Time.deltaTime * 2;
                 }
                 YellowTimer.text = yellowTime.ToString("F") + "s";
-                YellowTimer.transform.parent.GetComponent<Button>().interactable = false;
             }
             else
             {
                 yellowTime = 0;
                 yellowLoading = false;
                 YellowTimer.transform.parent.GetComponent<Button>().interactable = true;
+                YellowTimer.gameObject.SetActive(false);
+                YellowPriceText.gameObject.SetActive(true);
                 YellowTimer.text = "";
             }
         }
@@ -262,9 +276,9 @@ public class ShipGenerator : MonoBehaviour
 
     private void GraphitePrice()
     {
-        MagentaPriceText.text = magentaPriceTotal + "///";
-        CyanPriceText.text = cyanPrice + "///";
-        YellowPricText.text = yellowPriceTotal + "///";
+        MagentaPriceText.text = magentaPriceTotal.ToString();
+        CyanPriceText.text = cyanPrice.ToString();
+        YellowPriceText.text = yellowPriceTotal.ToString();
     }
     #endregion
 
@@ -306,12 +320,13 @@ public class ShipGenerator : MonoBehaviour
             else if (regenTimer < 30)
             {
                 regenTimer += 1 * Time.deltaTime;
-                RegenIcon.fillAmount = regenTimer / 30;
+                RegenIcon.sprite = regenSpriteLoad;
             }
             else
             {
                 regenTimer = 30;
                 regenLoad = true;
+                RegenIcon.sprite = regenSprite;
             }
         }
     }

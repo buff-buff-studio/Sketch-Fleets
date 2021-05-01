@@ -1,5 +1,6 @@
 using UnityEngine;
 using SketchFleets.Data;
+using ManyTools.Variables;
 
 /// <summary>
 /// A class that controls a bullet and its behaviour
@@ -10,7 +11,10 @@ public class BulletController : MonoBehaviour
 
     [SerializeField]
     private BulletAttributes attributes;
-
+    [SerializeField]
+    private FloatReference playerLife;
+    [SerializeField]
+    private bool enemyBullet;
 
     #endregion
 
@@ -41,10 +45,24 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (!col.gameObject.CompareTag("Enemy")) return;
-        
-        Destroy(gameObject, 10);
-        transform.localScale *= .75f;
+        if (col.gameObject.CompareTag("EndMap"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (col.gameObject.CompareTag("Enemy") && !enemyBullet)
+        {
+            Destroy(gameObject, 10);
+            transform.localScale *= .75f;
+        }
+
+        if (col.gameObject.CompareTag("Player") && enemyBullet)
+        {
+            Destroy(gameObject, 10);
+            playerLife.Value -= attributes.DirectDamage;
+            transform.localScale *= .75f;
+        }
+
     }
     
     #endregion
