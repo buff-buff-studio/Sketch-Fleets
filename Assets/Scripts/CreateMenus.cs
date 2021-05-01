@@ -23,6 +23,11 @@
         public const string bulletAttributesMenuName = "Sketch Fleets/Attributes/Bullet Attributes";
         public const string bulletAttributesFileName = "Bullet Attributes";
         
+        public const int itemAttributesOrder = 21;
+        public const string itemAttributesMenuName = "Sketch Fleets/Attributes/Item Attributes";
+        public const string itemAttributesFileName = "Item Attributes";
+        
+        
         #endregion
 
         #region Status Effects
@@ -34,6 +39,14 @@
         public const int itemEffectOrder = 1;
         public const string itemEffectMenuName = "Sketch Fleets/Effects/Item Effect";
         public const string itemEffectFileName = "Item Effect";
+
+        #endregion
+
+        #region Data Containers
+
+        public const int itemPoolOrder = 0;
+        public const string itemPoolMenuName = "Sketch Fleets/Data Containers/Item Pool";
+        public const string itemPoolFileName = "Item Pool";
 
         #endregion
     }

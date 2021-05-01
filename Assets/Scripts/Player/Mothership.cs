@@ -12,6 +12,8 @@ public class Mothership : MonoBehaviour
     private FloatReference speed;
     [SerializeField]
     private FloatReference bulletForce;
+    [SerializeField]
+    private FloatReference explosionDamage;
 
     private int cyanShips;
 
@@ -21,16 +23,31 @@ public class Mothership : MonoBehaviour
     #endregion
     #region Public Fields
     public GameObject BulletPrefab;
+    public List<GameObject> CyanShips;
     public Transform BulletSpawn;
     public Transform CyanShipsSpawner;
+    public lifeBar lb;
+    public GameObject DeathScene;
     #endregion
 
     #region Unity Callbacks
     void Update()
     {
-        MothershipMovement();
-        MothershipShoot();
-        MothershipCyanShoot();
+        if(Input.GetAxis("CircleOpen") == 0)
+        {
+            MothershipShoot();
+            MothershipCyanShoot();
+        }
+        if(life <= 0)
+        {
+            DeathScene.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            MothershipMovement();
+        }
+        //Debug.Log(life);
     }
     #endregion
 
@@ -41,7 +58,16 @@ public class Mothership : MonoBehaviour
     /// </summary>
     private void MothershipMovement()
     {
-        float TimeVelocity = speed * Time.deltaTime;
+        float TimeVelocity;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            TimeVelocity = (speed * 2) * Time.deltaTime;
+        }
+        else
+        {
+            TimeVelocity = speed * Time.deltaTime;
+        }
+
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             transform.Translate(move * TimeVelocity, Space.World);
 
@@ -55,7 +81,7 @@ public class Mothership : MonoBehaviour
     /// </summary>
     private void MothershipShoot()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetAxis("Fire1") == 1)
         {
             if (shootTime)
             {
@@ -73,15 +99,16 @@ public class Mothership : MonoBehaviour
     /// </summary>
     private void MothershipCyanShoot()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            cyanShips = GetComponent<ShipGenerator>().CyanShips;            
-            if (cyanShips > 0)
+        if (Input.GetAxis("Fire2") == 1)
+        {          
+            if (CyanShips.Count > 0)
             {
-                Rigidbody2D _cyan = CyanShipsSpawner.GetChild(2).GetComponent<Rigidbody2D>();
-                _cyan.AddForce(_cyan.transform.GetChild(1).up * bulletForce, ForceMode2D.Impulse);
+                Rigidbody2D _cyan = CyanShips[0].GetComponent<Rigidbody2D>();
+                _cyan.AddForce(_cyan.transform.GetChild(0).up * bulletForce, ForceMode2D.Impulse);
                 _cyan.transform.parent = transform.parent;
+                _cyan.GetComponent<cyanAI>().shoot = false;
                 GetComponent<ShipGenerator>().CyanShips--;
+                CyanShips.Remove(CyanShips[0]);
             }
 
         }
@@ -98,4 +125,19 @@ public class Mothership : MonoBehaviour
         shootTime = true;
     }
     #endregion
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("EnemyBullet"))
+        {
+            life.Value -= col.GetComponent<enemyBulletScript>().Damage;
+            lb.lifeBarUpdate();
+        }
+        else if (col.gameObject.CompareTag("Enemy"))
+        {
+            life.Value = life - (explosionDamage * col.transform.localScale.x);
+            Destroy(col.gameObject);
+            lb.lifeBarUpdate();
+        }
+    }
 }
