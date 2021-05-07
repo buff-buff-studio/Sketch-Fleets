@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 196096288}
   - component: {fileID: 196096289}
   m_Layer: 10
-  m_Name: magentaSpawn
+  m_Name: Ship Spawn Transform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2011464295}
+  m_Children: []
   m_Father: {fileID: 8250165666681833338}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -93,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 270661375}
   m_Layer: 0
-  m_Name: bulletSpawn
+  m_Name: Fire Transform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,173 +112,6 @@ Transform:
   m_Father: {fileID: 8250165666681833338}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &615181030
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 615181031}
-  m_Layer: 0
-  m_Name: cyanSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &615181031
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615181030}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1422193242}
-  - {fileID: 1932574021}
-  m_Father: {fileID: 8250165666681833338}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &765180758
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 765180759}
-  - component: {fileID: 765180760}
-  m_Layer: 0
-  m_Name: magentaSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &765180759
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765180758}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1, z: 0}
-  m_LocalScale: {x: 0.15151514, y: 0.15151514, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2011464295}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &765180760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765180758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8ad88772faf95145861f3a0c42102d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mothership: {fileID: 8250165666681833338}
---- !u!1 &1422193241
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1422193242}
-  m_Layer: 0
-  m_Name: cyanSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1422193242
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422193241}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.4, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 615181031}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1932574020
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1932574021}
-  m_Layer: 0
-  m_Name: cyanSpawn (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1932574021
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932574020}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.4, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 615181031}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2011464294
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2011464295}
-  m_Layer: 10
-  m_Name: MagentaCircle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2011464295
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011464294}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.6, y: 6.6, z: 1}
-  m_Children:
-  - {fileID: 765180759}
-  m_Father: {fileID: 196096288}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4678554487116897407
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +123,6 @@ GameObject:
   - component: {fileID: 8250165666681833338}
   - component: {fileID: 4644358934539822541}
   - component: {fileID: 8070300057047688764}
-  - component: {fileID: -5291089096505027240}
   - component: {fileID: 1235885650264104468}
   - component: {fileID: 2333805497363484860}
   - component: {fileID: 2053028061}
@@ -311,11 +142,10 @@ Transform:
   m_GameObject: {fileID: 4678554487116897407}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -17.08, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children:
   - {fileID: 270661375}
   - {fileID: 196096288}
-  - {fileID: 615181031}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -383,57 +213,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes: {fileID: 11400000, guid: dab52214d9edfd14a9cd1dfb36bb9e38, type: 2}
-  bulletSpawnPoint: {fileID: 270661375}
-  cyanShipsSpawnPoint: {fileID: 615181031}
---- !u!114 &-5291089096505027240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4678554487116897407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b81869b522dd244c8ecc44cc9664b23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipsGameObjects: []
-  magentaShips: 0
-  yellowShips: 0
-  magentaPrice:
+  bulletSpawnPoints:
+  - {fileID: 270661375}
+  shipSpawnPoint: {fileID: 196096288}
+  explosionDamage:
     _useConstant: 0
     _constant: 0
-    _variable: {fileID: 11400000, guid: aef2224bb26912e448bab72db9683943, type: 2}
-  cyanPrice:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: cbea7afaf5be9084ab6938e608aa22f9, type: 2}
-  yellowPrice:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: 55d969c67283fcf49a1d8db25b85a9c3, type: 2}
-  life:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: 4273dadaabef4134ba1eb50dc2f9c63b, type: 2}
-  Ships: 0
-  CyanShips: 0
-  CircleShip: {fileID: 0}
-  MagentaSpawn: {fileID: 765180759}
-  CyanSpawn: {fileID: 615181031}
-  MagentaTimer: {fileID: 0}
-  CyanTimer: {fileID: 0}
-  YellowTimer: {fileID: 0}
-  MagentaPriceText: {fileID: 0}
-  CyanPriceText: {fileID: 0}
-  YellowPricText: {fileID: 0}
-  RegenIcon: {fileID: 0}
-  MagentaReloadTime: 1.5
-  CyanReloadTime: 5
-  YellowReloadTime: 5
-  lb: {fileID: 0}
-  regenSprite: {fileID: 0}
-  regenSpriteLoad: {fileID: 0}
+    _variable: {fileID: 11400000, guid: daa4bc549c5645248b47826ea7eb0ede, type: 2}
 --- !u!60 &1235885650264104468
 PolygonCollider2D:
   m_ObjectHideFlags: 0
