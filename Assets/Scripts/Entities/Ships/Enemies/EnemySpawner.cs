@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
         for(int i = 0; i < n; i++)
         {
             Vector2 pos = new Vector2(Random.Range(SpawnArea.y, SpawnArea.z), Random.Range(SpawnArea.x, -SpawnArea.x));
-            GameObject lime = (GameObject)Instantiate(limePrefab, pos, transform.rotation);
+            GameObject lime = Instantiate(limePrefab, pos, transform.rotation);
             lime.transform.parent = transform;
             limeEnemy.Add(lime);
         }
