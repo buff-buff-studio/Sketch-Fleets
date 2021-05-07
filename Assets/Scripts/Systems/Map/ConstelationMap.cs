@@ -38,6 +38,8 @@ public class ConstelationMap : MonoBehaviour
     public AnimationCurve focusCurveScaleProgress;
     //Testing
     public GameObject testingLevel;
+
+    public static System.Action onMapLoad;
     #endregion
 
     #region Properties
@@ -61,6 +63,12 @@ public class ConstelationMap : MonoBehaviour
     #endregion
 
     #region Unity Callbacks
+
+    private void Awake()
+    {
+        //Set map
+        MapLevelInteraction.map = this;
+    }
     /// <summary>
     /// Generate map and play animation
     /// </summary>
@@ -74,9 +82,15 @@ public class ConstelationMap : MonoBehaviour
         else
             constelationState.SetConstelation(constelation);
 
+        //Load constelation state
+        
+
         //Current map system - Generate from seed
         Random.InitState(constelationState.seed == 0 ? (int)System.DateTime.Now.Ticks : constelationState.seed);
-
+        
+        //Set map
+        MapLevelInteraction.map = this;
+        
         //Map columns count
         int columns = 12;
         //Main levels per line
@@ -226,7 +240,7 @@ public class ConstelationMap : MonoBehaviour
         scrollRect.horizontalNormalizedPosition = 0f;
 
         //Play Open Animation
-        OpenAnimation(null);
+        //OpenAnimation(null);
         //OpenInstantly();
 
         //Open first
@@ -234,6 +248,9 @@ public class ConstelationMap : MonoBehaviour
 
         //Init current state
         constelationState.Init();
+
+        if(onMapLoad != null)
+            onMapLoad();
     }
 
     /// <summary>
@@ -272,11 +289,7 @@ public class ConstelationMap : MonoBehaviour
         //Choose current star
         Constelation.Star star = constelation.GetStar(starNumber);
         constelationState.Choose(star.Id); 
-        CloseAnimation(() => {
-            constelationState.SetCurrentStar(starNumber);
-            testingLevel.SetActive(true);
-            //Open level panel
-        });
+        MapLevelInteraction.OnClickOnMapStar(starNumber);
     }
 
     public void UnlockNextLevel()
@@ -505,6 +518,43 @@ public class ConstelationMap : MonoBehaviour
                 
                 yield return new WaitForEndOfFrame();
             }
+
+            foreach(Constelation.StarJunction j in s.toJunctions)
+            {
+                if(!constelationState.IsChoosen(j.starA.Id))
+                        continue;
+
+                //Open linked starts
+                constelationState.Open(j.starA.Id);
+                constelationState.Open(j.starB.Id);
+          
+                RectTransform back = j.junction.GetComponent<RectTransform>();
+                RectTransform prog = j.junction.transform.GetChild(0).GetComponent<RectTransform>();
+
+                int discard = 10; //Amount to discard from each side
+
+                float p = discard + (back.sizeDelta.x - discard * 2) * 1;
+                prog.sizeDelta = new Vector2(p,prog.sizeDelta.y);      
+            }
+
+            InputEnabled = true;
+        }
+    }
+
+    /// <summary>
+    /// Open start paths instantly
+    /// </summary>
+    /// <param name="star"></param>
+    /// <returns></returns>
+    public void OpenStarPathsIntantly(int star)
+    {
+        Constelation.Star s = constelation.GetStar(star);
+        {
+            InputEnabled = false;
+            //Guarantee
+            constelationState.Open(s.Id);
+
+            //s.Object.transform.localScale = Vector3.one * curve.Evaluate(1);
 
             foreach(Constelation.StarJunction j in s.toJunctions)
             {
