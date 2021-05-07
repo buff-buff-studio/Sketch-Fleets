@@ -34,5 +34,9 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 5
     _variable: {fileID: 0}
+  ignorePlayer:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
   fireEffect: {fileID: 0}
   hitEffect: {fileID: 0}
