@@ -11,14 +11,13 @@ public class lifeBar : MonoBehaviour
     private FloatReference life;
     [SerializeField]
     private GameObject deadMenu;
-    private Image lifeBarTotal;
     private Image lifeBarAtt;
     #endregion
 
     #region Unity Callbacks
     private void Start()
     {
-        lifeBarAtt = transform.GetChild(2).GetComponent<Image>();
+        lifeBarAtt = transform.GetChild(1).GetComponent<Image>();
         lifeBarUpdate();
     }
 

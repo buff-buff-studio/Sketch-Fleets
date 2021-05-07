@@ -26,8 +26,11 @@
         public const int itemAttributesOrder = 21;
         public const string itemAttributesMenuName = "Sketch Fleets/Attributes/Item Attributes";
         public const string itemAttributesFileName = "Item Attributes";
-        
-        
+
+        public const int difficultyAttributesOrder = 31;
+        public const string difficultyAttributesMenuName = "Sketch Fleets/Attributes/Difficulty Attributes";
+        public const string difficultyAttributesFileName = "Difficulty Attributes";
+
         #endregion
 
         #region Status Effects
