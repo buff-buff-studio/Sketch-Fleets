@@ -234,7 +234,7 @@ namespace SketchFleets.LanguageSystem
         /// <returns></returns>
         public string Localize(string key)
         {
-            if(entries[key] == null)
+            if(!entries.ContainsKey(key))
                 return MissingEntry;
 
             return GetRandom(entries[key]);
@@ -248,7 +248,7 @@ namespace SketchFleets.LanguageSystem
         /// <returns></returns>
         public string Localize(string key,params string[] args)
         {
-            if(entries[key] == null)
+            if(!entries.ContainsKey(key))
                 return MissingEntry;
             
             string s = GetRandom(entries[key]);

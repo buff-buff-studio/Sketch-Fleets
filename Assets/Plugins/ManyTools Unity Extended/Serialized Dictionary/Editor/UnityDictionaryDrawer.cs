@@ -6,6 +6,7 @@ namespace ManyTools.UnityExtended.Editor
     /// <summary>
     /// A property drawer for a serialized dictionary
     /// </summary>
+    #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(UnityDictionary<,>))]
     public class UnityDictionaryDrawer : PropertyDrawer
     {
@@ -73,4 +74,5 @@ namespace ManyTools.UnityExtended.Editor
 
         #endregion
     }
+    #endif
 }

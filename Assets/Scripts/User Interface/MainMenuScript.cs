@@ -9,7 +9,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void LoadNewGame()
     {
-        SceneManager.LoadScene(3);
+        MapLevelInteraction.OpenMap();
     }
 
     public void QuitGame()

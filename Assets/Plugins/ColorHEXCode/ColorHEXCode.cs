@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ColorHEXCodeAttribute))]
 public class ColorHEXCode : PropertyDrawer
 {
@@ -18,3 +19,4 @@ public class ColorHEXCode : PropertyDrawer
         property.colorValue = EditorGUI.ColorField(colorField, property.colorValue);
     }
 }
+#endif

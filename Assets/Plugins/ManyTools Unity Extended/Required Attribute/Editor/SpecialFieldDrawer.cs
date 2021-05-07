@@ -6,6 +6,7 @@ namespace ManyTools.UnityExtended.Editor
     /// <summary>
     /// A property drawer for special fields
     /// </summary>
+    #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(RequiredFieldAttribute))]
     public sealed class SpecialFieldDrawer : PropertyDrawer
     {
@@ -40,4 +41,5 @@ namespace ManyTools.UnityExtended.Editor
 
         #endregion
     }
+    #endif
 }
