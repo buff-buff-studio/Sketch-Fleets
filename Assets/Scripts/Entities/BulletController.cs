@@ -1,6 +1,6 @@
 using UnityEngine;
 using SketchFleets.Data;
-using ManyTools.Variables;
+using SketchFleets;
 
 /// <summary>
 /// A class that controls a bullet and its behaviour
@@ -11,59 +11,95 @@ public class BulletController : MonoBehaviour
 
     [SerializeField]
     private BulletAttributes attributes;
-    [SerializeField]
-    private FloatReference playerLife;
-    [SerializeField]
-    private bool enemyBullet;
 
     #endregion
 
     #region Properties
 
-    public BulletAttributes Attributes
-    {
-        get => attributes;
-        set => attributes = value;
-    }
+    public BulletAttributes Attributes => attributes;
 
     #endregion
-    
+
     #region Unity Callbacks
 
     private void Start()
     {
-        // Replace by pooling call
+        // TODO: Replace by pooling call
         Destroy(gameObject, 10f);
-        GetComponent<Rigidbody2D>().AddForce(transform.up * attributes.Speed, ForceMode2D.Impulse);
+
+        if (Attributes.FireEffect != null)
+        {
+            Instantiate(Attributes.FireEffect, transform.position, Quaternion.identity);
+        }
     }
 
     private void Update()
     {
-        Debug.Log(attributes.Speed);
-        //transform.Translate(Vector3.forward * Time.deltaTime * Attributes.Speed, Space.Self);
+        transform.Translate(Vector3.up * Time.deltaTime * Attributes.Speed, Space.Self);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("EndMap"))
-        {
-            Destroy(gameObject);
-        }
-
-        if (col.gameObject.CompareTag("Enemy") && !enemyBullet)
-        {
-            Destroy(gameObject, 10);
-            transform.localScale *= .75f;
-        }
-
-        if (col.gameObject.CompareTag("Player") && enemyBullet)
-        {
-            Destroy(gameObject, 10);
-            playerLife.Value -= attributes.DirectDamage;
-            transform.localScale *= .75f;
-        }
-
+        Hit(col);
     }
-    
+
+    #endregion
+
+    #region Private Fields
+
+    /// <summary>
+    /// Performs operations related to hitting something
+    /// </summary>
+    /// <param name="directHit">The collider that directly hit the bullet</param>
+    private void Hit(Collider2D directHit)
+    {
+        DealDamageToTarget(Attributes.DirectDamage, directHit.gameObject);
+        
+        // If the bullet has no area effects, stop here
+        if (!Mathf.Approximately(Attributes.IndirectDamage, 0f) &&
+            !Mathf.Approximately(Attributes.ImpactRadius, 0f))
+        {
+            return;
+        }
+
+        // Caches colliders in the area
+        Collider2D[] colliders = new Collider2D[0];
+        Physics2D.OverlapCircleNonAlloc(transform.position, Attributes.ImpactRadius, colliders);
+
+        // Applies damage to every IDamageable in the radius
+        for (int index = 0, upper = colliders.Length; index < upper; index++)
+        {
+            if (directHit != colliders[index])
+            {
+                DealDamageToTarget(Attributes.IndirectDamage, directHit.gameObject);
+            }
+        }
+
+        if (Attributes.HitEffect != null)
+        {
+            Instantiate(Attributes.HitEffect, transform.position, Quaternion.identity);
+        }
+    }
+
+    /// <summary>
+    /// Deals damage to a given target, taking into account whether it is the player or not
+    /// </summary>
+    /// <param name="damageAmount">The amount of damage to deal</param>
+    /// <param name="target">The target to deal the damage to</param>
+    private void DealDamageToTarget(float damageAmount, GameObject target)
+    {
+        if (target.CompareTag("Player") || target.CompareTag("PlayerSpawn"))
+        {
+            if (!Attributes.IgnorePlayer)
+            {
+                target.GetComponent<IDamageable>()?.Damage(damageAmount);
+            }
+        }
+        else
+        {
+            target.GetComponent<IDamageable>()?.Damage(damageAmount);
+        }
+    }
+
     #endregion
 }
