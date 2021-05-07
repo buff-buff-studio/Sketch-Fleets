@@ -33,5 +33,12 @@ public class HUDScript : MonoBehaviour
         life.Value = lifeFull;
         SceneManager.LoadScene("Game");
     }
+
+    public void Map()
+    {
+        Time.timeScale = 1;
+        life.Value = lifeFull;
+        SceneManager.LoadScene("Map");
+    }
     #endregion
 }

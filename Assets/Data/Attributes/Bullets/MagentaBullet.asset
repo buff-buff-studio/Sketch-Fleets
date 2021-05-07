@@ -20,11 +20,11 @@ MonoBehaviour:
   prefab: {fileID: 8092150800717221310, guid: 283a6122975a1f940aa4d660190c9c45, type: 3}
   directDamage:
     _useConstant: 1
-    _constant: 0
+    _constant: 2
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 20
+    _constant: 50
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1

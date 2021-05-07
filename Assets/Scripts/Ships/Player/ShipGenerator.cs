@@ -49,9 +49,9 @@ public class ShipGenerator : MonoBehaviour
     public Transform MagentaSpawn;
     public Transform CyanSpawn;
 
-    public TextMeshProUGUI MagentaTimer;
-    public TextMeshProUGUI CyanTimer;
-    public TextMeshProUGUI YellowTimer;
+    public GameObject MagentaBtt;
+    public GameObject CyanBtt;
+    public GameObject YellowBtt;
 
     public TextMeshProUGUI MagentaPriceText;
     public TextMeshProUGUI CyanPriceText;
@@ -172,104 +172,100 @@ public class ShipGenerator : MonoBehaviour
             CircleShip.SetActive(false);
         }
 
-        lb.lifeBarUpdate();
     }
 
     private void ColorTimer()
     {
         if (magentaLoading)
         {
-            if (magentaTime == 0)
+            if (magentaTime == MagentaReloadTime)
             {
-                magentaTime = MagentaReloadTime;
-                MagentaTimer.transform.parent.GetComponent<Button>().interactable = false;
-                MagentaTimer.gameObject.SetActive(true);
+                magentaTime = 0;
+                MagentaBtt.GetComponent<Button>().interactable = false;
                 MagentaPriceText.gameObject.SetActive(false);
             }
-            else if (magentaTime > 0)
+            else if (magentaTime < MagentaReloadTime)
             {
                 if(Time.timeScale == 1)
                 {
-                    magentaTime -= 1 * Time.deltaTime;
+                    magentaTime += 1 * Time.deltaTime;
                 }
                 else
                 {
-                    magentaTime -= 1 * Time.deltaTime * 2;
+                    magentaTime += 1 * Time.deltaTime * 2;
                 }
-                MagentaTimer.text = magentaTime.ToString("F") + "s";
+
+                MagentaBtt.GetComponent<Image>().fillAmount = magentaTime / MagentaReloadTime;
             }
             else
             {
-                magentaTime = 0;
+                magentaTime = MagentaReloadTime;
                 magentaLoading = false;
-                MagentaTimer.transform.parent.GetComponent<Button>().interactable = true;
-                MagentaTimer.gameObject.SetActive(false);
+                MagentaBtt.GetComponent<Button>().interactable = true;
+                MagentaBtt.GetComponent<Image>().fillAmount = 1;
                 MagentaPriceText.gameObject.SetActive(true);
-                MagentaTimer.text = "";
             }
         }
 
         if (cyanLoading)
         {
-            if(cyanTime == 0)
+            if(cyanTime == CyanReloadTime)
             {
-                cyanTime = CyanReloadTime;
-                CyanTimer.transform.parent.GetComponent<Button>().interactable = false;
-                CyanTimer.gameObject.SetActive(true);
+                cyanTime = 0;
+                CyanBtt.GetComponent<Button>().interactable = false;
                 CyanPriceText.gameObject.SetActive(false);
             }
-            else if (cyanTime > 0)
+            else if (cyanTime < CyanReloadTime)
             {
                 if (Time.timeScale == 1)
                 {
-                    cyanTime -= 1 * Time.deltaTime;
+                    cyanTime += 1 * Time.deltaTime;
                 }
                 else
                 {
-                    cyanTime -= 1 * Time.deltaTime * 2;
+                    cyanTime += 1 * Time.deltaTime * 2;
                 }
-                CyanTimer.text = cyanTime.ToString("F") + "s";
+                CyanBtt.GetComponent<Image>().fillAmount = cyanTime / CyanReloadTime;
             }
             else
             {
-                cyanTime = 0;
+                cyanTime = CyanReloadTime;
                 cyanLoading = false;
-                CyanTimer.transform.parent.GetComponent<Button>().interactable = true;
-                CyanTimer.gameObject.SetActive(false);
+
+                CyanBtt.GetComponent<Button>().interactable = true;
+                CyanBtt.GetComponent<Image>().fillAmount = 1;
+
                 CyanPriceText.gameObject.SetActive(true);
-                CyanTimer.text = "";
             }
         }
 
         if (yellowLoading)
         {
-            if(yellowTime == 0)
+            if(yellowTime == YellowReloadTime)
             {
-                yellowTime = YellowReloadTime;
-                YellowTimer.transform.parent.GetComponent<Button>().interactable = false;
-                YellowTimer.gameObject.SetActive(true);
+                yellowTime = 0;
+                YellowBtt.GetComponent<Button>().interactable = false;
                 YellowPriceText.gameObject.SetActive(false);
             }
-            else if (yellowTime > 0)
+            else if (yellowTime < YellowReloadTime)
             {
                 if (Time.timeScale == 1)
                 {
-                    yellowTime -= 1 * Time.deltaTime;
+                    yellowTime += 1 * Time.deltaTime;
                 }
                 else
                 {
-                    yellowTime -= 1 * Time.deltaTime * 2;
+                    yellowTime += 1 * Time.deltaTime * 2;
                 }
-                YellowTimer.text = yellowTime.ToString("F") + "s";
+                YellowBtt.GetComponent<Image>().fillAmount = yellowTime / YellowReloadTime;
             }
             else
             {
-                yellowTime = 0;
+                yellowTime = YellowReloadTime;
                 yellowLoading = false;
-                YellowTimer.transform.parent.GetComponent<Button>().interactable = true;
-                YellowTimer.gameObject.SetActive(false);
+                YellowBtt.GetComponent<Button>().interactable = true;
+                YellowBtt.GetComponent<Image>().fillAmount = 1;
                 YellowPriceText.gameObject.SetActive(true);
-                YellowTimer.text = "";
             }
         }
     }
@@ -303,7 +299,6 @@ public class ShipGenerator : MonoBehaviour
             magentaPriceTotal = magentaPrice;
             yellowPriceTotal = yellowPrice;
 
-            lb.lifeBarUpdate();
             shipsGameObjects.Clear();
             regenLoad = false;
         }
