@@ -6,7 +6,7 @@ namespace ManyTools.UnityExtended
 	/// <summary>
 	/// A script that controls basic functions relating to a menu
 	/// </summary>
-	public class Menu : MonoBehaviour
+	public class WindowManager : MonoBehaviour
 	{
 		#region Private Fields
 
