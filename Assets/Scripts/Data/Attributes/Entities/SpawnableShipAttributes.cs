@@ -37,6 +37,11 @@ namespace SketchFleets.Data
             get => spawnCooldown;
         }
 
+        public IntReference MaximumShips
+        {
+            get => maximumShips;
+        }
+
         #endregion
     }
 }

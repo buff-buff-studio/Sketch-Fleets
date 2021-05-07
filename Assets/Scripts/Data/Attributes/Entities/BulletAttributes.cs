@@ -25,6 +25,9 @@ namespace SketchFleets.Data
         [Tooltip("How much damage should the bullet do if it hits an enemy indirectly.")]
         [SerializeField]
         private FloatReference indirectDamage = new FloatReference(5);
+        [Tooltip("Whether the bullet should not deal damage to player and player-related ships.")]
+        [SerializeField]
+        private BoolReference ignorePlayer = new BoolReference(false);
 
         [Header("Visual Effects")]
         [Tooltip("The effect spawned when the bullet is fired.")]
@@ -49,6 +52,8 @@ namespace SketchFleets.Data
         public FloatReference Speed => speed;
 
         public FloatReference DirectDamage => directDamage;
+
+        public BoolReference IgnorePlayer => ignorePlayer;
 
         #endregion
 
