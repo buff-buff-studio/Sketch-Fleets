@@ -15,6 +15,7 @@ public class MapLevelInteraction : MonoBehaviour
     #region Public Fields
     //Current map
     public static ConstelationMap map;
+    public static ConstelationState state;
     #endregion
 
     #region Methods
@@ -23,15 +24,16 @@ public class MapLevelInteraction : MonoBehaviour
     /// </summary>
     /// <param name="clickedStar"></param>
     public static void OnClickOnMapStar(int clickedStar)
-    {
+    {   
+        //Save state
+        SaveMapState(map,() => {});
+
         map.CloseAnimation(() => {
-            map.constelationState.SetCurrentStar(clickedStar);
+            state.SetCurrentStar(clickedStar);
             
             //Open level
             LoadScene("Scenes/Game",() => {});
         });
-
-        //map.UnlockNextLevel(clickedStar);
     }
     
     /// <summary>
@@ -57,21 +59,24 @@ public class MapLevelInteraction : MonoBehaviour
 
                 //Schedule Open Star Animation
                 map.UnlockNextLevel();
+
+                //Save Map
+                SaveMapState(map,() => {});
             };
         });
-
-        
     }
 
     /// <summary>
     /// Open map from menu
     /// </summary>
-    public static void OpenMap()
+    public static void OpenMap(MonoBehaviour source,bool continueGame)
     {
-        LoadScene("Scenes/Map",() => {
-            ConstelationMap.onMapLoad = () => {
-                map.OpenAnimation(() => {});
-            };
+        LoadMapState(source,continueGame,() => {
+            LoadScene("Scenes/Map",() => {
+                ConstelationMap.onMapLoad = () => {
+                    map.OpenAnimation(() => {});
+                };
+            });
         });
     }
     
@@ -94,16 +99,66 @@ public class MapLevelInteraction : MonoBehaviour
         SceneManager.LoadScene(scene); 
     }
 
-    //To-Do
-    public static void LoadMapState()
+    /// <summary>
+    /// Load map state from profile
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="callback"></param>
+    public static void LoadMapState(MonoBehaviour source,bool continueGame,Action callback)
     {
+        if(state == null)
+            state = new ConstelationState(null);
+            
+        //Check if there's data to be loaded
+        Debug.Log(continueGame ? "Loading..." : "Creating new game...");
+        SketchFleets.ProfileSystem.Profile.Using(source);
+        SketchFleets.ProfileSystem.Profile.LoadProfile((save) => {
 
+            if(continueGame)
+            {
+                if(SketchFleets.ProfileSystem.Profile.GetSave().HasKey("mapState"))
+                {
+                    byte[] bytes = SketchFleets.ProfileSystem.Profile.GetSave().Get<byte[]>("mapState");       
+                    state.LoadData(bytes);
+
+                    Debug.Log("Map Loaded!");
+                    callback();   
+                }
+            }
+            else
+            {
+                SketchFleets.ProfileSystem.Profile.GetSave().Remove("mapState");
+                SaveMapState(source,callback);
+
+            }     
+        });  
     }
 
-    //To-Do
-    public static void SaveMapState()
+    /// <summary>
+    /// Save map state to profile
+    /// </summary>
+    public static void SaveMapState(MonoBehaviour source,Action callback)
     {
-
+        Debug.Log("Saving...");
+        SketchFleets.ProfileSystem.Profile.Using(source);
+        SketchFleets.ProfileSystem.Profile.GetSave()["mapState"] = state.ToData();
+        SketchFleets.ProfileSystem.Profile.SaveProfile((save) => {
+            Debug.Log("Map saved!");
+            callback();
+        });
+        
+    }
+    
+    /// <summary>
+    /// Check if there's a game to continue
+    /// </summary>
+    /// <param name="callback"></param>
+    public static void HasGameToContinue(MonoBehaviour source,Action<bool> callback)
+    {   
+        SketchFleets.ProfileSystem.Profile.Using(source);
+        SketchFleets.ProfileSystem.Profile.LoadProfile((save) => {
+            callback(save.HasKey("mapState"));
+        });
     }
     #endregion
 

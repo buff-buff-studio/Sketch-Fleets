@@ -1674,11 +1674,6 @@ MonoBehaviour:
   scrollRect: {fileID: 152137163}
   zoom: {fileID: 1337543062}
   mapDisabler: {fileID: 1312423748}
-  constelationState:
-    currentStar: 0
-    openPath: 00000000
-    choosen: 
-    seed: 0
   curve:
     serializedVersion: 2
     m_Curve:

@@ -107,6 +107,7 @@ public class Constelation
     {
         #region Private Fields
         private int id = -1;
+        private int difficulty = 0;
         #endregion
 
         #region Public Fields
@@ -126,6 +127,18 @@ public class Constelation
                     id = value;
             }
         }
+
+        public int Difficulty
+        {
+            get{
+                return difficulty;
+            }
+
+            set{
+                if(difficulty == 0)
+                    difficulty = value;
+            }
+        }
         #endregion
         
         #region Public Methods
@@ -133,9 +146,10 @@ public class Constelation
         /// Create new star from GameObject
         /// </summary>
         /// <param name="Object"></param>
-        public Star(GameObject Object)
+        public Star(GameObject Object,int difficulty)
         {
             this.Object = Object;
+            this.difficulty = difficulty;
             SetEnabled(false);
         }
         

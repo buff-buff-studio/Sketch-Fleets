@@ -13,6 +13,7 @@ public class ConstelationState
     #region Public Fields
     public int currentStar = 0;
     public List<int> openPath = new List<int>();
+    private List<int> openQueue = new List<int>();
     public List<int> choosen = new List<int>();
     public int seed = 0; //0 = any random seed
     #endregion
@@ -72,9 +73,23 @@ public class ConstelationState
     {
         if(!IsOpen(star))
         {
+            //Remove from open queue
+            if(openQueue.Contains(star))
+                openQueue.Remove(star);
+
             openPath.Add(star);
             _Open(star);
         }
+    }
+
+    /// <summary>
+    /// Add start to open queue to save
+    /// </summary>
+    /// <param name="star"></param>
+    public void AddToOpenQueue(int star)
+    {
+        if(!openQueue.Contains(star) && !openPath.Contains(star))
+            openQueue.Add(star);
     }
 
     /// <summary>
@@ -95,6 +110,7 @@ public class ConstelationState
     {   
         if(!IsChoosen(star))
         {
+            currentStar = star;
             choosen.Add(star);
             _Choose(star);
         }
@@ -173,6 +189,7 @@ public class ConstelationState
         //Clear all current data
         openPath.Clear();
         choosen.Clear();
+        openQueue.Clear();
 
         //Current byte section
         int section = 0;
@@ -222,35 +239,39 @@ public class ConstelationState
     /// <returns></returns>
     public byte[] ToData()
     {
-        byte[] data = new byte[openPath.Count + 1 + choosen.Count + 7];
+        List<int> fullOpen = new List<int>();
+        fullOpen.AddRange(openPath);
+        fullOpen.AddRange(openQueue);
+
+        byte[] data = new byte[fullOpen.Count + 1 + choosen.Count + 7];
         
         //Set open path data
-        for(int i = 0; i < openPath.Count; i ++)
+        for(int i = 0; i < fullOpen.Count; i ++)
         {
-            int v = openPath[i];
+            int v = fullOpen[i];
             byte a = (byte) (v);
             data[i] = a;
         }
 
         //Seperator
-        data[openPath.Count] = 255;
+        data[fullOpen.Count] = 255;
 
         //Set choosen count
         for(int i = 0; i < choosen.Count; i ++)
         {
             int v = choosen[i];
             byte a = (byte) (v);
-            data[openPath.Count + 1 + i] = a;
+            data[fullOpen.Count + 1 + i] = a;
         }
 
         //Seperator
-        data[openPath.Count + 1 + choosen.Count] = 255;
+        data[fullOpen.Count + 1 + choosen.Count] = 255;
 
         //Set current choosen
-        data[openPath.Count + 1 + choosen.Count + 1] = (byte) currentStar;
+        data[fullOpen.Count + 1 + choosen.Count + 1] = (byte) currentStar;
 
         //Seperator
-        data[openPath.Count + 1 + choosen.Count + 2] = 255;
+        data[fullOpen.Count + 1 + choosen.Count + 2] = 255;
 
         //Set current seed
         byte[] bt = System.BitConverter.GetBytes(seed);
@@ -258,10 +279,10 @@ public class ConstelationState
         if (System.BitConverter.IsLittleEndian)
             System.Array.Reverse(bt);
 
-        data[openPath.Count + 1 + choosen.Count + 3] = bt[0];
-        data[openPath.Count + 1 + choosen.Count + 4] = bt[1];
-        data[openPath.Count + 1 + choosen.Count + 5] = bt[2];
-        data[openPath.Count + 1 + choosen.Count + 6] = bt[3];
+        data[fullOpen.Count + 1 + choosen.Count + 3] = bt[0];
+        data[fullOpen.Count + 1 + choosen.Count + 4] = bt[1];
+        data[fullOpen.Count + 1 + choosen.Count + 5] = bt[2];
+        data[fullOpen.Count + 1 + choosen.Count + 6] = bt[3];
 
         return data;
     }
