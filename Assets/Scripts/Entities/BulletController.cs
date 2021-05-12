@@ -11,12 +11,19 @@ public class BulletController : MonoBehaviour
 
     [SerializeField]
     private BulletAttributes attributes;
+    private ShipAttributes barrelAttributes;
 
     #endregion
 
     #region Properties
 
     public BulletAttributes Attributes => attributes;
+
+    public ShipAttributes BarrelAttributes
+    {
+        get => barrelAttributes;
+        set => barrelAttributes = value;
+    }
 
     #endregion
 
@@ -40,6 +47,7 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (!col.isTrigger) return;
         Hit(col);
     }
 
@@ -54,10 +62,10 @@ public class BulletController : MonoBehaviour
     private void Hit(Collider2D directHit)
     {
         DealDamageToTarget(Attributes.DirectDamage, directHit.gameObject);
-        
+
         // If the bullet has no area effects, stop here
-        if (!Mathf.Approximately(Attributes.IndirectDamage, 0f) &&
-            !Mathf.Approximately(Attributes.ImpactRadius, 0f))
+        if (Mathf.Approximately(Attributes.IndirectDamage, 0f) ||
+            Mathf.Approximately(Attributes.ImpactRadius, 0f))
         {
             return;
         }
@@ -69,10 +77,12 @@ public class BulletController : MonoBehaviour
         // Applies damage to every IDamageable in the radius
         for (int index = 0, upper = colliders.Length; index < upper; index++)
         {
-            if (directHit != colliders[index])
-            {
-                DealDamageToTarget(Attributes.IndirectDamage, directHit.gameObject);
-            }
+            // If collected collider isn't a trigger, skip
+            if (!colliders[index].isTrigger) continue;
+            // If the collected collider is the direct hit, skip
+            if (directHit.gameObject == colliders[index].gameObject) continue;
+
+            DealDamageToTarget(Attributes.IndirectDamage, directHit.gameObject);
         }
 
         if (Attributes.HitEffect != null)
@@ -90,15 +100,15 @@ public class BulletController : MonoBehaviour
     {
         if (target.CompareTag("Player") || target.CompareTag("PlayerSpawn"))
         {
-            if (!Attributes.IgnorePlayer)
-            {
-                target.GetComponent<IDamageable>()?.Damage(damageAmount);
-            }
+            if (Attributes.IgnorePlayer) return;
+            target.GetComponent<IDamageable>()?.Damage(damageAmount * barrelAttributes.DamageMultiplier);
         }
         else
         {
-            target.GetComponent<IDamageable>()?.Damage(damageAmount);
+            target.GetComponent<IDamageable>()?.Damage(damageAmount * barrelAttributes.DamageMultiplier);
         }
+
+        Destroy(gameObject);
     }
 
     #endregion
