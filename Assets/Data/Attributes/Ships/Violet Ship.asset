@@ -9,22 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b1e30d53dd4f37ab25a4a43916f3cc, type: 3}
-  m_Name: Mothership Attributes
+  m_Script: {fileID: 11500000, guid: 1c96b4768b890804dbb36f984a04b908, type: 3}
+  m_Name: Violet Ship
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Player
+    _constant: Violet Ship
     _variable: {fileID: 0}
-  description: The Player Mothership
-  prefab: {fileID: 4678554487116897407, guid: 491fd67079b75774d904772a74d01960, type: 3}
+  description: 
+  prefab: {fileID: 4251451283791082563, guid: 2bd0cdd49fe59b640a3965a44833fc0f, type: 3}
   maxHealth:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: 4273dadaabef4134ba1eb50dc2f9c63b, type: 2}
+    _useConstant: 1
+    _constant: 100
+    _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
-    _constant: 0
+    _constant: 100
     _variable: {fileID: 0}
   damageMultiplier:
     _useConstant: 1
@@ -38,5 +38,4 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 1
     _variable: {fileID: 0}
-  fire: {fileID: 11400000, guid: b0967743feca18e449eb47263e1ec0d8, type: 2}
-  spawnableShips: []
+  fire: {fileID: 11400000, guid: 550dd3e518aab5c45bdad97835ef007a, type: 2}
