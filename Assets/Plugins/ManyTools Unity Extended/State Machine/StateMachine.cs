@@ -27,22 +27,21 @@ namespace ManyTools.UnityExtended
 
         #region Unity Callbacks
 
-        private void Awake()
+        protected virtual void Start()
         {
+            InitializeStates();
+            CheckForHashCollisions();
             TransitionToState(defaultState.StateHash);
 
             if (states.Length <= 0 || CurrentState == null)
             {
                 Debug.LogError($"The state machine has no states or could not default to the first" +
                                $" state!");
-                return;
             }
-            
-            CheckForHashCollisions();
         }
 
         // Update is called once per frame
-        private void Update()
+        protected virtual void Update()
         {
             CurrentState.StateUpdate();
         }
@@ -61,7 +60,11 @@ namespace ManyTools.UnityExtended
             {
                 if (states[index].StateID != stateID) continue;
 
-                CurrentState.Exit();
+                if (CurrentState != null)
+                {
+                    CurrentState.Exit();
+                }
+
                 CurrentState = states[index];
                 CurrentState.Enter();
 
@@ -79,7 +82,11 @@ namespace ManyTools.UnityExtended
             {
                 if (states[index].StateHash != stateHash) continue;
 
-                CurrentState.Exit();
+                if (CurrentState != null)
+                {
+                    CurrentState.Exit();
+                }
+                
                 CurrentState = states[index];
                 CurrentState.Enter();
 
@@ -106,6 +113,17 @@ namespace ManyTools.UnityExtended
                                        " state ID is unique and that there are no duplicate states!");
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Initializes all states with necessary information
+        /// </summary>
+        protected virtual void InitializeStates()
+        {
+            for (int index = 0, upper = states.Length; index < upper; index++)
+            {
+                states[index].StateMachine = this;
             }
         }
 

@@ -1,3 +1,4 @@
+using ICSharpCode.NRefactory.Ast;
 using ManyTools.UnityExtended.Editor;
 using UnityEngine;
 
@@ -10,21 +11,28 @@ namespace ManyTools.UnityExtended
     public abstract class State : MonoBehaviour, IState
     {
         #region Private Fields
-
-        [SerializeField]
-        [RequiredField()]
-        private string stateID;
-        private IStateMachine stateMachine;
-
+        
         private int stateHash = default;
+
+        #endregion
+
+        #region Protected Fields
+
+        protected IStateMachine stateMachine;
 
         #endregion
 
         #region Properties
 
-        public string StateID => stateID;
+        public string StateID => GetType().Name;
 
         public int StateHash => GetStateIDHash();
+
+        public IStateMachine StateMachine
+        {
+            get => stateMachine;
+            set => stateMachine = value;
+        }
 
         #endregion
 
@@ -42,13 +50,13 @@ namespace ManyTools.UnityExtended
             }
             else
             {
-                if (string.IsNullOrEmpty(stateID))
+                if (string.IsNullOrEmpty(StateID))
                 {
                     Debug.LogError($"A state's state ID was empty! All IDs must be non-empty and unique");
                 }
                 
                 // TODO: Evaluate if there aren't faster hash functions that could be used here instead.
-                stateHash = stateID.GetHashCode();
+                stateHash = StateID.GetHashCode();
                 return stateHash;
             }
         }
@@ -62,7 +70,7 @@ namespace ManyTools.UnityExtended
         /// </summary>
         public virtual void Enter()
         {
-            stateMachine.CurrentState = this;
+            StateMachine.CurrentState = this;
         }
 
         /// <summary>
