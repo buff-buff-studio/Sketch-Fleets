@@ -28,6 +28,12 @@ namespace SketchFleets.Data
         [Tooltip("Whether the bullet should not deal damage to player and player-related ships.")]
         [SerializeField]
         private BoolReference ignorePlayer = new BoolReference(false);
+        [SerializeField]
+        [Tooltip("The maximum angle variance on firing a shot")]
+        private FloatReference angleJitter = new FloatReference(8f);
+        [SerializeField]
+        [Tooltip("The cooldown when firing a bullet of this kind")]
+        private FloatReference cooldown = new FloatReference(0.5f);
 
         [Header("Visual Effects")]
         [Tooltip("The effect spawned when the bullet is fired.")]
@@ -54,6 +60,10 @@ namespace SketchFleets.Data
         public FloatReference DirectDamage => directDamage;
 
         public BoolReference IgnorePlayer => ignorePlayer;
+
+        public FloatReference AngleJitter => angleJitter;
+
+        public FloatReference Cooldown => cooldown;
 
         #endregion
 
