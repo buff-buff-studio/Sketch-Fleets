@@ -21,18 +21,9 @@ namespace SketchFleets.Data
         [Tooltip("How long is the regenerate ability cooldown")]
         private FloatReference regenerateCooldown = new FloatReference(30f);
 
-        [Header("Spawned Ship Bonuses")]
-        [SerializeField]
-        private List<StatusEffect> spawnStatusBonus = new List<StatusEffect>();
-
         #endregion
 
         #region Properties
-
-        public List<StatusEffect> SpawnStatusBonus
-        {
-            get => spawnStatusBonus;
-        }
 
         public List<SpawnableShipAttributes> SpawnableShips
         {
