@@ -79,6 +79,11 @@ namespace SketchFleets.Entities
             
             // Ticks down summon timers
             UpdateSummonTimers();
+            
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                Fire();
+            }
         }
 
         #endregion
@@ -90,14 +95,21 @@ namespace SketchFleets.Entities
         /// </summary>
         public override void Fire()
         {
+            if (fireTimer > 0f) return;
+            
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
-                Instantiate(attributes.Fire.Prefab, bulletSpawnPoints[index].position, transform.rotation);
+                GameObject bullet = Instantiate(attributes.Fire.Prefab, bulletSpawnPoints[index].position, transform.
+                    rotation);
+                bullet.transform.Rotate(0f, 0f, 
+                    Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
+                bullet.GetComponent<BulletController>().BarrelAttributes = Attributes;
             }
 
-            fireTimer = attributes.FireCooldown * fireTimerModifier;
+            fireTimer = attributes.Fire.Cooldown * fireTimerModifier;
 
             FireSpawns();
+
         }
 
         #endregion
@@ -111,7 +123,7 @@ namespace SketchFleets.Entities
         public void SummonShip(SpawnableShipAttributes shipType)
         {
             // If the new spawn would exceed the maximum amount, return
-            if (spawnMetaDatas[shipType].CurrentlyActive.Count + 1 > shipType.MaximumShips.Value)
+            if (spawnMetaDatas[shipType].CurrentlyActive.Count + 1 > shipType.MaximumShips.Value + extraSpawnSlots)
             {
                 return;
             }
@@ -226,7 +238,7 @@ namespace SketchFleets.Entities
 
             for (int index = 0, upper = ActiveEffects.Count; index < upper; index++)
             {
-                
+                //ActiveEffects[index]
             }
             
             // Waits interval
