@@ -28,8 +28,8 @@ namespace SketchFleets
 
         #region Private Fields
 
-        private FloatReference currentHealth;
-        private FloatReference currentShield;
+        private FloatReference currentHealth = new FloatReference(0f);
+        private FloatReference currentShield = new FloatReference(0f);
 
         #endregion
 
@@ -38,19 +38,16 @@ namespace SketchFleets
         public FloatReference CurrentShield
         {
             get => currentShield;
-            set => currentShield = value;
         }
 
         public FloatReference CurrentHealth
         {
             get => currentHealth;
-            set => currentHealth = value;
         }
 
-        protected T Attributes
+        public T Attributes
         {
             get => attributes;
-            set => attributes = value;
         }
 
         #endregion
@@ -59,7 +56,7 @@ namespace SketchFleets
 
         public void Damage(float amount)
         {
-            currentHealth.Value -= amount;
+            currentHealth.Value -= amount / Attributes.Defense;
 
             if (currentHealth <= 0f)
             {
@@ -67,6 +64,7 @@ namespace SketchFleets
             }
 
         }
+        
         public void Heal(float amount)
         {
             currentHealth.Value = Mathf.Min(attributes.MaxHealth, currentHealth + amount);
@@ -79,19 +77,14 @@ namespace SketchFleets
         // Start is called before the first update
         protected virtual void Start()
         {
-            currentHealth = attributes.MaxHealth;
-            currentShield = attributes.MaxShield;
+            currentHealth.Value = attributes.MaxHealth.Value;
+            currentShield.Value = attributes.MaxShield.Value;
         }
 
         // Update is called once per frame
         protected virtual void Update()
         {
             fireTimer -= Time.deltaTime;
-
-            if (Input.GetKey(KeyCode.Mouse0) && fireTimer <= 0)
-            {
-                Fire();
-            }
         }
 
         #endregion
@@ -103,12 +96,23 @@ namespace SketchFleets
         /// </summary>
         public virtual void Fire()
         {
+            if (fireTimer > 0f) return;
+            
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
-                Instantiate(attributes.Fire.Prefab, bulletSpawnPoints[index].position, transform.rotation);
+                GameObject bullet = Instantiate(
+                    attributes.Fire.Prefab, 
+                    bulletSpawnPoints[index].position, 
+                    bulletSpawnPoints[index].rotation);
+                
+                bullet.transform.Rotate(0f, 0f, 
+                    Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
+
+                bullet.GetComponent<BulletController>().BarrelAttributes = Attributes;
             }
 
-            fireTimer += attributes.FireCooldown;
+            fireTimer += Attributes.Fire.Cooldown;
+
         }
 
         /// <summary>
@@ -122,7 +126,6 @@ namespace SketchFleets
         }
 
         #endregion
-
 
         #region Protected Methods
 
