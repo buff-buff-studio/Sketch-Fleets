@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace SketchFleets
 {
+    /// <summary>
+    /// An AI state that aims and fires
+    /// </summary>
     public class AimAndFireState : State
     {
         #region Private Fields
@@ -20,7 +23,6 @@ namespace SketchFleets
         public override void Enter()
         {
             AI = StateMachine as EnemyShipAI;
-            Debug.Log(StateMachine);
 
             if (AI == null)
             {
@@ -38,6 +40,7 @@ namespace SketchFleets
             AI.Ship.Look(AI.Player.transform.position);
             AI.Ship.Fire();
         }
+        
         /// <summary>
         /// Runs when the state exits
         /// </summary>
