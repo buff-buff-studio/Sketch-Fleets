@@ -35,35 +35,17 @@ namespace SketchFleets.Data
 
         #region Properties
 
-        public FloatReference MaxHealth
-        {
-            get => maxHealth;
-        }
+        public FloatReference MaxHealth => maxHealth;
 
-        public FloatReference MaxShield
-        {
-            get => maxShield;
-        }
+        public FloatReference MaxShield => maxShield;
 
-        public FloatReference DamageMultiplier
-        {
-            get => damageMultiplier;
-        }
+        public FloatReference DamageMultiplier => damageMultiplier;
 
-        public FloatReference Speed
-        {
-            get => speed;
-        }
+        public FloatReference Speed => speed;
 
-        public BulletAttributes Fire
-        {
-            get => fire;
-        }
+        public BulletAttributes Fire => fire;
 
-        public FloatReference Defense
-        {
-            get => defense;
-        }
+        public FloatReference Defense => defense;
 
         #endregion
     }

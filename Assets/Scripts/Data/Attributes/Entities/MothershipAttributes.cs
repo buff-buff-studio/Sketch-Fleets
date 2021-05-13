@@ -25,15 +25,9 @@ namespace SketchFleets.Data
 
         #region Properties
 
-        public List<SpawnableShipAttributes> SpawnableShips
-        {
-            get => spawnableShips;
-        }
+        public List<SpawnableShipAttributes> SpawnableShips => spawnableShips;
 
-        public FloatReference RegenerateCooldown
-        {
-            get => regenerateCooldown;
-        }
+        public FloatReference RegenerateCooldown => regenerateCooldown;
 
         #endregion
 
