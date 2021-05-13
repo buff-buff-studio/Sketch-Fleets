@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ICSharpCode.NRefactory.Ast;
 using UnityEngine;
 
 namespace ManyTools.UnityExtended.Poolable
@@ -9,19 +8,17 @@ namespace ManyTools.UnityExtended.Poolable
         #region Private Fields
 
         private GameObject template;
+        private PoolData poolData;
         private List<PoolMember> poolables = new List<PoolMember>();
-        private int poolLimit;
+        
+        // Adaptive limiting
         private int[] cullIntervalPeaks;
+        private int currentEmerged;
+        private int peakEmerged;
 
         #endregion
 
         #region Properties
-
-        public int PoolLimit
-        {
-            get => poolLimit;
-            set => poolLimit = value;
-        }
 
         public List<PoolMember> Poolables => poolables;
 
@@ -51,6 +48,26 @@ namespace ManyTools.UnityExtended.Poolable
             }
         }
 
+        public int CurrentEmerged
+        {
+            get => currentEmerged;
+            set
+            {
+                if (currentEmerged > peakEmerged)
+                {
+                    peakEmerged = currentEmerged;
+                }
+                
+                currentEmerged = value;
+            } 
+        }
+
+        public PoolData Data
+        {
+            get => poolData;
+            set => poolData = value;
+        }
+
         #endregion
 
         #region Constructors
@@ -59,34 +76,12 @@ namespace ManyTools.UnityExtended.Poolable
         /// Creates a new pool with no limit
         /// </summary>
         /// <param name="template">The template GameObject of the pool</param>
-        public Pool(GameObject template)
+        /// <param name="poolData">Data about the pool's setup</param>
+        public Pool(GameObject template, PoolData poolData)
         {
             this.template = template;
-            poolLimit = 0;
-        }
-
-        /// <summary>
-        /// Creates a new pool with a set limit
-        /// </summary>
-        /// <param name="template">The template GameObject of the pool</param>
-        /// <param name="poolLimit">The pool's limit amount of poolables</param>
-        public Pool(GameObject template, int poolLimit)
-        {
-            this.template = template;
-            this.poolLimit = poolLimit;
-        }
-
-        /// <summary>
-        /// Creates a pool with a set limit and fills it with poolable objects
-        /// </summary>
-        /// <param name="template">The template GameObject of the pool</param>
-        /// <param name="poolLimit">The pool's limit amount of poolables</param>
-        /// <param name="preAddAmount">The amount of poolables to add preemptively</param>
-        public Pool(GameObject template, int poolLimit, int preAddAmount)
-        {
-            this.template = template;
-            this.poolLimit = poolLimit;
-            Add(preAddAmount);
+            this.poolData = poolData;
+            Add(poolData.PreFillAmount);
         }
 
         #endregion
@@ -114,7 +109,7 @@ namespace ManyTools.UnityExtended.Poolable
         public void CullExcessPoolables()
         {
             // De-Pool members until the pool is at or under its limit
-            for (int index = 0, upper = Poolables.Count; index < upper; index++)
+            for (int index = Poolables.Count - 1; index >= 0; index--)
             {
                 // Remove the poolable only if he is submerged
                 if (Poolables[index].IsSubmerged)
@@ -123,7 +118,7 @@ namespace ManyTools.UnityExtended.Poolable
                 }
 
                 // Check if the pool is at or under its limit. If so, end the loop here
-                if (Poolables.Count <= PoolLimit)
+                if (Poolables.Count <= poolData.PoolLimit)
                 {
                     break;
                 }
@@ -189,9 +184,11 @@ namespace ManyTools.UnityExtended.Poolable
         /// </summary>
         public void UpdateIntervalPeaks()
         {
+            // If adaptive limiting features are turned off, skip
             if (cullIntervalPeaks == null) return;
             if (cullIntervalPeaks.Length == 0) return;
             
+            // Remove oldest peak and add newest peak
             for (int index = 0, upper = cullIntervalPeaks.Length; index < upper; index++)
             {
                 if (index + 1 < upper)
@@ -200,32 +197,12 @@ namespace ManyTools.UnityExtended.Poolable
                 }
                 else
                 {
-                    cullIntervalPeaks[index] = GetEmergedMemberCount();
+                    cullIntervalPeaks[index] = peakEmerged;
                 }
             }
 
-        }
-
-        /* TODO: Simply snapshotting the amount of emerged members in a specific point in time may lead to biases in
-           TODO: the data. Instead, a more sophisticated system where emerging a member increases the count should
-           TODO: be implemented. */
-        /// <summary>
-        ///  Gets the total count of currently emerged members in the pool
-        /// </summary>
-        /// <returns>The amount of emerged members in the pool</returns>
-        public int GetEmergedMemberCount()
-        {
-            int emergedCount = 0;
-            
-            for (int index = 0, upper = poolables.Count; index < upper; index++)
-            {
-                if (!poolables[index].IsSubmerged)
-                {
-                    emergedCount++;
-                }
-            }
-
-            return emergedCount;
+            // Reset peak emerged
+            peakEmerged = currentEmerged;
         }
 
         #endregion
