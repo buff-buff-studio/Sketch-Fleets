@@ -80,6 +80,7 @@ namespace SketchFleets.Entities
             // Ticks down summon timers
             UpdateSummonTimers();
             
+            // Fires stuff
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 Fire();
