@@ -1,4 +1,4 @@
-using System;
+using ManyTools.UnityExtended.Poolable;
 using UnityEngine;
 using SketchFleets.Data;
 using SketchFleets;
@@ -7,7 +7,7 @@ using SketchFleets;
 /// A class that controls a bullet and its behaviour
 /// </summary>
 [RequireComponent(typeof(AudioSource))]
-public class BulletController : MonoBehaviour
+public class BulletController : PoolMember
 {
     #region Private Fields
 
@@ -30,8 +30,7 @@ public class BulletController : MonoBehaviour
 
     private void Start()
     {
-        // TODO: Replace by pooling call
-        Destroy(gameObject, 10f);
+        //Submerge(8f);
 
         if (soundSource.clip != null)
         {
@@ -117,7 +116,7 @@ public class BulletController : MonoBehaviour
             target.GetComponent<IDamageable>()?.Damage(damageAmount * BarrelAttributes.DamageMultiplier);
         }
 
-        Destroy(gameObject);
+        Submerge();
     }
 
     #endregion
