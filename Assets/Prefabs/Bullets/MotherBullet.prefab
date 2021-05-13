@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes: {fileID: 11400000, guid: b0967743feca18e449eb47263e1ec0d8, type: 2}
+  soundSource: {fileID: 0}
 --- !u!50 &4279980150519044566
 Rigidbody2D:
   serializedVersion: 4

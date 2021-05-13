@@ -100,6 +100,7 @@ MonoBehaviour:
   attributes: {fileID: 0}
   bulletSpawnPoints: []
   deathEvent: {fileID: 0}
+  soundSource: {fileID: 0}
 --- !u!58 &3284894011281940405
 CircleCollider2D:
   m_ObjectHideFlags: 0
