@@ -22,25 +22,18 @@ namespace SketchFleets.Data
         [SerializeField]
         [Tooltip("How long the player must wait before invoking another ship")]
         private IntReference spawnCooldown = new IntReference(10);
-
+        [SerializeField]
+        [Tooltip("The radius of the ship's orbit around the player, if it orbits him")]
+        private FloatReference orbitRadius = new FloatReference(3f);
+        
         #endregion
 
         #region Properties
 
-        public IntReference GraphiteCost
-        {
-            get => graphiteCost;
-        }
-
-        public IntReference SpawnCooldown
-        {
-            get => spawnCooldown;
-        }
-
-        public IntReference MaximumShips
-        {
-            get => maximumShips;
-        }
+        public IntReference GraphiteCost => graphiteCost;
+        public IntReference SpawnCooldown => spawnCooldown;
+        public IntReference MaximumShips => maximumShips;
+        public FloatReference OrbitRadius => orbitRadius;
 
         #endregion
     }
