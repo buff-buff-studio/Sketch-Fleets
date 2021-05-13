@@ -35,7 +35,10 @@ namespace SketchFleets.Data
         [Tooltip("The cooldown when firing a bullet of this kind")]
         private FloatReference cooldown = new FloatReference(0.5f);
 
-        [Header("Visual Effects")]
+        [Header("Special Effects")]
+        [Tooltip("The sound effect played when the bullet is shot")]
+        [SerializeField]
+        private AudioClip fireSound;
         [Tooltip("The effect spawned when the bullet is fired.")]
         [SerializeField]
         private GameObject fireEffect;
@@ -64,6 +67,8 @@ namespace SketchFleets.Data
         public FloatReference AngleJitter => angleJitter;
 
         public FloatReference Cooldown => cooldown;
+
+        public AudioClip FireSound => fireSound;
 
         #endregion
 

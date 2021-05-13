@@ -27,10 +27,19 @@ namespace SketchFleets.Data
         [SerializeField]
         protected FloatReference defense = new FloatReference(0);
 
+        [Header("References")]
         [Tooltip("The prefab spawned by the ship by an attack.")]
         [SerializeField]
         protected BulletAttributes fire;
 
+        [Header("Special Effects")]
+        [Tooltip("The sound effect when the ship gets hit")]
+        [SerializeField]
+        private AudioClip hitSound;
+        [Tooltip("The effect spawned when the ship dies")]
+        [SerializeField]
+        private GameObject deathEffect;
+        
         #endregion
 
         #region Properties
@@ -46,6 +55,10 @@ namespace SketchFleets.Data
         public BulletAttributes Fire => fire;
 
         public FloatReference Defense => defense;
+
+        public AudioClip HitSound => hitSound;
+
+        public GameObject DeathEffect => deathEffect;
 
         #endregion
     }

@@ -10,6 +10,7 @@ namespace SketchFleets
     /// A class that controls 
     /// </summary>
     /// <typeparam name="T">An attribute data structure that inherits from ShipAttributes</typeparam>
+    [RequireComponent(typeof(AudioSource))]
     public class Ship<T> : MonoBehaviour, IDamageable where T : ShipAttributes
     {
         #region Protected Fields
@@ -21,6 +22,8 @@ namespace SketchFleets
         protected Transform[] bulletSpawnPoints;
         [SerializeField]
         private GameEvent deathEvent;
+        [SerializeField]
+        protected AudioSource soundSource;
 
         protected float fireTimer;
 
@@ -49,13 +52,20 @@ namespace SketchFleets
         {
             currentHealth.Value -= amount / Attributes.Defense;
 
+            soundSource.clip = Attributes.HitSound;
+
+            if (soundSource.clip != null)
+            {
+                soundSource.Play();
+            }
+
             if (currentHealth <= 0f)
             {
                 Die();
             }
 
         }
-        
+
         public void Heal(float amount)
         {
             currentHealth.Value = Mathf.Min(attributes.MaxHealth, currentHealth + amount);
@@ -78,6 +88,11 @@ namespace SketchFleets
             fireTimer -= Time.deltaTime;
         }
 
+        protected void Reset()
+        {
+            soundSource = GetComponent<AudioSource>();
+        }
+
         #endregion
 
         #region Public Methods
@@ -88,15 +103,15 @@ namespace SketchFleets
         public virtual void Fire()
         {
             if (fireTimer > 0f) return;
-            
+
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
                 GameObject bullet = Instantiate(
-                    attributes.Fire.Prefab, 
-                    bulletSpawnPoints[index].position, 
+                    attributes.Fire.Prefab,
+                    bulletSpawnPoints[index].position,
                     bulletSpawnPoints[index].rotation);
-                
-                bullet.transform.Rotate(0f, 0f, 
+
+                bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
 
                 bullet.GetComponent<BulletController>().BarrelAttributes = Attributes;
@@ -124,12 +139,17 @@ namespace SketchFleets
         /// </summary>
         protected virtual void Die()
         {
-            Destroy(gameObject);
+            if (Attributes.DeathEffect != null)
+            {
+                Instantiate(Attributes.DeathEffect, transform.position, Quaternion.identity);
+            }
 
             if (deathEvent != null)
             {
                 deathEvent.Invoke();
             }
+
+            Destroy(gameObject);
         }
 
         #endregion
