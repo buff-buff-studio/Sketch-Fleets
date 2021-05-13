@@ -4,6 +4,7 @@ using SketchFleets.Data;
 using ManyTools.Variables;
 using System.Collections.Generic;
 using ManyTools.UnityExtended.Editor;
+using ManyTools.UnityExtended.Poolable;
 
 namespace SketchFleets.Entities
 {
@@ -100,17 +101,15 @@ namespace SketchFleets.Entities
             
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
-                GameObject bullet = Instantiate(attributes.Fire.Prefab, bulletSpawnPoints[index].position, transform.
-                    rotation);
+                PoolMember bullet = PoolManager.Instance.Request(attributes.Fire.Prefab);
+                bullet.Emerge(bulletSpawnPoints[index].position, transform.rotation);
+
                 bullet.transform.Rotate(0f, 0f, 
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
                 bullet.GetComponent<BulletController>().BarrelAttributes = Attributes;
             }
 
             fireTimer = attributes.Fire.Cooldown * fireTimerModifier;
-
-            FireSpawns();
-
         }
 
         #endregion
@@ -190,22 +189,6 @@ namespace SketchFleets.Entities
             foreach (var metaData in spawnMetaDatas)
             {
                 metaData.Value.SummonTimer.Value -= Time.deltaTime;
-            }
-        }
-
-        /// <summary>
-        /// Fires all spawned ship
-        /// </summary>
-        private void FireSpawns()
-        {
-            if (spawnMetaDatas.Count <= 0) return;
-
-            foreach (var metaData in spawnMetaDatas)
-            {
-                for (int index = 0, upper = metaData.Value.CurrentlyActive.Count; index < upper; index++)
-                {
-                    metaData.Value.CurrentlyActive[index].Fire();
-                }
             }
         }
 

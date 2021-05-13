@@ -1,5 +1,6 @@
 using ManyTools.Events;
 using ManyTools.UnityExtended.Editor;
+using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using SketchFleets.Data;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace SketchFleets
     /// </summary>
     /// <typeparam name="T">An attribute data structure that inherits from ShipAttributes</typeparam>
     [RequireComponent(typeof(AudioSource))]
-    public class Ship<T> : MonoBehaviour, IDamageable where T : ShipAttributes
+    public class Ship<T> : PoolMember, IDamageable where T : ShipAttributes
     {
         #region Protected Fields
 
@@ -73,6 +74,24 @@ namespace SketchFleets
 
         #endregion
 
+        #region PoolMember Overrides
+
+        /// <summary>
+        /// Emerges the Poolable object from the pool
+        /// </summary>
+        /// <param name="position">The position at which to emerge the object</param>
+        /// <param name="rotation">The rotation to emerge the object with</param>
+        public override void Emerge(Vector3 position, Quaternion rotation)
+        {
+            currentHealth.Value = attributes.MaxHealth.Value;
+            currentShield.Value = attributes.MaxShield.Value;
+            fireTimer = 0;
+            
+            base.Emerge(position, rotation);
+        }
+
+        #endregion
+        
         #region Unity Callbacks
 
         // Start is called before the first update
@@ -106,10 +125,8 @@ namespace SketchFleets
 
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
-                GameObject bullet = Instantiate(
-                    attributes.Fire.Prefab,
-                    bulletSpawnPoints[index].position,
-                    bulletSpawnPoints[index].rotation);
+                PoolMember bullet = PoolManager.Instance.Request(attributes.Fire.Prefab);
+                bullet.Emerge(bulletSpawnPoints[index].position, transform.rotation);
 
                 bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
