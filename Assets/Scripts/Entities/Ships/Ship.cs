@@ -35,20 +35,11 @@ namespace SketchFleets
 
         #region Properties
 
-        public FloatReference CurrentShield
-        {
-            get => currentShield;
-        }
+        public FloatReference CurrentShield => currentShield;
 
-        public FloatReference CurrentHealth
-        {
-            get => currentHealth;
-        }
+        public FloatReference CurrentHealth => currentHealth;
 
-        public T Attributes
-        {
-            get => attributes;
-        }
+        public T Attributes => attributes;
 
         #endregion
 
@@ -111,8 +102,7 @@ namespace SketchFleets
                 bullet.GetComponent<BulletController>().BarrelAttributes = Attributes;
             }
 
-            fireTimer += Attributes.Fire.Cooldown;
-
+            fireTimer = Attributes.Fire.Cooldown;
         }
 
         /// <summary>
