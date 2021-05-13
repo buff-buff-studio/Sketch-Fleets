@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using SketchFleets.Data;
 using SketchFleets;
@@ -5,13 +6,15 @@ using SketchFleets;
 /// <summary>
 /// A class that controls a bullet and its behaviour
 /// </summary>
+[RequireComponent(typeof(AudioSource))]
 public class BulletController : MonoBehaviour
 {
     #region Private Fields
 
     [SerializeField]
     private BulletAttributes attributes;
-    private ShipAttributes barrelAttributes;
+    [SerializeField]
+    private AudioSource soundSource;
 
     #endregion
 
@@ -19,11 +22,7 @@ public class BulletController : MonoBehaviour
 
     public BulletAttributes Attributes => attributes;
 
-    public ShipAttributes BarrelAttributes
-    {
-        get => barrelAttributes;
-        set => barrelAttributes = value;
-    }
+    public ShipAttributes BarrelAttributes { get; set; }
 
     #endregion
 
@@ -33,6 +32,11 @@ public class BulletController : MonoBehaviour
     {
         // TODO: Replace by pooling call
         Destroy(gameObject, 10f);
+
+        if (soundSource.clip != null)
+        {
+            soundSource.Play();
+        }
 
         if (Attributes.FireEffect != null)
         {
@@ -49,6 +53,11 @@ public class BulletController : MonoBehaviour
     {
         if (!col.isTrigger) return;
         Hit(col);
+    }
+
+    private void Reset()
+    {
+        soundSource = GetComponent<AudioSource>();
     }
 
     #endregion
@@ -101,11 +110,11 @@ public class BulletController : MonoBehaviour
         if (target.CompareTag("Player") || target.CompareTag("PlayerSpawn"))
         {
             if (Attributes.IgnorePlayer) return;
-            target.GetComponent<IDamageable>()?.Damage(damageAmount * barrelAttributes.DamageMultiplier);
+            target.GetComponent<IDamageable>()?.Damage(damageAmount * BarrelAttributes.DamageMultiplier);
         }
         else
         {
-            target.GetComponent<IDamageable>()?.Damage(damageAmount * barrelAttributes.DamageMultiplier);
+            target.GetComponent<IDamageable>()?.Damage(damageAmount * BarrelAttributes.DamageMultiplier);
         }
 
         Destroy(gameObject);
