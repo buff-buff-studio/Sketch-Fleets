@@ -16,6 +16,9 @@ namespace SketchFleets.Data
         [Tooltip("How much damage the bullet does if it hits an enemy directly.")]
         [SerializeField]
         private FloatReference directDamage = new FloatReference(0);
+        [Tooltip("What is the most damage can vary per shot?")]
+        [SerializeField]
+        private FloatReference maxDamageVariation = new FloatReference(0);
         [Tooltip("How fast the bullet moves.")]
         [SerializeField]
         private FloatReference speed = new FloatReference(10);
@@ -69,6 +72,8 @@ namespace SketchFleets.Data
         public FloatReference Cooldown => cooldown;
 
         public AudioClip FireSound => fireSound;
+
+        public FloatReference MaxDamageVariation => maxDamageVariation;
 
         #endregion
 

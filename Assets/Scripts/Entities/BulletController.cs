@@ -30,8 +30,6 @@ public class BulletController : PoolMember
 
     private void Start()
     {
-        //Submerge(8f);
-
         if (soundSource.clip != null)
         {
             soundSource.Play();
@@ -69,7 +67,9 @@ public class BulletController : PoolMember
     /// <param name="directHit">The collider that directly hit the bullet</param>
     private void Hit(Collider2D directHit)
     {
-        DealDamageToTarget(Attributes.DirectDamage, directHit.gameObject);
+        float damageVariation = Random.Range(0, Attributes.MaxDamageVariation);        
+        
+        DealDamageToTarget(Attributes.DirectDamage + damageVariation, directHit.gameObject);
 
         // If the bullet has no area effects, stop here
         if (Mathf.Approximately(Attributes.IndirectDamage, 0f) ||
@@ -90,7 +90,7 @@ public class BulletController : PoolMember
             // If the collected collider is the direct hit, skip
             if (directHit.gameObject == colliders[index].gameObject) continue;
 
-            DealDamageToTarget(Attributes.IndirectDamage, directHit.gameObject);
+            DealDamageToTarget(Attributes.IndirectDamage + damageVariation, directHit.gameObject);
         }
 
         if (Attributes.HitEffect != null)
