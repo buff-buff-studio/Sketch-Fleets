@@ -17,8 +17,6 @@ namespace SketchFleets.Entities
 
         [SerializeField, RequiredField()]
         private Transform shipSpawnPoint;
-        [SerializeField]
-        private FloatReference explosionDamage;
 
         private Dictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
             new Dictionary<SpawnableShipAttributes, SpawnMetaData>();
