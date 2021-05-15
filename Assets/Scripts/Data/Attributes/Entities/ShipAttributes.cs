@@ -32,9 +32,12 @@ namespace SketchFleets.Data
         [Tooltip("An inverse multiplier for how much damage the ship takes with an attack.")]
         [SerializeField]
         protected FloatReference defense = new FloatReference(0);
-        [Tooltip("How much a ship will take when colliding with this ship")]
+        [Tooltip("How much a ship will take when colliding with this ship.")]
         [SerializeField]
         protected FloatReference collisionDamage = new FloatReference(100f);
+        [Tooltip("How long the ship should be invincible after taking invincibility-triggering damage.")]
+        [SerializeField]
+        protected FloatReference invincibilityTime = new FloatReference(1.3f);
 
         [Header("Drops")]
         [Tooltip("The minimum and maximum amount of shells dropped")]
@@ -86,6 +89,8 @@ namespace SketchFleets.Data
         public FloatReference CollisionDamage => collisionDamage;
 
         public GameObject ShellDrop => shellDrop;
+
+        public FloatReference InvincibilityTime => invincibilityTime;
 
         #endregion
     }

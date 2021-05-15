@@ -27,6 +27,8 @@ namespace SketchFleets
         protected AudioSource soundSource;
 
         protected float fireTimer;
+        protected float shieldRegenTimer;
+        public float collisionTimer;
 
         #endregion
 
@@ -49,10 +51,19 @@ namespace SketchFleets
 
         #region IDamageable Implementation
 
-        public void Damage(float amount)
-        {
-            currentHealth.Value -= amount / Attributes.Defense;
 
+        public void Damage(float amount, bool makeInvincible = false)
+        {
+            if (collisionTimer > 0) return;
+
+            if (makeInvincible)
+            {
+                collisionTimer = Attributes.InvincibilityTime;
+            }
+            
+            currentHealth.Value -= amount / Attributes.Defense;
+            shieldRegenTimer = Attributes.ShieldRegenDelay;
+            
             soundSource.clip = Attributes.HitSound;
 
             if (soundSource.clip != null)
@@ -64,7 +75,6 @@ namespace SketchFleets
             {
                 Die();
             }
-
         }
 
         public void Heal(float amount)
@@ -104,12 +114,23 @@ namespace SketchFleets
         // Update is called once per frame
         protected virtual void Update()
         {
+            collisionTimer -= Time.deltaTime;
             fireTimer -= Time.deltaTime;
+            RegenShield();
         }
 
         protected void Reset()
         {
             soundSource = GetComponent<AudioSource>();
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Enemy") || other.CompareTag("PlayerSpawn") || 
+                other.CompareTag("Player") || other.CompareTag("Obstacle"))
+            {
+                other.GetComponent<IDamageable>().Damage(Attributes.CollisionDamage, true);
+            }
         }
 
         #endregion
@@ -166,7 +187,37 @@ namespace SketchFleets
                 deathEvent.Invoke();
             }
 
-            Destroy(gameObject);
+            // Drops pencil shells
+            if (Attributes.ShellDrop != null)
+            {
+                int dropCount = Mathf.RoundToInt(
+                    Random.Range(Attributes.DropMinMaxCount.Value.x, Attributes.DropMinMaxCount.Value.y));
+
+                for (int index = 0; index < dropCount; index++)
+                {
+                    Vector3 dropPosition = 
+                        new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), transform.position.z);
+                    Instantiate(Attributes.ShellDrop, dropPosition, Quaternion.identity);
+                }
+            }
+            
+            Submerge();
+        }
+
+        /// <summary>
+        /// Regenerates the ship's shields
+        /// </summary>
+        protected virtual void RegenShield()
+        {
+            // Decrements the regen timer
+            shieldRegenTimer -= Time.deltaTime;
+            
+            // If the regen timer is not over or there is no regen, end it here
+            if (shieldRegenTimer > 0 || Mathf.Approximately(Attributes.ShieldRegen, 0)) return;
+
+            // Regen shield
+            CurrentShield.Value = Mathf.Min(Attributes.MaxShield, 
+                CurrentShield.Value + Attributes.ShieldRegen * Time.deltaTime);
         }
 
         #endregion
