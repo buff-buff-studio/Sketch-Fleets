@@ -11,8 +11,9 @@ namespace ManyTools.UnityExtended
     {
         #region Protected Fields
 
-        [SerializeField, RequiredField()]
-        protected State defaultState;
+        // TODO: For some reason, this script's inspector draw time is 14ms. There is something
+        // Horribly wrong here. Investigate it and destroy the root of the performance loss
+        
         [SerializeField]
         protected State[] states;
 
@@ -21,7 +22,7 @@ namespace ManyTools.UnityExtended
         #region Properties
 
         public State CurrentState { get; set; }
-        public State DefaultState => defaultState;
+        public State DefaultState => states[0];
 
         #endregion
 
@@ -31,7 +32,7 @@ namespace ManyTools.UnityExtended
         {
             InitializeStates();
             CheckForHashCollisions();
-            TransitionToState(defaultState.StateHash);
+            TransitionToState(states[0].StateHash);
 
             if (states.Length <= 0 || CurrentState == null)
             {
