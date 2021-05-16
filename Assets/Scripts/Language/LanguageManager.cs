@@ -9,9 +9,15 @@ namespace SketchFleets.LanguageSystem
     /// </summary>
     public class LanguageManager
     {
+        #region Events
+        public delegate void LanguageEvent();
+        public static event LanguageEvent OnLanguageChanged;
+        #endregion
+
         #region Private Fields
         private static Dictionary<string,Language> languages = new Dictionary<string, Language>();
         private static Language currentLanguage;
+        private static bool inited = false;
         #endregion
 
         #region Main Methods
@@ -37,6 +43,10 @@ namespace SketchFleets.LanguageSystem
             //Bake language
             currentLanguage.Bake();
 
+            //Call handler
+            if(OnLanguageChanged != null)
+                OnLanguageChanged();
+
             return true;
         }
 
@@ -56,6 +66,9 @@ namespace SketchFleets.LanguageSystem
         /// <returns></returns>
         public static Language GetLanguage()
         {
+            if(!inited)
+                Init();
+                
             return currentLanguage;
         }
 
@@ -69,13 +82,37 @@ namespace SketchFleets.LanguageSystem
         }
 
         /// <summary>
+        /// Enumerate all language names
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<string> ListLanguages()
+        {
+            foreach(Language language in languages.Values)
+                yield return language.Localize("name");
+        }
+
+        /// <summary>
+        /// Get language id by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string GetLanguageIdByName(string name)
+        {
+            foreach(KeyValuePair<string,Language> pair in languages)
+                if(pair.Value.Localize("name") == name)
+                    return pair.Key;
+            
+            return null;
+        }
+
+        /// <summary>
         /// Localize a string without arguments
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
         public static string Localize(string key)
         {
-            if(currentLanguage == null)
+            if(GetLanguage() == null)
                 return Language.MissingEntry;
                 
             return GetLanguage().Localize(key);
@@ -89,20 +126,11 @@ namespace SketchFleets.LanguageSystem
         /// <returns></returns>
         public static string Localize(string key,params string[] args)
         {
-            if(currentLanguage == null)
+            if(GetLanguage() == null)
                 return Language.MissingEntry;
 
             return GetLanguage().Localize(key,args);
-        }
-
-        /// <summary>
-        /// Localize entire UI
-        /// </summary>
-        /// <param name="canvas"></param>
-        public static void LocalizeUI(Transform canvas)
-        {
-            
-        }
+        } 
         #endregion
 
         #region Init
@@ -111,6 +139,7 @@ namespace SketchFleets.LanguageSystem
         /// </summary>
         public static void Init()
         {
+            inited = true;
             Debug.Log("Loading languages:");
             Object[] languages =  Resources.LoadAll("Languages", typeof(TextAsset));
 

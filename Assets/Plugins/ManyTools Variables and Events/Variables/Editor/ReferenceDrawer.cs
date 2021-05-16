@@ -8,6 +8,7 @@ namespace ManyTools.Editor
     /// <summary>
     /// A property drawer for reference variables.
     /// </summary>
+    #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(AnimationCurveReference))]
     [CustomPropertyDrawer(typeof(BoolReference))]
     [CustomPropertyDrawer(typeof(ColorReference))]
@@ -162,4 +163,5 @@ namespace ManyTools.Editor
 
         #endregion
     }
+    #endif
 }

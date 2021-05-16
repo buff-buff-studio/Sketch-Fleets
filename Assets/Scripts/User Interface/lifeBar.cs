@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using ManyTools.Variables;
 
-public class lifeBar : MonoBehaviour
+public class LifeBar : MonoBehaviour
 {
     #region Private Fields
     [SerializeField]
     private FloatReference life;
+    [SerializeField]
+    private FloatReference maxLife;
     [SerializeField]
     private GameObject deadMenu;
     private Image lifeBarAtt;
@@ -18,14 +20,14 @@ public class lifeBar : MonoBehaviour
     private void Start()
     {
         lifeBarAtt = transform.GetChild(1).GetComponent<Image>();
-        lifeBarUpdate();
+        LifeBarUpdate();
     }
 
     private void Update()
     {
         if (life > 0)
         {
-            lifeBarUpdate();
+            LifeBarUpdate();
         }
         else
         {
@@ -38,9 +40,10 @@ public class lifeBar : MonoBehaviour
     /// <summary>
     /// Changes the graphic part of the life bar 
     /// </summary>
-    public void lifeBarUpdate()
+    public void LifeBarUpdate()
     {
-        lifeBarAtt.fillAmount = life / 1000;
+        float maxLife = this.maxLife.Value;
+        lifeBarAtt.fillAmount = Mathf.Lerp(lifeBarAtt.fillAmount,life / maxLife,Time.deltaTime * 5f);
     }
     #endregion
 }
