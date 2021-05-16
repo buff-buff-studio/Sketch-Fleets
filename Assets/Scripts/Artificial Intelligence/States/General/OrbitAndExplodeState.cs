@@ -1,4 +1,5 @@
 using ManyTools.UnityExtended;
+using ManyTools.Variables;
 using SketchFleets.AI;
 using UnityEngine;
 
@@ -7,12 +8,16 @@ namespace SketchFleets
     /// <summary>
     /// An AI state that orbits around the player and fires when he does so
     /// </summary>
-    public class OrbitAndAssistState : State
+    public class OrbitAndExplodeState : State
     {
         #region Private Fields
 
+        [SerializeField]
+        private FloatReference launchSpeedMultiplier = new FloatReference(5f);
+        
         private SpawnableShipAI AI;
         private float orbitAngle;
+        private bool explode = false;
 
         #endregion
 
@@ -43,13 +48,31 @@ namespace SketchFleets
         /// </summary>
         public override void StateUpdate()
         {
-            ParametricOrbit();
-            AI.Ship.Look(AI.MainCamera.ScreenToWorldPoint(Input.mousePosition));
-
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (!explode)
             {
-                AI.Ship.Fire();
+                ParametricOrbit();
+                AI.Ship.Look(AI.MainCamera.ScreenToWorldPoint(Input.mousePosition));
+
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    explode = true;
+                }
             }
+            else
+            {
+                Vector3 movement = Vector3.up * 
+                                   (AI.Ship.Attributes.Speed * Time.deltaTime * launchSpeedMultiplier);
+                transform.Translate(movement);
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (!explode) return;
+            if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("PlayerSpawn") ||
+                other.gameObject.CompareTag("bullet")) return;
+            
+            AI.Ship.Die();
         }
 
         /// <summary>
