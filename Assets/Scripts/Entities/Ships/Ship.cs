@@ -23,7 +23,7 @@ namespace SketchFleets
         protected Transform[] bulletSpawnPoints;
         [SerializeField]
         private GameEvent deathEvent;
-        [SerializeField]
+        [SerializeField, RequiredField()]
         protected AudioSource soundSource;
 
         protected float fireTimer;

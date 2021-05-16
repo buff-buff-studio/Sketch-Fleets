@@ -1,3 +1,4 @@
+using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using UnityEngine;
 using SketchFleets.Data;
@@ -13,7 +14,7 @@ public class BulletController : PoolMember
 
     [SerializeField]
     private BulletAttributes attributes;
-    [SerializeField]
+    [SerializeField, RequiredField()]
     private AudioSource soundSource;
 
     #endregion
