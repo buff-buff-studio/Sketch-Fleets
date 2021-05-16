@@ -10,6 +10,11 @@ namespace ManyTools.UnityExtended
 	{
 		#region Private Fields
 
+		[Header("Singleton Parameters")]
+		[SerializeField]
+		[Tooltip("Whether the singleton should survive scene changes")]
+		private bool dontDestroyOnLoad = false;
+		
 		// The global instance reference of the singleton
 		private static T instance;
 
@@ -43,6 +48,11 @@ namespace ManyTools.UnityExtended
 			{
 				// Set the instance to this class (typecasted to the given type)
 				instance = (T)this;
+			}
+
+			if (dontDestroyOnLoad)
+			{
+				DontDestroyOnLoad(gameObject);
 			}
 		}
 

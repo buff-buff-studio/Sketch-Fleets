@@ -16,6 +16,9 @@ namespace SketchFleets.Data
         [Tooltip("How much damage the bullet does if it hits an enemy directly.")]
         [SerializeField]
         private FloatReference directDamage = new FloatReference(0);
+        [Tooltip("What is the most damage can vary per shot?")]
+        [SerializeField]
+        private FloatReference maxDamageVariation = new FloatReference(0);
         [Tooltip("How fast the bullet moves.")]
         [SerializeField]
         private FloatReference speed = new FloatReference(10);
@@ -25,8 +28,20 @@ namespace SketchFleets.Data
         [Tooltip("How much damage should the bullet do if it hits an enemy indirectly.")]
         [SerializeField]
         private FloatReference indirectDamage = new FloatReference(5);
+        [Tooltip("Whether the bullet should not deal damage to player and player-related ships.")]
+        [SerializeField]
+        private BoolReference ignorePlayer = new BoolReference(false);
+        [SerializeField]
+        [Tooltip("The maximum angle variance on firing a shot")]
+        private FloatReference angleJitter = new FloatReference(8f);
+        [SerializeField]
+        [Tooltip("The cooldown when firing a bullet of this kind")]
+        private FloatReference cooldown = new FloatReference(0.5f);
 
-        [Header("Visual Effects")]
+        [Header("Special Effects")]
+        [Tooltip("The sound effect played when the bullet is shot")]
+        [SerializeField]
+        private AudioClip fireSound;
         [Tooltip("The effect spawned when the bullet is fired.")]
         [SerializeField]
         private GameObject fireEffect;
@@ -49,6 +64,16 @@ namespace SketchFleets.Data
         public FloatReference Speed => speed;
 
         public FloatReference DirectDamage => directDamage;
+
+        public BoolReference IgnorePlayer => ignorePlayer;
+
+        public FloatReference AngleJitter => angleJitter;
+
+        public FloatReference Cooldown => cooldown;
+
+        public AudioClip FireSound => fireSound;
+
+        public FloatReference MaxDamageVariation => maxDamageVariation;
 
         #endregion
 
