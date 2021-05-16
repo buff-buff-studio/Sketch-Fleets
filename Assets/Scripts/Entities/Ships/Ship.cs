@@ -168,14 +168,10 @@ namespace SketchFleets
             transformCache.up = (Vector3)target - transformCache.position;
         }
 
-        #endregion
-
-        #region Protected Methods
-
         /// <summary>
         /// Makes the ship die
         /// </summary>
-        protected virtual void Die()
+        public virtual void Die()
         {
             if (Attributes.DeathEffect != null)
             {
@@ -203,6 +199,11 @@ namespace SketchFleets
             
             Submerge();
         }
+        
+        #endregion
+
+        #region Protected Methods
+
 
         /// <summary>
         /// Regenerates the ship's shields
