@@ -1,3 +1,4 @@
+using ManyTools.UnityExtended.Editor;
 using ManyTools.Variables;
 using UnityEngine;
 
@@ -49,7 +50,7 @@ namespace SketchFleets.Data
         
         [Header("References")]
         [Tooltip("The prefab spawned by the ship by an attack.")]
-        [SerializeField]
+        [SerializeField, RequiredField()]
         protected BulletAttributes fire;
 
         [Header("Special Effects")]
