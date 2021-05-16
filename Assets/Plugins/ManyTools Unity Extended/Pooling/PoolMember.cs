@@ -37,10 +37,9 @@ namespace ManyTools.UnityExtended.Poolable
         /// Submerges the Poolable object into the pool with a delay.
         /// </summary>
         /// <param name="delay">The delay in milliseconds to wait before submerging the object</param>
-        public async void Submerge(float delay)
+        public void SubmergeDelayed(float delay)
         {
-            await Task.Delay(Mathf.RoundToInt(Mathf.Max(delay, 0)) * 1000);
-            Submerge();
+            Invoke(nameof(Submerge), delay);
         }
 
         /// <summary>

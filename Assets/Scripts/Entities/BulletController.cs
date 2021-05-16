@@ -30,6 +30,8 @@ public class BulletController : PoolMember
 
     private void Start()
     {
+        SubmergeDelayed(8f);
+        
         if (soundSource.clip != null)
         {
             soundSource.Play();
