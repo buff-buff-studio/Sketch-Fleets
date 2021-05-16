@@ -1,26 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2970886270262360389
+--- !u!114 &-4395882774655669908
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52908406865915231}
+  m_GameObject: {fileID: 7775095967815198682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a02a1787bcea4ec4fab85b1b223eeb80, type: 3}
+  m_Script: {fileID: 11500000, guid: a8593c0d2f4f48e7b8e9be1d93306f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attributes: {fileID: 0}
   bulletSpawnPoints: []
   deathEvent: {fileID: 0}
-  soundSource: {fileID: 7817413295041160144}
-  shipSpawnPoint: {fileID: 0}
-  spawnMetaDatas:
-    _keyValueList: []
-    _keyCollision: 0
---- !u!1001 &411118004048914757
+  soundSource: {fileID: 513481301617387861}
+--- !u!114 &4810691136368083704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7775095967815198682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f80fdee4289439fb9c09d694daf1786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: []
+--- !u!1001 &7992150844352488384
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -29,12 +38,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 364618190254605338, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_Name
-      value: Mothership
+      value: Spawnable Ship
       objectReference: {fileID: 0}
-    - target: {fileID: 542453475185958705, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3c8ad9cd20ed0bf4ba9dee998544958f, type: 3}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -79,27 +84,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7622784771109833365, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7c335d76eba38b84b9d9282015385655, type: 3}
-    - target: {fileID: 7622784771109833365, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7622784771109833365, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -8391862255508861888, guid: e2b3be49bdb0e3f43a31c615f5c6da2e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
---- !u!1 &52908406865915231 stripped
+--- !u!1 &7775095967815198682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 364618190254605338, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
-  m_PrefabInstance: {fileID: 411118004048914757}
+  m_PrefabInstance: {fileID: 7992150844352488384}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &7817413295041160144 stripped
+--- !u!82 &513481301617387861 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7622784771109833365, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
-  m_PrefabInstance: {fileID: 411118004048914757}
+  m_PrefabInstance: {fileID: 7992150844352488384}
   m_PrefabAsset: {fileID: 0}
