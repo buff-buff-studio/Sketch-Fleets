@@ -20,7 +20,11 @@ MonoBehaviour:
   prefab: {fileID: 8092150800717221310, guid: 283a6122975a1f940aa4d660190c9c45, type: 3}
   directDamage:
     _useConstant: 1
-    _constant: 2
+    _constant: 3
+    _variable: {fileID: 0}
+  maxDamageVariation:
+    _useConstant: 1
+    _constant: 1
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
@@ -34,5 +38,18 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 1
     _variable: {fileID: 0}
+  ignorePlayer:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
+  angleJitter:
+    _useConstant: 1
+    _constant: 5
+    _variable: {fileID: 0}
+  cooldown:
+    _useConstant: 1
+    _constant: 0.4
+    _variable: {fileID: 0}
+  fireSound: {fileID: 8300000, guid: 7c335d76eba38b84b9d9282015385655, type: 3}
   fireEffect: {fileID: 0}
   hitEffect: {fileID: 0}

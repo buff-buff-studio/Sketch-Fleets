@@ -9,47 +9,58 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
-  m_Name: Mothership Bullet
+  m_Script: {fileID: 11500000, guid: 1c96b4768b890804dbb36f984a04b908, type: 3}
+  m_Name: Orange Ship
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Mothership Bullet
+    _constant: Orange Ship
     _variable: {fileID: 0}
-  description: A bullet fired by the mothership
-  prefab: {fileID: 5344832097319730938, guid: 40422bd9cc879ba4799a22387f0956e9, type: 3}
-  directDamage:
+  description: 'Enemy orange ship
+
+'
+  prefab: {fileID: 5494245065721851808, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
+  maxHealth:
+    _useConstant: 1
+    _constant: 25
+    _variable: {fileID: 0}
+  maxShield:
     _useConstant: 1
     _constant: 15
     _variable: {fileID: 0}
-  maxDamageVariation:
+  shieldRegen:
     _useConstant: 1
-    _constant: 3
+    _constant: 15
+    _variable: {fileID: 0}
+  shieldRegenDelay:
+    _useConstant: 1
+    _constant: 5
+    _variable: {fileID: 0}
+  damageMultiplier:
+    _useConstant: 1
+    _constant: 1
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
     _constant: 25
     _variable: {fileID: 0}
-  impactRadius:
-    _useConstant: 1
-    _constant: 0
-    _variable: {fileID: 0}
-  indirectDamage:
-    _useConstant: 1
-    _constant: 2
-    _variable: {fileID: 0}
-  ignorePlayer:
+  defense:
     _useConstant: 1
     _constant: 1
     _variable: {fileID: 0}
-  angleJitter:
+  collisionDamage:
     _useConstant: 1
-    _constant: 8
+    _constant: 150
     _variable: {fileID: 0}
-  cooldown:
+  invincibilityTime:
     _useConstant: 1
-    _constant: 0.8
+    _constant: 0.1
     _variable: {fileID: 0}
-  fireSound: {fileID: 8300000, guid: 7c335d76eba38b84b9d9282015385655, type: 3}
-  fireEffect: {fileID: 0}
-  hitEffect: {fileID: 0}
+  dropMinMaxCount:
+    _useConstant: 1
+    _constant: {x: 1, y: 7}
+    _variable: {fileID: 0}
+  shellDrop: {fileID: 0}
+  fire: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathEffect: {fileID: 0}

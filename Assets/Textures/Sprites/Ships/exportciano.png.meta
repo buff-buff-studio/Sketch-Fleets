@@ -1,7 +1,40 @@
 fileFormatVersion: 2
 guid: 9f17d3250ffe850439c7846dabb9db03
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6924732940159964785
+    second: exportciano_0
+  - first:
+      213: -2424253227822370327
+    second: exportciano_1
+  - first:
+      213: -5709000669017746243
+    second: exportciano_2
+  - first:
+      213: -6784612023232198922
+    second: exportciano_3
+  - first:
+      213: 8214680970373529493
+    second: exportciano_4
+  - first:
+      213: -5741747138603691692
+    second: exportciano_5
+  - first:
+      213: -5343229834410010178
+    second: exportciano_6
+  - first:
+      213: -5311145034759127146
+    second: exportciano_7
+  - first:
+      213: 8358341846028098135
+    second: exportciano_8
+  - first:
+      213: 2321243543843432407
+    second: exportciano_9
+  - first:
+      213: -7853020199761576572
+    second: exportciano_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -137,11 +170,200 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: exportciano_0
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 1715
+        width: 698
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1765ea69be7991060800000000000000
+      internalID: 6924732940159964785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exportciano_1
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 1719
+        width: 684
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e1bd0698825b5ed0800000000000000
+      internalID: -2424253227822370327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exportciano_2
+      rect:
+        serializedVersion: 2
+        x: 2831
+        y: 1715
+        width: 683
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4dabc932e85c0b0800000000000000
+      internalID: -5709000669017746243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exportciano_3
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 594
+        width: 731
+        height: 995
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f68660bf4738d1a0800000000000000
+      internalID: -6784612023232198922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exportciano_4
+      rect:
+        serializedVersion: 2
+        x: 1655
+        y: 598
+        width: 725
+        height: 997
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f764eb1d8600270800000000000000
+      internalID: 8214680970373529493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exportciano_6
+      rect:
+        serializedVersion: 2
+        x: 2785
+        y: 588
+        width: 735
+        height: 1009
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9d8b676c809d5b0800000000000000
+      internalID: -5343229834410010178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exportciano_7
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 128
+        width: 425
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f3a940bb50b46b0800000000000000
+      internalID: -5311145034759127146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exportciano_8
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 130
+        width: 405
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75a99c3ef9bcef370800000000000000
+      internalID: 8358341846028098135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exportciano_9
+      rect:
+        serializedVersion: 2
+        x: 2952
+        y: 133
+        width: 396
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d7e4f364b6b63020800000000000000
+      internalID: 2321243543843432407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e3169f367a0fa33428c4b0928b62eb4b
     internalID: 0
     vertices: []
     indices: 

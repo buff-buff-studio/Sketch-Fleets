@@ -9,26 +9,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b1e30d53dd4f37ab25a4a43916f3cc, type: 3}
-  m_Name: Mothership Attributes
+  m_Script: {fileID: 11500000, guid: ec5e6e27334549c581b069e98152ab93, type: 3}
+  m_Name: Magenta Summon
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Player
+    _constant: Magenta Ship
     _variable: {fileID: 0}
-  description: The Player Mothership
-  prefab: {fileID: 52908406865915231, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
+  description: 'The small, balanced summon which makes up for most of the player''s
+    damage.
+
+    Summoning this ship reduces the Mothership''s attacks damage.
+
+    What
+    they lack in health is compensated by a small size with high mobility and fire
+    rate.'
+  prefab: {fileID: 8493826624106887132, guid: 5afee2896b7967146bdc19b6d17da531, type: 3}
   maxHealth:
     _useConstant: 1
-    _constant: 1000
+    _constant: 25
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
-    _constant: 250
+    _constant: 40
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
-    _constant: 25
+    _constant: 4
     _variable: {fileID: 0}
   shieldRegenDelay:
     _useConstant: 1
@@ -40,11 +47,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 10
+    _constant: 1.3
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
-    _constant: 1
+    _constant: 1.1
     _variable: {fileID: 0}
   collisionDamage:
     _useConstant: 1
@@ -52,17 +59,29 @@ MonoBehaviour:
     _variable: {fileID: 0}
   invincibilityTime:
     _useConstant: 1
-    _constant: 0.4
+    _constant: 0.3
     _variable: {fileID: 0}
   dropMinMaxCount:
     _useConstant: 1
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
-  shellDrop: {fileID: 5344832097319730938, guid: 40422bd9cc879ba4799a22387f0956e9, type: 3}
-  fire: {fileID: 11400000, guid: b0967743feca18e449eb47263e1ec0d8, type: 2}
+  shellDrop: {fileID: 8092150800717221310, guid: 283a6122975a1f940aa4d660190c9c45, type: 3}
+  fire: {fileID: 11400000, guid: 2db28cda6305f704995b626c1a89da45, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 0}
-  regenerateCooldown:
+  graphiteCost:
     _useConstant: 1
     _constant: 20
+    _variable: {fileID: 0}
+  maximumShips:
+    _useConstant: 1
+    _constant: 10
+    _variable: {fileID: 0}
+  spawnCooldown:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
+  orbitRadius:
+    _useConstant: 1
+    _constant: 3
     _variable: {fileID: 0}
