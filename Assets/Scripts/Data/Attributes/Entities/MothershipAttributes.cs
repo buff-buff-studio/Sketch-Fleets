@@ -15,46 +15,15 @@ namespace SketchFleets.Data
         #region Private Fields
 
         [Header("Mothership Attributes")]
-        [Tooltip("How many of each ship can be spawned.")]
         [SerializeField]
-        private UnityDictionary<string, GameObject> shipByType;
-        [SerializeField]
-        [Tooltip("How many extra spawnable ships the mothership can have at a time.")]
-        private IntReference extraSpawnSlots = new IntReference(0);
-        [SerializeField]
-        [Tooltip("A multiplier for the cooldown generated when spawning a ship.")]
-        private FloatReference spawnCooldownMultiplier = new FloatReference(1);
-        [SerializeField]
-        [Tooltip("A multiplier for the cooldown generated when using an ability.")]
-        private FloatReference abilityCooldownMultiplier = new FloatReference(1);
-
-        [Header("Spawned Ship Bonuses")]
-        [SerializeField]
-        private List<StatusEffect> spawnStatusBonus = new List<StatusEffect>();
+        [Tooltip("How long is the regenerate ability cooldown")]
+        private FloatReference regenerateCooldown = new FloatReference(30f);
 
         #endregion
 
         #region Properties
 
-        public FloatReference AbilityCooldownMultiplier
-        {
-            get => abilityCooldownMultiplier;
-        }
-
-        public FloatReference SpawnCooldownMultiplier
-        {
-            get => spawnCooldownMultiplier;
-        }
-
-        public IntReference ExtraSpawnSlots
-        {
-            get => extraSpawnSlots;
-        }
-
-        public List<StatusEffect> SpawnStatusBonus
-        {
-            get => spawnStatusBonus;
-        }
+        public FloatReference RegenerateCooldown => regenerateCooldown;
 
         #endregion
 

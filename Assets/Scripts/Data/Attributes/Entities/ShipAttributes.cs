@@ -18,6 +18,12 @@ namespace SketchFleets.Data
         [Tooltip("The maximum amount of points the shield can have.")]
         [SerializeField]
         protected FloatReference maxShield;
+        [Tooltip("The amount of shield points regenerated per second.")]
+        [SerializeField]
+        protected FloatReference shieldRegen = new FloatReference(1f);
+        [Tooltip("The delay in seconds before regenerating the shield.")]
+        [SerializeField]
+        protected FloatReference shieldRegenDelay = new FloatReference(5f);
         [Tooltip("The multiplier for the attack's damage.")]
         [SerializeField]
         protected FloatReference damageMultiplier = new FloatReference(1);
@@ -26,47 +32,65 @@ namespace SketchFleets.Data
         [Tooltip("An inverse multiplier for how much damage the ship takes with an attack.")]
         [SerializeField]
         protected FloatReference defense = new FloatReference(0);
-        [Tooltip("The cooldown in seconds between attacks")]
+        [Tooltip("How much a ship will take when colliding with this ship.")]
         [SerializeField]
-        protected FloatReference fireCooldown = new FloatReference(1);
+        protected FloatReference collisionDamage = new FloatReference(100f);
+        [Tooltip("How long the ship should be invincible after taking invincibility-triggering damage.")]
+        [SerializeField]
+        protected FloatReference invincibilityTime = new FloatReference(1.3f);
 
+        [Header("Drops")]
+        [Tooltip("The minimum and maximum amount of shells dropped")]
+        [SerializeField]
+        protected Vector2Reference dropMinMaxCount = new Vector2Reference(new Vector2(0, 1));
+        [Tooltip("The prefab of the dropped shell")]
+        [SerializeField]
+        protected GameObject shellDrop;
+        
+        [Header("References")]
         [Tooltip("The prefab spawned by the ship by an attack.")]
         [SerializeField]
         protected BulletAttributes fire;
 
+        [Header("Special Effects")]
+        [Tooltip("The sound effect when the ship gets hit")]
+        [SerializeField]
+        private AudioClip hitSound;
+        [Tooltip("The effect spawned when the ship dies")]
+        [SerializeField]
+        private GameObject deathEffect;
+        
         #endregion
 
         #region Properties
 
-        public FloatReference MaxHealth
-        {
-            get => maxHealth;
-        }
+        public FloatReference MaxHealth => maxHealth;
 
-        public FloatReference MaxShield
-        {
-            get => maxShield;
-        }
+        public FloatReference MaxShield => maxShield;
 
-        public FloatReference DamageMultiplier
-        {
-            get => damageMultiplier;
-        }
+        public FloatReference DamageMultiplier => damageMultiplier;
 
-        public FloatReference Speed
-        {
-            get => speed;
-        }
+        public FloatReference Speed => speed;
 
-        public BulletAttributes Fire
-        {
-            get => fire;
-        }
+        public BulletAttributes Fire => fire;
 
-        public float FireCooldown
-        {
-            get => fireCooldown;
-        }
+        public FloatReference Defense => defense;
+
+        public AudioClip HitSound => hitSound;
+
+        public GameObject DeathEffect => deathEffect;
+
+        public Vector2Reference DropMinMaxCount => dropMinMaxCount;
+
+        public FloatReference ShieldRegen => shieldRegen;
+
+        public FloatReference ShieldRegenDelay => shieldRegenDelay;
+
+        public FloatReference CollisionDamage => collisionDamage;
+
+        public GameObject ShellDrop => shellDrop;
+
+        public FloatReference InvincibilityTime => invincibilityTime;
 
         #endregion
     }
