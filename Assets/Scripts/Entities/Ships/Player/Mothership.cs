@@ -18,8 +18,8 @@ namespace SketchFleets.Entities
         [SerializeField, RequiredField()]
         private Transform shipSpawnPoint;
         [SerializeField]
-        private UnityDictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
-            new UnityDictionary<SpawnableShipAttributes, SpawnMetaData>();
+        private Dictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
+            new Dictionary<SpawnableShipAttributes, SpawnMetaData>();
 
         private float extraSpawnSlots = 0f;
         private float abilityCooldownMultiplier = 1f;
