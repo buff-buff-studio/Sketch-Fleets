@@ -260,7 +260,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1655
-        y: 598
+        y: 599
         width: 725
         height: 997
       alignment: 0
@@ -360,10 +360,31 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: exportciano_10
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 48
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48d7e334cb7740390800000000000000
+      internalID: -7853020199761576572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e3169f367a0fa33428c4b0928b62eb4b
+    spriteID: 20ad9ba2b40d4d14da14a99c5db1fded
     internalID: 0
     vertices: []
     indices: 

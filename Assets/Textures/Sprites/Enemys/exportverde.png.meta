@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: 3928ffa6144e272438b98cdf92348c74
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3692890871655837793
+    second: exportverde_1
+  - first:
+      213: 1000505072905701147
+    second: exportverde_2
+  - first:
+      213: -5077530772686237342
+    second: exportverde_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -137,11 +146,74 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: exportverde_1
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 541
+        width: 996
+        height: 1023
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9fcba8615730ccc0800000000000000
+      internalID: -3692890871655837793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exportverde_2
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 547
+        width: 1000
+        height: 1010
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b17458a101282ed00800000000000000
+      internalID: 1000505072905701147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exportverde_3
+      rect:
+        serializedVersion: 2
+        x: 2594
+        y: 549
+        width: 996
+        height: 1008
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2611ce50aacf889b0800000000000000
+      internalID: -5077530772686237342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 42872e483544b744eb720796bc28863a
     internalID: 0
     vertices: []
     indices: 

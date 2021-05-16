@@ -160,7 +160,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Amarelo
+      name: Planetas_0
       rect:
         serializedVersion: 2
         x: 63
@@ -181,12 +181,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vermelho
+      name: Planetas_1
       rect:
         serializedVersion: 2
         x: 450
         y: 662
-        width: 243
+        width: 252
         height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -202,28 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Planetas_2
-      rect:
-        serializedVersion: 2
-        x: 690
-        y: 814
-        width: 11
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f42eb9006a8cd0340800000000000000
-      internalID: 4831738590538752591
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Verde (Bolinha de Gude)
+      name: Planetas_3
       rect:
         serializedVersion: 2
         x: 87
@@ -244,11 +223,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roxo
+      name: Planetas_4
       rect:
         serializedVersion: 2
         x: 422
-        y: 372
+        y: 373
         width: 288
         height: 284
       alignment: 0
@@ -265,7 +244,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Laranja
+      name: Planetas_5
       rect:
         serializedVersion: 2
         x: 94
@@ -286,11 +265,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BuracoNegro
+      name: Planetas_6
       rect:
         serializedVersion: 2
-        x: 377
-        y: 55
+        x: 404
+        y: 48
         width: 366
         height: 317
       alignment: 0
