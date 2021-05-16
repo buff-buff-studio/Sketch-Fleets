@@ -10,28 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec5e6e27334549c581b069e98152ab93, type: 3}
-  m_Name: MagentaSummon
+  m_Name: Cyan Summon
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Magenta Ship
+    _constant: Cyan Ship
     _variable: {fileID: 0}
-  description: 'The small, balanced summon which makes up for most of the player''s
-    damage.
-
-    Summoning this ship reduces the Mothership''s attacks damage.
-
-    What
-    they lack in health is compensated by a small size with high mobility and fire
-    rate.'
-  prefab: {fileID: 0}
+  description: "Cyan ship summoned by the player\t"
+  prefab: {fileID: 6527832755920852042, guid: 11e3d12220070db448013d4968149cff, type: 3}
   maxHealth:
     _useConstant: 1
-    _constant: 30
+    _constant: 5
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
-    _constant: 50
+    _constant: 95
+    _variable: {fileID: 0}
+  shieldRegen:
+    _useConstant: 1
+    _constant: 15
+    _variable: {fileID: 0}
+  shieldRegenDelay:
+    _useConstant: 1
+    _constant: 2.5
     _variable: {fileID: 0}
   damageMultiplier:
     _useConstant: 1
@@ -39,26 +40,41 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 1.3
+    _constant: 30
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
-    _constant: 1.1
+    _constant: 1.2
     _variable: {fileID: 0}
-  fireCooldown:
+  collisionDamage:
     _useConstant: 1
-    _constant: 0.4
+    _constant: 250
     _variable: {fileID: 0}
-  fire: {fileID: 11400000, guid: 2db28cda6305f704995b626c1a89da45, type: 2}
+  invincibilityTime:
+    _useConstant: 1
+    _constant: 0.3
+    _variable: {fileID: 0}
+  dropMinMaxCount:
+    _useConstant: 1
+    _constant: {x: 0, y: 0}
+    _variable: {fileID: 0}
+  shellDrop: {fileID: 0}
+  fire: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathEffect: {fileID: 0}
   graphiteCost:
     _useConstant: 1
-    _constant: 20
+    _constant: 50
     _variable: {fileID: 0}
   maximumShips:
     _useConstant: 1
-    _constant: 10
+    _constant: 2
     _variable: {fileID: 0}
   spawnCooldown:
     _useConstant: 1
-    _constant: 1
+    _constant: 5
+    _variable: {fileID: 0}
+  orbitRadius:
+    _useConstant: 1
+    _constant: 5
     _variable: {fileID: 0}

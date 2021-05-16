@@ -9,30 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b1e30d53dd4f37ab25a4a43916f3cc, type: 3}
-  m_Name: Mothership Attributes
+  m_Script: {fileID: 11500000, guid: ec5e6e27334549c581b069e98152ab93, type: 3}
+  m_Name: Yellow Summon
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Player
+    _constant: Yellow Ship
     _variable: {fileID: 0}
-  description: The Player Mothership
-  prefab: {fileID: 52908406865915231, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
+  description: Yellow ship summoned by the player
+  prefab: {fileID: 1040831720659525790, guid: cc26e74262a8e9d47b4088dc58b31202, type: 3}
   maxHealth:
     _useConstant: 1
-    _constant: 1000
+    _constant: 50
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
-    _constant: 250
+    _constant: 30
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
-    _constant: 25
+    _constant: 6
     _variable: {fileID: 0}
   shieldRegenDelay:
     _useConstant: 1
-    _constant: 5
+    _constant: 3
     _variable: {fileID: 0}
   damageMultiplier:
     _useConstant: 1
@@ -40,29 +40,41 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 10
+    _constant: 0
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
-    _constant: 1
+    _constant: 0.8
     _variable: {fileID: 0}
   collisionDamage:
     _useConstant: 1
-    _constant: 100
+    _constant: 50
     _variable: {fileID: 0}
   invincibilityTime:
     _useConstant: 1
-    _constant: 0.4
+    _constant: 0.3
     _variable: {fileID: 0}
   dropMinMaxCount:
     _useConstant: 1
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
-  shellDrop: {fileID: 5344832097319730938, guid: 40422bd9cc879ba4799a22387f0956e9, type: 3}
-  fire: {fileID: 11400000, guid: b0967743feca18e449eb47263e1ec0d8, type: 2}
+  shellDrop: {fileID: 0}
+  fire: {fileID: 0}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 0}
-  regenerateCooldown:
+  graphiteCost:
     _useConstant: 1
-    _constant: 20
+    _constant: 50
+    _variable: {fileID: 0}
+  maximumShips:
+    _useConstant: 1
+    _constant: 3
+    _variable: {fileID: 0}
+  spawnCooldown:
+    _useConstant: 1
+    _constant: 10
+    _variable: {fileID: 0}
+  orbitRadius:
+    _useConstant: 1
+    _constant: 0
     _variable: {fileID: 0}
