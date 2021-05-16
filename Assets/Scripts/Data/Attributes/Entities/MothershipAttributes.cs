@@ -15,17 +15,13 @@ namespace SketchFleets.Data
         #region Private Fields
 
         [Header("Mothership Attributes")]
-        [Tooltip("How many of each ship can be spawned.")]
         [SerializeField]
-        private List<SpawnableShipAttributes> spawnableShips;
         [Tooltip("How long is the regenerate ability cooldown")]
         private FloatReference regenerateCooldown = new FloatReference(30f);
 
         #endregion
 
         #region Properties
-
-        public List<SpawnableShipAttributes> SpawnableShips => spawnableShips;
 
         public FloatReference RegenerateCooldown => regenerateCooldown;
 

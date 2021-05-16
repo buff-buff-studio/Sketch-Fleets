@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using SketchFleets.Data;
-using ManyTools.Variables;
 using System.Collections.Generic;
+using ManyTools.UnityExtended;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 
@@ -17,9 +17,9 @@ namespace SketchFleets.Entities
 
         [SerializeField, RequiredField()]
         private Transform shipSpawnPoint;
-
-        private Dictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
-            new Dictionary<SpawnableShipAttributes, SpawnMetaData>();
+        [SerializeField]
+        private UnityDictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
+            new UnityDictionary<SpawnableShipAttributes, SpawnMetaData>();
 
         private float extraSpawnSlots = 0f;
         private float abilityCooldownMultiplier = 1f;
@@ -58,9 +58,6 @@ namespace SketchFleets.Entities
         {
             base.Start();
             
-            // Generates spawn meta data
-            GenerateSpawnMetaData();
-
             // Caches necessary components
             mainCamera = Camera.main;
         }
@@ -120,18 +117,27 @@ namespace SketchFleets.Entities
         /// <param name="shipType">The ship type to spawn</param>
         public void SummonShip(SpawnableShipAttributes shipType)
         {
+            // Generate metadata if necessary
+            if (!spawnMetaDatas.ContainsKey(shipType))
+            {
+                spawnMetaDatas.Add(shipType, new SpawnMetaData(shipType));
+            }
+            
             // If the new spawn would exceed the maximum amount, return
-            if (spawnMetaDatas[shipType].CurrentlyActive.Count + 1 > shipType.MaximumShips.Value + extraSpawnSlots)
+            if (spawnMetaDatas[shipType].CurrentlyActive.Count + 1 > shipType.MaximumShips.Value + extraSpawnSlots ||
+                spawnMetaDatas[shipType].SummonTimer.Value > 0)
             {
                 return;
             }
 
             // Spawns the ship
-            GameObject spawn = Instantiate(shipType.Prefab, shipSpawnPoint.position, Quaternion.identity);
-            Ship<SpawnableShipAttributes> shipController = GetComponent<Ship<SpawnableShipAttributes>>();
+            PoolMember spawn = PoolManager.Instance.Request(shipType.Prefab);
+            spawn.Emerge(shipSpawnPoint.position, Quaternion.identity);
+            
+            SpawnedShip shipController = spawn.GetComponent<SpawnedShip>();
 
             // Adds the cooldown
-            spawnMetaDatas[shipType].SummonTimer.Value += shipType.SpawnCooldown * spawnCooldownMultipler;
+            spawnMetaDatas[shipType].SummonTimer.Value = shipType.SpawnCooldown.Value * spawnCooldownMultipler;
             spawnMetaDatas[shipType].CurrentlyActive.Add(shipController);
         }
 
@@ -188,25 +194,6 @@ namespace SketchFleets.Entities
             {
                 metaData.Value.SummonTimer.Value -= Time.deltaTime;
             }
-        }
-
-        /// <summary>
-        /// Generates spawn metadata for all spawnable ships
-        /// </summary>
-        private void GenerateSpawnMetaData()
-        {
-            if (attributes.SpawnableShips.Count <= 0)
-            {
-                Debug.LogWarning($"There are no spawnable ships in the Mothership's attributes!");
-                return;
-            }
-            
-            for (int index = 0, upper = attributes.SpawnableShips.Count; index < upper; index++)
-            {
-                spawnMetaDatas.Add(attributes.SpawnableShips[index], new SpawnMetaData(attributes
-                    .SpawnableShips[index]));
-            }
-
         }
 
         /// <summary>

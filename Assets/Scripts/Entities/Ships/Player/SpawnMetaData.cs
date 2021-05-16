@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ManyTools.Variables;
 using SketchFleets.Data;
+using SketchFleets.Entities;
 using UnityEngine;
 
 namespace SketchFleets
@@ -9,12 +10,13 @@ namespace SketchFleets
     /// <summary>
     /// A class that contains data about spawned ships
     /// </summary>
+    [System.Serializable]
     public class SpawnMetaData
     {
         #region Private Fields
 
         private SpawnableShipAttributes shipType;
-        private List<Ship<SpawnableShipAttributes>> currentlyActive;
+        private List<SpawnedShip> currentlyActive = new List<SpawnedShip>();
         private FloatReference summonTimer = new FloatReference(0f);
 
         #endregion
@@ -33,7 +35,7 @@ namespace SketchFleets
             set => shipType = value;
         }
 
-        public List<Ship<SpawnableShipAttributes>> CurrentlyActive
+        public List<SpawnedShip> CurrentlyActive
         {
             get => currentlyActive;
             set => currentlyActive = value;
