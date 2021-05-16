@@ -87,7 +87,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4866454721465612024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,18 +121,11 @@ MonoBehaviour:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 0}
-  color75:
+  maxLife:
     _useConstant: 0
-    _constant: {r: 0, g: 0, b: 0, a: 0}
-    _variable: {fileID: 11400000, guid: 9d469d476abba9b4abd9f4fe717d6173, type: 2}
-  color50:
-    _useConstant: 0
-    _constant: {r: 0, g: 0, b: 0, a: 0}
-    _variable: {fileID: 11400000, guid: cfe31ce25b0c05948a75c63aea81eea4, type: 2}
-  color25:
-    _useConstant: 0
-    _constant: {r: 0, g: 0, b: 0, a: 0}
-    _variable: {fileID: 11400000, guid: e607ceb55ef27c345a1ac46eb1f76a20, type: 2}
+    _constant: 0
+    _variable: {fileID: 0}
+  deadMenu: {fileID: 0}
 --- !u!114 &4866454721465612020
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1251,7 +1251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409112511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4336739, y: 0, z: -10}
+  m_LocalPosition: {x: 2.7076912, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 905858676}
@@ -1460,7 +1460,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &469944784
@@ -1724,7 +1724,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &593306918
@@ -2485,11 +2485,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846595376}
   m_CullTransparentMesh: 1
---- !u!4 &872332040 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 765180759, guid: 491fd67079b75774d904772a74d01960, type: 3}
-  m_PrefabInstance: {fileID: 2142328352653963515}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &878992433
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,7 +2535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef131694148ca05428b5e2913a99e1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frames: 0
+  refreshInterval: 0.1
 --- !u!114 &878992436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2704,7 +2699,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &884054380
@@ -3392,7 +3387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207070478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4336739, y: 0, z: -10}
+  m_LocalPosition: {x: 2.7076912, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1399291222}
@@ -3437,11 +3432,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!4 &1304311906 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 615181031, guid: 491fd67079b75774d904772a74d01960, type: 3}
-  m_PrefabInstance: {fileID: 2142328352653963515}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1307007288
 GameObject:
   m_ObjectHideFlags: 0
@@ -3920,7 +3910,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1399291221
@@ -5342,7 +5332,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2142328352653963517}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateShips, Assembly-CSharp
         m_MethodName: GenerateShip
         m_Mode: 2
@@ -5485,7 +5475,7 @@ PrefabInstance:
     - target: {fileID: -5291089096505027240, guid: 491fd67079b75774d904772a74d01960, type: 3}
       propertyPath: CyanSpawn
       value: 
-      objectReference: {fileID: 1304311906}
+      objectReference: {fileID: 0}
     - target: {fileID: -5291089096505027240, guid: 491fd67079b75774d904772a74d01960, type: 3}
       propertyPath: CyanTimer
       value: 
@@ -5517,7 +5507,7 @@ PrefabInstance:
     - target: {fileID: -5291089096505027240, guid: 491fd67079b75774d904772a74d01960, type: 3}
       propertyPath: MagentaSpawn
       value: 
-      objectReference: {fileID: 872332040}
+      objectReference: {fileID: 0}
     - target: {fileID: -5291089096505027240, guid: 491fd67079b75774d904772a74d01960, type: 3}
       propertyPath: MagentaTimer
       value: 
@@ -5669,7 +5659,7 @@ PrefabInstance:
     - target: {fileID: 8070300057047688764, guid: 491fd67079b75774d904772a74d01960, type: 3}
       propertyPath: cyanShipsSpawnPoint
       value: 
-      objectReference: {fileID: 1304311906}
+      objectReference: {fileID: 0}
     - target: {fileID: 8070300057047688764, guid: 491fd67079b75774d904772a74d01960, type: 3}
       propertyPath: timeReload._variable
       value: 
@@ -5736,17 +5726,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 491fd67079b75774d904772a74d01960, type: 3}
---- !u!114 &2142328352653963517 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -5291089096505027240, guid: 491fd67079b75774d904772a74d01960, type: 3}
-  m_PrefabInstance: {fileID: 2142328352653963515}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053028060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b81869b522dd244c8ecc44cc9664b23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2142328352653963518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8250165666681833338, guid: 491fd67079b75774d904772a74d01960, type: 3}

@@ -146,11 +146,16 @@ public class Constelation
         /// Create new star from GameObject
         /// </summary>
         /// <param name="Object"></param>
-        public Star(GameObject Object,int difficulty)
+        public Star(GameObject Object,int difficulty,float size)
         {
             this.Object = Object;
             this.difficulty = difficulty;
             SetEnabled(false);
+
+            Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * size;
+
+            //Change icon
+            Object.GetComponent<Image>().sprite = MapLevelInteraction.map.planetIcons[difficulty];
         }
         
         /// <summary>
@@ -181,7 +186,7 @@ public class Constelation
                 case StarMode.DEFAULT:
                     Object.GetComponent<Image>().color = Color.white;
                     break;
-            }
+            }         
         }
         #endregion
     }

@@ -41,6 +41,11 @@ public class ConstelationMap : MonoBehaviour
     public IntReference currentLevel;
     public IntReference currentLevelDifficulty;
     public IntReference currentSeed;
+    //Icons
+    public Sprite[] planetIcons;
+    //Parallax
+    [Range(0f,1000f)]
+    public float parallaxSpeed = 5f;
     #endregion
 
     #region Properties
@@ -169,11 +174,15 @@ public class ConstelationMap : MonoBehaviour
                         difficulty = Random.Range(Mathf.Max(1,i/3),Mathf.Max(2,Mathf.Min(5,i + 1))); //Random difficulty
                 }
 
+                //Temp fix kkkk
+                if(difficulty < 1)
+                    difficulty = 1;
+
                 //o.transform.GetChild(0).GetComponent<Text>().text = constelation.Count + "";
                 o.transform.GetChild(0).GetComponent<Text>().text = difficulty + "";
 
                 //Add star
-                Constelation.Star s = new Constelation.Star(o,difficulty);
+                Constelation.Star s = new Constelation.Star(o,difficulty,Random.Range(0.99f,1.5f));
                 currentLineStars.Add(s);
                 constelation.AddStar(s);
 
@@ -292,6 +301,9 @@ public class ConstelationMap : MonoBehaviour
     /// </summary>
     private void Update() 
     {
+        //Camera PARALLAX
+        Camera.main.transform.position += new Vector3(parallaxSpeed,0,0) * Time.deltaTime;
+
         //Update minimum zoom possible
         RectTransform scrollRect = this.scrollRect.GetComponent<RectTransform>();     
         float zoom = scrollRect.rect.width/mapWidth;
