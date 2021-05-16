@@ -82,6 +82,30 @@ namespace SketchFleets.LanguageSystem
         }
 
         /// <summary>
+        /// Enumerate all language names
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<string> ListLanguages()
+        {
+            foreach(Language language in languages.Values)
+                yield return language.Localize("name");
+        }
+
+        /// <summary>
+        /// Get language id by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string GetLanguageIdByName(string name)
+        {
+            foreach(KeyValuePair<string,Language> pair in languages)
+                if(pair.Value.Localize("name") == name)
+                    return pair.Key;
+            
+            return null;
+        }
+
+        /// <summary>
         /// Localize a string without arguments
         /// </summary>
         /// <param name="key"></param>

@@ -63,7 +63,7 @@ public class ShipGenerator : MonoBehaviour
     public float CyanReloadTime;
     public float YellowReloadTime;
 
-    public lifeBar lb;
+    public LifeBar lb;
 
     public Sprite regenSprite;
     public Sprite regenSpriteLoad;

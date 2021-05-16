@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using ManyTools.Variables;
 
 /// <summary>
 /// Main map class (Display Constelation | MapLevelInteraction.state)
@@ -35,9 +36,11 @@ public class ConstelationMap : MonoBehaviour
     public AnimationCurve focusCurveScale;
     public AnimationCurve focusCurveScaleProgress;
     //Testing
-    public GameObject testingLevel;
-
     public static System.Action onMapLoad;
+    //Reference
+    public IntReference currentLevel;
+    public IntReference currentLevelDifficulty;
+    public IntReference currentSeed;
     #endregion
 
     #region Properties

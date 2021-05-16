@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class ConstelationState
 {   
     #region Private Fields
-    private Constelation constelation;
+    public Constelation constelation;
     #endregion
 
     #region Public Fields

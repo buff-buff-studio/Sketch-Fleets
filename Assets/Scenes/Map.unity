@@ -1824,7 +1824,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  testingLevel: {fileID: 1667878945}
+  currentLevel:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: 5002257a4142e7c4d914e0f856d775ed, type: 2}
+  currentLevelDifficulty:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: c82b241d606fc9d4c9021a5fb45a6e90, type: 2}
+  currentSeed:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: b37686c9c4f4cbc40a57bb305a036dca, type: 2}
 --- !u!1 &1611014602
 GameObject:
   m_ObjectHideFlags: 0

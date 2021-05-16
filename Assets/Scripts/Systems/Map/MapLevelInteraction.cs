@@ -1,9 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
 
 /// <summary>
-/// Holds interation between map and level
+/// Holds interaction between map and level
 /// </summary>
 public class MapLevelInteraction : MonoBehaviour
 {
@@ -31,8 +31,13 @@ public class MapLevelInteraction : MonoBehaviour
         map.CloseAnimation(() => {
             state.SetCurrentStar(clickedStar);
             
+            //Set variables 
+            map.currentSeed.Value = state.seed;
+            map.currentLevel.Value = clickedStar;
+            map.currentLevelDifficulty.Value = state.constelation.GetStar(clickedStar).Difficulty;
+        
             //Open level
-            LoadScene("Scenes/Game",() => {});
+            LoadScene("Scenes/Loading",() => {});
         });
     }
     
@@ -129,7 +134,6 @@ public class MapLevelInteraction : MonoBehaviour
             {
                 SketchFleets.ProfileSystem.Profile.GetSave().Remove("mapState");
                 SaveMapState(source,callback);
-
             }     
         });  
     }
@@ -146,7 +150,6 @@ public class MapLevelInteraction : MonoBehaviour
             Debug.Log("Map saved!");
             callback();
         });
-        
     }
     
     /// <summary>
