@@ -28,7 +28,7 @@ namespace SketchFleets
 
         protected float fireTimer;
         protected float shieldRegenTimer;
-        public float collisionTimer;
+        protected float collisionTimer;
 
         #endregion
 
