@@ -33,8 +33,8 @@ public class MapLevelInteraction : MonoBehaviour
             
             //Set variables 
             map.currentSeed.Value = state.seed;
-            map.currentLevel.Value = clickedStar;
-            map.currentLevelDifficulty.Value = state.constelation.GetStar(clickedStar).Difficulty;
+            map.currentMap.Map.Value = clickedStar;
+            map.currentMap.Difficulty.Value = state.constelation.GetStar(clickedStar).Difficulty;
         
             //Open level
             LoadScene("Scenes/Loading",() => {});

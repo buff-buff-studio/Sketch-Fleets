@@ -53,7 +53,7 @@ namespace SketchFleets
                 ParametricOrbit();
                 AI.Ship.Look(AI.MainCamera.ScreenToWorldPoint(Input.mousePosition));
 
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.GetKey(KeyCode.Mouse1))
                 {
                     explode = true;
                 }

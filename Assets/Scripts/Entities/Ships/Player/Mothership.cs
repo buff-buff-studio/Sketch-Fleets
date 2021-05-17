@@ -34,6 +34,9 @@ namespace SketchFleets.Entities
 
         private Camera mainCamera;
 
+        [SerializeField]
+        private GameObject circleShips;
+
         #endregion
 
         #region Properties
@@ -80,6 +83,7 @@ namespace SketchFleets.Entities
             {
                 Fire();
             }
+
         }
 
         #endregion
@@ -128,6 +132,9 @@ namespace SketchFleets.Entities
             {
                 return;
             }
+            
+            Damage(shipType.GraphiteCost + 
+                   shipType.GraphiteCostIncrease * spawnMetaDatas[shipType].CurrentlyActive.Count);
 
             // Spawns the ship
             PoolMember spawn = PoolManager.Instance.Request(shipType.Prefab);
@@ -191,7 +198,7 @@ namespace SketchFleets.Entities
 
             foreach (var metaData in spawnMetaDatas)
             {
-                metaData.Value.SummonTimer.Value -= Time.deltaTime;
+                metaData.Value.SummonTimer.Value -= Time.deltaTime * Time.timeScale;
             }
         }
 

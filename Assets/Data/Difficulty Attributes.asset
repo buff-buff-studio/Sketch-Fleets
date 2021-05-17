@@ -40,10 +40,10 @@ MonoBehaviour:
     _constant: 3
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 2
+    _constant: 1
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 1
+    _constant: 2
     _variable: {fileID: 0}
   mapSize:
   - _useConstant: 1
@@ -59,10 +59,10 @@ MonoBehaviour:
     _constant: {x: 800, y: 1200}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 200, y: 300}
+    _constant: {x: 400, y: 800}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 400, y: 800}
+    _constant: {x: 200, y: 300}
     _variable: {fileID: 0}
   mapHeight:
     _useConstant: 1
@@ -77,8 +77,8 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.64705884, b: 0, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0.5019608, g: 0, b: 1, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.5019608, g: 0, b: 1, a: 1}
   purpleShip: {fileID: 6812927983558368271, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
   orangeShip: {fileID: 5494245065721851808, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
   limeShip: {fileID: 1419266270299820781, guid: 65faab35e8e0d4844a45146097df8021, type: 3}

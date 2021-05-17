@@ -131,7 +131,7 @@ namespace ManyTools.UnityExtended.Poolable
         /// <param name="destroy">Whether to destroy pool objects before removal</param>
         public void Wipe(bool destroy)
         {
-            for (int index = 0, upper = Poolables.Count; index < upper; index++)
+            for (int index = Poolables.Count - 1; index >= 0; index--)
             {
                 DePool(index, destroy);
             }

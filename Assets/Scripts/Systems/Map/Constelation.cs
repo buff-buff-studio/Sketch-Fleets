@@ -176,15 +176,15 @@ public class Constelation
             switch (mode)
             {
                 case StarMode.PASSED_THROUGH_SELECTED:
-                    Object.GetComponent<Image>().color = Color.green;
+                    Object.transform.GetChild(2).gameObject.SetActive(true);
                     break;
 
                 case StarMode.PASSED_THROUGH_NOT_SELECTED:
-                    Object.GetComponent<Image>().color = Color.red;
+                    Object.transform.GetChild(1).gameObject.SetActive(true);
                     break;
 
                 case StarMode.DEFAULT:
-                    Object.GetComponent<Image>().color = Color.white;
+                    Object.transform.GetChild(2).gameObject.SetActive(true);
                     break;
             }         
         }

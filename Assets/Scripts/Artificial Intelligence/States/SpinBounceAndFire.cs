@@ -32,7 +32,7 @@ namespace SketchFleets
         {
             AI = StateMachine as EnemyShipAI;
             cachedTransform = transform;
-            moveDirection = cachedTransform.up;
+            moveDirection = cachedTransform.right;
 
             if (AI == null)
             {

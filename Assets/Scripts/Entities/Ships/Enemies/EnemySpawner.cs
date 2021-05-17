@@ -36,15 +36,9 @@ public class EnemySpawner : MonoBehaviour
             LimeSpawner(Random.Range(10* multiply, 15* multiply));
             OrangeSpawner(Random.Range(10* multiply, 20* multiply));
             PurpleSpawner(Random.Range(10* multiply, 25* multiply));
-            if (difficulty == 4)
-            {
-                BossSpawner(attributes.Map);
-            }
-            else
-            {
-                GameObject end = (GameObject)Instantiate(mapEnd, new Vector2(attributes.MapSize[difficulty].Value.y + 10, 0), new Quaternion(0, 0, 0, 0));
-                end.GetComponent<mapEndScript>().WinMenu = winMenu;
-            }
+
+            GameObject end = (GameObject)Instantiate(mapEnd, new Vector2(attributes.MapSize[difficulty].Value.y + 10, 0), new Quaternion(0, 0, 0, 0));
+            end.GetComponent<mapEndScript>().WinMenu = winMenu;
         }
 
     }
