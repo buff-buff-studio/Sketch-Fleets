@@ -884,11 +884,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mothership: {fileID: 939894644}
+  WinPrefab: {fileID: 2125493703167327659, guid: 7829e87af9a3614448f6537c278163b1, type: 3}
+  WinMenu: {fileID: 251093234}
   MapDifficulty: {fileID: 11400000, guid: dc2bc714a40a7734baff81f9ef937a4d, type: 2}
   PurpleShip: {fileID: 11400000, guid: a358d82563d284d4abc42402d32804a8, type: 2}
   OrangeShip: {fileID: 11400000, guid: 21452b9dcb8e98f49be00981ad056dd2, type: 2}
   LimeShip: {fileID: 11400000, guid: 64b2549bbab845246bddf8910d98b9c8, type: 2}
-  WaveXSummon: 30
+  WaveXSummon: 20
 --- !u!1 &194847897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,7 +1609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409112511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15398216, y: 0, z: -10}
+  m_LocalPosition: {x: -0.14826584, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 905858676}
@@ -4506,7 +4508,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207070478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15398216, y: 0, z: -10}
+  m_LocalPosition: {x: -0.14826584, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1399291222}

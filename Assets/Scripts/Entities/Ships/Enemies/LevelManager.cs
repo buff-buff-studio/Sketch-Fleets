@@ -10,6 +10,9 @@ namespace SketchFleets
     {
         public GameObject Mothership;
 
+        public GameObject WinPrefab;
+        public GameObject WinMenu;
+
         public DifficultyAttributes MapDifficulty;
 
         public ShipAttributes PurpleShip;
@@ -31,9 +34,12 @@ namespace SketchFleets
             int multiply = MapDifficulty.MapDifficulty[MapDifficulty.Difficulty];
             PurpleShipsMax = Random.Range(2 * multiply, 5 * multiply);
             OrangeShipsMax = Random.Range(1 * multiply, 4 * multiply);
-            LimeShipsMax = Random.Range(0 * multiply, 1 * multiply);
+            LimeShipsMax = Random.Range(0 * multiply, 2 * multiply);
 
             SpawnArea = new Vector2(MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.x, MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.y);
+
+            GameObject end = (GameObject)Instantiate(WinPrefab, new Vector2(MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.y + 10, 0), new Quaternion(0, 0, 0, 0));
+            end.GetComponent<mapEndScript>().WinMenu = WinMenu;
         }
 
         void Update()
