@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2648127766380339310}
   - component: {fileID: 7023053118341403682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: exportciano_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4557327472231635602}
   - component: {fileID: 1795850741879816971}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: exportciano_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,6 +223,10 @@ PrefabInstance:
       propertyPath: attributes
       value: 
       objectReference: {fileID: 11400000, guid: 8bb9c71799f1ee4428d5adb48e69f124, type: 2}
+    - target: {fileID: 4202989485892480711, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4249084107644192771, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -306,6 +310,14 @@ PrefabInstance:
     - target: {fileID: 7775095967815198682, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Name
       value: Cyan Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775095967815198682, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775095967815198682, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7018345160470710131, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
