@@ -1,5 +1,3 @@
-using ICSharpCode.NRefactory.Ast;
-using ManyTools.UnityExtended.Editor;
 using UnityEngine;
 
 namespace ManyTools.UnityExtended
