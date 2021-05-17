@@ -79,9 +79,9 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0.5019608, g: 0, b: 1, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}
-  purpleShip: {fileID: 2638445650067007231, guid: b27c6bb4f7faac9418aa3da76f97488a, type: 3}
-  orangeShip: {fileID: 7996428385210707340, guid: d7c4549e60e152045866e46aaeb16245, type: 3}
-  limeShip: {fileID: 4318435963444011106, guid: a3895c629a9de5b4fa06e44abfbd05e8, type: 3}
+  purpleShip: {fileID: 6812927983558368271, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
+  orangeShip: {fileID: 5494245065721851808, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
+  limeShip: {fileID: 1419266270299820781, guid: 65faab35e8e0d4844a45146097df8021, type: 3}
   eraserObstacle: {fileID: 4159015333600835758, guid: edb87b5c54d34db439ba042f96ec05d1, type: 3}
   graphiteObstacle: {fileID: 6210501725595672031, guid: c42a7bfbd045cc842831c9739797bc43, type: 3}
   meteorObstacle: {fileID: 7746383094681754889, guid: c156dc1d4cda3d749899b3886a272123, type: 3}
