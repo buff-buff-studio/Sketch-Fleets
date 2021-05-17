@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using ManyTools.Variables;
+using SketchFleets.Data;
 
 /// <summary>
 /// Main map class (Display Constelation | MapLevelInteraction.state)
@@ -38,6 +39,7 @@ public class ConstelationMap : MonoBehaviour
     //Testing
     public static System.Action onMapLoad;
     //Reference
+    public DifficultyAttributes currentMap;
     public IntReference currentLevel;
     public IntReference currentLevelDifficulty;
     public IntReference currentSeed;

@@ -176,7 +176,7 @@ public class Constelation
             switch (mode)
             {
                 case StarMode.PASSED_THROUGH_SELECTED:
-                    Object.GetComponent<Image>().color = Color.green;
+                    //Object.GetComponent<Image>().color = Color.green;
                     break;
 
                 case StarMode.PASSED_THROUGH_NOT_SELECTED:

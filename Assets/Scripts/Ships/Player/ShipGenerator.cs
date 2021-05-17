@@ -56,8 +56,6 @@ public class ShipGenerator : MonoBehaviour
 
     public Image RegenIcon;
 
-    public LifeBar lb;
-
     #endregion
 
     #region Unity Callbacks
