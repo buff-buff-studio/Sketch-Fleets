@@ -5,15 +5,17 @@ using UnityEngine.UI;
 using ManyTools.Variables;
 using TMPro;
 using SketchFleets.Data;
+using SketchFleets.Entities;
+using ManyTools.UnityExtended.Poolable;
 
 public class ShipGenerator : MonoBehaviour
 {
     #region Private Fields
     [SerializeField]
-    private List<GameObject> shipsGameObjects;
+    private MothershipAttributes mothershipAttributes;
 
     [SerializeField]
-    private MothershipAttributes mothership;
+    private Mothership mothership;
 
     [SerializeField]
     private SpawnableShipAttributes magentaShip;
@@ -25,8 +27,6 @@ public class ShipGenerator : MonoBehaviour
     private int magentaShips;
     private int cyanShips;
 
-    [SerializeField]
-    private FloatReference life;
     private float lifeRegen;
 
     private bool magentaLoading = true;
@@ -72,7 +72,7 @@ public class ShipGenerator : MonoBehaviour
             CircleShip.SetActive(true);
             Time.timeScale = .5f;
         }
-        else if(life > 0)
+        else if(mothership.CurrentHealth > 0)
         {
             CircleShip.SetActive(false);
             Time.timeScale = 1;
@@ -94,10 +94,8 @@ public class ShipGenerator : MonoBehaviour
             {
                 magentaShips++;
 
-                life.Value -= magentaShip.GraphiteCost;
+                mothership.CurrentHealth.Value -= magentaShip.GraphiteCost;
                 lifeRegen += magentaShip.GraphiteCost;
-
-                magentaShip.GraphiteCost.Value += 4;
 
                 magentaLoading = true;
 
@@ -110,7 +108,7 @@ public class ShipGenerator : MonoBehaviour
             {
                 cyanShips++;
 
-                life.Value -= cyanShip.GraphiteCost;
+                mothership.CurrentHealth.Value -= cyanShip.GraphiteCost;
 
                 lifeRegen += cyanShip.GraphiteCost;
 
@@ -121,11 +119,9 @@ public class ShipGenerator : MonoBehaviour
         }
         else
         {
-            life.Value -= yellowShip.GraphiteCost;
+            mothership.CurrentHealth.Value -= yellowShip.GraphiteCost;
 
             lifeRegen += yellowShip.GraphiteCost;
-
-            yellowShip.GraphiteCost.Value += 5;
 
             yellowLoading = true;
 
@@ -246,19 +242,18 @@ public class ShipGenerator : MonoBehaviour
     {
         if (Input.GetAxis("Regen") == 1 && regenLoad)
         {
-            for (int i = 0; i < shipsGameObjects.Count; i++)
-            {
-                Destroy(shipsGameObjects[i]);
-            }
-            life.Value += lifeRegen;
+            mothership.CurrentHealth.Value += lifeRegen;
 
             lifeRegen = 0;
             cyanShips = 0;
             magentaShips = 0;
+
+            PoolManager.Instance.DestroyPool(magentaShip.Prefab);
+            PoolManager.Instance.DestroyPool(cyanShip.Prefab);
+            PoolManager.Instance.DestroyPool(yellowShip.Prefab);
+
             magentaShip.GraphiteCost.Value = magentaShip.GraphiteCost;
             yellowShip.GraphiteCost.Value = yellowShip.GraphiteCost;
-
-            shipsGameObjects.Clear();
             regenLoad = false;
         }
     }
@@ -274,9 +269,11 @@ public class ShipGenerator : MonoBehaviour
             else if (regenTimer < 30)
             {
                 regenTimer += 1 * Time.deltaTime;
+                RegenIcon.gameObject.SetActive(false);
             }
             else
             {
+                RegenIcon.gameObject.SetActive(true);
                 regenTimer = 30;
                 regenLoad = true;
             }

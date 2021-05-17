@@ -2150,8 +2150,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593306916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.2744, y: 16.8668, z: 10}
-  m_LocalScale: {x: 12.050213, y: 0.6353662, z: 1}
+  m_LocalPosition: {x: 175.69998, y: 16.8668, z: 10}
+  m_LocalScale: {x: 85.405876, y: 0.6353662, z: 1}
   m_Children: []
   m_Father: {fileID: 1207070481}
   m_RootOrder: 2
@@ -3525,8 +3525,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884054378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.2744, y: -16.81, z: 10}
-  m_LocalScale: {x: 12.050213, y: 0.6353662, z: 1}
+  m_LocalPosition: {x: 175.7, y: -16.81, z: 10}
+  m_LocalScale: {x: 85.405876, y: 0.6353662, z: 1}
   m_Children: []
   m_Father: {fileID: 1207070481}
   m_RootOrder: 3
@@ -4034,14 +4034,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipsGameObjects: []
-  mothership: {fileID: 11400000, guid: dab52214d9edfd14a9cd1dfb36bb9e38, type: 2}
+  mothershipAttributes: {fileID: 11400000, guid: dab52214d9edfd14a9cd1dfb36bb9e38, type: 2}
+  mothership: {fileID: 939894646}
   magentaShip: {fileID: 11400000, guid: 36ebd0995b0eb694289df5d07a1bbcd0, type: 2}
   cyanShip: {fileID: 11400000, guid: 8bb9c71799f1ee4428d5adb48e69f124, type: 2}
   yellowShip: {fileID: 11400000, guid: 25c365987b9243f4bbd868676d7eff46, type: 2}
-  life:
-    _useConstant: 1
-    _constant: 1000
-    _variable: {fileID: 0}
   CircleShip: {fileID: 1366040304}
   MagentaBtt: {fileID: 2088514767}
   CyanBtt: {fileID: 846595376}

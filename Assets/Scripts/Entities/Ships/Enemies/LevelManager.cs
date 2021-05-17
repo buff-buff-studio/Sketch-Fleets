@@ -34,7 +34,7 @@ namespace SketchFleets
             int multiply = MapDifficulty.MapDifficulty[MapDifficulty.Difficulty];
             PurpleShipsMax = Random.Range(2 * multiply, 5 * multiply);
             OrangeShipsMax = Random.Range(1 * multiply, 4 * multiply);
-            LimeShipsMax = Random.Range(0 * multiply, 2 * multiply);
+            LimeShipsMax = Random.Range(1 * multiply, 2 * multiply);
 
             SpawnArea = new Vector2(MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.x, MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.y);
 
