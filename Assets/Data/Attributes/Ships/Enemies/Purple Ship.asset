@@ -20,7 +20,7 @@ MonoBehaviour:
   prefab: {fileID: 6812927983558368271, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
   maxHealth:
     _useConstant: 1
-    _constant: 30
+    _constant: 100
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1

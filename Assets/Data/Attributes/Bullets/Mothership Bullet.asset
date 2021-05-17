@@ -17,7 +17,7 @@ MonoBehaviour:
     _constant: Mothership Bullet
     _variable: {fileID: 0}
   description: A bullet fired by the mothership
-  prefab: {fileID: 5344832097319730938, guid: 40422bd9cc879ba4799a22387f0956e9, type: 3}
+  prefab: {fileID: 7188275951484046036, guid: 1233159e84246884b810832defa6e525, type: 3}
   directDamage:
     _useConstant: 1
     _constant: 15

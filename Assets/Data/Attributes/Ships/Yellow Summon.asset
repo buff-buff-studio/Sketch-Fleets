@@ -59,7 +59,7 @@ MonoBehaviour:
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   shellDrop: {fileID: 0}
-  fire: {fileID: 0}
+  fire: {fileID: 11400000, guid: 2db28cda6305f704995b626c1a89da45, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 0}
   graphiteCost:
