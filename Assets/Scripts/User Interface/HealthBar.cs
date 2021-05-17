@@ -40,7 +40,7 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        if (Mathf.Approximately(healthBar.fillAmount, FillAmount))
+        if (!Mathf.Approximately(healthBar.fillAmount, FillAmount))
         {
             LifeBarUpdate();
         }

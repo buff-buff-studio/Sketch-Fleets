@@ -156,7 +156,7 @@ namespace SketchFleets
 
             // TODO: Remove this workaround once we figure out whether MPBs are supported in ShaderGraph yet
             Color tempColor = spriteRenderer.material.GetColor(blinkColor);
-            tempColor.a = Mathf.Max(tempColor.a - Time.deltaTime, 0);
+            tempColor.a = Mathf.Max(tempColor.a - Time.deltaTime * 3f, 0);
             spriteRenderer.material.SetColor(blinkColor, tempColor);
         }
 
