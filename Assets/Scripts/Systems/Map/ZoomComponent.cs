@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class ZoomComponent : ScrollRect
 {
     #region Private Fields
-    private float _minZoom = 0.5f; //Auto calculated by size of map and screen size
-    private float _maxZoom = 2f;
+    private float _minZoom = 2f; //Auto calculated by size of map and screen size
+    private float _maxZoom = 5f;
     [SerializeField] 
     private float _zoomLerpSpeed = 4f;
     private float _currentZoom = 1;

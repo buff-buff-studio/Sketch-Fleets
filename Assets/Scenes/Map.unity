@@ -157,7 +157,7 @@ RectTransform:
   - {fileID: 1238885825}
   - {fileID: 1926222828}
   m_Father: {fileID: 1337543060}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1632,9 +1632,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 152137162}
+  - {fileID: 214171980}
   - {fileID: 1312423749}
   - {fileID: 1667878946}
+  - {fileID: 152137162}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1873,8 +1874,8 @@ MonoBehaviour:
   - {fileID: 8228473650305195019, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
   - {fileID: 1529275474537781392, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
   - {fileID: -9181772123159090412, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
-  - {fileID: 5215539951979972166, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
   - {fileID: -2192022562841302822, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
+  - {fileID: 5215539951979972166, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
   parallaxSpeed: 5
 --- !u!1 &1611014602
 GameObject:
@@ -2818,6 +2819,22 @@ PrefabInstance:
       propertyPath: relativeCamera
       value: 
       objectReference: {fileID: 1095986412}
+    - target: {fileID: 39584891685728194, guid: f1ec4c4863ab9a34181fd1eac2eea68a, type: 3}
+      propertyPath: layers.Array.data[0].parallaxFactor.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 39584891685728194, guid: f1ec4c4863ab9a34181fd1eac2eea68a, type: 3}
+      propertyPath: layers.Array.data[0].parallaxFactor.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 39584891685728194, guid: f1ec4c4863ab9a34181fd1eac2eea68a, type: 3}
+      propertyPath: layers.Array.data[1].parallaxFactor.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 39584891685728194, guid: f1ec4c4863ab9a34181fd1eac2eea68a, type: 3}
+      propertyPath: layers.Array.data[2].parallaxFactor.x
+      value: 0.95
+      objectReference: {fileID: 0}
     - target: {fileID: 39584891685728195, guid: f1ec4c4863ab9a34181fd1eac2eea68a, type: 3}
       propertyPath: m_RootOrder
       value: 6
