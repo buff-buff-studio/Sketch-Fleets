@@ -30,6 +30,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MotherShip
       objectReference: {fileID: 0}
+    - target: {fileID: 364618190254605338, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 364618190254605338, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 542453475185958705, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_Size.x
       value: 10
@@ -50,6 +58,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cb8d21e3a25e8974e929010607c0fc21, type: 2}
+    - target: {fileID: 1121389041674593459, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121389041674593459, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -60,11 +76,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -21.020834
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.7560365
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalPosition.z
@@ -106,6 +122,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6106272454926486791, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7622784771109833365, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -118,6 +138,10 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: -8391862255508861888, guid: e2b3be49bdb0e3f43a31c615f5c6da2e, type: 2}
+    - target: {fileID: 8789203608417365333, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
 --- !u!1 &52908406865915231 stripped

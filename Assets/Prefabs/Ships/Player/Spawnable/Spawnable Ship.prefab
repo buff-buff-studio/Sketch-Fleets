@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes: {fileID: 0}
-  bulletSpawnPoints: []
+  bulletSpawnPoints:
+  - {fileID: 4249084107644192771}
   deathEvent: {fileID: 0}
   soundSource: {fileID: 513481301617387861}
   spriteRenderer: {fileID: 7597287069921410289}
@@ -104,5 +105,10 @@ SpriteRenderer:
 --- !u!82 &513481301617387861 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7622784771109833365, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+  m_PrefabInstance: {fileID: 7992150844352488384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4249084107644192771 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6061305938245331907, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
   m_PrefabInstance: {fileID: 7992150844352488384}
   m_PrefabAsset: {fileID: 0}
