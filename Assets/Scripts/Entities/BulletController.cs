@@ -12,7 +12,7 @@ public class BulletController : PoolMember
 {
     #region Private Fields
 
-    [SerializeField]
+    [SerializeField, RequiredField()]
     private BulletAttributes attributes;
     [SerializeField, RequiredField()]
     private AudioSource soundSource;
@@ -27,14 +27,29 @@ public class BulletController : PoolMember
 
     #endregion
 
+    #region PoolMember Overrides
+
+    /// <summary>
+    /// Emerges the Poolable object from the pool
+    /// </summary>
+    /// <param name="position">The position at which to emerge the object</param>
+    /// <param name="rotation">The rotation to emerge the object with</param>
+    public override void Emerge(Vector3 position, Quaternion rotation)
+    {
+        soundSource.pitch = Random.Range(1 - Attributes.PitchVariation, 1 + Attributes.PitchVariation);
+        base.Emerge(position, rotation);
+    }
+
+    #endregion
+    
     #region Unity Callbacks
 
     private void Start()
     {
-        SubmergeDelayed(8f);
-        
-        if (soundSource.clip != null)
+        if (Attributes.FireSound != null)
         {
+            soundSource.clip = Attributes.FireSound;
+            soundSource.pitch = Random.Range(1 - Attributes.PitchVariation, 1 + Attributes.PitchVariation);
             soundSource.Play();
         }
 
@@ -51,6 +66,11 @@ public class BulletController : PoolMember
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.CompareTag("EndMap"))
+        {
+            Submerge();
+            return;
+        }
         if (!col.isTrigger) return;
         Hit(col);
     }
