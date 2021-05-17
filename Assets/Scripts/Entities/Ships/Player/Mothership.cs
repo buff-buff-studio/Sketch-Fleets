@@ -15,6 +15,7 @@ namespace SketchFleets.Entities
     {
         #region Private Fields
 
+        [Header("Mothership Specific")]
         [SerializeField, RequiredField()]
         private Transform shipSpawnPoint;
 
