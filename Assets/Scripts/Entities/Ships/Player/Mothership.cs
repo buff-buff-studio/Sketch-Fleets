@@ -55,10 +55,8 @@ namespace SketchFleets.Entities
         #region Unity Callbacks
 
         // Start runs once before the first update
-        protected override void Start()
+        protected void Start()
         {
-            base.Start();
-            
             // Caches necessary components
             mainCamera = Camera.main;
         }

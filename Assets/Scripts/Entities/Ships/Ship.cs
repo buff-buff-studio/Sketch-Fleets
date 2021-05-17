@@ -13,7 +13,7 @@ namespace SketchFleets
     /// <typeparam name="T">An attribute data structure that inherits from ShipAttributes</typeparam>
     [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public class Ship<T> : PoolMember, IDamageable where T : ShipAttributes
+    public class Ship<T> : PoolMember, IHealthVerifiable, IDamageable where T : ShipAttributes
     {
         #region Protected Fields
 
@@ -51,6 +51,8 @@ namespace SketchFleets
         public FloatReference CurrentShield => currentShield;
 
         public FloatReference CurrentHealth => currentHealth;
+
+        public FloatReference MaxHealth => Attributes.MaxHealth;
 
         public T Attributes => attributes;
 
@@ -133,7 +135,7 @@ namespace SketchFleets
         #region Unity Callbacks
 
         // Start is called before the first update
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             
             // Gets blink color hash id
@@ -164,7 +166,7 @@ namespace SketchFleets
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
         
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Enemy") || other.CompareTag("PlayerSpawn") || 
                 other.CompareTag("Player") || other.CompareTag("Obstacle"))
@@ -187,7 +189,7 @@ namespace SketchFleets
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
                 PoolMember bullet = PoolManager.Instance.Request(attributes.Fire.Prefab);
-                bullet.Emerge(bulletSpawnPoints[index].position, transform.rotation);
+                bullet.Emerge(bulletSpawnPoints[index].position, bulletSpawnPoints[index].rotation);
 
                 bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
