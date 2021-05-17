@@ -29,6 +29,7 @@ MonoBehaviour:
   bulletSpawnPoints: []
   deathEvent: {fileID: 0}
   soundSource: {fileID: 618432591919783938}
+  spriteRenderer: {fileID: 7411695702990386598}
 --- !u!1001 &7015640060257462935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40,6 +41,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Ship
       objectReference: {fileID: 0}
+    - target: {fileID: 542453475185958705, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb8d21e3a25e8974e929010607c0fc21, type: 2}
     - target: {fileID: 1121389041674593459, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_Radius
       value: 0.5
@@ -93,6 +98,11 @@ PrefabInstance:
 --- !u!1 &7229382656790687373 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 364618190254605338, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+  m_PrefabInstance: {fileID: 7015640060257462935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7411695702990386598 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 542453475185958705, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
   m_PrefabInstance: {fileID: 7015640060257462935}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &618432591919783938 stripped
