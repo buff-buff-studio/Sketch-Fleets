@@ -3,6 +3,7 @@ using ManyTools.UnityExtended;
 using ManyTools.Variables;
 using SketchFleets.AI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SketchFleets
 {
@@ -16,7 +17,7 @@ namespace SketchFleets
         [SerializeField]
         private FloatReference rotationSpeedModifier = new FloatReference(4f);
 
-        private SpawnableShipAI AI;
+        private EnemyShipAI AI;
         private Transform cachedTransform;
         private Vector3 moveDirection;
 
@@ -29,13 +30,13 @@ namespace SketchFleets
         /// </summary>
         public override void Enter()
         {
-            AI = StateMachine as SpawnableShipAI;
+            AI = StateMachine as EnemyShipAI;
             cachedTransform = transform;
             moveDirection = cachedTransform.up;
 
             if (AI == null)
             {
-                Debug.LogError("AimAndFireState expects a EnemyShipAI State Machine!");
+                Debug.LogError("Could not find AI!");
             }
 
             base.Enter();
@@ -48,8 +49,7 @@ namespace SketchFleets
         {
             float temporalSpeed = AI.Ship.Attributes.Speed * Time.deltaTime;
 
-            cachedTransform.Translate(
-                moveDirection * temporalSpeed, Space.World);
+            cachedTransform.Translate(moveDirection * temporalSpeed, Space.World);
 
             temporalSpeed *= rotationSpeedModifier;
             
@@ -69,7 +69,10 @@ namespace SketchFleets
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            float random = Random.Range(0.1f, 0.3f);
+            Vector3 randomDirection = new Vector3(random, random, random);
             moveDirection *= -1f;
+            moveDirection += randomDirection;
         }
 
         #endregion
