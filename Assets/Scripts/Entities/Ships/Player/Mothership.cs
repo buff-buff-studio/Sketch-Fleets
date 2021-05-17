@@ -198,7 +198,7 @@ namespace SketchFleets.Entities
 
             foreach (var metaData in spawnMetaDatas)
             {
-                metaData.Value.SummonTimer.Value -= Time.deltaTime;
+                metaData.Value.SummonTimer.Value -= Time.deltaTime * Time.timeScale;
             }
         }
 
