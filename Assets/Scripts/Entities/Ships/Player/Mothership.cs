@@ -34,6 +34,9 @@ namespace SketchFleets.Entities
 
         private Camera mainCamera;
 
+        [SerializeField]
+        private GameObject circleShips;
+
         #endregion
 
         #region Properties
@@ -80,6 +83,7 @@ namespace SketchFleets.Entities
             {
                 Fire();
             }
+
         }
 
         #endregion
