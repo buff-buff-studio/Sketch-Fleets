@@ -42,6 +42,9 @@ namespace SketchFleets.Data
         [Tooltip("The sound effect played when the bullet is shot")]
         [SerializeField]
         private AudioClip fireSound;
+        [Tooltip("The pitch variation of the sound effect")]
+        [SerializeField]
+        private FloatReference pitchVariation = new FloatReference(0.25f);
         [Tooltip("The effect spawned when the bullet is fired.")]
         [SerializeField]
         private GameObject fireEffect;
@@ -74,6 +77,8 @@ namespace SketchFleets.Data
         public AudioClip FireSound => fireSound;
 
         public FloatReference MaxDamageVariation => maxDamageVariation;
+
+        public FloatReference PitchVariation => pitchVariation;
 
         #endregion
 

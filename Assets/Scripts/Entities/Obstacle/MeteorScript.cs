@@ -19,7 +19,6 @@ public class MeteorScript : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(-transform.right * 55, ForceMode2D.Impulse);
         damage = GetComponent<ObstacleScript>().Damage;
         damage = (int)(damage + (float)damage * size);
-        Debug.Log((damage));
     }
     #endregion
 

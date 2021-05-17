@@ -17,7 +17,7 @@ MonoBehaviour:
     _constant: Purple Bullet
     _variable: {fileID: 0}
   description: A bullet fired by the purple ship
-  prefab: {fileID: 6364302103545699407, guid: 67511b2655da38341915b646a44fb9a8, type: 3}
+  prefab: {fileID: 4233880130515042751, guid: ceb6d0387b0f7224e958c0b76c13e979, type: 3}
   directDamage:
     _useConstant: 1
     _constant: 5
@@ -48,7 +48,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 0.5
+    _constant: 1.5
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7c335d76eba38b84b9d9282015385655, type: 3}
   fireEffect: {fileID: 0}

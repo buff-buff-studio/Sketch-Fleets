@@ -12,7 +12,8 @@ namespace SketchFleets
     /// </summary>
     /// <typeparam name="T">An attribute data structure that inherits from ShipAttributes</typeparam>
     [RequireComponent(typeof(AudioSource))]
-    public class Ship<T> : PoolMember, IDamageable where T : ShipAttributes
+    [RequireComponent(typeof(SpriteRenderer))]
+    public class Ship<T> : PoolMember, IHealthVerifiable, IDamageable where T : ShipAttributes
     {
         #region Protected Fields
 
@@ -23,12 +24,17 @@ namespace SketchFleets
         protected Transform[] bulletSpawnPoints;
         [SerializeField]
         private GameEvent deathEvent;
+        [Header("Component Dependencies")]
         [SerializeField, RequiredField()]
         protected AudioSource soundSource;
+        [SerializeField, RequiredField()]
+        protected SpriteRenderer spriteRenderer;
 
         protected float fireTimer;
         protected float shieldRegenTimer;
         protected float collisionTimer;
+
+        //protected MaterialPropertyBlock propertyBlock;
 
         #endregion
 
@@ -36,6 +42,7 @@ namespace SketchFleets
 
         private FloatReference currentHealth = new FloatReference(0f);
         private FloatReference currentShield = new FloatReference(0f);
+        private readonly int blinkColor = Shader.PropertyToID("_blinkColor");
 
         #endregion
 
@@ -44,6 +51,8 @@ namespace SketchFleets
         public FloatReference CurrentShield => currentShield;
 
         public FloatReference CurrentHealth => currentHealth;
+
+        public FloatReference MaxHealth => Attributes.MaxHealth;
 
         public T Attributes => attributes;
 
@@ -54,23 +63,44 @@ namespace SketchFleets
 
         public void Damage(float amount, bool makeInvincible = false)
         {
+            // Rejects damage during invincibility time
             if (collisionTimer > 0) return;
-
+            // Adds invincibility time if necessary
             if (makeInvincible)
             {
                 collisionTimer = Attributes.InvincibilityTime;
             }
             
+            // Reduces health based on defense and resets regen cooldown
             currentHealth.Value -= amount / Attributes.Defense;
             shieldRegenTimer = Attributes.ShieldRegenDelay;
             
+            // Plays hit sounds
             soundSource.clip = Attributes.HitSound;
-
             if (soundSource.clip != null)
             {
                 soundSource.Play();
             }
+            
+            // Gets and sets material property block's blink color
+            // TODO: Use material property blocks instead once we figure out how to
+            // TODO: get the damn ShaderGraph to generate them
+            // spriteRenderer.sharedMaterial.GetPropertyBlock(propertyBlock);
+            //
+            // Debug.Log(propertyBlock.GetColor("_redMul"));
+            //
+            // Color tempColor = propertyBlock.GetColor(blinkColor);
+            // //Debug.Log(propertyBlock.GetColor(blinkColor));
+            // tempColor.a = 1f;
+            // propertyBlock.SetColor(blinkColor, tempColor);
+            //
+            // spriteRenderer.SetPropertyBlock(propertyBlock);
 
+            Color tempColor = spriteRenderer.material.GetColor(blinkColor);
+            tempColor.a = 1f;
+            spriteRenderer.material.SetColor(blinkColor, tempColor);
+            
+            // Dies if necessary
             if (currentHealth <= 0f)
             {
                 Die();
@@ -105,8 +135,14 @@ namespace SketchFleets
         #region Unity Callbacks
 
         // Start is called before the first update
-        protected virtual void Start()
+        protected virtual void Awake()
         {
+            
+            // Gets blink color hash id
+            //propertyBlock = new MaterialPropertyBlock();
+            //spriteRenderer.GetPropertyBlock(propertyBlock);
+            
+            // Initializes health and shields
             currentHealth.Value = attributes.MaxHealth.Value;
             currentShield.Value = attributes.MaxShield.Value;
         }
@@ -117,14 +153,20 @@ namespace SketchFleets
             collisionTimer -= Time.deltaTime;
             fireTimer -= Time.deltaTime;
             RegenShield();
+
+            // TODO: Remove this workaround once we figure out whether MPBs are supported in ShaderGraph yet
+            Color tempColor = spriteRenderer.material.GetColor(blinkColor);
+            tempColor.a = Mathf.Max(tempColor.a - Time.deltaTime, 0);
+            spriteRenderer.material.SetColor(blinkColor, tempColor);
         }
 
         protected void Reset()
         {
             soundSource = GetComponent<AudioSource>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
         
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Enemy") || other.CompareTag("PlayerSpawn") || 
                 other.CompareTag("Player") || other.CompareTag("Obstacle"))
@@ -147,7 +189,7 @@ namespace SketchFleets
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
                 PoolMember bullet = PoolManager.Instance.Request(attributes.Fire.Prefab);
-                bullet.Emerge(bulletSpawnPoints[index].position, transform.rotation);
+                bullet.Emerge(bulletSpawnPoints[index].position, bulletSpawnPoints[index].rotation);
 
                 bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));

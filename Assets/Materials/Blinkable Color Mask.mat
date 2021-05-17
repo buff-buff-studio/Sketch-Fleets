@@ -39,7 +39,7 @@ Material:
     - _BlinkFactor: 1
     m_Colors:
     - _BlinkColor: {r: 1, g: 0, b: 0, a: 0}
-    - _BluMult: {r: 0.2667022, g: 0.2667022, b: 0.5471698, a: 0}
-    - _GreMult: {r: 0, g: 1, b: 0, a: 0}
-    - _RedMult: {r: 0, g: 0.12642746, b: 0.33962262, a: 0}
+    - _BluMult: {r: 1, g: 0, b: 0, a: 1}
+    - _GreMult: {r: 0, g: 1, b: 0, a: 1}
+    - _RedMult: {r: 0, g: 0, b: 1, a: 1}
   m_BuildTextureStacks: []
