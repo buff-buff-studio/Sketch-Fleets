@@ -17,6 +17,9 @@ namespace SketchFleets.Data
         [Tooltip("How much graphite it takes to summon a ship")]
         private IntReference graphiteCost = new IntReference(100);
         [SerializeField]
+        [Tooltip("How much the cost increases per ship")]
+        private IntReference graphiteCostIncrease = new IntReference(15);
+        [SerializeField]
         [Tooltip("How many active ships of this kind can there be at a time")]
         private IntReference maximumShips = new IntReference(10);
         [SerializeField]
@@ -34,6 +37,7 @@ namespace SketchFleets.Data
         public IntReference SpawnCooldown => spawnCooldown;
         public IntReference MaximumShips => maximumShips;
         public FloatReference OrbitRadius => orbitRadius;
+        public IntReference GraphiteCostIncrease => graphiteCostIncrease;
 
         #endregion
     }
