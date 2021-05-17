@@ -1,7 +1,8 @@
+using ManyTools.UnityExtended;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : SingletonBase<GameManager>
+public class GameManager : Singleton<GameManager>
 {
     #region Unity Callbacks
 
