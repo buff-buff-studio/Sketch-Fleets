@@ -71,7 +71,6 @@ Tank Wrecks and its assets were built using the following software:
 * [Krita](https://krita.org)
 * [Adobe Audition](https://www.adobe.com/products/audition.html)
 * [Audacity](https://www.audacityteam.org/)
-* [Articy Draft](https://www.articy.com/en/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [JetBrains Rider](https://www.jetbrains.com/rider/)
 
@@ -111,12 +110,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Paulo Oliveira, Project Manager and Programmer - paulo@ninito.me
-Luiz Bozzi, Game Designer and Artist - lfbozzi86@gmail.com
-Julia Moraes, Artist - juliamoraesfreitas@gmail.com
-Sérgio Macellani, Programmer - sergiododec@gmail.com
-Árnilsen Arthur, Programmer - arnilsenarthur@gmail.com
-Renzo Diniz, Generalist and Production Assistant - renzo.diniz@sga.pucminas.br
+* Paulo Oliveira, Project Manager and Programmer - paulo@ninito.me
+* Luiz Bozzi, Game Designer and Artist - lfbozzi86@gmail.com
+* Julia Moraes, Artist - juliamoraesfreitas@gmail.com
+* Sérgio Macellani, Programmer - sergiododec@gmail.com
+* Árnilsen Arthur, Programmer - arnilsenarthur@gmail.com
+* Renzo Diniz, Generalist and Production Assistant - renzo.diniz@sga.pucminas.br
 
 Project Link: [https://github.com/ninito-ph/Sketch-Fleets](https://github.com/ninito-ph/Sketch-Fleets)
 
