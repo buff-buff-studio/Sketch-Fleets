@@ -179,7 +179,11 @@ public class ConstelationMap : MonoBehaviour
                 //Temp fix kkkk
                 if(difficulty < 1)
                     difficulty = 1;
+<<<<<<< Updated upstream
                 if (difficulty < 4)
+=======
+                if(difficulty < 4)
+>>>>>>> Stashed changes
                     difficulty = 2;
 
                 //o.transform.GetChild(0).GetComponent<Text>().text = constelation.Count + "";
