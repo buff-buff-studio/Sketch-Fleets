@@ -28,7 +28,7 @@ namespace SketchFleets
 
             while (!asyncOperation.isDone)
             {
-                Debug.Log(asyncOperation.progress);
+                //Debug.Log(asyncOperation.progress);
                 loadBar.fillAmount = asyncOperation.progress;
                 if (asyncOperation.progress >= 0.9f)
                 {
