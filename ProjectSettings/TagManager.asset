@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - EndMap
+  - bullet
+  - Enemy
+  - EnemyBullet
+  - CyanShip
+  - Obstacle
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX
@@ -11,11 +18,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - PlayerBullet
+  - Enemy
+  - EnemyBullet
+  - Mothership
   - 
   - 
   - 
