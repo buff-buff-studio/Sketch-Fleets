@@ -14,6 +14,8 @@ public class HealthBar : MonoBehaviour
     [Header("Target")]
     [SerializeField, RequiredField()]
     private Mothership target;
+    [SerializeField]
+    private GameObject gameOverScreen;
     
     [Header("UI Settings")]
     [SerializeField]
@@ -43,6 +45,11 @@ public class HealthBar : MonoBehaviour
         if (!Mathf.Approximately(healthBar.fillAmount, FillAmount))
         {
             LifeBarUpdate();
+        }
+
+        if (target.CurrentHealth <= 0 && gameOverScreen.activeSelf == false)
+        {
+            gameOverScreen.SetActive(true);
         }
     }
 

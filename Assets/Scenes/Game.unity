@@ -4033,7 +4033,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b81869b522dd244c8ecc44cc9664b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipsGameObjects: []
   mothershipAttributes: {fileID: 11400000, guid: dab52214d9edfd14a9cd1dfb36bb9e38, type: 2}
   mothership: {fileID: 939894646}
   magentaShip: {fileID: 11400000, guid: 36ebd0995b0eb694289df5d07a1bbcd0, type: 2}
@@ -6511,6 +6510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 939894646}
+  gameOverScreen: {fileID: 938546391}
   lerpSpeed:
     _useConstant: 1
     _constant: 10
