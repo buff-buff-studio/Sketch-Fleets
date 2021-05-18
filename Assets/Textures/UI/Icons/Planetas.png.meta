@@ -160,7 +160,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Planetas_0
+      name: Amarelo
       rect:
         serializedVersion: 2
         x: 63
@@ -181,7 +181,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Planetas_1
+      name: Vermelho
       rect:
         serializedVersion: 2
         x: 450
@@ -202,11 +202,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Planetas_3
+      name: Verde
       rect:
         serializedVersion: 2
-        x: 87
-        y: 404
+        x: 88
+        y: 403
         width: 225
         height: 213
       alignment: 0
@@ -223,11 +223,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Planetas_4
+      name: Roxo
       rect:
         serializedVersion: 2
-        x: 422
-        y: 373
+        x: 420
+        y: 376
         width: 288
         height: 284
       alignment: 0
@@ -244,7 +244,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Planetas_5
+      name: Laranja
       rect:
         serializedVersion: 2
         x: 94
@@ -265,7 +265,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Planetas_6
+      name: BuracoNegro
       rect:
         serializedVersion: 2
         x: 404

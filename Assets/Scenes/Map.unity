@@ -1855,7 +1855,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  currentMap: {fileID: 11400000, guid: dc2bc714a40a7734baff81f9ef937a4d, type: 2}
+  currentMap: {fileID: 0}
   currentLevel:
     _useConstant: 0
     _constant: 0
@@ -1870,7 +1870,7 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: b37686c9c4f4cbc40a57bb305a036dca, type: 2}
   planetIcons:
   - {fileID: -6933502581219436949, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
-  - {fileID: 8228473650305195019, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
+  - {fileID: -8131831931175726061, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
   - {fileID: 1529275474537781392, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
   - {fileID: -9181772123159090412, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
   - {fileID: -2192022562841302822, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
@@ -2713,6 +2713,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 39584891260710733, guid: f1ec4c4863ab9a34181fd1eac2eea68a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 39584891260710733, guid: f1ec4c4863ab9a34181fd1eac2eea68a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 39584891685728193, guid: f1ec4c4863ab9a34181fd1eac2eea68a, type: 3}
       propertyPath: m_Name
       value: Parallax-Mapa
