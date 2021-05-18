@@ -32,10 +32,18 @@ public class MapLevelInteraction : MonoBehaviour
             state.SetCurrentStar(clickedStar);
             
             //Set variables 
+            map.currentLevel.Value = clickedStar;
+            map.currentLevelDifficulty.Value = state.constelation.GetStar(clickedStar).Difficulty;
             map.currentSeed.Value = state.seed;
-            map.currentMap.Map.Value = clickedStar;
-            map.currentMap.Difficulty.Value = state.constelation.GetStar(clickedStar).Difficulty;
-        
+
+            try
+            {
+                map.currentMap.Map.Value = clickedStar;
+                map.currentMap.Difficulty.Value = state.constelation.GetStar(clickedStar).Difficulty;
+            }
+            catch(Exception)
+            {             
+            }
             //Open level
             LoadScene("Scenes/Loading",() => {});
         });

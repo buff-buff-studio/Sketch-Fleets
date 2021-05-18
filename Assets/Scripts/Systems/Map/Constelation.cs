@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Holds a constelation of stars and all path between stars
 /// </summary>
-public class Constelation
+public class Constelation : IEnumerable
 {
     #region Private Fields
     private List<List<Star>> stars = new List<List<Star>>();
@@ -84,7 +85,7 @@ public class Constelation
     /// <param name="column"></param>
     /// <returns></returns>
     public int GetColumnStarCount(int column)
-    {
+    {     
         return stars[column].Count;
     }
 
@@ -100,6 +101,14 @@ public class Constelation
     }
     #endregion
 
+    #region IEnumerator
+    public IEnumerator GetEnumerator()
+    {
+        foreach(Star s in allStars)
+            yield return s;
+    }
+    #endregion
+
     /// <summary>
     /// Represents a star in constelation
     /// </summary>
@@ -111,6 +120,7 @@ public class Constelation
         #endregion
 
         #region Public Fields
+        public float scale = 0;
         public GameObject Object;
         public List<StarJunction> fromJunctions = new List<StarJunction>();
         public List<StarJunction> toJunctions = new List<StarJunction>();
@@ -146,13 +156,14 @@ public class Constelation
         /// Create new star from GameObject
         /// </summary>
         /// <param name="Object"></param>
-        public Star(GameObject Object,int difficulty,float size)
+        public Star(GameObject Object,int difficulty,float scale)
         {
             this.Object = Object;
             this.difficulty = difficulty;
             SetEnabled(false);
 
-            Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * size;
+            this.scale = scale;
+            Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * scale;
 
             //Change icon
             Object.GetComponent<Image>().sprite = MapLevelInteraction.map.planetIcons[difficulty];
@@ -188,8 +199,10 @@ public class Constelation
                     break;
             }         
         }
-        #endregion
+        #endregion    
     }
+
+    
 
     /// <summary>
     /// Represents a junction between two stars

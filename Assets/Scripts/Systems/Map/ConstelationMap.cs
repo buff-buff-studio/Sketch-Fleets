@@ -179,18 +179,14 @@ public class ConstelationMap : MonoBehaviour
                 //Temp fix kkkk
                 if(difficulty < 1)
                     difficulty = 1;
-<<<<<<< Updated upstream
-                if (difficulty < 4)
-=======
-                if(difficulty < 4)
->>>>>>> Stashed changes
-                    difficulty = 2;
+                if(difficulty == 4)
+                    difficulty = Random.Range(1,3);
 
                 //o.transform.GetChild(0).GetComponent<Text>().text = constelation.Count + "";
                 o.transform.GetChild(0).GetComponent<Text>().text = difficulty + "";
 
                 //Add star
-                Constelation.Star s = new Constelation.Star(o,difficulty,Random.Range(0.99f,1.5f));
+                Constelation.Star s = new Constelation.Star(o,difficulty,Random.Range(0.8f,1.25f));
                 currentLineStars.Add(s);
                 constelation.AddStar(s);
 
@@ -327,6 +323,12 @@ public class ConstelationMap : MonoBehaviour
         else
             mapView.sizeDelta = new Vector2(mapView.sizeDelta.x,mapHeight * 
             (scrollRect.rect.height/(mapHeight * cz)));
+
+        //Update scales
+        foreach(Constelation.Star star in constelation)
+        {
+            star.Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * (star.scale + (Mathf.Sin(Time.time * Mathf.Deg2Rad * 90 + ((star.Id - 5)%10) * 10) + 0.75f) * 0.2f);
+        }
     }
     #endregion  
 
