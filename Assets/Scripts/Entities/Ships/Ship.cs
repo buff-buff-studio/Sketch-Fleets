@@ -171,7 +171,7 @@ namespace SketchFleets
             if (other.CompareTag("Enemy") || other.CompareTag("PlayerSpawn") || 
                 other.CompareTag("Player") || other.CompareTag("Obstacle"))
             {
-                other.GetComponent<IDamageable>().Damage(Attributes.CollisionDamage, true);
+                other.GetComponent<IDamageable>()?.Damage(Attributes.CollisionDamage, true);
             }
         }
 
