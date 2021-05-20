@@ -59,12 +59,16 @@ MonoBehaviour:
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   shellDrop: {fileID: 0}
-  fire: {fileID: 11400000, guid: 2db28cda6305f704995b626c1a89da45, type: 2}
+  fire: {fileID: 11400000, guid: ced973144c92f6c4fb94299a5991b35a, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 0}
   graphiteCost:
     _useConstant: 1
     _constant: 50
+    _variable: {fileID: 0}
+  graphiteCostIncrease:
+    _useConstant: 1
+    _constant: 15
     _variable: {fileID: 0}
   maximumShips:
     _useConstant: 1

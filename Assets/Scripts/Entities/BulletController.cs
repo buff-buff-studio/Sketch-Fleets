@@ -1,8 +1,10 @@
+using System;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using UnityEngine;
 using SketchFleets.Data;
 using SketchFleets;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// A class that controls a bullet and its behaviour
@@ -16,6 +18,8 @@ public class BulletController : PoolMember
     private BulletAttributes attributes;
     [SerializeField, RequiredField()]
     private AudioSource soundSource;
+
+    private bool hasFireEffect;
 
     #endregion
 
@@ -36,27 +40,27 @@ public class BulletController : PoolMember
     /// <param name="rotation">The rotation to emerge the object with</param>
     public override void Emerge(Vector3 position, Quaternion rotation)
     {
-        soundSource.pitch = Random.Range(1 - Attributes.PitchVariation, 1 + Attributes.PitchVariation);
         base.Emerge(position, rotation);
+
+        soundSource.pitch = Random.Range(1 - Attributes.PitchVariation, 1 + Attributes.PitchVariation);
+
+        soundSource.clip = Attributes.FireSound;
+        soundSource.pitch = Random.Range(1 - Attributes.PitchVariation, 1 + Attributes.PitchVariation);
+        soundSource.Play();
+
+        if (hasFireEffect)
+        {
+            Instantiate(Attributes.FireEffect, transform.position, Quaternion.identity);
+        }
     }
 
     #endregion
-    
+
     #region Unity Callbacks
 
     private void Start()
     {
-        if (Attributes.FireSound != null)
-        {
-            soundSource.clip = Attributes.FireSound;
-            soundSource.pitch = Random.Range(1 - Attributes.PitchVariation, 1 + Attributes.PitchVariation);
-            soundSource.Play();
-        }
-
-        if (Attributes.FireEffect != null)
-        {
-            Instantiate(Attributes.FireEffect, transform.position, Quaternion.identity);
-        }
+        hasFireEffect = Attributes.FireEffect != null;
     }
 
     private void Update()
@@ -90,8 +94,8 @@ public class BulletController : PoolMember
     /// <param name="directHit">The collider that directly hit the bullet</param>
     private void Hit(Collider2D directHit)
     {
-        float damageVariation = Random.Range(0, Attributes.MaxDamageVariation);        
-        
+        float damageVariation = Random.Range(0, Attributes.MaxDamageVariation);
+
         DealDamageToTarget(Attributes.DirectDamage + damageVariation, directHit.gameObject);
 
         // If the bullet has no area effects, stop here

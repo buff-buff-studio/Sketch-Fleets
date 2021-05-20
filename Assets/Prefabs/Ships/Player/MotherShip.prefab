@@ -19,6 +19,7 @@ MonoBehaviour:
   soundSource: {fileID: 7817413295041160144}
   spriteRenderer: {fileID: 158676202154423924}
   shipSpawnPoint: {fileID: 5884656632747410054}
+  circleShips: {fileID: 0}
 --- !u!1001 &411118004048914757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 7622784771109833365, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 7c335d76eba38b84b9d9282015385655, type: 3}
+      objectReference: {fileID: 8300000, guid: 9375b560dabb74a4282c77dfa5509cc3, type: 3}
     - target: {fileID: 7622784771109833365, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
