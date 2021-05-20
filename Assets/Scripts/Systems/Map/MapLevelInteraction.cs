@@ -61,6 +61,23 @@ public class MapLevelInteraction : MonoBehaviour
         });
     }
 
+    public static void SaveReturningToMenu(MonoBehaviour behaviour)
+    {
+        Constelation.Star star = state.constelation.GetStar(state.GetCurrentStar());
+
+         foreach(Constelation.StarJunction j in star.toJunctions)
+        {
+            if(!state.IsChoosen(j.starA.Id))
+                    continue;
+
+            //Open linked starts
+            state.Open(j.starA.Id);
+            state.Open(j.starB.Id);
+        }
+
+        SaveMapState(behaviour,() => {});
+    }
+
     /// <summary>
     /// Return from level to map, and open a star
     /// </summary>

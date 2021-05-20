@@ -121,6 +121,7 @@ public class Constelation : IEnumerable
 
         #region Public Fields
         public float scale = 0;
+        public Vector2 position;
         public GameObject Object;
         public List<StarJunction> fromJunctions = new List<StarJunction>();
         public List<StarJunction> toJunctions = new List<StarJunction>();
@@ -160,6 +161,7 @@ public class Constelation : IEnumerable
         {
             this.Object = Object;
             this.difficulty = difficulty;
+            this.position = Object.GetComponent<RectTransform>().anchoredPosition;
             SetEnabled(false);
 
             this.scale = scale;
@@ -175,7 +177,14 @@ public class Constelation : IEnumerable
         /// <param name="enabled"></param>
         public void SetEnabled(bool enabled)
         {
-            Object.GetComponent<Button>().interactable = enabled;
+            try
+            {
+                Object.GetComponent<Button>().interactable = enabled;
+            }
+            catch(System.Exception)
+            {
+
+            }
         }
 
         /// <summary>

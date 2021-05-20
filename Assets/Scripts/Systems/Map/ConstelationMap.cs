@@ -120,7 +120,7 @@ public class ConstelationMap : MonoBehaviour
         List<Constelation.Star> lastLineStars = new List<Constelation.Star>();
 
         //Map bounds
-        float margin = 50;
+        float margin = 200;
         float itemHalfSize = 25;
         float sizeX = 0;
         float minY = 0;
@@ -326,8 +326,20 @@ public class ConstelationMap : MonoBehaviour
 
         //Update scales
         foreach(Constelation.Star star in constelation)
-        {
-            star.Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * (star.scale + (Mathf.Sin(Time.time * Mathf.Deg2Rad * 90 + ((star.Id - 5)%10) * 10) + 0.75f) * 0.2f);
+        {   
+            if(star.Difficulty == 5)
+                star.Object.GetComponent<RectTransform>().sizeDelta = 3f * new Vector2(50,50) * (star.scale + (Mathf.Sin(Time.time * Mathf.Deg2Rad * 90 + ((star.Id - 5)%10) * 10) + 0.75f) * 0.1f);
+            else
+                star.Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * (star.scale + (Mathf.Sin(Time.time * Mathf.Deg2Rad * 60 + ((star.Id - 5)%10) * 10) + 0.75f) * 0.1f);
+            
+            
+            star.Object.GetComponent<RectTransform>().anchoredPosition = star.position + new Vector2(Mathf.Sin(Time.time * Mathf.Deg2Rad * 90 + ((star.Id - 5)%10) * 10),Mathf.Cos(Time.time * Mathf.Deg2Rad * 45 + ((star.Id - 5)%10) * 10)) * (((MapLevelInteraction.state.seed * star.Id << (star.Id%7))%10) - 5); 
+            star.Object.GetComponent<RectTransform>().localEulerAngles = new Vector3(0,0,Mathf.Sin(-Time.time * Mathf.Deg2Rad * ((star.Id << 3)%20) + 30) * ((MapLevelInteraction.state.seed << star.Id%7)%10 + 10) * 10f);
+            
+            foreach(Constelation.StarJunction j in star.toJunctions)
+            {
+                UpdateLine(j.junction,j.starB.Object,j.starA.Object);
+            }
         }
     }
     #endregion  
@@ -895,6 +907,20 @@ public class ConstelationMap : MonoBehaviour
 
         return path;
     }
+    
+    /// <summary>
+    /// Update path positions
+    /// </summary>
+    /// <param name="path"></param>
+    /// <param name="pointA"></param>
+    /// <param name="pointB"></param>
+    private void UpdateLine(GameObject path,GameObject pointA,GameObject pointB)
+    {
+        path.transform.localPosition = ((pointA.transform.localPosition + pointB.transform.localPosition)/2f - pathHolder.transform.localPosition);
+        path.GetComponent<RectTransform>().sizeDelta = new Vector2(Vector2.Distance(pointA.transform.localPosition,pointB.transform.localPosition),10);
+        path.transform.localEulerAngles = new Vector3(0,0,GetAngleBetween(pointA,pointB));
+    }
+
 
     /// <summary>
     /// Get the angle between two objects in a 2D space

@@ -22,6 +22,7 @@ public class HUDScript : MonoBehaviour
     #region Die Buttons
     public void Menu()
     {
+        MapLevelInteraction.SaveReturningToMenu(this);
         Time.timeScale = 1;
         life.Value = lifeFull;
         SceneManager.LoadScene("Menu");
