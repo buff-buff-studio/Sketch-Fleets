@@ -60,28 +60,50 @@ namespace SketchFleets
 
         #region IDamageable Implementation
 
-
         public void Damage(float amount, bool makeInvincible = false)
         {
             // Rejects damage during invincibility time
             if (collisionTimer > 0) return;
+
             // Adds invincibility time if necessary
             if (makeInvincible)
             {
                 collisionTimer = Attributes.InvincibilityTime;
             }
-            
-            // Reduces health based on defense and resets regen cooldown
-            currentHealth.Value -= amount / Attributes.Defense;
+
+            // Calculates effective damaged based on defense
+            float actualDamage = amount / Attributes.Defense;
+
+            // Deals damage to shields first
+            if (currentShield.Value > 0)
+            {
+                // Damages shield
+                float tempShield = CurrentShield.Value -= actualDamage;
+                CurrentShield.Value = Mathf.Max(tempShield, 0);
+
+                // Applies excess damage to health
+                if (tempShield < 0)
+                {
+                    // Reduces health
+                    currentHealth.Value -= tempShield;
+                }
+            }
+            else
+            {
+                // Reduces health
+                currentHealth.Value -= actualDamage;
+            }
+
+            // Applies shield regen cooldown 
             shieldRegenTimer = Attributes.ShieldRegenDelay;
-            
+
             // Plays hit sounds
             soundSource.clip = Attributes.HitSound;
             if (soundSource.clip != null)
             {
                 soundSource.Play();
             }
-            
+
             // Gets and sets material property block's blink color
             // TODO: Use material property blocks instead once we figure out how to
             // TODO: get the damn ShaderGraph to generate them
@@ -99,7 +121,7 @@ namespace SketchFleets
             Color tempColor = spriteRenderer.material.GetColor(blinkColor);
             tempColor.a = 1f;
             spriteRenderer.material.SetColor(blinkColor, tempColor);
-            
+
             // Dies if necessary
             if (currentHealth <= 0f)
             {
@@ -126,22 +148,22 @@ namespace SketchFleets
             currentHealth.Value = attributes.MaxHealth.Value;
             currentShield.Value = attributes.MaxShield.Value;
             fireTimer = 0;
-            
+
             base.Emerge(position, rotation);
         }
 
         #endregion
-        
+
         #region Unity Callbacks
 
         // Start is called before the first update
         protected virtual void Awake()
         {
-            
+
             // Gets blink color hash id
             //propertyBlock = new MaterialPropertyBlock();
             //spriteRenderer.GetPropertyBlock(propertyBlock);
-            
+
             // Initializes health and shields
             currentHealth.Value = attributes.MaxHealth.Value;
             currentShield.Value = attributes.MaxShield.Value;
@@ -165,11 +187,13 @@ namespace SketchFleets
             soundSource = GetComponent<AudioSource>();
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
-        
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Enemy") || other.CompareTag("PlayerSpawn") || 
-                other.CompareTag("Player") || other.CompareTag("Obstacle"))
+            if (other.CompareTag("Enemy") ||
+                other.CompareTag("PlayerSpawn") ||
+                other.CompareTag("Player") ||
+                other.CompareTag("Obstacle"))
             {
                 other.GetComponent<IDamageable>()?.Damage(Attributes.CollisionDamage, true);
             }
@@ -233,19 +257,18 @@ namespace SketchFleets
 
                 for (int index = 0; index < dropCount; index++)
                 {
-                    Vector3 dropPosition = 
+                    Vector3 dropPosition =
                         new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), transform.position.z);
                     Instantiate(Attributes.ShellDrop, dropPosition, Quaternion.identity);
                 }
             }
-            
+
             Submerge();
         }
-        
+
         #endregion
 
         #region Protected Methods
-
 
         /// <summary>
         /// Regenerates the ship's shields
@@ -254,12 +277,12 @@ namespace SketchFleets
         {
             // Decrements the regen timer
             shieldRegenTimer -= Time.deltaTime;
-            
+
             // If the regen timer is not over or there is no regen, end it here
             if (shieldRegenTimer > 0 || Mathf.Approximately(Attributes.ShieldRegen, 0)) return;
 
             // Regen shield
-            CurrentShield.Value = Mathf.Min(Attributes.MaxShield, 
+            CurrentShield.Value = Mathf.Min(Attributes.MaxShield,
                 CurrentShield.Value + Attributes.ShieldRegen * Time.deltaTime);
         }
 
