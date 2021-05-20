@@ -121,6 +121,18 @@ PrefabInstance:
       propertyPath: states.Array.data[0]
       value: 
       objectReference: {fileID: 1694740033}
+    - target: {fileID: 618432591919783938, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9375b560dabb74a4282c77dfa5509cc3, type: 3}
+    - target: {fileID: 618432591919783938, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 618432591919783938, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8391862255508861888, guid: e2b3be49bdb0e3f43a31c615f5c6da2e, type: 2}
     - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: attributes
       value: 

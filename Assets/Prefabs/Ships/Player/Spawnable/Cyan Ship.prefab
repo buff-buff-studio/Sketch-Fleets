@@ -223,6 +223,18 @@ PrefabInstance:
       propertyPath: attributes
       value: 
       objectReference: {fileID: 11400000, guid: 8bb9c71799f1ee4428d5adb48e69f124, type: 2}
+    - target: {fileID: 513481301617387861, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 43d9107e9bfc9f6428d591ed5864139e, type: 3}
+    - target: {fileID: 513481301617387861, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513481301617387861, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8391862255508861888, guid: e2b3be49bdb0e3f43a31c615f5c6da2e, type: 2}
     - target: {fileID: 4202989485892480711, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Layer
       value: 6
