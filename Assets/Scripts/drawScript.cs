@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace SketchFleets
 {
-    public class drawScript : MonoBehaviour
+    public class DrawScript : MonoBehaviour
     {
         private int colorNum;
         private int textureNum;

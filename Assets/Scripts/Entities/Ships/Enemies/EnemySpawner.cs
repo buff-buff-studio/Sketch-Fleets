@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
             PurpleSpawner(Random.Range(10* multiply, 25* multiply));
 
             GameObject end = (GameObject)Instantiate(mapEnd, new Vector2(attributes.MapSize[difficulty].Value.y + 10, 0), new Quaternion(0, 0, 0, 0));
-            end.GetComponent<mapEndScript>().WinMenu = winMenu;
+            end.GetComponent<MapEndScript>().WinMenu = winMenu;
         }
 
     }

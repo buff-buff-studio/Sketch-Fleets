@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ManyTools.Variables;
+using SketchFleets.Entities;
+using SketchFleets.Enemies;
 
 public class MeteorScript : MonoBehaviour
 {
     #region Private Fields
-    [SerializeField]
-    private FloatReference playerLife;
     private int damage;
     #endregion
 
@@ -27,20 +26,13 @@ public class MeteorScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            playerLife.Value -= damage;
+            col.GetComponent<Mothership>().CurrentHealth.Value -= damage;
         }
-        else if(col.gameObject.name == "LimeEnemy(Clone)")
+        else if (col.gameObject.CompareTag("Enemy"))
         {
-            col.GetComponent<limeAI>().LimeLife -= damage;
+            col.GetComponent<EnemyShip>().CurrentHealth.Value -= damage;
         }
-        else if (col.gameObject.name == "PurpleEnemy(Clone)")
-        {
-            col.GetComponent<purpleAI>().PurpleLife -= damage;
-        }
-        else if (col.gameObject.name == "OrangeEnemy(Clone)")
-        {
-            col.GetComponent<orangeAI>().OrangeLife -= damage;
-        }else if (col.name == "collider_back")
+        else if (col.name == "collider_back")
         {
             Destroy(gameObject, 1);
         }
