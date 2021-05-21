@@ -39,7 +39,7 @@ namespace SketchFleets
             SpawnArea = new Vector2(MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.x, MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.y);
 
             GameObject end = (GameObject)Instantiate(WinPrefab, new Vector2(MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.y + 10, 0), new Quaternion(0, 0, 0, 0));
-            end.GetComponent<mapEndScript>().WinMenu = WinMenu;
+            end.GetComponent<MapEndScript>().WinMenu = WinMenu;
         }
 
         void Update()

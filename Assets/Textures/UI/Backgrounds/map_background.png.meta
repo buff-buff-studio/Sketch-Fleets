@@ -1,34 +1,7 @@
 fileFormatVersion: 2
-guid: 18493f975e2ddd34ba2852bc458e2b1b
+guid: a907ff191fbc51844926a8ed1a0faae4
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 5934286109928970407
-    second: graphite
-  - first:
-      213: -111402352480407653
-    second: caution2
-  - first:
-      213: -1786399679467655303
-    second: yellow_circle
-  - first:
-      213: -5928705322203289870
-    second: magenta_circle
-  - first:
-      213: -7241960321522250694
-    second: spawn_circle
-  - first:
-      213: 2194583219785134891
-    second: Atlas_HUD_5
-  - first:
-      213: -8594532929011813643
-    second: Atlas_HUD_6
-  - first:
-      213: 6133638678216455680
-    second: cyan_circle
-  - first:
-      213: 8788974011794148765
-    second: graphite
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -68,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -92,7 +65,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -104,7 +77,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 8192
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -140,7 +113,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Windows Store Apps
-    maxTextureSize: 8192
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -152,7 +125,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 8192
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -164,112 +137,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: yellow_circle
-      rect:
-        serializedVersion: 2
-        x: 202
-        y: 447
-        width: 220
-        height: 181
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97f657ec4fe6537e0800000000000000
-      internalID: -1786399679467655303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magenta_circle
-      rect:
-        serializedVersion: 2
-        x: 427
-        y: 405
-        width: 219
-        height: 222
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f6ea1ccbe109bda0800000000000000
-      internalID: -5928705322203289870
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spawn_circle
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 44
-        width: 357
-        height: 344
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3c413605736f7b90800000000000000
-      internalID: -7241960321522250694
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cyan_circle
-      rect:
-        serializedVersion: 2
-        x: 411
-        y: 113
-        width: 202
-        height: 210
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 00630b361ef0f1550800000000000000
-      internalID: 6133638678216455680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: graphite
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 402
-        width: 75
-        height: 235
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a8d9d996c1da5250800000000000000
-      internalID: 5934286109928970407
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []

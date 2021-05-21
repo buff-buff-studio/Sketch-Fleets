@@ -4,21 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using SketchFleets.Data;
 
 namespace SketchFleets
 {
-    public class loadingScriptTEST : MonoBehaviour
+    public class LoadingGame : MonoBehaviour
     {
-        public Image loadBar;
-        public TextMeshProUGUI loadText;
+        public Image LoadBar;
+        public Image LoadBarBack;
+        public TextMeshProUGUI LoadText;
+        public DifficultyAttributes Difficulty;
         void Start()
         {
             StartCoroutine(LoadingScene());
-        }
 
-        void Update()
-        {
-        
+            LoadBar.color = Difficulty.MapColor[Difficulty.Difficulty];
+
+            if (Difficulty.Difficulty != 4)
+                return;
         }
 
         IEnumerator LoadingScene()
@@ -29,11 +32,12 @@ namespace SketchFleets
             while (!asyncOperation.isDone)
             {
                 //Debug.Log(asyncOperation.progress);
-                loadBar.fillAmount = asyncOperation.progress;
+                LoadBar.fillAmount = asyncOperation.progress;
                 if (asyncOperation.progress >= 0.9f)
                 {
-                    loadText.text = "Press the space bar to continue";
-                    loadText.fontStyle = FontStyles.Underline;
+                    LoadText.text = "Press the space bar to continue";
+                    LoadText.fontStyle = FontStyles.Underline;
+                    LoadBar.fillAmount = 1;
                     if (Input.GetKeyDown(KeyCode.Space))
                         asyncOperation.allowSceneActivation = true;
                 }

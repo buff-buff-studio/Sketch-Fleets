@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SketchFleets
 {
-    public class mapEndScript : MonoBehaviour
+    public class MapEndScript : MonoBehaviour
     {
         public GameObject WinMenu;
         private void OnTriggerEnter2D(Collider2D col)
