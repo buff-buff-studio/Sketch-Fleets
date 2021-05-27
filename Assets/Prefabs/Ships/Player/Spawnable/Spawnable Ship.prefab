@@ -15,7 +15,7 @@ MonoBehaviour:
   attributes: {fileID: 0}
   bulletSpawnPoints:
   - {fileID: 4249084107644192771}
-  deathEvent: {fileID: 0}
+  deathEvent: {fileID: 11400000, guid: ef457cd8ea420ec478951a2958cc5d34, type: 2}
   soundSource: {fileID: 513481301617387861}
   spriteRenderer: {fileID: 7597287069921410289}
 --- !u!114 &4810691136368083704

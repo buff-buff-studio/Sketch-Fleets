@@ -70,7 +70,7 @@ namespace SketchFleets
         private void OnCollisionEnter2D(Collision2D other)
         {
             float random = Random.Range(0.1f, 0.3f);
-            Vector3 randomDirection = new Vector3(random, random, random);
+            Vector3 randomDirection = new Vector3(random, random, 0f);
             moveDirection *= -1f;
             moveDirection += randomDirection;
         }
