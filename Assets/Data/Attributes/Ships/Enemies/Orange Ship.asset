@@ -58,9 +58,9 @@ MonoBehaviour:
     _variable: {fileID: 0}
   dropMinMaxCount:
     _useConstant: 1
-    _constant: {x: 1, y: 7}
+    _constant: {x: 1, y: 4}
     _variable: {fileID: 0}
-  shellDrop: {fileID: 0}
+  shellDrop: {fileID: 4108485770172352479, guid: 12680e9855c37684ea4f9c7f37017a4f, type: 3}
   fire: {fileID: 0}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 0}

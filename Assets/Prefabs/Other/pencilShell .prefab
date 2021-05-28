@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4108485770172352479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -125,11 +125,11 @@ MonoBehaviour:
   playerShells:
     _useConstant: 0
     _constant: 0
-    _variable: {fileID: 0}
+    _variable: {fileID: 11400000, guid: d6a9e804e272a264290737db7ac36e9d, type: 2}
   playerShellColor:
     _useConstant: 0
     _constant: {r: 0, g: 0, b: 0, a: 0}
-    _variable: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 1bc42a043e5678149974e3c5e32d0cc5, type: 2}
 --- !u!50 &6701422747430550602
 Rigidbody2D:
   serializedVersion: 4
