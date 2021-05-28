@@ -334,7 +334,7 @@ public class ConstelationMap : MonoBehaviour
             
             
             star.Object.GetComponent<RectTransform>().anchoredPosition = star.position + new Vector2(Mathf.Sin(Time.time * Mathf.Deg2Rad * 90 + ((star.Id - 5)%10) * 10),Mathf.Cos(Time.time * Mathf.Deg2Rad * 45 + ((star.Id - 5)%10) * 10)) * (((MapLevelInteraction.state.seed * star.Id << (star.Id%7))%10) - 5); 
-            star.Object.GetComponent<RectTransform>().localEulerAngles = new Vector3(0,0,Mathf.Sin(-Time.time * Mathf.Deg2Rad * ((star.Id << 3)%20) + 30) * ((MapLevelInteraction.state.seed << star.Id%7)%10 + 10) * 10f);
+            //star.Object.GetComponent<RectTransform>().localEulerAngles = new Vector3(0,0,Mathf.Sin(-Time.time * Mathf.Deg2Rad * ((star.Id << 3)%20) + 30) * ((MapLevelInteraction.state.seed << star.Id%7)%10 + 10) * 10f);
             
             foreach(Constelation.StarJunction j in star.toJunctions)
             {
