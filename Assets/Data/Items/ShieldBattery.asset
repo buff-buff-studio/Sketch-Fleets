@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a494aafd29b4365ab82c07677eb42a4, type: 3}
-  m_Name: "F\xE1brica de figurinhas do sergio"
+  m_Name: ShieldBattery
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Fabrica de figurinhas do sergio
+    _constant: Shield Battery
     _variable: {fileID: 0}
-  description: A fabrica infinita de figurinhas do sergio
+  description: Increases max shield
   prefab: {fileID: 0}
-  itemIcon: {fileID: -5446663078217625922, guid: 225fe7d3b3531b64ea2a5e6408342482, type: 3}
+  icon: {fileID: 0}
   itemCost:
     _useConstant: 1
-    _constant: 100
+    _constant: 125
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 1
+    _constant: 4
     _variable: {fileID: 0}
-  effect: {fileID: 0}
+  effect: {fileID: 11400000, guid: 8d771978c58152e4f9d78f717589107e, type: 2}

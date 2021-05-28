@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a494aafd29b4365ab82c07677eb42a4, type: 3}
-  m_Name: A insonia do big paulo
+  m_Name: ArmorExtra
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Fabrica de figurinhas do sergio
+    _constant: Extra Armor Plate
     _variable: {fileID: 0}
-  description: A fabrica infinita de figurinhas do sergio
+  description: Slightly increases armor
   prefab: {fileID: 0}
   icon: {fileID: 0}
   itemCost:
     _useConstant: 1
-    _constant: 100
+    _constant: 200
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 1
+    _constant: 3
     _variable: {fileID: 0}
-  effect: {fileID: 0}
+  effect: {fileID: 11400000, guid: 365c5af022f51a34f8af160fcc3fa4ef, type: 2}
