@@ -10,21 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a494aafd29b4365ab82c07677eb42a4, type: 3}
-  m_Name: Monitor do Bozzi
+  m_Name: CursedPropulsion
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Monitor queimado do bozzi
+    _constant: Cursed Propulsion
     _variable: {fileID: 0}
-  description: O monitor do bozzi que queimou
+  description: 'Your propulsion system now cursed.
+
+    Greatly increases speed,
+    reduces max health.'
   prefab: {fileID: 0}
-  itemIcon: {fileID: -5256685687485610755, guid: 225fe7d3b3531b64ea2a5e6408342482, type: 3}
+  icon: {fileID: 0}
   itemCost:
     _useConstant: 1
-    _constant: 100
+    _constant: 500
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 10
+    _constant: 1
     _variable: {fileID: 0}
-  effect: {fileID: 0}
+  effect: {fileID: 11400000, guid: db50884860532644ab97b6fb7d9b4a31, type: 2}

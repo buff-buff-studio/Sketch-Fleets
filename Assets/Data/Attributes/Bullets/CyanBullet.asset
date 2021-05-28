@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
-  m_Name: MagentaBullet
+  m_Name: CyanBullet
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Magenta Bullet
+    _constant: CyanBullet
     _variable: {fileID: 0}
-  description: A bullet fired by the magenta ship
-  prefab: {fileID: 972804462044644541, guid: 5ef568d8997acbe47832232ea8da3a32, type: 3}
+  description: The Cyan ship that launches itself at the enemy and explodes.
+  prefab: {fileID: 6527832755920852042, guid: 11e3d12220070db448013d4968149cff, type: 3}
   directDamage:
     _useConstant: 1
-    _constant: 3
+    _constant: 200
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
-    _constant: 1
+    _constant: 50
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 50
+    _constant: 30
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
-    _constant: 0
+    _constant: 5
     _variable: {fileID: 0}
   indirectDamage:
     _useConstant: 1
-    _constant: 1
+    _constant: 80
     _variable: {fileID: 0}
   ignorePlayer:
     _useConstant: 1
@@ -44,13 +44,13 @@ MonoBehaviour:
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
-    _constant: 5
+    _constant: 1
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 0.7
+    _constant: 0.5
     _variable: {fileID: 0}
-  fireSound: {fileID: 8300000, guid: 9375b560dabb74a4282c77dfa5509cc3, type: 3}
+  fireSound: {fileID: 8300000, guid: 43d9107e9bfc9f6428d591ed5864139e, type: 3}
   pitchVariation:
     _useConstant: 1
     _constant: 0.25

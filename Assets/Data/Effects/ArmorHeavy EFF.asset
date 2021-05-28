@@ -9,51 +9,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
-  m_Name: MagentaBullet
+  m_Script: {fileID: 11500000, guid: be34c5ae6f6c4394bf377defb0b702a9, type: 3}
+  m_Name: ArmorHeavy EFF
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Magenta Bullet
+    _constant: Heavy Armor Plate
     _variable: {fileID: 0}
-  description: A bullet fired by the magenta ship
-  prefab: {fileID: 972804462044644541, guid: 5ef568d8997acbe47832232ea8da3a32, type: 3}
-  directDamage:
-    _useConstant: 1
-    _constant: 3
-    _variable: {fileID: 0}
-  maxDamageVariation:
-    _useConstant: 1
-    _constant: 1
-    _variable: {fileID: 0}
-  speed:
-    _useConstant: 1
-    _constant: 50
-    _variable: {fileID: 0}
-  impactRadius:
+  description: Gives the player more defense at the expense of speed
+  prefab: {fileID: 0}
+  healthRegen:
     _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
-  indirectDamage:
+  shieldRegen:
     _useConstant: 1
-    _constant: 1
+    _constant: 0
     _variable: {fileID: 0}
-  ignorePlayer:
+  maxHealthBonus:
     _useConstant: 1
-    _constant: 1
+    _constant: 0
     _variable: {fileID: 0}
-  angleJitter:
+  maxShieldBonus:
     _useConstant: 1
-    _constant: 5
+    _constant: 0
     _variable: {fileID: 0}
-  cooldown:
+  damageMultiplierBonus:
     _useConstant: 1
-    _constant: 0.7
+    _constant: 0
     _variable: {fileID: 0}
-  fireSound: {fileID: 8300000, guid: 9375b560dabb74a4282c77dfa5509cc3, type: 3}
-  pitchVariation:
+  speedMultiplierBonus:
     _useConstant: 1
-    _constant: 0.25
+    _constant: -0.2
     _variable: {fileID: 0}
-  fireEffect: {fileID: 0}
-  hitEffect: {fileID: 0}
+  defenseBonus:
+    _useConstant: 1
+    _constant: -0.15
+    _variable: {fileID: 0}
+  duration:
+    _useConstant: 1
+    _constant: -1
+    _variable: {fileID: 0}
+  spawnSlotBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  spawnCooldownMultiplierBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  abilityCooldownMultiplierBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
