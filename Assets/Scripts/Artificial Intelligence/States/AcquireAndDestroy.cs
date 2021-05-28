@@ -12,6 +12,9 @@ namespace SketchFleets
     {
         #region Private Fields
 
+        [SerializeField]
+        [Tooltip("The maximum range at which the ship will attack")]
+        private float attackRange = 50f;
         private SpawnableShipAI AI;
         private GameObject target;
         private Vector3 targetPosition;
@@ -75,7 +78,7 @@ namespace SketchFleets
             // Gets nearby enemies
             Collider2D[] existingEntities = new Collider2D[10];
             int bitWiseLayerMask = LayerMask.GetMask("Enemy");
-            Physics2D.OverlapCircleNonAlloc(currentPosition, 20f, existingEntities, bitWiseLayerMask);
+            Physics2D.OverlapCircleNonAlloc(currentPosition, attackRange, existingEntities, bitWiseLayerMask);
 
             // If no objects were caught, end things here
             if (existingEntities[0] == null) return null;
