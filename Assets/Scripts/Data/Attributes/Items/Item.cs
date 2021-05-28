@@ -8,11 +8,14 @@ namespace SketchFleets.Data
     /// </summary>
     [CreateAssetMenu(order = CreateMenus.itemAttributesOrder, fileName = CreateMenus.itemAttributesFileName, 
         menuName = CreateMenus.itemAttributesMenuName)]
-    public class ItemAttributes : Attributes
+    public class Item : ScriptableObject
     {
         #region Private Fields
-
+        [SerializeField]
+        private string unlocalized_name;
         [Header("Item Attributes")]
+        [SerializeField]
+        private int id;
         [SerializeField]
         private Sprite icon;
         [SerializeField]
@@ -49,6 +52,12 @@ namespace SketchFleets.Data
         {
             get => effect;
             set => effect = value;
+        }
+
+        public string UnlocalizedName
+        {
+            get => unlocalized_name;
+            set => unlocalized_name = value;
         }
 
         #endregion

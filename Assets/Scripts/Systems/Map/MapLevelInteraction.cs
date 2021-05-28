@@ -146,9 +146,9 @@ public class MapLevelInteraction : MonoBehaviour
 
             if(continueGame)
             {
-                if(SketchFleets.ProfileSystem.Profile.GetSave().HasKey("mapState"))
+                if(SketchFleets.ProfileSystem.Profile.GetData().save.HasKey("mapState"))
                 {
-                    byte[] bytes = SketchFleets.ProfileSystem.Profile.GetSave().Get<byte[]>("mapState");       
+                    byte[] bytes = SketchFleets.ProfileSystem.Profile.GetData().save.Get<byte[]>("mapState");       
                     state.LoadData(bytes);
 
                     Debug.Log("Map Loaded!");
@@ -157,7 +157,7 @@ public class MapLevelInteraction : MonoBehaviour
             }
             else
             {
-                SketchFleets.ProfileSystem.Profile.GetSave().Remove("mapState");
+                SketchFleets.ProfileSystem.Profile.GetData().save.Remove("mapState");
                 SaveMapState(source,callback);
             }     
         });  
@@ -170,7 +170,7 @@ public class MapLevelInteraction : MonoBehaviour
     {
         Debug.Log("Saving...");
         SketchFleets.ProfileSystem.Profile.Using(source);
-        SketchFleets.ProfileSystem.Profile.GetSave()["mapState"] = state.ToData();
+        SketchFleets.ProfileSystem.Profile.GetData().save["mapState"] = state.ToData();
         SketchFleets.ProfileSystem.Profile.SaveProfile((save) => {
             Debug.Log("Map saved!");
             callback();
@@ -184,8 +184,8 @@ public class MapLevelInteraction : MonoBehaviour
     public static void HasGameToContinue(MonoBehaviour source,Action<bool> callback)
     {   
         SketchFleets.ProfileSystem.Profile.Using(source);
-        SketchFleets.ProfileSystem.Profile.LoadProfile((save) => {
-            callback(save.HasKey("mapState"));
+        SketchFleets.ProfileSystem.Profile.LoadProfile((data) => {
+            callback(data.save.HasKey("mapState"));
         });
     }
     #endregion

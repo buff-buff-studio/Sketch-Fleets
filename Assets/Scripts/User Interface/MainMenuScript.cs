@@ -27,6 +27,7 @@ public class MainMenuScript : MonoBehaviour
     /// </summary>
     public void LoadNewGame()
     {
+        SketchFleets.ProfileSystem.Profile.GetData().Clear(this);
         MapLevelInteraction.OpenMap(this,false);
     }
 

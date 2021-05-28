@@ -174,11 +174,12 @@ namespace SketchFleets.SaveSystem
 
         public Pointer Add(object value)
         {       
-            if(value != null)
-                if(value is SaveListObject)
-                    return SetChildListDynamic(Count,(SaveListObject) value);
-                else if(value is SaveObject)
-                    return SetChildObjectDynamic(Count,(SaveObject) value);
+            if(mode.GetMode() == EditMode.Dynamic)
+                if(value != null)
+                    if(value is SaveListObject)
+                        return SetChildListDynamic(Count,(SaveListObject) value);
+                    else if(value is SaveObject)
+                        return SetChildObjectDynamic(Count,(SaveObject) value);
 
             return Insert(pointers.Count,value);
         }
