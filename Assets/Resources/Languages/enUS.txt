@@ -1,18 +1,9 @@
-randomsg
-    =Maybe 0
-    =Maybe 1
-
-ui_return=Maybe 2
-    0.33=Opa vei
-
-ui_test=Testing
-
-
-ui_pressSpace=Press space bar to summon reinforcements.
-
 ui_settings=Settings
 ui_menu=Menu
+ui_credits=Credits
 ui_resolution=Resolution
+ui_map=Map
+ui_store=Store
 
 ui_volume_master=Master Volume
 ui_volume_music=Music Volume
@@ -27,3 +18,13 @@ ui_winTitle=Planet Completed!
 
 ui_pauseTitle=Game Paused!
 ui_pauseReturn=Return
+
+ui_occupation_artist=Artist
+ui_occupation_programmer=Programmer
+ui_occupation_ui=UI Designer
+ui_occupation_you=You!
+ui_occupation_teacher=Teacher
+ui_occupation_dev=Developer
+ui_occupation_university=University
+
+ui_pressSpace=Press space bar to summon reinforcements.

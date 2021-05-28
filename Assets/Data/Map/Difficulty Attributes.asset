@@ -45,24 +45,24 @@ MonoBehaviour:
   - _useConstant: 1
     _constant: 2
     _variable: {fileID: 0}
-  mapSize:
+  mapWaves:
   - _useConstant: 1
-    _constant: {x: 25, y: 25}
+    _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 200, y: 400}
+    _constant: {x: 3, y: 6}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 400, y: 800}
+    _constant: {x: 6, y: 9}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 800, y: 1200}
+    _constant: {x: 9, y: 12}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 400, y: 800}
+    _constant: {x: 3, y: 9}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 200, y: 300}
+    _constant: {x: 3, y: 9}
     _variable: {fileID: 0}
   mapHeight:
     _useConstant: 1
