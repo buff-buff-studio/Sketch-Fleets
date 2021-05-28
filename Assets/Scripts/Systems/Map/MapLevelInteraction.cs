@@ -89,7 +89,7 @@ public class MapLevelInteraction : MonoBehaviour
 
                 //Schedule Open Star Animation
                 map.UnlockNextLevel();
-
+                Time.timeScale = 1;
                 //Save Map
                 SaveMapState(map,() => {});
             };
