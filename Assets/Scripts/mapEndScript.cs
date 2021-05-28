@@ -11,8 +11,7 @@ namespace SketchFleets
         {
             if (col.gameObject.CompareTag("Player"))
             {
-                WinMenu.SetActive(true);
-                Time.timeScale = 0;
+
             }
         }
     }

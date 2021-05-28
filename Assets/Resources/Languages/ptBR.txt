@@ -1,18 +1,9 @@
-randomsg
-    =Maybe 0
-    =Maybe 1
-
-ui_return=Maybe 2
-    0.33=Opa vei
-
-ui_test=Testando
-
-
-ui_pressSpace=Aperte barra de espaço para invocar os reforços.
-
 ui_settings=Configurações
 ui_menu=Menu
+ui_credits=Creditos
 ui_resolution=Resolução
+ui_map=Mapa
+ui_store=Loja
 
 ui_volume_master=Volume Principal
 ui_volume_music=Volume da Musica
@@ -29,3 +20,13 @@ ui_winTitle=Planeta Finalizado!
 
 ui_pauseTitle=Pausado
 ui_pauseReturn=Retornar
+
+ui_occupation_artist=Artista
+ui_occupation_programmer=Programador
+ui_occupation_ui=Designer de UI
+ui_occupation_you=Você!
+ui_occupation_teacher=Professor
+ui_occupation_dev=Desenvolvedora
+ui_occupation_university=Universidade
+
+ui_pressSpace=Aperte barra de espaço para invocar os reforços.

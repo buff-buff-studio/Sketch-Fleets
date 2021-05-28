@@ -2,15 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SketchFleets.Data;
+using ManyTools.Variables;
 using ManyTools.UnityExtended.Poolable;
 
 namespace SketchFleets
 {
     public class LevelManager : MonoBehaviour
     {
-        public GameObject Mothership;
+        private int purpleShipsMax;
+        private int purpleShips;
+        private int orangeShips;
+        private int orangeShipsMax;
+        private int limeShips;
+        private int limeShipsMax;
 
-        public GameObject WinPrefab;
+        private int maxWaves;
+        private int currentWave;
+
+        [SerializeField]
+        private StringReference mapTimer;
+        private int c;
+        private int s;
+        private int m;
+
+        public Transform Mothership;
+
         public GameObject WinMenu;
 
         public DifficultyAttributes MapDifficulty;
@@ -20,74 +36,99 @@ namespace SketchFleets
         public ShipAttributes LimeShip;
 
         public float WaveXSummon = 30;
-        int PurpleShipsMax;
-        int PurpleShips;
-        int OrangeShips;
-        int OrangeShipsMax;
-        int LimeShips;
-        int LimeShipsMax;
-
-        Vector2 SpawnArea;
 
         void Start()
         {
             int multiply = MapDifficulty.MapDifficulty[MapDifficulty.Difficulty];
-            PurpleShipsMax = Random.Range(2 * multiply, 5 * multiply);
-            OrangeShipsMax = Random.Range(1 * multiply, 4 * multiply);
-            LimeShipsMax = Random.Range(1 * multiply, 2 * multiply);
+            purpleShipsMax = Random.Range(3 * multiply, 5 * multiply);
+            orangeShipsMax = Random.Range(1 * multiply, 4 * multiply);
+            limeShipsMax = Random.Range(1 * multiply, 2 * multiply);
 
-            SpawnArea = new Vector2(MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.x, MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.y);
+            StartCoroutine(Timer());
 
-            GameObject end = (GameObject)Instantiate(WinPrefab, new Vector2(MapDifficulty.MapSize[MapDifficulty.Difficulty].Value.y + 10, 0), new Quaternion(0, 0, 0, 0));
-            end.GetComponent<MapEndScript>().WinMenu = WinMenu;
+            maxWaves = (int)Random.Range(MapDifficulty.MapWaves[MapDifficulty.Difficulty].Value.x, MapDifficulty.MapWaves[MapDifficulty.Difficulty].Value.y);
         }
 
         void Update()
         {
-            if (Mothership.transform.position.x < WaveXSummon)
-                return;
-            Debug.Log("Wave");
-            Wave();
+            if (Mothership.position.x > WaveXSummon && currentWave < maxWaves)
+            {
+                Wave();
+            }
+            if (currentWave >= maxWaves)
+            {
+                EndGame();
+            }
         }
 
         public void Wave()
         {
-            if(PurpleShips < PurpleShipsMax)
+            if(purpleShips < purpleShipsMax)
             {
                 PoolMember purple = PoolManager.Instance.Request(PurpleShip.Prefab);
 
-                Vector2 pos = new Vector2(Random.Range(Mothership.transform.position.x + 40, Mothership.transform.position.x + 80), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
+                Vector2 pos = new Vector2(Random.Range(Mothership.position.x + 40, Mothership.position.x + 80), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
 
                 purple.Emerge(pos, transform.rotation);
 
-                PurpleShips++;
+                purpleShips++;
             }
 
-            if (OrangeShips < OrangeShipsMax)
+            if (orangeShips < orangeShipsMax)
             {
                 PoolMember orange = PoolManager.Instance.Request(OrangeShip.Prefab);
 
-                Vector2 pos = new Vector2(Random.Range(Mothership.transform.position.x + 40, Mothership.transform.position.x + 80), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
+                Vector2 pos = new Vector2(Random.Range(Mothership.position.x + 40, Mothership.position.x + 80), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
 
                 orange.Emerge(pos, transform.rotation);
 
-                OrangeShips++;
+                orangeShips++;
             }
 
-            if (LimeShips < LimeShipsMax)
+            if (limeShips < limeShipsMax)
             {
                 PoolMember lime = PoolManager.Instance.Request(LimeShip.Prefab);
 
-                Vector2 pos = new Vector2(Random.Range(Mothership.transform.position.x + 40, Mothership.transform.position.x + 80), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
+                Vector2 pos = new Vector2(Random.Range(Mothership.position.x + 40, Mothership.position.x + 80), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
 
                 lime.Emerge(pos, transform.rotation);
 
-                LimeShips++;
+                limeShips++;
             }
 
-            if (LimeShips < LimeShipsMax && OrangeShips < OrangeShipsMax && PurpleShips < PurpleShipsMax)
+            if (limeShips < limeShipsMax && orangeShips < orangeShipsMax && purpleShips < purpleShipsMax)
                 return;
-            WaveXSummon = Mothership.transform.position.x + 45;
+            currentWave++;
+            WaveXSummon = Mothership.position.x + 45;
+        }
+
+        public void EndGame()
+        {
+            WinMenu.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+        IEnumerator Timer()
+        {
+            while (true)
+            {
+                if(Time.deltaTime != 0)
+                {
+                    c++;
+                    if (c >= 100)
+                    {
+                        c = 0;
+                        s++;
+                    }
+                    if (s >= 60)
+                    {
+                        s = 0;
+                        m++;
+                    }
+                }
+                mapTimer.Value = string.Format("{0:00}:{1:00}:{2:00}", m, s, c);
+                yield return new WaitForSeconds(.01f);
+            }
         }
     }
 }
