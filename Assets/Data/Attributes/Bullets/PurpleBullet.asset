@@ -20,7 +20,7 @@ MonoBehaviour:
   prefab: {fileID: 4233880130515042751, guid: ceb6d0387b0f7224e958c0b76c13e979, type: 3}
   directDamage:
     _useConstant: 1
-    _constant: 10
+    _constant: 5
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
@@ -48,7 +48,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 0.9
+    _constant: 1.5
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 9375b560dabb74a4282c77dfa5509cc3, type: 3}
   pitchVariation:
