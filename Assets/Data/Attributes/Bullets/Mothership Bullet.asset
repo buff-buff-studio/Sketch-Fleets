@@ -20,15 +20,15 @@ MonoBehaviour:
   prefab: {fileID: 7188275951484046036, guid: 1233159e84246884b810832defa6e525, type: 3}
   directDamage:
     _useConstant: 1
-    _constant: 15
+    _constant: 25
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
-    _constant: 3
+    _constant: 5
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 25
+    _constant: 35
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
-    _constant: 8
+    _constant: 5
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
