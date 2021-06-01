@@ -1,17 +1,15 @@
 using ManyTools.UnityExtended;
-using SketchFleets.AI;
 using UnityEngine;
 
-namespace SketchFleets
+namespace SketchFleets.AI
 {
     /// <summary>
-    /// An AI state that orbits around the player and fires when he does so
+    /// A base class that handles orbiting behavior
     /// </summary>
-    public class OrbitAndAssistState : State
+    public class BaseOrbitState : BaseSpawnableAIState
     {
         #region Private Fields
 
-        private SpawnableShipAI AI;
         private float orbitAngle;
 
         #endregion
@@ -25,15 +23,12 @@ namespace SketchFleets
         {
             AI = StateMachine as SpawnableShipAI;
 
-            if (Mathf.Approximately(orbitAngle, 0f))
-            {
-                orbitAngle = Random.Range(1f, 360f);
-            }
-
             if (AI == null)
             {
                 Debug.LogError($"{GetType().Name} expects a {typeof(SpawnableShipAI)} State Machine!");
             }
+            
+            orbitAngle = (360f / (float)AI.Ship.Attributes.MaximumShips) * AI.Ship.SpawnNumber;
 
             base.Enter();
         }
@@ -45,19 +40,6 @@ namespace SketchFleets
         {
             ParametricOrbit();
             AI.Ship.Look(AI.MainCamera.ScreenToWorldPoint(Input.mousePosition));
-
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                AI.Ship.Fire();
-            }
-        }
-
-        /// <summary>
-        /// Runs when the state exits
-        /// </summary>
-        public override void Exit()
-        {
-            
         }
 
         #endregion
