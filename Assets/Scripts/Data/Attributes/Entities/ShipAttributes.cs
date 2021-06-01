@@ -15,6 +15,8 @@ namespace SketchFleets.Data
 
         [Header("Attributes")]
         [SerializeField]
+        protected string unlocalizedName;
+        [SerializeField]
         protected FloatReference maxHealth;
         [Tooltip("The maximum amount of points the shield can have.")]
         [SerializeField]
@@ -64,6 +66,7 @@ namespace SketchFleets.Data
         #endregion
 
         #region Properties
+        public string UnlocalizedName => unlocalizedName;
 
         public FloatReference MaxHealth => maxHealth;
 
