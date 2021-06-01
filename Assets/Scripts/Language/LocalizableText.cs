@@ -71,9 +71,16 @@ namespace SketchFleets
             Text = this.originalText;
             this.originalText = null;
              
-            //Add event handler
+            //Remove event handler
             LanguageManager.OnLanguageChanged -= UpdateLocalization;
         }
+
+        private void OnDestroy() 
+        {
+            //Remove event handler
+            LanguageManager.OnLanguageChanged -= UpdateLocalization;
+        }
+        
         #endregion
 
         #region EventHandler
@@ -87,6 +94,8 @@ namespace SketchFleets
                 Destroy(this);
                 return;
             }
+
+            
 
             Text = System.Text.RegularExpressions.Regex.Replace(originalText, @"(?<!\\){([^}]+)\}", m => LanguageManager.Localize(m.Groups[1].Value));
         }
