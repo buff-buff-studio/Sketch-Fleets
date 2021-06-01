@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SketchFleets.Inventory
@@ -9,8 +8,8 @@ namespace SketchFleets.Inventory
     /// </summary>
     public class ItemInventory : IInventory<ItemStack>, IEnumerable
     {
-        #region Private Fields
-        private ItemStack[] items;
+        #region Protected Fields
+        protected ItemStack[] items;
         #endregion
 
         #region Properties
@@ -61,7 +60,7 @@ namespace SketchFleets.Inventory
         /// </summary>
         /// <param name="stack"></param>
         /// <returns></returns>
-        public int AddItem(ItemStack stack)
+        public virtual int AddItem(ItemStack stack)
         {
             if (!CanAddItem(stack))
                 return stack.Amount;

@@ -55,6 +55,10 @@
         public const string itemRegisterMenuName = "Sketch Fleets/Inventory Container/Item Register";
         public const string itemRegisterFileName = "Item Register";
 
+        public const int shipRegisterOrder = 2;
+        public const string shipRegisterMenuName = "Sketch Fleets/Inventory Container/Ship Register";
+        public const string shipRegisterFileName = "Ship Register";
+
         #endregion
     }
 }

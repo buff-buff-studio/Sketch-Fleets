@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SketchFleets.Data;
 
@@ -11,19 +9,11 @@ namespace SketchFleets.Inventory
     /// <summary>
     /// Class used to register items
     /// </summary>
-    public class ItemRegister : ScriptableObject
+    public class ItemRegister : Register<Item>
     {
-        #region Public Fields
-        [SerializeField]
-        public Item[] items;
-        #endregion
-
         #region Public Methods
-        /// <summary>
-        /// Pick random item from register
-        /// </summary>
-        /// <returns></returns>
-        public int PickRandom()
+        
+        public override int PickRandom()
         {
             int totalWeight = 0;
 

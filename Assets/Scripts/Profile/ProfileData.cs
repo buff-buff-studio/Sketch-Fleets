@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SketchFleets.SaveSystem;
 using SketchFleets.Inventory;
-using System.IO;
 
 namespace SketchFleets.ProfileSystem
 {
@@ -17,8 +14,11 @@ namespace SketchFleets.ProfileSystem
         #endregion
 
         #region Public Fields
+        //Game Inventories
         public UpgradeInventory inventoryUpgrades;
         public ItemInventory inventoryItems;
+        //Codex inventories
+        public CodexInventory codex = new CodexInventory();
         #endregion
 
         #region Properties
@@ -37,9 +37,10 @@ namespace SketchFleets.ProfileSystem
         /// Reload inventory data
         /// </summary>
         public void ReloadInventories()
-        {
+        {         
             inventoryUpgrades = new UpgradeInventory();
-            inventoryItems = new ItemInventory(24);
+            inventoryItems = new PlayerItemInventory(24);
+            codex = new CodexInventory();
 
             //Read inventory data
             if(save.HasKey("items"))
@@ -59,6 +60,23 @@ namespace SketchFleets.ProfileSystem
                 foreach(SaveObject o in list)
                 {
                     inventoryUpgrades.AddItem(new ItemStack(o.Get<int>("id")));
+                }
+            }
+
+            if(save.HasKey("codex"))
+            {
+                SaveListObject list = save.Get<SaveListObject>("codex");
+
+                for(int i = 0; i < list.Count; i ++)
+                {
+                    CodexEntryType type = (CodexEntryType) i;
+                    SaveListObject cls = list.Get<SaveListObject>(i);
+
+                    for(int j = 0; j < cls.Count; j ++)
+                    {
+                        int id = cls.Get<int>(j);
+                        codex.AddItem(new CodexEntry(type,id));
+                    }
                 }
             }
         }
@@ -90,11 +108,30 @@ namespace SketchFleets.ProfileSystem
                 list.Add(o);
             }
             save["upgrades"] = list;
+
+
+            list = save.CreateChildList();
+            save["codex"] = list;
+
+            int len = System.Enum.GetValues(typeof(CodexEntryType)).Length;
+            for(int i = 0; i < len; i ++)
+            {
+                CodexEntryType type = (CodexEntryType) i;
+                SaveListObject cls = save.CreateChildList();
+
+                foreach(CodexEntry entry in codex.GetUnlockedEntries(type))
+                {
+                    cls.Add(entry.id);
+                }
+
+                list.Add(cls);
+            }
         }
 
         public void Clear(MonoBehaviour behaviour)
         {
-            save.Clear();
+            save.Remove("mapState");
+            save.Remove("items");
             ReloadInventories();
             Profile.Using(behaviour);
             Profile.SaveProfile((data) => {});

@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using SketchFleets.ProfileSystem;
 
@@ -16,6 +12,7 @@ namespace SketchFleets.Inventory
         public TMP_Text inventoryLabel;
         #endregion
 
+        #region Unity Callbacks
         public new void Start() 
         {
             base.Start();
@@ -26,7 +23,9 @@ namespace SketchFleets.Inventory
             //Handlers
             OnClickSlot = OnClickSlotMethod;
         }
+        #endregion
 
+        #region Container
         public void OnClickSlotMethod(int slot)
         {
             //Add item to player inventory
@@ -37,7 +36,9 @@ namespace SketchFleets.Inventory
             //Update labels
             UpdateLabel();
         }
-
+        #endregion
+        
+        #region Temporary
         public void UpdateLabel()
         {
             string s = "Player Inventory:\n";
@@ -45,7 +46,16 @@ namespace SketchFleets.Inventory
             {
                 s += register.items[i.Id].UnlocalizedName + " * " + i.Amount + "\n";
             }
-            inventoryLabel.text = s.Length == 0 ? "{EMPTY}" : s;
+        
+            s += "\nCodex:\n";
+
+            foreach(CodexEntry entry in Profile.GetData().codex.GetUnlockedEntries(CodexEntryType.Item))
+            {
+                s += entry.type + ": " + entry.id + "\n";
+            }
+
+            inventoryLabel.text = s;
         }
+        #endregion
     }
 }
