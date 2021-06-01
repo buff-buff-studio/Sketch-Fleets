@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 558e9bcca7cd1a746bb855873ce33f89, type: 3}
-  m_Name: A insonia do big paulo
+  m_Name: FuelTankLarge
   m_EditorClassIdentifier: 
-  unlocalized_name: big_paulo_insonia
-  id: 0
+  unlocalized_name: fuel_tank_large
+  id: 5
   icon: {fileID: 0}
   itemCost:
     _useConstant: 1
@@ -21,6 +21,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 100
+    _constant: 10
     _variable: {fileID: 0}
-  effect: {fileID: 0}
+  effect: {fileID: 11400000, guid: 960fc01178ba8a34dbf216677f454627, type: 2}

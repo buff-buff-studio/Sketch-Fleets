@@ -11249,8 +11249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20b534ba5e9ac0418cfd322442c88b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exposedParam: MusicVol
-  mixer: {fileID: 24100000, guid: e2b3be49bdb0e3f43a31c615f5c6da2e, type: 2}
 --- !u!114 &1045561838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13416,8 +13414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20b534ba5e9ac0418cfd322442c88b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exposedParam: SfxVol
-  mixer: {fileID: 24100000, guid: e2b3be49bdb0e3f43a31c615f5c6da2e, type: 2}
 --- !u!114 &1324071888
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,22 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a494aafd29b4365ab82c07677eb42a4, type: 3}
-  m_Name: FuelTankCompact
+  m_Script: {fileID: 11500000, guid: 558e9bcca7cd1a746bb855873ce33f89, type: 3}
+  m_Name: GraphiteAverage
   m_EditorClassIdentifier: 
-  objectName:
-    _useConstant: 1
-    _constant: Compact Fuel Tank
-    _variable: {fileID: 0}
-  description: Slightly increases max health
-  prefab: {fileID: 0}
+  unlocalized_name: graphite_average
+  id: 6
   icon: {fileID: 0}
   itemCost:
     _useConstant: 1
-    _constant: 150
+    _constant: 100
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 4
+    _constant: 10
     _variable: {fileID: 0}
-  effect: {fileID: 11400000, guid: 6a0378cdc93697048a68d9425b79f92a, type: 2}
+  effect: {fileID: 11400000, guid: 2487a2ed8248e0c438f17657940cd415, type: 2}

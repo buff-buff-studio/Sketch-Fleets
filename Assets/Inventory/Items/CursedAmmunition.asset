@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 558e9bcca7cd1a746bb855873ce33f89, type: 3}
-  m_Name: Heavy Armor
+  m_Name: CursedAmmunition
   m_EditorClassIdentifier: 
-  unlocalized_name: heavy_armor
-  id: 0
+  unlocalized_name: cursed_ammunation
+  id: 2
   icon: {fileID: 0}
   itemCost:
     _useConstant: 1
@@ -21,6 +21,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 100
+    _constant: 10
     _variable: {fileID: 0}
-  effect: {fileID: 11400000, guid: f7c9553efe4e64c48ae1aa8894f97b59, type: 2}
+  effect: {fileID: 11400000, guid: 3fce1d75fa4096f4ea08a87fa37aaf08, type: 2}

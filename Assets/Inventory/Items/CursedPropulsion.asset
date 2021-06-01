@@ -9,22 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a494aafd29b4365ab82c07677eb42a4, type: 3}
-  m_Name: PencilSharpener
+  m_Script: {fileID: 11500000, guid: 558e9bcca7cd1a746bb855873ce33f89, type: 3}
+  m_Name: CursedPropulsion
   m_EditorClassIdentifier: 
-  objectName:
-    _useConstant: 1
-    _constant: Pencil Sharpener
-    _variable: {fileID: 0}
-  description: Temporarily increases damage dealt by all ships.
-  prefab: {fileID: 0}
+  unlocalized_name: cursed_propulsion
+  id: 3
   icon: {fileID: 0}
   itemCost:
     _useConstant: 1
-    _constant: 150
+    _constant: 100
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 2
+    _constant: 10
     _variable: {fileID: 0}
-  effect: {fileID: 11400000, guid: a48f4009fd616f5479b043339eeb45a0, type: 2}
+  effect: {fileID: 11400000, guid: db50884860532644ab97b6fb7d9b4a31, type: 2}

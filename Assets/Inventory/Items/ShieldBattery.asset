@@ -9,22 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a494aafd29b4365ab82c07677eb42a4, type: 3}
-  m_Name: ArmorHeavy
+  m_Script: {fileID: 11500000, guid: 558e9bcca7cd1a746bb855873ce33f89, type: 3}
+  m_Name: ShieldBattery
   m_EditorClassIdentifier: 
-  objectName:
-    _useConstant: 1
-    _constant: Heavy Armor Plate
-    _variable: {fileID: 0}
-  description: Gives the player a higher shield capacity at the expense of speed
-  prefab: {fileID: 0}
+  unlocalized_name: shield_battery
+  id: 10
   icon: {fileID: 0}
   itemCost:
     _useConstant: 1
-    _constant: 150
+    _constant: 100
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 5
+    _constant: 10
     _variable: {fileID: 0}
-  effect: {fileID: 11400000, guid: f7c9553efe4e64c48ae1aa8894f97b59, type: 2}
+  effect: {fileID: 11400000, guid: 8d771978c58152e4f9d78f717589107e, type: 2}

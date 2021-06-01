@@ -84,7 +84,9 @@ public class MapLevelInteraction : MonoBehaviour
     public static void ReturnToMapOpeningStar()
     {
         LoadScene("Scenes/Map",() => {
+            Debug.Log("aaa");
             ConstelationMap.onMapLoad = () => {
+                Debug.Log("bbb");
                 map.OpenInstantly();
 
                 //Schedule Open Star Animation
