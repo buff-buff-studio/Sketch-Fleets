@@ -258,8 +258,9 @@ namespace SketchFleets
                 for (int index = 0; index < dropCount; index++)
                 {
                     Vector3 dropPosition =
-                        new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), transform.position.z);
-                    Instantiate(Attributes.ShellDrop, dropPosition, Quaternion.identity);
+                        new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), 0);
+                    Instantiate(Attributes.ShellDrop, transform.position + dropPosition, Quaternion.identity);
+
                 }
             }
 

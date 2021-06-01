@@ -10,33 +10,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be34c5ae6f6c4394bf377defb0b702a9, type: 3}
-  m_Name: Heavy Armor AT
+  m_Name: ArmorExtra EFF
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Heavy Armor Plate
+    _constant: Extra Armor Plate
     _variable: {fileID: 0}
-  description: Gives the player a higher shield capacity at the expense of speed
+  description: Slightly increases armor
   prefab: {fileID: 0}
+  healthRegen:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  shieldRegen:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
   maxHealthBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   maxShieldBonus:
     _useConstant: 1
-    _constant: 1.15
+    _constant: 0
     _variable: {fileID: 0}
   damageMultiplierBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   speedMultiplierBonus:
     _useConstant: 1
-    _constant: 0.8
+    _constant: 0
     _variable: {fileID: 0}
   defenseBonus:
-    _useConstant: 0
-    _constant: 0
+    _useConstant: 1
+    _constant: -0.1
+    _variable: {fileID: 0}
+  duration:
+    _useConstant: 1
+    _constant: -1
     _variable: {fileID: 0}
   spawnSlotBonus:
     _useConstant: 0

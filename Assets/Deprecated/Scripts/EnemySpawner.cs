@@ -6,6 +6,7 @@ using SketchFleets;
 
 public class EnemySpawner : MonoBehaviour
 {
+    /*
     [SerializeField]
     private GameObject Mothership;
 
@@ -86,11 +87,5 @@ public class EnemySpawner : MonoBehaviour
             purpleEnemy.Add(purple);
         }
     }
-
-    private void BossSpawner(int n)
-    {
-        Vector2 pos = new Vector2(attributes.MapSize[4].Value.y, 0);
-
-        GameObject boss = (GameObject)Instantiate(attributes.Boss[Random.Range(0,attributes.Boss.Length)], pos, new Quaternion(0, 0, 0, 0));
-    }
+    */
 }

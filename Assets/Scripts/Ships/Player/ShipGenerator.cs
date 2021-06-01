@@ -67,12 +67,12 @@ public class ShipGenerator : MonoBehaviour
         GraphitePrice();
 
 
-        if (Input.GetAxis("CircleOpen") == 1 && mothership.MaxHealth > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && mothership.MaxHealth > 0)
         {
             CircleShip.SetActive(true);
             Time.timeScale = .5f;
         }
-        else if(mothership.CurrentHealth > 0)
+        if(Input.GetKeyUp(KeyCode.Space) && mothership.CurrentHealth > 0)
         {
             CircleShip.SetActive(false);
             Time.timeScale = 1;

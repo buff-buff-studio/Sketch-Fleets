@@ -20,7 +20,7 @@ MonoBehaviour:
   prefab: {fileID: 1419266270299820781, guid: 65faab35e8e0d4844a45146097df8021, type: 3}
   maxHealth:
     _useConstant: 1
-    _constant: 350
+    _constant: 300
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
@@ -40,11 +40,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 15
+    _constant: 5
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
-    _constant: 0.75
+    _constant: 1.25
     _variable: {fileID: 0}
   collisionDamage:
     _useConstant: 1
@@ -56,9 +56,9 @@ MonoBehaviour:
     _variable: {fileID: 0}
   dropMinMaxCount:
     _useConstant: 1
-    _constant: {x: 15, y: 50}
+    _constant: {x: 15, y: 40}
     _variable: {fileID: 0}
-  shellDrop: {fileID: 4302579644872828459, guid: 463bdbbaf4f970343a99cac2cdab985c, type: 3}
+  shellDrop: {fileID: 4108485770172352479, guid: 12680e9855c37684ea4f9c7f37017a4f, type: 3}
   fire: {fileID: 11400000, guid: cd4b2ca9005c76547a9411386cf0ced0, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 0}

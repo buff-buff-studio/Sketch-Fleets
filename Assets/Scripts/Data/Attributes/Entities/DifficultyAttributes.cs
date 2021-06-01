@@ -22,9 +22,9 @@ namespace SketchFleets.Data
         [Tooltip("Enemy multiplier for the generation.")]
         [SerializeField]
         protected IntReference[] mapDifficulty;
-        [Tooltip("Average map size.")]
+        [Tooltip("Average number of map waves.")]
         [SerializeField]
-        protected Vector2Reference[] mapSize;
+        protected Vector2Reference[] mapWaves;
         [Tooltip("Map Height.")]
         [SerializeField]
         protected FloatReference mapHeight;
@@ -76,9 +76,9 @@ namespace SketchFleets.Data
         {
             get => mapDifficulty;
         }
-        public Vector2Reference[] MapSize
+        public Vector2Reference[] MapWaves
         {
-            get => mapSize;
+            get => mapWaves;
         }
         public FloatReference MapHeight
         {

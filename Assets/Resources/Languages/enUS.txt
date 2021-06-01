@@ -1,10 +1,53 @@
-randomsg
-    =Maybe 0
-    =Maybe 1
+ui_settings=Settings
+ui_menu=Menu
+ui_credits=Credits
+ui_resolution=Resolution
+ui_map=Map
+ui_store=Store
 
-ui_return=Maybe 2
-    0.33=Opa vei
+ui_enemies=Enemies
 
-ui_test=Testing
-mm_new_game=Uau
+ui_deadTitle=You Die!
+ui_runtime=Run Time
+
+ui_winTitle=Planet Completed!
+
+ui_pauseTitle=Game Paused!
+ui_pauseReturn=Return
+
+ui_button_newgame=New Game
+ui_button_continue=Continue
+ui_button_store=Store
+ui_button_codex=Codex
+
+ui_title_settings=Settings
+
+ui_subtitle_displaysettings=Display Settings
+ui_subtitle_languagesettings=Language Settings
+ui_subtitle_resolutionsettings=Resolution Settings
+ui_subtitle_graphicssettings=Graphics Settings
+
+ui_language_english=English
+ui_language_portuguese=Português
+
+ui_subtitle_volumemaster=Master Volume
+ui_subtitle_volumemusic=Music Volume
+ui_subtitle_volumesfx=SFX Volume
+
+ui_graphics_low=Low
+ui_graphics_medium=Medium
+ui_graphics_high=High
+
+ui_occupation_artist=Artist
+ui_occupation_programmer=Programmer
+ui_occupation_ui=UI Designer
+ui_occupation_you=You!
+ui_occupation_teacher=Teacher
+ui_occupation_dev=Developer
+ui_occupation_university=University
+
+ui_quit_confirm=Are you sure?
+ui_quit_yes=Yes!
+ui_quit_no=No!
+
 ui_pressSpace=Press space bar to summon reinforcements.

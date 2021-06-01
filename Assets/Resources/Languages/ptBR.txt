@@ -1,9 +1,53 @@
-randomsg
-    =Maybe 0
-    =Maybe 1
+ui_settings=Settings
+ui_menu=Menu
+ui_credits=Créditos
+ui_resolution=Resolução
+ui_map=Mapa
+ui_store=Loja
 
-ui_return=Maybe 2
-    0.33=Opa vei
+ui_enemies=Inimigos
 
-ui_test=Testando
-ui_pressSpace=Aperte barra de espa�o para invocar os refor�os.
+ui_deadTitle=Você Morreu!
+ui_runtime=Tempo da partida
+
+ui_winTitle=Planeta Completado!
+
+ui_pauseTitle=Jogo Pausado!
+ui_pauseReturn=Voltar
+
+ui_button_newgame=Novo Jogo
+ui_button_continue=Continuar
+ui_button_store=Loja
+ui_button_codex=Codex
+
+ui_title_settings=Opções
+
+ui_subtitle_displaysettings=Opções de Tela
+ui_subtitle_languagesettings=Opções de Idioma
+ui_subtitle_resolutionsettings=Opções de Resolução
+ui_subtitle_graphicssettings=Opções Gráficas
+
+ui_language_english=English
+ui_language_portuguese=Português
+
+ui_subtitle_volumemaster=Volume Mestre
+ui_subtitle_volumemusic=Volume de Música
+ui_subtitle_volumesfx=Volume de Efeitos Sonoros
+
+ui_graphics_low=Baixo
+ui_graphics_medium=Médio
+ui_graphics_high=Alto
+
+ui_occupation_artist=Artist
+ui_occupation_programmer=Programador
+ui_occupation_ui=Designer de UI
+ui_occupation_you=Você!
+ui_occupation_teacher=Professor
+ui_occupation_dev=Desenvolvedor
+ui_occupation_university=Universidade
+
+ui_quit_confirm=Você tem certeza?
+ui_quit_yes=Sim!
+ui_quit_no=Não!
+
+ui_pressSpace=Aperta a barra de espaço para invocar reforços;
