@@ -1,23 +1,18 @@
-using System;
-using ManyTools.UnityExtended;
 using ManyTools.Variables;
-using SketchFleets.AI;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-namespace SketchFleets
+namespace SketchFleets.AI
 {
     /// <summary>
     /// An AI state that aims and fires
     /// </summary>
-    public class SpinBounceAndFire : State
+    public class SpinBounceAndFire : BaseEnemyAIState
     {
         #region Private Fields
 
         [SerializeField]
         private FloatReference rotationSpeedModifier = new FloatReference(4f);
 
-        private EnemyShipAI AI;
         private Transform cachedTransform;
         private Vector3 moveDirection;
 
@@ -30,16 +25,10 @@ namespace SketchFleets
         /// </summary>
         public override void Enter()
         {
-            AI = StateMachine as EnemyShipAI;
+            base.Enter();
+
             cachedTransform = transform;
             moveDirection = cachedTransform.right;
-
-            if (AI == null)
-            {
-                Debug.LogError("Could not find AI!");
-            }
-
-            base.Enter();
         }
 
         /// <summary>
@@ -47,6 +36,8 @@ namespace SketchFleets
         /// </summary>
         public override void StateUpdate()
         {
+            if (!shipRenderer.isVisible) return;
+
             float temporalSpeed = AI.Ship.Attributes.Speed * Time.deltaTime;
 
             cachedTransform.Translate(moveDirection * temporalSpeed, Space.World);
@@ -59,13 +50,10 @@ namespace SketchFleets
             AI.Ship.Fire();
         }
 
-        /// <summary>
-        /// Runs when the state exits
-        /// </summary>
-        public override void Exit()
-        {
 
-        }
+        #endregion
+
+        #region Unity Callbacks
 
         private void OnCollisionEnter2D(Collision2D other)
         {

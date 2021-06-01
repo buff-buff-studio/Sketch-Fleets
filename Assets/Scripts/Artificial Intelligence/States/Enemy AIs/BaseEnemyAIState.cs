@@ -1,18 +1,18 @@
 using ManyTools.UnityExtended;
-using SketchFleets.AI;
 using UnityEngine;
 
-namespace SketchFleets
+namespace SketchFleets.AI
 {
     /// <summary>
-    /// An AI state that aims and fires
+    /// A base state that handles all AI for  spawnable ships
     /// </summary>
-    public class AimAndFireState : State
+    public class BaseEnemyAIState : State
     {
         #region Private Fields
 
-        private EnemyShipAI AI;
-        
+        protected EnemyShipAI AI;
+        protected Renderer shipRenderer;
+
         #endregion
 
         #region State Implementation
@@ -22,14 +22,16 @@ namespace SketchFleets
         /// </summary>
         public override void Enter()
         {
+            base.Enter();
+
             AI = StateMachine as EnemyShipAI;
+
+            shipRenderer = GetComponent<Renderer>();
 
             if (AI == null)
             {
-                Debug.LogError("AimAndFireState expects a EnemyShipAI State Machine!");
+                Debug.LogError($"{GetType().Name} expects a {typeof(EnemyShipAI)} State Machine!");
             }
-
-            base.Enter();
         }
 
         /// <summary>
@@ -37,8 +39,7 @@ namespace SketchFleets
         /// </summary>
         public override void StateUpdate()
         {
-            AI.Ship.Look(AI.Player.transform.position);
-            AI.Ship.Fire();
+            
         }
         
         /// <summary>
@@ -46,7 +47,7 @@ namespace SketchFleets
         /// </summary>
         public override void Exit()
         {
-
+            
         }
 
         #endregion

@@ -8,14 +8,14 @@ namespace SketchFleets
     /// <summary>
     /// An AI state that acquires targets and fires at them
     /// </summary>
-    public class AcquireAndDestroy : State
+    public class AcquireAndDestroy : BaseSpawnableAIState
     {
         #region Private Fields
 
         [SerializeField]
         [Tooltip("The maximum range at which the ship will attack")]
         private float attackRange = 50f;
-        private SpawnableShipAI AI;
+        
         private GameObject target;
         private Vector3 targetPosition;
         private bool inCombat = false;
@@ -49,6 +49,8 @@ namespace SketchFleets
         /// </summary>
         public override void StateUpdate()
         {
+            base.StateUpdate();
+            
             if (!inCombat) return;
             AI.Ship.Look(targetPosition);
             AI.Ship.Fire();
