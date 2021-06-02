@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be34c5ae6f6c4394bf377defb0b702a9, type: 3}
-  m_Name: GraphitePerfect EFF
+  m_Name: MothershipAbilityUpgrade
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Large Graphite
+    _constant: Mothership Ability Upgrade
     _variable: {fileID: 0}
-  description: Heals instantly for a almost all your health
+  description: This upgrade decreases the delay of the mothership's recall ability
   prefab: {fileID: 0}
   healthRegen:
     _useConstant: 1
-    _constant: 750
+    _constant: 0
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
@@ -48,7 +48,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   duration:
     _useConstant: 1
-    _constant: 0.1
+    _constant: -1
     _variable: {fileID: 0}
   spawnSlotBonus:
     _useConstant: 0
@@ -59,6 +59,6 @@ MonoBehaviour:
     _constant: 0
     _variable: {fileID: 0}
   abilityCooldownMultiplierBonus:
-    _useConstant: 0
-    _constant: 0
+    _useConstant: 1
+    _constant: 1
     _variable: {fileID: 0}

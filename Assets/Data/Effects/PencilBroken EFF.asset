@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be34c5ae6f6c4394bf377defb0b702a9, type: 3}
-  m_Name: GraphiteBroken EFF
+  m_Name: PencilBroken EFF
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Small Graphite
+    _constant: Small Pencil
     _variable: {fileID: 0}
   description: Heals instantly for a small amount
   prefab: {fileID: 0}

@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocalized_name: cursed_propulsion
   id: 3
-  icon: {fileID: 0}
+  icon: {fileID: 1015501749003404656, guid: 754a14a9899896346b01c08a42db253d, type: 3}
   itemCost:
     _useConstant: 1
-    _constant: 100
+    _constant: 750
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 10
+    _constant: 1
     _variable: {fileID: 0}
   effect: {fileID: 11400000, guid: db50884860532644ab97b6fb7d9b4a31, type: 2}

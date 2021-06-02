@@ -47,7 +47,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   defenseBonus:
     _useConstant: 1
-    _constant: 1
+    _constant: -1
     _variable: {fileID: 0}
   duration:
     _useConstant: 1

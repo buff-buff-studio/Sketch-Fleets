@@ -16,7 +16,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: Compact Fuel Tank
     _variable: {fileID: 0}
-  description: Slightly increases max health
+  description: Slightly increases player speed
   prefab: {fileID: 0}
   healthRegen:
     _useConstant: 1
@@ -28,7 +28,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   maxHealthBonus:
     _useConstant: 1
-    _constant: 100
+    _constant: 0
     _variable: {fileID: 0}
   maxShieldBonus:
     _useConstant: 0
@@ -39,8 +39,8 @@ MonoBehaviour:
     _constant: 0
     _variable: {fileID: 0}
   speedMultiplierBonus:
-    _useConstant: 0
-    _constant: 0
+    _useConstant: 1
+    _constant: 0.1
     _variable: {fileID: 0}
   defenseBonus:
     _useConstant: 0
