@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d238588c27f5c49bbe7497196675d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRange: 50
 --- !u!1001 &7320449985083656004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98,7 +99,7 @@ PrefabInstance:
     - target: {fileID: 513481301617387861, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 9375b560dabb74a4282c77dfa5509cc3, type: 3}
+      objectReference: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
     - target: {fileID: 513481301617387861, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0

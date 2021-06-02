@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocalized_name: fuel_tank_compact
   id: 4
-  icon: {fileID: 0}
+  icon: {fileID: 265886500289723850, guid: 754a14a9899896346b01c08a42db253d, type: 3}
   itemCost:
     _useConstant: 1
-    _constant: 100
+    _constant: 200
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 10
+    _constant: 12
     _variable: {fileID: 0}
   effect: {fileID: 11400000, guid: 6a0378cdc93697048a68d9425b79f92a, type: 2}

@@ -17,10 +17,10 @@ MonoBehaviour:
   icon: {fileID: 0}
   itemCost:
     _useConstant: 1
-    _constant: 100
+    _constant: 200
     _variable: {fileID: 0}
   rarity:
     _useConstant: 1
-    _constant: 10
+    _constant: 8
     _variable: {fileID: 0}
   effect: {fileID: 11400000, guid: f7c9553efe4e64c48ae1aa8894f97b59, type: 2}

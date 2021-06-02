@@ -18,6 +18,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: 
   prefab: {fileID: 6812927983558368271, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
+  unlocalizedName: 
   maxHealth:
     _useConstant: 1
     _constant: 100
@@ -56,7 +57,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   dropMinMaxCount:
     _useConstant: 1
-    _constant: {x: 1, y: 3}
+    _constant: {x: 5, y: 10}
     _variable: {fileID: 0}
   shellDrop: {fileID: 4108485770172352479, guid: 12680e9855c37684ea4f9c7f37017a4f, type: 3}
   fire: {fileID: 11400000, guid: 550dd3e518aab5c45bdad97835ef007a, type: 2}

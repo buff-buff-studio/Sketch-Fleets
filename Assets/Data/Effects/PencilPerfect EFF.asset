@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be34c5ae6f6c4394bf377defb0b702a9, type: 3}
-  m_Name: GraphiteAverage EFF
+  m_Name: PencilPerfect EFF
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Medium Graphite
+    _constant: Perfect Pencil
     _variable: {fileID: 0}
-  description: Heals instantly for a decent amount of health
+  description: Heals instantly for a almost all your health
   prefab: {fileID: 0}
   healthRegen:
     _useConstant: 1
-    _constant: 500
+    _constant: 750
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
