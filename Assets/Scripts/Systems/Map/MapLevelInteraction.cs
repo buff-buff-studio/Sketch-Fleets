@@ -89,6 +89,8 @@ public class MapLevelInteraction : MonoBehaviour
                 Debug.Log("bbb");
                 map.OpenInstantly();
 
+                Time.timeScale = 1;
+
                 //Schedule Open Star Animation
                 map.UnlockNextLevel();
 
