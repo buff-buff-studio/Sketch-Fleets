@@ -7,7 +7,7 @@ namespace SketchFleets.Inventory
     /// <summary>
     /// Stores all player upgrades
     /// </summary>
-    public class ShopInventory : IInventory<ItemStack>, IEnumerable
+    public class StoreInventory : IInventory<ItemStack>, IEnumerable
     {
         List<ItemStack> items = new List<ItemStack>();
 

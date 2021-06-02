@@ -131,8 +131,9 @@ namespace SketchFleets.Inventory
         public int SearchItem(ItemStack item)
         {
             for (int i = 0; i < items.Length; i++)
-                if (items[i].Equals(item))
-                    return items[i].Amount;
+                if(items[i] != null)
+                    if (items[i].Equals(item))
+                        return items[i].Amount;
 
             return 0;
         }

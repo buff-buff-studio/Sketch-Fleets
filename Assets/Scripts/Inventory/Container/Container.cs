@@ -23,29 +23,9 @@ namespace SketchFleets.Inventory
         /// <summary>
         /// Init container
         /// </summary>
-        public void Start() 
+        public virtual void Start() 
         {
-            #region Temporary
-            //Load
-            inventory = new ShopInventory();
-            for(int i = 0; i < slots.Length; i ++)
-            {
-                inventory.AddItem(new ItemStack(register.PickRandom()));
-            }
-
-            for(int i = 0; i < slots.Length; i ++)
-            {
-                Button btn = slots[i].GetComponent<Button>();
-                int ji = i;
-                if(btn != null)
-                    btn.onClick.AddListener(() => {
-                        OnClickSlotInternal(ji);
-                    });
-            }
-
-            //Render items
-            Render();
-            #endregion    
+            
         }
 
         /// <summary>
@@ -66,22 +46,14 @@ namespace SketchFleets.Inventory
         /// <param name="index"></param>
         public virtual void RenderSlot(int index)
         {
-            ItemStack stack = inventory.GetItem(index);
             
-            string name = "";
-            if(stack != null)
-                name = register.items[stack.Id].UnlocalizedName;
-
-            #region Temporary
-            slots[index].GetChild(0).GetComponent<TMP_Text>().text = name; 
-            #endregion
         }
 
         /// <summary>
         /// Handle slot click
         /// </summary>
         /// <param name="slot"></param>
-        private void OnClickSlotInternal(int slot)
+        protected void OnClickSlotInternal(int slot)
         {
             if(OnClickSlot != null)
                 OnClickSlot(slot);
