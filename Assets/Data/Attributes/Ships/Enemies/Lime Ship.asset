@@ -18,6 +18,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: "Lime enemy ship\t"
   prefab: {fileID: 1419266270299820781, guid: 65faab35e8e0d4844a45146097df8021, type: 3}
+  unlocalizedName: 
   maxHealth:
     _useConstant: 1
     _constant: 300
@@ -60,5 +61,9 @@ MonoBehaviour:
     _variable: {fileID: 0}
   shellDrop: {fileID: 4108485770172352479, guid: 12680e9855c37684ea4f9c7f37017a4f, type: 3}
   fire: {fileID: 11400000, guid: cd4b2ca9005c76547a9411386cf0ced0, type: 2}
+  enemyKills:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: 8a0de06510999f640bb44839925e8b30, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 0}

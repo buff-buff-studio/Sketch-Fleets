@@ -55,6 +55,10 @@ namespace SketchFleets.Data
         [SerializeField, RequiredField()]
         protected BulletAttributes fire;
 
+        [Tooltip("Variable number of enemies killed .")]
+        [SerializeField]
+        protected IntReference enemyKills;
+
         [Header("Special Effects")]
         [Tooltip("The sound effect when the ship gets hit")]
         [SerializeField]
@@ -77,6 +81,8 @@ namespace SketchFleets.Data
         public FloatReference Speed => speed;
 
         public BulletAttributes Fire => fire;
+
+        public IntReference EnemyKills => enemyKills;
 
         public FloatReference Defense => defense;
 

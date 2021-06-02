@@ -18,12 +18,17 @@ namespace SketchFleets
 
         private int maxWaves;
         private int currentWave;
+        private int enemys;
 
         [SerializeField]
         private StringReference mapTimer;
-        private int c;
-        private int s;
-        private int m;
+        [SerializeField]
+        private IntReference s;
+        [SerializeField]
+        private IntReference m;
+
+        [SerializeField]
+        private IntReference enemyKills;
 
         public Transform Mothership;
 
@@ -39,6 +44,13 @@ namespace SketchFleets
 
         void Start()
         {
+            if(MapDifficulty.Map == 1)
+            {
+                enemyKills.Value = 0;
+                s.Value = 0;
+                m.Value = 0;
+            }
+
             int multiply = MapDifficulty.MapDifficulty[MapDifficulty.Difficulty];
             purpleShipsMax = Random.Range(3 * multiply, 5 * multiply);
             orangeShipsMax = Random.Range(1 * multiply, 4 * multiply);
@@ -55,7 +67,7 @@ namespace SketchFleets
             {
                 Wave();
             }
-            if (currentWave >= maxWaves)
+            if (currentWave >= maxWaves && enemyKills >= enemyKills + enemys)
             {
                 EndGame();
             }
@@ -72,6 +84,7 @@ namespace SketchFleets
                 purple.Emerge(pos, transform.rotation);
 
                 purpleShips++;
+                enemys++;
             }
 
             if (orangeShips < orangeShipsMax)
@@ -83,6 +96,7 @@ namespace SketchFleets
                 orange.Emerge(pos, transform.rotation);
 
                 orangeShips++;
+                enemys++;
             }
 
             if (limeShips < limeShipsMax)
@@ -94,6 +108,7 @@ namespace SketchFleets
                 lime.Emerge(pos, transform.rotation);
 
                 limeShips++;
+                enemys++;
             }
 
             if (limeShips < limeShipsMax && orangeShips < orangeShipsMax && purpleShips < purpleShipsMax)
@@ -114,20 +129,15 @@ namespace SketchFleets
             {
                 if(Time.deltaTime != 0)
                 {
-                    c++;
-                    if (c >= 100)
-                    {
-                        c = 0;
-                        s++;
-                    }
+                    s.Value++;
                     if (s >= 60)
                     {
-                        s = 0;
-                        m++;
+                        s.Value = 0;
+                        m.Value++;
                     }
                 }
-                mapTimer.Value = string.Format("{0:00}:{1:00}:{2:00}", m, s, c);
-                yield return new WaitForSeconds(.01f);
+                mapTimer.Value = string.Format("{0:00}:{1:00}", m.Value, s.Value);
+                yield return new WaitForSeconds(1);
             }
         }
     }

@@ -263,8 +263,8 @@ namespace SketchFleets
 
                 }
             }
-
             Submerge();
+            Attributes.EnemyKills.Value++;
         }
 
         #endregion

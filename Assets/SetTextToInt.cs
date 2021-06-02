@@ -4,10 +4,10 @@ using ManyTools.Variables;
 
 namespace SketchFleets
 {
-    public class MapTimer : MonoBehaviour
+    public class SetTextToInt : MonoBehaviour
     {
         [SerializeField]
-        private StringReference mapTimer;
+        private IntReference intRef;
         private TextMeshProUGUI textMesh;
         void Start()
         {
@@ -15,7 +15,7 @@ namespace SketchFleets
         }
         void Update()
         {
-            textMesh.text = mapTimer;
+            textMesh.text = intRef.ToString();
         }
     }
 }
