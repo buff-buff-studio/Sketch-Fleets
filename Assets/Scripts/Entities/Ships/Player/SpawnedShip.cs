@@ -7,6 +7,10 @@ namespace SketchFleets.Entities
     /// </summary>
     public class SpawnedShip : Ship<SpawnableShipAttributes>
     {
-        
+        #region Properties
+
+        public int SpawnNumber { get; set; }
+
+        #endregion
     }
 }
