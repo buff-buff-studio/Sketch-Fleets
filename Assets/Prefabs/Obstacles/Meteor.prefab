@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5122856079368361749, guid: 140f17f3e4266f34283d3722b83c346c, type: 3}
+  m_Sprite: {fileID: 9110041061696100120, guid: 5450bf22d25d4634793e0dffdd74f8ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,10 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5eb891cc1b615c43a20a2dd7bd89c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLife:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: 4273dadaabef4134ba1eb50dc2f9c63b, type: 2}
 --- !u!58 &5070516207696338509
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4913,7 +4909,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e3338b9b2650e64f8b480b2d6b18649, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
