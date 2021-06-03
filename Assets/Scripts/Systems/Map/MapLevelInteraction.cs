@@ -44,8 +44,17 @@ public class MapLevelInteraction : MonoBehaviour
             catch(Exception)
             {             
             }
-            //Open level
-            LoadScene("Scenes/Loading",() => {});
+
+            if(state.constelation.GetStar(clickedStar).Difficulty == 0)
+            {
+                //Open level
+                LoadScene("Scenes/Shop",() => {});
+            }
+            else
+            {
+                //Open level
+                LoadScene("Scenes/Loading",() => {});
+            }
         });
     }
     

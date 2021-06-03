@@ -104,7 +104,7 @@ public class ConstelationMap : MonoBehaviour
         //Main levels per line
         int maxPerLine = 5;
         //Default space between levels
-        float spaceBetweenY = 100;
+        float spaceBetweenY = 150;
         float spaceBetweenX = 180;
         //Map Randomizer
         float XMaxRandom = 50;
@@ -125,6 +125,10 @@ public class ConstelationMap : MonoBehaviour
         float sizeX = 0;
         float minY = 0;
         float maxY = 0;
+        
+        //Stars
+        List<Constelation.Star> purplePlanetsCandidates = new List<Constelation.Star>();
+        List<Constelation.Star> allOtherPlanets = new List<Constelation.Star>();    
 
         for(int i = 0; i < columns; i ++)
         {
@@ -151,7 +155,7 @@ public class ConstelationMap : MonoBehaviour
             //Count of current line and height
             int count = (Random.value * 10) < 5 ? Mathf.RoundToInt(current) : Mathf.CeilToInt(current);
             float height = (count - 1) * spaceBetweenY; 
- 
+
             //Create constelation points
             for(int j = 0; j < count; j ++)
             {
@@ -164,31 +168,56 @@ public class ConstelationMap : MonoBehaviour
 
                 
                 //Create start difficulty
-                int difficulty = 0;
+                int difficulty = -1;
 
                 if(i == columns - 1)
-                    difficulty = 5; //Boss
-                else if(i == columns - 2)
+                    difficulty = 4; //Black Holde
+                else if(i == columns - 2 && j%2 == 0)
                     difficulty = 0; //Shop
-                else
-                {   
-                    if(Random.Range(0,10) <= 8)
-                        difficulty = Random.Range(Mathf.Max(1,i/3),Mathf.Max(2,Mathf.Min(5,i + 1))); //Random difficulty
+                else if(Random.Range(0,10) > 8 && i > 0 && i != columns - 2)
+                {
+                    difficulty = 0; //Shop
                 }
+                else
+                {
+                    float ppg = ((i - 1) * 1f)/(columns - 1);
+                    int pdifficulty = Mathf.Clamp(Random.Range((int) ppg * 4,(int) (ppg * (columns/2f) + 1)) + 1,1,3);
 
-                //Temp fix kkkk
-                if(difficulty < 1)
-                    difficulty = 1;
-                if(difficulty == 4)
-                    difficulty = Random.Range(1,3);
+                    if(pdifficulty == 3 && Random.Range(0,10) > 5 && i > 1 && i != columns - 2)
+                    {
+                        difficulty = 0;
+                    }
+                    else
+                    {
+                        if(Random.Range(0,10) > 7 && i > 1)
+                        {
+                            difficulty = 5;
+                        }
+                        else
+                        {
+                            float pg = (i * 1f)/(columns - 1);
+                            difficulty = Mathf.Clamp(Random.Range((int) pg * 4,(int) (pg * (columns/2f) + 1)) + 1,1,3);
+                        }
+                    }
+                }
+ 
 
                 //o.transform.GetChild(0).GetComponent<Text>().text = constelation.Count + "";
                 o.transform.GetChild(0).GetComponent<Text>().text = difficulty + "";
 
                 //Add star
-                Constelation.Star s = new Constelation.Star(o,difficulty,Random.Range(0.8f,1.25f));
+                Constelation.Star s = new Constelation.Star(o,difficulty);
                 currentLineStars.Add(s);
                 constelation.AddStar(s);
+
+                if(difficulty == 5)
+                {
+                    float pg = (i * 1f)/(columns - 1);
+                    s.Difficulty = Mathf.Clamp(Random.Range((int) pg * 4,(int) (pg * (columns/2f) + 1)) + 1,1,3);
+                    purplePlanetsCandidates.Add(s);
+                }
+                else if(difficulty == 1 || difficulty == 2 || difficulty == 3)
+                    allOtherPlanets.Add(s);
 
                 //Update bounds
                 if(cur.GetComponent<RectTransform>().anchoredPosition.x > sizeX)
@@ -226,7 +255,11 @@ public class ConstelationMap : MonoBehaviour
                         //Change difficulty if two shops are conected
                         if(starB.Difficulty == 0 && starA.Difficulty == 0)
                         {
-                            starB.Difficulty = Random.Range(1,Mathf.Max(2,Mathf.Min(5,i + 1)));
+                            float pg = (i * 1f)/(columns - 1);
+                            if(i == columns - 2)
+                                starB.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
+                            else
+                                starA.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
                         }
                     }
                     if(c >= 0 && c < lastLineStars.Count)
@@ -242,7 +275,11 @@ public class ConstelationMap : MonoBehaviour
                         //Change difficulty if two shops are conected
                         if(starB.Difficulty == 0 && starA.Difficulty == 0)
                         {
-                            starB.Difficulty = Random.Range(1,Mathf.Max(2,Mathf.Min(5,i + 1)));
+                            float pg = (i * 1f)/(columns - 1);
+                            if(i == columns - 2)
+                                starB.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
+                            else
+                                starA.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
                         }
                     }
                     if(b >= 0 && b < lastLineStars.Count)
@@ -258,7 +295,11 @@ public class ConstelationMap : MonoBehaviour
                         //Change difficulty if two shops are conected
                         if(starB.Difficulty == 0 && starA.Difficulty == 0)
                         {
-                            starB.Difficulty = Random.Range(1,Mathf.Max(2,Mathf.Min(5,i + 1)));
+                            float pg = (i * 1f)/(columns - 1);
+                            if(i == columns - 2)
+                                starB.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
+                            else
+                                starA.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
                         }
                     }
                 }
@@ -268,6 +309,24 @@ public class ConstelationMap : MonoBehaviour
             lastLineStars.Clear();
             lastLineStars.AddRange(currentLineStars);
         }
+
+        //Purple planets
+        int purplePlanetsCount = Random.Range(3,6);
+
+        while(purplePlanetsCandidates.Count < purplePlanetsCount && allOtherPlanets.Count > 0)
+        {
+            int i = Random.Range(0,allOtherPlanets.Count);
+            purplePlanetsCandidates.Add(allOtherPlanets[i]);
+            allOtherPlanets.RemoveAt(i);
+        }
+
+        for(int i = 0; i < purplePlanetsCount; i ++)
+        {
+            int j = Random.Range(0,purplePlanetsCandidates.Count);
+            purplePlanetsCandidates[j].Difficulty = 5;
+            purplePlanetsCandidates.RemoveAt(j);
+        }
+        
 
         //Current map height
         float h = (maxY - minY) + itemHalfSize * 2f;
@@ -327,7 +386,7 @@ public class ConstelationMap : MonoBehaviour
         //Update scales
         foreach(Constelation.Star star in constelation)
         {   
-            if(star.Difficulty == 5)
+            if(star.Difficulty == 4)
                 star.Object.GetComponent<RectTransform>().sizeDelta = 3f * new Vector2(50,50) * (star.scale + (Mathf.Sin(Time.time * Mathf.Deg2Rad * 90 + ((star.Id - 5)%10) * 10) + 0.75f) * 0.1f);
             else
                 star.Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * (star.scale + (Mathf.Sin(Time.time * Mathf.Deg2Rad * 60 + ((star.Id - 5)%10) * 10) + 0.75f) * 0.1f);
@@ -933,6 +992,11 @@ public class ConstelationMap : MonoBehaviour
         Vector3 dir = b.transform.position - a.transform.position;
         dir = b.transform.InverseTransformDirection(dir);
         return Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+    }
+
+    public void ReturnToMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/Menu");
     }
 
     #endregion
