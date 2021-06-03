@@ -141,10 +141,12 @@ namespace SketchFleets.Entities
             spawn.Emerge(shipSpawnPoint.position, Quaternion.identity);
             
             SpawnedShip shipController = spawn.GetComponent<SpawnedShip>();
-
+            
             // Adds the cooldown
             spawnMetaDatas[shipType].SummonTimer.Value = shipType.SpawnCooldown.Value * spawnCooldownMultipler;
             spawnMetaDatas[shipType].CurrentlyActive.Add(shipController);
+
+            shipController.SpawnNumber = spawnMetaDatas[shipType].CurrentlyActive.Count;
         }
 
         #endregion
@@ -169,25 +171,6 @@ namespace SketchFleets.Entities
             // Translates
             transformCache.Translate(movement * timeSpeed, Space.World);
         }
-
-        // /// <summary>
-        // /// Mouse 1 launch the cyan ship
-        // /// </summary>
-        // private void MothershipCyanShoot()
-        // {
-        //     if (!Input.GetKeyDown(KeyCode.Mouse1)) return;
-        //
-        //     activeCyanShips = shipGenerator.CyanShips;
-        //
-        //     if (activeCyanShips <= 0) return;
-        //
-        //     // TODO: remove this GetChild call
-        //     Rigidbody2D cyanRigidbody = cyanShipsSpawnPoint.GetChild(2).GetComponent<Rigidbody2D>();
-        //
-        //     cyanRigidbody.AddForce(cyanRigidbody.transform.GetChild(1).up * 100f, ForceMode2D.Impulse);
-        //     cyanRigidbody.transform.parent = transform.parent;
-        //     shipGenerator.CyanShips--;
-        // }
 
         /// <summary>
         /// Updates all spawn cooldowns
