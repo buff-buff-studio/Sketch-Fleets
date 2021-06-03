@@ -120,6 +120,11 @@ namespace SketchFleets.Inventory
 
             playerInventoryText.text = s;
         }
+
+        public void CloseToMap()
+        {
+            MapLevelInteraction.ReturnToMapOpeningStar();
+        }
         #endregion
     }
 }
