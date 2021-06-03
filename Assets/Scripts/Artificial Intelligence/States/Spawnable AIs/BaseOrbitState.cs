@@ -1,4 +1,4 @@
-using ManyTools.UnityExtended;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace SketchFleets.AI
@@ -10,6 +10,7 @@ namespace SketchFleets.AI
     {
         #region Private Fields
 
+        private float startingOrbitAngle;
         private float orbitAngle;
 
         #endregion
@@ -28,7 +29,7 @@ namespace SketchFleets.AI
                 Debug.LogError($"{GetType().Name} expects a {typeof(SpawnableShipAI)} State Machine!");
             }
             
-            orbitAngle = (360f / (float)AI.Ship.Attributes.MaximumShips) * AI.Ship.SpawnNumber;
+            startingOrbitAngle = 360f / (float)AI.Ship.Attributes.MaximumShips * AI.Ship.SpawnNumber;
 
             base.Enter();
         }
@@ -38,7 +39,7 @@ namespace SketchFleets.AI
         /// </summary>
         public override void StateUpdate()
         {
-            ParametricOrbit();
+            ParametricOrbit(Time.time * AI.Ship.Attributes.Speed);
             AI.Ship.Look(AI.MainCamera.ScreenToWorldPoint(Input.mousePosition));
         }
 
@@ -49,14 +50,14 @@ namespace SketchFleets.AI
         /// <summary>
         /// Orbits around a point using parametric circle equation
         /// </summary>
-        private void ParametricOrbit()
+        private void ParametricOrbit(float orbitCompletion)
         {
-            // The current angle around the circumference
-            orbitAngle += AI.Ship.Attributes.Speed * Time.deltaTime;
-
+            // 
+            orbitCompletion *= 360f;
+            
             // The X and Y positions of the GameObject in the radius
-            float orbitX = Mathf.Cos(orbitAngle) * AI.Ship.Attributes.OrbitRadius;
-            float orbitY = Mathf.Sin(orbitAngle) * AI.Ship.Attributes.OrbitRadius;
+            float orbitX = math.cos(orbitCompletion + startingOrbitAngle) * AI.Ship.Attributes.OrbitRadius;
+            float orbitY = math.sin(orbitCompletion + startingOrbitAngle) * AI.Ship.Attributes.OrbitRadius;
 
             // Updates the transform position
             transform.position = AI.Player.transform.position + new Vector3(orbitX, orbitY);
