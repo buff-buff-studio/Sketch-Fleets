@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4713191707251145263}
   - component: {fileID: 4618979822267471443}
   - component: {fileID: 6701422747430550602}
-  m_Layer: 0
-  m_Name: 'pencilShell '
-  m_TagString: Untagged
+  m_Layer: 11
+  m_Name: Pencil Shell
+  m_TagString: Drop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3d3488ec0ebea6740a8d84228519fc06, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c23a35f8cd73404488235a0cc7d2586, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.599999, y: 9.599999}
+  m_Size: {x: 2.15, y: 2.21}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -122,6 +122,10 @@ MonoBehaviour:
     _constant: 1
     _variable: {fileID: 0}
   collectEffect: {fileID: 0}
+  spinSpeed:
+    _useConstant: 0
+    _constant: 5
+    _variable: {fileID: 11400000, guid: 211f7a46d69c92543a16aac25dfda590, type: 2}
   playerShells:
     _useConstant: 0
     _constant: 0
