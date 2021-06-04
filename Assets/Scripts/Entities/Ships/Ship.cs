@@ -3,6 +3,7 @@ using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using SketchFleets.Data;
+using SketchFleets.Entities;
 using UnityEngine;
 
 namespace SketchFleets
@@ -249,21 +250,8 @@ namespace SketchFleets
                 deathEvent.Invoke();
             }
 
-            // Drops pencil shells
-            if (Attributes.ShellDrop != null)
-            {
-                int dropCount = Mathf.RoundToInt(
-                    Random.Range(Attributes.DropMinMaxCount.Value.x, Attributes.DropMinMaxCount.Value.y));
-
-                for (int index = 0; index < dropCount; index++)
-                {
-                    Vector3 dropPosition =
-                        new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), 0);
-                    Instantiate(Attributes.ShellDrop, transform.position + dropPosition, Quaternion.identity);
-
-                }
-            }
-
+            DropLoot();
+            
             Submerge();
         }
 
@@ -285,6 +273,32 @@ namespace SketchFleets
             // Regen shield
             CurrentShield.Value = Mathf.Min(Attributes.MaxShield,
                 CurrentShield.Value + Attributes.ShieldRegen * Time.deltaTime);
+        }
+
+        /// <summary>
+        /// Drops the ship's loot
+        /// </summary>
+        protected virtual void DropLoot()
+        {
+            // Drops pencil shells
+            if (Attributes.ShellDrop == null) return;
+            
+            int dropCount = Mathf.RoundToInt(
+                Random.Range(Attributes.DropMinMaxCount.Value.x, Attributes.DropMinMaxCount.Value.y));
+
+            for (int index = 0; index < dropCount; index++)
+            {
+                // Generates randomized rotations and positions
+                Vector3 randomRotation = new Vector3(0f, 0f, Random.Range(0, 359f));
+                Vector3 dropPosition =
+                    new Vector3(Random.Range(0f, 3f), Random.Range(0f, 3f), 0);
+                
+                // Instantiates and colors shell drop
+                GameObject shellDrop = Instantiate(Attributes.ShellDrop, transform.position + dropPosition, 
+                    Quaternion.Euler(randomRotation));
+                
+                shellDrop.GetComponent<PencilShell>().SetDropColor(Attributes.ShipColor);
+            }
         }
 
         #endregion

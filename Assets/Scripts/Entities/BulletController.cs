@@ -75,6 +75,7 @@ public class BulletController : PoolMember
             Submerge();
             return;
         }
+        
         if (!col.isTrigger) return;
         Hit(col);
     }
