@@ -77,6 +77,7 @@ namespace SketchFleets.SettingsSystem
                 else
                 {
                     save = new Save();
+                    callback();
                 }
             }
         }

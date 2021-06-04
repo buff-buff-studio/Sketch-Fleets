@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using SketchFleets.LanguageSystem;
 using UnityEngine.Audio;
@@ -34,16 +36,24 @@ namespace SketchFleets.SettingsSystem
             Settings.WithDefault<float>("volume_sfx",100);
 
             Settings.Load(this,() => {
-                //Change language
-                LanguageManager.ChangeLanguage(Settings.Get<string>("language"));
                 //Resolution
                 SetResolution(Settings.Get<int>("resolution"));
                 //Volumes
                 SetVolume(volumeMasterParam,volumeMasterMixer,Settings.Get<float>("volume_master"));
                 SetVolume(volumeMusicParam,volumeMusicMixer,Settings.Get<float>("volume_music"));
                 SetVolume(volumeSfxParam,volumeSfxMixer,Settings.Get<float>("volume_sfx"));
+                StartCoroutine(WaitToLoadLanguage());
             });
             DontDestroyOnLoad(gameObject);
+        }
+
+        IEnumerator WaitToLoadLanguage()
+        {
+            while(!LanguageManager.Loaded)
+                yield return new WaitForEndOfFrame();
+
+            //Change language
+            LanguageManager.ChangeLanguage(Settings.Get<string>("language"));
         }
 
         public static void SetVolume(string param,AudioMixer mixer,float value)

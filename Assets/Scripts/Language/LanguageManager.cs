@@ -19,6 +19,8 @@ namespace SketchFleets.LanguageSystem
         private static Dictionary<string,Language> languages = new Dictionary<string, Language>();
         private static Language currentLanguage;
         private static bool inited = false;
+        private static bool loaded = false;
+        public static bool Loaded {get => loaded;}
         #endregion
 
         #region Main Methods
@@ -146,6 +148,8 @@ namespace SketchFleets.LanguageSystem
                 if(content.StartsWith("name"))
                     LanguageManager.languages[t.name].Name = content.Split('\n')[0].Split('=')[1]; 
             }
+
+            loaded = true;
         }
         #endregion
     }
