@@ -827,34 +827,41 @@ public class ConstelationMap : MonoBehaviour
         float time = Time.time;
 
         float zoom = this.zoom.GetCurrentZoom();
+
+        List<Image> imagesToFade = new List<Image>();
+
+        for(int i = 0; i < constelation.Count; i ++)
+        {
+            Constelation.Star s = constelation.GetStar(i);
+            imagesToFade.Add(s.Object.GetComponent<Image>());
+            GameObject sa = s.Object.transform.GetChild(1).gameObject;
+            GameObject sb = s.Object.transform.GetChild(2).gameObject;
+
+            if(sa.active)
+                imagesToFade.Add(sa.GetComponent<Image>());
+            if(sb.active)
+                imagesToFade.Add(sb.GetComponent<Image>());
+
+            foreach(Constelation.StarJunction j in s.toJunctions)
+            {
+                if(MapLevelInteraction.state.IsOpen(j.starA.Id) && MapLevelInteraction.state.IsOpen(j.starB.Id) && MapLevelInteraction.state.IsChoosen(j.starA.Id))
+                {
+                    imagesToFade.Add(j.junction.transform.GetChild(0).GetComponent<Image>());
+                }
+            }
+        }
         
         InputEnabled = false;
         while(true)
         {
             float progT = Mathf.Clamp01(Time.time - time);
-
-            for(int i = 0; i < constelation.Count; i ++)
-            {
-                Constelation.Star s = constelation.GetStar(i);
-                s.Object.transform.localScale = Vector3.one * (1 - progT)/*(1 - curve.Evaluate(progT))*/;
-
-                foreach(Constelation.StarJunction j in s.toJunctions)
-                {
-                    if(MapLevelInteraction.state.IsOpen(j.starA.Id) && MapLevelInteraction.state.IsOpen(j.starB.Id) && MapLevelInteraction.state.IsChoosen(j.starA.Id))
-                    {
-                        RectTransform back = j.junction.GetComponent<RectTransform>();
-                        RectTransform prog = j.junction.transform.GetChild(0).GetComponent<RectTransform>();
-
-                        int discard = 0; //Amount to discard from each side
-
-                        float p = discard + (back.sizeDelta.x - discard * 2) * (1 - progT);
-                        prog.sizeDelta = new Vector2(p,prog.sizeDelta.y); 
-                    }         
-                }
-            }
+            
+            Color c = new Color(1,1,1,1 - progT);
+            foreach(Image i in imagesToFade)
+                i.color = c; 
                 
             //Zoom out
-            this.zoom.SetZoomInstantly(Mathf.Lerp(zoom,this.zoom.GetMinZoom(),Mathf.Clamp01(progT * 1.5f)));
+            this.zoom.SetZoomInstantly(Mathf.Lerp(zoom,this.zoom.GetMinZoom(),Mathf.Clamp01(progT * 0.15f)));
 
             if(progT >= 1f)
                 break;
