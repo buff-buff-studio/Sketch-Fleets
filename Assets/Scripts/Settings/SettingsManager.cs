@@ -31,9 +31,9 @@ namespace SketchFleets.SettingsSystem
             Settings.WithDefault<string>("language","enUS");
             Settings.WithDefault<int>("graphicsQuality",2);
             Settings.WithDefault<int>("resolution",1);
-            Settings.WithDefault<float>("volume_master",50);
-            Settings.WithDefault<float>("volume_music",100);
-            Settings.WithDefault<float>("volume_sfx",100);
+            Settings.WithDefault<float>("volume_master",0.5f);
+            Settings.WithDefault<float>("volume_music",1f);
+            Settings.WithDefault<float>("volume_sfx",1f);
 
             Settings.Load(this,() => {
                 //Resolution
@@ -58,7 +58,7 @@ namespace SketchFleets.SettingsSystem
 
         public static void SetVolume(string param,AudioMixer mixer,float value)
         {
-            mixer.SetFloat(param,value);
+            mixer.SetFloat(param,Mathf.Log10(value) * 20);
         }
 
         public static void SetResolution(int resolution)
