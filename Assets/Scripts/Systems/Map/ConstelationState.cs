@@ -136,7 +136,19 @@ public class ConstelationState
     /// <param name="star"></param>
     private void _Open(int star)
     {
-        constelation.GetStar(star).SetEnabled(true);
+        //Get star
+        Constelation.Star s = constelation.GetStar(star);
+
+        s.SetEnabled(true);
+
+        //Get parents
+        foreach(Constelation.StarJunction jr in s.fromJunctions)
+        {
+            if(IsChoosen(jr.starA.Id))
+            {
+                jr.starA.SetMode(Constelation.StarMode.PASSED_THROUGH_SELECTED);
+            }
+        }
     }
 
     /// <summary>
@@ -160,11 +172,22 @@ public class ConstelationState
                     jrb.starB.SetEnabled(false);
                     jrb.starB.SetMode(Constelation.StarMode.PASSED_THROUGH_NOT_SELECTED);
                 }
+
+                jr.starA.SetMode(Constelation.StarMode.PASSED_THROUGH_SELECTED);
             }
         }
 
         //Update this      
-        s.SetMode(Constelation.StarMode.PASSED_THROUGH_SELECTED);
+        bool childOpen = false;
+        foreach(Constelation.StarJunction jr in s.toJunctions) 
+            if(IsOpen(jr.starB.Id))
+            {
+                childOpen = true;
+                break;
+            }
+        if(!childOpen)
+            s.SetMode(Constelation.StarMode.DEFAULT);
+            
         s.SetEnabled(true);
 
         //Check if must disable 

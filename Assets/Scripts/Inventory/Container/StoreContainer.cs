@@ -151,12 +151,14 @@ namespace SketchFleets.Inventory
             if(useTotalCoins)
             {
                 Profile.Data.TotalCoins += count;
-                coinCounter.text = "$" + Profile.Data.TotalCoins;
+                if(coinCounter != null)
+                    coinCounter.text = "$" + Profile.Data.TotalCoins;
                 return;
             }
 
             Profile.Data.Coins += count;
-            coinCounter.text = "$" + Profile.Data.Coins;
+            if(coinCounter != null)
+                coinCounter.text = "$" + Profile.Data.Coins;
         }
 
         /// <summary>

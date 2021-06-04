@@ -427,6 +427,7 @@ public class ConstelationMap : MonoBehaviour
     public void UnlockNextLevel(int starNumber)
     {
         Constelation.Star star = constelation.GetStar(starNumber);
+        star.SetMode(Constelation.StarMode.PASSED_THROUGH_SELECTED);
 
         //Add to open queue
         foreach(Constelation.StarJunction j in star.toJunctions)

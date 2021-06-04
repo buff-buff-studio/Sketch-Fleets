@@ -203,7 +203,8 @@ public class Constelation : IEnumerable
                     break;
 
                 case StarMode.DEFAULT:
-                    Object.transform.GetChild(2).gameObject.SetActive(true);
+                    Object.transform.GetChild(1).gameObject.SetActive(false);
+                    Object.transform.GetChild(2).gameObject.SetActive(false);
                     break;
             }         
         }
