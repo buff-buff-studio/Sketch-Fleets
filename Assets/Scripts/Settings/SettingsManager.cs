@@ -24,6 +24,11 @@ namespace SketchFleets.SettingsSystem
         public static SettingsManager instance;
         #endregion
 
+        private void Awake() 
+        {
+            ProfileSystem.Profile.Using(this);
+        }
+
         void Start()
         {
             instance = this;

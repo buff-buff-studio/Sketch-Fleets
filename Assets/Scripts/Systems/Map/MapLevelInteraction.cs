@@ -154,7 +154,6 @@ public class MapLevelInteraction : MonoBehaviour
             
         //Check if there's data to be loaded
         Debug.Log(continueGame ? "Loading..." : "Creating new game...");
-        SketchFleets.ProfileSystem.Profile.Using(source);
         SketchFleets.ProfileSystem.Profile.LoadProfile((save) => {
 
             if(continueGame)
@@ -182,7 +181,6 @@ public class MapLevelInteraction : MonoBehaviour
     public static void SaveMapState(MonoBehaviour source,Action callback)
     {
         Debug.Log("Saving...");
-        SketchFleets.ProfileSystem.Profile.Using(source);
         SketchFleets.ProfileSystem.Profile.GetData().save["mapState"] = state.ToData();
         SketchFleets.ProfileSystem.Profile.SaveProfile((save) => {
             Debug.Log("Map saved!");
@@ -196,7 +194,6 @@ public class MapLevelInteraction : MonoBehaviour
     /// <param name="callback"></param>
     public static void HasGameToContinue(MonoBehaviour source,Action<bool> callback)
     {   
-        SketchFleets.ProfileSystem.Profile.Using(source);
         SketchFleets.ProfileSystem.Profile.LoadProfile((data) => {
             callback(data.save.HasKey("mapState"));
         });

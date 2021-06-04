@@ -17,6 +17,10 @@ namespace SketchFleets.ProfileSystem
         private static MonoBehaviour behaviour;
         #endregion
 
+        #region Properties
+        public static ProfileData Data {get => data; }
+        #endregion
+
         #region Init
         /// <summary>
         /// Init profile using a mono behaviour to start coroutines
