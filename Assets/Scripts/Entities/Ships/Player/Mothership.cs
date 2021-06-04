@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 using SketchFleets.Data;
 using System.Collections.Generic;
-using ManyTools.UnityExtended;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
+using ManyTools.Variables;
 
 namespace SketchFleets.Entities
 {
@@ -18,6 +18,9 @@ namespace SketchFleets.Entities
         [Header("Mothership Specific")]
         [SerializeField, RequiredField()]
         private Transform shipSpawnPoint;
+        [Tooltip("The speed at which the Mothership moves at permanently")]
+        [SerializeField]
+        private Vector2Reference backgroundSpeed;
 
         private Dictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
             new Dictionary<SpawnableShipAttributes, SpawnMetaData>();
@@ -160,8 +163,7 @@ namespace SketchFleets.Entities
         {
             // Gets movement input
             Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            if (movement == Vector2.zero) return;
-
+            
             // Caches time-based speed and input
             float timeSpeed = attributes.Speed * Time.deltaTime;
 
@@ -169,7 +171,8 @@ namespace SketchFleets.Entities
             Transform transformCache = transform;
 
             // Translates
-            transformCache.Translate(movement * timeSpeed, Space.World);
+            transformCache.Translate((movement * timeSpeed) + backgroundSpeed.Value * Time.deltaTime
+                , Space.World);
         }
 
         /// <summary>
