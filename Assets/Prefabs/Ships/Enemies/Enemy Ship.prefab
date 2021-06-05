@@ -42,6 +42,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Ship
       objectReference: {fileID: 0}
+    - target: {fileID: 364618190254605338, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 364618190254605338, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 542453475185958705, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -93,6 +101,10 @@ PrefabInstance:
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106272454926486791, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
