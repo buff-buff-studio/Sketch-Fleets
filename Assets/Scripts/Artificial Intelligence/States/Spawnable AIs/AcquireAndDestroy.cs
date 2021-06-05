@@ -50,8 +50,11 @@ namespace SketchFleets
         public override void StateUpdate()
         {
             base.StateUpdate();
+            transform.Translate(AI.Ship.Attributes.Speed * Time.deltaTime * Time.timeScale,
+                0f, 0f, Space.World);
             
             if (!inCombat) return;
+            
             AI.Ship.Look(targetPosition);
             AI.Ship.Fire();
         }
@@ -126,7 +129,7 @@ namespace SketchFleets
             // the IEnumerator won't release its garbage to the collector until it ends, which it never
             // does. Check this with Mol or someone who understands what goes on over here.
             
-            // NOTE 2: Upon further inspection, I'm almost fully certain this should be a job instead of a
+            // NOTE: Upon further inspection, I'm almost fully certain this should be a job instead of a
             // Coroutine.
             
             // TODO: Convert this coroutine to a Job
