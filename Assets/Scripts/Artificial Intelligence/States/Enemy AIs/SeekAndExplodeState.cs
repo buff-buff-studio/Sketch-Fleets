@@ -44,9 +44,8 @@ namespace SketchFleets
         public override void StateUpdate()
         {
             AI.Ship.Look(AI.Player.transform.position);
-            // rigidbody2d.AddForce(transform.up * 
-            //                      (AI.Ship.Attributes.Speed * Time.deltaTime * accelerationMultiplier));
-            transform.Translate(transform.up * (AI.Ship.Attributes.Speed * Time.deltaTime), Space.Self);
+            rigidbody2d.AddForce(transform.up * (AI.Ship.Attributes.Speed * Time.deltaTime));
+            //transform.Translate(transform.up * (AI.Ship.Attributes.Speed * Time.deltaTime), Space.Self);
         }
         
         /// <summary>
