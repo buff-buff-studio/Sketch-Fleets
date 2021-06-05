@@ -4,7 +4,9 @@ using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using SketchFleets.Data;
 using SketchFleets.Entities;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SketchFleets
 {
@@ -231,6 +233,11 @@ namespace SketchFleets
         /// <param name="target">Where to look at</param>
         public virtual void Look(Vector2 target)
         {
+            // Workaround, this should be done using a proper Pausing interface
+            if (Mathf.Approximately(0f, Time.timeScale)) return;
+            
+            // This doesn't really solve the problem. The transform should be a member variable
+            // to avoid the constant marshalling
             Transform transformCache = transform;
             transformCache.up = (Vector3)target - transformCache.position;
         }
