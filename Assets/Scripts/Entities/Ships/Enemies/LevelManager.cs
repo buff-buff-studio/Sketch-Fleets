@@ -48,6 +48,12 @@ namespace SketchFleets
             player = FindObjectOfType<Mothership>();
         }
 
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Time.timeScale = 1f;
+        }
+
         void Start()
         {
             int multiply = MapDifficulty.MapDifficulty[MapDifficulty.Difficulty];
