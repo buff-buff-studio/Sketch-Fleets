@@ -11,7 +11,8 @@ namespace SketchFleets
         /// </summary>
         /// <param name="amount">The amount to damage for</param>
         /// <param name="makeInvulnerable">Whether the object should be made invulnerable after the damage</param>
-        public void Damage(float amount, bool makeInvulnerable = false);
+        /// <param name="piercing">Whether the damage should ignore defense and shields</param>
+        public void Damage(float amount, bool makeInvulnerable = false, bool piercing = false);
         
         /// <summary>
         /// Heals the Damageable object by the given amount

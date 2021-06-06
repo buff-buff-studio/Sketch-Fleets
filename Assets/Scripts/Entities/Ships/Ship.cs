@@ -63,7 +63,7 @@ namespace SketchFleets
 
         #region IDamageable Implementation
 
-        public void Damage(float amount, bool makeInvincible = false)
+        public void Damage(float amount, bool makeInvincible = false, bool piercing = false)
         {
             // Rejects damage during invincibility time
             if (collisionTimer > 0) return;
@@ -75,10 +75,11 @@ namespace SketchFleets
             }
 
             // Calculates effective damaged based on defense
-            float actualDamage = amount / Attributes.Defense;
+            float actualDamage;
+            actualDamage = piercing ? actualDamage = amount : actualDamage = (amount / Attributes.Defense);
 
             // Deals damage to shields first
-            if (currentShield.Value > 0)
+            if (currentShield.Value > 0 && !piercing)
             {
                 // Damages shield
                 float tempShield = CurrentShield.Value -= actualDamage;
