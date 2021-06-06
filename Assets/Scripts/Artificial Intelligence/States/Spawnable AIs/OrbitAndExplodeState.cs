@@ -1,3 +1,4 @@
+using System;
 using ManyTools.Variables;
 using SketchFleets.AI;
 using UnityEngine;
@@ -49,10 +50,13 @@ namespace SketchFleets
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (!explode) return;
-            if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("PlayerSpawn") ||
+            
+            if (other.gameObject.CompareTag("Player") ||
+                other.gameObject.CompareTag("PlayerSpawn") ||
                 other.gameObject.CompareTag("bullet")) return;
             
             AI.Ship.Die();
+            explode = false;
         }
 
         #endregion
