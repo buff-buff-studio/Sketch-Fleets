@@ -1181,6 +1181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84255fb0fdf8d394f812733c15f7e75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   mapTimer:
     _useConstant: 0
     _constant: 
@@ -4664,7 +4665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960a494b396c4cd4c84cde8a1238d7e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: 2d844d44e4e5e384492452e59395fc03, type: 3}
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
   menuAudioSource: {fileID: 1834216010}
   menuObjects:
     _keyValueList:
@@ -4756,18 +4758,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 939894647}
-        m_TargetAssemblyTypeName: ShipGenerator, Assembly-CSharp
-        m_MethodName: GenerateShip
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 939894646}
         m_TargetAssemblyTypeName: SketchFleets.Entities.Mothership, Assembly-CSharp
         m_MethodName: SummonShip
@@ -5911,18 +5901,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 939894647}
-        m_TargetAssemblyTypeName: ShipGenerator, Assembly-CSharp
-        m_MethodName: GenerateShip
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 939894646}
         m_TargetAssemblyTypeName: SketchFleets.Entities.Mothership, Assembly-CSharp
         m_MethodName: SummonShip
@@ -7042,11 +7020,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938546391}
   m_CullTransparentMesh: 1
---- !u!1 &939894644 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 52908406865915231, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
-  m_PrefabInstance: {fileID: 1834216009}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &939894645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3690573918843588515, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
@@ -7057,37 +7030,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -2970886270262360389, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
   m_PrefabInstance: {fileID: 1834216009}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939894644}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a02a1787bcea4ec4fab85b1b223eeb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &939894647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939894644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b81869b522dd244c8ecc44cc9664b23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mothershipAttributes: {fileID: 11400000, guid: dab52214d9edfd14a9cd1dfb36bb9e38, type: 2}
-  mothership: {fileID: 939894646}
-  magentaShip: {fileID: 11400000, guid: 36ebd0995b0eb694289df5d07a1bbcd0, type: 2}
-  cyanShip: {fileID: 11400000, guid: 8bb9c71799f1ee4428d5adb48e69f124, type: 2}
-  yellowShip: {fileID: 11400000, guid: 25c365987b9243f4bbd868676d7eff46, type: 2}
-  CircleShip: {fileID: 1366040304}
-  MagentaBtt: {fileID: 2088514767}
-  CyanBtt: {fileID: 846595376}
-  YellowBtt: {fileID: 654943910}
-  MagentaPriceText: {fileID: 903706925}
-  CyanPriceText: {fileID: 444983960}
-  YellowPriceText: {fileID: 311327676}
-  RegenIcon: {fileID: 1763759315}
 --- !u!1 &968521406
 GameObject:
   m_ObjectHideFlags: 0
@@ -10231,6 +10179,7 @@ GameObject:
   - component: {fileID: 1366040305}
   - component: {fileID: 1366040307}
   - component: {fileID: 1366040306}
+  - component: {fileID: 1366040308}
   m_Layer: 5
   m_Name: circleShip
   m_TagString: Untagged
@@ -10298,6 +10247,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366040304}
   m_CullTransparentMesh: 1
+--- !u!114 &1366040308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366040304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53e68ef3ccd4a1fb2fbb396e20241b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnButtons:
+    _keyValueList:
+    - Key: {fileID: 11400000, guid: 36ebd0995b0eb694289df5d07a1bbcd0, type: 2}
+      Value:
+        priceTag: {fileID: 903706925}
+        button: {fileID: 2088514769}
+        summonReadinessFill: {fileID: 2088514770}
+    - Key: {fileID: 11400000, guid: 25c365987b9243f4bbd868676d7eff46, type: 2}
+      Value:
+        priceTag: {fileID: 311327676}
+        button: {fileID: 654943912}
+        summonReadinessFill: {fileID: 654943913}
+    - Key: {fileID: 11400000, guid: 8bb9c71799f1ee4428d5adb48e69f124, type: 2}
+      Value:
+        priceTag: {fileID: 444983960}
+        button: {fileID: 846595378}
+        summonReadinessFill: {fileID: 846595379}
+    _keyCollision: 0
+  buttonUpdateInterval:
+    _useConstant: 1
+    _constant: 0.2
+    _variable: {fileID: 0}
+  timeScaleWhenActive:
+    _useConstant: 1
+    _constant: 0.3
+    _variable: {fileID: 0}
 --- !u!1 &1366599034
 GameObject:
   m_ObjectHideFlags: 0
@@ -13335,6 +13322,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -2970886270262360389, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
+      propertyPath: shipSpawnMenu
+      value: 
+      objectReference: {fileID: 1366040304}
+    - target: {fileID: -2970886270262360389, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
       propertyPath: backgroundSpeed._constant.x
       value: 7
       objectReference: {fileID: 0}
@@ -15190,18 +15181,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 939894647}
-        m_TargetAssemblyTypeName: ShipGenerator, Assembly-CSharp
-        m_MethodName: GenerateShip
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 939894646}
         m_TargetAssemblyTypeName: SketchFleets.Entities.Mothership, Assembly-CSharp
         m_MethodName: SummonShip
