@@ -151,6 +151,15 @@ namespace SketchFleets.Entities
 
             shipController.SpawnNumber = spawnMetaDatas[shipType].CurrentlyActive.Count;
         }
+        
+        /// <summary>
+        /// Removes a specific active summon
+        /// </summary>
+        /// <param name="shipToRemove">The active summon to remove</param>
+        public void RemoveActiveSummon(SpawnedShip shipToRemove)
+        {
+            spawnMetaDatas[shipToRemove.Attributes].CurrentlyActive.Remove(shipToRemove);
+        }
 
         #endregion
         
@@ -171,8 +180,8 @@ namespace SketchFleets.Entities
             Transform transformCache = transform;
 
             // Translates
-            transformCache.Translate((movement * timeSpeed) + backgroundSpeed.Value * Time.deltaTime
-                , Space.World);
+            transformCache.Translate((movement * timeSpeed) + backgroundSpeed.Value * Time.deltaTime,
+                Space.World);
         }
 
         /// <summary>
