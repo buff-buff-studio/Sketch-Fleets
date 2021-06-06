@@ -22,9 +22,6 @@ namespace SketchFleets.Entities
         private Transform shipSpawnPoint;
         [SerializeField, RequiredField()]
         private GameObject shipSpawnMenu;
-        [Tooltip("The speed at which the Mothership moves at permanently")]
-        [SerializeField]
-        private Vector2Reference backgroundSpeed;
 
         private Dictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
             new Dictionary<SpawnableShipAttributes, SpawnMetaData>();
@@ -258,17 +255,16 @@ namespace SketchFleets.Entities
         private void Move()
         {
             // Gets movement input
-            Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
 
             // Caches time-based speed and input
-            float timeSpeed = attributes.Speed * Time.deltaTime;
+            float timeSpeed = attributes.Speed * Time.deltaTime * Time.timeScale;
 
             // Caches transform to avoid repeated marshalling
             Transform transformCache = transform;
 
             // Translates
-            transformCache.Translate((movement * timeSpeed) + backgroundSpeed.Value * Time.deltaTime,
-                Space.World);
+            transformCache.Translate(movement * timeSpeed, Space.World);
         }
 
         /// <summary>
