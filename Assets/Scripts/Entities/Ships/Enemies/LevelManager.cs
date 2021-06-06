@@ -1,14 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
+using ManyTools.UnityExtended;
 using UnityEngine;
 using SketchFleets.Data;
 using ManyTools.Variables;
 using ManyTools.UnityExtended.Poolable;
+using SketchFleets.Entities;
 
 namespace SketchFleets
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : Singleton<LevelManager>
     {
+        private Mothership player;
+        
         private int purpleShipsMax;
         private int purpleShips;
         private int orangeShips;
@@ -36,6 +39,14 @@ namespace SketchFleets
         public ShipAttributes LimeShip;
 
         public float WaveXSummon = 30;
+
+        public Mothership Player => player;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            player = FindObjectOfType<Mothership>();
+        }
 
         void Start()
         {

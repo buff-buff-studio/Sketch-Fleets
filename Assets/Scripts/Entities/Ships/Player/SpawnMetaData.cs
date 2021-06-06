@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using ManyTools.Variables;
 using SketchFleets.Data;
 using SketchFleets.Entities;
-using UnityEngine;
 
 namespace SketchFleets
 {
