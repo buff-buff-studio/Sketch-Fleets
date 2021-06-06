@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d971844f927664d41b620027126686e6, type: 3}
   m_Name: Shell Spin Speed
   m_EditorClassIdentifier: 
-  _description: 
-  _value: 0
+  _description: The speed at which pencil shells spin
+  _value: 75
   _onChangeEvent: {fileID: 0}

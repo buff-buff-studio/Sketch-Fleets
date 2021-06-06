@@ -40,7 +40,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 1
+    _constant: 0.005
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
