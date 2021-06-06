@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
+using Unity.Mathematics;
+using Random = UnityEngine.Random;
 
 namespace SketchFleets.Entities
 {
@@ -18,6 +20,8 @@ namespace SketchFleets.Entities
         [Header("Mothership Specific")]
         [SerializeField, RequiredField()]
         private Transform shipSpawnPoint;
+        [SerializeField, RequiredField()]
+        private GameObject shipSpawnMenu;
         [Tooltip("The speed at which the Mothership moves at permanently")]
         [SerializeField]
         private Vector2Reference backgroundSpeed;
@@ -37,9 +41,6 @@ namespace SketchFleets.Entities
 
         private Camera mainCamera;
 
-        [SerializeField]
-        private GameObject circleShips;
-
         #endregion
 
         #region Properties
@@ -54,6 +55,11 @@ namespace SketchFleets.Entities
         {
             get => activeSpawnEffects;
             set => activeSpawnEffects = value;
+        }
+
+        public Dictionary<SpawnableShipAttributes, SpawnMetaData> SpawnMetaDatas
+        {
+            get => spawnMetaDatas;
         }
 
         #endregion
@@ -76,17 +82,25 @@ namespace SketchFleets.Entities
             Move();
             Look(mainCamera.ScreenToWorldPoint(Input.mousePosition));
 
-            //MothershipCyanShoot();
-            
             // Ticks down summon timers
             UpdateSummonTimers();
-            
+
+            // Enables or disables the spawn menu
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                EnableOrDisableSpawnMenu(true);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                EnableOrDisableSpawnMenu(false);
+            }
+
             // Fires stuff
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 Fire();
             }
-
         }
 
         #endregion
@@ -99,13 +113,13 @@ namespace SketchFleets.Entities
         public override void Fire()
         {
             if (fireTimer > 0f) return;
-            
+
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
                 PoolMember bullet = PoolManager.Instance.Request(attributes.Fire.Prefab);
                 bullet.Emerge(bulletSpawnPoints[index].position, transform.rotation);
 
-                bullet.transform.Rotate(0f, 0f, 
+                bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
                 bullet.GetComponent<BulletController>().BarrelAttributes = Attributes;
             }
@@ -124,47 +138,119 @@ namespace SketchFleets.Entities
         public void SummonShip(SpawnableShipAttributes shipType)
         {
             // Generate metadata if necessary
-            if (!spawnMetaDatas.ContainsKey(shipType))
+            if (!SpawnMetaDatas.ContainsKey(shipType))
             {
-                spawnMetaDatas.Add(shipType, new SpawnMetaData(shipType));
+                GetSpawnMetaData(shipType);
             }
-            
+
             // If the new spawn would exceed the maximum amount, return
-            if (spawnMetaDatas[shipType].CurrentlyActive.Count + 1 > shipType.MaximumShips.Value + extraSpawnSlots ||
-                spawnMetaDatas[shipType].SummonTimer.Value > 0)
-            {
-                return;
-            }
-            
-            Damage(shipType.GraphiteCost + 
-                   shipType.GraphiteCostIncrease * spawnMetaDatas[shipType].CurrentlyActive.Count,
-                false, true);
+            if (!CanSpawnShip(shipType)) return;
+
+            Damage(GetSpawnCost(shipType), false, true);
 
             // Spawns the ship
             PoolMember spawn = PoolManager.Instance.Request(shipType.Prefab);
             spawn.Emerge(shipSpawnPoint.position, Quaternion.identity);
-            
-            SpawnedShip shipController = spawn.GetComponent<SpawnedShip>();
-            
-            // Adds the cooldown
-            spawnMetaDatas[shipType].SummonTimer.Value = shipType.SpawnCooldown.Value * spawnCooldownMultipler;
-            spawnMetaDatas[shipType].CurrentlyActive.Add(shipController);
 
-            shipController.SpawnNumber = spawnMetaDatas[shipType].CurrentlyActive.Count;
+            SpawnedShip shipController = spawn.GetComponent<SpawnedShip>();
+
+            // Adds the cooldown
+            SpawnMetaDatas[shipType].SummonTimer.Value = shipType.SpawnCooldown.Value * spawnCooldownMultipler;
+            SpawnMetaDatas[shipType].CurrentlyActive.Add(shipController);
+
+            shipController.SpawnNumber = SpawnMetaDatas[shipType].CurrentlyActive.Count;
         }
-        
+
         /// <summary>
         /// Removes a specific active summon
         /// </summary>
         /// <param name="shipToRemove">The active summon to remove</param>
         public void RemoveActiveSummon(SpawnedShip shipToRemove)
         {
-            spawnMetaDatas[shipToRemove.Attributes].CurrentlyActive.Remove(shipToRemove);
+            SpawnMetaDatas[shipToRemove.Attributes].CurrentlyActive.Remove(shipToRemove);
+        }
+
+        /// <summary>
+        /// Gets the cost of spawning a specific ship
+        /// </summary>
+        /// <param name="shipType">The type of the ship to get the cost of</param>
+        /// <returns>The cost of spawning said ship</returns>
+        public float GetSpawnCost(SpawnableShipAttributes shipType)
+        {
+            return shipType.GraphiteCost +
+                   shipType.GraphiteCostIncrease *
+                   math.max(GetSpawnMetaData(shipType).CurrentlyActive.Count, 1);
+        }
+
+        /// <summary>
+        /// Get the cooldown of spawning a specific ship
+        /// </summary>
+        /// <param name="shipType">The type of ship to get the cooldown of</param>
+        /// <returns>The cooldown of said type of ship</returns>
+        public float GetSpawnCooldown(SpawnableShipAttributes shipType)
+        {
+            return GetSpawnMetaData(shipType).SummonTimer.Value;
+        }
+
+        /// <summary>
+        /// Gets whether the ship can be spawned (wouldn't exceed spawn limit)
+        /// </summary>
+        /// <param name="shipType">The type of ship to check for</param>
+        /// <returns>Whether there is remaining space to spawn the ship</returns>
+        public bool IsThereSpaceForSpawn(SpawnableShipAttributes shipType)
+        {
+            return GetSpawnMetaData(shipType).CurrentlyActive.Count + 1 < shipType.MaximumShips.Value + extraSpawnSlots;
+        }
+
+        /// <summary>
+        /// Gets whether the given ship type can be spawned at the moment
+        /// </summary>
+        /// <param name="shipType">The ship type to check for spawn ability</param>
+        /// <returns>Whether the ship can be spawned</returns>
+        public bool CanSpawnShip(SpawnableShipAttributes shipType)
+        {
+            return IsThereSpaceForSpawn(shipType) && GetSpawnCooldown(shipType) <= 0;
+        }
+
+        /// <summary>
+        /// Gets the maximum spawn cooldown of a given ship type
+        /// </summary>
+        /// <param name="shipType">The type of the desired ship</param>
+        /// <returns>The maximum cooldown of the given ship type</returns>
+        public float GetMaxSpawnCooldown(SpawnableShipAttributes shipType)
+        {
+            return (float)shipType.SpawnCooldown * spawnCooldownMultipler;
+        }
+
+        /// <summary>
+        /// Generates spawn meta data for a given ship type
+        /// </summary>
+        /// <param name="shipType">The type to which generate a spawn meta data for</param>
+        public SpawnMetaData GetSpawnMetaData(SpawnableShipAttributes shipType)
+        {
+            if (spawnMetaDatas.ContainsKey(shipType))
+            {
+                return spawnMetaDatas[shipType];
+            }
+            else
+            {
+                SpawnMetaDatas.Add(shipType, new SpawnMetaData(shipType));
+                return spawnMetaDatas[shipType];
+            }
         }
 
         #endregion
-        
+
         #region Private Methods
+
+        /// <summary>
+        /// Enables or disables the ship spawn menu
+        /// </summary>
+        /// <param name="enable">Whether to enable or disable the ship spawn menu</param>
+        private void EnableOrDisableSpawnMenu(bool enable)
+        {
+            shipSpawnMenu.SetActive(enable);
+        }
 
         /// <summary>
         /// Moves and rotates the Mothership
@@ -173,7 +259,7 @@ namespace SketchFleets.Entities
         {
             // Gets movement input
             Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            
+
             // Caches time-based speed and input
             float timeSpeed = attributes.Speed * Time.deltaTime;
 
@@ -190,9 +276,9 @@ namespace SketchFleets.Entities
         /// </summary>
         private void UpdateSummonTimers()
         {
-            if (spawnMetaDatas.Count <= 0) return;
+            if (SpawnMetaDatas.Count <= 0) return;
 
-            foreach (var metaData in spawnMetaDatas)
+            foreach (var metaData in SpawnMetaDatas)
             {
                 metaData.Value.SummonTimer.Value -= Time.deltaTime * Time.timeScale;
             }
@@ -211,7 +297,7 @@ namespace SketchFleets.Entities
             {
                 //ActiveEffects[index]
             }
-            
+
             // Waits interval
             yield return secondInterval;
         }
