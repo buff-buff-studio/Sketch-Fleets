@@ -137,7 +137,8 @@ namespace SketchFleets.Entities
             }
             
             Damage(shipType.GraphiteCost + 
-                   shipType.GraphiteCostIncrease * spawnMetaDatas[shipType].CurrentlyActive.Count);
+                   shipType.GraphiteCostIncrease * spawnMetaDatas[shipType].CurrentlyActive.Count,
+                false, true);
 
             // Spawns the ship
             PoolMember spawn = PoolManager.Instance.Request(shipType.Prefab);
