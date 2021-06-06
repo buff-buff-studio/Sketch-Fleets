@@ -1,20 +1,27 @@
 using System.Collections.Generic;
+using ManyTools.UnityExtended.Editor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ManyTools.UnityExtended
 {
 	/// <summary>
-	/// A script that controls basic functions relating to a menu
+	/// A script that controls basic functions relating to a window-based menu
 	/// </summary>
 	public class WindowManager : MonoBehaviour
 	{
 		#region Private Fields
 
-		[SerializeField]
-		[Tooltip("The click sound that happens on the UI")]
-		private AudioClip clickSound;
-
-		[SerializeField]
+		[Header("Sound Effects")]
+		[SerializeField, RequiredField()]
+		[Tooltip("The window open sound")]
+		private AudioClip openSound;
+		[SerializeField, RequiredField()]
+		[Tooltip("The window close sound")]
+		private AudioClip closeSound;
+		
+		[Header("Dependencies")]
+		[SerializeField, RequiredField()]
 		[Tooltip("The AudioSource used to play interface sounds.")]
 		private AudioSource menuAudioSource;
 
@@ -36,6 +43,8 @@ namespace ManyTools.UnityExtended
 			{
 				menu.SetActive(menu == menuObjects[menuKey]);
 			}
+			
+			PlayWindowSound(openSound);
 		}
 
 		/// <summary>
@@ -46,6 +55,8 @@ namespace ManyTools.UnityExtended
 		{
 			// Sets the given menu active
 			menuObjects[desiredMenu].SetActive(true);
+			
+			PlayWindowSound(openSound);
 		}
 
 		/// <summary>
@@ -56,6 +67,8 @@ namespace ManyTools.UnityExtended
 		{
 			// Sets the given menu inactive
 			menuObjects[desiredMenu].SetActive(false);
+			
+			PlayWindowSound(closeSound);
 		}
 
 		/// <summary>
@@ -95,9 +108,12 @@ namespace ManyTools.UnityExtended
 			}
 		}
 
-		// Gets UI volume and plays sound
-		private void PlayClickSound()
+		/// <summary>
+		/// Plays the desired sound
+		/// </summary>
+		private void PlayWindowSound(AudioClip sound)
 		{
+			menuAudioSource.clip = sound;
 			menuAudioSource.Play();
 		}
 
