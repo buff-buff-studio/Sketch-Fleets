@@ -20,7 +20,7 @@ MonoBehaviour:
   prefab: {fileID: 6527832755920852042, guid: 11e3d12220070db448013d4968149cff, type: 3}
   directDamage:
     _useConstant: 1
-    _constant: 200
+    _constant: 300
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
@@ -32,11 +32,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
-    _constant: 5
+    _constant: 6
     _variable: {fileID: 0}
   indirectDamage:
     _useConstant: 1
-    _constant: 80
+    _constant: 125
     _variable: {fileID: 0}
   ignorePlayer:
     _useConstant: 1

@@ -26,6 +26,10 @@ MonoBehaviour:
     rate.'
   prefab: {fileID: 8493826624106887132, guid: 5afee2896b7967146bdc19b6d17da531, type: 3}
   unlocalizedName: 
+  shipColor:
+    _useConstant: 1
+    _constant: {r: 0, g: 0, b: 0, a: 0}
+    _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
     _constant: 25
@@ -88,5 +92,5 @@ MonoBehaviour:
     _variable: {fileID: 0}
   orbitRadius:
     _useConstant: 1
-    _constant: 8
+    _constant: 5
     _variable: {fileID: 0}

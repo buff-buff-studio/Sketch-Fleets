@@ -18,7 +18,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: "Lime enemy ship\t"
   prefab: {fileID: 1419266270299820781, guid: 65faab35e8e0d4844a45146097df8021, type: 3}
-  unlocalizedName: 
+  unlocalizedName: ship_lime
   shipColor:
     _useConstant: 1
     _constant: {r: 0.30817604, g: 1, b: 0.524391, a: 1}

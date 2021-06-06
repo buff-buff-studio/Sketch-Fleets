@@ -18,6 +18,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: "Cyan ship summoned by the player\t"
   prefab: {fileID: 6527832755920852042, guid: 11e3d12220070db448013d4968149cff, type: 3}
+  unlocalizedName: 
+  shipColor:
+    _useConstant: 1
+    _constant: {r: 0, g: 0, b: 0, a: 0}
+    _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
     _constant: 5
@@ -80,5 +85,5 @@ MonoBehaviour:
     _variable: {fileID: 0}
   orbitRadius:
     _useConstant: 1
-    _constant: 8
+    _constant: 3
     _variable: {fileID: 0}
