@@ -40,7 +40,7 @@ ui_graphics_low=Baixo
 ui_graphics_medium=Médio
 ui_graphics_high=Alto
 
-ui_occupation_artist=Artist
+ui_occupation_artist=Artista
 ui_occupation_programmer=Programador
 ui_occupation_ui=Designer de UI
 ui_occupation_you=Você!
@@ -57,3 +57,8 @@ ui_pressSpace=Aperta a barra de espaço para invocar reforços;
 resolution_low=Baixa
 resolution_medium=Média
 resolution_high=Alta
+
+ui_shop_buy_confirmation=Você realmente quer comprar %% %% por %% %%?
+ui_shop_amount=Você tem %% %%
+ui_shop_buy=Comprar
+ui_shop_buy=Cancelar

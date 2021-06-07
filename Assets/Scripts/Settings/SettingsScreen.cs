@@ -56,29 +56,36 @@ namespace SketchFleets
         private void OnEnable() 
         {
             #region Language
-            languageDropdown.ClearOptions();
-            List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
-            int value = 0;
-            int i = 0;
-            string lang = Settings.Get<string>("language");
-            foreach(Language s in LanguageManager.GetAllLanguages())
+            if(languageDropdown != null)
             {
-                data.Add(new OptionData(s.Name,s.Code));
-                if(s.Code == lang) 
-                    value = i;
-                i ++;
+                languageDropdown.ClearOptions();
+                List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
+                int value = 0;
+                int i = 0;
+                string lang = Settings.Get<string>("language");
+                foreach(Language s in LanguageManager.GetAllLanguages())
+                {
+                    data.Add(new OptionData(s.Name,s.Code));
+                    if(s.Code == lang) 
+                        value = i;
+                    i ++;
+                }
+                languageDropdown.AddOptions(data);
+                languageDropdown.value = value;
             }
-            languageDropdown.AddOptions(data);
-            languageDropdown.value = value;
             #endregion
 
             #region Graphics Quality
-            graphicsQuality.GetComponent<LocalizableDropdown>().UpdateLocalization();
-            graphicsQuality.value = Settings.Get<int>("graphicsQuality");
+            if(graphicsQuality != null)
+            {
+                graphicsQuality.GetComponent<LocalizableDropdown>().UpdateLocalization();
+                graphicsQuality.value = Settings.Get<int>("graphicsQuality");
+            }
             #endregion
 
             #region Resolution
-            resolutionDropdown.value = Settings.Get<int>("resolution");
+            if(resolutionDropdown != null)
+                resolutionDropdown.value = Settings.Get<int>("resolution");
             #endregion
 
             #region Volume

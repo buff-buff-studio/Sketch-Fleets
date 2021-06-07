@@ -18,37 +18,43 @@ namespace SketchFleets.Inventory
         public TMP_Text playerInventoryText;
         public TMP_Text coinCounter;
         public bool useTotalCoins = false;
+        public Image currencyIcon;
+        public Sprite[] currencyIconSprites;
         #endregion
 
         private static int selectItemIndex = -1;
 
         #region Unity Callbacks
-        public override void Start() 
+        public override void Start()
         {
             base.Start();
 
+            //Coin Icon
+            if(currencyIcon != null)
+                currencyIcon.sprite = useTotalCoins ? currencyIconSprites[1] : currencyIconSprites[0];
+
             //Load
             inventory = new StoreInventory();
-            for(int i = 0; i < slots.Length; i ++)
+            for (int i = 0; i < slots.Length; i++)
             {
                 inventory.AddItem(new ItemStack(register.PickRandom()));
             }
 
-            for(int i = 0; i < slots.Length; i ++)
+            for (int i = 0; i < slots.Length; i++)
             {
-                
+
                 Button btn = slots[i].GetComponent<Button>();
                 int ji = i;
-                if(btn != null)
-                    btn.onClick.AddListener(() => {
+                if (btn != null)
+                    btn.onClick.AddListener(() =>
+                    {
                         OnClickSlotInternal(ji);
                     });
-                
             }
 
             //Render items
             Render();
-            
+
             //Handlers
             OnClickSlot = OnClickSlotMethod;
 
@@ -71,18 +77,18 @@ namespace SketchFleets.Inventory
             */
         }
         #endregion
-   
+
         #region Screen/UI
         public override void RenderSlot(int index)
         {
             ItemStack stack = inventory.GetItem(index);
-            
+
             string name = "";
-            if(stack != null)
+            if (stack != null)
                 name = register.items[stack.Id].UnlocalizedName;
 
             #region Temporary
-            slots[index].GetChild(0).GetComponent<TMP_Text>().text = name; 
+            slots[index].GetChild(0).GetComponent<TMP_Text>().text = name;
             #endregion
         }
 
@@ -90,7 +96,7 @@ namespace SketchFleets.Inventory
         {
             itemInformationPanel.SetActive(true);
             ItemStack stack = inventory.GetItem(selectItemIndex);
-            
+
             Item item = register.items[stack.Id];
 
             int count = Profile.GetData().inventoryItems.SearchItem(stack);
@@ -101,10 +107,10 @@ namespace SketchFleets.Inventory
         public void BuyItem()
         {
             ItemStack stack = inventory.GetItem(selectItemIndex);
-            
+
             Item item = register.items[stack.Id];
 
-            if(GetCoins() < item.ItemCost)
+            if (GetCoins() < item.ItemCost)
             {
                 Debug.Log("Not enough money!");
                 return;
@@ -115,8 +121,8 @@ namespace SketchFleets.Inventory
             itemInformationPanel.SetActive(false);
 
             //Add item to inventory
-            Profile.GetData().inventoryItems.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id,1));
-            Profile.SaveProfile((data) => {});
+            Profile.GetData().inventoryItems.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id, 1));
+            Profile.SaveProfile((data) => { });
         }
 
         public void CancelBuy()
@@ -129,7 +135,7 @@ namespace SketchFleets.Inventory
             //Update player items
             string s = "Player Items:\n";
 
-            foreach(ItemStack stack in Profile.GetData().inventoryItems)
+            foreach (ItemStack stack in Profile.GetData().inventoryItems)
             {
                 s += register.items[stack.Id].UnlocalizedName + ": " + stack.Amount + "\n";
             }
@@ -148,16 +154,16 @@ namespace SketchFleets.Inventory
         /// <param name="count"></param>
         public void AddCoins(int count)
         {
-            if(useTotalCoins)
+            if (useTotalCoins)
             {
                 Profile.Data.TotalCoins += count;
-                if(coinCounter != null)
+                if (coinCounter != null)
                     coinCounter.text = "$" + Profile.Data.TotalCoins;
                 return;
             }
 
             Profile.Data.Coins += count;
-            if(coinCounter != null)
+            if (coinCounter != null)
                 coinCounter.text = "$" + Profile.Data.Coins;
         }
 
@@ -167,11 +173,11 @@ namespace SketchFleets.Inventory
         /// <returns></returns>
         public int GetCoins()
         {
-            if(useTotalCoins)
+            if (useTotalCoins)
                 return Profile.Data.TotalCoins;
 
             return Profile.Data.Coins;
-        } 
+        }
         #endregion
     }
 }

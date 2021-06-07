@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3953086308454371136}
   - component: {fileID: 7647404491255696739}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Add50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,13 +26,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70855651711975246}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4858884373360253507}
-  m_Father: {fileID: 7340449414725695730}
-  m_RootOrder: 2
+  m_Father: {fileID: 7340449412887698371}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 910072061222088027}
   - component: {fileID: 8635598094687569540}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Add10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,13 +502,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6159416517307873229}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1031402234268361014}
-  m_Father: {fileID: 7340449414725695730}
-  m_RootOrder: 3
+  m_Father: {fileID: 7340449412887698371}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -767,6 +767,8 @@ RectTransform:
   - {fileID: 7340449414384815663}
   - {fileID: 4172349453527759350}
   - {fileID: 8563818951937042394}
+  - {fileID: 3333903979532290997}
+  - {fileID: 8609116264074932079}
   m_Father: {fileID: 7340449413207734770}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1267,6 +1269,10 @@ MonoBehaviour:
   playerInventoryText: {fileID: 7340449414546584686}
   coinCounter: {fileID: 1471172310640285441}
   useTotalCoins: 0
+  currencyIcon: {fileID: 2006094302057412980}
+  currencyIconSprites:
+  - {fileID: 21300000, guid: 3c23a35f8cd73404488235a0cc7d2586, type: 3}
+  - {fileID: 7807398946981325395, guid: 0a279c5a0e09a1044948f9615d542a00, type: 3}
 --- !u!1 &7340449413291919075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,6 +2916,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2886418289473373607}
+        m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
+          UnityExtended
+        m_MethodName: SwitchToMenu
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Inventory
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7340449414663308717
 GameObject:
   m_ObjectHideFlags: 0
@@ -3174,6 +3193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7340449414725695730}
+  - component: {fileID: 2886418289473373607}
   m_Layer: 5
   m_Name: Store
   m_TagString: Untagged
@@ -3194,8 +3214,6 @@ RectTransform:
   m_Children:
   - {fileID: 7340449413207734770}
   - {fileID: 7340449414162091129}
-  - {fileID: 3333903979532290997}
-  - {fileID: 8609116264074932079}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3204,6 +3222,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2886418289473373607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7340449414725695729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960a494b396c4cd4c84cde8a1238d7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
+  menuAudioSource: {fileID: 0}
+  menuObjects:
+    _keyValueList:
+    - Key: Inventory
+      Value: {fileID: 7340449412859663845}
+    _keyCollision: 0
 --- !u!1 &7340449414895942921
 GameObject:
   m_ObjectHideFlags: 0
@@ -3575,6 +3613,11 @@ PrefabInstance:
 --- !u!224 &7340449412859663840 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8556762189392766323, guid: e64b56099fe4f1240ac4515660994631, type: 3}
+  m_PrefabInstance: {fileID: 1396461378751328403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7340449412859663845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8556762189392766326, guid: e64b56099fe4f1240ac4515660994631, type: 3}
   m_PrefabInstance: {fileID: 1396461378751328403}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7340449414546584686 stripped
