@@ -101,7 +101,7 @@ namespace SketchFleets.Entities
                 Fire();
             }
 
-            if (Input.GetKeyDown(KeyCode.R) && AbilityTimer <= 0)
+            if (Input.GetKeyDown(KeyCode.R) && IsAbilityAvailable())
             {
                 StartCoroutine(regenerateRoutine);
             }
@@ -250,6 +250,15 @@ namespace SketchFleets.Entities
         public float GetMaxAbilityCooldown()
         {
             return Attributes.RegenerateCooldown * abilityCooldownMultiplier;
+        }
+
+        /// <summary>
+        /// Gets whether the ability can be used
+        /// </summary>
+        /// <returns>Whether the ability can be used</returns>
+        public bool IsAbilityAvailable()
+        {
+            return AbilityTimer <= 0f;
         }
 
         #endregion
