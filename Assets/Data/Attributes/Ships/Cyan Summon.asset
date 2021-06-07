@@ -18,7 +18,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: "Cyan ship summoned by the player\t"
   prefab: {fileID: 6527832755920852042, guid: 11e3d12220070db448013d4968149cff, type: 3}
-  unlocalizedName: 
+  unlocalizedName: ship_cyan
   shipColor:
     _useConstant: 1
     _constant: {r: 0, g: 0, b: 0, a: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
-    _constant: 95
+    _constant: 145
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
@@ -41,11 +41,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   damageMultiplier:
     _useConstant: 1
-    _constant: 1
+    _constant: 1.5
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 0.005
+    _constant: 0.006
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
@@ -73,7 +73,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   graphiteCostIncrease:
     _useConstant: 1
-    _constant: 15
+    _constant: 0
     _variable: {fileID: 0}
   maximumShips:
     _useConstant: 1
@@ -85,5 +85,5 @@ MonoBehaviour:
     _variable: {fileID: 0}
   orbitRadius:
     _useConstant: 1
-    _constant: 3
+    _constant: 7.5
     _variable: {fileID: 0}

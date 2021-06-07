@@ -25,7 +25,7 @@ MonoBehaviour:
     they lack in health is compensated by a small size with high mobility and fire
     rate.'
   prefab: {fileID: 8493826624106887132, guid: 5afee2896b7967146bdc19b6d17da531, type: 3}
-  unlocalizedName: 
+  unlocalizedName: ship_magenta
   shipColor:
     _useConstant: 1
     _constant: {r: 0, g: 0, b: 0, a: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   graphiteCostIncrease:
     _useConstant: 1
-    _constant: 15
+    _constant: 5
     _variable: {fileID: 0}
   maximumShips:
     _useConstant: 1
