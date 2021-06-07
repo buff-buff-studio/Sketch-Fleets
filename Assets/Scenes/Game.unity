@@ -2761,7 +2761,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409112511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.71091, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.6993017, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 905858676}
@@ -9060,7 +9060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207070478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.71091, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.6993017, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1399291222}
@@ -13156,6 +13156,7 @@ GameObject:
   - component: {fileID: 1763759314}
   - component: {fileID: 1763759316}
   - component: {fileID: 1763759315}
+  - component: {fileID: 1763759317}
   m_Layer: 5
   m_Name: Regen
   m_TagString: Untagged
@@ -13204,10 +13205,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 543624473207404027, guid: 55bb848f8e6edcf46aa5ca8b64b8a839, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -13221,6 +13222,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763759313}
   m_CullTransparentMesh: 1
+--- !u!114 &1763759317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763759313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98fcacad9fa5e03458d33f426f2c9c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mothership: {fileID: 939894646}
+  abilityIcon: {fileID: 1763759315}
+  disabledColor:
+    _useConstant: 1
+    _constant: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0.5019608}
+    _variable: {fileID: 0}
 --- !u!1 &1795397697
 GameObject:
   m_ObjectHideFlags: 0
