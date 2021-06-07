@@ -4,7 +4,6 @@ using SketchFleets.Data;
 using System.Collections.Generic;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
-using ManyTools.Variables;
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
 
@@ -38,6 +37,8 @@ namespace SketchFleets.Entities
 
         private Camera mainCamera;
 
+        private IEnumerator regenerateRoutine;
+
         #endregion
 
         #region Properties
@@ -54,10 +55,9 @@ namespace SketchFleets.Entities
             set => activeSpawnEffects = value;
         }
 
-        public Dictionary<SpawnableShipAttributes, SpawnMetaData> SpawnMetaDatas
-        {
-            get => spawnMetaDatas;
-        }
+        public Dictionary<SpawnableShipAttributes, SpawnMetaData> SpawnMetaDatas => spawnMetaDatas;
+
+        public float AbilityTimer => abilityTimer;
 
         #endregion
 
@@ -68,6 +68,7 @@ namespace SketchFleets.Entities
         {
             // Caches necessary components
             mainCamera = Camera.main;
+            regenerateRoutine = RegenerateShips();
         }
 
         // Start runs once every frame
@@ -79,15 +80,16 @@ namespace SketchFleets.Entities
             Move();
             Look(mainCamera.ScreenToWorldPoint(Input.mousePosition));
 
-            // Ticks down summon timers
+            // Ticks down timers
             UpdateSummonTimers();
+            abilityTimer = AbilityTimer - Time.deltaTime * Time.timeScale;
 
             // Enables or disables the spawn menu
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 EnableOrDisableSpawnMenu(true);
             }
-
+            
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 EnableOrDisableSpawnMenu(false);
@@ -97,6 +99,11 @@ namespace SketchFleets.Entities
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 Fire();
+            }
+
+            if (Input.GetKeyDown(KeyCode.R) && AbilityTimer <= 0)
+            {
+                StartCoroutine(regenerateRoutine);
             }
         }
 
@@ -236,6 +243,15 @@ namespace SketchFleets.Entities
             }
         }
 
+        /// <summary>
+        /// Gets the maximum ability cooldown
+        /// </summary>
+        /// <returns>The maximum ability cooldown</returns>
+        public float GetMaxAbilityCooldown()
+        {
+            return Attributes.RegenerateCooldown * abilityCooldownMultiplier;
+        }
+
         #endregion
 
         #region Private Methods
@@ -277,6 +293,37 @@ namespace SketchFleets.Entities
             foreach (var metaData in SpawnMetaDatas)
             {
                 metaData.Value.SummonTimer.Value -= Time.deltaTime * Time.timeScale;
+            }
+        }
+
+        /// <summary>
+        /// Sacrifices all ships for health
+        /// </summary>
+        private IEnumerator RegenerateShips()
+        {
+            WaitForSeconds killInterval = new WaitForSeconds(Attributes.RegenerateKillInterval);
+            abilityTimer = GetMaxAbilityCooldown();
+            
+            // For every spawned ship type
+            foreach (var metaData in spawnMetaDatas)
+            {
+                // For every ship
+                for (int index = metaData.Value.CurrentlyActive.Count - 1; index >= 0; index--)
+                {
+                    // Ignore dead ships
+                    if (metaData.Value.CurrentlyActive[index] == null)
+                    {
+                        metaData.Value.CurrentlyActive.RemoveAt(index);
+                    }
+                    else
+                    {
+                        // Heal player for the spawn cost of the ship
+                        Heal(GetSpawnCost(metaData.Key));
+                        metaData.Value.CurrentlyActive[index].Die();
+
+                        yield return killInterval;
+                    }
+                }
             }
         }
 

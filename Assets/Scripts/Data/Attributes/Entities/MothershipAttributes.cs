@@ -18,12 +18,17 @@ namespace SketchFleets.Data
         [SerializeField]
         [Tooltip("How long is the regenerate ability cooldown")]
         private FloatReference regenerateCooldown = new FloatReference(30f);
+        [SerializeField]
+        [Tooltip("The interval between each self-destruct of ally ships when using the regenerate ability")]
+        private FloatReference regenerateKillInterval = new FloatReference(0.15f);
 
         #endregion
 
         #region Properties
 
         public FloatReference RegenerateCooldown => regenerateCooldown;
+
+        public FloatReference RegenerateKillInterval => regenerateKillInterval;
 
         #endregion
 
