@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mothership Explosion 5
+  m_Name: Orange Explosion
   m_Shader: {fileID: -6465566751694194690, guid: 9a68770ce62023f43a3f6663c83b36b8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -107,8 +107,8 @@ Material:
     - _BluMult: {r: 0, g: 0, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GreMult: {r: 0, g: 1, b: 0, a: 0}
-    - _RedMult: {r: 1, g: 0, b: 0, a: 0}
+    - _GreMult: {r: 1, g: 0.4273501, b: 0, a: 0}
+    - _RedMult: {r: 1, g: 0.862138, b: 0.6650944, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4503199715328829052

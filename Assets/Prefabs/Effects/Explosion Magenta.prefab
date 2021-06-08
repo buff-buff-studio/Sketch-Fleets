@@ -71,5 +71,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 753f4b2e84038a849929868f8d0aa5b7, type: 2}
+    - target: {fileID: 5086555349003154539, guid: e710d5181480990488cf60043794037e, type: 3}
+      propertyPath: RotationModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e710d5181480990488cf60043794037e, type: 3}
