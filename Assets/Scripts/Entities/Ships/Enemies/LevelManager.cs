@@ -24,9 +24,19 @@ namespace SketchFleets
 
         [SerializeField]
         private StringReference mapTimer;
-        private int c;
-        private int s;
-        private int m;
+        [SerializeField]
+        private IntReference s;
+        [SerializeField]
+        private IntReference m;
+
+        [SerializeField]
+        private IntReference enemiesKilled;
+        private int enemiesWave;
+        private int enemiesKilledWave;
+
+        [SerializeField]
+        [Tooltip("Map Width = 55")]
+        private Vector2 waveSize;
 
         public Transform Mothership;
 
@@ -37,8 +47,6 @@ namespace SketchFleets
         public ShipAttributes PurpleShip;
         public ShipAttributes OrangeShip;
         public ShipAttributes LimeShip;
-
-        public float WaveXSummon = 30;
 
         public Mothership Player => player;
 
@@ -56,21 +64,40 @@ namespace SketchFleets
 
         void Start()
         {
+            if(MapDifficulty.Map == 1)
+            {
+                s.Value = 0;
+                m.Value = 0;
+                enemiesKilled.Value = 0;
+            }
+
             int multiply = MapDifficulty.MapDifficulty[MapDifficulty.Difficulty];
             purpleShipsMax = Random.Range(3 * multiply, 5 * multiply);
-            orangeShipsMax = Random.Range(1 * multiply, 4 * multiply);
-            limeShipsMax = Random.Range(1 * multiply, 2 * multiply);
+            orangeShipsMax = Random.Range(2 * multiply, 5 * multiply);
+            limeShipsMax = Random.Range(1 * multiply, 3 * multiply);
 
             StartCoroutine(Timer());
 
             maxWaves = (int)Random.Range(MapDifficulty.MapWaves[MapDifficulty.Difficulty].Value.x, MapDifficulty.MapWaves[MapDifficulty.Difficulty].Value.y);
+
+            enemiesWave = purpleShipsMax + limeShipsMax + orangeShipsMax;
+
         }
 
         void Update()
         {
-            if (Mothership.position.x > WaveXSummon && currentWave < maxWaves)
+            if (enemiesKilled >= enemiesKilledWave)
             {
-                Wave();
+                if (limeShips >= limeShipsMax && orangeShips >= orangeShipsMax && purpleShips >= purpleShipsMax)
+                {
+                    purpleShips = 0;
+                    orangeShips = 0;
+                    limeShips = 0;
+                }
+                if (currentWave < maxWaves)
+                {
+                    Wave();
+                }
             }
             if (currentWave >= maxWaves)
             {
@@ -84,10 +111,9 @@ namespace SketchFleets
             {
                 PoolMember purple = PoolManager.Instance.Request(PurpleShip.Prefab);
 
-                Vector2 pos = new Vector2(Random.Range(Mothership.position.x + 40, Mothership.position.x + 80), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
+                Vector2 pos = new Vector2(Random.Range(Mothership.position.x + waveSize.x, Mothership.position.x + waveSize.y), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
 
                 purple.Emerge(pos, transform.rotation);
-
                 purpleShips++;
             }
 
@@ -95,7 +121,7 @@ namespace SketchFleets
             {
                 PoolMember orange = PoolManager.Instance.Request(OrangeShip.Prefab);
 
-                Vector2 pos = new Vector2(Random.Range(Mothership.position.x + 40, Mothership.position.x + 80), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
+                Vector2 pos = new Vector2(Random.Range(Mothership.position.x + waveSize.x, Mothership.position.x + waveSize.y), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
 
                 orange.Emerge(pos, transform.rotation);
 
@@ -106,17 +132,18 @@ namespace SketchFleets
             {
                 PoolMember lime = PoolManager.Instance.Request(LimeShip.Prefab);
 
-                Vector2 pos = new Vector2(Random.Range(Mothership.position.x + 40, Mothership.position.x + 80), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
+                Vector2 pos = new Vector2(Random.Range(Mothership.position.x + waveSize.x, Mothership.position.x + waveSize.y), Random.Range(MapDifficulty.MapHeight, -MapDifficulty.MapHeight));
 
                 lime.Emerge(pos, transform.rotation);
 
                 limeShips++;
             }
 
-            if (limeShips < limeShipsMax && orangeShips < orangeShipsMax && purpleShips < purpleShipsMax)
-                return;
-            currentWave++;
-            WaveXSummon = Mothership.position.x + 45;
+            if (limeShips >= limeShipsMax && orangeShips >= orangeShipsMax && purpleShips >= purpleShipsMax)
+            {
+                currentWave++;
+                enemiesKilledWave = enemiesKilled.Value + enemiesWave;
+            }
         }
 
         public void EndGame()
@@ -131,20 +158,15 @@ namespace SketchFleets
             {
                 if(Time.deltaTime != 0)
                 {
-                    c++;
-                    if (c >= 100)
-                    {
-                        c = 0;
-                        s++;
-                    }
+                    s.Value++;
                     if (s >= 60)
                     {
-                        s = 0;
-                        m++;
+                        s.Value = 0;
+                        m.Value++;
                     }
                 }
-                mapTimer.Value = string.Format("{0:00}:{1:00}:{2:00}", m, s, c);
-                yield return new WaitForSeconds(.01f);
+                mapTimer.Value = string.Format("{0:00}:{1:00}", m.Value, s.Value);
+                yield return new WaitForSeconds(.1f);
             }
         }
     }
