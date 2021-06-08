@@ -67,7 +67,7 @@ namespace SketchFleets.Entities
         {
             // Adds value and updates color on player HUD
             playerShells.Value += shellWorth.Value;
-            playerShellColor.Value = shellColor.Value;
+            playerShellColor.Value = spriteRenderer.color;
 
             // If there is a collect effect, spawn it
             if (collectEffect != null)

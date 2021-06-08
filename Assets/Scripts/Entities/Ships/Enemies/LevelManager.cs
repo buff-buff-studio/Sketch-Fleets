@@ -103,6 +103,8 @@ namespace SketchFleets
             {
                 EndGame();
             }
+
+            Debug.Log(enemiesKilled + ", " + enemiesKilledWave + ", " + enemiesWave);
         }
 
         public void Wave()

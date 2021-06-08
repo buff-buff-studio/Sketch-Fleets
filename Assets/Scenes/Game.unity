@@ -511,13 +511,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 114752972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4024faf981f024f46818bc08955b0ce8, type: 3}
+  m_Script: {fileID: 11500000, guid: c98f423b06a54ed4689c86dcb48bc8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intRef:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: b37686c9c4f4cbc40a57bb305a036dca, type: 2}
 --- !u!1 &122220693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,7 +2305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409112511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.71091, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7037363, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 905858676}
@@ -7908,7 +7904,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207070478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.71091, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7037363, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1399291222}
@@ -9489,13 +9485,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1423768815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4024faf981f024f46818bc08955b0ce8, type: 3}
+  m_Script: {fileID: 11500000, guid: c98f423b06a54ed4689c86dcb48bc8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intRef:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: b37686c9c4f4cbc40a57bb305a036dca, type: 2}
 --- !u!1 &1458456336
 GameObject:
   m_ObjectHideFlags: 0
@@ -10443,13 +10435,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1607769600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4024faf981f024f46818bc08955b0ce8, type: 3}
+  m_Script: {fileID: 11500000, guid: c98f423b06a54ed4689c86dcb48bc8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intRef:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: b37686c9c4f4cbc40a57bb305a036dca, type: 2}
 --- !u!1 &1644616415
 GameObject:
   m_ObjectHideFlags: 0
@@ -11202,7 +11190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 543624473207404027, guid: 55bb848f8e6edcf46aa5ca8b64b8a839, type: 3}
+  m_Sprite: {fileID: 2273293796131067430, guid: 065b7c363d820bb4b9c359bf1a0bdef8, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
