@@ -1,25 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2970886270262360389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52908406865915231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a02a1787bcea4ec4fab85b1b223eeb80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributes: {fileID: 11400000, guid: dab52214d9edfd14a9cd1dfb36bb9e38, type: 2}
-  bulletSpawnPoints:
-  - {fileID: 5884656632747410054}
-  deathEvent: {fileID: 0}
-  soundSource: {fileID: 7817413295041160144}
-  spriteRenderer: {fileID: 158676202154423924}
-  shipSpawnPoint: {fileID: 5884656632747410054}
-  circleShips: {fileID: 0}
 --- !u!50 &7493155056741257454
 Rigidbody2D:
   serializedVersion: 4
@@ -41,6 +21,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-2970886270262360389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52908406865915231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02a1787bcea4ec4fab85b1b223eeb80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributes: {fileID: 11400000, guid: dab52214d9edfd14a9cd1dfb36bb9e38, type: 2}
+  bulletSpawnPoints:
+  - {fileID: 5884656632747410054}
+  deathEvent: {fileID: 0}
+  soundSource: {fileID: 7817413295041160144}
+  spriteRenderer: {fileID: 158676202154423924}
+  shipSpawnPoint: {fileID: 5884656632747410054}
+  shipSpawnMenu: {fileID: 0}
 --- !u!1001 &411118004048914757
 PrefabInstance:
   m_ObjectHideFlags: 0
