@@ -66,7 +66,7 @@ MonoBehaviour:
   shellDrop: {fileID: 5344832097319730938, guid: 40422bd9cc879ba4799a22387f0956e9, type: 3}
   fire: {fileID: 11400000, guid: b0967743feca18e449eb47263e1ec0d8, type: 2}
   hitSound: {fileID: 0}
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 5077195437519626923, guid: 9f26ea5f3b9c43d43bddb1e9480e47e0, type: 3}
   regenerateCooldown:
     _useConstant: 1
     _constant: 20
