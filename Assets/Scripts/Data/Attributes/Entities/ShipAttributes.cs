@@ -67,11 +67,14 @@ namespace SketchFleets.Data
         [Tooltip("The effect spawned when the ship dies")]
         [SerializeField]
         private GameObject deathEffect;
-        
+
+        [SerializeField]
+        protected IntReference enemyKills;
+
         #endregion
 
         #region Properties
-        
+
         public string UnlocalizedName => unlocalizedName;
 
         public ColorReference ShipColor => shipColor;
@@ -103,6 +106,8 @@ namespace SketchFleets.Data
         public GameObject ShellDrop => shellDrop;
 
         public FloatReference InvincibilityTime => invincibilityTime;
+
+        public IntReference EnemyKills => enemyKills;
 
         #endregion
     }

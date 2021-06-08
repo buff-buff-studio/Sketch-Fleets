@@ -67,9 +67,7 @@ namespace SketchFleets.UI
             float fillAmount = mothership.GetMaxAbilityCooldown() - adjustedCooldown;
             fillAmount = math.remap(0, mothership.GetMaxAbilityCooldown(), 1f, 
             0f, fillAmount);
-            
-            Debug.Log(fillAmount);
-            
+                        
             return 1f - fillAmount;
         }
 
