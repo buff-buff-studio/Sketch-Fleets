@@ -53,8 +53,11 @@ namespace SketchFleets.Entities
 
         #region Unity Callbacks
 
-        private void Start()
+        private void Awake()
         {
+            particleSystem = GetComponent<ParticleSystem>();
+            audioSource = GetComponent<AudioSource>();
+            
             lifetime = CalculateLifetime();
         }
 

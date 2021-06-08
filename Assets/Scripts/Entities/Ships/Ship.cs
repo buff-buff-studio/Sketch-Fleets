@@ -238,7 +238,7 @@ namespace SketchFleets
         {
             // Workaround, this should be done using a proper Pausing interface
             if (Mathf.Approximately(0f, Time.timeScale)) return;
-            
+
             // This doesn't really solve the problem. The transform should be a member variable
             // to avoid the constant marshalling
             Transform transformCache = transform;
@@ -252,7 +252,7 @@ namespace SketchFleets
         {
             if (Attributes.DeathEffect != null)
             {
-                Instantiate(Attributes.DeathEffect, transform.position, Quaternion.identity);
+                PoolManager.Instance.Request(Attributes.DeathEffect).Emerge(transform.position, Quaternion.identity);
             }
 
             if (deathEvent != null)
@@ -261,7 +261,7 @@ namespace SketchFleets
             }
 
             DropLoot();
-            
+
             Submerge();
 
             if (!dieCount)
@@ -298,7 +298,7 @@ namespace SketchFleets
         {
             // Drops pencil shells
             if (Attributes.ShellDrop == null) return;
-            
+
             int dropCount = Mathf.RoundToInt(
                 Random.Range(Attributes.DropMinMaxCount.Value.x, Attributes.DropMinMaxCount.Value.y));
 
@@ -308,11 +308,11 @@ namespace SketchFleets
                 Vector3 randomRotation = new Vector3(0f, 0f, Random.Range(0, 359f));
                 Vector3 dropPosition =
                     new Vector3(Random.Range(0f, 3f), Random.Range(0f, 3f), 0);
-                
+
                 // Instantiates and colors shell drop
-                GameObject shellDrop = Instantiate(Attributes.ShellDrop, transform.position + dropPosition, 
+                GameObject shellDrop = Instantiate(Attributes.ShellDrop, transform.position + dropPosition,
                     Quaternion.Euler(randomRotation));
-                
+
                 shellDrop.GetComponent<PencilShell>().SetDropColor(Attributes.ShipColor);
             }
         }
