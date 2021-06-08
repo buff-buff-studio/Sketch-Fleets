@@ -82,6 +82,10 @@ namespace SketchFleets
 
             enemiesWave = purpleShipsMax + limeShipsMax + orangeShipsMax;
 
+            if(multiply > 2)
+            {
+                waveSize = new Vector2(waveSize.x, waveSize.y * (multiply/2));
+            }
         }
 
         void Update()
