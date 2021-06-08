@@ -28,6 +28,7 @@ ui_subtitle_displaysettings=Display Settings
 ui_subtitle_languagesettings=Language Settings
 ui_subtitle_resolutionsettings=Resolution Settings
 ui_subtitle_graphicssettings=Graphics Quality
+ui_subtitle_fullscreensettings=Screen Mode
 
 ui_language_english=English
 ui_language_portuguese=Português
@@ -58,12 +59,16 @@ resolution_low=Low
 resolution_medium=Medium
 resolution_high=High
 
+windowed=Windowed
+fs_windowed=Fullscreen Windowed
+fullscreen=Fullscreen
+
 ui_shop_buy_confirmation=Do you really want to buy %% %% for %% %%?
 ui_shop_amount=You have %% %%
 ui_shop_buy=Buy
 ui_shop_buy=Cancel
 
-ui_tutorial=Tutorial
+ui_tutorial_title=Tutorial
 ui_tutorial_r=Tutorial do Botão R
 ui_tutorial_space=Tutorial do Botão de Espaço
 ui_tutorial_spacebtt=Space Bar

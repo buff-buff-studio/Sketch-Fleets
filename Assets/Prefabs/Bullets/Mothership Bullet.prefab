@@ -10,19 +10,27 @@ PrefabInstance:
     - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8b807edcd8de29841a2d6a7e26039e8c, type: 3}
+      objectReference: {fileID: 21300000, guid: c14d8a4a0e612b74fb86d4524d73910e, type: 3}
+    - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Color.b
-      value: 0.38679248
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Color.g
-      value: 0.38679248
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Color.r
-      value: 0.38679248
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 44cf241e2a8e59c4ebc3220fa415425f, type: 2}
     - target: {fileID: 3193503612161820667, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: attributes
       value: 

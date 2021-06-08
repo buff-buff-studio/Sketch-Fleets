@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3c23a35f8cd73404488235a0cc7d2586, type: 3}
-  m_Color: {r: 0.5596056, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.1911776, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 8
     _variable: {fileID: 0}
-  collectEffect: {fileID: 0}
+  collectEffect: {fileID: 2457878437404487259, guid: 2aa8617799546734b972fe1d438cfc9a, type: 3}
   spinSpeed:
     _useConstant: 0
     _constant: 5
