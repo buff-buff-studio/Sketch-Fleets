@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: attributes
       value: 
       objectReference: {fileID: 11400000, guid: a358d82563d284d4abc42402d32804a8, type: 2}
+    - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: killsCount._variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a0de06510999f640bb44839925e8b30, type: 2}
     - target: {fileID: 1775835985480320962, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Radius
       value: 2.5

@@ -68,9 +68,6 @@ namespace SketchFleets.Data
         [SerializeField]
         private GameObject deathEffect;
 
-        [SerializeField]
-        protected IntReference enemyKills;
-
         #endregion
 
         #region Properties
@@ -106,8 +103,6 @@ namespace SketchFleets.Data
         public GameObject ShellDrop => shellDrop;
 
         public FloatReference InvincibilityTime => invincibilityTime;
-
-        public IntReference EnemyKills => enemyKills;
 
         #endregion
     }

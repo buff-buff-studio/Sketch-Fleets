@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MothershipVFX
-  m_Shader: {fileID: -6465566751694194690, guid: 46d834486052fce4a9ce35f978191146, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 4c73c42dfda9b8a4d81c4a13ed8cf3b9, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 23e36e8aa035f554a96e4a0d50b6d993, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -102,16 +102,19 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _animFPS: 24
-    - _frameX: 2
+    - _animFPS: 10
+    - _frameX: 3
     - _frameY: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BluMult: {r: 0, g: 0, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GreMult: {r: 0, g: 1, b: 0, a: 0}
+    - _RedMult: {r: 1, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _blinkColor: {r: 1, g: 1, b: 1, a: 0}
-    - _bluMul: {r: 0, g: 0, b: 1, a: 0}
+    - _bluMul: {r: 0, g: 0, b: 1, a: 1}
     - _greMul: {r: 1, g: 1, b: 1, a: 1}
     - _redMul: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

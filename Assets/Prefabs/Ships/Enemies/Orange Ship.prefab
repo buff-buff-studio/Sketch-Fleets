@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: attributes
       value: 
       objectReference: {fileID: 11400000, guid: 21452b9dcb8e98f49be00981ad056dd2, type: 2}
+    - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: killsCount._variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a0de06510999f640bb44839925e8b30, type: 2}
     - target: {fileID: 3882482231209371536, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Layer
       value: 8
