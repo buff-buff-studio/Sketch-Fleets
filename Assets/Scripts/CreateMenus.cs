@@ -27,6 +27,10 @@
         public const string itemAttributesMenuName = "Sketch Fleets/Inventory Container/Item";
         public const string itemAttributesFileName = "Item";
 
+        public const int upgradeAttributesOrder = 2;
+        public const string upgradeAttributesMenuName = "Sketch Fleets/Inventory Container/Upgrade";
+        public const string upgradeAttributesFileName = "Upgrade";
+
         public const int difficultyAttributesOrder = 31;
         public const string difficultyAttributesMenuName = "Sketch Fleets/Attributes/Difficulty Attributes";
         public const string difficultyAttributesFileName = "Difficulty Attributes";
