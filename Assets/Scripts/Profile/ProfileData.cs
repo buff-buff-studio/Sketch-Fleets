@@ -133,6 +133,11 @@ namespace SketchFleets.ProfileSystem
             }
         }
 
+        public static int ConvertCoinsToTotalCoins(int coins)
+        {
+            return coins/5;
+        }
+
         public void Clear(MonoBehaviour behaviour,System.Action<ProfileData> callback)
         {
             save.Remove("mapState");

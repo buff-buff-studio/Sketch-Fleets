@@ -21,7 +21,8 @@ public class shellScript : MonoBehaviour
     void Update()
     {
         GetComponent<Image>().color = shellColor;
-        shellNum.text = pencilShell.ToString();
+        int value = pencilShell.Value;
+        shellNum.text = value.ToString();    
     }
     #endregion
 }

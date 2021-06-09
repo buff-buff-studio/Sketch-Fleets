@@ -24,6 +24,8 @@ namespace SketchFleets.UI
         private FloatReference lerpSpeed;
         [SerializeField, RequiredField()]
         private Image healthBar;
+        [SerializeField]
+        private IntReference pencilShell;
 
         private IHealthVerifiable healthVerifiable;
 
@@ -52,8 +54,18 @@ namespace SketchFleets.UI
             // NOTE: Why the fuck is this here? The health bar of all things is responsible for throwing game over?
             if (target.CurrentHealth <= 0 && gameOverScreen.activeSelf == false)
             {
+                //Add coins and clear
                 gameOverScreen.SetActive(true);
                 Time.timeScale = 0;
+
+                //Add coins
+                ProfileSystem.Profile.Data.TotalCoins += ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(pencilShell.Value);
+                PencilBoxText.AddedAmount = pencilShell.Value;
+                pencilShell.Value = 0;           
+
+                SketchFleets.ProfileSystem.Profile.Data.Clear(this,(data) => {
+                    //Clear data
+                });
             }
         }
 
