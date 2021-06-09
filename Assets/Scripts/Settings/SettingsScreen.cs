@@ -41,12 +41,17 @@ namespace SketchFleets
         private const int VOLUME_MASTER = 3;
         private const int VOLUME_MUSIC = 4;
         private const int VOLUME_SFX = 5;
+
+        private const int WINDOWS_MODE = 6;
+        private const int VSYNC = 7;
         #endregion
 
         #region Public Fields
         public TMP_Dropdown languageDropdown;
         public TMP_Dropdown graphicsQuality;
         public TMP_Dropdown resolutionDropdown;
+        public TMP_Dropdown windowsModeDropdown;
+        public Toggle vsyncToggle;
         public Slider volumeMaster;
         public Slider volumeMusic;
         public Slider volumeSfx;
@@ -83,17 +88,26 @@ namespace SketchFleets
             }
             #endregion
 
-            #region Resolution
+            #region Screen
             if(resolutionDropdown != null)
                 resolutionDropdown.value = Settings.Get<int>("resolution");
+            if(windowsModeDropdown != null)
+            {
+                windowsModeDropdown.GetComponent<LocalizableDropdown>().UpdateLocalization();
+                windowsModeDropdown.value = Settings.Get<int>("winMode");
+            }
+            if(vsyncToggle != null)
+                vsyncToggle.isOn = Settings.Get<bool>("vsync");
+            SettingsManager.RefreshWindow();
             #endregion
 
             #region Volume
-            Debug.Log(Settings.Get<float>("volume_master"));
             volumeMaster.value = Settings.Get<float>("volume_master");
             volumeMusic.value = Settings.Get<float>("volume_music");
             volumeSfx.value = Settings.Get<float>("volume_sfx");
             #endregion
+
+            //FullScreenMode.Windowed
         }
 
         public void OnChangeValue(int dropdownId)
@@ -118,6 +132,19 @@ namespace SketchFleets
                 case RESOLUTION:
                 {
                     SettingsManager.SetResolution(resolutionDropdown.value);
+                }
+                break;
+
+                case WINDOWS_MODE:
+                {
+                    SettingsManager.SetWindowMode(windowsModeDropdown.value);
+                }
+                break;
+
+                case VSYNC:
+                {
+                    Settings.Set<bool>("vsync",vsyncToggle.isOn);
+                    SettingsManager.RefreshWindow();
                 }
                 break;
 

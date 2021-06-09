@@ -41,6 +41,7 @@ namespace SketchFleets.SettingsSystem
             Settings.WithDefault<float>("volume_master",0.5f);
             Settings.WithDefault<float>("volume_music",1f);
             Settings.WithDefault<float>("volume_sfx",1f);
+            Settings.WithDefault<bool>("vsync",true);
 
             Settings.Load(this,() => {
                 //Resolution
@@ -91,18 +92,41 @@ namespace SketchFleets.SettingsSystem
         public static void SetResolution(int resolution)
         {
             Settings.Set<int>("resolution",resolution);
+            RefreshWindow();
+        }
+
+        public static void SetWindowMode(int mode)
+        {
+            Settings.Set<int>("winMode",mode);
+            RefreshWindow();
+        }
+
+        public static void RefreshWindow()
+        {
+            int resolution = Settings.Get<int>("resolution");
+            FullScreenMode mode = (FullScreenMode) (Settings.Get<int>("winMode") + 1);
+            int vsync = Settings.Get<bool>("vsync") ? 0 : 60;
 
             switch (resolution)
             {
                 case 0:
-                    Screen.SetResolution(1280,720,false);
+                    Screen.SetResolution(1280,720,mode,vsync);
                     break;   
                 case 1:
-                    Screen.SetResolution(1920,1080,false);
+                    Screen.SetResolution(1920,1080,mode,vsync);
                     break;   
                 case 2:
-                    Screen.SetResolution(2560,1440,false);
-                    break;                
+                    Screen.SetResolution(2560,1440,mode,vsync);
+                    break;   
+                case 3:
+                    Screen.SetResolution(800,600,mode,vsync);
+                    break;    
+                case 4:
+                    Screen.SetResolution(1024,768,mode,vsync);
+                    break;    
+                case 5:
+                    Screen.SetResolution(2560,1080,mode,vsync);
+                    break;                 
             }
         }
     }
