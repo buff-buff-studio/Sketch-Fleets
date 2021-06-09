@@ -59,7 +59,7 @@ namespace SketchFleets.UI
 
         private void Update()
         {
-            UpdateAllButtonFills();
+            UpdateAllButtonFills();            
         }
 
         #endregion
@@ -101,8 +101,8 @@ namespace SketchFleets.UI
         /// <param name="button">The button to update the fill of</param>
         private void UpdateButtonFill(SpawnableShipAttributes button)
         {
-            float calculatedFill = Player.GetSpawnCooldown(button) * -1f / Player.GetMaxSpawnCooldown(button);
-            spawnButtons[button].summonReadinessFill.fillAmount = math.min(calculatedFill, 1f);
+            float fill = (Player.GetMaxSpawnCooldown(button) - Player.GetSpawnCooldown(button)) / Player.GetMaxSpawnCooldown(button);
+            spawnButtons[button].summonReadinessFill.fillAmount = fill;
         }
 
         /// <summary>

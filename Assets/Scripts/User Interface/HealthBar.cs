@@ -53,6 +53,7 @@ namespace SketchFleets.UI
             if (target.CurrentHealth <= 0 && gameOverScreen.activeSelf == false)
             {
                 gameOverScreen.SetActive(true);
+                Time.timeScale = 0;
             }
         }
 

@@ -45,7 +45,6 @@ namespace SketchFleets
         private FloatReference currentHealth = new FloatReference(0f);
         private FloatReference currentShield = new FloatReference(0f);
         private readonly int blinkColor = Shader.PropertyToID("_blinkColor");
-        private bool dieCount = false;
 
         #endregion
 
@@ -178,7 +177,6 @@ namespace SketchFleets
             collisionTimer -= Time.deltaTime;
             fireTimer -= Time.deltaTime;
             RegenShield();
-            dieCount = false;
 
             // TODO: Remove this workaround once we figure out whether MPBs are supported in ShaderGraph yet
             Color tempColor = spriteRenderer.material.GetColor(blinkColor);
@@ -250,6 +248,8 @@ namespace SketchFleets
         /// </summary>
         public virtual void Die()
         {
+            if(!gameObject.activeSelf) return;
+
             if (Attributes.DeathEffect != null)
             {
                 PoolManager.Instance.Request(Attributes.DeathEffect).Emerge(transform.position, Quaternion.identity);
@@ -263,12 +263,6 @@ namespace SketchFleets
             DropLoot();
 
             Submerge();
-
-            if (!dieCount)
-            {
-                Attributes.EnemyKills.Value++;
-                dieCount = true;
-            }
         }
 
         #endregion

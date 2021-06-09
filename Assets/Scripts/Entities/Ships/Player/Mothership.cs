@@ -6,6 +6,7 @@ using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
+using ManyTools.UnityExtended;
 
 namespace SketchFleets.Entities
 {
@@ -21,9 +22,9 @@ namespace SketchFleets.Entities
         private Transform shipSpawnPoint;
         [SerializeField, RequiredField()]
         private GameObject shipSpawnMenu;
-
-        private Dictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
-            new Dictionary<SpawnableShipAttributes, SpawnMetaData>();
+        
+        private UnityDictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
+            new UnityDictionary<SpawnableShipAttributes, SpawnMetaData>();
 
         private float extraSpawnSlots = 0f;
         private float abilityCooldownMultiplier = 1f;
@@ -55,7 +56,7 @@ namespace SketchFleets.Entities
             set => activeSpawnEffects = value;
         }
 
-        public Dictionary<SpawnableShipAttributes, SpawnMetaData> SpawnMetaDatas => spawnMetaDatas;
+        public UnityDictionary<SpawnableShipAttributes, SpawnMetaData> SpawnMetaDatas => spawnMetaDatas;
 
         public float AbilityTimer => abilityTimer;
 
@@ -203,7 +204,7 @@ namespace SketchFleets.Entities
         /// <returns>Whether there is remaining space to spawn the ship</returns>
         public bool IsThereSpaceForSpawn(SpawnableShipAttributes shipType)
         {
-            return GetSpawnMetaData(shipType).CurrentlyActive.Count + 1 < shipType.MaximumShips.Value + extraSpawnSlots;
+            return GetSpawnMetaData(shipType).CurrentlyActive.Count + 1 <= shipType.MaximumShips.Value + extraSpawnSlots;
         }
 
         /// <summary>

@@ -54,9 +54,9 @@ namespace SketchFleets
             if (other.gameObject.CompareTag("Player") ||
                 other.gameObject.CompareTag("PlayerSpawn") ||
                 other.gameObject.CompareTag("bullet")) return;
-            
-            AI.Ship.Die();
+
             explode = false;
+            AI.Ship.Die();
         }
 
         #endregion
