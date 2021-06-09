@@ -4,7 +4,6 @@ using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using SketchFleets.Data;
 using SketchFleets.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -164,7 +163,6 @@ namespace SketchFleets
         // Start is called before the first update
         protected virtual void Awake()
         {
-
             // Gets blink color hash id
             //propertyBlock = new MaterialPropertyBlock();
             //spriteRenderer.GetPropertyBlock(propertyBlock);
@@ -196,6 +194,8 @@ namespace SketchFleets
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (CompareTag(other.tag)) return;
+            
             if (other.CompareTag("Enemy") ||
                 other.CompareTag("PlayerSpawn") ||
                 other.CompareTag("Player") ||

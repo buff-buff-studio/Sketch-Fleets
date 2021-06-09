@@ -1,4 +1,3 @@
-using ManyTools.UnityExtended;
 using SketchFleets.AI;
 using UnityEngine;
 
@@ -8,14 +7,10 @@ namespace SketchFleets
     /// An AI state that seeks the player and explodes upon colliding with him
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
-    public class SeekAndExplodeState : State
+    public class SeekAndExplodeState : BaseEnemyAIState
     {
         #region Private Fields
 
-        // [SerializeField]
-        // private FloatReference accelerationMultiplier = new FloatReference(10f);
-
-        private EnemyShipAI AI;
         private Rigidbody2D rigidbody2d;
         
         #endregion
@@ -43,9 +38,10 @@ namespace SketchFleets
         /// </summary>
         public override void StateUpdate()
         {
+            if (!shipRenderer.isVisible) return;
+            
             AI.Ship.Look(AI.Player.transform.position);
             rigidbody2d.AddForce(transform.up * (AI.Ship.Attributes.Speed * Time.deltaTime));
-            //transform.Translate(transform.up * (AI.Ship.Attributes.Speed * Time.deltaTime), Space.Self);
         }
         
         /// <summary>
