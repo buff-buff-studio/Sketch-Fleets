@@ -169,8 +169,10 @@ public class ConstelationMap : MonoBehaviour
                 
                 //Create start difficulty
                 int difficulty = -1;
-
-                if(i == columns - 1)
+                
+                if(i == 0)
+                    difficulty = 1;
+                else if(i == columns - 1)
                     difficulty = 4; //Black Holde
                 else if(i == columns - 2 && j%2 == 0)
                     difficulty = 0; //Shop

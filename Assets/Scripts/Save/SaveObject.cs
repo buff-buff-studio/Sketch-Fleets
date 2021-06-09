@@ -381,7 +381,7 @@ namespace SketchFleets.SaveSystem
             int pre = buffer.GetBytesCount();
 
             //Add objects
-            foreach(PairPointer p in pointers)
+            foreach(PairPointer p in pointers.ToArray())
                 p.Serialize(buffer);
 
             //Get end count

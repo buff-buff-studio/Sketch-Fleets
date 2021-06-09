@@ -18,6 +18,8 @@ namespace SketchFleets.SettingsSystem
         public string volumeMusicParam;
         public AudioMixer volumeSfxMixer;
         public string volumeSfxParam;
+        public AudioSource menuMusicSource;
+        public AudioSource storeMusicSource;
         #endregion
 
         #region Static
@@ -48,6 +50,26 @@ namespace SketchFleets.SettingsSystem
                 SetVolume(volumeMusicParam,volumeMusicMixer,Settings.Get<float>("volume_music"));
                 SetVolume(volumeSfxParam,volumeSfxMixer,Settings.Get<float>("volume_sfx"));
                 StartCoroutine(WaitToLoadLanguage());
+
+                if(menuMusicSource != null)
+                    if(menuMusicSource.isPlaying)
+                    {
+                        
+                        menuMusicSource.Stop();
+                        menuMusicSource.Play();
+                    }
+
+                if(storeMusicSource != null)
+                    if(storeMusicSource.isPlaying)
+                    {
+                        
+                        storeMusicSource.Stop();
+                        storeMusicSource.Play();
+                    }
+
+                menuMusicSource.volume = 1;
+                storeMusicSource.volume = 1;
+
             });
             DontDestroyOnLoad(gameObject);
         }

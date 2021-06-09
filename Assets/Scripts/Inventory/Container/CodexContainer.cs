@@ -12,7 +12,7 @@ namespace SketchFleets.Inventory
     public class CodexContainer : MonoBehaviour 
     {
         #region Registers
-        public ItemRegister registerItems;
+        public ShopObjectRegister registerItems;
         public ShipRegister registerEnemies;
         public ShipRegister registerAllies;
         public Register<object> registerRegions;

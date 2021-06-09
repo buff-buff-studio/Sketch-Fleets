@@ -9,7 +9,7 @@ namespace SketchFleets.Inventory
     /// <summary>
     /// Class used to register items
     /// </summary>
-    public class ItemRegister : Register<Item>
+    public class ShopObjectRegister : Register<ShopObject>
     {
         #region Public Methods
         

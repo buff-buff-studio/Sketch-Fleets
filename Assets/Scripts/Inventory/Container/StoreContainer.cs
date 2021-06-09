@@ -97,7 +97,7 @@ namespace SketchFleets.Inventory
             itemInformationPanel.SetActive(true);
             ItemStack stack = inventory.GetItem(selectItemIndex);
 
-            Item item = register.items[stack.Id];
+            ShopObject item = register.items[stack.Id];
 
             int count = Profile.GetData().inventoryItems.SearchItem(stack);
 
@@ -108,7 +108,7 @@ namespace SketchFleets.Inventory
         {
             ItemStack stack = inventory.GetItem(selectItemIndex);
 
-            Item item = register.items[stack.Id];
+            ShopObject item = register.items[stack.Id];
 
             if (GetCoins() < item.ItemCost)
             {

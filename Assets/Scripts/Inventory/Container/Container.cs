@@ -12,7 +12,7 @@ namespace SketchFleets.Inventory
     {
         #region Protected Fields
         [SerializeField]
-        protected ItemRegister register;
+        protected ShopObjectRegister register;
         [SerializeField]
         protected IInventory<ItemStack> inventory;
         [SerializeField]

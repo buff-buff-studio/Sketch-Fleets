@@ -69,12 +69,23 @@ public class MapLevelInteraction : MonoBehaviour
             };
         });
     }
+    
+    //Clear
+    public static void OnGameOver(MonoBehaviour behaviour)
+    {
+        //Clear save data and return to menu
+        SketchFleets.ProfileSystem.Profile.Data.Clear(behaviour);
+
+        LoadScene("Scenes/Menu",() => {
+            
+        });
+    }
 
     public static void SaveReturningToMenu(MonoBehaviour behaviour)
     {
         Constelation.Star star = state.constelation.GetStar(state.GetCurrentStar());
 
-         foreach(Constelation.StarJunction j in star.toJunctions)
+        foreach(Constelation.StarJunction j in star.toJunctions)
         {
             if(!state.IsChoosen(j.starA.Id))
                     continue;
