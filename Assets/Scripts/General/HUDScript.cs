@@ -34,5 +34,13 @@ public class HUDScript : MonoBehaviour
         SceneManager.LoadScene("Menu");
         MapLevelInteraction.OnGameOver(this);
     }
+
+    public void Menu()
+    {
+        Time.timeScale = 1;
+        life.Value = lifeFull;
+        SceneManager.LoadScene("Menu");
+        MapLevelInteraction.SaveReturningToMenu(this);
+    }
     #endregion
 }

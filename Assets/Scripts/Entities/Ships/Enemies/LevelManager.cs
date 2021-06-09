@@ -64,7 +64,7 @@ namespace SketchFleets
 
         void Start()
         {
-            if(MapDifficulty.Map == 1)
+            if(MapDifficulty.Map == 0)
             {
                 s.Value = 0;
                 m.Value = 0;
