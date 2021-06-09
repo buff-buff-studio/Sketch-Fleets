@@ -575,8 +575,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openSound: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
-  closeSound: {fileID: 0}
-  menuAudioSource: {fileID: 0}
+  closeSound: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
+  menuAudioSource: {fileID: 885140493}
   menuObjects:
     _keyValueList:
     - Key: Quit Menu
@@ -11415,8 +11415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openSound: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
-  closeSound: {fileID: 0}
-  menuAudioSource: {fileID: 0}
+  closeSound: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
+  menuAudioSource: {fileID: 885140493}
   menuObjects:
     _keyValueList:
     - Key: Creators
@@ -15821,8 +15821,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openSound: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
-  closeSound: {fileID: 0}
-  menuAudioSource: {fileID: 0}
+  closeSound: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
+  menuAudioSource: {fileID: 885140493}
   menuObjects:
     _keyValueList:
     - Key: Inventory
@@ -18082,7 +18082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openSound: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
-  closeSound: {fileID: 0}
+  closeSound: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
   menuAudioSource: {fileID: 885140493}
   menuObjects:
     _keyValueList:
@@ -23210,14 +23210,50 @@ PrefabInstance:
       propertyPath: menuObjects._keyValueList.Array.data[1].Value
       value: 
       objectReference: {fileID: 2033043081}
+    - target: {fileID: 7340449412859663845, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340449412944129808, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7340449413207734733, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: useTotalCoins
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7340449413291919101, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d131c6c5a8a8afb4a8387c7db863353a, type: 2}
+    - target: {fileID: 7340449413291919101, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8909037775661020288, guid: d131c6c5a8a8afb4a8387c7db863353a, type: 2}
+    - target: {fileID: 7340449413507481418, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d131c6c5a8a8afb4a8387c7db863353a, type: 2}
+    - target: {fileID: 7340449413507481418, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8909037775661020288, guid: d131c6c5a8a8afb4a8387c7db863353a, type: 2}
+    - target: {fileID: 7340449413554464590, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d131c6c5a8a8afb4a8387c7db863353a, type: 2}
+    - target: {fileID: 7340449413554464590, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8909037775661020288, guid: d131c6c5a8a8afb4a8387c7db863353a, type: 2}
     - target: {fileID: 7340449414004862916, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1398234170}
+    - target: {fileID: 7340449414162091128, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7340449414384815656, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
