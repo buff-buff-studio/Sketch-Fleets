@@ -89,6 +89,7 @@ namespace SketchFleets
             #endregion
 
             #region Volume
+            Debug.Log(Settings.Get<float>("volume_master"));
             volumeMaster.value = Settings.Get<float>("volume_master");
             volumeMusic.value = Settings.Get<float>("volume_music");
             volumeSfx.value = Settings.Get<float>("volume_sfx");

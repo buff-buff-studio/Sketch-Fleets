@@ -219,7 +219,8 @@ public class ConstelationMap : MonoBehaviour
                     purplePlanetsCandidates.Add(s);
                 }
                 else if(difficulty == 1 || difficulty == 2 || difficulty == 3)
-                    allOtherPlanets.Add(s);
+                    if(i > 0)
+                        allOtherPlanets.Add(s);
 
                 //Update bounds
                 if(cur.GetComponent<RectTransform>().anchoredPosition.x > sizeX)

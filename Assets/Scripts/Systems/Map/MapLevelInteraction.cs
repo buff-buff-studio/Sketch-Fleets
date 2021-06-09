@@ -76,7 +76,7 @@ public class MapLevelInteraction : MonoBehaviour
         //Clear save data and return to menu
         SketchFleets.ProfileSystem.Profile.Data.Clear(behaviour,(data) => {
             LoadScene("Scenes/Menu",() => {
-            
+                
             });
         });
     }
@@ -182,7 +182,8 @@ public class MapLevelInteraction : MonoBehaviour
             {
                 SketchFleets.ProfileSystem.Profile.Data.Clear(source,(data) => {
                     state = new ConstelationState(null);
-                    SaveMapState(source,callback);
+                    callback();
+                    //SaveMapState(source,callback);
                 });
                 //SaveMapState(source,callback);
             }     
