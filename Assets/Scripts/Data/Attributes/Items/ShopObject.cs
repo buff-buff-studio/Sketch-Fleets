@@ -16,6 +16,9 @@ namespace SketchFleets.Data
         private IntReference rarity = new IntReference(10);
         [SerializeField]
         private IntReference itemCost = new IntReference(100);
+
+        [SerializeField]
+        private Sprite icon;
         #endregion
 
         #region Properties
@@ -35,6 +38,12 @@ namespace SketchFleets.Data
         {
             get => rarity;
             set => rarity = value;
+        }
+
+        public Sprite Icon
+        {
+            get => icon;
+            set => icon = value;
         }
         #endregion
     }
