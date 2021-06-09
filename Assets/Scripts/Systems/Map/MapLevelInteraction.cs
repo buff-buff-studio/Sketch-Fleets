@@ -74,10 +74,10 @@ public class MapLevelInteraction : MonoBehaviour
     public static void OnGameOver(MonoBehaviour behaviour)
     {
         //Clear save data and return to menu
-        SketchFleets.ProfileSystem.Profile.Data.Clear(behaviour);
-
-        LoadScene("Scenes/Menu",() => {
+        SketchFleets.ProfileSystem.Profile.Data.Clear(behaviour,(data) => {
+            LoadScene("Scenes/Menu",() => {
             
+            });
         });
     }
 
@@ -180,10 +180,13 @@ public class MapLevelInteraction : MonoBehaviour
             }
             else
             {
-                SketchFleets.ProfileSystem.Profile.GetData().save.Remove("mapState");
-                SaveMapState(source,callback);
+                SketchFleets.ProfileSystem.Profile.Data.Clear(source,(data) => {
+                    state = new ConstelationState(null);
+                    SaveMapState(source,callback);
+                });
+                //SaveMapState(source,callback);
             }     
-        });  
+        }); 
     }
 
     /// <summary>
@@ -192,7 +195,7 @@ public class MapLevelInteraction : MonoBehaviour
     public static void SaveMapState(MonoBehaviour source,Action callback)
     {
         Debug.Log("Saving...");
-        SketchFleets.ProfileSystem.Profile.GetData().save["mapState"] = state.ToData();
+        SketchFleets.ProfileSystem.Profile.Data.save["mapState"] = state.ToData();
         SketchFleets.ProfileSystem.Profile.SaveProfile((save) => {
             Debug.Log("Map saved!");
             callback();

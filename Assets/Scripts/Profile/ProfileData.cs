@@ -133,13 +133,13 @@ namespace SketchFleets.ProfileSystem
             }
         }
 
-        public void Clear(MonoBehaviour behaviour)
+        public void Clear(MonoBehaviour behaviour,System.Action<ProfileData> callback)
         {
             save.Remove("mapState");
             save.Remove("items");
             save.Remove("coins");
             ReloadInventories();
-            Profile.SaveProfile((data) => { });
+            Profile.SaveProfile(callback);
         }
     }
 }

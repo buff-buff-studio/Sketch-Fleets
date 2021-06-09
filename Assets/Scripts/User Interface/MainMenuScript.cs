@@ -28,8 +28,10 @@ public class MainMenuScript : MonoBehaviour
     /// </summary>
     public void LoadNewGame()
     {
-        SketchFleets.ProfileSystem.Profile.GetData().Clear(this);
-        MapLevelInteraction.OpenMap(this,false);
+        SketchFleets.ProfileSystem.Profile.GetData().Clear(this,(data) => {
+            MapLevelInteraction.OpenMap(this,false);
+        });
+        
     }
 
     /// <summary>
