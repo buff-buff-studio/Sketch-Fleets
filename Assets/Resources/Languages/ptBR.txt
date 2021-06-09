@@ -28,6 +28,7 @@ ui_subtitle_displaysettings=Opções de Tela
 ui_subtitle_languagesettings=Opções de Idioma
 ui_subtitle_resolutionsettings=Opções de Resolução
 ui_subtitle_graphicssettings=Qualidade Gráfica
+ui_subtitle_fullscreensettings=Modo de Tela
 
 ui_language_english=English
 ui_language_portuguese=Português
@@ -58,12 +59,16 @@ resolution_low=Baixa
 resolution_medium=Média
 resolution_high=Alta
 
+windowed=Modo Janela
+fs_windowed=Janela em Tela Cheia
+fullscreen=Tela Cheia
+
 ui_shop_buy_confirmation=Você realmente quer comprar %% %% por %% %%?
 ui_shop_amount=Você tem %% %%
 ui_shop_buy=Comprar
 ui_shop_buy=Cancelar
 
-ui_tutorial=Tutorial
+ui_tutorial_title=Tutorial
 ui_tutorial_r=Tutorial do Botão R
 ui_tutorial_space=Tutorial do Botão de Espaço
 ui_tutorial_spacebtt=Space Bar

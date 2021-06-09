@@ -63,12 +63,12 @@ MonoBehaviour:
     _variable: {fileID: 0}
   dropMinMaxCount:
     _useConstant: 1
-    _constant: {x: 3, y: 5}
+    _constant: {x: 2, y: 4}
     _variable: {fileID: 0}
   shellDrop: {fileID: 4108485770172352479, guid: 838fa67d6f45b6c47b3f66f0f226a072, type: 3}
   fire: {fileID: 0}
   hitSound: {fileID: 0}
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 1755664801758703151, guid: ce76139f3a838b544beee184776f06eb, type: 3}
   enemyKills:
     _useConstant: 0
     _constant: 0
