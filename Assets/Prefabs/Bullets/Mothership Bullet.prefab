@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c14d8a4a0e612b74fb86d4524d73910e, type: 3}
+      objectReference: {fileID: 21300000, guid: 8b807edcd8de29841a2d6a7e26039e8c, type: 3}
     - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -28,13 +28,29 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 44cf241e2a8e59c4ebc3220fa415425f, type: 2}
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3193503612161820667, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: attributes
       value: 
       objectReference: {fileID: 11400000, guid: b0967743feca18e449eb47263e1ec0d8, type: 2}
+    - target: {fileID: 4739967438635050715, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5125356830891273459, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Name
       value: Mothership Bullet
@@ -48,8 +64,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6463249715326409105, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463249715326409105, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463249715326409105, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463249715326409105, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.9918
       objectReference: {fileID: 0}
     - target: {fileID: 6463249715326409105, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_LocalPosition.y
