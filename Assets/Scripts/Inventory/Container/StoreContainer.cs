@@ -1,0 +1,191 @@
+using TMPro;
+using SketchFleets.ProfileSystem;
+using UnityEngine;
+using UnityEngine.UI;
+using SketchFleets.Data;
+
+
+namespace SketchFleets.Inventory
+{
+    /// <summary>
+    /// Store container class
+    /// </summary>
+    public class StoreContainer : Container
+    {
+        #region Public Fields
+        public GameObject itemInformationPanel;
+        public TMP_Text itemInformationText;
+        public TMP_Text playerInventoryText;
+        public TMP_Text coinCounter;
+        public bool isUpgradeShop = false;
+        public Image currencyIcon;
+        public Sprite[] currencyIconSprites;
+        public RectTransform coinCountBackground;
+        #endregion
+
+        private static int selectItemIndex = -1;
+
+        #region Unity Callbacks
+        public override void Start()
+        {
+            base.Start();
+
+            //Coin Icon
+            if(currencyIcon != null)
+                currencyIcon.sprite = isUpgradeShop ? currencyIconSprites[1] : currencyIconSprites[0];
+
+            //Load
+            inventory = new StoreInventory();
+            for (int i = 0; i < (isUpgradeShop ? 4 : slots.Length); i++)
+            {
+                inventory.AddItem(new ItemStack(register.PickRandom(i)));
+            }
+
+            for (int i = 0; i < slots.Length; i++)
+            {
+
+                Button btn = slots[i].GetComponent<Button>();
+                int ji = i;
+                if (btn != null)
+                    btn.onClick.AddListener(() =>
+                    {
+                        OnClickSlotInternal(ji);
+                    });
+            }
+
+            //Render items
+            Render();
+
+            //Handlers
+            OnClickSlot = OnClickSlotMethod;
+
+            //Update label
+            AddCoins(0);
+        }
+        #endregion   
+
+        #region Container
+        public void OnClickSlotMethod(int slot)
+        {
+            //Show select item information
+            selectItemIndex = slot;
+            OpenItemInformation();
+
+            /*
+            Profile.GetData().inventoryItems.AddItem(new ItemStack(inventory.GetItem(slot).Id,1));
+            Profile.Using(this);
+            Profile.SaveProfile((data) => {});
+            */
+        }
+        #endregion
+
+        #region Screen/UI
+        public override void RenderSlot(int index)
+        {
+            ItemStack stack = inventory.GetItem(index);
+
+            Sprite sprite = null;
+            if (stack != null)
+                sprite = register.items[stack.Id].Icon;
+                
+            #region Temporary
+            if(stack != null)
+            {
+                slots[index].GetChild(0).GetComponentInChildren<TMP_Text>().text = register.items[stack.Id].ItemCost + "$";
+                slots[index].GetChild(1).GetComponent<Image>().sprite = sprite;
+            }
+            slots[index].gameObject.SetActive(sprite != null);
+            #endregion
+        }
+
+        public void OpenItemInformation()
+        {
+            itemInformationPanel.SetActive(true);
+            ItemStack stack = inventory.GetItem(selectItemIndex);
+
+            ShopObject item = register.items[stack.Id];
+
+            int count = isUpgradeShop ? Profile.GetData().inventoryUpgrades.SearchItem(stack) : Profile.GetData().inventoryItems.SearchItem(stack);
+
+            itemInformationText.text = "Do you really want to buy '" + item.UnlocalizedName + "' for $" + item.ItemCost + " ? (You have " + count + " " + item.UnlocalizedName + ")\n\nPrice: " + item.ItemCost;
+        }
+
+        public void BuyItem()
+        {
+            ItemStack stack = inventory.GetItem(selectItemIndex);
+
+            ShopObject item = register.items[stack.Id];
+
+            if (GetCoins() < item.ItemCost)
+            {
+                Debug.Log("Not enough money!");
+                return;
+            }
+
+            AddCoins(-item.ItemCost);
+
+            itemInformationPanel.SetActive(false);
+
+            //Add item to inventory
+            if(isUpgradeShop)
+                Profile.GetData().inventoryUpgrades.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id, 1));
+            else
+                Profile.GetData().inventoryItems.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id, 1));
+
+            Profile.SaveProfile((data) => { });
+        }
+
+        public void CancelBuy()
+        {
+            itemInformationPanel.SetActive(false);
+        }
+
+        public void CloseToMap()
+        {
+            MapLevelInteraction.ReturnToMapOpeningStar();
+        }
+
+        /// <summary>
+        /// Handle integration while adding coins
+        /// </summary>
+        /// <param name="count"></param>
+        public void AddCoins(int count)
+        {
+            if (isUpgradeShop)
+            {
+                Profile.Data.TotalCoins += count;
+                if (coinCounter != null)
+                {
+                    coinCounter.text = Profile.Data.TotalCoins.ToString();
+                }
+                return;
+            }
+
+            Profile.Data.Coins += count;
+            if (coinCounter != null)
+            {
+                coinCounter.text = Profile.Data.Coins.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Handle integration while retriving coints count
+        /// </summary>
+        /// <returns></returns>
+        public int GetCoins()
+        {
+            if (isUpgradeShop)
+                return Profile.Data.TotalCoins;
+
+            return Profile.Data.Coins;
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+
+            coinCountBackground.sizeDelta = new Vector2(coinCounter.GetRenderedValues(true).x + 200,130);
+        }
+        #endregion
+    }
+}

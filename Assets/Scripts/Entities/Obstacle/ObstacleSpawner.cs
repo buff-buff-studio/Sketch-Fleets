@@ -15,6 +15,8 @@ public class ObstacleSpawner : MonoBehaviour
     private Vector3 SpawnArea;
     [SerializeField]
     private Transform Mothership;
+    [SerializeField]
+    private Canvas canvas;
     #endregion
 
     #region Unity Callbacks
@@ -34,7 +36,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         int i = Random.Range(1, 101);
-        if (i < 25 && Obstacle == null)
+        if (i < 26 && Obstacle == null)
         {
             GameObject ob = ObstaclePrefab[Random.Range(0, ObstaclePrefab.Count)];
             char direction = ob.GetComponent<ObstacleScript>().Direction;
@@ -43,21 +45,30 @@ public class ObstacleSpawner : MonoBehaviour
             if (direction == 'R')
             {
                 vect = new Vector2(Mothership.position.x + SpawnArea.z, Random.Range(SpawnArea.x, SpawnArea.y));
+
+                GameObject obstacle = (GameObject)Instantiate(ob, vect, transform.rotation);
+                Obstacle = obstacle;
+                obstacle.transform.eulerAngles = rot;
+
+                StartCoroutine(ColliderAllert());
             }
             else if (direction == 'D')
             {
                 vect = new Vector2(Mothership.position.x + SpawnArea.z/2, Mothership.position.y + SpawnArea.z/2);
+
+                GameObject obstacle = (GameObject)Instantiate(ob, vect, transform.rotation);
+                Obstacle = obstacle;
+                obstacle.transform.eulerAngles = rot;
             }
             else if (direction == 'A')
             {
                 vect = new Vector2(Random.Range(Mothership.position.x + SpawnArea.z, Mothership.position.x + SpawnArea.z*1.25f), Random.Range(SpawnArea.x, SpawnArea.y));
                 rot = new Vector3(0, 0, Random.Range(0, 181));
-            }
 
-            GameObject obstacle = (GameObject)Instantiate(ob, vect, transform.rotation);
-            obstacle.transform.eulerAngles = rot;
-            StartCoroutine(ColliderAllert());
-            Obstacle = obstacle;
+                GameObject obstacle = (GameObject)Instantiate(ob, vect, transform.rotation);
+                obstacle.transform.eulerAngles = rot;
+                Obstacle = obstacle;
+            }
         }
         StartCoroutine(SpawnerUpdate());
     }

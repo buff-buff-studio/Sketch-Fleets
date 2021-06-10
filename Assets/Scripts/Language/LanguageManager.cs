@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SketchFleets.SettingsSystem;
 
 namespace SketchFleets.LanguageSystem
 {
@@ -18,6 +19,8 @@ namespace SketchFleets.LanguageSystem
         private static Dictionary<string,Language> languages = new Dictionary<string, Language>();
         private static Language currentLanguage;
         private static bool inited = false;
+        private static bool loaded = false;
+        public static bool Loaded {get => loaded;}
         #endregion
 
         #region Main Methods
@@ -30,6 +33,9 @@ namespace SketchFleets.LanguageSystem
         {
             if(!ContainsLanguage(language))
                 return false;
+            if(currentLanguage != null)
+                if(currentLanguage == languages[language])
+                    return false;
 
             Language old = currentLanguage;
 
@@ -91,19 +97,6 @@ namespace SketchFleets.LanguageSystem
                 yield return language.Localize("name");
         }
 
-        /// <summary>
-        /// Get language id by name
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public static string GetLanguageIdByName(string name)
-        {
-            foreach(KeyValuePair<string,Language> pair in languages)
-                if(pair.Value.Localize("name") == name)
-                    return pair.Key;
-            
-            return null;
-        }
 
         /// <summary>
         /// Localize a string without arguments
@@ -113,7 +106,7 @@ namespace SketchFleets.LanguageSystem
         public static string Localize(string key)
         {
             if(GetLanguage() == null)
-                return Language.MissingEntry;
+                return "...";
                 
             return GetLanguage().Localize(key);
         }
@@ -135,7 +128,7 @@ namespace SketchFleets.LanguageSystem
 
         #region Init
         /// <summary>
-        /// Load all languages
+        /// /// Load all languages
         /// </summary>
         public static void Init()
         {
@@ -148,13 +141,15 @@ namespace SketchFleets.LanguageSystem
             {
                 //Variables
                 string content = ((TextAsset) t).text;
-                
+            
                 //Create language
                 LanguageManager.languages[t.name] = new Language(t.name,content);
+
+                if(content.StartsWith("name"))
+                    LanguageManager.languages[t.name].Name = content.Split('\n')[0].Split('=')[1]; 
             }
 
-            //Set current language
-            ChangeLanguage("enUS");
+            loaded = true;
         }
         #endregion
     }

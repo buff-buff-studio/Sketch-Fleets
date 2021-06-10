@@ -4,52 +4,52 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -8010403719173590654
-    second: Atlas_icones_novos_0
+    second: shield_bar
   - first:
       213: -6112938096472630982
-    second: Atlas_icones_novos_1
+    second: pencil
   - first:
       213: 133541190169092212
-    second: Atlas_icones_novos_3
+    second: health_bar
   - first:
       213: 22135169201743674
-    second: Novo_Casca
+    second: shell_icon
   - first:
       213: 543624473207404027
-    second: Atlas_icones_novos_5
+    second: recharge_icon
   - first:
       213: 5036390332815112206
-    second: Atlas_icones_novos_6
+    second: cross_icon
   - first:
       213: -3431215268899133470
-    second: Atlas_icones_novos_7
+    second: monitor_icon
   - first:
       213: 6558634832391407096
-    second: Atlas_icones_novos_8
+    second: settings_icon
   - first:
       213: 5001141630989228869
-    second: Atlas_icones_novos_10
+    second: caution_icon
   - first:
       213: -1208424208058041753
-    second: Atlas_icones_novos_11
+    second: arrow_icon
   - first:
       213: -8575373731577224635
-    second: Atlas_icones_novos_14
+    second: exit_icon
   - first:
       213: 1419759062932750749
     second: Atlas_icones_novos_15
   - first:
       213: 4363078684176509095
-    second: Atlas_icones_novos_16
+    second: music_icon
   - first:
       213: 7753045709796936832
     second: Atlas_icones_novos_17
   - first:
       213: -4296715390711779288
-    second: Atlas_icones_novos_18
+    second: controlls_icon
   - first:
       213: -1440074117879421953
-    second: Atlas_icones_novos_2
+    second: caution_bar
   - first:
       213: -5216770793487294380
     second: Atlas_icones_novos_9
@@ -196,11 +196,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Atlas_icones_novos_0
+      name: shield_bar
       rect:
         serializedVersion: 2
         x: 46
-        y: 860
+        y: 861
         width: 652
         height: 49
       alignment: 1
@@ -217,7 +217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_1
+      name: pencil
       rect:
         serializedVersion: 2
         x: 742
@@ -238,11 +238,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_3
+      name: health_bar
       rect:
         serializedVersion: 2
         x: 47
-        y: 810
+        y: 811
         width: 645
         height: 31
       alignment: 1
@@ -259,11 +259,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Novo_Casca
+      name: shell_icon
       rect:
         serializedVersion: 2
         x: 14
-        y: 570
+        y: 572
         width: 215
         height: 221
       alignment: 1
@@ -280,7 +280,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_5
+      name: recharge_icon
       rect:
         serializedVersion: 2
         x: 258
@@ -301,11 +301,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_6
+      name: cross_icon
       rect:
         serializedVersion: 2
         x: 484
-        y: 580
+        y: 581
         width: 193
         height: 210
       alignment: 1
@@ -322,7 +322,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_7
+      name: monitor_icon
       rect:
         serializedVersion: 2
         x: 734
@@ -343,7 +343,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_8
+      name: settings_icon
       rect:
         serializedVersion: 2
         x: 973
@@ -364,11 +364,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_10
+      name: caution_icon
       rect:
         serializedVersion: 2
         x: 14
-        y: 337
+        y: 338
         width: 227
         height: 207
       alignment: 1
@@ -385,7 +385,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_11
+      name: arrow_icon
       rect:
         serializedVersion: 2
         x: 256
@@ -406,7 +406,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_14
+      name: exit_icon
       rect:
         serializedVersion: 2
         x: 493
@@ -448,7 +448,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_16
+      name: music_icon
       rect:
         serializedVersion: 2
         x: 709
@@ -469,7 +469,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_18
+      name: controlls_icon
       rect:
         serializedVersion: 2
         x: 971
@@ -490,7 +490,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_icones_novos_2
+      name: caution_bar
       rect:
         serializedVersion: 2
         x: 0
@@ -506,69 +506,6 @@ TextureImporter:
       bones: []
       spriteID: ff320993834d30ce0800000000000000
       internalID: -1440074117879421953
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_icones_novos_9
-      rect:
-        serializedVersion: 2
-        x: 1222
-        y: 595
-        width: 375
-        height: 345
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 450ae8b5a9e4a97b0800000000000000
-      internalID: -5216770793487294380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_icones_novos_12
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 595
-        width: 375
-        height: 345
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3ffedafd1320e680800000000000000
-      internalID: -8727937466174079169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_icones_novos_13
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 246
-        width: 375
-        height: 345
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4e104cbaf7b9b6d0800000000000000
-      internalID: -2974143791373476278
       vertices: []
       indices: 
       edges: []

@@ -44,8 +44,18 @@ public class MapLevelInteraction : MonoBehaviour
             catch(Exception)
             {             
             }
-            //Open level
-            LoadScene("Scenes/Loading",() => {});
+
+            if(state.constelation.GetStar(clickedStar).Difficulty == 0)
+            {
+                //Open level
+                LoadScene("Scenes/Shop",() => {});
+            }
+            else
+            {
+                //Open level
+                //LoadScene("Scenes/Shop",() => {});
+                LoadScene("Scenes/Loading",() => {});
+            }
         });
     }
     
@@ -60,6 +70,34 @@ public class MapLevelInteraction : MonoBehaviour
             };
         });
     }
+    
+    //Clear
+    public static void OnGameOver(MonoBehaviour behaviour)
+    {
+        //Clear save data and return to menu
+        SketchFleets.ProfileSystem.Profile.Data.Clear(behaviour,(data) => {
+            LoadScene("Scenes/Menu",() => {
+                
+            });
+        });
+    }
+
+    public static void SaveReturningToMenu(MonoBehaviour behaviour)
+    {
+        Constelation.Star star = state.constelation.GetStar(state.GetCurrentStar());
+
+        foreach(Constelation.StarJunction j in star.toJunctions)
+        {
+            if(!state.IsChoosen(j.starA.Id))
+                    continue;
+
+            //Open linked starts
+            state.Open(j.starA.Id);
+            state.Open(j.starB.Id);
+        }
+
+        SaveMapState(behaviour,() => {});
+    }
 
     /// <summary>
     /// Return from level to map, and open a star
@@ -67,8 +105,12 @@ public class MapLevelInteraction : MonoBehaviour
     public static void ReturnToMapOpeningStar()
     {
         LoadScene("Scenes/Map",() => {
+            Debug.Log("aaa");
             ConstelationMap.onMapLoad = () => {
+                Debug.Log("bbb");
                 map.OpenInstantly();
+
+                Time.timeScale = 1;
 
                 //Schedule Open Star Animation
                 map.UnlockNextLevel();
@@ -124,14 +166,13 @@ public class MapLevelInteraction : MonoBehaviour
             
         //Check if there's data to be loaded
         Debug.Log(continueGame ? "Loading..." : "Creating new game...");
-        SketchFleets.ProfileSystem.Profile.Using(source);
         SketchFleets.ProfileSystem.Profile.LoadProfile((save) => {
 
             if(continueGame)
             {
-                if(SketchFleets.ProfileSystem.Profile.GetSave().HasKey("mapState"))
+                if(SketchFleets.ProfileSystem.Profile.GetData().save.HasKey("mapState"))
                 {
-                    byte[] bytes = SketchFleets.ProfileSystem.Profile.GetSave().Get<byte[]>("mapState");       
+                    byte[] bytes = SketchFleets.ProfileSystem.Profile.GetData().save.Get<byte[]>("mapState");       
                     state.LoadData(bytes);
 
                     Debug.Log("Map Loaded!");
@@ -140,10 +181,14 @@ public class MapLevelInteraction : MonoBehaviour
             }
             else
             {
-                SketchFleets.ProfileSystem.Profile.GetSave().Remove("mapState");
-                SaveMapState(source,callback);
+                SketchFleets.ProfileSystem.Profile.Data.Clear(source,(data) => {
+                    state = new ConstelationState(null);
+                    callback();
+                    //SaveMapState(source,callback);
+                });
+                //SaveMapState(source,callback);
             }     
-        });  
+        }); 
     }
 
     /// <summary>
@@ -152,8 +197,7 @@ public class MapLevelInteraction : MonoBehaviour
     public static void SaveMapState(MonoBehaviour source,Action callback)
     {
         Debug.Log("Saving...");
-        SketchFleets.ProfileSystem.Profile.Using(source);
-        SketchFleets.ProfileSystem.Profile.GetSave()["mapState"] = state.ToData();
+        SketchFleets.ProfileSystem.Profile.Data.save["mapState"] = state.ToData();
         SketchFleets.ProfileSystem.Profile.SaveProfile((save) => {
             Debug.Log("Map saved!");
             callback();
@@ -166,9 +210,8 @@ public class MapLevelInteraction : MonoBehaviour
     /// <param name="callback"></param>
     public static void HasGameToContinue(MonoBehaviour source,Action<bool> callback)
     {   
-        SketchFleets.ProfileSystem.Profile.Using(source);
-        SketchFleets.ProfileSystem.Profile.LoadProfile((save) => {
-            callback(save.HasKey("mapState"));
+        SketchFleets.ProfileSystem.Profile.LoadProfile((data) => {
+            callback(data.save.HasKey("mapState"));
         });
     }
     #endregion

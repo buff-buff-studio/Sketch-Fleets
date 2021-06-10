@@ -20,18 +20,27 @@ public class HUDScript : MonoBehaviour
     #endregion
 
     #region Die Buttons
-    public void Menu()
-    {
-        Time.timeScale = 1;
-        life.Value = lifeFull;
-        SceneManager.LoadScene("Menu");
-    }
-
     public void Replay()
     {
         Time.timeScale = 1;
         life.Value = lifeFull;
         SceneManager.LoadScene("Game");
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 1;
+        life.Value = lifeFull;
+        SceneManager.LoadScene("Menu");
+        MapLevelInteraction.OnGameOver(this);
+    }
+
+    public void Menu()
+    {
+        Time.timeScale = 1;
+        life.Value = lifeFull;
+        SceneManager.LoadScene("Menu");
+        MapLevelInteraction.SaveReturningToMenu(this);
     }
     #endregion
 }

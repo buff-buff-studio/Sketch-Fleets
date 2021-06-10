@@ -211,16 +211,17 @@ namespace SketchFleets.SaveSystem
         /// <returns></returns>
         public PairPointer Set(string key,object value)
         {   
-            if(value != null)
-                if(value is SaveListObject)
-                {
-                    return SetChildListDynamic(key,(SaveListObject) value);
-                    
-                }
-                else if(value is SaveObject)
-                {
-                    return SetChildObjectDynamic(key,(SaveObject) value);
-                }
+            if(mode.GetMode() == EditMode.Dynamic)
+                if(value != null)
+                    if(value is SaveListObject)
+                    {
+                        return SetChildListDynamic(key,(SaveListObject) value);
+                        
+                    }
+                    else if(value is SaveObject)
+                    {
+                        return SetChildObjectDynamic(key,(SaveObject) value);
+                    }
 
             //Get value holder
             PairPointer pt = GetPointer(key);
@@ -380,7 +381,7 @@ namespace SketchFleets.SaveSystem
             int pre = buffer.GetBytesCount();
 
             //Add objects
-            foreach(PairPointer p in pointers)
+            foreach(PairPointer p in pointers.ToArray())
                 p.Serialize(buffer);
 
             //Get end count

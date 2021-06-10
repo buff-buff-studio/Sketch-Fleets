@@ -20,7 +20,7 @@ MonoBehaviour:
   prefab: {fileID: 972804462044644541, guid: 5ef568d8997acbe47832232ea8da3a32, type: 3}
   directDamage:
     _useConstant: 1
-    _constant: 3
+    _constant: 1
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
@@ -28,7 +28,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 50
+    _constant: 70
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
@@ -44,12 +44,16 @@ MonoBehaviour:
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
-    _constant: 5
+    _constant: 0.1
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 0.4
+    _constant: 0.1
     _variable: {fileID: 0}
-  fireSound: {fileID: 8300000, guid: 7c335d76eba38b84b9d9282015385655, type: 3}
+  fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
+  pitchVariation:
+    _useConstant: 1
+    _constant: 0.25
+    _variable: {fileID: 0}
   fireEffect: {fileID: 0}
   hitEffect: {fileID: 0}

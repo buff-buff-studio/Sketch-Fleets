@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 2db28cda6305f704995b626c1a89da45, type: 2}
     - target: {fileID: 5125356830891273459, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Name
-      value: Magenta Bullet 1
+      value: Yellow Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 5125356830891273459, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Layer
@@ -79,5 +79,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7725287684530011985, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 113599297451dbb438c53ae78c03add3, type: 3}

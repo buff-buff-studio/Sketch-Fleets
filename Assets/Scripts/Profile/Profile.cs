@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SketchFleets.SaveSystem;
 using System.IO;
@@ -13,9 +12,13 @@ namespace SketchFleets.ProfileSystem
     {
         #region Private Fields
         private static readonly string FilePath = Application.persistentDataPath + "/" + "save.data";
-        private static Save save;
+        private static ProfileData data;
         private static bool runningThread = false;
         private static MonoBehaviour behaviour;
+        #endregion
+
+        #region Properties
+        public static ProfileData Data {get => data; }
         #endregion
 
         #region Init
@@ -40,22 +43,22 @@ namespace SketchFleets.ProfileSystem
         }
 
         /// <summary>
-        /// Get save
+        /// Get data
         /// </summary>
         /// <returns></returns>
-        public static Save GetSave()
+        public static ProfileData GetData()
         {
-            if(save == null)
-                save = SketchFleets.SaveSystem.Save.NewDynamic();
+            if(data == null)
+                data = new ProfileData();
 
-            return save;
+            return data;
         }
 
         /// <summary>
         /// Read profile from bytes
         /// </summary>
         /// <param name="callback"></param>
-        public static void LoadProfile(System.Action<Save> callback)
+        public static void LoadProfile(System.Action<ProfileData> callback)
         {
             if(System.IO.File.Exists(FilePath))
             {
@@ -71,7 +74,7 @@ namespace SketchFleets.ProfileSystem
         /// Save profile to file
         /// </summary>
         /// <param name="callback"></param>
-        public static void SaveProfile(System.Action<Save> callback)
+        public static void SaveProfile(System.Action<ProfileData> callback)
         {
             behaviour.StartCoroutine(_Save(callback));
         }
@@ -83,13 +86,13 @@ namespace SketchFleets.ProfileSystem
         /// </summary>
         /// <param name="callback"></param>
         /// <returns></returns>
-        public static IEnumerator _Load(System.Action<Save> callback)
+        public static IEnumerator _Load(System.Action<ProfileData> callback)
         {
             while(runningThread)
                 yield return new WaitForEndOfFrame();
 
-            var thread = new System.Threading.Thread(() => {
-                save = Save.FromBytes(File.ReadAllBytes(FilePath),EditMode.Fixed);
+            var thread = new System.Threading.Thread(() => {       
+                GetData().save = Save.FromBytes(File.ReadAllBytes(FilePath),EditMode.Fixed);
                 runningThread = false;
             });
             
@@ -99,7 +102,7 @@ namespace SketchFleets.ProfileSystem
             while(runningThread)
                 yield return new WaitForEndOfFrame();
             if(callback != null)
-                callback(GetSave());
+                callback(GetData());
         }
 
         /// <summary>
@@ -107,13 +110,16 @@ namespace SketchFleets.ProfileSystem
         /// </summary>
         /// <param name="callback"></param>
         /// <returns></returns>
-        public static IEnumerator _Save(System.Action<Save> callback)
+        public static IEnumerator _Save(System.Action<ProfileData> callback)
         {
             while(runningThread)
                 yield return new WaitForEndOfFrame();
-
+                
             var thread = new System.Threading.Thread(() => {
-                File.WriteAllBytes(FilePath,GetSave().ToBytes());
+                //Save data
+                GetData().SaveInventories();
+
+                File.WriteAllBytes(FilePath,GetData().save.ToBytes());
                 runningThread = false;
             });
             
@@ -123,7 +129,7 @@ namespace SketchFleets.ProfileSystem
             while(runningThread)
                 yield return new WaitForEndOfFrame();
             if(callback != null)
-                callback(GetSave());
+                callback(GetData());
         }
         #endregion     
     }

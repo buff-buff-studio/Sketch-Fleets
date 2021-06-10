@@ -121,6 +121,7 @@ public class Constelation : IEnumerable
 
         #region Public Fields
         public float scale = 0;
+        public Vector2 position;
         public GameObject Object;
         public List<StarJunction> fromJunctions = new List<StarJunction>();
         public List<StarJunction> toJunctions = new List<StarJunction>();
@@ -145,8 +146,13 @@ public class Constelation : IEnumerable
             }
 
             set{
-                if(difficulty == 0)
-                    difficulty = value;
+                difficulty = value;
+
+                this.scale = (difficulty == 0 ? 0.5f : difficulty * 0.15f) + Random.Range(0.8f,1.75f);
+                Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * scale;
+
+                //Change icon
+                Object.GetComponent<Image>().sprite = MapLevelInteraction.map.planetIcons[difficulty];
             }
         }
         #endregion
@@ -156,17 +162,12 @@ public class Constelation : IEnumerable
         /// Create new star from GameObject
         /// </summary>
         /// <param name="Object"></param>
-        public Star(GameObject Object,int difficulty,float scale)
+        public Star(GameObject Object,int difficulty)
         {
             this.Object = Object;
-            this.difficulty = difficulty;
+            this.Difficulty = difficulty;
+            this.position = Object.GetComponent<RectTransform>().anchoredPosition;
             SetEnabled(false);
-
-            this.scale = scale;
-            Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * scale;
-
-            //Change icon
-            Object.GetComponent<Image>().sprite = MapLevelInteraction.map.planetIcons[difficulty];
         }
         
         /// <summary>
@@ -175,7 +176,14 @@ public class Constelation : IEnumerable
         /// <param name="enabled"></param>
         public void SetEnabled(bool enabled)
         {
-            Object.GetComponent<Button>().interactable = enabled;
+            try
+            {
+                Object.GetComponent<Button>().interactable = enabled;
+            }
+            catch(System.Exception)
+            {
+
+            }
         }
 
         /// <summary>
@@ -195,7 +203,8 @@ public class Constelation : IEnumerable
                     break;
 
                 case StarMode.DEFAULT:
-                    Object.transform.GetChild(2).gameObject.SetActive(true);
+                    Object.transform.GetChild(1).gameObject.SetActive(false);
+                    Object.transform.GetChild(2).gameObject.SetActive(false);
                     break;
             }         
         }

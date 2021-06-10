@@ -19,7 +19,6 @@ namespace SketchFleets.AI
 
         #endregion
 
-
         #region Properties
 
         public GameObject Player => player;

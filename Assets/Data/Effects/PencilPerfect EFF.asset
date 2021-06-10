@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be34c5ae6f6c4394bf377defb0b702a9, type: 3}
+  m_Name: PencilPerfect EFF
+  m_EditorClassIdentifier: 
+  objectName:
+    _useConstant: 1
+    _constant: Perfect Pencil
+    _variable: {fileID: 0}
+  description: Heals instantly for a almost all your health
+  prefab: {fileID: 0}
+  healthRegen:
+    _useConstant: 1
+    _constant: 750
+    _variable: {fileID: 0}
+  shieldRegen:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  maxHealthBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  maxShieldBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  damageMultiplierBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  speedMultiplierBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  defenseBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  duration:
+    _useConstant: 1
+    _constant: 0.1
+    _variable: {fileID: 0}
+  spawnSlotBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  spawnCooldownMultiplierBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  abilityCooldownMultiplierBonus:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}

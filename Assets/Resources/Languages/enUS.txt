@@ -1,9 +1,189 @@
-randomsg
-    =Maybe 0
-    =Maybe 1
+name=English
 
-ui_return=Maybe 2
-    0.33=Opa vei
+#
+# MAIN MENU BUTTONS
+#
 
-ui_test=Testing
-mm_new_game=Uau
+ui_settings=Options
+ui_menu=Menu
+ui_credits=Credits
+ui_resolution=Resolution
+ui_map=Map
+ui_store=The Buff Store
+
+#
+# SETTINGS MENU
+#
+
+ui_subtitle_displaysettings=Display Settings
+ui_subtitle_languagesettings=Language Settigns
+ui_subtitle_resolutionsettings=Resolution Settings
+ui_subtitle_graphicssettings=Graphics Quality
+ui_subtitle_fullscreensettings=Screen Mode
+
+ui_language_english=English
+ui_language_portuguese=Português
+
+ui_subtitle_volumemaster=Master Volume
+ui_subtitle_volumemusic=Music Volume
+ui_subtitle_volumesfx=Sound Effects Volume
+
+ui_graphics_low=Low
+ui_graphics_medium=Average
+ui_graphics_high=High
+
+resolution_low=Low
+resolution_medium=Average
+resolution_high=High
+
+windowed=Windowed
+fs_windowed=Borderless Windowed
+fullscreen=Fullscreen
+
+#
+# CREDITS MENU
+#
+
+ui_occupation_artist=Artist
+ui_occupation_programmer=Programmer
+ui_occupation_ui=UI Designer
+ui_occupation_you=You!
+ui_occupation_teacher=Teacher
+ui_occupation_dev=Developer
+ui_occupation_university=University
+
+ui_credits_hint=Click the developers to know more!
+
+#
+# QUIT MENU
+#
+
+ui_quit_confirm=Are you sure?
+ui_quit_yes=Yes!
+ui_quit_no=No!
+
+#
+# IN-GAME
+#
+
+
+ui_enemies=Enemies
+
+ui_deadTitle=You Died!
+ui_runtime=Run Timer
+
+ui_winTitle=Planet Completed!
+
+ui_pauseTitle=Game Paused!
+ui_pauseReturn=Back
+
+ui_button_newgame=New Game
+ui_button_continue=Continue
+ui_button_store=The Buff Store
+
+ui_title_settings=Options
+
+ui_pressSpace=Press Spacebar to summon allies!;
+
+#
+# SHOP MENU
+#
+
+ui_shop_buy_confirmation=Are you sure you want to buy %% %% for %% %%?
+ui_shop_amount=You have %% %%
+ui_shop_buy=Buy
+ui_shop_buy=Cancel
+
+#
+# TUTORIAL
+#
+
+ui_tutorial_title=Tutorial
+ui_tutorial_r=Press R to recall all summoned ships and regenerate some of your health
+ui_tutorial_space=Use the Spacebar to summon allies! Remember that summoning them takes away some of your health, so be careful!
+ui_tutorial_spacebtt=Spacebar
+ui_tutorial_frog1=Buff Buff says:
+ui_tutorial_frog2=Follow these instructions, they will help on your journey...
+ui_tutorial_wasd=Use WASD to control your ship's basic movement
+ui_tutorial_yellow=The Yellow Ship os like a tank. It will move very slowly but shoot multiple projectiles at a time
+ui_tutorial_cyan=The Cyan Ship will throw itself at the enemies when using the Right Click. It will cause a massive explosion and destroy itself
+ui_tutorial_magenta=And finally, the Magenta Ship. Fragile but with a extremely high fire rate, having many of them in the battlefield makes it your main source of damage 
+
+#
+# SHIP NAMES
+#
+
+ship_mother=Mothership
+ship_magenta=Magenta Ship
+ship_cyan=Cyan Ship
+ship_yellow=Yellow Ship
+ship_lime=Lime Ship
+ship_purple=Purple Ship
+ship_orange=Orange Ship
+
+#
+# ITEM NAMES
+#
+
+armor_extra=Extra Armor
+armor_heavy=Heavy Armor
+cursed_ammunition=Cursed Bullets
+cursed_propulsion=Cursed Propulsion
+fuel_tank_compact=Compact Fuel Tank
+fuel_tank_large=Large Fuel Tank
+mothership_ability_upgrade=Mothership Ability Upgrade
+mothership_cooldown_upgrade=Mothership Cooldown Upgrade
+mothership_dock_upgrade=Mothership Dock Upgrade
+mpencil_new=Brand-New Mechanical Pencil
+mpencil_used=Old Mechanical Pencil
+pencil_average=Average Pencil
+pencil_broken=Broken Pencil
+pencil_perfect=Perfect Pencil
+pencil_sharpener=Pencil Sharpener
+shield_battery=Shield Battery
+
+#
+# ITEM DESCRIPTION
+#
+
+desc_armor_extra=Slightly increases armor
+
+desc_armor_heavy=Increases armor but reduces movement speed
+
+desc_cursed_ammunition=Your bullets will be cursed.
+Deal double damage, take double damage.
+
+desc_cursed_propulsion=Your propulsion systems will be cursed.
+Greatly increases movement speed, reduces max health.
+
+desc_fuel_tank_compact=Slightly increases player speed
+
+desc_fuel_tank_large=Greatly increases player speed
+
+desc_mothership_ability_upgrade=Decreases the delay of the Mothership's R ability
+
+desc_mothership_cooldown_upgrade=Reduces the Mothership's summoning cooldown
+
+desc_mothership_dock_upgrade=Increases the amount of allies you can have active at the same time
+
+desc_mpencil_new=Greatly increases Max Health
+
+desc_mpencil_used=Slightly increases Max Health
+
+desc_pencil_average=Heals instantly for 500 health
+
+desc_pencil_broken=Heals instantly for 250 health
+
+desc_pencil_perfect=Heals instantly for 750 health
+
+desc_pencil_sharpener=Increases damage dealt by all friendly ships for 30 seconds
+
+desc_shield_battery=Increases Max Shield by 150
+
+#
+# UPGRADE NAMES
+#
+damage_upgrade=Damage Upgrade
+life_upgrade=Life Upgrade
+shield_upgrade=Shield Upgrade
+speed_upgrade=Speed Upgrade

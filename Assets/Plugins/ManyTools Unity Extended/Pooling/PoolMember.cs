@@ -26,17 +26,18 @@ namespace ManyTools.UnityExtended.Poolable
         public virtual void Submerge()
         {
             StopAllCoroutines();
+            CancelInvoke();
             gameObject.SetActive(false);
 
             if (isSubmerged) return;
             isSubmerged = true;
             MotherPool.CurrentEmerged--;
         }
-
+        
         /// <summary>
         /// Submerges the Poolable object into the pool with a delay.
         /// </summary>
-        /// <param name="delay">The delay in milliseconds to wait before submerging the object</param>
+        /// <param name="delay">The delay in seconds to wait before submerging the object</param>
         public void SubmergeDelayed(float delay)
         {
             Invoke(nameof(Submerge), delay);

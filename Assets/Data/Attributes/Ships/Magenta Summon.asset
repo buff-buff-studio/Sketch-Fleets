@@ -25,6 +25,11 @@ MonoBehaviour:
     they lack in health is compensated by a small size with high mobility and fire
     rate.'
   prefab: {fileID: 8493826624106887132, guid: 5afee2896b7967146bdc19b6d17da531, type: 3}
+  unlocalizedName: ship_magenta
+  shipColor:
+    _useConstant: 1
+    _constant: {r: 0, g: 0, b: 0, a: 0}
+    _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
     _constant: 25
@@ -47,11 +52,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 1
+    _constant: 0.005
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
-    _constant: 1.1
+    _constant: 0.7
     _variable: {fileID: 0}
   collisionDamage:
     _useConstant: 1
@@ -68,10 +73,18 @@ MonoBehaviour:
   shellDrop: {fileID: 8092150800717221310, guid: 283a6122975a1f940aa4d660190c9c45, type: 3}
   fire: {fileID: 11400000, guid: 2db28cda6305f704995b626c1a89da45, type: 2}
   hitSound: {fileID: 0}
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 8059723475917431361, guid: 422ab4a55e703814b8a773656175de0b, type: 3}
+  enemyKills:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
   graphiteCost:
     _useConstant: 1
     _constant: 20
+    _variable: {fileID: 0}
+  graphiteCostIncrease:
+    _useConstant: 1
+    _constant: 5
     _variable: {fileID: 0}
   maximumShips:
     _useConstant: 1
@@ -83,5 +96,5 @@ MonoBehaviour:
     _variable: {fileID: 0}
   orbitRadius:
     _useConstant: 1
-    _constant: 8
+    _constant: 5
     _variable: {fileID: 0}

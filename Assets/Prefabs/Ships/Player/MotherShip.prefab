@@ -1,5 +1,26 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!50 &7493155056741257454
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52908406865915231}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &-2970886270262360389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19,6 +40,7 @@ MonoBehaviour:
   soundSource: {fileID: 7817413295041160144}
   spriteRenderer: {fileID: 158676202154423924}
   shipSpawnPoint: {fileID: 5884656632747410054}
+  shipSpawnMenu: {fileID: 0}
 --- !u!1001 &411118004048914757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,7 +94,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.33333334
+      value: 0.23375662
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7012698
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7012698
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalPosition.x
@@ -129,7 +159,7 @@ PrefabInstance:
     - target: {fileID: 7622784771109833365, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 7c335d76eba38b84b9d9282015385655, type: 3}
+      objectReference: {fileID: 8300000, guid: f274fbd3f38f1ae4889b150a2bff774a, type: 3}
     - target: {fileID: 7622784771109833365, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0

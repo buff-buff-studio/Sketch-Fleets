@@ -4,28 +4,28 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 5934286109928970407
-    second: caution1
+    second: graphite
   - first:
       213: -111402352480407653
     second: caution2
   - first:
       213: -1786399679467655303
-    second: caution3
+    second: yellow_circle
   - first:
       213: -5928705322203289870
-    second: caution0
+    second: magenta_circle
   - first:
       213: -7241960321522250694
-    second: selectCyan
+    second: spawn_circle
   - first:
       213: 2194583219785134891
-    second: selectYellow
+    second: Atlas_HUD_5
   - first:
       213: -8594532929011813643
-    second: selectMagenta
+    second: Atlas_HUD_6
   - first:
       213: 6133638678216455680
-    second: selectCircle
+    second: cyan_circle
   - first:
       213: 8788974011794148765
     second: graphite
@@ -166,57 +166,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: caution1
+      name: yellow_circle
       rect:
         serializedVersion: 2
-        x: 42
-        y: 739
-        width: 188
-        height: 186
+        x: 202
+        y: 447
+        width: 220
+        height: 181
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a8d9d996c1da5250800000000000000
-      internalID: 5934286109928970407
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: caution2
-      rect:
-        serializedVersion: 2
-        x: 234
-        y: 737
-        width: 188
-        height: 185
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b9f23419628347ef0800000000000000
-      internalID: -111402352480407653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: caution3
-      rect:
-        serializedVersion: 2
-        x: 436
-        y: 734
-        width: 188
-        height: 186
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,15 +187,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: caution0
+      name: magenta_circle
       rect:
         serializedVersion: 2
-        x: 0
-        y: 554
-        width: 669
-        height: 140
+        x: 427
+        y: 405
+        width: 219
+        height: 222
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,15 +208,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selectCyan
+      name: spawn_circle
       rect:
         serializedVersion: 2
-        x: 54
-        y: 369
-        width: 154
-        height: 161
+        x: 23
+        y: 44
+        width: 357
+        height: 344
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -271,57 +229,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selectYellow
+      name: cyan_circle
       rect:
         serializedVersion: 2
-        x: 258
-        y: 382
-        width: 172
-        height: 142
+        x: 411
+        y: 113
+        width: 202
+        height: 210
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b23735d9fc9b47e10800000000000000
-      internalID: 2194583219785134891
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: selectMagenta
-      rect:
-        serializedVersion: 2
-        x: 473
-        y: 352
-        width: 166
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f27adb36d51ab880800000000000000
-      internalID: -8594532929011813643
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: selectCircle
-      rect:
-        serializedVersion: 2
-        x: 89
-        y: 27
-        width: 284
-        height: 292
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -337,10 +253,10 @@ TextureImporter:
       name: graphite
       rect:
         serializedVersion: 2
-        x: 453
-        y: 82
-        width: 77
-        height: 237
+        x: 42
+        y: 402
+        width: 75
+        height: 235
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,8 +264,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9d41293c45b8f970800000000000000
-      internalID: 8788974011794148765
+      spriteID: 7a8d9d996c1da5250800000000000000
+      internalID: 5934286109928970407
       vertices: []
       indices: 
       edges: []

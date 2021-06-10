@@ -15,6 +15,13 @@ namespace SketchFleets.Data
 
         [Header("Attributes")]
         [SerializeField]
+        // NOTE: Should be a StringReference, not a string. This should also be at the Attributes, not the
+        // NOTE: ShipAttributes class.
+        protected string unlocalizedName;
+        [Tooltip("The ship's color.")]
+        [SerializeField]
+        protected ColorReference shipColor = new ColorReference(new Color());
+        [SerializeField]
         protected FloatReference maxHealth;
         [Tooltip("The maximum amount of points the shield can have.")]
         [SerializeField]
@@ -60,10 +67,14 @@ namespace SketchFleets.Data
         [Tooltip("The effect spawned when the ship dies")]
         [SerializeField]
         private GameObject deathEffect;
-        
+
         #endregion
 
         #region Properties
+
+        public string UnlocalizedName => unlocalizedName;
+
+        public ColorReference ShipColor => shipColor;
 
         public FloatReference MaxHealth => maxHealth;
 

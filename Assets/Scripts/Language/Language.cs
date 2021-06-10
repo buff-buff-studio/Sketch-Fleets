@@ -59,9 +59,15 @@ namespace SketchFleets.LanguageSystem
 
         #region Private Fields
         private string code;
+        private string name;
         private string content;
         private bool baked = false;
         private Dictionary<string,LanguageEntry[]> entries = new Dictionary<string, LanguageEntry[]>();
+        #endregion
+
+        #region Properties
+        public string Name { get => name; set => name = value;}
+        public string Code { get => code;}
         #endregion
 
         #region Constructor

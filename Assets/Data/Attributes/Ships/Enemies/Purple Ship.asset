@@ -18,13 +18,18 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: 
   prefab: {fileID: 6812927983558368271, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
+  unlocalizedName: ship_purple
+  shipColor:
+    _useConstant: 1
+    _constant: {r: 0.644, g: 0, b: 1, a: 1}
+    _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
-    _constant: 100
+    _constant: 50
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
-    _constant: 30
+    _constant: 25
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
@@ -44,21 +49,21 @@ MonoBehaviour:
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
-    _constant: 1
+    _constant: 0.75
     _variable: {fileID: 0}
   collisionDamage:
     _useConstant: 1
-    _constant: 30
+    _constant: 25
     _variable: {fileID: 0}
   invincibilityTime:
     _useConstant: 1
-    _constant: 0.1
+    _constant: 0
     _variable: {fileID: 0}
   dropMinMaxCount:
     _useConstant: 1
-    _constant: {x: 5, y: 15}
+    _constant: {x: 2, y: 5}
     _variable: {fileID: 0}
-  shellDrop: {fileID: 6364302103545699407, guid: 67511b2655da38341915b646a44fb9a8, type: 3}
+  shellDrop: {fileID: 4108485770172352479, guid: 32c6949cf3591aa41b716444038cfa6a, type: 3}
   fire: {fileID: 11400000, guid: 550dd3e518aab5c45bdad97835ef007a, type: 2}
   hitSound: {fileID: 0}
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 780527247926514595, guid: dd5db8936b93b1c408085f876a4135de, type: 3}

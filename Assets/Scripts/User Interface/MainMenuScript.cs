@@ -14,6 +14,7 @@ public class MainMenuScript : MonoBehaviour
     /// </summary>
     private void Start() 
     {
+        Debug.Log(Application.persistentDataPath);
         buttonContinue.interactable = false;
         MapLevelInteraction.HasGameToContinue(this,(has) => {
             buttonContinue.interactable = has;
@@ -27,7 +28,10 @@ public class MainMenuScript : MonoBehaviour
     /// </summary>
     public void LoadNewGame()
     {
-        MapLevelInteraction.OpenMap(this,false);
+        SketchFleets.ProfileSystem.Profile.GetData().Clear(this,(data) => {
+            MapLevelInteraction.OpenMap(this,false);
+        });
+        
     }
 
     /// <summary>

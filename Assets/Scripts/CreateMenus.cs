@@ -23,9 +23,13 @@
         public const string bulletAttributesMenuName = "Sketch Fleets/Attributes/Bullet Attributes";
         public const string bulletAttributesFileName = "Bullet Attributes";
         
-        public const int itemAttributesOrder = 21;
-        public const string itemAttributesMenuName = "Sketch Fleets/Attributes/Item Attributes";
-        public const string itemAttributesFileName = "Item Attributes";
+        public const int itemAttributesOrder = 1;
+        public const string itemAttributesMenuName = "Sketch Fleets/Inventory Container/Item";
+        public const string itemAttributesFileName = "Item";
+
+        public const int upgradeAttributesOrder = 2;
+        public const string upgradeAttributesMenuName = "Sketch Fleets/Inventory Container/Upgrade";
+        public const string upgradeAttributesFileName = "Upgrade";
 
         public const int difficultyAttributesOrder = 31;
         public const string difficultyAttributesMenuName = "Sketch Fleets/Attributes/Difficulty Attributes";
@@ -50,6 +54,14 @@
         public const int itemPoolOrder = 0;
         public const string itemPoolMenuName = "Sketch Fleets/Data Containers/Item Pool";
         public const string itemPoolFileName = "Item Pool";
+
+        public const int itemRegisterOrder = 1;
+        public const string itemRegisterMenuName = "Sketch Fleets/Inventory Container/Item Register";
+        public const string itemRegisterFileName = "Item Register";
+
+        public const int shipRegisterOrder = 2;
+        public const string shipRegisterMenuName = "Sketch Fleets/Inventory Container/Ship Register";
+        public const string shipRegisterFileName = "Ship Register";
 
         #endregion
     }
