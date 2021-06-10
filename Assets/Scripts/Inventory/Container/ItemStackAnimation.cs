@@ -21,8 +21,8 @@ namespace SketchFleets
         public float maxRotationSpeed = 200;
 
         [Header("Scale Difference")]
-        public float minScaleDifference = 0.05f;
-        public float maxScaleDifference = 0.25f;
+        private float minScaleDifference = 0.05f;
+        private float maxScaleDifference = 0.15f;
 
         [Header("Scale Speed")]
         public float minScaleSpeed = 120f;
