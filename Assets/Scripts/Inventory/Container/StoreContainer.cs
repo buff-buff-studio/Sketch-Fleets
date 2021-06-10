@@ -89,7 +89,8 @@ namespace SketchFleets.Inventory
                 sprite = register.items[stack.Id].Icon;
                 
             #region Temporary
-            slots[index].GetChild(0).GetComponent<Image>().sprite = sprite;
+            slots[index].GetChild(0).GetComponentInChildren<TMP_Text>().text = register.items[stack.Id].ItemCost + "$";
+            slots[index].GetChild(1).GetComponent<Image>().sprite = sprite;
             slots[index].gameObject.SetActive(sprite != null);
             #endregion
         }

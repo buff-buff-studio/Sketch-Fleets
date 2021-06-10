@@ -75,6 +75,11 @@ namespace SketchFleets.Inventory
                 OnClickSlot(slot);
         }
 
+        public virtual ItemStack GetItemInSlot(int slot)
+        {
+            return inventory.GetItem(slot);
+        }
+
         protected virtual void Update() 
         {
             //Check mouse over slot
@@ -89,9 +94,10 @@ namespace SketchFleets.Inventory
             {
                 for(int slot = 0; slot < slots.Length; slot ++)
                 {
+                    
                     if(slots[slot].gameObject == results[0].gameObject)
                     {                 
-                        if(inventory.GetItem(slot) != null)
+                        if(GetItemInSlot(slot) != null)
                         {
                             screenPos = results[0].screenPosition;
                             hoverSlot = slot;
@@ -100,11 +106,11 @@ namespace SketchFleets.Inventory
                     }
                 }
             }
-
+            
             //Display info
             if(hoverSlot >= 0)
             {
-                ItemStackAnimation anim = slots[hoverSlot].GetChild(0).GetComponent<ItemStackAnimation>();
+                ItemStackAnimation anim = slots[hoverSlot].GetComponentInChildren<ItemStackAnimation>();
                 if(anim != null)
                     anim.hovering = true;
 
@@ -155,8 +161,9 @@ namespace SketchFleets.Inventory
             }
             else
             {
-                if(tooltipBox.gameObject.activeInHierarchy)
-                    tooltipBox.gameObject.SetActive(false);
+                if(tooltipBox != null)
+                    if(tooltipBox.gameObject.activeInHierarchy)
+                        tooltipBox.gameObject.SetActive(false);
 
                 if(heldItem != null)
                     heldItem.hovering = false;
@@ -172,7 +179,7 @@ namespace SketchFleets.Inventory
             {
                 lastHoveredSlot = slot;
                 //lastTooltipText = register.items[inventory.GetItem(slot).Id].UnlocalizedName;
-                lastTooltipText = LanguageSystem.LanguageManager.Localize(register.items[inventory.GetItem(slot).Id].UnlocalizedName);
+                lastTooltipText = LanguageSystem.LanguageManager.Localize(register.items[GetItemInSlot(slot).Id].UnlocalizedName);
             }
             
             return lastTooltipText;
@@ -186,7 +193,7 @@ namespace SketchFleets.Inventory
             {
                 lastHoveredSlotDesc = slot;
                 //lastTooltipText = register.items[inventory.GetItem(slot).Id].UnlocalizedName;
-                lastTooltipTextDesc = LanguageSystem.LanguageManager.Localize("desc_" + register.items[inventory.GetItem(slot).Id].UnlocalizedName);
+                lastTooltipTextDesc = LanguageSystem.LanguageManager.Localize("desc_" + register.items[GetItemInSlot(slot).Id].UnlocalizedName);
             }
             
             return lastTooltipTextDesc;

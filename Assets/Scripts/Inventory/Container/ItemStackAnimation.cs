@@ -70,7 +70,7 @@ namespace SketchFleets
         // Update is called once per frame
         void Update()
         {
-            rectTransform.localEulerAngles = new Vector3(0,0,rotationInitial + rotation * Mathf.Sin((Time.time + randomTimeOffset) * rotationSpeed * Mathf.Deg2Rad));
+            rectTransform.localEulerAngles = new Vector3(0,0,180 + rotationInitial + rotation * Mathf.Sin((Time.time + randomTimeOffset) * rotationSpeed * Mathf.Deg2Rad));
             rectTransform.localScale = Vector3.one * (1 + Mathf.Cos((Time.time + randomTimeOffset ) * scaleSpeed * Mathf.Deg2Rad) * scaleDifference);
 
             image.color = hovering ? new Color(1,1,1,targetAlpha) : new Color(1,1,1,1);
