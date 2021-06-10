@@ -72,6 +72,8 @@ namespace SketchFleets.Inventory
                 GameObject obj = slots[i].GetChild(0).gameObject;
                 obj.GetComponent<Image>().sprite = sprite;
                 obj.SetActive(sprite != null);
+                slots[i].GetChild(1).GetComponent<TMPro.TMP_Text>().text = sprite == null ? "" : stack.Amount.ToString();
+
             }
 
             int pageCount = (int) Mathf.Ceil(items.Count / 6f);
@@ -89,7 +91,7 @@ namespace SketchFleets.Inventory
             if(slot >= 6)
             {
                 //Upgrades
-                return Profile.Data.inventoryUpgrades.SearchItem(new ItemStack(slot - 6,1)) > 0 ? new ItemStack(slot - 6,1) : null;      
+                return Profile.Data.inventoryUpgrades.SearchItem(new ItemStack(slot - 6,1)) > 0 ? new ItemStack(slot - 6,Profile.Data.inventoryUpgrades.SearchItem(new ItemStack(slot - 6))) : null;      
             }
 
             int firstslot = page * 6;

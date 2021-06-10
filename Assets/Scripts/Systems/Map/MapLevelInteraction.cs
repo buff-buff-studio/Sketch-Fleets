@@ -53,8 +53,8 @@ public class MapLevelInteraction : MonoBehaviour
             else
             {
                 //Open level
-                LoadScene("Scenes/Shop",() => {});
-                //LoadScene("Scenes/Loading",() => {});
+                //LoadScene("Scenes/Shop",() => {});
+                LoadScene("Scenes/Loading",() => {});
             }
         });
     }

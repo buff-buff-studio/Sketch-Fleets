@@ -15,7 +15,7 @@ namespace SketchFleets.ProfileSystem
 
         #region Public Fields
         //Game Inventories
-        public UpgradeInventory inventoryUpgrades;
+        public ItemInventory inventoryUpgrades;
         public ItemInventory inventoryItems;
         //Codex inventories
         public CodexInventory codex = new CodexInventory();
@@ -43,7 +43,7 @@ namespace SketchFleets.ProfileSystem
         /// </summary>
         public void ReloadInventories()
         {
-            inventoryUpgrades = new UpgradeInventory();
+            inventoryUpgrades = new ItemInventory(4);
             inventoryItems = new PlayerItemInventory(24);
             codex = new CodexInventory();
 
