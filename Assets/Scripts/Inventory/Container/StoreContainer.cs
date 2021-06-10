@@ -105,7 +105,7 @@ namespace SketchFleets.Inventory
 
             ShopObject item = register.items[stack.Id];
 
-            int count = Profile.GetData().inventoryItems.SearchItem(stack);
+            int count = isUpgradeShop ? Profile.GetData().inventoryUpgrades.SearchItem(stack) : Profile.GetData().inventoryItems.SearchItem(stack);
 
             itemInformationText.text = "Do you really want to buy '" + item.UnlocalizedName + "' for $" + item.ItemCost + " ? (You have " + count + " " + item.UnlocalizedName + ")\n\nPrice: " + item.ItemCost;
         }
