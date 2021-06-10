@@ -15,18 +15,11 @@ namespace SketchFleets.Data
         [SerializeField]
         private int id;
         [SerializeField]
-        private Sprite icon; 
-        [SerializeField]
         private ItemEffect effect;
         
         #endregion
 
         #region Properties
-        public Sprite Icon
-        {
-            get => icon;
-            set => icon = value;
-        }
 
         public ItemEffect Effect
         {

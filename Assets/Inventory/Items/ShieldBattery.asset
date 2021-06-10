@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: ShieldBattery
   m_EditorClassIdentifier: 
   unlocalized_name: shield_battery
-  id: 15
-  icon: {fileID: 0}
-  itemCost:
-    _useConstant: 1
-    _constant: 400
-    _variable: {fileID: 0}
   rarity:
     _useConstant: 1
     _constant: 8
     _variable: {fileID: 0}
+  itemCost:
+    _useConstant: 1
+    _constant: 400
+    _variable: {fileID: 0}
+  icon: {fileID: 23307562661037187, guid: 754a14a9899896346b01c08a42db253d, type: 3}
+  id: 15
+  icon: {fileID: 23307562661037187, guid: 754a14a9899896346b01c08a42db253d, type: 3}
   effect: {fileID: 11400000, guid: 8d771978c58152e4f9d78f717589107e, type: 2}

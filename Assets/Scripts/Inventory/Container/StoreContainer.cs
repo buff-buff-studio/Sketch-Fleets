@@ -83,12 +83,13 @@ namespace SketchFleets.Inventory
         {
             ItemStack stack = inventory.GetItem(index);
 
-            string name = "";
+            Sprite sprite = null;
             if (stack != null)
-                name = register.items[stack.Id].UnlocalizedName;
-
+                sprite = register.items[stack.Id].Icon;
+                
             #region Temporary
-            slots[index].GetChild(0).GetComponent<TMP_Text>().text = name;
+            slots[index].GetChild(0).GetComponent<Image>().sprite = sprite;
+            slots[index].gameObject.SetActive(sprite != null);
             #endregion
         }
 

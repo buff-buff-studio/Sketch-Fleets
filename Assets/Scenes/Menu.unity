@@ -11366,12 +11366,12 @@ GameObject:
   - component: {fileID: 969237694}
   - component: {fileID: 969237695}
   m_Layer: 5
-  m_Name: Tutorial Manager
+  m_Name: ' '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &969237694
 RectTransform:
   m_ObjectHideFlags: 0
