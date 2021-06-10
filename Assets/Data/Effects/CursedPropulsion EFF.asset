@@ -16,10 +16,10 @@ MonoBehaviour:
     _useConstant: 1
     _constant: Cursed Propulsion
     _variable: {fileID: 0}
-  description: 'Your propulsion system now cursed.
+  description: 'Your propulsion systems will be cursed.
 
-    Greatly increases speed,
-    reduces max health.'
+    Greatly increases movement
+    speed, reduces max health.'
   prefab: {fileID: 0}
   healthRegen:
     _useConstant: 1

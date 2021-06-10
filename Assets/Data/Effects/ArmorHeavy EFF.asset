@@ -16,7 +16,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: Heavy Armor Plate
     _variable: {fileID: 0}
-  description: Gives the player more defense at the expense of speed
+  description: Increases armor but reduces movement speed
   prefab: {fileID: 0}
   healthRegen:
     _useConstant: 1

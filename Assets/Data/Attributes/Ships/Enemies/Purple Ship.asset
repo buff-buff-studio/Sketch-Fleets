@@ -57,7 +57,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   invincibilityTime:
     _useConstant: 1
-    _constant: 0.1
+    _constant: 0
     _variable: {fileID: 0}
   dropMinMaxCount:
     _useConstant: 1
@@ -67,7 +67,3 @@ MonoBehaviour:
   fire: {fileID: 11400000, guid: 550dd3e518aab5c45bdad97835ef007a, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 780527247926514595, guid: dd5db8936b93b1c408085f876a4135de, type: 3}
-  enemyKills:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 11400000, guid: 8a0de06510999f640bb44839925e8b30, type: 2}

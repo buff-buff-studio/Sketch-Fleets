@@ -16,8 +16,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: Mothership Dock Upgrade
     _variable: {fileID: 0}
-  description: This upgrade will allow you to have more friendly ships active at
-    a time
+  description: Increases the amount of summons you can have
   prefab: {fileID: 0}
   healthRegen:
     _useConstant: 1

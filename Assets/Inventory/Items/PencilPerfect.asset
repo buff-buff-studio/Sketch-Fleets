@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: PencilPerfect
   m_EditorClassIdentifier: 
   unlocalized_name: pencil_perfect
-  id: 13
-  icon: {fileID: -1518044906014238655, guid: 754a14a9899896346b01c08a42db253d, type: 3}
-  itemCost:
-    _useConstant: 1
-    _constant: 750
-    _variable: {fileID: 0}
   rarity:
     _useConstant: 1
     _constant: 5
     _variable: {fileID: 0}
+  itemCost:
+    _useConstant: 1
+    _constant: 500
+    _variable: {fileID: 0}
+  icon: {fileID: -1518044906014238655, guid: 754a14a9899896346b01c08a42db253d, type: 3}
+  id: 13
   effect: {fileID: 11400000, guid: ed4000eed7185264b865b869d13d487e, type: 2}
