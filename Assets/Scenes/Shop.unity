@@ -406,6 +406,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 1476433454}
     m_Modifications:
     - target: {fileID: 2886418289473373607, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
+    - target: {fileID: 2886418289473373607, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
+    - target: {fileID: 2886418289473373607, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: menuAudioSource
       value: 
       objectReference: {fileID: 999187802}
@@ -415,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 999187800}
     - target: {fileID: 7340449414004862916, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwitchToMenu
+      value: DisableMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7340449414384815656, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
