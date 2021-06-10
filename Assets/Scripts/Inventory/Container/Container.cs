@@ -173,13 +173,13 @@ namespace SketchFleets.Inventory
 
         private int lastHoveredSlot = -1;
         private string lastTooltipText = null;
-        protected string GetTooltipText(int slot)
+        protected virtual string GetTooltipText(int slot)
         {
             if(slot != lastHoveredSlot)
             {
                 lastHoveredSlot = slot;
                 //lastTooltipText = register.items[inventory.GetItem(slot).Id].UnlocalizedName;
-                lastTooltipText = LanguageSystem.LanguageManager.Localize(register.items[GetItemInSlot(slot).Id].UnlocalizedName);
+                lastTooltipText = LanguageSystem.LanguageManager.Localize(GetRegisterForSlot(slot).items[GetItemInSlot(slot).Id].UnlocalizedName);
             }
             
             return lastTooltipText;
@@ -187,16 +187,21 @@ namespace SketchFleets.Inventory
 
         private int lastHoveredSlotDesc = -1;
         private string lastTooltipTextDesc = null;
-        protected string GetTooltipDescription(int slot)
+        protected virtual string GetTooltipDescription(int slot)
         {
             if(slot != lastHoveredSlotDesc)
             {
                 lastHoveredSlotDesc = slot;
                 //lastTooltipText = register.items[inventory.GetItem(slot).Id].UnlocalizedName;
-                lastTooltipTextDesc = LanguageSystem.LanguageManager.Localize("desc_" + register.items[GetItemInSlot(slot).Id].UnlocalizedName);
+                lastTooltipTextDesc = LanguageSystem.LanguageManager.Localize("desc_" + GetRegisterForSlot(slot).items[GetItemInSlot(slot).Id].UnlocalizedName);
             }
             
             return lastTooltipTextDesc;
+        }
+
+        public virtual ShopObjectRegister GetRegisterForSlot(int slot)
+        {
+            return register;
         }
     }
 }

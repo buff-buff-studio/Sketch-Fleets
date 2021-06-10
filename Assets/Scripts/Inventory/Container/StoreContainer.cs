@@ -17,7 +17,7 @@ namespace SketchFleets.Inventory
         public TMP_Text itemInformationText;
         public TMP_Text playerInventoryText;
         public TMP_Text coinCounter;
-        public bool useTotalCoins = false;
+        public bool isUpgradeShop = false;
         public Image currencyIcon;
         public Sprite[] currencyIconSprites;
         public RectTransform coinCountBackground;
@@ -32,13 +32,13 @@ namespace SketchFleets.Inventory
 
             //Coin Icon
             if(currencyIcon != null)
-                currencyIcon.sprite = useTotalCoins ? currencyIconSprites[1] : currencyIconSprites[0];
+                currencyIcon.sprite = isUpgradeShop ? currencyIconSprites[1] : currencyIconSprites[0];
 
             //Load
             inventory = new StoreInventory();
-            for (int i = 0; i < slots.Length; i++)
+            for (int i = 0; i < (isUpgradeShop ? 4 : slots.Length); i++)
             {
-                inventory.AddItem(new ItemStack(register.PickRandom()));
+                inventory.AddItem(new ItemStack(register.PickRandom(i)));
             }
 
             for (int i = 0; i < slots.Length; i++)
@@ -89,8 +89,11 @@ namespace SketchFleets.Inventory
                 sprite = register.items[stack.Id].Icon;
                 
             #region Temporary
-            slots[index].GetChild(0).GetComponentInChildren<TMP_Text>().text = register.items[stack.Id].ItemCost + "$";
-            slots[index].GetChild(1).GetComponent<Image>().sprite = sprite;
+            if(stack != null)
+            {
+                slots[index].GetChild(0).GetComponentInChildren<TMP_Text>().text = register.items[stack.Id].ItemCost + "$";
+                slots[index].GetChild(1).GetComponent<Image>().sprite = sprite;
+            }
             slots[index].gameObject.SetActive(sprite != null);
             #endregion
         }
@@ -124,26 +127,17 @@ namespace SketchFleets.Inventory
             itemInformationPanel.SetActive(false);
 
             //Add item to inventory
-            Profile.GetData().inventoryItems.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id, 1));
+            if(isUpgradeShop)
+                Profile.GetData().inventoryUpgrades.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id, 1));
+            else
+                Profile.GetData().inventoryItems.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id, 1));
+
             Profile.SaveProfile((data) => { });
         }
 
         public void CancelBuy()
         {
             itemInformationPanel.SetActive(false);
-        }
-
-        public void UpdatePlayerInventory()
-        {
-            //Update player items
-            string s = "Player Items:\n";
-
-            foreach (ItemStack stack in Profile.GetData().inventoryItems)
-            {
-                s += register.items[stack.Id].UnlocalizedName + ": " + stack.Amount + "\n";
-            }
-
-            playerInventoryText.text = s;
         }
 
         public void CloseToMap()
@@ -157,7 +151,7 @@ namespace SketchFleets.Inventory
         /// <param name="count"></param>
         public void AddCoins(int count)
         {
-            if (useTotalCoins)
+            if (isUpgradeShop)
             {
                 Profile.Data.TotalCoins += count;
                 if (coinCounter != null)
@@ -180,7 +174,7 @@ namespace SketchFleets.Inventory
         /// <returns></returns>
         public int GetCoins()
         {
-            if (useTotalCoins)
+            if (isUpgradeShop)
                 return Profile.Data.TotalCoins;
 
             return Profile.Data.Coins;

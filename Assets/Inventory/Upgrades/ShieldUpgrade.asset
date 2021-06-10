@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9b96d639fdcc1459efcba399acd839, type: 3}
+  m_Name: ShieldUpgrade
+  m_EditorClassIdentifier: 
+  unlocalized_name: shield_upgrade
+  rarity:
+    _useConstant: 1
+    _constant: 10
+    _variable: {fileID: 0}
+  itemCost:
+    _useConstant: 1
+    _constant: 100
+    _variable: {fileID: 0}
+  icon: {fileID: -2192022562841302822, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
+  itemCostIncreasePerLevel:
+    _useConstant: 1
+    _constant: 100
+    _variable: {fileID: 0}
+  upgradeLifeIncrease:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  upgradeDamageIncrease:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  upgradeShieldIncrease:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  upgradeSpeedIncrease:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}

@@ -9,7 +9,7 @@ namespace SketchFleets.Inventory
     public class ShipRegister : Register<ShipAttributes>
     {
         #region Public Methods
-        public override int PickRandom()
+        public override int PickRandom(int i)
         {
             return UnityEngine.Random.Range(0,items.Length);
         }

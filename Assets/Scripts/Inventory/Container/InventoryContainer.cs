@@ -8,6 +8,13 @@ namespace SketchFleets.Inventory
 {
     public class InventoryContainer : Container
     {
+        public TMPro.TMP_Text pageHeader;
+        public Button prevPageButton;
+        public Button nextPageButton;
+        public ShopObjectRegister upgradeRegister;
+
+        private int page = 0;
+
         List<ItemStack> items = new List<ItemStack>();
         public void OnEnable()
         {
@@ -17,12 +24,26 @@ namespace SketchFleets.Inventory
             foreach (ItemStack stack in Profile.GetData().inventoryItems)
                 items.Add(stack);
 
+            
+
+            Render();
+        }
+
+        public void NextPage()
+        {
+            page ++;
+            Render();
+        }
+
+        public void PreviousPage()
+        {
+            page --;
             Render();
         }
 
         public override void Render()
         {
-            int firstslot = 0;
+            int firstslot = page * 6;
             int j = 0;
             for(int i = firstslot; i < firstslot + 6; i ++)
             {
@@ -39,12 +60,48 @@ namespace SketchFleets.Inventory
 
                 j ++;
             }
+
+            for(int i = 6; i < 10; i ++)
+            {
+                ItemStack stack = GetItemInSlot(i);
+
+                Sprite sprite = null;
+                if (stack != null)
+                    sprite = upgradeRegister.items[stack.Id].Icon;
+
+                GameObject obj = slots[i].GetChild(0).gameObject;
+                obj.GetComponent<Image>().sprite = sprite;
+                obj.SetActive(sprite != null);
+            }
+
+            int pageCount = (int) Mathf.Ceil(items.Count / 6f);
+            if(pageCount < 1)
+                pageCount = 1;
+
+            prevPageButton.interactable = page > 0;
+            nextPageButton.interactable = page < pageCount - 1;
+
+            pageHeader.text = (page + 1) + "/" + pageCount;
         }
 
         public override ItemStack GetItemInSlot(int slot)
         {
-            int firstslot = 0;
+            if(slot >= 6)
+            {
+                //Upgrades
+                return Profile.Data.inventoryUpgrades.SearchItem(new ItemStack(slot - 6,1)) > 0 ? new ItemStack(slot - 6,1) : null;      
+            }
+
+            int firstslot = page * 6;
             return firstslot + slot < items.Count ? items[firstslot + slot] : null;
+        }
+
+        public override ShopObjectRegister GetRegisterForSlot(int slot)
+        {
+            if(slot >= 6)
+                return upgradeRegister;
+
+            return register;
         }
     }
 }

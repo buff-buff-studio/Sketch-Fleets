@@ -11,10 +11,18 @@ namespace SketchFleets.Inventory
     /// </summary>
     public class ShopObjectRegister : Register<ShopObject>
     {
-        #region Public Methods
-        
-        public override int PickRandom()
+        #region Public Fields
+        public bool isUpgrade = false;
+        #endregion
+
+        #region Public Methods        
+        public override int PickRandom(int slot)
         {
+            if(isUpgrade)
+            {
+                return slot;
+            }
+
             int totalWeight = 0;
 
             for (int index = 0, upper = items.Length; index < upper; index++)

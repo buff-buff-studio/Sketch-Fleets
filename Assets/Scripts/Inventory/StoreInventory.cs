@@ -45,6 +45,9 @@ namespace SketchFleets.Inventory
 
         public ItemStack GetItem(int slot)
         {
+            if(items.Count <= slot)
+                return null;
+                
             return items[slot];
         }
     }

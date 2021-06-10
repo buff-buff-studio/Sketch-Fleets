@@ -20,7 +20,7 @@ namespace SketchFleets.Inventory
         /// Pick random index from register
         /// </summary>
         /// <returns></returns>
-        public abstract int PickRandom();
+        public abstract int PickRandom(int slot);
 
         /// <summary>
         /// Get id for item
