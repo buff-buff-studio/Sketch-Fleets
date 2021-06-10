@@ -27,6 +27,8 @@ namespace SketchFleets.Inventory
         [SerializeField]
         protected TMP_Text tooltipText;
         [SerializeField]
+        protected TMP_Text tooltipDescription;
+        [SerializeField]
         protected RectTransform tooltipBackground;
         #endregion
         #region Private Fields
@@ -73,7 +75,7 @@ namespace SketchFleets.Inventory
                 OnClickSlot(slot);
         }
 
-        private void Update() 
+        protected virtual void Update() 
         {
             //Check mouse over slot
             PointerEventData ev = new PointerEventData(EventSystem.current);
@@ -119,22 +121,36 @@ namespace SketchFleets.Inventory
 
                 Vector2 local;
                 RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform) canvas.transform, Input.mousePosition, GetComponentInParent<Canvas>().worldCamera, out local);
-                tooltipBox.anchoredPosition = local + new Vector2(70,40);
-
+                
                 float off = tooltipText.GetRenderedValues(true).x * canvas.scaleFactor;
-                tooltipBackground.sizeDelta = new Vector2(tooltipText.GetRenderedValues(true).x,100);
+                float desc = tooltipDescription.GetRenderedValues(true).y;
+
+                float w = tooltipText.GetRenderedValues(true).x;
+                tooltipBackground.sizeDelta = new Vector2(w,100 + 5 + desc);
 
                 tooltipText.text = GetTooltipText(hoverSlot);
+                tooltipDescription.text = GetTooltipDescription(hoverSlot);
+
+                tooltipDescription.rectTransform.sizeDelta = new Vector2(w,50);
+                
                 
                 if(off + Input.mousePosition.x > Screen.width - 50)
                 {
-                    tooltipBackground.pivot = new Vector2(1,0.5f);
+                    tooltipBackground.pivot = new Vector2(1,1f);
                     tooltipText.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                    tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                    tooltipDescription.margin = new Vector4(-w,0,w,0);
+
+                    tooltipBox.anchoredPosition = local + new Vector2(-70,40);
                 }
                 else
                 {
-                    tooltipBackground.pivot = new Vector2(0,0.5f);
+                    tooltipBackground.pivot = new Vector2(0,1f);
                     tooltipText.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                    tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                    tooltipDescription.margin = new Vector4(0,0,0,0);
+
+                    tooltipBox.anchoredPosition = local + new Vector2(70,40);
                 }
             }
             else
@@ -155,11 +171,25 @@ namespace SketchFleets.Inventory
             if(slot != lastHoveredSlot)
             {
                 lastHoveredSlot = slot;
-                lastTooltipText = register.items[inventory.GetItem(slot).Id].UnlocalizedName;
-                //lastTooltipText = LanguageSystem.LanguageManager.Localize(register.items[inventory.GetItem(slot).Id].UnlocalizedName);
+                //lastTooltipText = register.items[inventory.GetItem(slot).Id].UnlocalizedName;
+                lastTooltipText = LanguageSystem.LanguageManager.Localize(register.items[inventory.GetItem(slot).Id].UnlocalizedName);
             }
             
             return lastTooltipText;
+        }
+
+        private int lastHoveredSlotDesc = -1;
+        private string lastTooltipTextDesc = null;
+        protected string GetTooltipDescription(int slot)
+        {
+            if(slot != lastHoveredSlotDesc)
+            {
+                lastHoveredSlotDesc = slot;
+                //lastTooltipText = register.items[inventory.GetItem(slot).Id].UnlocalizedName;
+                lastTooltipTextDesc = LanguageSystem.LanguageManager.Localize("desc_" + register.items[inventory.GetItem(slot).Id].UnlocalizedName);
+            }
+            
+            return lastTooltipTextDesc;
         }
     }
 }

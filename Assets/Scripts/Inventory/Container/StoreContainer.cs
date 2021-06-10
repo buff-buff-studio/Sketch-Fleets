@@ -20,6 +20,7 @@ namespace SketchFleets.Inventory
         public bool useTotalCoins = false;
         public Image currencyIcon;
         public Sprite[] currencyIconSprites;
+        public RectTransform coinCountBackground;
         #endregion
 
         private static int selectItemIndex = -1;
@@ -159,13 +160,17 @@ namespace SketchFleets.Inventory
             {
                 Profile.Data.TotalCoins += count;
                 if (coinCounter != null)
-                    coinCounter.text = "$" + Profile.Data.TotalCoins;
+                {
+                    coinCounter.text = Profile.Data.TotalCoins.ToString();
+                }
                 return;
             }
 
             Profile.Data.Coins += count;
             if (coinCounter != null)
-                coinCounter.text = "$" + Profile.Data.Coins;
+            {
+                coinCounter.text = Profile.Data.Coins.ToString();
+            }
         }
 
         /// <summary>
@@ -178,6 +183,13 @@ namespace SketchFleets.Inventory
                 return Profile.Data.TotalCoins;
 
             return Profile.Data.Coins;
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+
+            coinCountBackground.sizeDelta = new Vector2(coinCounter.GetRenderedValues(true).x + 200,130);
         }
         #endregion
     }
