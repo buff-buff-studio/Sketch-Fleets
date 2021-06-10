@@ -126,7 +126,7 @@ namespace SketchFleets.Inventory
 
                 tooltipText.text = GetTooltipText(hoverSlot);
                 
-                if(off + Input.mousePosition.x > Screen.width - 20)
+                if(off + Input.mousePosition.x > Screen.width - 50)
                 {
                     tooltipBackground.pivot = new Vector2(1,0.5f);
                     tooltipText.horizontalAlignment = HorizontalAlignmentOptions.Right;
