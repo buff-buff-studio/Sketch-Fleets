@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: PencilBroken
   m_EditorClassIdentifier: 
   unlocalized_name: pencil_broken
-  id: 12
-  icon: {fileID: 4836032611325804803, guid: 754a14a9899896346b01c08a42db253d, type: 3}
-  itemCost:
-    _useConstant: 1
-    _constant: 300
-    _variable: {fileID: 0}
   rarity:
     _useConstant: 1
     _constant: 20
     _variable: {fileID: 0}
+  itemCost:
+    _useConstant: 1
+    _constant: 150
+    _variable: {fileID: 0}
+  icon: {fileID: 4836032611325804803, guid: 754a14a9899896346b01c08a42db253d, type: 3}
+  id: 12
   effect: {fileID: 11400000, guid: f0d7abaf7ff2dcc4bb41510fc305d370, type: 2}

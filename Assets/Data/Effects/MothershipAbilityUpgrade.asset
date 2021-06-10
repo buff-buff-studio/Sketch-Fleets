@@ -16,7 +16,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: Mothership Ability Upgrade
     _variable: {fileID: 0}
-  description: This upgrade decreases the delay of the mothership's recall ability
+  description: Decreases the delay of the Mothership's R ability
   prefab: {fileID: 0}
   healthRegen:
     _useConstant: 1

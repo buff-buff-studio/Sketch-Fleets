@@ -1,30 +1,19 @@
 name=Português
 
-ui_settings=Settings
+#
+# MAIN MENU BUTTONS
+#
+
+ui_settings=Opções
 ui_menu=Menu
 ui_credits=Créditos
 ui_resolution=Resolução
 ui_map=Mapa
-ui_store=Loja
+ui_store=Loja do Bufo
 
-ui_credits_hint=Clique nos desenvolvedores para saber mais
-
-ui_enemies=Inimigos
-
-ui_deadTitle=Você Morreu!
-ui_runtime=Tempo da partida
-
-ui_winTitle=Planeta Completado!
-
-ui_pauseTitle=Jogo Pausado!
-ui_pauseReturn=Voltar
-
-ui_button_newgame=Novo Jogo
-ui_button_continue=Continuar
-ui_button_store=Loja
-ui_button_codex=Codex
-
-ui_title_settings=Opções
+#
+# SETTINGS MENU
+#
 
 ui_subtitle_displaysettings=Opções de Tela
 ui_subtitle_languagesettings=Opções de Idioma
@@ -43,20 +32,6 @@ ui_graphics_low=Baixo
 ui_graphics_medium=Médio
 ui_graphics_high=Alto
 
-ui_occupation_artist=Artista
-ui_occupation_programmer=Programador
-ui_occupation_ui=Designer de UI
-ui_occupation_you=Você!
-ui_occupation_teacher=Professor
-ui_occupation_dev=Desenvolvedor
-ui_occupation_university=Universidade
-
-ui_quit_confirm=Você tem certeza?
-ui_quit_yes=Sim!
-ui_quit_no=Não!
-
-ui_pressSpace=Aperta a barra de espaço para invocar reforços;
-
 resolution_low=Baixa
 resolution_medium=Média
 resolution_high=Alta
@@ -65,18 +40,142 @@ windowed=Modo Janela
 fs_windowed=Janela em Tela Cheia
 fullscreen=Tela Cheia
 
+#
+# CREDITS MENU
+#
+
+ui_occupation_artist=Artista
+ui_occupation_programmer=Programador
+ui_occupation_ui=Designer de UI
+ui_occupation_you=Você!
+ui_occupation_teacher=Professor
+ui_occupation_dev=Desenvolvedor
+ui_occupation_university=Universidade
+
+ui_credits_hint=Clique nos desenvolvedores para saber mais
+
+#
+# QUIT MENU
+#
+
+ui_quit_confirm=Você tem certeza?
+ui_quit_yes=Sim!
+ui_quit_no=Não!
+
+#
+# IN-GAME
+#
+
+
+ui_enemies=Inimigos
+
+ui_deadTitle=Você Morreu!
+ui_runtime=Tempo da partida
+
+ui_winTitle=Planeta Completado!
+
+ui_pauseTitle=Jogo Pausado!
+ui_pauseReturn=Voltar
+
+ui_button_newgame=Novo Jogo
+ui_button_continue=Continuar
+ui_button_store=Loja
+
+ui_title_settings=Opções
+
+ui_pressSpace=Aperta a barra de espaço para invocar reforços;
+
+#
+# SHOP MENU
+#
+
 ui_shop_buy_confirmation=Você realmente quer comprar %% %% por %% %%?
 ui_shop_amount=Você tem %% %%
 ui_shop_buy=Comprar
 ui_shop_buy=Cancelar
 
-ui_tutorial_title=Tutorial
-ui_tutorial_r=Tutorial do Botão R
-ui_tutorial_space=Tutorial do Botão de Espaço
-ui_tutorial_spacebtt=Barra de Espaço
-ui_tutorial_frog=Once upon a time...
-ui_tutorial_wasd=Teclas para movimentação
-ui_tutorial_yellow=A nave amarela serve como uma torre, com pouca velocidade mas consegue atirar várias balas ao mesmo tempo.
-ui_tutorial_cyan=Fire on the hole!
-ui_tutorial_magenta=Sua melhor amiga na hora da batalha :D
+#
+# TUTORIAL
+#
 
+ui_tutorial_title=Tutorial
+ui_tutorial_r=Aperte R para chamar todas suas naves invocadas de volta para a nave mãe e recuperar sua vida gasta
+ui_tutorial_space=Segure a Barra de Espaço para poder invocar aliados! Lembre-se que invocá-las utiliza parte da sua vida, então tenha cuidado!
+ui_tutorial_spacebtt=Barra de Espaço
+ui_tutorial_frog1=Bufo Bufo diz:
+ui_tutorial_frog2=Esse manual de instruções vai te ajudar na sua jornada...
+ui_tutorial_wasd=WASD são as teclas de movimentação básicas.
+ui_tutorial_yellow=A Nave Amarela serve como uma torre, com pouca velocidade mas consegue atirar várias balas ao mesmo tempo
+ui_tutorial_cyan=Já a Ciano se joga nos inimigos ao clicar com o botão direito do mouse, e causa uma explosão enorme na área de contato
+ui_tutorial_magenta=Por fim, a Magenta. Apesar de ser frágil, ela atira extremamente rápido e podem existir várias em campo simultaneamente 
+
+#
+# SHIP NAMES
+#
+
+ship_mother=Nave Mãe
+ship_magenta=Nave Magenta
+ship_cyan=Nave Ciano
+ship_yellow=Nave Amarela
+ship_lime=Nave Verde
+ship_purple=Nave Roxa
+ship_orange=Nave Laranja
+
+#
+# ITEM NAMES
+#
+
+armor_extra=Armadura Extra
+armor_heavy=Armadura Pesada
+cursed_ammunition=Balas Amaldiçoadas
+cursed_propulsion=Propulsores Amaldiçoados
+fuel_tank_compact=Tanque de Combustível Compacto
+fuel_tank_large=Tanque de Combustível Grande
+mothership_ability_upgrade=Upgrade de Habilidade
+mothership_cooldown_upgrade=Upgrade de Cooldown
+mothership_dock_upgrade=Upgrade de Invocação
+mpencil_new=Lapiseira Nova
+mpencil_used=Lapiseira Usada
+pencil_average=Lápis Normal
+pencil_broken=Lápis Quebrado
+pencil_perfect=Lápis Perfeito
+pencil_sharpener=Apontador de Lápis
+shield_battery=Bateria de Escudo
+
+#
+# ITEM DESCRIPTION
+#
+
+desc_armor_extra=Aumenta um pouco da armadura
+
+desc_armor_heavy=Aumenta armadura mas reduz a velocidade de movimento 
+
+desc_cursed_ammunition=Suas balas ficam amaldiçoadas.
+Dobra o seu dano, mas receba dano em dobro.
+
+desc_cursed_propulsion=Seus propulsores ficam amaldiçoados.
+Aumenta bastante a velocidade de movimento, mas reduz vida máxima pela metade.
+
+desc_fuel_tank_compact=Aumenta um pouco a velocidade de movimento
+
+desc_fuel_tank_large=Aumenta bastante a velocidade de movimento
+
+desc_mothership_ability_upgrade=Reduz o tempo de recarga da habilidade R
+
+desc_mothership_cooldown_upgrade=Reduz o tempo entre invocações de aliados
+
+desc_mothership_dock_upgrade=Aumenta a quantidade de aliados que a Nave Mãe controla
+
+desc_mpencil_new=Aumenta a Vida Máxima em 500 pontos
+
+desc_mpencil_used=Aumenta a Vida Máxima em 250 pontos
+
+desc_pencil_average=Recupera 500 pontos de Vida
+
+desc_pencil_broken=Recupera 250 pontos de Vida
+
+desc_pencil_perfect=Recupera 750 pontos de Vida
+
+desc_pencil_sharpener=Dobra o dano da Nave Mãe durante 30 segundos
+
+desc_shield_battery=Aumenta o Escudo Máximo em 150 pontos

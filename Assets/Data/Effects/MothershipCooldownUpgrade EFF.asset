@@ -16,7 +16,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: Mothership Cooldown Upgrade
     _variable: {fileID: 0}
-  description: This upgrade will make the mothership's summoning cooldown lower.
+  description: Reduces the Mothership's summoning cooldown.
   prefab: {fileID: 0}
   healthRegen:
     _useConstant: 1
