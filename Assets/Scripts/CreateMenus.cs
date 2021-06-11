@@ -18,6 +18,10 @@
         public const int motherShipAttributesOrder = 2;
         public const string motherShipAttributesMenuName = "Sketch Fleets/Attributes/Mothership Attributes";
         public const string motherShipAttributesFileName = "Mothership Attributes";
+        
+        public const int obstacleAttributesOrder = 5;
+        public const string obstacleMenuName = "Sketch Fleets/Attributes/Obstacle Attributes";
+        public const string obstacleFileName = "Obstacle Attributes";
 
         public const int bulletAttributesOrder = 11;
         public const string bulletAttributesMenuName = "Sketch Fleets/Attributes/Bullet Attributes";
