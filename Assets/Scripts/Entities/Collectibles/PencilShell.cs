@@ -98,6 +98,8 @@ namespace SketchFleets.Entities
             ApplyVariance();
             
             base.Emerge(position, rotation);
+            
+            SubmergeDelayed(10f);
         }
 
         #endregion
@@ -117,6 +119,9 @@ namespace SketchFleets.Entities
 
         #region Private Methods
 
+        /// <summary>
+        /// Applies variance in scale and rotation speed
+        /// </summary>
         private void ApplyVariance()
         {
             float randomNumber = Random.Range(0.8f, 1.2f);
