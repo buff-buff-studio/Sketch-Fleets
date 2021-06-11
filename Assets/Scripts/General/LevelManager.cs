@@ -177,8 +177,9 @@ namespace SketchFleets.General
         /// </summary>
         private void SpawnShip()
         {
-            PoolMember ship = PoolManager.Instance.Request(DrawShipAttributeFromPool().Prefab);
-            ship.Emerge(GetRandomSpawnPoint(), Quaternion.identity);
+            ShipAttributes drawnShip = DrawShipAttributeFromPool();
+            PoolMember ship = PoolManager.Instance.Request(drawnShip.Prefab);
+            ship.Emerge(GetRandomSpawnPoint(), drawnShip.Prefab.transform.rotation);
 
             activeShips++;
         }
@@ -261,7 +262,7 @@ namespace SketchFleets.General
             while (true)
             {
                 seconds.Value = (int)Time.timeSinceLevelLoad;
-                minutes.Value = (int)(Time.timeSinceLevelLoad / 60);
+                minutes.Value = (int)(Time.timeSinceLevelLoad % 60);
                 
                 mapTimer.Value = $"{minutes.Value:00}:{seconds.Value:00}";
                 
