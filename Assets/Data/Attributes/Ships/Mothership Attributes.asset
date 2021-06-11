@@ -67,7 +67,12 @@ MonoBehaviour:
   fire: {fileID: 11400000, guid: b0967743feca18e449eb47263e1ec0d8, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 5077195437519626923, guid: 9f26ea5f3b9c43d43bddb1e9480e47e0, type: 3}
+  healEffect: {fileID: 3722199005660995477, guid: 3dfb043eb3f266142bb1341272a4da94, type: 3}
   regenerateCooldown:
     _useConstant: 1
     _constant: 20
+    _variable: {fileID: 0}
+  regenerateKillInterval:
+    _useConstant: 1
+    _constant: 0.15
     _variable: {fileID: 0}

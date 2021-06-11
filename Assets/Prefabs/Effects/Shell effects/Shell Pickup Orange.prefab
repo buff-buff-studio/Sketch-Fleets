@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 5086555349003154533, guid: e710d5181480990488cf60043794037e, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: c19b9beccb52f6b4ebbb89c9fc98ef7d, type: 3}
+      objectReference: {fileID: 8300000, guid: 9128781cf7b5a6a479e1d3fdb7594736, type: 3}
     - target: {fileID: 5086555349003154533, guid: e710d5181480990488cf60043794037e, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: -8391862255508861888, guid: e2b3be49bdb0e3f43a31c615f5c6da2e, type: 2}
     - target: {fileID: 5086555349003154535, guid: e710d5181480990488cf60043794037e, type: 3}
       propertyPath: m_Name
-      value: Shell Pickup
+      value: Shell Pickup Orange
       objectReference: {fileID: 0}
     - target: {fileID: 5086555349003154536, guid: e710d5181480990488cf60043794037e, type: 3}
       propertyPath: m_RootOrder
