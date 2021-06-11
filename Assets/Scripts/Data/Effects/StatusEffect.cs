@@ -48,11 +48,11 @@ namespace SketchFleets.Data
 
         public FloatReference DefenseBonus => defenseBonus;
 
-        protected FloatReference Duration => duration;
+        public FloatReference Duration => duration;
 
-        protected FloatReference HealthRegen => healthRegen;
+        public FloatReference HealthRegen => healthRegen;
 
-        protected FloatReference ShieldRegen => shieldRegen;
+        public FloatReference ShieldRegen => shieldRegen;
 
         #endregion
     }

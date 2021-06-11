@@ -34,7 +34,7 @@ MonoBehaviour:
     _constant: -500
     _variable: {fileID: 0}
   maxShieldBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   damageMultiplierBonus:
@@ -54,14 +54,14 @@ MonoBehaviour:
     _constant: -1
     _variable: {fileID: 0}
   spawnSlotBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   spawnCooldownMultiplierBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   abilityCooldownMultiplierBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}

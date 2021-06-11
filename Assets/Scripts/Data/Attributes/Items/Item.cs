@@ -16,6 +16,8 @@ namespace SketchFleets.Data
         private int id;
         [SerializeField]
         private ItemEffect effect;
+        [SerializeField]
+        private bool isConsumable;
         
         #endregion
 
@@ -26,7 +28,12 @@ namespace SketchFleets.Data
             get => effect;
             set => effect = value;
         }
-  
+
+        public bool IsConsumable
+        {
+            get => isConsumable;
+            set => isConsumable = value;
+        }
         #endregion
     }
 }
