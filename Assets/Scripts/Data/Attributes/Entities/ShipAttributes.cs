@@ -67,6 +67,9 @@ namespace SketchFleets.Data
         [Tooltip("The effect spawned when the ship dies")]
         [SerializeField]
         private GameObject deathEffect;
+        [Tooltip("The effect when the ship gets healed")]
+        [SerializeField]
+        private GameObject healEffect;
 
         #endregion
 
@@ -103,6 +106,8 @@ namespace SketchFleets.Data
         public GameObject ShellDrop => shellDrop;
 
         public FloatReference InvincibilityTime => invincibilityTime;
+
+        public GameObject HealEffect => healEffect;
 
         #endregion
     }
