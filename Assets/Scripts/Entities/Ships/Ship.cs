@@ -36,6 +36,8 @@ namespace SketchFleets
         protected float shieldRegenTimer;
         protected float collisionTimer;
 
+        private bool isDead = false; 
+
         #endregion
 
         #region Private Fields
@@ -62,8 +64,8 @@ namespace SketchFleets
 
         public void Damage(float amount, bool makeInvincible = false, bool piercing = false)
         {
-            // Rejects damage during invincibility time
-            if (collisionTimer > 0) return;
+            // Rejects damage during invincibility time or death
+            if (collisionTimer > 0 || isDead) return;
 
             // Adds invincibility time if necessary
             if (makeInvincible)
@@ -234,7 +236,7 @@ namespace SketchFleets
         /// </summary>
         public virtual void Die()
         {
-            if(!gameObject.activeSelf) return;
+            if (isDead) return;
 
             if (Attributes.DeathEffect != null)
             {
@@ -249,6 +251,8 @@ namespace SketchFleets
             DropLoot();
 
             Submerge();
+
+            isDead = true;
         }
 
         #endregion
@@ -305,6 +309,8 @@ namespace SketchFleets
             currentHealth.Value = attributes.MaxHealth.Value;
             currentShield.Value = attributes.MaxShield.Value;
             fireTimer = 0;
+
+            isDead = false;
         }
 
         #endregion
