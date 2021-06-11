@@ -22,6 +22,8 @@ namespace SketchFleets.Entities
         private Transform shipSpawnPoint;
         [SerializeField, RequiredField()]
         private GameObject shipSpawnMenu;
+        [SerializeField, RequiredField()]
+        private GameObject hud;
 
         private UnityDictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
             new UnityDictionary<SpawnableShipAttributes, SpawnMetaData>();
@@ -272,6 +274,7 @@ namespace SketchFleets.Entities
         /// <param name="enable">Whether to enable or disable the ship spawn menu</param>
         private void EnableOrDisableSpawnMenu(bool enable)
         {
+            hud.SetActive(!enable);
             shipSpawnMenu.SetActive(enable);
         }
 
