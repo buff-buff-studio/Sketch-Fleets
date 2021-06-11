@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a9cff1fc83417888703122150b61f8, type: 3}
   m_Name: Obstacle Pool
   m_EditorClassIdentifier: 
-  pool: []
+  pool:
+  - item: {fileID: 11400000, guid: 852a39dd75ce15d45882c37eda7e0cfa, type: 2}
+    weight: 15
+  - item: {fileID: 11400000, guid: 6cc5bfad569acdf4bb9429ab547a7a12, type: 2}
+    weight: 10
+  - item: {fileID: 11400000, guid: 8e5b680429190ad47937dba6a1c8d810, type: 2}
+    weight: 15
+  - item: {fileID: 11400000, guid: 9091b27f8d61b6244aec56fa2bdbf80b, type: 2}
+    weight: 10
+  - item: {fileID: 0}
+    weight: 50
