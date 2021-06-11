@@ -58,11 +58,20 @@ public class ObstacleSpawner : MonoBehaviour
         while (true)
         {
             yield return spawnWait;
-            
-            StartCoroutine(showWarningRoutine);
+
+            ObstacleAttributes drawnObstacle = DrawObstacleFromPool();
+
+            if (drawnObstacle != null)
+            {
+                StartCoroutine(showWarningRoutine);
+            }
+
             yield return warningPeriod;
-            
-            SpawnObstacle(DrawObstacleFromPool());
+
+            if (drawnObstacle != null)
+            {
+                SpawnObstacle(drawnObstacle);
+            }
         }
     }
 
@@ -121,10 +130,15 @@ public class ObstacleSpawner : MonoBehaviour
     /// <param name="obstacle">The obstacle to spawn</param>
     private void SpawnObstacle(ObstacleAttributes obstacle)
     {
-        if (obstacle == null) return;
-
         Vector3 spawnPoint = new Vector3(spawnArea.transform.position.x, GetRandomYInSpawnArea());
-        Instantiate(obstacle.Prefab, spawnPoint, Quaternion.identity);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        if (obstacle.IsStatic)
+        {
+            spawnRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+        }
+        
+        Instantiate(obstacle.Prefab, spawnPoint, spawnRotation);
     }
 
     /// <summary>
