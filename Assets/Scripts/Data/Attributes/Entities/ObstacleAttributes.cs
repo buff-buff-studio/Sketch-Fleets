@@ -38,6 +38,8 @@ namespace SketchFleets.Data
 
         public GameObject DeathEffect => deathEffect;
 
+        public bool IsStatic => motion.Value == Vector2.zero;
+
         #endregion
 
     }
