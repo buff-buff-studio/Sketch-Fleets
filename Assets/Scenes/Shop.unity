@@ -420,6 +420,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &932588848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5963137563358919594, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+  m_PrefabInstance: {fileID: 999187797}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &932588850
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932588848}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d6b71597c1ebf704bb9eb892fb08d744, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &999187797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -427,6 +451,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1476433454}
     m_Modifications:
+    - target: {fileID: 2298691143748108947, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298691143748108947, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298691143748108947, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298691143748108947, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298691143748108947, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298691143748108947, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298691143748108947, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 2886418289473373607, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: openSound
       value: 
