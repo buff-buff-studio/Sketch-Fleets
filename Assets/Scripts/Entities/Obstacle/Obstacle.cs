@@ -60,6 +60,7 @@ namespace SketchFleets.Entities
         private void Start()
         {
             Initialize();
+            Destroy(gameObject, 30f);
         }
 
         private void Update()
