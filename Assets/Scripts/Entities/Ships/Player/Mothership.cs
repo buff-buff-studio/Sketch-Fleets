@@ -216,7 +216,8 @@ namespace SketchFleets.Entities
         /// <returns>Whether the ship can be spawned</returns>
         public bool CanSpawnShip(SpawnableShipAttributes shipType)
         {
-            return IsThereSpaceForSpawn(shipType) && GetSpawnCooldown(shipType) <= 0;
+            return IsThereSpaceForSpawn(shipType) && GetSpawnCooldown(shipType) <= 0 && 
+                   CurrentHealth > GetSpawnCost(shipType);
         }
 
         /// <summary>
