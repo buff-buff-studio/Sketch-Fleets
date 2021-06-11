@@ -36,8 +36,6 @@ namespace SketchFleets
         protected float shieldRegenTimer;
         protected float collisionTimer;
 
-        //protected MaterialPropertyBlock propertyBlock;
-
         #endregion
 
         #region Private Fields
@@ -148,9 +146,7 @@ namespace SketchFleets
         /// <param name="rotation">The rotation to emerge the object with</param>
         public override void Emerge(Vector3 position, Quaternion rotation)
         {
-            currentHealth.Value = attributes.MaxHealth.Value;
-            currentShield.Value = attributes.MaxShield.Value;
-            fireTimer = 0;
+            ResetInstanceVariables();
 
             base.Emerge(position, rotation);
         }
@@ -301,14 +297,24 @@ namespace SketchFleets
                 // Generates randomized rotations and positions
                 Vector3 randomRotation = new Vector3(0f, 0f, Random.Range(0, 359f));
                 Vector3 dropPosition =
-                    new Vector3(Random.Range(0f, 3f), Random.Range(0f, 3f), 0);
+                    new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
 
                 // Instantiates and colors shell drop
-                GameObject shellDrop = Instantiate(Attributes.ShellDrop, transform.position + dropPosition,
-                    Quaternion.Euler(randomRotation));
+                PoolMember drop = PoolManager.Instance.Request(Attributes.ShellDrop);
+                drop.Emerge(transform.position + dropPosition, Quaternion.Euler(randomRotation));
 
-                shellDrop.GetComponent<PencilShell>().SetDropColor(Attributes.ShipColor);
+                drop.GetComponent<PencilShell>().SetDropColor(Attributes.ShipColor);
             }
+        }
+
+        /// <summary>
+        /// Resets all instance-specific variables
+        /// </summary>
+        protected virtual void ResetInstanceVariables()
+        {
+            currentHealth.Value = attributes.MaxHealth.Value;
+            currentShield.Value = attributes.MaxShield.Value;
+            fireTimer = 0;
         }
 
         #endregion

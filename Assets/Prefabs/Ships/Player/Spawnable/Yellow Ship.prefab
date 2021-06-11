@@ -176,6 +176,10 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: -8391862255508861888, guid: e2b3be49bdb0e3f43a31c615f5c6da2e, type: 2}
+    - target: {fileID: 1661921463805644437, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: m_Radius
+      value: 2.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4202989485892480711, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -247,6 +251,10 @@ PrefabInstance:
     - target: {fileID: 6371126793961981222, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7018345160470710131, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: m_Radius
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 7597287069921410289, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Size.x
