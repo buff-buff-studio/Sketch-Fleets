@@ -18,6 +18,10 @@
         public const int motherShipAttributesOrder = 2;
         public const string motherShipAttributesMenuName = "Sketch Fleets/Attributes/Mothership Attributes";
         public const string motherShipAttributesFileName = "Mothership Attributes";
+        
+        public const int obstacleAttributesOrder = 5;
+        public const string obstacleMenuName = "Sketch Fleets/Attributes/Obstacle Attributes";
+        public const string obstacleFileName = "Obstacle Attributes";
 
         public const int bulletAttributesOrder = 11;
         public const string bulletAttributesMenuName = "Sketch Fleets/Attributes/Bullet Attributes";
@@ -51,9 +55,9 @@
 
         #region Data Containers
 
-        public const int itemPoolOrder = 0;
-        public const string itemPoolMenuName = "Sketch Fleets/Data Containers/Item Pool";
-        public const string itemPoolFileName = "Item Pool";
+        public const int attributePoolOrder = 0;
+        public const string attributePoolMenuName = "Sketch Fleets/Data Containers/Attribute Pool";
+        public const string attributePoolFileName = "Attribute Pool";
 
         public const int itemRegisterOrder = 1;
         public const string itemRegisterMenuName = "Sketch Fleets/Inventory Container/Item Register";

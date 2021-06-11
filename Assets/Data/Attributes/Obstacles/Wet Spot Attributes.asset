@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454930dffb784958a9d153de60869ab4, type: 3}
+  m_Name: Wet Spot Attributes
+  m_EditorClassIdentifier: 
+  objectName:
+    _useConstant: 1
+    _constant: Wet Spot
+    _variable: {fileID: 0}
+  description: A wet spot that hurts quite a bit to touch.
+  prefab: {fileID: 5208673320480033209, guid: 3756ba02b33b50d4c917654a29b6a06c, type: 3}
+  collisionDamage:
+    _useConstant: 1
+    _constant: 500
+    _variable: {fileID: 0}
+  motion:
+    _useConstant: 1
+    _constant: {x: 0, y: 0}
+    _variable: {fileID: 0}
+  maxHealth:
+    _useConstant: 1
+    _constant: 350
+    _variable: {fileID: 0}
+  deathEffect: {fileID: 5077195437519626923, guid: b1c9e18599a08334baba1f0eb9ba7350, type: 3}
