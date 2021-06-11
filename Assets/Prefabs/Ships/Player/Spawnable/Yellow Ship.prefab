@@ -60,6 +60,36 @@ Transform:
   m_Father: {fileID: 4466933568370573922}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
+--- !u!1 &5822363360341530554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1466310954417257511}
+  m_Layer: 6
+  m_Name: Fire Transform (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1466310954417257511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822363360341530554}
+  m_LocalRotation: {x: 0, y: 0, z: -0.13052624, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 3.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4466933568370573922}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15}
 --- !u!114 &1436517141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +103,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 50
+--- !u!1 &7583092823297069540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3493103604400292308}
+  m_Layer: 6
+  m_Name: Fire Transform (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3493103604400292308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583092823297069540}
+  m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 3.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4466933568370573922}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
 --- !u!1001 &7320449985083656004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 25c365987b9243f4bbd868676d7eff46, type: 2}
     - target: {fileID: -4395882774655669908, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: bulletSpawnPoints.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -4395882774655669908, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: bulletSpawnPoints.Array.data[1]
@@ -96,6 +156,14 @@ PrefabInstance:
       propertyPath: bulletSpawnPoints.Array.data[2]
       value: 
       objectReference: {fileID: 672930784}
+    - target: {fileID: -4395882774655669908, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: bulletSpawnPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1466310954417257511}
+    - target: {fileID: -4395882774655669908, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: bulletSpawnPoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 3493103604400292308}
     - target: {fileID: 513481301617387861, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_audioClip
       value: 

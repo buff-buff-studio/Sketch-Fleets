@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5086555349003154533, guid: e710d5181480990488cf60043794037e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086555349003154533, guid: e710d5181480990488cf60043794037e, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086555349003154533, guid: e710d5181480990488cf60043794037e, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5086555349003154535, guid: e710d5181480990488cf60043794037e, type: 3}
       propertyPath: m_Name
       value: Explosion Cyan

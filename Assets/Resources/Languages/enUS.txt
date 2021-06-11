@@ -183,7 +183,17 @@ desc_shield_battery=Increases Max Shield by 150
 #
 # UPGRADE NAMES
 #
+
 damage_upgrade=Damage Upgrade
 life_upgrade=Life Upgrade
 shield_upgrade=Shield Upgrade
 speed_upgrade=Speed Upgrade
+
+#
+# UPGRADE DESCRIPTION
+#
+
+desc_damage_upgrade=Increases Mothership damage
+desc_life_upgrade=Increases Mothership Max Health
+desc_shield_upgrade=Increases Mothership Max Shield
+desc_speed_upgrade=Increases Mothership movement speed
