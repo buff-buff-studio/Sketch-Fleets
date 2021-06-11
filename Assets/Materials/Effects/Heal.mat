@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Default Explosion
+  m_Name: Heal
   m_Shader: {fileID: -6465566751694194690, guid: 9a68770ce62023f43a3f6663c83b36b8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: eff86ec178f71824ab1bae209abd29cc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 028c0608f22e01f4396b3051538ba60f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -104,11 +104,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BluMult: {r: 0, g: 0, b: 1, a: 0}
+    - _BluMult: {r: 0.21568626, g: 1, b: 0.6154368, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GreMult: {r: 0, g: 1, b: 0, a: 0}
-    - _RedMult: {r: 1, g: 0, b: 0, a: 0}
+    - _GreMult: {r: 0.31760997, g: 1, b: 0.31760997, a: 1}
+    - _RedMult: {r: 1, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4503199715328829052
