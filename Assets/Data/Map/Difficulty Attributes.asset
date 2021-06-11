@@ -82,27 +82,27 @@ MonoBehaviour:
   enemyPool:
   - {fileID: 0}
   - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
+  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
+  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
+  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
   maxEnemies:
-  - _useConstant: 0
+  - _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   - _useConstant: 1
     _constant: 4
     _variable: {fileID: 0}
-  - _useConstant: 0
-    _constant: 0
+  - _useConstant: 1
+    _constant: 8
     _variable: {fileID: 0}
-  - _useConstant: 0
-    _constant: 0
+  - _useConstant: 1
+    _constant: 12
     _variable: {fileID: 0}
-  - _useConstant: 0
-    _constant: 0
+  - _useConstant: 1
+    _constant: 10
     _variable: {fileID: 0}
-  - _useConstant: 0
-    _constant: 0
+  - _useConstant: 1
+    _constant: 16
     _variable: {fileID: 0}
   obstaclePool: []
