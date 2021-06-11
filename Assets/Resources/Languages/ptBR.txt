@@ -183,7 +183,17 @@ desc_shield_battery=Aumenta o Escudo Máximo em 150 pontos
 #
 # UPGRADE NAMES
 #
+
 damage_upgrade=Melhoria De Dano
 life_upgrade=Melhoria De Vida
 shield_upgrade=Melhoria De Escudo
 speed_upgrade=Melhoria De Velocidade
+
+#
+# UPGRADE DESCRIPTION
+#
+
+desc_damage_upgrade=Aumenta o dano da Nave Mãe
+desc_life_upgrade=Aumenta a Vida Máxima da Nave Mãe
+desc_shield_upgrade=Aumenta o Escudo Máximo da Nave Mãe
+desc_speed_upgrade=Aumenta a Velocidade de movimento da Nave Mãe
