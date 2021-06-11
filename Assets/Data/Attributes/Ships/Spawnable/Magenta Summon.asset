@@ -74,10 +74,7 @@ MonoBehaviour:
   fire: {fileID: 11400000, guid: 2db28cda6305f704995b626c1a89da45, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 8059723475917431361, guid: 422ab4a55e703814b8a773656175de0b, type: 3}
-  enemyKills:
-    _useConstant: 0
-    _constant: 0
-    _variable: {fileID: 0}
+  spawnEffect: {fileID: 6815621210096123458, guid: 2b6ae2d3a118b6d48878c70e67325672, type: 3}
   graphiteCost:
     _useConstant: 1
     _constant: 20

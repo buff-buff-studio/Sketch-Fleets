@@ -105,20 +105,6 @@ namespace SketchFleets
                 soundSource.Play();
             }
 
-            // Gets and sets material property block's blink color
-            // TODO: Use material property blocks instead once we figure out how to
-            // TODO: get the damn ShaderGraph to generate them
-            // spriteRenderer.sharedMaterial.GetPropertyBlock(propertyBlock);
-            //
-            // Debug.Log(propertyBlock.GetColor("_redMul"));
-            //
-            // Color tempColor = propertyBlock.GetColor(blinkColor);
-            // //Debug.Log(propertyBlock.GetColor(blinkColor));
-            // tempColor.a = 1f;
-            // propertyBlock.SetColor(blinkColor, tempColor);
-            //
-            // spriteRenderer.SetPropertyBlock(propertyBlock);
-
             Color tempColor = spriteRenderer.material.GetColor(blinkColor);
             tempColor.a = 1f;
             spriteRenderer.material.SetColor(blinkColor, tempColor);
@@ -133,6 +119,10 @@ namespace SketchFleets
         public void Heal(float amount)
         {
             currentHealth.Value = Mathf.Min(attributes.MaxHealth, currentHealth + amount);
+
+            Transform cachedTransform = transform;
+            PoolManager.Instance.Request(Attributes.HealEffect).
+                Emerge(cachedTransform.position, cachedTransform.rotation);
         }
 
         #endregion
