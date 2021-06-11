@@ -1,6 +1,7 @@
 ﻿using SketchFleets.Data;
 using ManyTools.Variables;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SketchFleets.Enemies
 {
@@ -10,15 +11,17 @@ namespace SketchFleets.Enemies
     public class EnemyShip : Ship<ShipAttributes>
     {
         #region Private Fields
-        [SerializeField]
-        private IntReference killsCount;
+        
+        [FormerlySerializedAs("killsCount")] [SerializeField]
+        private IntReference shipDeathCount;
+        
         #endregion
 
         public override void Die()
         {
             base.Die();
 
-            killsCount.Value++;
+            shipDeathCount.Value++;
         }
     }
 }
