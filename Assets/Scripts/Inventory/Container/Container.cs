@@ -30,7 +30,10 @@ namespace SketchFleets.Inventory
         protected TMP_Text tooltipDescription;
         [SerializeField]
         protected RectTransform tooltipBackground;
+        [SerializeField]
+        protected float changeY = 0;
         #endregion
+
         #region Private Fields
         private Canvas canvas;
         private ItemStackAnimation heldItem;
@@ -139,7 +142,6 @@ namespace SketchFleets.Inventory
 
                 tooltipDescription.rectTransform.sizeDelta = new Vector2(w,50);
                 
-                
                 if(off + Input.mousePosition.x > Screen.width - 50)
                 {
                     tooltipBackground.pivot = new Vector2(1,1f);
@@ -147,7 +149,7 @@ namespace SketchFleets.Inventory
                     tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Right;
                     tooltipDescription.margin = new Vector4(-w,0,w,0);
 
-                    tooltipBox.anchoredPosition = local + new Vector2(-70,40);
+                    tooltipBox.anchoredPosition = local + new Vector2(-70,40) + new Vector2(0,changeY);
                 }
                 else
                 {
@@ -156,7 +158,7 @@ namespace SketchFleets.Inventory
                     tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Left;
                     tooltipDescription.margin = new Vector4(0,0,0,0);
 
-                    tooltipBox.anchoredPosition = local + new Vector2(70,40);
+                    tooltipBox.anchoredPosition = local + new Vector2(70,40) + new Vector2(0,changeY);
                 }
             }
             else

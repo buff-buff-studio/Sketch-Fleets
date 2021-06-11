@@ -24,8 +24,6 @@ namespace SketchFleets.Inventory
             foreach (ItemStack stack in Profile.GetData().inventoryItems)
                 items.Add(stack);
 
-            
-
             Render();
         }
 
@@ -61,20 +59,21 @@ namespace SketchFleets.Inventory
                 j ++;
             }
 
-            for(int i = 6; i < 10; i ++)
-            {
-                ItemStack stack = GetItemInSlot(i);
+            if(slots.Length > 6)
+                for(int i = 6; i < 10; i ++)
+                {
+                    ItemStack stack = GetItemInSlot(i);
 
-                Sprite sprite = null;
-                if (stack != null)
-                    sprite = upgradeRegister.items[stack.Id].Icon;
+                    Sprite sprite = null;
+                    if (stack != null)
+                        sprite = upgradeRegister.items[stack.Id].Icon;
 
-                GameObject obj = slots[i].GetChild(0).gameObject;
-                obj.GetComponent<Image>().sprite = sprite;
-                obj.SetActive(sprite != null);
-                slots[i].GetChild(1).GetComponent<TMPro.TMP_Text>().text = sprite == null ? "" : stack.Amount.ToString();
+                    GameObject obj = slots[i].GetChild(0).gameObject;
+                    obj.GetComponent<Image>().sprite = sprite;
+                    obj.SetActive(sprite != null);
+                    slots[i].GetChild(1).GetComponent<TMPro.TMP_Text>().text = sprite == null ? "" : stack.Amount.ToString();
 
-            }
+                }
 
             int pageCount = (int) Mathf.Ceil(items.Count / 6f);
             if(pageCount < 1)
