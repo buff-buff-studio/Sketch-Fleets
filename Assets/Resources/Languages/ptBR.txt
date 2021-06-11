@@ -89,8 +89,8 @@ ui_pressSpace=Aperta a barra de espaço para invocar reforços;
 # SHOP MENU
 #
 
-ui_shop_buy_confirmation=Você realmente quer comprar %% %% por %% %%?
-ui_shop_amount=Você tem %% %%
+ui_shop_buy_confirmation=Você realmente quer comprar {0} '{1}'?
+ui_shop_amount=Você tem {0} '{1}'
 ui_shop_buy=Comprar
 ui_shop_buy=Cancelar
 

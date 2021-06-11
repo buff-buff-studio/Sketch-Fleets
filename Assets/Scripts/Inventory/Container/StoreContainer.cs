@@ -14,8 +14,11 @@ namespace SketchFleets.Inventory
     {
         #region Public Fields
         public GameObject itemInformationPanel;
-        public TMP_Text itemInformationText;
-        public TMP_Text playerInventoryText;
+
+        public TMP_Text itemBuyConfirmation;
+        public TMP_Text itemBuyPrice;
+        public TMP_Text itemAmount;
+
         public TMP_Text coinCounter;
         public bool isUpgradeShop = false;
         public Image currencyIcon;
@@ -107,7 +110,10 @@ namespace SketchFleets.Inventory
 
             int count = isUpgradeShop ? Profile.GetData().inventoryUpgrades.SearchItem(stack) : Profile.GetData().inventoryItems.SearchItem(stack);
 
-            itemInformationText.text = "Do you really want to buy '" + item.UnlocalizedName + "' for $" + item.ItemCost + " ? (You have " + count + " " + item.UnlocalizedName + ")\n\nPrice: " + item.ItemCost;
+            itemBuyPrice.text = item.ItemCost.ToString();
+            string name = LanguageSystem.LanguageManager.Localize(item.UnlocalizedName);
+            itemAmount.text = LanguageSystem.LanguageManager.Localize("ui_shop_amount",count.ToString(),name);
+            itemBuyConfirmation.text = LanguageSystem.LanguageManager.Localize("ui_shop_buy_confirmation","1",name);
         }
 
         public void BuyItem()

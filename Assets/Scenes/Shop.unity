@@ -189,6 +189,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &69240923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8506546409945260491, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+  m_PrefabInstance: {fileID: 999187797}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &419351136
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +316,17 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &424574528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7269352717847529721, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+  m_PrefabInstance: {fileID: 999187797}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &473832665
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +439,26 @@ PrefabInstance:
       propertyPath: menuAudioSource
       value: 
       objectReference: {fileID: 999187802}
+    - target: {fileID: 6888051793734980118, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340449413207734733, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: itemAmount
+      value: 
+      objectReference: {fileID: 69240923}
+    - target: {fileID: 7340449413207734733, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: itemBuyPrice
+      value: 
+      objectReference: {fileID: 424574528}
+    - target: {fileID: 7340449413207734733, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: itemBuyConfirmation
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340449413207734733, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: itemInformationPanel
+      value: 
+      objectReference: {fileID: 999187803}
     - target: {fileID: 7340449414004862916, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -675,6 +717,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &999187803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6707153083313164725, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+  m_PrefabInstance: {fileID: 999187797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1476433450
 GameObject:
   m_ObjectHideFlags: 0

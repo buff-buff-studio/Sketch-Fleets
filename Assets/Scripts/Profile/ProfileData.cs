@@ -64,26 +64,10 @@ namespace SketchFleets.ProfileSystem
 
                 foreach (SaveObject o in list)
                 {
-                    inventoryUpgrades.AddItem(new ItemStack(o.Get<int>("id")));
+                    inventoryUpgrades.AddItem(new ItemStack(o.Get<int>("id"), o.Get<int>("amount")));
                 }
             }
 
-            if (save.HasKey("codex"))
-            {
-                SaveListObject list = save.Get<SaveListObject>("codex");
-
-                for (int i = 0; i < list.Count; i++)
-                {
-                    CodexEntryType type = (CodexEntryType)i;
-                    SaveListObject cls = list.Get<SaveListObject>(i);
-
-                    for (int j = 0; j < cls.Count; j++)
-                    {
-                        int id = cls.Get<int>(j);
-                        codex.AddItem(new CodexEntry(type, id));
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -109,28 +93,11 @@ namespace SketchFleets.ProfileSystem
             {
                 SaveObject o = list.CreateChild();
                 o["id"] = i.Id;
+                o["amount"] = i.Amount;
 
                 list.Add(o);
             }
             save["upgrades"] = list;
-
-
-            list = save.CreateChildList();
-            save["codex"] = list;
-
-            int len = System.Enum.GetValues(typeof(CodexEntryType)).Length;
-            for (int i = 0; i < len; i++)
-            {
-                CodexEntryType type = (CodexEntryType)i;
-                SaveListObject cls = save.CreateChildList();
-
-                foreach (CodexEntry entry in codex.GetUnlockedEntries(type))
-                {
-                    cls.Add(entry.id);
-                }
-
-                list.Add(cls);
-            }
         }
 
         public static int ConvertCoinsToTotalCoins(int coins)

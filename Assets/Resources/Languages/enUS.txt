@@ -89,8 +89,8 @@ ui_pressSpace=Press Spacebar to summon allies!;
 # SHOP MENU
 #
 
-ui_shop_buy_confirmation=Are you sure you want to buy %% %% for %% %%?
-ui_shop_amount=You have %% %%
+ui_shop_buy_confirmation=Are you sure you want to buy {0} '{1}'?
+ui_shop_amount=You have {0} '{1}'
 ui_shop_buy=Buy
 ui_shop_buy=Cancel
 
