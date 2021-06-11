@@ -45,7 +45,7 @@ MonoBehaviour:
   - _useConstant: 1
     _constant: 4
     _variable: {fileID: 0}
-  mapWaves:
+  minMaxWaves:
   - _useConstant: 1
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
@@ -79,13 +79,30 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 0.5019608, g: 0, b: 1, a: 1}
-  purpleShip: {fileID: 6812927983558368271, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
-  orangeShip: {fileID: 5494245065721851808, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
-  limeShip: {fileID: 1419266270299820781, guid: 65faab35e8e0d4844a45146097df8021, type: 3}
-  eraserObstacle: {fileID: 4159015333600835758, guid: edb87b5c54d34db439ba042f96ec05d1, type: 3}
-  graphiteObstacle: {fileID: 6210501725595672031, guid: c42a7bfbd045cc842831c9739797bc43, type: 3}
-  meteorObstacle: {fileID: 7746383094681754889, guid: c156dc1d4cda3d749899b3886a272123, type: 3}
-  splashObstacle: {fileID: 4507709871335238479, guid: d77ee5492328b4a4d98c2db1f830bacc, type: 3}
-  bossShip:
-  - {fileID: 6551496113798840048, guid: d5ad100bdd3ed99438dd94697f7f459d, type: 3}
-  - {fileID: 3769423534890165086, guid: a869bc91513441649a3f5e2e84675e31, type: 3}
+  enemyPool:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  maxEnemies:
+  - _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 4
+    _variable: {fileID: 0}
+  - _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  - _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  - _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  - _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 0}
+  obstaclePool: []

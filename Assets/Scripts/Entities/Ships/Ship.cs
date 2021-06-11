@@ -123,8 +123,12 @@ namespace SketchFleets
             currentHealth.Value = Mathf.Min(attributes.MaxHealth, currentHealth + amount);
 
             Transform cachedTransform = transform;
-            PoolManager.Instance.Request(Attributes.HealEffect).
-                Emerge(cachedTransform.position, cachedTransform.rotation);
+
+            if (Attributes.HealEffect != null)
+            {
+                PoolManager.Instance.Request(Attributes.HealEffect).
+                    Emerge(cachedTransform.position, cachedTransform.rotation);
+            }
         }
 
         #endregion

@@ -1291,29 +1291,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
+  mapAttributes: {fileID: 11400000, guid: dc2bc714a40a7734baff81f9ef937a4d, type: 2}
+  spawnArea: {fileID: 1180849233}
+  spawnInterval:
+    _useConstant: 1
+    _constant: 1.5
+    _variable: {fileID: 0}
+  spawnIntervalDeviation:
+    _useConstant: 1
+    _constant: 0.5
+    _variable: {fileID: 0}
   mapTimer:
     _useConstant: 0
     _constant: 
     _variable: {fileID: 11400000, guid: 52a74c5701600df4f8a436ee34ee88c8, type: 2}
-  s:
+  seconds:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 11400000, guid: 108847fab15961447ae234298e655e63, type: 2}
-  m:
+  minutes:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 11400000, guid: 4fcea390b001ec041a0ffcb1e54d72dc, type: 2}
-  enemiesKilled:
+  victoryMenu: {fileID: 251093234}
+  totalEnemiesKilled:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 11400000, guid: 8a0de06510999f640bb44839925e8b30, type: 2}
-  waveSize: {x: 55, y: 120}
-  Mothership: {fileID: 939894645}
-  WinMenu: {fileID: 251093234}
-  MapDifficulty: {fileID: 11400000, guid: dc2bc714a40a7734baff81f9ef937a4d, type: 2}
-  PurpleShip: {fileID: 11400000, guid: a358d82563d284d4abc42402d32804a8, type: 2}
-  OrangeShip: {fileID: 11400000, guid: 21452b9dcb8e98f49be00981ad056dd2, type: 2}
-  LimeShip: {fileID: 11400000, guid: 64b2549bbab845246bddf8910d98b9c8, type: 2}
 --- !u!1 &196694798
 GameObject:
   m_ObjectHideFlags: 0
@@ -3088,7 +3092,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409112511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.709588, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7042856, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 905858676}
@@ -9787,7 +9791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207070478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.709588, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7042856, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1399291222}
@@ -11431,7 +11435,7 @@ Transform:
   m_GameObject: {fileID: 1399291219}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -35.25, y: 0.19999999, z: 10}
-  m_LocalScale: {x: 0.63541824, y: 5.871652, z: 1}
+  m_LocalScale: {x: 0.63541824, y: 9.782172, z: 1}
   m_Children: []
   m_Father: {fileID: 1207070481}
   m_RootOrder: 0
@@ -11460,7 +11464,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.4326, y: 5.2044234}
+  m_Size: {x: 4.4326, y: 6.3}
   m_EdgeRadius: 0
 --- !u!114 &1399291224
 MonoBehaviour:
@@ -15472,15 +15476,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3e308effc712e42bc43cb209cdc4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shellImage: {fileID: 2047574237}
   pencilShell:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 11400000, guid: d6a9e804e272a264290737db7ac36e9d, type: 2}
-  shellColor:
+  collectedShellColor:
     _useConstant: 0
     _constant: {r: 0, g: 0, b: 0, a: 0}
     _variable: {fileID: 11400000, guid: 1bc42a043e5678149974e3c5e32d0cc5, type: 2}
-  shellNum: {fileID: 1471020314}
+  displayText: {fileID: 1471020314}
 --- !u!1 &2088514767
 GameObject:
   m_ObjectHideFlags: 0

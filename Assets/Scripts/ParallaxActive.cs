@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SketchFleets.Data;
+using UnityEngine.Serialization;
 
 namespace SketchFleets
 {
     public class ParallaxActive : MonoBehaviour
     {
-        [SerializeField]
-        private DifficultyAttributes difficulty;
+        [FormerlySerializedAs("difficulty")] [SerializeField]
+        private MapAttributes map;
         void Start()
         {
-            transform.GetChild(difficulty.Difficulty - 1).gameObject.SetActive(true);
+            transform.GetChild(map.Difficulty - 1).gameObject.SetActive(true);
         }
     }
 }

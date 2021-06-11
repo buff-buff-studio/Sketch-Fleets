@@ -22,7 +22,7 @@ namespace SketchFleets.Entities
         private Transform shipSpawnPoint;
         [SerializeField, RequiredField()]
         private GameObject shipSpawnMenu;
-        
+
         private UnityDictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
             new UnityDictionary<SpawnableShipAttributes, SpawnMetaData>();
 
@@ -90,7 +90,7 @@ namespace SketchFleets.Entities
             {
                 EnableOrDisableSpawnMenu(true);
             }
-            
+
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 EnableOrDisableSpawnMenu(false);
@@ -117,7 +117,7 @@ namespace SketchFleets.Entities
         /// </summary>
         public override void Fire()
         {
-            if (fireTimer > 0f) return;
+            if (fireTimer > 0f || Time.timeScale == 0) return;
 
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
@@ -313,7 +313,7 @@ namespace SketchFleets.Entities
         {
             WaitForSeconds killInterval = new WaitForSeconds(Attributes.RegenerateKillInterval);
             abilityTimer = GetMaxAbilityCooldown();
-            
+
             // For every spawned ship type
             foreach (var metaData in spawnMetaDatas)
             {

@@ -39,7 +39,7 @@ public class ConstelationMap : MonoBehaviour
     //Testing
     public static System.Action onMapLoad;
     //Reference
-    public DifficultyAttributes currentMap;
+    public MapAttributes currentMap;
     public IntReference currentLevel;
     public IntReference currentLevelDifficulty;
     public IntReference currentSeed;
