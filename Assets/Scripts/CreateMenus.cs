@@ -55,9 +55,9 @@
 
         #region Data Containers
 
-        public const int itemPoolOrder = 0;
-        public const string itemPoolMenuName = "Sketch Fleets/Data Containers/Item Pool";
-        public const string itemPoolFileName = "Item Pool";
+        public const int attributePoolOrder = 0;
+        public const string attributePoolMenuName = "Sketch Fleets/Data Containers/Attribute Pool";
+        public const string attributePoolFileName = "Attribute Pool";
 
         public const int itemRegisterOrder = 1;
         public const string itemRegisterMenuName = "Sketch Fleets/Inventory Container/Item Register";
