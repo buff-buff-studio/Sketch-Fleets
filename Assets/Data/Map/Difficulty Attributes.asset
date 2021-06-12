@@ -24,7 +24,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   currentDifficulty:
     _useConstant: 1
-    _constant: 1
+    _constant: 5
     _variable: {fileID: 0}
   mapDifficulty:
   - _useConstant: 1
@@ -50,7 +50,7 @@ MonoBehaviour:
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 2, y: 2}
+    _constant: {x: 2, y: 3}
     _variable: {fileID: 0}
   - _useConstant: 1
     _constant: {x: 3, y: 4}
@@ -91,9 +91,6 @@ MonoBehaviour:
     _constant: 0
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 6
-    _variable: {fileID: 0}
-  - _useConstant: 1
     _constant: 8
     _variable: {fileID: 0}
   - _useConstant: 1
@@ -103,6 +100,9 @@ MonoBehaviour:
     _constant: 10
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 14
+    _constant: 12
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 15
     _variable: {fileID: 0}
   obstaclePool: []
