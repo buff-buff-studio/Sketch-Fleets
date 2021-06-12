@@ -7,6 +7,7 @@ using ManyTools.UnityExtended.Poolable;
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
 using ManyTools.UnityExtended;
+using SketchFleets.Inventory;
 
 namespace SketchFleets.Entities
 {
@@ -28,10 +29,7 @@ namespace SketchFleets.Entities
         private UnityDictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
             new UnityDictionary<SpawnableShipAttributes, SpawnMetaData>();
 
-        private float extraSpawnSlots = 0f;
-        private float abilityCooldownMultiplier = 1f;
-        private float spawnCooldownMultipler = 1f;
-        private float fireTimerModifier = 1f;
+        private MothershipAttributesBonuses attributesBonuses;
 
         private List<ItemEffect> activeEffects;
         private List<StatusEffect> activeSpawnEffects;
@@ -41,7 +39,6 @@ namespace SketchFleets.Entities
         private Camera mainCamera;
 
         private IEnumerator regenerateRoutine;
-
         #endregion
 
         #region Properties
@@ -58,6 +55,11 @@ namespace SketchFleets.Entities
             set => activeSpawnEffects = value;
         }
 
+        public MothershipAttributesBonuses AttributesBonuses
+        {
+            get => attributesBonuses;
+        }
+
         public UnityDictionary<SpawnableShipAttributes, SpawnMetaData> SpawnMetaDatas => spawnMetaDatas;
 
         public float AbilityTimer => abilityTimer;
@@ -65,6 +67,13 @@ namespace SketchFleets.Entities
         #endregion
 
         #region Unity Callbacks
+        protected override void Awake() 
+        {
+            base.Awake();
+            attributesBonuses = ScriptableObject.CreateInstance<MothershipAttributesBonuses>();
+            IngameEffectApplier.OnEffectsChange = OnEffectsChange;
+            IngameEffectApplier.Clear();
+        }
 
         // Start runs once before the first update
         protected void Start()
@@ -73,11 +82,14 @@ namespace SketchFleets.Entities
             mainCamera = Camera.main;
             regenerateRoutine = RegenerateShips();
         }
-
+        
         // Start runs once every frame
         protected override void Update()
         {
             base.Update();
+
+            //Tick item effects
+            IngameEffectApplier.TickItems(Time.deltaTime);
 
             // Moves and rotates the ship
             Move();
@@ -359,6 +371,30 @@ namespace SketchFleets.Entities
             yield return secondInterval;
         }
 
+        #endregion
+
+
+        #region Effects
+        private void OnEffectsChange()
+        {
+            IngameEffectResult result = IngameEffectApplier.GetResult(attributes.ItemRegister,attributes.UpgradeRegister);
+            
+            attributesBonuses.upgradeLifeIncrease.Value = result.upgradeLifeIncrease;
+            attributesBonuses.upgradeDamageIncrease.Value = result.upgradeDamageIncrease;
+            attributesBonuses.upgradeShieldIncrease.Value = result.upgradeShieldIncrease;
+            attributesBonuses.upgradeSpeedIncrease.Value = result.upgradeSpeedIncrease;
+
+            attributesBonuses.healthRegen.Value = result.healthRegen;
+            attributesBonuses.shieldRegen.Value = result.shieldRegen;
+            attributesBonuses.spawnSlotBonus.Value = result.spawnSlotBonus;
+            attributesBonuses.spawnCooldownMultiplierBonus.Value = result.spawnCooldownMultiplierBonus;
+            attributesBonuses.abilityCooldownMultiplierBonus.Value = result.abilityCooldownMultiplierBonus;
+            attributesBonuses.maxHealthBonus.Value = result.maxHealthBonus;
+            attributesBonuses.maxShieldBonus.Value = result.maxShieldBonus;
+            attributesBonuses.damageMultiplierBonus.Value = result.damageMultiplierBonus;
+            attributesBonuses.speedMultiplierBonus.Value = result.speedMultiplierBonus;
+            attributesBonuses.defenseBonus.Value = result.defenseBonus;
+        }
         #endregion
     }
 }
