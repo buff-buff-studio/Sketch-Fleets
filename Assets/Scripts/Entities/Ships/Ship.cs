@@ -42,8 +42,8 @@ namespace SketchFleets
 
         #region Private Fields
 
-        private FloatReference currentHealth = new FloatReference(0f);
-        private FloatReference currentShield = new FloatReference(0f);
+        protected FloatReference currentHealth = new FloatReference(0f);
+        protected FloatReference currentShield = new FloatReference(0f);
         private readonly int blinkColor = Shader.PropertyToID("_blinkColor");
 
         #endregion
@@ -62,7 +62,7 @@ namespace SketchFleets
 
         #region IDamageable Implementation
 
-        public void Damage(float amount, bool makeInvincible = false, bool piercing = false)
+        public virtual void Damage(float amount, bool makeInvincible = false, bool piercing = false)
         {
             // Rejects damage during invincibility time or death
             if (collisionTimer > 0 || isDead) return;
@@ -118,7 +118,7 @@ namespace SketchFleets
             }
         }
 
-        public void Heal(float amount)
+        public virtual void Heal(float amount)
         {
             currentHealth.Value = Mathf.Min(attributes.MaxHealth, currentHealth + amount);
 
@@ -213,8 +213,6 @@ namespace SketchFleets
 
                 bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
-
-                bullet.GetComponent<BulletController>().BarrelAttributes = Attributes;
             }
 
             fireTimer = Attributes.Fire.Cooldown;

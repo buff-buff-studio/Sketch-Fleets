@@ -3,23 +3,26 @@ using ManyTools.Variables;
 
 namespace SketchFleets.Data
 {
+    /// <summary>
+    /// A class that contains bonuses
+    /// </summary>
     public class MothershipAttributesBonuses : ScriptableObject
     {
-        public IntReference upgradeLifeIncrease = new IntReference(0);
-        public IntReference upgradeDamageIncrease = new IntReference(0);
-        public IntReference upgradeShieldIncrease = new IntReference(0);
-        public IntReference upgradeSpeedIncrease = new IntReference(0);
+        public IntReference HealthIncrease = new IntReference(0);
+        public IntReference DamageIncrease = new IntReference(0);
+        public IntReference ShieldIncrease = new IntReference(0);
+        public IntReference SpeedIncrease = new IntReference(0);
+        public IntReference ExtraSpawnSlots = new IntReference(1);
 
-        public IntReference spawnSlotBonus = new IntReference(0);
-        public IntReference spawnCooldownMultiplierBonus = new IntReference(0);
-        public IntReference abilityCooldownMultiplierBonus = new IntReference(0);
+        public FloatReference SpawnCooldownMultiplier = new FloatReference(1f);
+        public FloatReference AbilityCooldownMultiplier = new FloatReference(1f);
+        public FloatReference DamageMultiplier = new FloatReference(1f);
+        public FloatReference SpeedMultiplier = new FloatReference(1f);
 
-        public FloatReference healthRegen = new FloatReference(0);
-        public FloatReference shieldRegen = new FloatReference(0);
-        public FloatReference maxHealthBonus = new FloatReference(0);
-        public FloatReference maxShieldBonus = new FloatReference(0);
-        public FloatReference damageMultiplierBonus = new FloatReference(0);
-        public FloatReference speedMultiplierBonus = new FloatReference(0);
-        public FloatReference defenseBonus = new FloatReference(0);
+        public FloatReference HealthRegen = new FloatReference(0);
+        public FloatReference ShieldRegen = new FloatReference(0);
+        public FloatReference MaxHealth = new FloatReference(0);
+        public FloatReference MaxShield = new FloatReference(0);
+        public FloatReference Defense = new FloatReference(0);
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using UnityEngine;
@@ -20,6 +19,7 @@ public class BulletController : PoolMember
     private AudioSource soundSource;
 
     private bool hasFireEffect;
+    private float damageMultiplier = 1f;
 
     #endregion
 
@@ -27,7 +27,11 @@ public class BulletController : PoolMember
 
     public BulletAttributes Attributes => attributes;
 
-    public ShipAttributes BarrelAttributes { get; set; }
+    public float DamageMultiplier
+    {
+        get => damageMultiplier;
+        set => damageMultiplier = value;
+    }
 
     #endregion
 
@@ -50,7 +54,7 @@ public class BulletController : PoolMember
 
         if (hasFireEffect)
         {
-            Instantiate(Attributes.FireEffect, transform.position, Quaternion.identity);
+            PoolManager.Instance.Request(Attributes.FireEffect).Emerge(transform.position, Quaternion.identity);
         }
     }
 
@@ -75,7 +79,7 @@ public class BulletController : PoolMember
             Submerge();
             return;
         }
-        
+
         if (!col.isTrigger) return;
         Hit(col);
     }
@@ -87,7 +91,7 @@ public class BulletController : PoolMember
 
     #endregion
 
-    #region Private Fields
+    #region Private Methods
 
     /// <summary>
     /// Performs operations related to hitting something
@@ -95,9 +99,7 @@ public class BulletController : PoolMember
     /// <param name="directHit">The collider that directly hit the bullet</param>
     private void Hit(Collider2D directHit)
     {
-        float damageVariation = Random.Range(0, Attributes.MaxDamageVariation);
-
-        DealDamageToTarget(Attributes.DirectDamage + damageVariation, directHit.gameObject);
+        DealDamageToTarget(true, directHit.gameObject);
 
         // If the bullet has no area effects, stop here
         if (Mathf.Approximately(Attributes.IndirectDamage, 0f) ||
@@ -118,33 +120,44 @@ public class BulletController : PoolMember
             // If the collected collider is the direct hit, skip
             if (directHit.gameObject == colliders[index].gameObject) continue;
 
-            DealDamageToTarget(Attributes.IndirectDamage + damageVariation, directHit.gameObject);
+            DealDamageToTarget(false, directHit.gameObject);
         }
 
         if (Attributes.HitEffect != null)
         {
-            Instantiate(Attributes.HitEffect, transform.position, Quaternion.identity);
+            PoolManager.Instance.Request(Attributes.HitEffect).Emerge(transform.position, Quaternion.identity);
         }
     }
 
     /// <summary>
     /// Deals damage to a given target, taking into account whether it is the player or not
     /// </summary>
-    /// <param name="damageAmount">The amount of damage to deal</param>
+    /// <param name="directDamage">Whether the damage is direct or indirect</param>
     /// <param name="target">The target to deal the damage to</param>
-    private void DealDamageToTarget(float damageAmount, GameObject target)
+    private void DealDamageToTarget(bool directDamage, GameObject target)
     {
         if (target.CompareTag("Player") || target.CompareTag("PlayerSpawn"))
         {
             if (Attributes.IgnorePlayer) return;
-            target.GetComponent<IDamageable>()?.Damage(damageAmount * BarrelAttributes.DamageMultiplier);
+            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
         }
         else
         {
-            target.GetComponent<IDamageable>()?.Damage(damageAmount * BarrelAttributes.DamageMultiplier);
+            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
         }
 
         Submerge();
+    }
+
+    /// <summary>
+    /// Gets the damage of the bullet
+    /// </summary>
+    /// <returns>The damage of the bullet</returns>
+    private float GetDamage(bool direct)
+    {
+        float damageVariation = Random.Range(0, Attributes.MaxDamageVariation);
+        float baseDamage = direct ? Attributes.DirectDamage : Attributes.IndirectDamage;
+        return baseDamage * DamageMultiplier + damageVariation;
     }
 
     #endregion
