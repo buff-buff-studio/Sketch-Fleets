@@ -41,7 +41,7 @@ Material:
     - _GreMult: {r: 0, g: 1, b: 0, a: 0}
     - _RedMult: {r: 1, g: 0, b: 0, a: 0}
     - _blinkColor: {r: 1, g: 0, b: 0, a: 0}
-    - _bluMul: {r: 0, g: 0, b: 1, a: 0}
-    - _greMul: {r: 0, g: 1, b: 0, a: 0}
-    - _redMul: {r: 0.5430108, g: 0.21383637, b: 1, a: 1}
+    - _bluMul: {r: 0.38178208, g: 0.19668922, b: 0.6415094, a: 1}
+    - _greMul: {r: 0.7323349, g: 0.5424528, b: 1, a: 1}
+    - _redMul: {r: 0.4784314, g: 0.23529413, b: 0.8196079, a: 1}
   m_BuildTextureStacks: []

@@ -25,11 +25,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
-    _constant: 300
+    _constant: 250
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
-    _constant: 150
+    _constant: 125
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
@@ -67,3 +67,4 @@ MonoBehaviour:
   fire: {fileID: 11400000, guid: cd4b2ca9005c76547a9411386cf0ced0, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 2685658488167287599, guid: ee9fbbf272b3bb34988accc0846aac0d, type: 3}
+  healEffect: {fileID: 0}
