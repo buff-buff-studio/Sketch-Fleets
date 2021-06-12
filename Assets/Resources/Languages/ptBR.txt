@@ -113,13 +113,22 @@ ui_tutorial_magenta=Por fim, a Magenta. Apesar de ser frágil, ela atira extrema
 # SHIP NAMES
 #
 
-ship_mother=Nave Mãe
-ship_magenta=Nave Magenta
-ship_cyan=Nave Ciano
-ship_yellow=Nave Amarela
-ship_lime=Nave Verde
-ship_purple=Nave Roxa
-ship_orange=Nave Laranja
+ship_mother=Mothership
+ship_magenta=Thompson
+ship_cyan=The Meteor
+ship_yellow=The Tower
+
+ship_spinner=Spinner
+ship_shockwave=The Shockwave
+ship_spire=Spire
+
+ship_ace=Ace
+ship_skysplitter=The Skysplitter
+ship_starburst=Starburst
+
+ship_seeker=Seeker
+ship_destroyer=Destroyer
+ship_warfront=The Warfront
 
 #
 # ITEM NAMES

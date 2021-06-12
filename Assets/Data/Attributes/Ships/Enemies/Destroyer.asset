@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c96b4768b890804dbb36f984a04b908, type: 3}
-  m_Name: Orange Fast
+  m_Name: Destroyer
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
@@ -21,9 +21,10 @@ MonoBehaviour:
 '
   prefab: {fileID: 1384894757326695033, guid: ee54617ce9229b349a6175c898b8f929, type: 3}
   unlocalizedName: ship_orange_fast
+  unlocalizedDescription: 
   shipColor:
     _useConstant: 1
-    _constant: {r: 1, g: 0.40000078, b: 0, a: 1}
+    _constant: {r: 0.16078432, g: 0.16078432, b: 0.16078432, a: 1}
     _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c96b4768b890804dbb36f984a04b908, type: 3}
-  m_Name: Lime Shotgun
+  m_Name: Shockwave
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
@@ -19,9 +19,10 @@ MonoBehaviour:
   description: Enemy Lime Shotgun
   prefab: {fileID: 8889707252369350486, guid: 29e7d02787c05424fb12684dc643f475, type: 3}
   unlocalizedName: ship_lime_shotgun
+  unlocalizedDescription: 
   shipColor:
     _useConstant: 1
-    _constant: {r: 0.30817604, g: 1, b: 0.524391, a: 1}
+    _constant: {r: 0.58431375, g: 0.19607843, b: 0.5137255, a: 1}
     _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
