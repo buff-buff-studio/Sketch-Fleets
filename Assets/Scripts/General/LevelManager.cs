@@ -37,7 +37,9 @@ namespace SketchFleets.General
 
         [Header("UI Parameters")]
         [SerializeField, Tooltip("The menu that appears when the game is won")]
-        private GameObject victoryMenu;
+        private GameObject victoryMenu;        
+        [SerializeField, Tooltip("All other UIs that should close when the game is over")]
+        private GameObject[] otherUI;        
 
         [Header("Other Parameters")]
         [SerializeField, Tooltip("The total of enemies killed, displayed in the UI")]
@@ -49,6 +51,8 @@ namespace SketchFleets.General
 
         private int mapWaveCount;
         private int currentWave;
+        private bool waveStarted;
+        private bool gameEnded = false;
  
         private Coroutine handleWaveProgressRoutine;
         private Coroutine spawnWaveRoutine;
@@ -62,6 +66,7 @@ namespace SketchFleets.General
         #region Properties
 
         public Mothership Player => player;
+        public bool GameEnded => gameEnded;
 
         #endregion
 
@@ -104,10 +109,10 @@ namespace SketchFleets.General
             activeShips--;
             totalEnemiesKilled.Value++;
 
-            if (IsWaveOver())
-            {
-                StartNextWave();
-            }
+            if (!IsWaveOver()) return;
+            
+            waveStarted = false;
+            StartNextWave();
         }
 
         #endregion
@@ -150,7 +155,7 @@ namespace SketchFleets.General
         /// <returns>Whether all waves are over</returns>
         private bool AreAllWavesOver()
         {
-            return currentWave >= mapWaveCount;
+            return currentWave > mapWaveCount;
         }
         
         /// <summary>
@@ -159,7 +164,7 @@ namespace SketchFleets.General
         /// <returns>Whether the active wave is over</returns>
         private bool IsWaveOver()
         {
-            return activeShips == 0;
+            return activeShips == 0 && waveStarted;
         }
 
         /// <summary>
@@ -167,12 +172,18 @@ namespace SketchFleets.General
         /// </summary>
         private IEnumerator SpawnWave()
         {
+            #if UNITY_EDITOR
+            Debug.Log($"Starting wave {currentWave}");
+            #endif
+            
             for (int index = 1; index <= mapAttributes.MaxEnemies[mapAttributes.Difficulty]; index++)
             {
                 SpawnShip();
                 float intervalDeviation = Random.Range(spawnIntervalDeviation * -1f, spawnIntervalDeviation);
                 yield return new WaitForSeconds(spawnInterval + intervalDeviation);
             }
+
+            waveStarted = true;
         }
 
         /// <summary>
@@ -247,8 +258,21 @@ namespace SketchFleets.General
         private void WinGame()
         {
             ProfileSystem.Profile.Data.Coins += pencilShell.Value;
+            SetOtherMenusActive(false);
             victoryMenu.SetActive(true);
+
             Time.timeScale = 0;
+        }
+
+        /// <summary>
+        /// Closes all other menus
+        /// </summary>
+        private void SetOtherMenusActive(bool active)
+        {
+            for (int index = 0, upper = otherUI.Length; index < upper; index++)
+            {
+                otherUI[index].SetActive(active);
+            }
         }
 
         /// <summary>
@@ -256,6 +280,7 @@ namespace SketchFleets.General
         /// </summary>
         private void EndGame()
         {
+            gameEnded = true;
             Time.timeScale = 1f;
         }
 
@@ -281,18 +306,18 @@ namespace SketchFleets.General
         /// </summary>
         private int GetMinutes()
         {
-            int getMinutes = 0;
+            return (int)(Time.timeSinceLevelLoad / 60) % 60;
                 
-            if (Time.timeSinceLevelLoad / 60 < 1)
-            {
-                getMinutes = 0;
-            }
-            else
-            {
-                getMinutes = (int)(Time.timeSinceLevelLoad % 60);
-            }
-
-            return getMinutes;
+            // if (Time.timeSinceLevelLoad / 60 < 1)
+            // {
+            //     getMinutes = 0;
+            // }
+            // else
+            // {
+            //     getMinutes = (int)(Time.timeSinceLevelLoad % 60);
+            // }
+            //
+            // return getMinutes;
         }
 
         #endregion

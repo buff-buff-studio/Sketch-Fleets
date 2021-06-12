@@ -52,34 +52,53 @@ namespace SketchFleets.UI
             }
 
             // NOTE: Why the fuck is this here? The health bar of all things is responsible for throwing game over?
-            if (target.CurrentHealth <= 0 && gameOverScreen.activeSelf == false)
-            {
-                //Add coins and clear
-                gameOverScreen.SetActive(true);
-                Time.timeScale = 0;
-                healthBar.fillAmount = 0;
+            if (!IsGameOver()) return;
+            
+            ShowGameOver();
+            RewardPlayer();        
 
-                //Add coins
-                ProfileSystem.Profile.Data.TotalCoins += ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(pencilShell.Value);
-                PencilBoxText.AddedAmount = pencilShell.Value;
-                pencilShell.Value = 0;           
-
-                SketchFleets.ProfileSystem.Profile.Data.Clear(this,(data) => {
-                    //Clear data
-                });
-            }
+            // Forces the healthbar to be at 0
+            healthBar.fillAmount = 0;
+                
+            // Clears map-specific data
+            SketchFleets.ProfileSystem.Profile.Data.Clear(this,(data) => {});
         }
 
         #endregion
 
         #region Public Methods
 
+        private bool IsGameOver()
+        {
+            return target.CurrentHealth <= 0 && gameOverScreen.activeSelf == false;
+        }
+        
         /// <summary>
         /// Changes the graphic part of the life bar 
         /// </summary>
         private void LifeBarUpdate()
         {
             healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, FillAmount, Time.deltaTime * lerpSpeed);
+        }
+
+        /// <summary>
+        /// Shows the game over screen
+        /// </summary>
+        private void ShowGameOver()
+        {
+            gameOverScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+        
+        /// <summary>
+        /// Rewards the player
+        /// </summary>
+        private void RewardPlayer()
+        {
+            ProfileSystem.Profile.Data.TotalCoins += 
+                ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(pencilShell.Value);
+            PencilBoxText.AddedAmount = pencilShell.Value;
+            pencilShell.Value = 0;           
         }
 
         #endregion
