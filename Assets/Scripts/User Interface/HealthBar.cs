@@ -57,6 +57,7 @@ namespace SketchFleets.UI
                 //Add coins and clear
                 gameOverScreen.SetActive(true);
                 Time.timeScale = 0;
+                healthBar.fillAmount = 0;
 
                 //Add coins
                 ProfileSystem.Profile.Data.TotalCoins += ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(pencilShell.Value);
