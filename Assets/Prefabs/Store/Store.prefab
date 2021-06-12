@@ -884,7 +884,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ca69cbc715a8e3d458c25000a7f4eb19, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 231781f2d9a3553488c27e67ac9a2b78, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1722,7 +1722,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ca69cbc715a8e3d458c25000a7f4eb19, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 231781f2d9a3553488c27e67ac9a2b78, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1977,7 +1977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 520, y: 220.00003}
+  m_AnchoredPosition: {x: 520, y: 218.1}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7340449412866925968
@@ -2345,7 +2345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 555.99994, y: -122.200005}
+  m_AnchoredPosition: {x: 555.99994, y: -109.7}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7340449413181537741
@@ -2538,6 +2538,7 @@ MonoBehaviour:
   tooltipText: {fileID: 644391717113870748}
   tooltipDescription: {fileID: 7008018544001550737}
   tooltipBackground: {fileID: 7522489690781924411}
+  changeY: 0
   itemInformationPanel: {fileID: 6888051793734980118}
   itemBuyConfirmation: {fileID: 0}
   itemBuyPrice: {fileID: 7269352717847529721}
@@ -2784,7 +2785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 180, y: 220.00003}
+  m_AnchoredPosition: {x: 180, y: 221.8}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7340449414071066064
@@ -2906,7 +2907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 386, y: -117.200005}
+  m_AnchoredPosition: {x: 386, y: -106.9}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7340449414091350273
@@ -3527,7 +3528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 215.99994, y: -114.20002}
+  m_AnchoredPosition: {x: 215.99994, y: -107.6}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7340449414663308713
@@ -4500,6 +4501,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7340449413207734770}
     m_Modifications:
+    - target: {fileID: 6808178985795138290, guid: ea20a3f79783e7d4288f5a1e2de02a90, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e50977b96420d048a32598f0215beed, type: 3}
     - target: {fileID: 7724553811085395377, guid: ea20a3f79783e7d4288f5a1e2de02a90, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

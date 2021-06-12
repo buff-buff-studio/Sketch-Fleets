@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Violet Ship FBCM
+  m_Name: Tank FBCM
   m_Shader: {fileID: -6465566751694194690, guid: 46d834486052fce4a9ce35f978191146, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -41,7 +41,7 @@ Material:
     - _GreMult: {r: 0, g: 1, b: 0, a: 0}
     - _RedMult: {r: 1, g: 0, b: 0, a: 0}
     - _blinkColor: {r: 1, g: 0, b: 0, a: 0}
-    - _bluMul: {r: 0.38178208, g: 0.19668922, b: 0.6415094, a: 1}
-    - _greMul: {r: 0.7323349, g: 0.5424528, b: 1, a: 1}
-    - _redMul: {r: 0.4784314, g: 0.23529413, b: 0.8196079, a: 1}
+    - _bluMul: {r: 0.16242434, g: 0.3132272, b: 0.4716981, a: 1}
+    - _greMul: {r: 0.5943396, g: 0.39748594, b: 0.2214756, a: 1}
+    - _redMul: {r: 0.23829654, g: 0.44732472, b: 0.8018868, a: 1}
   m_BuildTextureStacks: []

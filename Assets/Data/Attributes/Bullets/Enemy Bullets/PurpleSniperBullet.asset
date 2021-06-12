@@ -28,7 +28,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 100
+    _constant: 125
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
@@ -55,5 +55,5 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 0.25
     _variable: {fileID: 0}
-  fireEffect: {fileID: 0}
+  fireEffect: {fileID: 2457878437404487259, guid: fce049f0b3f98804ab4556bf130281cf, type: 3}
   hitEffect: {fileID: 0}

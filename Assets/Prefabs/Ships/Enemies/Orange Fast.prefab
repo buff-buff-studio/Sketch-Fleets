@@ -7,25 +7,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2388211412442051179, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
+      propertyPath: attributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 26871296f99e8cb4494bc609b89e88ac, type: 2}
     - target: {fileID: 5494245065721851808, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_Name
-      value: Orange Fast Ship
+      value: Orange Fast
       objectReference: {fileID: 0}
+    - target: {fileID: 5672061659928867979, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ef16333cbbc4064892b2b715f24fb60, type: 2}
     - target: {fileID: 9201698745478712668, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9201698745478712668, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1907359
+      value: 0.35501304
       objectReference: {fileID: 0}
     - target: {fileID: 9201698745478712668, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.57220775
+      value: 1.0650392
       objectReference: {fileID: 0}
     - target: {fileID: 9201698745478712668, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.57220775
+      value: 1.0650392
       objectReference: {fileID: 0}
     - target: {fileID: 9201698745478712668, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_LocalPosition.x

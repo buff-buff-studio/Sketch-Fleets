@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3717645079695835588, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
+      propertyPath: attributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f131c9366701af4c873a4bd28e07e55, type: 2}
+    - target: {fileID: 6630474200131274532, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e84e76f744638d4ab1833a8d87cb04f, type: 2}
     - target: {fileID: 6812927983558368271, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
       propertyPath: m_Name
       value: Purple Sniper
@@ -17,15 +25,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7854307853584121587, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.18149929
+      value: 0.2425045
       objectReference: {fileID: 0}
     - target: {fileID: 7854307853584121587, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.54449785
+      value: 0.72751343
       objectReference: {fileID: 0}
     - target: {fileID: 7854307853584121587, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.54449785
+      value: 0.72751343
       objectReference: {fileID: 0}
     - target: {fileID: 7854307853584121587, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
       propertyPath: m_LocalPosition.x
