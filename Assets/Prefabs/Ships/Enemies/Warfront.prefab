@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: b278415e8a028414396a3e338f85629e, type: 2}
     - target: {fileID: 5494245065721851808, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_Name
-      value: Orange Tank
+      value: Warfront
       objectReference: {fileID: 0}
     - target: {fileID: 5672061659928867979, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -33,15 +33,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9201698745478712668, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.83046526
+      value: 0.833
       objectReference: {fileID: 0}
     - target: {fileID: 9201698745478712668, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.491396
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9201698745478712668, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.491396
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9201698745478712668, guid: 21e2cc9b4613d6a4885257bee7967117, type: 3}
       propertyPath: m_LocalPosition.x
