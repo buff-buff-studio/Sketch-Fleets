@@ -3070,7 +3070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409112511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.709588, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.704995, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 905858676}
@@ -9482,7 +9482,7 @@ GameObject:
   - component: {fileID: 1180849234}
   - component: {fileID: 1180849233}
   m_Layer: 0
-  m_Name: Obstacle Spawn Area
+  m_Name: Spawn Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9809,7 +9809,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207070478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.709588, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.704995, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1399291222}
@@ -11504,7 +11504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda9398628c36d546a857897ae12c419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xDist: {x: 30, y: 40}
+  teleportArea: {fileID: 1180849233}
 --- !u!1 &1403047129
 GameObject:
   m_ObjectHideFlags: 0
