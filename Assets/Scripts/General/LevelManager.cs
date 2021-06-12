@@ -255,6 +255,9 @@ namespace SketchFleets.General
             Time.timeScale = 1f;
         }
 
+        /// <summary>
+        /// Updates the timer
+        /// </summary>
         private IEnumerator UpdateTimer()
         {
             WaitForSeconds secondInterval = new WaitForSeconds(1f);
@@ -262,12 +265,30 @@ namespace SketchFleets.General
             while (true)
             {
                 seconds.Value = (int)Time.timeSinceLevelLoad;
-                minutes.Value = (int)(Time.timeSinceLevelLoad % 60);
-                
-                mapTimer.Value = $"{minutes.Value:00}:{seconds.Value:00}";
+
+                mapTimer.Value = $"{GetMinutes():00}:{seconds.Value:00}";
                 
                 yield return secondInterval;
             }
+        }
+
+        /// <summary>
+        /// Gets the current amount of minutes
+        /// </summary>
+        private int GetMinutes()
+        {
+            int getMinutes = 0;
+                
+            if (Time.timeSinceLevelLoad / 60 < 1)
+            {
+                getMinutes = 0;
+            }
+            else
+            {
+                getMinutes = (int)(Time.timeSinceLevelLoad % 60);
+            }
+
+            return getMinutes;
         }
 
         #endregion
