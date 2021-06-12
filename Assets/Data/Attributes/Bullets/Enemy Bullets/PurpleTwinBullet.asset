@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
-  m_Name: LimeBullet
+  m_Name: PurpleTwinBullet
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Lime Bullet
+    _constant: Purple Twin Bullet
     _variable: {fileID: 0}
-  description: A bullet fired by the lime ship
-  prefab: {fileID: 2329831306282603820, guid: 99a4243c28cca7941b538f25fc22ffb1, type: 3}
+  description: A bullet fired by the Purple Twin
+  prefab: {fileID: 4233880130515042751, guid: ceb6d0387b0f7224e958c0b76c13e979, type: 3}
   directDamage:
     _useConstant: 1
-    _constant: 10
+    _constant: 7.5
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
@@ -28,7 +28,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 20
+    _constant: 40
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
@@ -48,7 +48,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 1.2
+    _constant: 0.4
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
   pitchVariation:

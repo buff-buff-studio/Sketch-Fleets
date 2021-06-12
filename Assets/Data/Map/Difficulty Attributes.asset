@@ -20,7 +20,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   currentMap:
     _useConstant: 1
-    _constant: 19
+    _constant: 1
     _variable: {fileID: 0}
   currentDifficulty:
     _useConstant: 1
@@ -50,19 +50,19 @@ MonoBehaviour:
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   - _useConstant: 1
+    _constant: {x: 2, y: 2}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 3, y: 4}
+    _variable: {fileID: 0}
+  - _useConstant: 1
     _constant: {x: 5, y: 8}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 8, y: 12}
+    _constant: {x: 9, y: 12}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 12, y: 16}
-    _variable: {fileID: 0}
-  - _useConstant: 1
-    _constant: {x: 25, y: 30}
-    _variable: {fileID: 0}
-  - _useConstant: 1
-    _constant: {x: 16, y: 20}
+    _constant: {x: 13, y: 18}
     _variable: {fileID: 0}
   mapHeight:
     _useConstant: 1
@@ -82,10 +82,10 @@ MonoBehaviour:
   enemyPool:
   - {fileID: 0}
   - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
-  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
-  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
-  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
-  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
+  - {fileID: 11400000, guid: 0d588b8ea96ff8a48bcbd40a252912b2, type: 2}
+  - {fileID: 11400000, guid: 21aadf55678505b4f8cf6b8dc48cfd02, type: 2}
+  - {fileID: 11400000, guid: af78d5c9d95e0f34ba5c2048e894dbe4, type: 2}
+  - {fileID: 11400000, guid: 93c528ea34cac92448854ed4432fc98c, type: 2}
   maxEnemies:
   - _useConstant: 1
     _constant: 0
@@ -94,15 +94,15 @@ MonoBehaviour:
     _constant: 4
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 8
+    _constant: 5
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 12
+    _constant: 8
     _variable: {fileID: 0}
   - _useConstant: 1
     _constant: 10
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 16
+    _constant: 14
     _variable: {fileID: 0}
   obstaclePool: []
