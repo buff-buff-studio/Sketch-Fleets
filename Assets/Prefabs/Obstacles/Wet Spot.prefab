@@ -71,6 +71,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 5958926348154050892, guid: 140f17f3e4266f34283d3722b83c346c, type: 3}
+    - target: {fileID: 3185502667459620804, guid: 65c5c039c44d228448b30333d2d3bc43, type: 3}
+      propertyPath: m_Color.b
+      value: 0.25157225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185502667459620804, guid: 65c5c039c44d228448b30333d2d3bc43, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185502667459620804, guid: 65c5c039c44d228448b30333d2d3bc43, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8280286
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185502667459620804, guid: 65c5c039c44d228448b30333d2d3bc43, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3196953256025958094, guid: 65c5c039c44d228448b30333d2d3bc43, type: 3}
       propertyPath: m_Name
       value: Wet Spot
