@@ -54,6 +54,9 @@ namespace SketchFleets.General
         private Coroutine spawnWaveRoutine;
         private Coroutine updateTimerRoutine;
 
+        [SerializeField]
+        private IntReference pencilShell;
+
         #endregion
 
         #region Properties
@@ -243,6 +246,7 @@ namespace SketchFleets.General
         /// </summary>
         private void WinGame()
         {
+            ProfileSystem.Profile.Data.Coins += pencilShell.Value;
             victoryMenu.SetActive(true);
             Time.timeScale = 0;
         }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c96b4768b890804dbb36f984a04b908, type: 3}
-  m_Name: Lime Ship
+  m_Name: Spinner
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
@@ -19,6 +19,7 @@ MonoBehaviour:
   description: "Lime enemy ship\t"
   prefab: {fileID: 1419266270299820781, guid: 65faab35e8e0d4844a45146097df8021, type: 3}
   unlocalizedName: ship_lime
+  unlocalizedDescription: 
   shipColor:
     _useConstant: 1
     _constant: {r: 0.30817604, g: 1, b: 0.524391, a: 1}

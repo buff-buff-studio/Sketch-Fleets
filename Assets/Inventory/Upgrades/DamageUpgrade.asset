@@ -19,7 +19,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   itemCost:
     _useConstant: 1
-    _constant: 100
+    _constant: 500
     _variable: {fileID: 0}
   icon: {fileID: 4240796555968452825, guid: 04a052041ca315248bf523345bf3ad90, type: 3}
   itemCostIncreasePerLevel:
@@ -32,7 +32,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   upgradeDamageIncrease:
     _useConstant: 1
-    _constant: 0
+    _constant: 10
     _variable: {fileID: 0}
   upgradeShieldIncrease:
     _useConstant: 1

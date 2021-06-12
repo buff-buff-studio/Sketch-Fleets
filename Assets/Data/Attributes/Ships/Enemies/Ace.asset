@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c96b4768b890804dbb36f984a04b908, type: 3}
-  m_Name: Purple Ship
+  m_Name: Ace
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
@@ -19,6 +19,7 @@ MonoBehaviour:
   description: 
   prefab: {fileID: 6812927983558368271, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
   unlocalizedName: ship_purple
+  unlocalizedDescription: 
   shipColor:
     _useConstant: 1
     _constant: {r: 0.644, g: 0, b: 1, a: 1}
@@ -67,3 +68,4 @@ MonoBehaviour:
   fire: {fileID: 11400000, guid: 550dd3e518aab5c45bdad97835ef007a, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 780527247926514595, guid: dd5db8936b93b1c408085f876a4135de, type: 3}
+  healEffect: {fileID: 0}

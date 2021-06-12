@@ -1297,6 +1297,10 @@ MonoBehaviour:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 11400000, guid: 8a0de06510999f640bb44839925e8b30, type: 2}
+  pencilShell:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: d6a9e804e272a264290737db7ac36e9d, type: 2}
 --- !u!1 &196694798
 GameObject:
   m_ObjectHideFlags: 0
@@ -3070,7 +3074,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409112511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.704995, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.709588, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 905858676}
@@ -9809,7 +9813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207070478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.704995, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.709588, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1399291222}

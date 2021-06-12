@@ -31,7 +31,7 @@ namespace SketchFleets.Inventory
 
         public void OnClickSlotInv(int slot)
         {
-            if(slot + page * 6 < items.Count)
+            if(slot + page * 6 <= items.Count)
                 return;
 
             ItemStack it = items[slot + page * 6];

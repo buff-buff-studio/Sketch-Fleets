@@ -16,9 +16,9 @@ namespace SketchFleets.Data
         [SerializeField]
         private IntReference spawnSlotBonus;
         [SerializeField]
-        private IntReference spawnCooldownMultiplierBonus;
+        private FloatReference spawnCooldownMultiplierBonus;
         [SerializeField]
-        private IntReference abilityCooldownMultiplierBonus;
+        private FloatReference abilityCooldownMultiplierBonus;
 
         #endregion
 
@@ -30,13 +30,13 @@ namespace SketchFleets.Data
             set => spawnSlotBonus = value;
         }
 
-        public IntReference SpawnCooldownMultiplierBonus
+        public FloatReference SpawnCooldownMultiplierBonus
         {
             get => spawnCooldownMultiplierBonus;
             set => spawnCooldownMultiplierBonus = value;
         }
 
-        public IntReference AbilityCooldownMultiplierBonus
+        public FloatReference AbilityCooldownMultiplierBonus
         {
             get => abilityCooldownMultiplierBonus;
             set => abilityCooldownMultiplierBonus = value;
