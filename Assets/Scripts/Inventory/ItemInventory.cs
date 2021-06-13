@@ -169,7 +169,8 @@ namespace SketchFleets.Inventory
         {
             for (int i = 0; i < items.Length; i++)
                 if (items[i] != null)
-                    yield return items[i];
+                    if(items[i].Amount > 0)
+                        yield return items[i];
         }
 
         /// <summary>

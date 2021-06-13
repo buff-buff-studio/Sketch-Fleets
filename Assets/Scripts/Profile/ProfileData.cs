@@ -23,7 +23,9 @@ namespace SketchFleets.ProfileSystem
         public int Coins { get => save.Get<int>("coins"); set { save.Set("coins", value); Profile.SaveProfile((data) => { }); } }
         public int TotalCoins { get => save.Get<int>("totalCoins"); set { save.Set("totalCoins", value); Profile.SaveProfile((data) => { }); } }
         public int TimeSeconds { get => save.Get<int>("seconds"); set { save.Set("seconds", value); Profile.SaveProfile((data) => { }); } }
+        public int Kills { get => save.Get<int>("kkkkkkills"); set { save.Set("kkkkkkills", value); Profile.SaveProfile((data) => { }); } }
         
+
         #endregion
 
         #region Properties
@@ -140,6 +142,9 @@ namespace SketchFleets.ProfileSystem
             save.Remove("mapState");
             save.Remove("items");
             save.Remove("coins");
+            save.Remove("seconds");
+            save.Remove("kkkkkkills");
+
             ReloadInventories();
             Profile.SaveProfile(callback);
         }

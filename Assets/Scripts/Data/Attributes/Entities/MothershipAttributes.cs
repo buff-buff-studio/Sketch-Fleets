@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ManyTools.UnityExtended;
+using SketchFleets.Inventory;
 using ManyTools.Variables;
 using UnityEngine;
 
@@ -21,7 +22,13 @@ namespace SketchFleets.Data
         [SerializeField]
         [Tooltip("The interval between each self-destruct of ally ships when using the regenerate ability")]
         private FloatReference regenerateKillInterval = new FloatReference(0.15f);
-
+        #endregion
+        #region Public Fields
+        [Header("Item & Upgrade Registers")]
+        [SerializeField]
+        public ShopObjectRegister itemRegister;
+        [SerializeField]
+        public ShopObjectRegister upgradeRegister;
         #endregion
 
         #region Properties
@@ -29,6 +36,10 @@ namespace SketchFleets.Data
         public FloatReference RegenerateCooldown => regenerateCooldown;
 
         public FloatReference RegenerateKillInterval => regenerateKillInterval;
+
+        public ShopObjectRegister ItemRegister => itemRegister;
+
+        public ShopObjectRegister UpgradeRegister => upgradeRegister;
 
         #endregion
 
