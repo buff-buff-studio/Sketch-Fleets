@@ -8,10 +8,10 @@ namespace SketchFleets.Data
     /// </summary>
     public class MothershipAttributesBonuses : ScriptableObject
     {
-        public IntReference HealthIncrease = new IntReference(0);
-        public IntReference DamageIncrease = new IntReference(0);
-        public IntReference ShieldIncrease = new IntReference(0);
-        public IntReference SpeedIncrease = new IntReference(0);
+        public FloatReference HealthIncrease = new FloatReference(0);
+        public FloatReference DamageIncrease = new FloatReference(0);
+        public FloatReference ShieldIncrease = new FloatReference(0);
+        public FloatReference SpeedIncrease = new FloatReference(0);
         public IntReference ExtraSpawnSlots = new IntReference(1);
 
         public FloatReference SpawnCooldownMultiplier = new FloatReference(1f);

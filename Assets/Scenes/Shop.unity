@@ -451,6 +451,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1476433454}
     m_Modifications:
+    - target: {fileID: 70855651711975246, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2298691143748108947, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -491,6 +495,10 @@ PrefabInstance:
       propertyPath: menuAudioSource
       value: 
       objectReference: {fileID: 999187802}
+    - target: {fileID: 6159416517307873229, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6888051793734980118, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: m_IsActive
       value: 0
