@@ -278,6 +278,7 @@ namespace SketchFleets.General
             if(mapAttributes.Difficulty == 4)
             {
                 SceneManager.LoadScene("EndGame");
+                return;
             }
             ProfileSystem.Profile.Data.Coins = pencilShell.Value;
             ProfileSystem.Profile.Data.TimeSeconds = seconds.Value;
