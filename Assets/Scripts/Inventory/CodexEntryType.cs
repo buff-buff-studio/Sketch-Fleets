@@ -5,8 +5,7 @@ namespace SketchFleets.Inventory
     /// </summary>
     public enum CodexEntryType
     {
-        Ally,
-        Enemy,
+        Ship,
         Item,
         Region
     }
