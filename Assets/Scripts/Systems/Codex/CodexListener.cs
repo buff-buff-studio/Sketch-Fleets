@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using ManyTools.UnityExtended;
+using ManyTools.UnityExtended.Editor;
 using SketchFleets.Data;
 using SketchFleets.Inventory;
 using SketchFleets.ProfileSystem;
@@ -14,19 +14,10 @@ namespace SketchFleets.Systems.Codex
     {
         #region Private Fields
 
+        [Header("Parameters")]
+        [SerializeField, Tooltip("The ship register ScriptableObject"), RequiredField()]
         private ShipRegister shipRegister;
-        private List<ShipAttributes> collectedEntries = new List<ShipAttributes>();
 
-        #endregion
-
-        #region Unity Callbacks
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            LoadCollectedEntries();
-        }
-        
         #endregion
 
         #region Public Fields
@@ -37,40 +28,25 @@ namespace SketchFleets.Systems.Codex
         /// <param name="ship">The ship to collect the entry of</param>
         public void CollectEntry(ShipAttributes ship)
         {
-            if (!collectedEntries.Contains(ship))
-            {
-                collectedEntries.Add(ship);
-            }
+            CodexEntry entry = new CodexEntry(CodexEntryType.Ship, ship.CodexRarity, GetRegisterID(shipRegister, ship));
+            Profile.Data.codex.AddItem(entry);
         }
 
         #endregion
 
         #region Private Fields
 
-        private void SaveCollectedEntries()
-        {
-            for (int index = 0, upper = collectedEntries.Count; index < upper; index++)
-            {
-                CodexEntry entry = new CodexEntry();
-                Profile.Data.codex.AddItem(GetRegisterID(collectedEntries[index]));
-            }
-        }
-
-        private List<ShipAttributes> LoadCollectedEntries()
-        {
-            return new List<ShipAttributes>();
-        }
-
         /// <summary>
-        /// Gets the register ID for the given ship type
+        /// Gets the register ID for the given entry
         /// </summary>
+        /// <param name="register">The register to search in</param>
         /// <param name="entry">The entry to get the ID of</param>
         /// <returns>The entry's ID</returns>
-        private int GetRegisterID(ShipAttributes entry)
+        private static int GetRegisterID(Register<ShipAttributes> register, Object entry)
         {
-            for (int index = 0, upper = shipRegister.items.Length; index < upper; index++)
+            for (int index = 0, upper = register.items.Length; index < upper; index++)
             {
-                if (shipRegister.items[index] == entry)
+                if (register.items[index] == entry)
                 {
                     return index;
                 }
