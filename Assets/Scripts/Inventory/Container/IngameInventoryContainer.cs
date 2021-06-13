@@ -31,8 +31,7 @@ namespace SketchFleets.Inventory
 
         public void OnClickSlotInv(int slot)
         {
-            if(slot + page * 6 <= items.Count)
-                return;
+ 
 
             ItemStack it = items[slot + page * 6];
             if(it != null)
@@ -61,6 +60,7 @@ namespace SketchFleets.Inventory
 
         public void OnUseItem(Item item)
         {
+            Debug.Log("To usando oh: " + item);
             //On item used
             ItemEffect effect = item.Effect;
 

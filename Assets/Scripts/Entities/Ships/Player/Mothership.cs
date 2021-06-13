@@ -98,6 +98,7 @@ namespace SketchFleets.Entities
 
             if (Attributes.HealEffect != null)
             {
+                if(PoolManager.Instance != null)
                 PoolManager.Instance.Request(Attributes.HealEffect).
                     Emerge(cachedTransform.position, cachedTransform.rotation);
             }
@@ -506,7 +507,10 @@ namespace SketchFleets.Entities
             attributesBonuses.SpeedMultiplier.Value = result.speedMultiplierBonus;
             attributesBonuses.Defense.Value = result.defenseBonus;
 
-            Debug.Log("Apply pls: " + attributesBonuses.HealthIncrease + " " + attributesBonuses.DamageIncrease);
+            Heal(attributesBonuses.HealthRegen);
+            CurrentShield.Value = Mathf.Min(GetMaxShield(), CurrentShield.Value + attributesBonuses.ShieldRegen);
+
+            Debug.Log("Reapply pls: " + attributesBonuses.HealthRegen);
         }
         
         #endregion
