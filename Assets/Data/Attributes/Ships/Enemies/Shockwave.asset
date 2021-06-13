@@ -26,11 +26,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
-    _constant: 450
+    _constant: 280
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
-    _constant: 150
+    _constant: 100
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
