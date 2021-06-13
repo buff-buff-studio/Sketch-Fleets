@@ -54,7 +54,6 @@ namespace SketchFleets.General
         private bool waveStarted;
         private bool gameEnded = false;
 
-        private Coroutine spawnWaveRoutine;
         private Coroutine updateTimerRoutine;
 
         [SerializeField]
@@ -114,6 +113,10 @@ namespace SketchFleets.General
             activeShips--;
             totalEnemiesKilled.Value++;
 
+#if UNITY_EDITOR
+            Debug.Log($"{activeShips} ships left in wave {currentWave} out of wave {mapWaveCount}");
+  #endif
+            
             if (!IsWaveOver()) return;
             EndWave();
 
