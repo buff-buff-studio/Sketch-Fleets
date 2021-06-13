@@ -285,8 +285,22 @@ namespace SketchFleets
         protected virtual void DropLoot()
         {
             // Drops pencil shells
-            if (Attributes.ShellDrop == null) return;
+            if (Attributes.ShellDrop != null)
+            {
+                DropShells();
+            }
 
+            if (Random.Range(0f, 1f) <= Attributes.CodexDropChance)
+            {
+                DropCodexEntry();
+            }
+        }
+
+        /// <summary>
+        /// Drops the ship's pencil shells
+        /// </summary>
+        protected virtual void DropShells()
+        {
             int dropCount = Mathf.RoundToInt(
                 Random.Range(Attributes.DropMinMaxCount.Value.x, Attributes.DropMinMaxCount.Value.y));
 
@@ -301,8 +315,24 @@ namespace SketchFleets
                 PoolMember drop = PoolManager.Instance.Request(Attributes.ShellDrop);
                 drop.Emerge(transform.position + dropPosition, Quaternion.Euler(randomRotation));
 
-                drop.GetComponent<PencilShell>().SetDropColor(Attributes.ShipColor);
+                drop.TryGetComponent(out PencilShell shell);
+                shell.SetDropColor(Attributes.ShipColor);
             }
+        }
+        
+        /// <summary>
+        /// Drops the ship's codex entry
+        /// </summary>
+        protected virtual void DropCodexEntry()
+        {
+            Transform cachedTransform = transform;
+
+            PoolMember codexEntry = PoolManager.Instance.Request(Attributes.CodexEntryTemplate);
+            codexEntry.Emerge(cachedTransform.position, cachedTransform.rotation);
+
+            codexEntry.TryGetComponent(out CodexEntryDrop drop);
+
+            drop.Entry = Attributes;
         }
 
         /// <summary>
