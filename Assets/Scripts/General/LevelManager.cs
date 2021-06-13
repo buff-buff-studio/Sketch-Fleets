@@ -18,7 +18,7 @@ namespace SketchFleets.General
         [Header("Map Parameters")]
         [SerializeField, Tooltip("The attributes of the current map")]
         private MapAttributes mapAttributes;
-        
+
         [Header("Spawn Parameters")]
         [SerializeField, Tooltip("The area in which a ship can spawn")]
         private Collider2D spawnArea;
@@ -37,14 +37,14 @@ namespace SketchFleets.General
 
         [Header("UI Parameters")]
         [SerializeField, Tooltip("The menu that appears when the game is won")]
-        private GameObject victoryMenu;        
+        private GameObject victoryMenu;
         [SerializeField, Tooltip("All other UIs that should close when the game is over")]
-        private GameObject[] otherUI;        
+        private GameObject[] otherUI;
 
         [Header("Other Parameters")]
         [SerializeField, Tooltip("The total of enemies killed, displayed in the UI")]
         private IntReference totalEnemiesKilled;
-        
+
         private Mothership player;
 
         private int activeShips = 0;
@@ -53,8 +53,7 @@ namespace SketchFleets.General
         private int currentWave;
         private bool waveStarted;
         private bool gameEnded = false;
- 
-        private Coroutine handleWaveProgressRoutine;
+
         private Coroutine spawnWaveRoutine;
         private Coroutine updateTimerRoutine;
 
@@ -66,7 +65,12 @@ namespace SketchFleets.General
         #region Properties
 
         public Mothership Player => player;
-        public bool GameEnded => gameEnded;
+
+        public bool GameEnded
+        {
+            get => gameEnded;
+            set => gameEnded = value;
+        }
 
         #endregion
 
@@ -94,7 +98,8 @@ namespace SketchFleets.General
             }
 
             updateTimerRoutine = StartCoroutine(UpdateTimer());
-            handleWaveProgressRoutine = StartCoroutine(HandleWaveProgress());
+            
+            StartNextWave();
         }
 
         #endregion
@@ -110,33 +115,35 @@ namespace SketchFleets.General
             totalEnemiesKilled.Value++;
 
             if (!IsWaveOver()) return;
-            
-            waveStarted = false;
-            StartNextWave();
+            EndWave();
+
+            HandleWaveProgress();
         }
 
         #endregion
 
         #region Private Methods
-        
+
+        /// <summary>
+        /// Ends the current wave
+        /// </summary>
+        private void EndWave()
+        {
+            waveStarted = false;
+        }
+
         /// <summary>
         /// Handles wave progress by checking when waves are over and progressing accordingly
         /// </summary>
-        private IEnumerator HandleWaveProgress()
+        private void HandleWaveProgress()
         {
-            WaitForSecondsRealtime checkInterval = new WaitForSecondsRealtime(3f);
-
-            StartNextWave();
-            
-            while (true)
+            if (AreAllWavesOver())
             {
-                if (AreAllWavesOver())
-                {
-                    WinGame();
-                    yield break;
-                }
-
-                yield return checkInterval;
+                WinGame();
+            }
+            else
+            {
+                StartNextWave();
             }
         }
 
@@ -148,16 +155,16 @@ namespace SketchFleets.General
             currentWave++;
             StartCoroutine(SpawnWave());
         }
-        
+
         /// <summary>
         /// Gets whether all waves were finishes
         /// </summary>
         /// <returns>Whether all waves are over</returns>
         private bool AreAllWavesOver()
         {
-            return currentWave > mapWaveCount;
+            return currentWave >= mapWaveCount;
         }
-        
+
         /// <summary>
         /// Gets whether the active wave is over
         /// </summary>
@@ -175,7 +182,7 @@ namespace SketchFleets.General
             #if UNITY_EDITOR
             Debug.Log($"Starting wave {currentWave}");
             #endif
-            
+
             for (int index = 1; index <= mapAttributes.MaxEnemies[mapAttributes.Difficulty]; index++)
             {
                 SpawnShip();
@@ -261,6 +268,7 @@ namespace SketchFleets.General
             SetOtherMenusActive(false);
             victoryMenu.SetActive(true);
 
+            gameEnded = true;
             Time.timeScale = 0;
         }
 
@@ -280,7 +288,6 @@ namespace SketchFleets.General
         /// </summary>
         private void EndGame()
         {
-            gameEnded = true;
             Time.timeScale = 1f;
         }
 
@@ -290,13 +297,13 @@ namespace SketchFleets.General
         private IEnumerator UpdateTimer()
         {
             WaitForSeconds secondInterval = new WaitForSeconds(1f);
-            
+
             while (true)
             {
                 seconds.Value = (int)Time.timeSinceLevelLoad;
 
                 mapTimer.Value = $"{GetMinutes():00}:{seconds.Value:00}";
-                
+
                 yield return secondInterval;
             }
         }
@@ -307,7 +314,7 @@ namespace SketchFleets.General
         private int GetMinutes()
         {
             return (int)(Time.timeSinceLevelLoad / 60) % 60;
-                
+
             // if (Time.timeSinceLevelLoad / 60 < 1)
             // {
             //     getMinutes = 0;
