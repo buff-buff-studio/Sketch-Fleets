@@ -87,7 +87,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4866454721465612024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,15 +117,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd0f5f8d363cb849b196b16e09cb2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life:
+  target: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  lerpSpeed:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 0}
-  maxLife:
+  healthBar: {fileID: 0}
+  pencilShell:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 0}
-  deadMenu: {fileID: 0}
 --- !u!114 &4866454721465612020
 MonoBehaviour:
   m_ObjectHideFlags: 0

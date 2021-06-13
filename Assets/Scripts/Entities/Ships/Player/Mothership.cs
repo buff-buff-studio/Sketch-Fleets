@@ -340,8 +340,6 @@ namespace SketchFleets.Entities
         /// <returns>The speed of the ship for the current point in time</returns>
         public float GetSpeed()
         {   
-            Debug.Log("BOLT TA a: " + (Attributes.Speed + AttributesBonuses.SpeedIncrease) 
-                   * AttributesBonuses.SpeedMultiplier);
             return (Attributes.Speed + AttributesBonuses.SpeedIncrease) 
                    * AttributesBonuses.SpeedMultiplier * Time.timeScale * Time.deltaTime;
         }

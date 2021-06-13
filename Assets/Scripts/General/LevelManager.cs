@@ -13,7 +13,15 @@ namespace SketchFleets.General
     /// </summary>
     public class LevelManager : Singleton<LevelManager>
     {
+        #region Public Fields
+        [SerializeField]
+        public TMPro.TMP_Text pauseShellCount;
+        #endregion
+
         #region Private Fields
+        [SerializeField]
+        private TMPro.TMP_Text winShellCount;
+        
 
         [Header("Map Parameters")]
         [SerializeField, Tooltip("The attributes of the current map")]
@@ -32,8 +40,6 @@ namespace SketchFleets.General
         private StringReference mapTimer;
         [SerializeField, Tooltip("The seconds passed since the beginning of the level")]
         private IntReference seconds;
-        [SerializeField, Tooltip("The minutes passed since the beginning of the level")]
-        private IntReference minutes;
 
         [Header("UI Parameters")]
         [SerializeField, Tooltip("The menu that appears when the game is won")]
@@ -89,10 +95,11 @@ namespace SketchFleets.General
 
         private void Start()
         {
+            pencilShell.Value = ProfileSystem.Profile.Data.Coins;
+            totalEnemiesKilled.Value = ProfileSystem.Profile.Data.Kills;
             if (mapAttributes.Map == 0)
             {
                 seconds.Value = 0;
-                minutes.Value = 0;
                 totalEnemiesKilled.Value = 0;
             }
 
@@ -267,9 +274,13 @@ namespace SketchFleets.General
         /// </summary>
         private void WinGame()
         {
-            ProfileSystem.Profile.Data.Coins += pencilShell.Value;
+            ProfileSystem.Profile.Data.Coins = pencilShell.Value;
+            ProfileSystem.Profile.Data.TimeSeconds = seconds.Value;
+            ProfileSystem.Profile.Data.Kills = totalEnemiesKilled.Value;
+
             SetOtherMenusActive(false);
             victoryMenu.SetActive(true);
+            winShellCount.text = ProfileSystem.Profile.Data.Coins.ToString();
 
             gameEnded = true;
             Time.timeScale = 0;
@@ -301,33 +312,20 @@ namespace SketchFleets.General
         {
             WaitForSeconds secondInterval = new WaitForSeconds(1f);
 
-            while (true)
-            {
-                seconds.Value = (int)Time.timeSinceLevelLoad;
+            int start = ProfileSystem.Profile.Data.TimeSeconds;
 
-                mapTimer.Value = $"{GetMinutes():00}:{seconds.Value:00}";
+            while (!gameEnded)
+            {
+                int seconds = (int) Time.timeSinceLevelLoad + start;
+                this.seconds.Value = seconds;
+                int minutes = (seconds/60)%60;
+                int hours = seconds/(60*60);
+                seconds = seconds%60;
+
+                mapTimer.Value = $"{hours:00}:{minutes:00}:{seconds:00}";
 
                 yield return secondInterval;
             }
-        }
-
-        /// <summary>
-        /// Gets the current amount of minutes
-        /// </summary>
-        private int GetMinutes()
-        {
-            return (int)(Time.timeSinceLevelLoad / 60) % 60;
-
-            // if (Time.timeSinceLevelLoad / 60 < 1)
-            // {
-            //     getMinutes = 0;
-            // }
-            // else
-            // {
-            //     getMinutes = (int)(Time.timeSinceLevelLoad % 60);
-            // }
-            //
-            // return getMinutes;
         }
 
         #endregion
