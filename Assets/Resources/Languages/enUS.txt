@@ -63,9 +63,18 @@ ui_quit_yes=Yes!
 ui_quit_no=No!
 
 #
-# IN-GAME
+# MAP
 #
 
+map_easy=Easy
+map_medium=Medium
+map_hard=Hard
+map_veryhard=Very Hard
+map_boss=???
+
+#
+# IN-GAME
+#
 
 ui_enemies=Enemies
 
@@ -107,7 +116,13 @@ ui_tutorial_frog2=Follow these instructions, they will help on your journey...
 ui_tutorial_wasd=Use WASD to control your ship's basic movement
 ui_tutorial_yellow=The Yellow Ship os like a tank. It will move very slowly but shoot multiple projectiles at a time
 ui_tutorial_cyan=The Cyan Ship will throw itself at the enemies when using the Right Click. It will cause a massive explosion and destroy itself
-ui_tutorial_magenta=And finally, the Magenta Ship. Fragile but with a extremely high fire rate, having many of them in the battlefield makes it your main source of damage 
+ui_tutorial_magenta=And finally, the Magenta Ship. Fragile but with a extremely high fire rate, having many of them in the battlefield makes it your main source of damage
+
+ui_tutorial_store_planet=In your journey, you will find Store-Planets, caracterized by their outdoors visible in your map and the unique color. There you can use Pencil Tips to buy various items that will have effect until the end of your mission.
+ui_tutorial_money=Pencil Tips are obtained by destroying enemies. Stronger enemies drop more Pencil Tips, so if you want more precious items, go out there and take more risks!
+
+In the end of your journey, all the Pencil Tips will be converted to Pencil Boxes. 5 Prencil Tips are worth 1 Pencil Box.
+ui_tutorial_store=The Menu Store is where you can buy the powerful, permanent upgrades, for the right price.
 
 #
 # SHIP NAMES

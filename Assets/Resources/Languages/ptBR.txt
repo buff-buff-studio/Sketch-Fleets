@@ -63,6 +63,16 @@ ui_quit_yes=Sim!
 ui_quit_no=Não!
 
 #
+# MAP
+#
+
+map_easy=Fácil
+map_medium=Médio
+map_hard=Difícil
+map_veryhard=Muito Difícil
+map_boss=???
+
+#
 # IN-GAME
 #
 
@@ -107,6 +117,12 @@ ui_tutorial_wasd=WASD são as teclas de movimentação básicas.
 ui_tutorial_yellow=A Nave Amarela serve como uma torre, com pouca velocidade mas consegue atirar várias balas ao mesmo tempo
 ui_tutorial_cyan=Já a Ciano se joga nos inimigos ao clicar com o botão direito do mouse, e causa uma explosão enorme na área de contato
 ui_tutorial_magenta=Por fim, a Magenta. Apesar de ser frágil, ela atira extremamente rápido e podem existir várias em campo simultaneamente 
+
+ui_tutorial_store_planet=Durante sua jornada, você vai encontrar os Planetas-Loja, caracterizados por um outdoor visível pelo mapa e cor única. Lá você pode comprar diversos itens, usando Cascas de Lápis, que terão efeito até o fim da missão.
+ui_tutorial_money=As Cascas de Lápis são obtidas ao derrotar inimigos. Inimigos mais fortes deixam cair elas em maior quantidade, então se quiser os itens mais valiosos, arrisque explorar os planetas mais perigosos!
+
+No fim da sua jornada, todas as Cascas serão convertidas para Caixas. 5 Cascas são equivalentes a 1 Caixa.
+ui_tutorial_store=Já a loja do Menu é onde você consegue comprar upgrades permanentes para sua nave, pelo preço certo.
 
 #
 # SHIP NAMES
