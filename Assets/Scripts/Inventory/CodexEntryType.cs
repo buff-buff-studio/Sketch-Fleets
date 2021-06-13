@@ -1,12 +1,11 @@
 namespace SketchFleets.Inventory
 {
     /// <summary>
-    /// Condex entry type
+    /// Codex entry type
     /// </summary>
     public enum CodexEntryType
     {
         Ship,
         Item,
-        Region
     }
 }
