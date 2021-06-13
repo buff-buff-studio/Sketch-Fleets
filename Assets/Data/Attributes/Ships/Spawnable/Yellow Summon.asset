@@ -19,7 +19,7 @@ MonoBehaviour:
   description: Yellow ship summoned by the player
   prefab: {fileID: 1040831720659525790, guid: cc26e74262a8e9d47b4088dc58b31202, type: 3}
   unlocalizedName: ship_yellow
-  unlocalizedDescription: 
+  unlocalizedDescription: ship_yellow_desc
   codexRarity: 1
   shipColor:
     _useConstant: 1

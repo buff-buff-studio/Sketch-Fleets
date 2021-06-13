@@ -19,7 +19,7 @@ MonoBehaviour:
   description: "Lime enemy ship\t"
   prefab: {fileID: 1419266270299820781, guid: 65faab35e8e0d4844a45146097df8021, type: 3}
   unlocalizedName: ship_lime
-  unlocalizedDescription: 
+  unlocalizedDescription: ship_lime_desc
   codexRarity: 0
   shipColor:
     _useConstant: 1
