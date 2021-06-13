@@ -16,7 +16,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     [Header("Obstacles")]
     [SerializeField, Tooltip("The pool of spawnable obstacles")]
-    private AttributePool obstaclePool;
+    private MapAttributes mapAttributes;
     [SerializeField, Tooltip("The area in which obstacles should spawn")]
     private Collider2D spawnArea;
     [SerializeField, Tooltip("The delay between each obstacle spawn")]
@@ -27,6 +27,13 @@ public class ObstacleSpawner : MonoBehaviour
 
     private IEnumerator spawnObstacleRoutine;
     private IEnumerator showWarningRoutine;
+
+
+    #endregion
+
+    #region Properties
+
+    private AttributePool ObstaclePool => mapAttributes.ObstaclePool[mapAttributes.Difficulty];
 
     #endregion
 
@@ -60,6 +67,13 @@ public class ObstacleSpawner : MonoBehaviour
             yield return spawnWait;
 
             ObstacleAttributes drawnObstacle = DrawObstacleFromPool();
+
+            #if UNITY_EDITOR
+
+            Debug.Log(drawnObstacle == null ? 
+                "Drew no obstacle from pool." : 
+                $"Drew a {drawnObstacle.Name} obstacle from pool. Will warn: {drawnObstacle.WarnOnSpawn}");
+  #endif
 
             if (drawnObstacle != null && drawnObstacle.WarnOnSpawn)
             {
@@ -120,7 +134,7 @@ public class ObstacleSpawner : MonoBehaviour
     /// <returns>The drawn obstacle attribute</returns>
     private ObstacleAttributes DrawObstacleFromPool()
     {
-        ObstacleAttributes draw = obstaclePool.Draw() as ObstacleAttributes;
+        ObstacleAttributes draw = ObstaclePool.Draw() as ObstacleAttributes;
         return draw;
     }
 
@@ -137,7 +151,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
             spawnRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
         }
-        
+
         Instantiate(obstacle.Prefab, spawnPoint, spawnRotation);
     }
 
