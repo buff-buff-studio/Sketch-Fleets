@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using SketchFleets.Data;
+using ManyTools.Variables;
 using System.Collections.Generic;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
@@ -51,21 +52,23 @@ namespace SketchFleets.Entities
 
         public float AbilityTimer => abilityTimer;
 
+        public override FloatReference MaxHealth => new FloatReference(GetMaxHealth());
+
         #endregion
 
         #region Unity Callbacks
         
-        protected override void Awake() 
+        protected void Awake() 
         {
-            base.Awake();
             attributesBonuses = ScriptableObject.CreateInstance<MothershipAttributesBonuses>();
             IngameEffectApplier.OnEffectsChange = OnEffectsChange;
             IngameEffectApplier.Clear();
         }
 
         // Start runs once before the first update
-        protected void Start()
+        protected override void Start()
         {
+            base.Start();
             // Caches necessary components
             mainCamera = Camera.main;
             regenerateRoutine = RegenerateShips();
@@ -79,7 +82,7 @@ namespace SketchFleets.Entities
             HandlePlayerInput();
             TickTimers();
             
-            DebugMonitorVariables();
+            //DebugMonitorVariables();
         }
 
         #endregion
@@ -88,6 +91,7 @@ namespace SketchFleets.Entities
 
         public override void Heal(float amount)
         {
+            Debug.Log("heala danada");
             currentHealth.Value = Mathf.Min(GetMaxHealth(), currentHealth + amount);
 
             Transform cachedTransform = transform;
@@ -127,7 +131,9 @@ namespace SketchFleets.Entities
 
                 bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
-                bullet.GetComponent<BulletController>().DamageMultiplier = AttributesBonuses.DamageMultiplier;
+                BulletController bt = bullet.GetComponent<BulletController>();
+                bt.DamageMultiplier = AttributesBonuses.DamageMultiplier;
+                bt.DamageIncrease = AttributesBonuses.DamageIncrease;
             }
 
             fireTimer = GetFireCooldown();
@@ -158,7 +164,7 @@ namespace SketchFleets.Entities
         /// <returns>Whether the mothership can regenerate its shields</returns>
         public bool CanRegenShield()
         {
-            return shieldRegenTimer > 0 &&
+            return shieldRegenTimer <= 0 &&
                    !Mathf.Approximately(Attributes.ShieldRegen, 0) &&
                    !Mathf.Approximately(CurrentShield.Value, GetMaxShield());
         }
@@ -169,7 +175,7 @@ namespace SketchFleets.Entities
         /// <returns>The shield regen for the current point in time</returns>
         public float GetShieldRegen()
         {
-            return Attributes.ShieldRegen + AttributesBonuses.ShieldRegen * Time.deltaTime * Time.timeScale;
+            return (Attributes.ShieldRegen + AttributesBonuses.ShieldRegen) * Time.deltaTime * Time.timeScale;
         }
         
         /// <summary>
@@ -178,7 +184,7 @@ namespace SketchFleets.Entities
         /// <returns>The max health</returns>
         public float GetMaxHealth()
         {
-            return Attributes.MaxHealth + AttributesBonuses.MaxHealth;
+            return Attributes.MaxHealth + AttributesBonuses.MaxHealth + AttributesBonuses.HealthIncrease;
         }
         
         /// <summary>
@@ -187,7 +193,7 @@ namespace SketchFleets.Entities
         /// <returns>The max shield</returns>
         public float GetMaxShield()
         {
-            return Attributes.MaxShield + AttributesBonuses.MaxShield;
+            return Attributes.MaxShield + AttributesBonuses.MaxShield + AttributesBonuses.ShieldIncrease;
         }
         
         /// <summary>
@@ -499,6 +505,8 @@ namespace SketchFleets.Entities
             attributesBonuses.DamageMultiplier.Value = result.damageMultiplierBonus;
             attributesBonuses.SpeedMultiplier.Value = result.speedMultiplierBonus;
             attributesBonuses.Defense.Value = result.defenseBonus;
+
+            Debug.Log("Apply pls: " + attributesBonuses.HealthIncrease + " " + attributesBonuses.DamageIncrease);
         }
         
         #endregion

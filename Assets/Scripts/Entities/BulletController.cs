@@ -20,6 +20,7 @@ public class BulletController : PoolMember
 
     private bool hasFireEffect;
     private float damageMultiplier = 1f;
+    private float damageIncrease = 0f;
 
     #endregion
 
@@ -31,6 +32,12 @@ public class BulletController : PoolMember
     {
         get => damageMultiplier;
         set => damageMultiplier = value;
+    }
+
+    public float DamageIncrease
+    {
+        get => damageIncrease;
+        set => damageIncrease = value;
     }
 
     #endregion
@@ -157,7 +164,7 @@ public class BulletController : PoolMember
     {
         float damageVariation = Random.Range(0, Attributes.MaxDamageVariation);
         float baseDamage = direct ? Attributes.DirectDamage : Attributes.IndirectDamage;
-        return baseDamage * DamageMultiplier + damageVariation;
+        return baseDamage * DamageMultiplier + damageVariation + DamageIncrease;
     }
 
     #endregion

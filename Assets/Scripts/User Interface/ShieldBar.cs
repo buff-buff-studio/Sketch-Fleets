@@ -37,6 +37,7 @@ namespace SketchFleets.UI
 
         private void Update()
         {
+
             if (!Mathf.Approximately(shieldBar.fillAmount, FillAmount))
             {
                 ShieldBarUpdate();
