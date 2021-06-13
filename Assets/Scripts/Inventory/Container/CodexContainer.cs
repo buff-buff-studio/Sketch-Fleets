@@ -12,20 +12,16 @@ namespace SketchFleets.Inventory
     public class CodexContainer : MonoBehaviour 
     {
         #region Registers
+        
         public ShopObjectRegister registerItems;
-        public ShipRegister registerEnemies;
-        public ShipRegister registerAllies;
-        public Register<object> registerRegions;
+        public ShopObjectRegister registerUpgrades;
+        public ShipRegister register;
+        
         #endregion 
         
         public void ListItems()
         {
             RenderEntries(CodexEntryType.Item,registerItems);
-        }
-
-        public void ListAllies()
-        {
-            RenderEntries(CodexEntryType.Ally,registerAllies);
         }
 
         /// <summary>
@@ -40,7 +36,7 @@ namespace SketchFleets.Inventory
 
             //Add unlocked id
             foreach(CodexEntry entry in Profile.GetData().codex.GetUnlockedEntries(type))
-                unlockedList.Add(entry.id);
+                unlockedList.Add(entry.ID);
 
             //Render items
             int index = 0;

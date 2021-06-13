@@ -15,7 +15,7 @@ namespace SketchFleets.Inventory
                 return stack.Amount;
 
             //Add id
-            Profile.GetData().codex.AddItem(new CodexEntry(CodexEntryType.Item,stack.Id));
+            Profile.GetData().codex.AddItem(new CodexEntry(CodexEntryType.Item, CodexEntryRarity.Silver, stack.Id));
 
             for (int i = 0; i < items.Length; i++)
             {

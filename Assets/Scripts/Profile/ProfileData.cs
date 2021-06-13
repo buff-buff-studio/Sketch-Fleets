@@ -78,7 +78,7 @@ namespace SketchFleets.ProfileSystem
                     SaveListObject entry = list.Get<SaveListObject>(i);
                     for(int j = 0; j < entry.Count; j ++)
                     {
-                        codex.AddItem(new CodexEntry((CodexEntryType) i,entry.Get<int>(j)));
+                        codex.AddItem(new CodexEntry((CodexEntryType) i, CodexEntryRarity.Silver, entry.Get<int>(j)));
                     }
                 }
             }
@@ -122,7 +122,7 @@ namespace SketchFleets.ProfileSystem
                 SaveListObject current = save.CreateChildList();
                 foreach(CodexEntry entry in this.codex.GetUnlockedEntries(type))
                 {
-                    current.Add(entry.id);
+                    current.Add(entry.ID);
                 }
 
                 codex.Add(current);
