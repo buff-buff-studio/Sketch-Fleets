@@ -239,6 +239,8 @@ public class ConstelationMap : MonoBehaviour
                 for(int j = 0; j < currentLineStars.Count; j ++)
                 {
 
+                    
+
                     int a = j;
                     int b = j - 1;
                     int c = j + 1;
@@ -305,6 +307,8 @@ public class ConstelationMap : MonoBehaviour
                                 starA.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
                         }
                     }
+
+                    //Debug.Log(i + " " + j + " " + starA.fromJunctions.Count);
                 }
             }
 
@@ -437,6 +441,8 @@ public class ConstelationMap : MonoBehaviour
         {
             MapLevelInteraction.state.AddToOpenQueue(j.starB.Id);
         }
+
+        //Debug.Log("opening: " + star.toJunctions.Count);
 
         //Sum all positions
         List<GameObject> objects = new List<GameObject>();
