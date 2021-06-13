@@ -68,6 +68,20 @@ namespace SketchFleets.ProfileSystem
                 }
             }
 
+            //Load codex
+            if (save.HasKey("codex"))
+            {
+                SaveListObject list = save.Get<SaveListObject>("codex");
+
+                for(int i = 0; i < list.Count; i ++)
+                {
+                    SaveListObject entry = list.Get<SaveListObject>(i);
+                    for(int j = 0; j < entry.Count; j ++)
+                    {
+                        codex.AddItem(new CodexEntry((CodexEntryType) i,entry.Get<int>(j)));
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -88,6 +102,7 @@ namespace SketchFleets.ProfileSystem
             save["items"] = list;
 
             list = save.CreateChildList();
+            
             //Write upgrades data
             foreach (ItemStack i in inventoryUpgrades)
             {
@@ -98,6 +113,21 @@ namespace SketchFleets.ProfileSystem
                 list.Add(o);
             }
             save["upgrades"] = list;
+
+            //Save Codex
+            SaveListObject codex = save.CreateChildList();
+            foreach(CodexEntryType type in System.Enum.GetValues(typeof(CodexEntryType)))
+            {
+                int id = (int) type;
+                SaveListObject current = save.CreateChildList();
+                foreach(CodexEntry entry in this.codex.GetUnlockedEntries(type))
+                {
+                    current.Add(entry.id);
+                }
+
+                codex.Add(current);
+            }
+            save["codex"] = codex;
         }
 
         public static int ConvertCoinsToTotalCoins(int coins)
