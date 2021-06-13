@@ -19,6 +19,8 @@ MonoBehaviour:
   description: "Cyan ship summoned by the player\t"
   prefab: {fileID: 6527832755920852042, guid: 11e3d12220070db448013d4968149cff, type: 3}
   unlocalizedName: ship_cyan
+  unlocalizedDescription: 
+  codexRarity: 1
   shipColor:
     _useConstant: 1
     _constant: {r: 0, g: 0, b: 0, a: 0}
@@ -64,9 +66,15 @@ MonoBehaviour:
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   shellDrop: {fileID: 0}
+  codexEntryTemplate: {fileID: 0}
+  codexDropChance:
+    _useConstant: 1
+    _constant: 0.01
+    _variable: {fileID: 0}
   fire: {fileID: 11400000, guid: c59bb2fb53f61fc499bf47d800dd2ea9, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 1124593775013484982, guid: 103e894a9336a36419399406260d9f10, type: 3}
+  healEffect: {fileID: 0}
   spawnEffect: {fileID: 6815621210096123458, guid: 6c9ec62763d2bf143b7f6693a499923c, type: 3}
   graphiteCost:
     _useConstant: 1

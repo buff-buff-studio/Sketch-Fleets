@@ -1,5 +1,6 @@
 using ManyTools.UnityExtended.Editor;
 using ManyTools.Variables;
+using SketchFleets.Inventory;
 using UnityEngine;
 
 namespace SketchFleets.Data
@@ -13,13 +14,10 @@ namespace SketchFleets.Data
     {
         #region Protected Fields
 
-        [Header("Localization")]
-        [SerializeField, Tooltip("The name key for the localization package")]
-        protected string unlocalizedName;
-        [SerializeField, Multiline, Tooltip("The description key for the localization package")]
-        protected string unlocalizedDescription;
-        
         [Header("Attributes")]
+        [Tooltip("The ship's codex entry rarity")]
+        [SerializeField]
+        protected CodexEntryRarity codexRarity;
         [Tooltip("The ship's color.")]
         [SerializeField]
         protected ColorReference shipColor = new ColorReference(new Color());
@@ -56,7 +54,13 @@ namespace SketchFleets.Data
         [Tooltip("The prefab of the dropped shell")]
         [SerializeField]
         protected GameObject shellDrop;
-        
+        [Tooltip("The template object for codex entries")]
+        [SerializeField]
+        protected GameObject codexEntryTemplate;
+        [Tooltip("The chance of dropping the codex entry for this ship, in percentage, from 0 to 1")]
+        [SerializeField]
+        protected FloatReference codexDropChance = new FloatReference(0.02f);
+
         [Header("References")]
         [Tooltip("The prefab spawned by the ship by an attack.")]
         [SerializeField, RequiredField()]
@@ -76,8 +80,6 @@ namespace SketchFleets.Data
         #endregion
 
         #region Properties
-
-        public string UnlocalizedName => unlocalizedName;
 
         public ColorReference ShipColor => shipColor;
 
@@ -111,7 +113,11 @@ namespace SketchFleets.Data
 
         public GameObject HealEffect => healEffect;
 
-        protected string UnlocalizedDescription => unlocalizedDescription;
+        public GameObject CodexEntryTemplate => codexEntryTemplate;
+
+        public FloatReference CodexDropChance => codexDropChance;
+
+        public CodexEntryRarity CodexRarity => codexRarity;
 
         #endregion
     }

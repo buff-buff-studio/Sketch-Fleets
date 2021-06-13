@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: FuelTankLarge
   m_EditorClassIdentifier: 
   unlocalized_name: fuel_tank_large
-  id: 5
-  icon: {fileID: 726820205598878885, guid: 754a14a9899896346b01c08a42db253d, type: 3}
-  itemCost:
-    _useConstant: 1
-    _constant: 450
-    _variable: {fileID: 0}
   rarity:
     _useConstant: 1
     _constant: 7
     _variable: {fileID: 0}
+  itemCost:
+    _useConstant: 1
+    _constant: 450
+    _variable: {fileID: 0}
+  icon: {fileID: 726820205598878885, guid: 754a14a9899896346b01c08a42db253d, type: 3}
+  id: 5
   effect: {fileID: 11400000, guid: 960fc01178ba8a34dbf216677f454627, type: 2}
+  isConsumable: 0
+  codexEntryRarity: 1

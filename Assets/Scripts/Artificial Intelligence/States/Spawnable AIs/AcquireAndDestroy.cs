@@ -10,6 +10,12 @@ namespace SketchFleets
     /// </summary>
     public class AcquireAndDestroy : BaseSpawnableAIState
     {
+        #region Private Fields
+        
+        Transform cachedTransform;
+
+        #endregion
+
         #region State Implementation
 
         /// <summary>
@@ -24,7 +30,7 @@ namespace SketchFleets
                 Debug.LogError("AimAndFireState expects a EnemyShipAI State Machine!");
             }
 
-            AI.transform.up = AI.transform.right;
+            cachedTransform = transform;
             base.Enter();
         }
 
@@ -34,9 +40,10 @@ namespace SketchFleets
         public override void StateUpdate()
         {
             base.StateUpdate();
-            transform.Translate(AI.Ship.Attributes.Speed * Time.deltaTime * Time.timeScale,
+            cachedTransform.up = cachedTransform.right;
+            cachedTransform.Translate(AI.Ship.Attributes.Speed * Time.deltaTime * Time.timeScale,
                 0f, 0f, Space.World);
-            
+
             AI.Ship.Fire();
         }
 

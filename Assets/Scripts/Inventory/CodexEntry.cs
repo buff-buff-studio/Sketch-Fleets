@@ -8,16 +8,27 @@ namespace SketchFleets.Inventory
     public class CodexEntry
     {
         #region Public Fields
-        public int id;
-        public CodexEntryType type;
+        
+        public int ID;
+        public CodexEntryType Type;
+        //public CodexEntryRarity Rarity;
+        
         #endregion
 
         #region Constructors
-        public CodexEntry(CodexEntryType type,int id)
+        
+        /// <summary>
+        /// Constructs a codex entry class
+        /// </summary>
+        /// <param name="type">The type of the codex entry</param>
+        /// <param name="rarity">The rarity of the codex entry</param>
+        /// <param name="id">The register ID of the codex entry</param>
+        public CodexEntry(CodexEntryType type, int id)
         {
-            this.type = type;
-            this.id = id;
+            Type = type;
+            ID = id;
         }
+        
         #endregion
     }
 }

@@ -20,6 +20,7 @@ MonoBehaviour:
   prefab: {fileID: 8889707252369350486, guid: 29e7d02787c05424fb12684dc643f475, type: 3}
   unlocalizedName: ship_lime_shotgun
   unlocalizedDescription: 
+  codexRarity: 1
   shipColor:
     _useConstant: 1
     _constant: {r: 0.58431375, g: 0.19607843, b: 0.5137255, a: 1}
@@ -65,6 +66,11 @@ MonoBehaviour:
     _constant: {x: 7, y: 10}
     _variable: {fileID: 0}
   shellDrop: {fileID: 4108485770172352479, guid: fad4cddbc0564f344aebf02278f79d7c, type: 3}
+  codexEntryTemplate: {fileID: 8509772390799679560, guid: 0dc7e6f6a0a097c48bb675e31e2587a3, type: 3}
+  codexDropChance:
+    _useConstant: 1
+    _constant: 0.02
+    _variable: {fileID: 0}
   fire: {fileID: 11400000, guid: ee72fb0ec4b0b9540a2fd049239c5baf, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 2685658488167287599, guid: ee9fbbf272b3bb34988accc0846aac0d, type: 3}

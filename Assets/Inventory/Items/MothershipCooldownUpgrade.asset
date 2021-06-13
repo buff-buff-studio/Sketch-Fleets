@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: MothershipCooldownUpgrade
   m_EditorClassIdentifier: 
   unlocalized_name: mothership_cooldown_upgrade
-  id: 7
-  icon: {fileID: 3513185666212849954, guid: 0a279c5a0e09a1044948f9615d542a00, type: 3}
-  itemCost:
-    _useConstant: 1
-    _constant: 350
-    _variable: {fileID: 0}
   rarity:
     _useConstant: 1
     _constant: 3
     _variable: {fileID: 0}
+  itemCost:
+    _useConstant: 1
+    _constant: 350
+    _variable: {fileID: 0}
+  icon: {fileID: 3513185666212849954, guid: 0a279c5a0e09a1044948f9615d542a00, type: 3}
+  id: 7
   effect: {fileID: 11400000, guid: 2b341c7b6f1fd204daeaced87bd467f9, type: 2}
+  isConsumable: 0
+  codexEntryRarity: 2
