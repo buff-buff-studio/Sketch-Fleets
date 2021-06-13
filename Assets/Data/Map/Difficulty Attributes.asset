@@ -105,4 +105,5 @@ MonoBehaviour:
   - _useConstant: 1
     _constant: 7
     _variable: {fileID: 0}
-  obstaclePool: []
+  obstaclePool:
+  - {fileID: 0}
