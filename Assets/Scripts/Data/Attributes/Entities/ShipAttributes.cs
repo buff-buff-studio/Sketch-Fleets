@@ -14,12 +14,6 @@ namespace SketchFleets.Data
     {
         #region Protected Fields
 
-        [Header("Localization")]
-        [SerializeField, Tooltip("The name key for the localization package")]
-        protected string unlocalizedName;
-        [SerializeField, Multiline, Tooltip("The description key for the localization package")]
-        protected string unlocalizedDescription;
-
         [Header("Attributes")]
         [Tooltip("The ship's codex entry rarity")]
         [SerializeField]
@@ -87,10 +81,6 @@ namespace SketchFleets.Data
 
         #region Properties
 
-        public string UnlocalizedName => unlocalizedName;
-
-        public string UnlocalizedDescription => unlocalizedDescription;
-        
         public ColorReference ShipColor => shipColor;
 
         public FloatReference MaxHealth => maxHealth;
