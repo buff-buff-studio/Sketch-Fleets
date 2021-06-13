@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using ManyTools.Variables;
 using SketchFleets.Entities;
+using SketchFleets.General;
 
 namespace SketchFleets.UI
 {
@@ -53,7 +54,8 @@ namespace SketchFleets.UI
 
             // NOTE: Why the fuck is this here? The health bar of all things is responsible for throwing game over?
             if (!IsGameOver()) return;
-            
+
+            LevelManager.Instance.GameEnded = true;
             ShowGameOver();
             RewardPlayer();        
 

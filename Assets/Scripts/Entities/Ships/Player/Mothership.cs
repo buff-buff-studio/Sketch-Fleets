@@ -7,6 +7,7 @@ using ManyTools.UnityExtended.Poolable;
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
 using ManyTools.UnityExtended;
+using SketchFleets.General;
 
 namespace SketchFleets.Entities
 {
@@ -88,12 +89,12 @@ namespace SketchFleets.Entities
             abilityTimer = AbilityTimer - Time.deltaTime * Time.timeScale;
 
             // Enables or disables the spawn menu
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && !IsGameOver())
             {
                 EnableOrDisableSpawnMenu(true);
             }
 
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.Space) && !IsGameOver())
             {
                 EnableOrDisableSpawnMenu(false);
             }
@@ -106,7 +107,7 @@ namespace SketchFleets.Entities
 
             if (Input.GetKeyDown(KeyCode.R) && IsAbilityAvailable())
             {
-                StartCoroutine(regenerateRoutine);
+                StartCoroutine(RegenerateShips());
             }
         }
 
@@ -269,6 +270,15 @@ namespace SketchFleets.Entities
 
         #region Private Methods
 
+        /// <summary>
+        /// Gets whether the game has ended
+        /// </summary>
+        /// <returns>Whether the game has ended</returns>
+        private bool IsGameOver()
+        {
+            return LevelManager.Instance.GameEnded;
+        }
+        
         /// <summary>
         /// Enables or disables the ship spawn menu
         /// </summary>
