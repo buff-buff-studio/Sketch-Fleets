@@ -17638,6 +17638,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8120868337959495052, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: isUpgradeInventory
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9197514291595764908, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0

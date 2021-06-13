@@ -55,9 +55,11 @@ namespace SketchFleets.Inventory
 
             //Load
             inventory = new StoreInventory();
+            Random.InitState((int) (Time.time * 35678));
             for (int i = 0; i < (isUpgradeShop ? 4 : slots.Length); i++)
             {
-                inventory.AddItem(new ItemStack(register.PickRandom(i)));
+                ItemStack stack = new ItemStack(register.PickRandom(i));
+                inventory.AddItem(stack);
             }
 
             for (int i = 0; i < slots.Length; i++)

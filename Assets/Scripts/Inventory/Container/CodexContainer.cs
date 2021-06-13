@@ -126,6 +126,8 @@ namespace SketchFleets.Inventory
         private void AddToDisplay(GameObject card)
         {
             card.transform.SetParent(containerDisplay.transform);
+            card.transform.localScale = Vector3.one;
+            card.transform.localEulerAngles = new Vector3(0,0,Random.Range(-3f,3f));
         }
 
         /// <summary>
