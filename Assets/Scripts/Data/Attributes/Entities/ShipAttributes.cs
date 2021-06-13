@@ -1,5 +1,6 @@
 using ManyTools.UnityExtended.Editor;
 using ManyTools.Variables;
+using SketchFleets.Inventory;
 using UnityEngine;
 
 namespace SketchFleets.Data
@@ -18,8 +19,11 @@ namespace SketchFleets.Data
         protected string unlocalizedName;
         [SerializeField, Multiline, Tooltip("The description key for the localization package")]
         protected string unlocalizedDescription;
-        
+
         [Header("Attributes")]
+        [Tooltip("The ship's codex entry rarity")]
+        [SerializeField]
+        protected CodexEntryRarity codexRarity;
         [Tooltip("The ship's color.")]
         [SerializeField]
         protected ColorReference shipColor = new ColorReference(new Color());
@@ -85,6 +89,8 @@ namespace SketchFleets.Data
 
         public string UnlocalizedName => unlocalizedName;
 
+        public string UnlocalizedDescription => unlocalizedDescription;
+        
         public ColorReference ShipColor => shipColor;
 
         public FloatReference MaxHealth => maxHealth;
@@ -117,11 +123,11 @@ namespace SketchFleets.Data
 
         public GameObject HealEffect => healEffect;
 
-        public string UnlocalizedDescription => unlocalizedDescription;
-
         public GameObject CodexEntryTemplate => codexEntryTemplate;
 
         public FloatReference CodexDropChance => codexDropChance;
+
+        public CodexEntryRarity CodexRarity => codexRarity;
 
         #endregion
     }
