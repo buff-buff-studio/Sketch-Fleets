@@ -1,5 +1,6 @@
 using ManyTools.Variables;
 using UnityEngine;
+using SketchFleets.Inventory;
 
 namespace SketchFleets.Data
 {
@@ -25,9 +26,14 @@ namespace SketchFleets.Data
 
         [SerializeField]
         private FloatReference upgradeSpeedIncrease = new FloatReference(0);
+
+        [SerializeField]
+        private CodexEntryRarity codexEntryRarity;
         #endregion
 
         #region Properties
+        public CodexEntryRarity CodexEntryRarity => codexEntryRarity;
+
         public FloatReference ItemCostIncreasePerLevel
         {
             get => itemCostIncreasePerLevel;

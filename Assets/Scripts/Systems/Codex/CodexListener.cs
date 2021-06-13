@@ -20,6 +20,10 @@ namespace SketchFleets.Systems.Codex
 
         #endregion
 
+        #region Public Properties
+        public ShipRegister ShipRegister => shipRegister;
+        #endregion
+
         #region Public Fields
 
         /// <summary>
@@ -28,13 +32,9 @@ namespace SketchFleets.Systems.Codex
         /// <param name="ship">The ship to collect the entry of</param>
         public void CollectEntry(ShipAttributes ship)
         {
-            CodexEntry entry = new CodexEntry(CodexEntryType.Ship, ship.CodexRarity, GetRegisterID(shipRegister, ship));
+            CodexEntry entry = new CodexEntry(CodexEntryType.Ship, GetRegisterID(shipRegister, ship));
             Profile.Data.codex.AddItem(entry);
         }
-
-        #endregion
-
-        #region Private Fields
 
         /// <summary>
         /// Gets the register ID for the given entry
@@ -42,7 +42,7 @@ namespace SketchFleets.Systems.Codex
         /// <param name="register">The register to search in</param>
         /// <param name="entry">The entry to get the ID of</param>
         /// <returns>The entry's ID</returns>
-        private static int GetRegisterID(Register<ShipAttributes> register, Object entry)
+        public static int GetRegisterID(Register<ShipAttributes> register, Object entry)
         {
             for (int index = 0, upper = register.items.Length; index < upper; index++)
             {

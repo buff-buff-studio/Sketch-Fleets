@@ -6,6 +6,7 @@ using SketchFleets.Data;
 using SketchFleets.Entities;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using SketchFleets.Systems.Codex;
 
 namespace SketchFleets
 {
@@ -323,7 +324,8 @@ namespace SketchFleets
                 DropShells();
             }
 
-            if (Random.Range(0f, 1f) <= Attributes.CodexDropChance)
+            if (Random.Range(0f, 1f) <= Attributes.CodexDropChance && 
+                ProfileSystem.Profile.Data.codex.SearchItem(new Inventory.CodexEntry(Inventory.CodexEntryType.Ship,CodexListener.GetRegisterID(CodexListener.Instance.ShipRegister,attributes))) == 0)
             {
                 DropCodexEntry();
             }

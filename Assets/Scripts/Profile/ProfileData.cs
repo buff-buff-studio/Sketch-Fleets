@@ -80,7 +80,7 @@ namespace SketchFleets.ProfileSystem
                     SaveListObject entry = list.Get<SaveListObject>(i);
                     for(int j = 0; j < entry.Count; j ++)
                     {
-                        codex.AddItem(new CodexEntry((CodexEntryType) i, CodexEntryRarity.Silver, entry.Get<int>(j)));
+                        codex.AddItem(new CodexEntry((CodexEntryType) i, entry.Get<int>(j)));
                     }
                 }
             }

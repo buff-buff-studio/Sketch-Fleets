@@ -621,6 +621,9 @@ MonoBehaviour:
   bronzeCard: {fileID: 21300000, guid: af4243f636e321d49b8163a384c7e055, type: 3}
   silverCard: {fileID: 21300000, guid: aa6b7c42951afa242856e1c069efbac7, type: 3}
   goldCard: {fileID: 21300000, guid: 4e6f6ef0c33df904c99e5e29d16d34c6, type: 3}
+  itemBronzeCard: {fileID: 21300000, guid: 74155a2d5e231934bbebe432bf6feb28, type: 3}
+  itemSilverCard: {fileID: 21300000, guid: 3edd1398ea8bff841b285eaa2714d3d7, type: 3}
+  itemGoldCard: {fileID: 21300000, guid: c81a38cef58a3b2468d4180f8cd62793, type: 3}
 --- !u!1 &9108333883354097718
 GameObject:
   m_ObjectHideFlags: 0

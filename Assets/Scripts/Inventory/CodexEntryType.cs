@@ -7,5 +7,6 @@ namespace SketchFleets.Inventory
     {
         Ship,
         Item,
+        Upgrade
     }
 }

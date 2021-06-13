@@ -55,7 +55,8 @@ namespace SketchFleets.Inventory
         private void AddAllCards()
         {
             DisplayAllCards(CodexEntryType.Ship, registerShips);
-            //DisplayAllCards(CodexEntryType.Item, registerItems);
+            DisplayAllCards(CodexEntryType.Item, registerItems);
+            DisplayAllCards(CodexEntryType.Upgrade, registerUpgrades);
         }
 
         /// <summary>
@@ -72,8 +73,6 @@ namespace SketchFleets.Inventory
             foreach (CodexEntry entry in Profile.GetData().codex.GetUnlockedEntries(type)) unlockedList.Add(entry.ID);
 
             //Render items
-            //int index = 0;
-
             for (int index = 0; index < register.items.Length; index++)
             {
                 bool isUnlocked = unlockedList.Contains(index);
@@ -94,7 +93,13 @@ namespace SketchFleets.Inventory
             switch (item)
             {
                 case Item codexItem:
+                    CreateItemCard((Item) registerItems.items[id], unlocked);
                     break;
+                
+                case Upgrade upgradeItem:
+                    CreateUpgradeCard((Upgrade) registerUpgrades.items[id], unlocked);
+                    break;
+
                 case ShipAttributes codexShip:
                     CreateShipCard(registerShips.items[id], unlocked);
                     break;
@@ -115,8 +120,40 @@ namespace SketchFleets.Inventory
             Debug.Log(ship.Name);
             Instantiate(unlocked ? codexCard : lockedCodexCard).TryGetComponent(out CodexCard card);
             AddToDisplay(card.gameObject);
-            if (!unlocked) return;
-            card.FillCardWithShip(ship);
+            if (unlocked)
+                card.FillCardWithShip(ship);
+            else
+                card.FillCardOnlyWithRarity(ship.CodexRarity);
+        }
+
+        /// <summary>
+        /// Create a codex card with an item
+        /// </summary>
+        /// <param name="ship"></param>
+        /// <param name="unlocked"></param>
+        private void CreateItemCard(Item item, bool unlocked)
+        {
+            Instantiate(unlocked ? codexCard : lockedCodexCard).TryGetComponent(out CodexCard card);
+            AddToDisplay(card.gameObject);
+            if (unlocked)
+                card.FillCardWithItem(item);
+            else
+                card.FillCardOnlyWithRarity(item.CodexEntryRarity);
+        }
+
+        /// <summary>
+        /// Create a codex card with an upgrade
+        /// </summary>
+        /// <param name="ship"></param>
+        /// <param name="unlocked"></param>
+        private void CreateUpgradeCard(Upgrade upgrade, bool unlocked)
+        {
+            Instantiate(unlocked ? codexCard : lockedCodexCard).TryGetComponent(out CodexCard card);
+            AddToDisplay(card.gameObject);
+            if (unlocked)
+                card.FillCardWithUpgrade(upgrade);
+            else
+                card.FillCardOnlyWithRarity(upgrade.CodexEntryRarity);
         }
         
         /// <summary>

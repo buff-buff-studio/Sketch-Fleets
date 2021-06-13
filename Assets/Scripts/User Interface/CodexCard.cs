@@ -37,6 +37,13 @@ namespace SketchFleets.UI
         private Sprite silverCard;
         [SerializeField, Tooltip("The image for the gold card")]
         private Sprite goldCard;
+
+        [SerializeField, Tooltip("The image for the item bronze card")]
+        private Sprite itemBronzeCard;
+        [SerializeField, Tooltip("The image for the item silver card")]
+        private Sprite itemSilverCard;
+        [SerializeField, Tooltip("The image for the item gold card")]
+        private Sprite itemGoldCard;
         
         #endregion
 
@@ -48,9 +55,28 @@ namespace SketchFleets.UI
         /// <param name="attributes"></param>
         public void FillCardWithShip(ShipAttributes attributes)
         {
-            WriteToCard(attributes);
-            GetShipImage(attributes);
+            WriteToCardShip(attributes);
+            GetImageShip(attributes);
             SetCardRarity(attributes.CodexRarity);
+        }
+
+        public void FillCardWithUpgrade(Upgrade upgrade)
+        {
+            WriteToCardUpgrade(upgrade);
+            GetImageUpgrade(upgrade);
+            SetCardRarityItem(upgrade.CodexEntryRarity);
+        }
+
+        public void FillCardWithItem(Item item)
+        {
+            WriteToCardItem(item);
+            GetImageItem(item);
+            SetCardRarityItem(item.CodexEntryRarity);
+        }
+        
+        public void FillCardOnlyWithRarity(CodexEntryRarity rarity)
+        {
+            SetCardRarityItem(rarity);
         }
 
         #endregion
@@ -60,7 +86,7 @@ namespace SketchFleets.UI
         /// <summary>
         /// Writes appropriate text to the card
         /// </summary>
-        private void WriteToCard(ShipAttributes ship)
+        private void WriteToCardShip(ShipAttributes ship)
         {
             cardName.text = LanguageManager.Localize(ship.UnlocalizedName);
             cardDescription.text = LanguageManager.Localize(ship.UnlocalizedDescription);
@@ -68,15 +94,46 @@ namespace SketchFleets.UI
             cardDamage.text = GetShipDamage(ship).ToString();
         }
 
+        private void WriteToCardUpgrade(Upgrade upgrade)
+        {
+            cardName.text = LanguageManager.Localize(upgrade.UnlocalizedName);
+            cardDescription.text = LanguageManager.Localize("desc_" + upgrade.UnlocalizedName);
+            cardHealth.text = "";
+            cardDamage.text = "";
+        }
+        
+        private void WriteToCardItem(Item item)
+        {
+            cardName.text = LanguageManager.Localize(item.UnlocalizedName);
+            cardDescription.text = LanguageManager.Localize("desc_" + item.UnlocalizedName);
+            cardHealth.text = "";
+            cardDamage.text = "";
+        }
+
         /// <summary>
         /// Gets the image for the card out of a ship attribute
         /// </summary>
-        private void GetShipImage(ShipAttributes ship)
+        private void GetImageShip(ShipAttributes ship)
         {
             ship.Prefab.TryGetComponent(out SpriteRenderer sRenderer);
             shipCardImage.sprite = sRenderer.sprite;
             shipCardImage.material = sRenderer.sharedMaterial;
         }
+
+        private void GetImageUpgrade(Upgrade upgrade)
+        {     
+            shipCardImage.sprite = upgrade.Icon;
+            shipCardImage.material = null;
+            shipCardImage.preserveAspect = true;
+        }
+
+        private void GetImageItem(Item item)
+        {     
+            shipCardImage.sprite = item.Icon;
+            shipCardImage.material = null;
+            shipCardImage.preserveAspect = true;
+        }
+        
 
         /// <summary>
         /// Gets the damage of a ship
@@ -99,6 +156,20 @@ namespace SketchFleets.UI
                 CodexEntryRarity.Bronze => bronzeCard,
                 CodexEntryRarity.Silver => silverCard,
                 CodexEntryRarity.Gold => goldCard,
+            };
+        }
+
+        /// <summary>
+        /// Sets the card's rarity
+        /// </summary>
+        /// <param name="rarity">The rarity of the card</param>
+        private void SetCardRarityItem(CodexEntryRarity rarity)
+        {
+            cardImage.sprite = rarity switch
+            {
+                CodexEntryRarity.Bronze => itemBronzeCard,
+                CodexEntryRarity.Silver => itemSilverCard,
+                CodexEntryRarity.Gold => itemGoldCard,
             };
         }
         

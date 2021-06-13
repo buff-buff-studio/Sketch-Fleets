@@ -71,7 +71,7 @@ MonoBehaviour:
   codexEntryTemplate: {fileID: 8509772390799679560, guid: 0dc7e6f6a0a097c48bb675e31e2587a3, type: 3}
   codexDropChance:
     _useConstant: 1
-    _constant: 1
+    _constant: 0.02
     _variable: {fileID: 0}
   fire: {fileID: 11400000, guid: 61ff7c4ab3c5f9c4eb888673464cc34d, type: 2}
   hitSound: {fileID: 0}

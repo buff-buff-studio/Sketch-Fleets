@@ -1,5 +1,6 @@
-﻿using ManyTools.Variables;
+﻿
 using UnityEngine;
+using SketchFleets.Inventory;
 
 namespace SketchFleets.Data
 {
@@ -18,10 +19,12 @@ namespace SketchFleets.Data
         private ItemEffect effect;
         [SerializeField]
         private bool isConsumable;
-        
+        [SerializeField]
+        private CodexEntryRarity codexEntryRarity;
         #endregion
 
         #region Properties
+        public CodexEntryRarity CodexEntryRarity => codexEntryRarity;
 
         public ItemEffect Effect
         {

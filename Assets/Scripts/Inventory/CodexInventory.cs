@@ -108,7 +108,7 @@ namespace SketchFleets.Inventory
         public IEnumerable<CodexEntry> GetUnlockedEntries(CodexEntryType type)
         {
             foreach(CodexEntry entry in foundEntries[type])
-                yield return new CodexEntry(type, entry.Rarity, entry.ID);
+                yield return new CodexEntry(type, entry.ID);
         }
         
         #endregion

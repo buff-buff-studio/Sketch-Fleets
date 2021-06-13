@@ -11,7 +11,7 @@ namespace SketchFleets.Inventory
         
         public int ID;
         public CodexEntryType Type;
-        public CodexEntryRarity Rarity;
+        //public CodexEntryRarity Rarity;
         
         #endregion
 
@@ -23,10 +23,9 @@ namespace SketchFleets.Inventory
         /// <param name="type">The type of the codex entry</param>
         /// <param name="rarity">The rarity of the codex entry</param>
         /// <param name="id">The register ID of the codex entry</param>
-        public CodexEntry(CodexEntryType type, CodexEntryRarity rarity, int id)
+        public CodexEntry(CodexEntryType type, int id)
         {
             Type = type;
-            Rarity = rarity;
             ID = id;
         }
         

@@ -40,6 +40,8 @@ namespace SketchFleets.Inventory
 
         public AudioSource buySound;
         public AudioSource noMoneySound;
+
+        public GameObject cardPrefab;
         #endregion
 
         private static int selectItemIndex = -1;
@@ -179,12 +181,39 @@ namespace SketchFleets.Inventory
             else
                 Profile.GetData().inventoryItems.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id, 1));
 
+            if(Random.Range(0,0.999f) <= 0.2f)
+                if(isUpgradeShop)
+                {
+                    //Add id
+                    if(Profile.GetData().codex.AddItem(new CodexEntry(CodexEntryType.Upgrade, stack.Id)) == 0)
+                        DropCard(selectItemIndex);
+                }
+                else
+                {
+                    //Add id
+                    if(Profile.GetData().codex.AddItem(new CodexEntry(CodexEntryType.Item, stack.Id)) == 0)
+                        DropCard(selectItemIndex);
+                }
+
             buySound.Play();
 
             //Clone item
             CloneItem(selectItemIndex);
 
             Profile.SaveProfile((data) => { });
+        }
+
+        public void DropCard(int slot)
+        {
+            GameObject source = slots[slot].GetChild(1).gameObject;
+            GameObject obj = GameObject.Instantiate(cardPrefab);
+            obj.transform.parent = slots[slot].parent;
+            obj.transform.position = source.transform.position;
+            obj.transform.eulerAngles = source.transform.eulerAngles;
+            obj.transform.localScale = source.transform.localScale;
+            obj.SetActive(true);
+
+            ApplyPhysics(obj,true);
         }
 
         public void CloneItem(int slot)
@@ -198,6 +227,10 @@ namespace SketchFleets.Inventory
             obj.transform.eulerAngles = source.transform.eulerAngles;
             obj.transform.localScale = source.transform.localScale;
 
+            ApplyPhysics(obj,false);
+        }
+        public void ApplyPhysics(GameObject obj,bool card)
+        {
             Destroy(obj.GetComponent<ItemStackAnimation>());
             Rigidbody2D rb = obj.AddComponent<Rigidbody2D>();
             fallingItems.Add(new FallingItem(obj,3));          
@@ -209,11 +242,11 @@ namespace SketchFleets.Inventory
             Vector2 dir = new Vector2(-Mathf.Sin(degrees * Mathf.Deg2Rad)/2f,Mathf.Cos(degrees * Mathf.Deg2Rad));
 
             rb.drag = 0.5f;
-            rb.gravityScale = 75f;
+            rb.gravityScale = card ? 50f : 75f;
             rb.AddForce(dir * Random.Range(400,500),ForceMode2D.Impulse);
 
             if(fallingItems.Count > 3)
-                Destroy(fallingItems[0].Object);
+                Destroy(fallingItems[0].Object);  
         }
 
         public void CancelBuy()

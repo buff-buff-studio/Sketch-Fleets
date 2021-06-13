@@ -23,5 +23,6 @@ MonoBehaviour:
     _variable: {fileID: 0}
   icon: {fileID: 23307562661037187, guid: 754a14a9899896346b01c08a42db253d, type: 3}
   id: 15
-  icon: {fileID: 23307562661037187, guid: 754a14a9899896346b01c08a42db253d, type: 3}
   effect: {fileID: 11400000, guid: 8d771978c58152e4f9d78f717589107e, type: 2}
+  isConsumable: 0
+  codexEntryRarity: 1
