@@ -5,6 +5,7 @@ using SketchFleets.Data;
 using ManyTools.Variables;
 using ManyTools.UnityExtended.Poolable;
 using SketchFleets.Entities;
+using UnityEngine.SceneManagement;
 
 namespace SketchFleets.General
 {
@@ -274,6 +275,11 @@ namespace SketchFleets.General
         /// </summary>
         private void WinGame()
         {
+            if(mapAttributes.Difficulty == 4)
+            {
+                SceneManager.LoadScene("EndGame");
+                return;
+            }
             ProfileSystem.Profile.Data.Coins = pencilShell.Value;
             ProfileSystem.Profile.Data.TimeSeconds = seconds.Value;
             ProfileSystem.Profile.Data.Kills = totalEnemiesKilled.Value;
