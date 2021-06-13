@@ -148,11 +148,11 @@ namespace SketchFleets.Inventory
         public float healthRegen = 0;
         public float shieldRegen = 0;
         public int spawnSlotBonus = 0;
-        public float spawnCooldownMultiplierBonus = 0;
-        public float abilityCooldownMultiplierBonus = 0;
+        public float spawnCooldownMultiplierBonus = 1;
+        public float abilityCooldownMultiplierBonus = 1;
         public float maxHealthBonus = 0;
         public float maxShieldBonus = 0;
-        public float damageMultiplierBonus = 0;
+        public float damageMultiplierBonus = 1;
         public float speedMultiplierBonus = 1;
         public float defenseBonus = 0;
     }
