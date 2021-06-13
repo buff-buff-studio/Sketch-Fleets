@@ -45,22 +45,7 @@ namespace SketchFleets.Entities
 
         #region Properties
 
-        public List<ItemEffect> ActiveEffects
-        {
-            get => activeEffects;
-            set => activeEffects = value;
-        }
-
-        public List<StatusEffect> ActiveSpawnEffects
-        {
-            get => activeSpawnEffects;
-            set => activeSpawnEffects = value;
-        }
-
-        public MothershipAttributesBonuses AttributesBonuses
-        {
-            get => attributesBonuses;
-        }
+        public MothershipAttributesBonuses AttributesBonuses => attributesBonuses;
 
         public UnityDictionary<SpawnableShipAttributes, SpawnMetaData> SpawnMetaDatas => spawnMetaDatas;
 
@@ -91,41 +76,10 @@ namespace SketchFleets.Entities
         {
             base.Update();
 
-            Debug.Log("xildkk: " + CurrentShield.Value + "/" + GetMaxShield() + " " + CanRegenShield());
-            Debug.Log("health: " + currentHealth.Value + "/" + GetMaxHealth());
-
-            //Tick item effects
-            IngameEffectApplier.TickItems(Time.deltaTime);
-
-            // Moves and rotates the ship
-            Move();
-            Look(mainCamera.ScreenToWorldPoint(Input.mousePosition));
-
-            // Ticks down timers
-            UpdateSummonTimers();
-            abilityTimer = AbilityTimer - Time.deltaTime * Time.timeScale;
-
-            // Enables or disables the spawn menu
-            if (Input.GetKeyDown(KeyCode.Space) && !IsGameOver())
-            {
-                EnableOrDisableSpawnMenu(true);
-            }
-
-            if (Input.GetKeyUp(KeyCode.Space) && !IsGameOver())
-            {
-                EnableOrDisableSpawnMenu(false);
-            }
-
-            // Fires stuff
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                Fire();
-            }
-
-            if (Input.GetKeyDown(KeyCode.R) && IsAbilityAvailable())
-            {
-                StartCoroutine(RegenerateShips());
-            }
+            HandlePlayerInput();
+            TickTimers();
+            
+            DebugMonitorVariables();
         }
 
         #endregion
@@ -387,6 +341,56 @@ namespace SketchFleets.Entities
 
         #region Private Methods
 
+        private void DebugMonitorVariables()
+        {
+            Debug.Log($"<color=green>Health: {currentHealth.Value}/{GetMaxHealth()}</color> \n" +
+                      $"<color=cyan>Shields: {CurrentShield.Value}/{GetMaxShield()}</color>, Can regen: <b>{CanRegenShield()}</b> \n" +
+                      $"<color=orange>Ability: {abilityTimer}/{GetMaxAbilityCooldown()}</color>, Can use: <b>{IsAbilityAvailable()}</b>");
+        }
+        
+        /// <summary>
+        /// Ticks all timers related to the mothership
+        /// </summary>
+        private void TickTimers()
+        {
+            IngameEffectApplier.TickItems(Time.deltaTime);
+            UpdateSummonTimers();
+            abilityTimer = AbilityTimer - Time.deltaTime * Time.timeScale;
+        }
+        
+        /// <summary>
+        /// Handles player input
+        /// </summary>
+        private void HandlePlayerInput()
+        {
+            // Moves and rotates the ship
+            Move();
+            Look(mainCamera.ScreenToWorldPoint(Input.mousePosition));
+            
+            // Enables or disables the spawn menu
+            if (Input.GetKeyDown(KeyCode.Space) && !IsGameOver())
+            {
+                EnableOrDisableSpawnMenu(true);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space) && !IsGameOver())
+            {
+                EnableOrDisableSpawnMenu(false);
+            }
+
+            // Fires stuff
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                Fire();
+            }
+
+            // Uses regen ability
+            if (Input.GetKeyDown(KeyCode.R) && IsAbilityAvailable())
+            {
+                StartCoroutine(RegenerateShips());
+            }
+        }
+        
         /// <summary>
         /// Gets the fire cooldown
         /// </summary>
