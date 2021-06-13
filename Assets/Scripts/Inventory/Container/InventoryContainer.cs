@@ -78,6 +78,7 @@ namespace SketchFleets.Inventory
             for(int i = firstslot; i < firstslot + slotSize; i ++)
             {
                 ItemStack stack = (i < items.Count) ? items[i] : null;
+                
 
                 Sprite sprite = null;
                 if (stack != null && stack.Amount > 0)

@@ -31,8 +31,6 @@ namespace SketchFleets.Inventory
 
         public void OnClickSlotInv(int slot)
         {
- 
-
             ItemStack it = items[slot + page * 6];
             if(it != null)
             {  
@@ -50,7 +48,9 @@ namespace SketchFleets.Inventory
                         
                         items.Clear();
                         foreach (ItemStack stackb in ProfileSystem.Profile.GetData().inventoryItems)
-                            items.Add(stackb);
+                            if(FilterItem(stackb))
+                                items.Add(stackb);
+
                         Render();
                         break;
                     }
@@ -60,7 +60,6 @@ namespace SketchFleets.Inventory
 
         public void OnUseItem(Item item)
         {
-            Debug.Log("To usando oh: " + item);
             //On item used
             ItemEffect effect = item.Effect;
 
