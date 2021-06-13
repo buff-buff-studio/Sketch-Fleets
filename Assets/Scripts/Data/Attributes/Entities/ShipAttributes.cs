@@ -56,7 +56,13 @@ namespace SketchFleets.Data
         [Tooltip("The prefab of the dropped shell")]
         [SerializeField]
         protected GameObject shellDrop;
-        
+        [Tooltip("The template object for codex entries")]
+        [SerializeField]
+        protected GameObject codexEntryTemplate;
+        [Tooltip("The chance of dropping the codex entry for this ship, in percentage, from 0 to 1")]
+        [SerializeField]
+        protected FloatReference codexDropChance = new FloatReference(0.02f);
+
         [Header("References")]
         [Tooltip("The prefab spawned by the ship by an attack.")]
         [SerializeField, RequiredField()]
@@ -111,7 +117,11 @@ namespace SketchFleets.Data
 
         public GameObject HealEffect => healEffect;
 
-        protected string UnlocalizedDescription => unlocalizedDescription;
+        public string UnlocalizedDescription => unlocalizedDescription;
+
+        public GameObject CodexEntryTemplate => codexEntryTemplate;
+
+        public FloatReference CodexDropChance => codexDropChance;
 
         #endregion
     }
