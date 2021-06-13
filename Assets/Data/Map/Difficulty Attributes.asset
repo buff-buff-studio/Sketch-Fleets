@@ -20,11 +20,11 @@ MonoBehaviour:
   prefab: {fileID: 0}
   currentMap:
     _useConstant: 1
-    _constant: 5
+    _constant: 1
     _variable: {fileID: 0}
   currentDifficulty:
     _useConstant: 1
-    _constant: 5
+    _constant: 1
     _variable: {fileID: 0}
   mapDifficulty:
   - _useConstant: 1
@@ -59,7 +59,7 @@ MonoBehaviour:
     _constant: {x: 5, y: 6}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 7, y: 10}
+    _constant: {x: 8, y: 9}
     _variable: {fileID: 0}
   - _useConstant: 1
     _constant: {x: 5, y: 7}
@@ -100,7 +100,7 @@ MonoBehaviour:
     _constant: 6
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 10
+    _constant: 9
     _variable: {fileID: 0}
   - _useConstant: 1
     _constant: 7
