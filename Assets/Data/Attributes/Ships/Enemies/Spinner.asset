@@ -20,6 +20,7 @@ MonoBehaviour:
   prefab: {fileID: 1419266270299820781, guid: 65faab35e8e0d4844a45146097df8021, type: 3}
   unlocalizedName: ship_lime
   unlocalizedDescription: 
+  codexRarity: 0
   shipColor:
     _useConstant: 1
     _constant: {r: 0.30817604, g: 1, b: 0.524391, a: 1}
@@ -65,6 +66,11 @@ MonoBehaviour:
     _constant: {x: 2, y: 5}
     _variable: {fileID: 0}
   shellDrop: {fileID: 4108485770172352479, guid: fad4cddbc0564f344aebf02278f79d7c, type: 3}
+  codexEntryTemplate: {fileID: 8509772390799679560, guid: 0dc7e6f6a0a097c48bb675e31e2587a3, type: 3}
+  codexDropChance:
+    _useConstant: 1
+    _constant: 0.02
+    _variable: {fileID: 0}
   fire: {fileID: 11400000, guid: cd4b2ca9005c76547a9411386cf0ced0, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 2685658488167287599, guid: ee9fbbf272b3bb34988accc0846aac0d, type: 3}
