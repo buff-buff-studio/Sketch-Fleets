@@ -61,7 +61,7 @@ public class ObstacleSpawner : MonoBehaviour
 
             ObstacleAttributes drawnObstacle = DrawObstacleFromPool();
 
-            if (drawnObstacle != null)
+            if (drawnObstacle != null && drawnObstacle.WarnOnSpawn)
             {
                 StartCoroutine(showWarningRoutine);
             }

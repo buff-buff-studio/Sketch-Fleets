@@ -70,6 +70,11 @@ namespace SketchFleets.Entities
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (Attributes.CollideWithPlayerOnly)
+            {
+                if (other.CompareTag("Player")) return;
+            }
+            
             DamageOrHealTarget(other.GetComponent<IDamageable>());
         }
 

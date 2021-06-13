@@ -17,6 +17,9 @@ namespace SketchFleets.Data
         [Tooltip("The damage taken upon colliding with this obstacle. Negative damage indicates healing.")]
         private FloatReference collisionDamage = new FloatReference(100f);
         [SerializeField]
+        [Tooltip("Whether the obstacle should collide with the player only")]
+        private BoolReference collideWithPlayerOnly = new BoolReference(false);
+        [SerializeField]
         [Tooltip("The movement of the obstacle per frame.")]
         private Vector2Reference motion = new Vector2Reference(Vector2.zero);
         [SerializeField]
@@ -25,6 +28,9 @@ namespace SketchFleets.Data
         [SerializeField]
         [Tooltip("The effect created when the obstacle is destroyed")]
         private GameObject deathEffect;
+        [SerializeField]
+        [Tooltip("Whether the obstacle should display a warning when spawning")]
+        private BoolReference warnOnSpawn = new BoolReference(false);
 
         #endregion
 
@@ -39,6 +45,10 @@ namespace SketchFleets.Data
         public GameObject DeathEffect => deathEffect;
 
         public bool IsStatic => motion.Value == Vector2.zero;
+
+        public BoolReference WarnOnSpawn => warnOnSpawn;
+
+        public BoolReference CollideWithPlayerOnly => collideWithPlayerOnly;
 
         #endregion
 
