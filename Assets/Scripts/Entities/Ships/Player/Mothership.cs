@@ -91,6 +91,9 @@ namespace SketchFleets.Entities
         {
             base.Update();
 
+            Debug.Log("xildkk: " + CurrentShield.Value + "/" + GetMaxShield() + " " + CanRegenShield());
+            Debug.Log("health: " + currentHealth.Value + "/" + GetMaxHealth());
+
             //Tick item effects
             IngameEffectApplier.TickItems(Time.deltaTime);
 
@@ -201,9 +204,9 @@ namespace SketchFleets.Entities
         /// <returns>Whether the mothership can regenerate its shields</returns>
         public bool CanRegenShield()
         {
-            return shieldRegenTimer > 0 ||
-                   Mathf.Approximately(Attributes.ShieldRegen, 0) ||
-                   Mathf.Approximately(CurrentShield.Value, GetMaxShield());
+            return shieldRegenTimer > 0 &&
+                   !Mathf.Approximately(Attributes.ShieldRegen, 0) &&
+                   !Mathf.Approximately(CurrentShield.Value, GetMaxShield());
         }
         
         /// <summary>
@@ -375,7 +378,7 @@ namespace SketchFleets.Entities
         /// </summary>
         /// <returns>The speed of the ship for the current point in time</returns>
         public float GetSpeed()
-        {
+        {   
             return (Attributes.Speed + AttributesBonuses.SpeedIncrease) 
                    * AttributesBonuses.SpeedMultiplier * Time.timeScale * Time.deltaTime;
         }
@@ -421,6 +424,7 @@ namespace SketchFleets.Entities
             Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
 
             // Translates
+        
             transform.Translate(movement * GetSpeed(), Space.World);
         }
 

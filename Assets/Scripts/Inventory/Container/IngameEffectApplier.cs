@@ -153,7 +153,7 @@ namespace SketchFleets.Inventory
         public float maxHealthBonus = 0;
         public float maxShieldBonus = 0;
         public float damageMultiplierBonus = 0;
-        public float speedMultiplierBonus = 0;
+        public float speedMultiplierBonus = 1;
         public float defenseBonus = 0;
     }
 }

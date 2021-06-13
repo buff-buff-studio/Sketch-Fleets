@@ -22,11 +22,13 @@ namespace SketchFleets.Data
         [SerializeField]
         [Tooltip("The interval between each self-destruct of ally ships when using the regenerate ability")]
         private FloatReference regenerateKillInterval = new FloatReference(0.15f);
-
+        #endregion
+        #region Public Fields
+        [Header("Item & Upgrade Registers")]
         [SerializeField]
-        protected ShopObjectRegister itemRegister;
+        public ShopObjectRegister itemRegister;
         [SerializeField]
-        protected ShopObjectRegister upgradeRegister;
+        public ShopObjectRegister upgradeRegister;
         #endregion
 
         #region Properties

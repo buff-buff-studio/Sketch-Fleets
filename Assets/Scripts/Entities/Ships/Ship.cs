@@ -97,6 +97,7 @@ namespace SketchFleets
                 currentHealth.Value -= actualDamage;
             }
 
+           
             // Applies shield regen cooldown 
             shieldRegenTimer = Attributes.ShieldRegenDelay;
 
