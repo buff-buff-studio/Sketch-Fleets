@@ -14,6 +14,12 @@ namespace SketchFleets.Inventory
         public Button nextPageButton;
         public ShopObjectRegister upgradeRegister;
         public int slotSize = 6;
+
+        public TMPro.TMP_Text coinCounter;
+        public RectTransform coinCountBackground;
+        public Image currencyIcon;
+        public Sprite[] currencyIconSprites;
+        public bool isUpgradeInventory = false;
         #endregion
 
         #region Protected Fields
@@ -25,6 +31,16 @@ namespace SketchFleets.Inventory
         public void OnEnable()
         {
             base.Start();
+
+            //Coin Icon
+            if(currencyIcon != null)
+                currencyIcon.sprite = isUpgradeInventory ? currencyIconSprites[1] : currencyIconSprites[0];
+
+            if(coinCounter != null)
+                if(isUpgradeInventory)
+                    coinCounter.text = Profile.Data.TotalCoins.ToString();
+                else
+                    coinCounter.text = Profile.Data.Coins.ToString();
             
             items.Clear();
             foreach (ItemStack stack in Profile.GetData().inventoryItems)
@@ -123,6 +139,14 @@ namespace SketchFleets.Inventory
                 return upgradeRegister;
 
             return register;
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+
+            if(coinCountBackground != null)
+                coinCountBackground.sizeDelta = new Vector2(coinCounter.GetRenderedValues(true).x + 200,130);
         }
         #endregion
     }

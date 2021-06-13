@@ -102,7 +102,6 @@ namespace SketchFleets
         /// <param name="amount">The amount to damage the health for</param>
         protected virtual void DamageHealth(float amount)
         {
-            Debug.Log("Me matando: " + amount);
             currentHealth.Value -= amount;
         }
         

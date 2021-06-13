@@ -39,6 +39,7 @@ namespace SketchFleets.Inventory
         public RectTransform coinCountBackground;
 
         public AudioSource buySound;
+        public AudioSource noMoneySound;
         #endregion
 
         private static int selectItemIndex = -1;
@@ -159,7 +160,10 @@ namespace SketchFleets.Inventory
 
             if (GetCoins() < item.ItemCost)
             {
-                Debug.Log("Not enough money!");
+                noMoneySound.Play();
+                //Money blink
+                moneyAnim = 720;
+                itemInformationPanel.SetActive(false);
                 return;
             }
 
@@ -255,6 +259,7 @@ namespace SketchFleets.Inventory
             return Profile.Data.Coins;
         }
 
+        private float moneyAnim = 0f;
         protected override void Update()
         {
             base.Update();
@@ -271,6 +276,12 @@ namespace SketchFleets.Inventory
                     return;
                 }
             }
+
+            moneyAnim -= Time.deltaTime * 720;
+            if(moneyAnim < 0)
+                moneyAnim = 0;
+
+            coinCounter.color = Color.Lerp(Color.white,Color.red,Mathf.Sin(moneyAnim * Mathf.Deg2Rad));
         }
         #endregion
     }
