@@ -327,6 +327,7 @@ namespace SketchFleets.General
                 yield return secondInterval;
             }
         }
+        
 
         #endregion
     }
