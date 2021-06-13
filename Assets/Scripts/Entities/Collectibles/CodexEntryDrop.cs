@@ -12,8 +12,13 @@ namespace SketchFleets.Entities
     {
         #region Private Fields
 
-        private ShipAttributes entry;
+        [Header("Parameters")]
+        [SerializeField, Tooltip("The effect spawned upon collection")]
+        private GameObject deathEffect;
         
+        private ShipAttributes entry;
+        private bool collected;
+
         #endregion
 
         #region Properties
@@ -26,14 +31,40 @@ namespace SketchFleets.Entities
 
         #endregion
 
+        #region PoolMember Overrides
+
+        /// <summary>
+        /// Emerges the Poolable object from the pool
+        /// </summary>
+        /// <param name="position">The position at which to emerge the object</param>
+        /// <param name="rotation">The rotation to emerge the object with</param>
+        public override void Emerge(Vector3 position, Quaternion rotation)
+        {
+            collected = false;
+            base.Emerge(position, rotation);
+        }
+
+        /// <summary>
+        /// Submerges the Poolable object into the pool.
+        /// </summary>
+        public override void Submerge()
+        {
+            Transform cachedTransform = transform;
+            PoolManager.Instance.Request(deathEffect).Emerge(cachedTransform.position, cachedTransform.rotation);
+            base.Submerge();
+        }
+
+        #endregion
+        
         #region ICollectible Implementation
 
         /// <summary>
         /// Applies all necessary effects upon collection
         /// </summary>
         public void Collect()
-        { 
+        {
             CodexListener.Instance.CollectEntry(Entry);
+            collected = true;
             Submerge();
         }
 
@@ -43,25 +74,10 @@ namespace SketchFleets.Entities
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
-            {
-                Collect();
-            }
+            if (!other.CompareTag("Player") || collected) return;
+            Collect();
         }
 
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        /// Defines the collectible's entry
-        /// </summary>
-        /// <param name="ship"></param>
-        private void DefineEntry(ShipAttributes ship)
-        {
-            Entry = ship;
-        }
-        
         #endregion
     }
 }
