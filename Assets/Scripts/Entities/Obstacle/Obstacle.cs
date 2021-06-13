@@ -72,7 +72,7 @@ namespace SketchFleets.Entities
         {
             if (Attributes.CollideWithPlayerOnly)
             {
-                if (other.CompareTag("Player")) return;
+                if (!other.CompareTag("Player")) return;
             }
             
             DamageOrHealTarget(other.GetComponent<IDamageable>());
