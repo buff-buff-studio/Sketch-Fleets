@@ -10,34 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c96b4768b890804dbb36f984a04b908, type: 3}
-  m_Name: Lime Ship
+  m_Name: Destroyer
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Lime Ship
+    _constant: Fast Orange Ship
     _variable: {fileID: 0}
-  description: "Lime enemy ship\t"
-  prefab: {fileID: 1419266270299820781, guid: 65faab35e8e0d4844a45146097df8021, type: 3}
-  unlocalizedName: ship_lime
+  description: 'Enemy Fast Orange Ship
+
+'
+  prefab: {fileID: 1384894757326695033, guid: ee54617ce9229b349a6175c898b8f929, type: 3}
+  unlocalizedName: ship_orange_fast
+  unlocalizedDescription: 
   shipColor:
     _useConstant: 1
-    _constant: {r: 0.30817604, g: 1, b: 0.524391, a: 1}
+    _constant: {r: 0.16078432, g: 0.16078432, b: 0.16078432, a: 1}
     _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
-    _constant: 300
+    _constant: 1
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
-    _constant: 150
+    _constant: 50
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
-    _constant: 15
+    _constant: 25
     _variable: {fileID: 0}
   shieldRegenDelay:
     _useConstant: 1
-    _constant: 5
+    _constant: 1
     _variable: {fileID: 0}
   damageMultiplier:
     _useConstant: 1
@@ -45,15 +48,15 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 5
+    _constant: 1500
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
-    _constant: 1.25
+    _constant: 0.75
     _variable: {fileID: 0}
   collisionDamage:
     _useConstant: 1
-    _constant: 100
+    _constant: 25
     _variable: {fileID: 0}
   invincibilityTime:
     _useConstant: 1
@@ -61,9 +64,10 @@ MonoBehaviour:
     _variable: {fileID: 0}
   dropMinMaxCount:
     _useConstant: 1
-    _constant: {x: 2, y: 5}
+    _constant: {x: 3, y: 5}
     _variable: {fileID: 0}
-  shellDrop: {fileID: 4108485770172352479, guid: fad4cddbc0564f344aebf02278f79d7c, type: 3}
-  fire: {fileID: 11400000, guid: cd4b2ca9005c76547a9411386cf0ced0, type: 2}
+  shellDrop: {fileID: 4108485770172352479, guid: 838fa67d6f45b6c47b3f66f0f226a072, type: 3}
+  fire: {fileID: 0}
   hitSound: {fileID: 0}
-  deathEffect: {fileID: 2685658488167287599, guid: ee9fbbf272b3bb34988accc0846aac0d, type: 3}
+  deathEffect: {fileID: 1755664801758703151, guid: ce76139f3a838b544beee184776f06eb, type: 3}
+  healEffect: {fileID: 0}

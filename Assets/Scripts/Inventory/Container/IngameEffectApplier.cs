@@ -140,16 +140,16 @@ namespace SketchFleets.Inventory
     /// </summary>
     public class IngameEffectResult
     {
-        public int upgradeLifeIncrease = 0;
-        public int upgradeDamageIncrease = 0;
-        public int upgradeShieldIncrease = 0;
-        public int upgradeSpeedIncrease = 0;
+        public float upgradeLifeIncrease = 0;
+        public float upgradeDamageIncrease = 0;
+        public float upgradeShieldIncrease = 0;
+        public float upgradeSpeedIncrease = 0;
 
         public float healthRegen = 0;
         public float shieldRegen = 0;
         public int spawnSlotBonus = 0;
-        public int spawnCooldownMultiplierBonus = 0;
-        public int abilityCooldownMultiplierBonus = 0;
+        public float spawnCooldownMultiplierBonus = 0;
+        public float abilityCooldownMultiplierBonus = 0;
         public float maxHealthBonus = 0;
         public float maxShieldBonus = 0;
         public float damageMultiplierBonus = 0;

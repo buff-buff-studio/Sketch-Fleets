@@ -34,8 +34,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.54}
-  m_Size: {x: 9.97, y: 7.4}
+  m_Offset: {x: 0, y: 0.3}
+  m_Size: {x: 8, y: 3.7}
   m_Direction: 0
 --- !u!114 &1942549564
 MonoBehaviour:
@@ -94,15 +94,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6331946450490051697, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1704483
+      value: 0.35431007
       objectReference: {fileID: 0}
     - target: {fileID: 6331946450490051697, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5113449
+      value: 1.0629302
       objectReference: {fileID: 0}
     - target: {fileID: 6331946450490051697, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5113449
+      value: 1.0629302
       objectReference: {fileID: 0}
     - target: {fileID: 6331946450490051697, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -146,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7229382656790687373, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Name
-      value: Orange Ship
+      value: Seeker
       objectReference: {fileID: 0}
     - target: {fileID: 7229382656790687373, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Layer

@@ -16,7 +16,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: Lime Bullet
     _variable: {fileID: 0}
-  description: A bullet fired by the lime ship
+  description: A bullet fired by the Lime Ship
   prefab: {fileID: 2329831306282603820, guid: 99a4243c28cca7941b538f25fc22ffb1, type: 3}
   directDamage:
     _useConstant: 1
@@ -48,7 +48,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 1.2
+    _constant: 0.9
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
   pitchVariation:

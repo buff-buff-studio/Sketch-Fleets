@@ -49,11 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8a0de06510999f640bb44839925e8b30, type: 2}
     - target: {fileID: 1775835985480320962, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Radius
-      value: 2.5
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 3837800068395647316, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.87
+      value: 2.04
       objectReference: {fileID: 0}
     - target: {fileID: 3882482231209371536, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Layer
@@ -65,15 +65,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6331946450490051697, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1493728
+      value: 0.283
       objectReference: {fileID: 0}
     - target: {fileID: 6331946450490051697, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4481184
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 6331946450490051697, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4481184
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 6331946450490051697, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -117,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7229382656790687373, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Name
-      value: Purple Ship
+      value: Ace
       objectReference: {fileID: 0}
     - target: {fileID: 7229382656790687373, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Layer
@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: afd51330e97721d43913c717e280671c, type: 2}
     - target: {fileID: 7985856386147995172, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Radius
-      value: 2.5
+      value: 1.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}

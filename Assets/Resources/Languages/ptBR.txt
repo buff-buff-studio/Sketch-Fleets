@@ -83,7 +83,7 @@ ui_button_store=Loja
 
 ui_title_settings=Opções
 
-ui_pressSpace=Aperta a barra de espaço para invocar reforços;
+ui_pressSpace=Aperta a barra de espaço para invocar reforços
 
 #
 # SHOP MENU
@@ -113,13 +113,22 @@ ui_tutorial_magenta=Por fim, a Magenta. Apesar de ser frágil, ela atira extrema
 # SHIP NAMES
 #
 
-ship_mother=Nave Mãe
-ship_magenta=Nave Magenta
-ship_cyan=Nave Ciano
-ship_yellow=Nave Amarela
-ship_lime=Nave Verde
-ship_purple=Nave Roxa
-ship_orange=Nave Laranja
+ship_mother=Mothership
+ship_magenta=Thompson
+ship_cyan=The Meteor
+ship_yellow=The Tower
+
+ship_spinner=Spinner
+ship_shockwave=The Shockwave
+ship_spire=Spire
+
+ship_ace=Ace
+ship_skysplitter=The Skysplitter
+ship_starburst=Starburst
+
+ship_seeker=Seeker
+ship_destroyer=Destroyer
+ship_warfront=The Warfront
 
 #
 # ITEM NAMES
@@ -197,3 +206,7 @@ desc_damage_upgrade=Aumenta o dano da Nave Mãe
 desc_life_upgrade=Aumenta a Vida Máxima da Nave Mãe
 desc_shield_upgrade=Aumenta o Escudo Máximo da Nave Mãe
 desc_speed_upgrade=Aumenta a Velocidade de movimento da Nave Mãe
+
+
+ui_inventory=Inventário
+ui_items=Itens

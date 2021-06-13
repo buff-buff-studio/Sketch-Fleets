@@ -25,12 +25,20 @@ MonoBehaviour:
     _useConstant: 1
     _constant: -50
     _variable: {fileID: 0}
+  collideWithPlayerOnly:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
   motion:
     _useConstant: 1
-    _constant: {x: 0, y: 0}
+    _constant: {x: -10, y: 0}
     _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
     _constant: 100
     _variable: {fileID: 0}
   deathEffect: {fileID: 5077195437519626923, guid: b1c9e18599a08334baba1f0eb9ba7350, type: 3}
+  warnOnSpawn:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}

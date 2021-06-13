@@ -18,7 +18,7 @@ namespace SketchFleets.General
         [Header("Map Parameters")]
         [SerializeField, Tooltip("The attributes of the current map")]
         private MapAttributes mapAttributes;
-        
+
         [Header("Spawn Parameters")]
         [SerializeField, Tooltip("The area in which a ship can spawn")]
         private Collider2D spawnArea;
@@ -38,27 +38,38 @@ namespace SketchFleets.General
         [Header("UI Parameters")]
         [SerializeField, Tooltip("The menu that appears when the game is won")]
         private GameObject victoryMenu;
+        [SerializeField, Tooltip("All other UIs that should close when the game is over")]
+        private GameObject[] otherUI;
 
         [Header("Other Parameters")]
         [SerializeField, Tooltip("The total of enemies killed, displayed in the UI")]
         private IntReference totalEnemiesKilled;
-        
+
         private Mothership player;
 
         private int activeShips = 0;
 
         private int mapWaveCount;
         private int currentWave;
- 
-        private Coroutine handleWaveProgressRoutine;
-        private Coroutine spawnWaveRoutine;
+        private bool waveStarted;
+        private bool gameEnded = false;
+
         private Coroutine updateTimerRoutine;
+
+        [SerializeField]
+        private IntReference pencilShell;
 
         #endregion
 
         #region Properties
 
         public Mothership Player => player;
+
+        public bool GameEnded
+        {
+            get => gameEnded;
+            set => gameEnded = value;
+        }
 
         #endregion
 
@@ -86,7 +97,8 @@ namespace SketchFleets.General
             }
 
             updateTimerRoutine = StartCoroutine(UpdateTimer());
-            handleWaveProgressRoutine = StartCoroutine(HandleWaveProgress());
+            
+            StartNextWave();
         }
 
         #endregion
@@ -101,34 +113,40 @@ namespace SketchFleets.General
             activeShips--;
             totalEnemiesKilled.Value++;
 
-            if (IsWaveOver())
-            {
-                StartNextWave();
-            }
+#if UNITY_EDITOR
+            Debug.Log($"{activeShips} ships left in wave {currentWave} out of wave {mapWaveCount}");
+  #endif
+            
+            if (!IsWaveOver()) return;
+            EndWave();
+
+            HandleWaveProgress();
         }
 
         #endregion
 
         #region Private Methods
-        
+
+        /// <summary>
+        /// Ends the current wave
+        /// </summary>
+        private void EndWave()
+        {
+            waveStarted = false;
+        }
+
         /// <summary>
         /// Handles wave progress by checking when waves are over and progressing accordingly
         /// </summary>
-        private IEnumerator HandleWaveProgress()
+        private void HandleWaveProgress()
         {
-            WaitForSecondsRealtime checkInterval = new WaitForSecondsRealtime(3f);
-
-            StartNextWave();
-            
-            while (true)
+            if (AreAllWavesOver())
             {
-                if (AreAllWavesOver())
-                {
-                    WinGame();
-                    yield break;
-                }
-
-                yield return checkInterval;
+                WinGame();
+            }
+            else
+            {
+                StartNextWave();
             }
         }
 
@@ -140,7 +158,7 @@ namespace SketchFleets.General
             currentWave++;
             StartCoroutine(SpawnWave());
         }
-        
+
         /// <summary>
         /// Gets whether all waves were finishes
         /// </summary>
@@ -149,14 +167,14 @@ namespace SketchFleets.General
         {
             return currentWave >= mapWaveCount;
         }
-        
+
         /// <summary>
         /// Gets whether the active wave is over
         /// </summary>
         /// <returns>Whether the active wave is over</returns>
         private bool IsWaveOver()
         {
-            return activeShips == 0;
+            return activeShips == 0 && waveStarted;
         }
 
         /// <summary>
@@ -164,12 +182,18 @@ namespace SketchFleets.General
         /// </summary>
         private IEnumerator SpawnWave()
         {
+            #if UNITY_EDITOR
+            Debug.Log($"Starting wave {currentWave}");
+            #endif
+
             for (int index = 1; index <= mapAttributes.MaxEnemies[mapAttributes.Difficulty]; index++)
             {
                 SpawnShip();
                 float intervalDeviation = Random.Range(spawnIntervalDeviation * -1f, spawnIntervalDeviation);
                 yield return new WaitForSeconds(spawnInterval + intervalDeviation);
             }
+
+            waveStarted = true;
         }
 
         /// <summary>
@@ -243,8 +267,23 @@ namespace SketchFleets.General
         /// </summary>
         private void WinGame()
         {
+            ProfileSystem.Profile.Data.Coins += pencilShell.Value;
+            SetOtherMenusActive(false);
             victoryMenu.SetActive(true);
+
+            gameEnded = true;
             Time.timeScale = 0;
+        }
+
+        /// <summary>
+        /// Closes all other menus
+        /// </summary>
+        private void SetOtherMenusActive(bool active)
+        {
+            for (int index = 0, upper = otherUI.Length; index < upper; index++)
+            {
+                otherUI[index].SetActive(active);
+            }
         }
 
         /// <summary>
@@ -255,19 +294,40 @@ namespace SketchFleets.General
             Time.timeScale = 1f;
         }
 
+        /// <summary>
+        /// Updates the timer
+        /// </summary>
         private IEnumerator UpdateTimer()
         {
             WaitForSeconds secondInterval = new WaitForSeconds(1f);
-            
+
             while (true)
             {
                 seconds.Value = (int)Time.timeSinceLevelLoad;
-                minutes.Value = (int)(Time.timeSinceLevelLoad % 60);
-                
-                mapTimer.Value = $"{minutes.Value:00}:{seconds.Value:00}";
-                
+
+                mapTimer.Value = $"{GetMinutes():00}:{seconds.Value:00}";
+
                 yield return secondInterval;
             }
+        }
+
+        /// <summary>
+        /// Gets the current amount of minutes
+        /// </summary>
+        private int GetMinutes()
+        {
+            return (int)(Time.timeSinceLevelLoad / 60) % 60;
+
+            // if (Time.timeSinceLevelLoad / 60 < 1)
+            // {
+            //     getMinutes = 0;
+            // }
+            // else
+            // {
+            //     getMinutes = (int)(Time.timeSinceLevelLoad % 60);
+            // }
+            //
+            // return getMinutes;
         }
 
         #endregion

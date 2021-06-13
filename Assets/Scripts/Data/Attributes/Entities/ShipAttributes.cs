@@ -13,11 +13,13 @@ namespace SketchFleets.Data
     {
         #region Protected Fields
 
-        [Header("Attributes")]
-        [SerializeField]
-        // NOTE: Should be a StringReference, not a string. This should also be at the Attributes, not the
-        // NOTE: ShipAttributes class.
+        [Header("Localization")]
+        [SerializeField, Tooltip("The name key for the localization package")]
         protected string unlocalizedName;
+        [SerializeField, Multiline, Tooltip("The description key for the localization package")]
+        protected string unlocalizedDescription;
+        
+        [Header("Attributes")]
         [Tooltip("The ship's color.")]
         [SerializeField]
         protected ColorReference shipColor = new ColorReference(new Color());
@@ -108,6 +110,8 @@ namespace SketchFleets.Data
         public FloatReference InvincibilityTime => invincibilityTime;
 
         public GameObject HealEffect => healEffect;
+
+        protected string UnlocalizedDescription => unlocalizedDescription;
 
         #endregion
     }
