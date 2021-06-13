@@ -19,6 +19,7 @@ MonoBehaviour:
   description: The Player Mothership
   prefab: {fileID: 52908406865915231, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
   unlocalizedName: ship_mother
+  unlocalizedDescription: 
   shipColor:
     _useConstant: 0
     _constant: {r: 0, g: 0, b: 0, a: 0}
@@ -76,3 +77,5 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 0.15
     _variable: {fileID: 0}
+  itemRegister: {fileID: 11400000, guid: 917085393b8f6824f843e455c9f86e5a, type: 2}
+  upgradeRegister: {fileID: 11400000, guid: f1d2acb9e10ae6b48b20fce217f483ea, type: 2}

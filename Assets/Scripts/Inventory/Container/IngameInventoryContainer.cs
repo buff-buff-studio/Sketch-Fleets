@@ -31,9 +31,6 @@ namespace SketchFleets.Inventory
 
         public void OnClickSlotInv(int slot)
         {
-            if(slot + page * 6 <= items.Count)
-                return;
-
             ItemStack it = items[slot + page * 6];
             if(it != null)
             {  
@@ -51,7 +48,9 @@ namespace SketchFleets.Inventory
                         
                         items.Clear();
                         foreach (ItemStack stackb in ProfileSystem.Profile.GetData().inventoryItems)
-                            items.Add(stackb);
+                            if(FilterItem(stackb))
+                                items.Add(stackb);
+
                         Render();
                         break;
                     }
