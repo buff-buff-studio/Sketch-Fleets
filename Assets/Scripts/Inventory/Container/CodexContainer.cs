@@ -76,7 +76,7 @@ namespace SketchFleets.Inventory
             for (int index = 0; index < register.items.Length; index++)
             {
                 bool isUnlocked = unlockedList.Contains(index);
-                DisplayCard(index, register.items[index], isUnlocked);
+                DisplayCard(index, register.items[index], true);
             }
         }
 
