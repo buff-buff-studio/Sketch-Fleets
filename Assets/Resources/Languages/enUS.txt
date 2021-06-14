@@ -114,42 +114,44 @@ ui_tutorial_magenta=And finally, the Magenta Ship. Fragile but with a extremely 
 #
 
 ship_mother=Mothership
-ship_magenta=Thompson
-ship_cyan=The Meteor
-ship_yellow=The Tower
+ship_magenta=Turret
+ship_cyan=Meteor
+ship_yellow=Tower
 
 ship_spinner=Spinner
-ship_shockwave=The Shockwave
+ship_shockwave=Shockwave
 ship_spire=Spire
 
 ship_ace=Ace
-ship_skysplitter=The Skysplitter
+ship_skysplitter=Skysplitter
 ship_starburst=Starburst
 
 ship_seeker=Seeker
 ship_destroyer=Destroyer
-ship_warfront=The Warfront
+ship_warfront=Warfront
 
 #
-# SHIP DESCRIPTIONS
+# SHIP DESCRIPTIONS / CODEX
 #
 
-desc_ship_mother=
-desc_ship_magenta=
-desc_ship_cyan=
-desc_ship_yellow=
+ui_codex=Codex
 
-desc_ship_spinner=
-desc_ship_shockwave=
-desc_ship_spire=
+desc_ship_mother=The Mothership, my very first drawing! An explorer of the cosmos unlike any other!
+desc_ship_magenta=Your trusty best friend, absolutely gunning everything down in your way, at your command!
+desc_ship_cyan=The one ship you'll summon whenever you're sure you want something dead, and quickly!
+desc_ship_yellow=Just set and forget, let it do the dirty work! Until an asteroid hits it, that is!
 
-desc_ship_ace=
-desc_ship_skysplitter=
-desc_ship_starburst=
+desc_ship_spinner=A spinning ship that fires in four directions! Your meteor ship is a good countermeasure against it!
+desc_ship_shockwave=A spinning ship that releases a shockwave of bullets! Make sure to stay between the gaps of the shots.
+desc_ship_spire=A spinning ship that is absolutely guaranteed to fill the entire screen with bullets. Kill it with fire!
 
-desc_ship_seeker=
-desc_ship_destroyer=
-desc_ship_warfront=
+desc_ship_ace=The standart opposition throughout the cosmos! Slow fire rate, low damage, lots of purple!
+desc_ship_skysplitter=The second Ace model forged in the edges of the galaxy! Upgraded with double fire and more health! 
+desc_ship_starburst=A deadly variant of the Ace model, capable of firing very fast bullets with devastating damage!
+
+desc_ship_seeker=The Seeker ship doesn't value its own life as much as it values your death! Destroy it before it reaches you!
+desc_ship_destroyer=A seeker ship with heavier armor and faster propulsors! Its unstable core also means it will pack a punch.
+desc_ship_warfront=A huge seeker ship made out of unobtanium! Incredibly slow and resillient. Don't let it get close or you'll regret it!
 
 #
 # ITEM NAMES
@@ -236,5 +238,3 @@ ui_items=Items
 #
 
 ui_endgame_title=You won the game!
-
-ui_codex=Codex
