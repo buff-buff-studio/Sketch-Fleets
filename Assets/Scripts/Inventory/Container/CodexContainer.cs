@@ -76,7 +76,7 @@ namespace SketchFleets.Inventory
             for (int index = 0; index < register.items.Length; index++)
             {
                 bool isUnlocked = unlockedList.Contains(index);
-                DisplayCard(index, register.items[index], isUnlocked);
+                DisplayCard(index, register.items[index], true);
             }
         }
 
@@ -117,7 +117,6 @@ namespace SketchFleets.Inventory
         /// <param name="unlocked">Whether the given card has been unlocked</param>
         private void CreateShipCard(ShipAttributes ship, bool unlocked)
         {
-            Debug.Log(ship.Name);
             Instantiate(unlocked ? codexCard : lockedCodexCard).TryGetComponent(out CodexCard card);
             AddToDisplay(card.gameObject);
             if (unlocked)

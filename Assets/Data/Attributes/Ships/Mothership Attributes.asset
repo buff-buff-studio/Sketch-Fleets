@@ -19,7 +19,8 @@ MonoBehaviour:
   description: The Player Mothership
   prefab: {fileID: 52908406865915231, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
   unlocalizedName: ship_mother
-  unlocalizedDescription: 
+  unlocalizedDescription: desc_ship_mother
+  codexRarity: 0
   shipColor:
     _useConstant: 0
     _constant: {r: 0, g: 0, b: 0, a: 0}
@@ -65,6 +66,11 @@ MonoBehaviour:
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   shellDrop: {fileID: 5344832097319730938, guid: 40422bd9cc879ba4799a22387f0956e9, type: 3}
+  codexEntryTemplate: {fileID: 0}
+  codexDropChance:
+    _useConstant: 1
+    _constant: 0.02
+    _variable: {fileID: 0}
   fire: {fileID: 11400000, guid: b0967743feca18e449eb47263e1ec0d8, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 5077195437519626923, guid: 9f26ea5f3b9c43d43bddb1e9480e47e0, type: 3}
