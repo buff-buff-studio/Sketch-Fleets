@@ -109,48 +109,10 @@ ui_tutorial_cyan=Já a Ciano se joga nos inimigos ao clicar com o botão direito
 ui_tutorial_magenta=Por fim, a Magenta. Apesar de ser frágil, ela atira extremamente rápido e podem existir várias em campo simultaneamente 
 
 #
-# SHIP NAMES
-#
-
-ship_mother=Mothership
-ship_magenta=Thompson
-ship_cyan=The Meteor
-ship_yellow=The Tower
-
-ship_spinner=Spinner
-ship_shockwave=The Shockwave
-ship_spire=Spire
-
-ship_ace=Ace
-ship_skysplitter=The Skysplitter
-ship_starburst=Starburst
-
-ship_seeker=Seeker
-ship_destroyer=Destroyer
-ship_warfront=The Warfront
-
-#
 # SHIP DESCRIPTIONS / CODEX
 #
 
 ui_codex=Codex
-
-ship_mother_desc=Ahh.. A nave-mãe, meu primeiro desenho! Uma nave exploratoria do cosmos como nenhuma outra!
-ship_magenta_desc=A sua melhor amiga sem duvidas, ela absolutamente atira em tudo, claro, sob seu comando!
-ship_cyan_desc=A única nave que você convocará sempre quiser alguem bem especifico morto, bem morto mesmo!
-ship_yellow_desc=Essa dai vai ficar ali pra sempre, ela vai ficar lá atirando... ate um asteroide a atingir!
-
-ship_spinner_desc=Uma nave giratória que dispara em quatro direções! A Ciana é uma boa contramedida contra ele!
-ship_shockwave_desc=Uma nave giratória que libera uma onda de choque de balas! Se esconda nas areas em que as balas não chegam!
-ship_spire_desc=Uma nave giratória que preenche toda a tela com balas, você vai ficar louco! É melhor matar isso rapido!
-
-ship_ace_desc=A nave padrão da Autocracia em todo o cosmos, Ace I! Taxa de tiro lenta, baixo dano, muito roxo!
-ship_skysplitter_desc=A Ace II é forjada nas bordas da galáxia! E ela tem tiros duplos e mais vida!
-ship_starburst_desc=Uma variante mortal do modelo Ace, Ace III, capaz de disparar tiros muito rápidos, dando danos devastadores!
-
-ship_seeker_desc=A nave Seeker prefere a morte a ver você vivo! Mate-a antes que ela chegue em você!
-ship_destroyer_desc=Uma nave de busca, com uma armadura bem pesada e propulsores muito rápidos! Seu núcleo é instável então se prepare para o impacto!
-ship_warfront_desc=Uma gigantesca nave de busca feita de unobtanium! Incrivelmente lenta e resistente. Não deixe chegar perto ou você vai se arrepender! 
 
 #
 # ITEM NAMES
@@ -238,3 +200,41 @@ ui_items=Itens
 #
 
 ui_endgame_title=Você venceu o jogo!
+
+#
+# SHIP NAMES
+#
+
+ship_mother=Nave-Mãe
+ship_magenta=Thompson
+ship_cyan=A Granada
+ship_yellow=A Torreta
+
+ship_spinner=Spinner
+ship_shockwave=Onda de Choque
+ship_spire=Spire
+
+ship_ace=Ace
+ship_skysplitter=Divisora
+ship_starburst=Super Nova
+
+ship_seeker=Olheiro
+ship_destroyer=Destroyer
+ship_warfront=Ares
+
+desc_ship_mother=Ahh.. A nave-mãe, meu primeiro desenho! Uma nave exploratoria do cosmos como nenhuma outra!
+desc_ship_magenta=A sua melhor amiga sem duvidas, ela absolutamente atira em tudo, claro, sob seu comando!
+desc_ship_cyan=A única nave que você convocará sempre quiser alguem bem especifico morto, bem morto mesmo!
+desc_ship_yellow=Essa dai vai ficar ali pra sempre, ela vai ficar lá atirando... ate um asteroide a atingir!
+
+desc_ship_spinner=Uma nave giratória que dispara em quatro direções! A Ciana é uma boa contramedida contra ele!
+desc_ship_shockwave=Uma nave giratória que libera uma onda de choque de balas! Se esconda nas areas em que as balas não chegam!
+desc_ship_spire=Uma nave giratória que preenche toda a tela com balas, você vai ficar louco! É melhor matar isso rapido!
+
+desc_ship_ace=A nave padrão da Autocracia em todo o cosmos, Ace I! Taxa de tiro lenta, baixo dano, muito roxo!
+desc_ship_skysplitter=Este modelo Ace, Divisora, é forjada nas bordas da galáxia! E ela tem tiros duplos e mais vida!
+desc_ship_starburst=Uma variante mortal do modelo Ace, Super Nova, capaz de disparar tiros muito rápidos, dando danos devastadores!
+
+desc_ship_seeker=A nave Seeker prefere a morte a ver você vivo! Mate-a antes que ela chegue em você!
+desc_ship_destroyer=Uma nave de busca, com uma armadura bem pesada e propulsores muito rápidos! Seu núcleo é instável então se prepare para o impacto!
+desc_ship_warfront=Uma gigantesca nave de busca feita de unobtanium! Incrivelmente lenta e resistente. Não deixe chegar perto ou você vai se arrepender!
