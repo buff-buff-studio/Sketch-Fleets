@@ -131,8 +131,10 @@ ship_destroyer=Destroyer
 ship_warfront=Warfront
 
 #
-# SHIP DESCRIPTIONS
+# SHIP DESCRIPTIONS / CODEX
 #
+
+ui_codex=Codex
 
 ship_mother_desc=The Mothership, my very first drawing! An explorer of the cosmos unlike any other!
 ship_magenta_desc=Your trusty best friend, absolutely gunning everything down in your way, at your command!
@@ -236,5 +238,3 @@ ui_items=Items
 #
 
 ui_endgame_title=You won the game!
-
-ui_codex=Codex
