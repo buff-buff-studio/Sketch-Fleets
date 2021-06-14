@@ -19,7 +19,7 @@ MonoBehaviour:
   description: "Cyan ship summoned by the player\t"
   prefab: {fileID: 6527832755920852042, guid: 11e3d12220070db448013d4968149cff, type: 3}
   unlocalizedName: ship_cyan
-  unlocalizedDescription: ship_cyan_desc
+  unlocalizedDescription: desc_ship_cyan
   codexRarity: 1
   shipColor:
     _useConstant: 1

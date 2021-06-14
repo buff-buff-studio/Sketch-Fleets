@@ -117,7 +117,6 @@ namespace SketchFleets.Inventory
         /// <param name="unlocked">Whether the given card has been unlocked</param>
         private void CreateShipCard(ShipAttributes ship, bool unlocked)
         {
-            Debug.Log(ship.Name);
             Instantiate(unlocked ? codexCard : lockedCodexCard).TryGetComponent(out CodexCard card);
             AddToDisplay(card.gameObject);
             if (unlocked)
@@ -181,7 +180,7 @@ namespace SketchFleets.Inventory
                 index++;
             }
 
-            for (int destroyIndex = 0, upper = children.Length - 1; destroyIndex < upper; destroyIndex++)
+            for (int destroyIndex = 0, upper = children.Length; destroyIndex < upper; destroyIndex++)
             {
                 Debug.Log(destroyIndex);
                 DestroyImmediate(children[destroyIndex].gameObject);
