@@ -24,7 +24,7 @@ namespace SketchFleets
                 }
             }
 
-            SketchFleets.General.LevelManager.Instance.pauseShellCount.text = ProfileSystem.Profile.Data.Coins.ToString();
+            SketchFleets.General.LevelManager.Instance.PauseShellCount.text = ProfileSystem.Profile.Data.Coins.ToString();
         }
 
         public void Return()
