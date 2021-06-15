@@ -21,6 +21,8 @@ MonoBehaviour:
     like
     yourself.'
   prefab: {fileID: 5208673320480033209, guid: 12a25bfda71689a4c8af1583816155d2, type: 3}
+  unlocalizedName: 
+  unlocalizedDescription: 
   collisionDamage:
     _useConstant: 1
     _constant: -50
@@ -31,7 +33,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   motion:
     _useConstant: 1
-    _constant: {x: -10, y: 0}
+    _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
