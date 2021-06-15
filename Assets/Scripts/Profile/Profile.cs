@@ -116,11 +116,18 @@ namespace SketchFleets.ProfileSystem
                 yield return new WaitForEndOfFrame();
                 
             var thread = new System.Threading.Thread(() => {
+                try
+                {
                 //Save data
                 GetData().SaveInventories();
 
                 File.WriteAllBytes(FilePath,GetData().save.ToBytes());
                 runningThread = false;
+                }
+                catch(System.Exception)
+                {
+                    callback(GetData());
+                }
             });
             
             runningThread = true;

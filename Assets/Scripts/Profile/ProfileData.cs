@@ -146,7 +146,15 @@ namespace SketchFleets.ProfileSystem
             save.Remove("kkkkkkills");
 
             ReloadInventories();
-            Profile.SaveProfile(callback);
+            
+            try
+            {
+                Profile.SaveProfile(callback);
+            }
+            catch(System.Exception)
+            {
+                callback(this);
+            }
         }
     }
 }
