@@ -182,7 +182,6 @@ namespace SketchFleets.Inventory
 
             for (int destroyIndex = 0, upper = children.Length; destroyIndex < upper; destroyIndex++)
             {
-                Debug.Log(destroyIndex);
                 DestroyImmediate(children[destroyIndex].gameObject);
             }
         }
