@@ -1,4 +1,3 @@
-using System;
 using ManyTools.Variables;
 using SketchFleets.AI;
 using UnityEngine;
@@ -15,7 +14,7 @@ namespace SketchFleets
         [SerializeField]
         private FloatReference launchSpeedMultiplier = new FloatReference(5f);
         
-        private bool explode = false;
+        private bool explode;
 
         #endregion
 
@@ -55,8 +54,12 @@ namespace SketchFleets
                 other.gameObject.CompareTag("PlayerSpawn") ||
                 other.gameObject.CompareTag("bullet")) return;
 
-            explode = false;
             AI.Ship.Die();
+        }
+
+        private void OnDisable()
+        {
+            explode = false;
         }
 
         #endregion
