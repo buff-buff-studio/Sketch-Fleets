@@ -91,7 +91,6 @@ namespace SketchFleets.Entities
 
         public override void Heal(float amount)
         {
-            Debug.Log("heala danada");
             currentHealth.Value = Mathf.Min(GetMaxHealth(), currentHealth + amount);
 
             Transform cachedTransform = transform;
@@ -509,8 +508,6 @@ namespace SketchFleets.Entities
 
             Heal(attributesBonuses.HealthRegen);
             CurrentShield.Value = Mathf.Min(GetMaxShield(), CurrentShield.Value + attributesBonuses.ShieldRegen);
-
-            Debug.Log("Reapply pls: " + attributesBonuses.HealthRegen);
         }
         
         #endregion
