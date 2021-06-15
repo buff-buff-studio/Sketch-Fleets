@@ -3,10 +3,21 @@ using SketchFleets.ProfileSystem;
 using UnityEngine;
 using UnityEngine.UI;
 using SketchFleets.Data;
-
+using System.Collections.Generic;
 
 namespace SketchFleets.Inventory
 {
+    public class FallingItem
+    {
+        public GameObject Object;
+        public float Time = 0;
+
+        public FallingItem(GameObject gameObject,float time)
+        {
+            this.Object = gameObject;
+            this.Time = time;
+        }
+    }
     /// <summary>
     /// Store container class
     /// </summary>
@@ -14,13 +25,23 @@ namespace SketchFleets.Inventory
     {
         #region Public Fields
         public GameObject itemInformationPanel;
-        public TMP_Text itemInformationText;
-        public TMP_Text playerInventoryText;
+
+        public List<FallingItem> fallingItems = new List<FallingItem>();
+
+        public TMP_Text itemBuyConfirmation;
+        public TMP_Text itemBuyPrice;
+        public TMP_Text itemAmount;
+
         public TMP_Text coinCounter;
         public bool isUpgradeShop = false;
         public Image currencyIcon;
         public Sprite[] currencyIconSprites;
         public RectTransform coinCountBackground;
+
+        public AudioSource buySound;
+        public AudioSource noMoneySound;
+
+        public GameObject cardPrefab;
         #endregion
 
         private static int selectItemIndex = -1;
@@ -36,9 +57,11 @@ namespace SketchFleets.Inventory
 
             //Load
             inventory = new StoreInventory();
+            Random.InitState((int) (Time.time * 35678));
             for (int i = 0; i < (isUpgradeShop ? 4 : slots.Length); i++)
             {
-                inventory.AddItem(new ItemStack(register.PickRandom(i)));
+                ItemStack stack = new ItemStack(register.PickRandom(i));
+                inventory.AddItem(stack);
             }
 
             for (int i = 0; i < slots.Length; i++)
@@ -61,6 +84,26 @@ namespace SketchFleets.Inventory
 
             //Update label
             AddCoins(0);
+        }
+
+        public void OnEnable()
+        {
+            foreach(FallingItem rb in fallingItems)
+            {
+                Destroy(rb.Object);
+            }
+
+            fallingItems.Clear();
+        }
+
+        public void OnDisable() 
+        {
+            foreach(FallingItem rb in fallingItems)
+            {
+                Destroy(rb.Object);
+            }
+
+            fallingItems.Clear();
         }
         #endregion   
 
@@ -107,7 +150,10 @@ namespace SketchFleets.Inventory
 
             int count = isUpgradeShop ? Profile.GetData().inventoryUpgrades.SearchItem(stack) : Profile.GetData().inventoryItems.SearchItem(stack);
 
-            itemInformationText.text = "Do you really want to buy '" + item.UnlocalizedName + "' for $" + item.ItemCost + " ? (You have " + count + " " + item.UnlocalizedName + ")\n\nPrice: " + item.ItemCost;
+            itemBuyPrice.text = item.ItemCost.ToString();
+            string name = LanguageSystem.LanguageManager.Localize(item.UnlocalizedName);
+            itemAmount.text = LanguageSystem.LanguageManager.Localize("ui_shop_amount",count.ToString(),name);
+            itemBuyConfirmation.text = LanguageSystem.LanguageManager.Localize("ui_shop_buy_confirmation","1",name);
         }
 
         public void BuyItem()
@@ -118,7 +164,10 @@ namespace SketchFleets.Inventory
 
             if (GetCoins() < item.ItemCost)
             {
-                Debug.Log("Not enough money!");
+                noMoneySound.Play();
+                //Money blink
+                moneyAnim = 720;
+                itemInformationPanel.SetActive(false);
                 return;
             }
 
@@ -132,7 +181,72 @@ namespace SketchFleets.Inventory
             else
                 Profile.GetData().inventoryItems.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id, 1));
 
+            if(Random.Range(0,0.999f) <= 0.2f)
+                if(isUpgradeShop)
+                {
+                    //Add id
+                    if(Profile.GetData().codex.AddItem(new CodexEntry(CodexEntryType.Upgrade, stack.Id)) == 0)
+                        DropCard(selectItemIndex);
+                }
+                else
+                {
+                    //Add id
+                    if(Profile.GetData().codex.AddItem(new CodexEntry(CodexEntryType.Item, stack.Id)) == 0)
+                        DropCard(selectItemIndex);
+                }
+
+            buySound.Play();
+
+            //Clone item
+            CloneItem(selectItemIndex);
+
             Profile.SaveProfile((data) => { });
+        }
+
+        public void DropCard(int slot)
+        {
+            GameObject source = slots[slot].GetChild(1).gameObject;
+            GameObject obj = GameObject.Instantiate(cardPrefab);
+            obj.transform.parent = slots[slot].parent;
+            obj.transform.position = source.transform.position;
+            obj.transform.eulerAngles = source.transform.eulerAngles;
+            obj.transform.localScale = source.transform.localScale;
+            obj.SetActive(true);
+
+            ApplyPhysics(obj,true);
+        }
+
+        public void CloneItem(int slot)
+        {
+            GameObject source = slots[slot].GetChild(1).gameObject;
+            GameObject obj = GameObject.Instantiate(source);
+            
+            obj.name = "Falling Item";
+            obj.transform.parent = slots[slot].parent;
+            obj.transform.position = source.transform.position;
+            obj.transform.eulerAngles = source.transform.eulerAngles;
+            obj.transform.localScale = source.transform.localScale;
+
+            ApplyPhysics(obj,false);
+        }
+        public void ApplyPhysics(GameObject obj,bool card)
+        {
+            Destroy(obj.GetComponent<ItemStackAnimation>());
+            Rigidbody2D rb = obj.AddComponent<Rigidbody2D>();
+            fallingItems.Add(new FallingItem(obj,3));          
+
+            float degrees = rb.transform.eulerAngles.z;
+
+            rb.AddTorque((obj.transform.eulerAngles.z < 180 ? -1 : 1) * Random.Range(200,400));
+
+            Vector2 dir = new Vector2(-Mathf.Sin(degrees * Mathf.Deg2Rad)/2f,Mathf.Cos(degrees * Mathf.Deg2Rad));
+
+            rb.drag = 0.5f;
+            rb.gravityScale = card ? 50f : 75f;
+            rb.AddForce(dir * Random.Range(400,500),ForceMode2D.Impulse);
+
+            if(fallingItems.Count > 3)
+                Destroy(fallingItems[0].Object);  
         }
 
         public void CancelBuy()
@@ -180,11 +294,29 @@ namespace SketchFleets.Inventory
             return Profile.Data.Coins;
         }
 
+        private float moneyAnim = 0f;
         protected override void Update()
         {
             base.Update();
 
             coinCountBackground.sizeDelta = new Vector2(coinCounter.GetRenderedValues(true).x + 200,130);
+
+            foreach(FallingItem rb in fallingItems)
+            {
+                rb.Time -= Time.deltaTime;
+                if(rb.Time <= 0)
+                {
+                    Destroy(rb.Object);
+                    fallingItems.Remove(rb);
+                    return;
+                }
+            }
+
+            moneyAnim -= Time.deltaTime * 720;
+            if(moneyAnim < 0)
+                moneyAnim = 0;
+
+            coinCounter.color = Color.Lerp(Color.white,Color.red,Mathf.Sin(moneyAnim * Mathf.Deg2Rad));
         }
         #endregion
     }

@@ -29,7 +29,7 @@ namespace SketchFleets.UI
 
         #region Properties
 
-        private float FillAmount => target.CurrentShield / target.Attributes.MaxShield;
+        private float FillAmount => target.CurrentShield / target.GetMaxShield();
 
         #endregion
 
@@ -37,6 +37,7 @@ namespace SketchFleets.UI
 
         private void Update()
         {
+
             if (!Mathf.Approximately(shieldBar.fillAmount, FillAmount))
             {
                 ShieldBarUpdate();

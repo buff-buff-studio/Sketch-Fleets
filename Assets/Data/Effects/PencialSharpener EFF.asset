@@ -19,19 +19,19 @@ MonoBehaviour:
   description: Temporarily increases damage dealt by all ships.
   prefab: {fileID: 0}
   healthRegen:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   shieldRegen:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   maxHealthBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   maxShieldBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   damageMultiplierBonus:
@@ -39,11 +39,11 @@ MonoBehaviour:
     _constant: 0.5
     _variable: {fileID: 0}
   speedMultiplierBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   defenseBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   duration:
@@ -51,14 +51,14 @@ MonoBehaviour:
     _constant: 30
     _variable: {fileID: 0}
   spawnSlotBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   spawnCooldownMultiplierBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   abilityCooldownMultiplierBonus:
-    _useConstant: 0
+    _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}

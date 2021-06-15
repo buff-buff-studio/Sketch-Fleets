@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using SketchFleets.Data;
+using UnityEngine.Serialization;
 
 namespace SketchFleets
 {
@@ -12,12 +13,12 @@ namespace SketchFleets
     {
         public Vector3 IconRotate;
         public Image LoadIcon;
-        public DifficultyAttributes Difficulty;
+        [FormerlySerializedAs("Difficulty")] public MapAttributes map;
         void Start()
         {
             StartCoroutine(LoadingScene());
 
-            LoadIcon.color = Difficulty.MapColor[Difficulty.Difficulty];
+            LoadIcon.color = map.MapColor[map.Difficulty];
         }
 
         IEnumerator LoadingScene()

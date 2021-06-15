@@ -14,6 +14,9 @@ namespace SketchFleets.Data
 
         [Header("Spawn Parameters")]
         [SerializeField]
+        [Tooltip("The special effect to spawn when this ship is summoned")]
+        private GameObject spawnEffect;
+        [SerializeField]
         [Tooltip("How much graphite it takes to summon a ship")]
         private IntReference graphiteCost = new IntReference(100);
         [SerializeField]
@@ -38,6 +41,7 @@ namespace SketchFleets.Data
         public IntReference MaximumShips => maximumShips;
         public FloatReference OrbitRadius => orbitRadius;
         public IntReference GraphiteCostIncrease => graphiteCostIncrease;
+        public GameObject SpawnEffect => spawnEffect;
 
         #endregion
     }

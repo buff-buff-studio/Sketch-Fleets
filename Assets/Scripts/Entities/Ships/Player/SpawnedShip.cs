@@ -1,4 +1,7 @@
-﻿using SketchFleets.Data;
+﻿using ManyTools.UnityExtended.Poolable;
+using SketchFleets.Data;
+using SketchFleets.General;
+using UnityEngine;
 
 namespace SketchFleets.Entities
 {
@@ -13,6 +16,23 @@ namespace SketchFleets.Entities
 
         #endregion
 
+        #region PoolMember Overrides
+
+        /// <summary>
+        /// Emerges the Poolable object from the pool
+        /// </summary>
+        /// <param name="position">The position at which to emerge the object</param>
+        /// <param name="rotation">The rotation to emerge the object with</param>
+        public override void Emerge(Vector3 position, Quaternion rotation)
+        {
+            base.Emerge(position, rotation);
+            // The invoke here is beyond horrible in terms of performance, but I'd rather not spend
+            // more time in this script, the deadline is looming
+            Invoke(nameof(EmergeSpawnEffect), 0.1f);
+        }
+
+        #endregion
+        
         #region Ship Overrides
 
         /// <summary>
@@ -23,6 +43,20 @@ namespace SketchFleets.Entities
             LevelManager.Instance.Player.RemoveActiveSummon(this);
 
             base.Die();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Emerges a spawn effect at the ship's position
+        /// </summary>
+        private void EmergeSpawnEffect()
+        {
+            Transform cachedTransform = transform;
+            PoolManager.Instance.Request(Attributes.SpawnEffect).
+                Emerge(cachedTransform.position, cachedTransform.rotation);
         }
 
         #endregion

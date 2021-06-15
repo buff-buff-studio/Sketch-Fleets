@@ -34,6 +34,7 @@ namespace SketchFleets.Entities
 
         private Transform cachedTransform;
         private SpriteRenderer spriteRenderer;
+        private float variantSpeed;
 
         #endregion
 
@@ -47,7 +48,8 @@ namespace SketchFleets.Entities
 
         private void Update()
         {
-            cachedTransform.Rotate(0f, 0f, spinSpeed * Time.deltaTime * Time.timeScale);
+            float temporalSpeed = variantSpeed * Time.deltaTime * Time.timeScale;
+            cachedTransform.Rotate(0f, 0f, temporalSpeed);
         }
 
         private void OnTriggerEnter2D(Collider2D col)
@@ -72,7 +74,7 @@ namespace SketchFleets.Entities
             // If there is a collect effect, spawn it
             if (collectEffect != null)
             {
-                Instantiate(collectEffect, cachedTransform.position, cachedTransform.rotation);
+                PoolManager.Instance.Request(collectEffect).Emerge(cachedTransform.position, cachedTransform.rotation);
             }
 
             // Sends its back to the pool
@@ -92,8 +94,12 @@ namespace SketchFleets.Entities
         {
             shellColor.Value = Color.white;
             shellWorth.Value = 1;
-
+            
+            ApplyVariance();
+            
             base.Emerge(position, rotation);
+            
+            SubmergeDelayed(10f);
         }
 
         #endregion
@@ -106,12 +112,23 @@ namespace SketchFleets.Entities
         /// <param name="dropColor">The color to set to</param>
         public void SetDropColor(Color dropColor)
         {
-            // if (spriteRenderer == null)
-            // {
-            //     spriteRenderer = GetComponent<SpriteRenderer>();
-            // }
-            
             spriteRenderer.color = dropColor;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Applies variance in scale and rotation speed
+        /// </summary>
+        private void ApplyVariance()
+        {
+            float randomNumber = Random.Range(0.8f, 1.2f);
+            float sizeVariance = randomNumber * cachedTransform.localScale.x;
+
+            cachedTransform.localScale = new Vector3(sizeVariance, sizeVariance, sizeVariance);
+            variantSpeed = spinSpeed * randomNumber;
         }
 
         #endregion

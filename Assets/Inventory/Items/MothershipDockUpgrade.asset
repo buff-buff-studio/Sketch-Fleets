@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: MothershipDockUpgrade
   m_EditorClassIdentifier: 
   unlocalized_name: mothership_dock_upgrade
-  id: 8
-  icon: {fileID: 7371662290826862433, guid: 0a279c5a0e09a1044948f9615d542a00, type: 3}
-  itemCost:
-    _useConstant: 1
-    _constant: 500
-    _variable: {fileID: 0}
   rarity:
     _useConstant: 1
     _constant: 4
     _variable: {fileID: 0}
+  itemCost:
+    _useConstant: 1
+    _constant: 500
+    _variable: {fileID: 0}
+  icon: {fileID: 7371662290826862433, guid: 0a279c5a0e09a1044948f9615d542a00, type: 3}
+  id: 8
   effect: {fileID: 11400000, guid: 8309190fb57da5045a1a1361273ed4b4, type: 2}
+  isConsumable: 0
+  codexEntryRarity: 2

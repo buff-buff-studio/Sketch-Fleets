@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a9cff1fc83417888703122150b61f8, type: 3}
+  m_Name: Red Enemy Pool
+  m_EditorClassIdentifier: 
+  pool:
+  - item: {fileID: 11400000, guid: a358d82563d284d4abc42402d32804a8, type: 2}
+    weight: 0
+  - item: {fileID: 11400000, guid: 1f131c9366701af4c873a4bd28e07e55, type: 2}
+    weight: 1
+  - item: {fileID: 11400000, guid: 87343191eedf8f94dbdbee79a9f3f972, type: 2}
+    weight: 6
+  - item: {fileID: 11400000, guid: 64b2549bbab845246bddf8910d98b9c8, type: 2}
+    weight: 2
+  - item: {fileID: 11400000, guid: 2e40e4f4990845e4b962d7bd62481b48, type: 2}
+    weight: 0
+  - item: {fileID: 11400000, guid: 6a0e6662e90fb1046b3778c953bd344f, type: 2}
+    weight: 2
+  - item: {fileID: 11400000, guid: 21452b9dcb8e98f49be00981ad056dd2, type: 2}
+    weight: 7
+  - item: {fileID: 11400000, guid: 26871296f99e8cb4494bc609b89e88ac, type: 2}
+    weight: 0
+  - item: {fileID: 11400000, guid: b278415e8a028414396a3e338f85629e, type: 2}
+    weight: 1

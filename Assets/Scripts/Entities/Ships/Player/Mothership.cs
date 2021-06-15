@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using SketchFleets.Data;
+using ManyTools.Variables;
 using System.Collections.Generic;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
 using ManyTools.UnityExtended;
+using SketchFleets.Inventory;
+using SketchFleets.General;
 
 namespace SketchFleets.Entities
 {
@@ -22,14 +25,13 @@ namespace SketchFleets.Entities
         private Transform shipSpawnPoint;
         [SerializeField, RequiredField()]
         private GameObject shipSpawnMenu;
-        
+        [SerializeField, RequiredField()]
+        private GameObject hud;
+
         private UnityDictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
             new UnityDictionary<SpawnableShipAttributes, SpawnMetaData>();
 
-        private float extraSpawnSlots = 0f;
-        private float abilityCooldownMultiplier = 1f;
-        private float spawnCooldownMultipler = 1f;
-        private float fireTimerModifier = 1f;
+        private MothershipAttributesBonuses attributesBonuses;
 
         private List<ItemEffect> activeEffects;
         private List<StatusEffect> activeSpawnEffects;
@@ -39,85 +41,88 @@ namespace SketchFleets.Entities
         private Camera mainCamera;
 
         private IEnumerator regenerateRoutine;
-
+        
         #endregion
 
         #region Properties
 
-        public List<ItemEffect> ActiveEffects
-        {
-            get => activeEffects;
-            set => activeEffects = value;
-        }
-
-        public List<StatusEffect> ActiveSpawnEffects
-        {
-            get => activeSpawnEffects;
-            set => activeSpawnEffects = value;
-        }
+        public MothershipAttributesBonuses AttributesBonuses => attributesBonuses;
 
         public UnityDictionary<SpawnableShipAttributes, SpawnMetaData> SpawnMetaDatas => spawnMetaDatas;
 
         public float AbilityTimer => abilityTimer;
 
+        public override FloatReference MaxHealth => new FloatReference(GetMaxHealth());
+
         #endregion
 
         #region Unity Callbacks
+        
+        protected void Awake() 
+        {
+            attributesBonuses = ScriptableObject.CreateInstance<MothershipAttributesBonuses>();
+            IngameEffectApplier.OnEffectsChange = OnEffectsChange;
+            IngameEffectApplier.Clear();
+        }
 
         // Start runs once before the first update
-        protected void Start()
+        protected override void Start()
         {
+            base.Start();
             // Caches necessary components
             mainCamera = Camera.main;
             regenerateRoutine = RegenerateShips();
         }
-
+        
         // Start runs once every frame
         protected override void Update()
         {
             base.Update();
 
-            // Moves and rotates the ship
-            Move();
-            Look(mainCamera.ScreenToWorldPoint(Input.mousePosition));
-
-            // Ticks down timers
-            UpdateSummonTimers();
-            abilityTimer = AbilityTimer - Time.deltaTime * Time.timeScale;
-
-            // Enables or disables the spawn menu
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                EnableOrDisableSpawnMenu(true);
-            }
+            HandlePlayerInput();
+            TickTimers();
             
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                EnableOrDisableSpawnMenu(false);
-            }
-
-            // Fires stuff
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                Fire();
-            }
-
-            if (Input.GetKeyDown(KeyCode.R) && IsAbilityAvailable())
-            {
-                StartCoroutine(regenerateRoutine);
-            }
+            //DebugMonitorVariables();
         }
 
         #endregion
 
+        #region IDamageable Overrides
+
+        public override void Heal(float amount)
+        {
+            currentHealth.Value = Mathf.Min(GetMaxHealth(), currentHealth + amount);
+
+            Transform cachedTransform = transform;
+
+            if (Attributes.HealEffect != null)
+            {
+                if(PoolManager.Instance != null)
+                PoolManager.Instance.Request(Attributes.HealEffect).
+                    Emerge(cachedTransform.position, cachedTransform.rotation);
+            }
+        }
+
+        #endregion
+        
         #region Ship<T> Overrides
+
+        /// <summary>
+        /// Resets all instance-specific variables
+        /// </summary>
+        protected override void ResetInstanceVariables()
+        {
+            currentHealth.Value = GetMaxHealth();
+            currentShield.Value = GetMaxShield();
+            fireTimer = 0;
+        }
 
         /// <summary>
         /// Fires the ship's weapons
         /// </summary>
         public override void Fire()
         {
-            if (fireTimer > 0f) return;
+            if (fireTimer > 0f || Time.timeScale == 0) return;
 
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
@@ -126,16 +131,71 @@ namespace SketchFleets.Entities
 
                 bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
-                bullet.GetComponent<BulletController>().BarrelAttributes = Attributes;
+                BulletController bt = bullet.GetComponent<BulletController>();
+                bt.DamageMultiplier = AttributesBonuses.DamageMultiplier;
+                bt.DamageIncrease = AttributesBonuses.DamageIncrease;
             }
 
-            fireTimer = attributes.Fire.Cooldown * fireTimerModifier;
+            fireTimer = GetFireCooldown();
+        }
+
+        /// <summary>
+        /// Regenerates the ship's shields
+        /// </summary>
+        protected override void RegenShield()
+        {
+            // Decrements the regen timer
+            shieldRegenTimer -= Time.deltaTime;
+
+            // If the regen timer is not over or there is no regen, end it here
+            if (!CanRegenShield()) return;
+
+            // Regen shield
+            CurrentShield.Value = Mathf.Min(GetMaxShield(), CurrentShield.Value + GetShieldRegen());
         }
 
         #endregion
 
         #region Public Methods
 
+        /// <summary>
+        /// Gets whether the Mothership can currently regenerate its shields
+        /// </summary>
+        /// <returns>Whether the mothership can regenerate its shields</returns>
+        public bool CanRegenShield()
+        {
+            return shieldRegenTimer <= 0 &&
+                   !Mathf.Approximately(Attributes.ShieldRegen, 0) &&
+                   !Mathf.Approximately(CurrentShield.Value, GetMaxShield());
+        }
+        
+        /// <summary>
+        /// Gets the shield regen for the current point in time
+        /// </summary>
+        /// <returns>The shield regen for the current point in time</returns>
+        public float GetShieldRegen()
+        {
+            return (Attributes.ShieldRegen + AttributesBonuses.ShieldRegen) * Time.deltaTime * Time.timeScale;
+        }
+        
+        /// <summary>
+        /// Gets the max health of the mothership
+        /// </summary>
+        /// <returns>The max health</returns>
+        public float GetMaxHealth()
+        {
+            return Attributes.MaxHealth + AttributesBonuses.MaxHealth + AttributesBonuses.HealthIncrease;
+        }
+        
+        /// <summary>
+        /// Gets the max shield of the mothership
+        /// </summary>
+        /// <returns>The max shield</returns>
+        public float GetMaxShield()
+        {
+            return Attributes.MaxShield + AttributesBonuses.MaxShield + AttributesBonuses.ShieldIncrease;
+        }
+        
         /// <summary>
         /// Summons a ship of a given type
         /// </summary>
@@ -160,7 +220,7 @@ namespace SketchFleets.Entities
             SpawnedShip shipController = spawn.GetComponent<SpawnedShip>();
 
             // Adds the cooldown
-            SpawnMetaDatas[shipType].SummonTimer.Value = shipType.SpawnCooldown.Value * spawnCooldownMultipler;
+            SpawnMetaDatas[shipType].SummonTimer.Value = GetMaxSpawnCooldown(shipType);
             SpawnMetaDatas[shipType].CurrentlyActive.Add(shipController);
 
             shipController.SpawnNumber = SpawnMetaDatas[shipType].CurrentlyActive.Count;
@@ -204,7 +264,17 @@ namespace SketchFleets.Entities
         /// <returns>Whether there is remaining space to spawn the ship</returns>
         public bool IsThereSpaceForSpawn(SpawnableShipAttributes shipType)
         {
-            return GetSpawnMetaData(shipType).CurrentlyActive.Count + 1 <= shipType.MaximumShips.Value + extraSpawnSlots;
+            return GetSpawnMetaData(shipType).CurrentlyActive.Count + 1 <= GetMaxShipCount(shipType);
+        }
+
+        /// <summary>
+        /// Gets the maximum ship count of a given ship type
+        /// </summary>
+        /// <param name="shipType">The ship type to check for maximum count</param>
+        /// <returns>The maximum count of a given ship type</returns>
+        public int GetMaxShipCount(SpawnableShipAttributes shipType)
+        {
+            return shipType.MaximumShips.Value + AttributesBonuses.ExtraSpawnSlots;
         }
 
         /// <summary>
@@ -214,7 +284,8 @@ namespace SketchFleets.Entities
         /// <returns>Whether the ship can be spawned</returns>
         public bool CanSpawnShip(SpawnableShipAttributes shipType)
         {
-            return IsThereSpaceForSpawn(shipType) && GetSpawnCooldown(shipType) <= 0;
+            return IsThereSpaceForSpawn(shipType) && GetSpawnCooldown(shipType) <= 0 && 
+                   CurrentHealth > GetSpawnCost(shipType);
         }
 
         /// <summary>
@@ -224,7 +295,7 @@ namespace SketchFleets.Entities
         /// <returns>The maximum cooldown of the given ship type</returns>
         public float GetMaxSpawnCooldown(SpawnableShipAttributes shipType)
         {
-            return (float)shipType.SpawnCooldown * spawnCooldownMultipler;
+            return (float)shipType.SpawnCooldown * AttributesBonuses.SpawnCooldownMultiplier;
         }
 
         /// <summary>
@@ -250,7 +321,7 @@ namespace SketchFleets.Entities
         /// <returns>The maximum ability cooldown</returns>
         public float GetMaxAbilityCooldown()
         {
-            return Attributes.RegenerateCooldown * abilityCooldownMultiplier;
+            return Attributes.RegenerateCooldown * AttributesBonuses.AbilityCooldownMultiplier;
         }
 
         /// <summary>
@@ -262,16 +333,95 @@ namespace SketchFleets.Entities
             return AbilityTimer <= 0f;
         }
 
+        /// <summary>
+        /// Gets the speed of the ship for the current point in time
+        /// </summary>
+        /// <returns>The speed of the ship for the current point in time</returns>
+        public float GetSpeed()
+        {   
+            return (Attributes.Speed + AttributesBonuses.SpeedIncrease) 
+                   * AttributesBonuses.SpeedMultiplier * Time.timeScale * Time.deltaTime;
+        }
+
         #endregion
 
         #region Private Methods
 
+        private void DebugMonitorVariables()
+        {
+            Debug.Log($"<color=green>Health: {currentHealth.Value}/{GetMaxHealth()}</color> \n" +
+                      $"<color=cyan>Shields: {CurrentShield.Value}/{GetMaxShield()}</color>, Can regen: <b>{CanRegenShield()}</b> \n" +
+                      $"<color=orange>Ability: {abilityTimer}/{GetMaxAbilityCooldown()}</color>, Can use: <b>{IsAbilityAvailable()}</b>");
+        }
+        
+        /// <summary>
+        /// Ticks all timers related to the mothership
+        /// </summary>
+        private void TickTimers()
+        {
+            IngameEffectApplier.TickItems(Time.deltaTime);
+            UpdateSummonTimers();
+            abilityTimer = AbilityTimer - Time.deltaTime * Time.timeScale;
+        }
+        
+        /// <summary>
+        /// Handles player input
+        /// </summary>
+        private void HandlePlayerInput()
+        {
+            // Moves and rotates the ship
+            Move();
+            Look(mainCamera.ScreenToWorldPoint(Input.mousePosition));
+            
+            // Enables or disables the spawn menu
+            if (Input.GetKeyDown(KeyCode.Space) && !IsGameOver())
+            {
+                EnableOrDisableSpawnMenu(true);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space) && !IsGameOver())
+            {
+                EnableOrDisableSpawnMenu(false);
+            }
+
+            // Fires stuff
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                Fire();
+            }
+
+            // Uses regen ability
+            if (Input.GetKeyDown(KeyCode.R) && IsAbilityAvailable())
+            {
+                StartCoroutine(RegenerateShips());
+            }
+        }
+        
+        /// <summary>
+        /// Gets the fire cooldown
+        /// </summary>
+        /// <returns>The fire cooldown</returns>
+        private float GetFireCooldown()
+        {
+            return Attributes.Fire.Cooldown;
+        }
+        
+        /// <summary>
+        /// Gets whether the game has ended
+        /// </summary>
+        /// <returns>Whether the game has ended</returns>
+        private bool IsGameOver()
+        {
+            return LevelManager.Instance.GameEnded;
+        }
+        
         /// <summary>
         /// Enables or disables the ship spawn menu
         /// </summary>
         /// <param name="enable">Whether to enable or disable the ship spawn menu</param>
         private void EnableOrDisableSpawnMenu(bool enable)
         {
+            hud.SetActive(!enable);
             shipSpawnMenu.SetActive(enable);
         }
 
@@ -283,14 +433,9 @@ namespace SketchFleets.Entities
             // Gets movement input
             Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
 
-            // Caches time-based speed and input
-            float timeSpeed = attributes.Speed * Time.deltaTime * Time.timeScale;
-
-            // Caches transform to avoid repeated marshalling
-            Transform transformCache = transform;
-
             // Translates
-            transformCache.Translate(movement * timeSpeed, Space.World);
+        
+            transform.Translate(movement * GetSpeed(), Space.World);
         }
 
         /// <summary>
@@ -313,7 +458,7 @@ namespace SketchFleets.Entities
         {
             WaitForSeconds killInterval = new WaitForSeconds(Attributes.RegenerateKillInterval);
             abilityTimer = GetMaxAbilityCooldown();
-            
+
             // For every spawned ship type
             foreach (var metaData in spawnMetaDatas)
             {
@@ -337,24 +482,34 @@ namespace SketchFleets.Entities
             }
         }
 
-        /// <summary>
-        /// Applies status effects to the mothership
-        /// </summary>
-        /// <returns></returns>
-        private IEnumerator TickStatusEffects()
+        #endregion
+
+        #region Effects
+        
+        private void OnEffectsChange()
         {
-            // Caches tick interval
-            WaitForSeconds secondInterval = new WaitForSeconds(1f);
+            IngameEffectResult result = IngameEffectApplier.GetResult(attributes.ItemRegister,attributes.UpgradeRegister);
+            
+            attributesBonuses.HealthIncrease.Value = result.upgradeLifeIncrease;
+            attributesBonuses.DamageIncrease.Value = result.upgradeDamageIncrease;
+            attributesBonuses.ShieldIncrease.Value = result.upgradeShieldIncrease;
+            attributesBonuses.SpeedIncrease.Value = result.upgradeSpeedIncrease;
 
-            for (int index = 0, upper = ActiveEffects.Count; index < upper; index++)
-            {
-                //ActiveEffects[index]
-            }
+            attributesBonuses.HealthRegen.Value = result.healthRegen;
+            attributesBonuses.ShieldRegen.Value = result.shieldRegen;
+            attributesBonuses.ExtraSpawnSlots.Value = result.spawnSlotBonus;
+            attributesBonuses.SpawnCooldownMultiplier.Value = result.spawnCooldownMultiplierBonus;
+            attributesBonuses.AbilityCooldownMultiplier.Value = result.abilityCooldownMultiplierBonus;
+            attributesBonuses.MaxHealth.Value = result.maxHealthBonus;
+            attributesBonuses.MaxShield.Value = result.maxShieldBonus;
+            attributesBonuses.DamageMultiplier.Value = result.damageMultiplierBonus;
+            attributesBonuses.SpeedMultiplier.Value = result.speedMultiplierBonus;
+            attributesBonuses.Defense.Value = result.defenseBonus;
 
-            // Waits interval
-            yield return secondInterval;
+            Heal(attributesBonuses.HealthRegen);
+            CurrentShield.Value = Mathf.Min(GetMaxShield(), CurrentShield.Value + attributesBonuses.ShieldRegen);
         }
-
+        
         #endregion
     }
 }

@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: MothershipAbilityUpgrade
   m_EditorClassIdentifier: 
   unlocalized_name: mothership_ability_upgrade
-  id: 6
-  icon: {fileID: 889517955984356238, guid: 0a279c5a0e09a1044948f9615d542a00, type: 3}
-  itemCost:
-    _useConstant: 1
-    _constant: 250
-    _variable: {fileID: 0}
   rarity:
     _useConstant: 1
     _constant: 5
     _variable: {fileID: 0}
+  itemCost:
+    _useConstant: 1
+    _constant: 250
+    _variable: {fileID: 0}
+  icon: {fileID: 889517955984356238, guid: 0a279c5a0e09a1044948f9615d542a00, type: 3}
+  id: 6
   effect: {fileID: 11400000, guid: 6b1f2294997c7a34b8585a279d3e8e2a, type: 2}
+  isConsumable: 0
+  codexEntryRarity: 1

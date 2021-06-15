@@ -24,3 +24,5 @@ MonoBehaviour:
   icon: {fileID: -200788618042719709, guid: 754a14a9899896346b01c08a42db253d, type: 3}
   id: 2
   effect: {fileID: 11400000, guid: 3fce1d75fa4096f4ea08a87fa37aaf08, type: 2}
+  isConsumable: 0
+  codexEntryRarity: 2

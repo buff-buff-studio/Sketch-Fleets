@@ -39,7 +39,7 @@ public class ConstelationMap : MonoBehaviour
     //Testing
     public static System.Action onMapLoad;
     //Reference
-    public DifficultyAttributes currentMap;
+    public MapAttributes currentMap;
     public IntReference currentLevel;
     public IntReference currentLevelDifficulty;
     public IntReference currentSeed;
@@ -238,10 +238,12 @@ public class ConstelationMap : MonoBehaviour
                 //Create paths between stars
                 for(int j = 0; j < currentLineStars.Count; j ++)
                 {
-
                     int a = j;
                     int b = j - 1;
-                    int c = j + 1;
+                    int c = j + 1; 
+
+                    if(b < 0)
+                        b = j + 2;
 
                     Constelation.Star starA = currentLineStars[j];
 

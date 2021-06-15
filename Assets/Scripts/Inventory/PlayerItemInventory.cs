@@ -14,9 +14,6 @@ namespace SketchFleets.Inventory
             if (!CanAddItem(stack))
                 return stack.Amount;
 
-            //Add id
-            Profile.GetData().codex.AddItem(new CodexEntry(CodexEntryType.Item,stack.Id));
-
             for (int i = 0; i < items.Length; i++)
             {
                 if (items[i] == null)

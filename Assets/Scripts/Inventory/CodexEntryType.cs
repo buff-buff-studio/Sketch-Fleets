@@ -1,13 +1,12 @@
 namespace SketchFleets.Inventory
 {
     /// <summary>
-    /// Condex entry type
+    /// Codex entry type
     /// </summary>
     public enum CodexEntryType
     {
-        Ally,
-        Enemy,
+        Ship,
         Item,
-        Region
+        Upgrade
     }
 }

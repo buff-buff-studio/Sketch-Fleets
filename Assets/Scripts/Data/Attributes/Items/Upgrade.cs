@@ -1,5 +1,6 @@
 using ManyTools.Variables;
 using UnityEngine;
+using SketchFleets.Inventory;
 
 namespace SketchFleets.Data
 {
@@ -12,47 +13,52 @@ namespace SketchFleets.Data
     {
         #region Private Fields
         [SerializeField]
-        private IntReference itemCostIncreasePerLevel = new IntReference(100);
+        private FloatReference itemCostIncreasePerLevel = new FloatReference(100);
 
         [SerializeField]
-        private IntReference upgradeLifeIncrease = new IntReference(0);
+        private FloatReference upgradeLifeIncrease = new FloatReference(0);
 
         [SerializeField]
-        private IntReference upgradeDamageIncrease = new IntReference(0);
+        private FloatReference upgradeDamageIncrease = new FloatReference(0);
 
         [SerializeField]
-        private IntReference upgradeShieldIncrease = new IntReference(0);
+        private FloatReference upgradeShieldIncrease = new FloatReference(0);
 
         [SerializeField]
-        private IntReference upgradeSpeedIncrease = new IntReference(0);
+        private FloatReference upgradeSpeedIncrease = new FloatReference(0);
+
+        [SerializeField]
+        private CodexEntryRarity codexEntryRarity;
         #endregion
 
         #region Properties
-        public IntReference ItemCostIncreasePerLevel
+        public CodexEntryRarity CodexEntryRarity => codexEntryRarity;
+
+        public FloatReference ItemCostIncreasePerLevel
         {
             get => itemCostIncreasePerLevel;
             set => itemCostIncreasePerLevel = value;
         }
 
-        public IntReference UpgradeLifeIncrease
+        public FloatReference UpgradeLifeIncrease
         {
             get => upgradeLifeIncrease;
             set => upgradeLifeIncrease = value;
         }
 
-        public IntReference UpgradeDamageIncrease
+        public FloatReference UpgradeDamageIncrease
         {
             get => upgradeDamageIncrease;
             set => upgradeDamageIncrease = value;
         }
 
-        public IntReference UpgradeShieldIncrease
+        public FloatReference UpgradeShieldIncrease
         {
             get => upgradeShieldIncrease;
             set => upgradeShieldIncrease = value;
         }
 
-        public IntReference UpgradeSpeedIncrease
+        public FloatReference UpgradeSpeedIncrease
         {
             get => upgradeSpeedIncrease;
             set => upgradeSpeedIncrease = value;

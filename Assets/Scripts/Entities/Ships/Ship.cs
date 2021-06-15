@@ -6,6 +6,7 @@ using SketchFleets.Data;
 using SketchFleets.Entities;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using SketchFleets.Systems.Codex;
 
 namespace SketchFleets
 {
@@ -36,14 +37,14 @@ namespace SketchFleets
         protected float shieldRegenTimer;
         protected float collisionTimer;
 
-        //protected MaterialPropertyBlock propertyBlock;
+        private bool isDead = false; 
 
         #endregion
 
         #region Private Fields
 
-        private FloatReference currentHealth = new FloatReference(0f);
-        private FloatReference currentShield = new FloatReference(0f);
+        protected FloatReference currentHealth = new FloatReference(0f);
+        protected FloatReference currentShield = new FloatReference(0f);
         private readonly int blinkColor = Shader.PropertyToID("_blinkColor");
 
         #endregion
@@ -54,7 +55,7 @@ namespace SketchFleets
 
         public FloatReference CurrentHealth => currentHealth;
 
-        public FloatReference MaxHealth => Attributes.MaxHealth;
+        public virtual FloatReference MaxHealth => Attributes.MaxHealth;
 
         public T Attributes => attributes;
 
@@ -62,68 +63,32 @@ namespace SketchFleets
 
         #region IDamageable Implementation
 
-        public void Damage(float amount, bool makeInvincible = false, bool piercing = false)
+       public virtual void Damage(float amount, bool makeInvincible = false, bool piercing = false)
         {
-            // Rejects damage during invincibility time
-            if (collisionTimer > 0) return;
+            // Rejects damage during invincibility time or death
+            if (collisionTimer > 0 || isDead) return;
 
             // Adds invincibility time if necessary
             if (makeInvincible)
             {
-                collisionTimer = Attributes.InvincibilityTime;
+                MakeInvulnerable(Attributes.InvincibilityTime);
             }
-
-            // Calculates effective damaged based on defense
-            float actualDamage;
-            actualDamage = piercing ? actualDamage = amount : actualDamage = (amount / Attributes.Defense);
 
             // Deals damage to shields first
             if (currentShield.Value > 0 && !piercing)
             {
-                // Damages shield
-                float tempShield = CurrentShield.Value -= actualDamage;
-                CurrentShield.Value = Mathf.Max(tempShield, 0);
-
-                // Applies excess damage to health
-                if (tempShield < 0)
-                {
-                    // Reduces health
-                    currentHealth.Value -= tempShield;
-                }
+                DamageShields(RawToEffectiveDamage(amount, false));
             }
             else
             {
                 // Reduces health
-                currentHealth.Value -= actualDamage;
+                DamageHealth(RawToEffectiveDamage(amount, piercing));
             }
-
+           
             // Applies shield regen cooldown 
             shieldRegenTimer = Attributes.ShieldRegenDelay;
 
-            // Plays hit sounds
-            soundSource.clip = Attributes.HitSound;
-            if (soundSource.clip != null)
-            {
-                soundSource.Play();
-            }
-
-            // Gets and sets material property block's blink color
-            // TODO: Use material property blocks instead once we figure out how to
-            // TODO: get the damn ShaderGraph to generate them
-            // spriteRenderer.sharedMaterial.GetPropertyBlock(propertyBlock);
-            //
-            // Debug.Log(propertyBlock.GetColor("_redMul"));
-            //
-            // Color tempColor = propertyBlock.GetColor(blinkColor);
-            // //Debug.Log(propertyBlock.GetColor(blinkColor));
-            // tempColor.a = 1f;
-            // propertyBlock.SetColor(blinkColor, tempColor);
-            //
-            // spriteRenderer.SetPropertyBlock(propertyBlock);
-
-            Color tempColor = spriteRenderer.material.GetColor(blinkColor);
-            tempColor.a = 1f;
-            spriteRenderer.material.SetColor(blinkColor, tempColor);
+            PlayHitEffects();
 
             // Dies if necessary
             if (currentHealth <= 0f)
@@ -132,9 +97,80 @@ namespace SketchFleets
             }
         }
 
-        public void Heal(float amount)
+        /// <summary>
+        /// Damages the health by the given amount
+        /// </summary>
+        /// <param name="amount">The amount to damage the health for</param>
+        protected virtual void DamageHealth(float amount)
+        {
+            currentHealth.Value -= amount;
+        }
+        
+        /// <summary>
+        /// Damages shields and overflows any damage to the health
+        /// </summary>
+        /// <param name="amount">The amount to damage the shields for</param>
+        protected virtual void DamageShields(float amount)
+        {
+            float damageResult = currentShield.Value - amount;
+
+            if (damageResult < 0)
+            {
+                currentShield.Value = 0f;
+                DamageHealth(damageResult * -1f);
+            }
+            else
+            {
+                currentShield.Value = damageResult;
+            }
+        }
+        /// <summary>
+        /// Gets given damage as effective damage; I.E, after factoring defense and other bonuses
+        /// </summary>
+        /// <returns></returns>
+        protected virtual float RawToEffectiveDamage(float rawDamage, bool piercingDamage)
+        {
+            return piercingDamage ? rawDamage : rawDamage / Attributes.Defense;
+        }
+        
+        /// <summary>
+        /// Makes the ship invulnerable for the given amount of time
+        /// </summary>
+        protected virtual void MakeInvulnerable(float invulnerabilityTime)
+        {
+            collisionTimer = invulnerabilityTime;
+        }
+        
+        /// <summary>
+        /// Plays visual effects related to taking damage
+        /// </summary>
+        protected virtual void PlayHitEffects()
+        {
+            // Plays hit sounds
+            soundSource.clip = Attributes.HitSound;
+            
+            if (soundSource.clip != null)
+            {
+                soundSource.Play();
+            }
+            
+            // Flashes red
+            Color tempColor = spriteRenderer.material.GetColor(blinkColor);
+            tempColor.a = 1f;
+            spriteRenderer.material.SetColor(blinkColor, tempColor);
+        }
+
+        public virtual void Heal(float amount)
         {
             currentHealth.Value = Mathf.Min(attributes.MaxHealth, currentHealth + amount);
+
+            Transform cachedTransform = transform;
+
+            if (Attributes.HealEffect != null)
+            {
+                PoolManager.Instance.Request(Attributes.HealEffect).
+                    Emerge(cachedTransform.position, cachedTransform.rotation);
+            }
         }
 
         #endregion
@@ -148,9 +184,7 @@ namespace SketchFleets
         /// <param name="rotation">The rotation to emerge the object with</param>
         public override void Emerge(Vector3 position, Quaternion rotation)
         {
-            currentHealth.Value = attributes.MaxHealth.Value;
-            currentShield.Value = attributes.MaxShield.Value;
-            fireTimer = 0;
+            ResetInstanceVariables();
 
             base.Emerge(position, rotation);
         }
@@ -160,15 +194,9 @@ namespace SketchFleets
         #region Unity Callbacks
 
         // Start is called before the first update
-        protected virtual void Awake()
+        protected virtual void Start()
         {
-            // Gets blink color hash id
-            //propertyBlock = new MaterialPropertyBlock();
-            //spriteRenderer.GetPropertyBlock(propertyBlock);
-
-            // Initializes health and shields
-            currentHealth.Value = attributes.MaxHealth.Value;
-            currentShield.Value = attributes.MaxShield.Value;
+            ResetInstanceVariables();
         }
 
         // Update is called once per frame
@@ -221,8 +249,6 @@ namespace SketchFleets
 
                 bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
-
-                bullet.GetComponent<BulletController>().BarrelAttributes = Attributes;
             }
 
             fireTimer = Attributes.Fire.Cooldown;
@@ -248,7 +274,7 @@ namespace SketchFleets
         /// </summary>
         public virtual void Die()
         {
-            if(!gameObject.activeSelf) return;
+            if (isDead) return;
 
             if (Attributes.DeathEffect != null)
             {
@@ -263,6 +289,8 @@ namespace SketchFleets
             DropLoot();
 
             Submerge();
+
+            isDead = true;
         }
 
         #endregion
@@ -291,8 +319,23 @@ namespace SketchFleets
         protected virtual void DropLoot()
         {
             // Drops pencil shells
-            if (Attributes.ShellDrop == null) return;
+            if (Attributes.ShellDrop != null)
+            {
+                DropShells();
+            }
 
+            if (Random.Range(0f, 1f) <= Attributes.CodexDropChance && 
+                ProfileSystem.Profile.Data.codex.SearchItem(new Inventory.CodexEntry(Inventory.CodexEntryType.Ship,CodexListener.GetRegisterID(CodexListener.Instance.ShipRegister,attributes))) == 0)
+            {
+                DropCodexEntry();
+            }
+        }
+
+        /// <summary>
+        /// Drops the ship's pencil shells
+        /// </summary>
+        protected virtual void DropShells()
+        {
             int dropCount = Mathf.RoundToInt(
                 Random.Range(Attributes.DropMinMaxCount.Value.x, Attributes.DropMinMaxCount.Value.y));
 
@@ -301,14 +344,42 @@ namespace SketchFleets
                 // Generates randomized rotations and positions
                 Vector3 randomRotation = new Vector3(0f, 0f, Random.Range(0, 359f));
                 Vector3 dropPosition =
-                    new Vector3(Random.Range(0f, 3f), Random.Range(0f, 3f), 0);
+                    new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
 
                 // Instantiates and colors shell drop
-                GameObject shellDrop = Instantiate(Attributes.ShellDrop, transform.position + dropPosition,
-                    Quaternion.Euler(randomRotation));
+                PoolMember drop = PoolManager.Instance.Request(Attributes.ShellDrop);
+                drop.Emerge(transform.position + dropPosition, Quaternion.Euler(randomRotation));
 
-                shellDrop.GetComponent<PencilShell>().SetDropColor(Attributes.ShipColor);
+                drop.TryGetComponent(out PencilShell shell);
+                shell.SetDropColor(Attributes.ShipColor);
             }
+        }
+        
+        /// <summary>
+        /// Drops the ship's codex entry
+        /// </summary>
+        protected virtual void DropCodexEntry()
+        {
+            Transform cachedTransform = transform;
+
+            PoolMember codexEntry = PoolManager.Instance.Request(Attributes.CodexEntryTemplate);
+            codexEntry.Emerge(cachedTransform.position, cachedTransform.rotation);
+
+            codexEntry.TryGetComponent(out CodexEntryDrop drop);
+
+            drop.Entry = Attributes;
+        }
+
+        /// <summary>
+        /// Resets all instance-specific variables
+        /// </summary>
+        protected virtual void ResetInstanceVariables()
+        {
+            currentHealth.Value = attributes.MaxHealth.Value;
+            currentShield.Value = attributes.MaxShield.Value;
+            fireTimer = 0;
+
+            isDead = false;
         }
 
         #endregion

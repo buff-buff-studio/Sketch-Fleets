@@ -4,11 +4,11 @@ using SketchFleets.Data;
 
 namespace SketchFleets.Inventory
 {
-    [CreateAssetMenu(order = CreateMenus.itemRegisterOrder, fileName = CreateMenus.itemRegisterFileName,
-        menuName = CreateMenus.itemRegisterMenuName)]
     /// <summary>
     /// Class used to register items
     /// </summary>
+    [CreateAssetMenu(order = CreateMenus.itemRegisterOrder, fileName = CreateMenus.itemRegisterFileName,
+        menuName = CreateMenus.itemRegisterMenuName)]
     public class ShopObjectRegister : Register<ShopObject>
     {
         #region Public Fields
