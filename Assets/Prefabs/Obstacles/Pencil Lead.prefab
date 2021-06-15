@@ -4847,6 +4847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pencil Lead
       objectReference: {fileID: 0}
+    - target: {fileID: 3196953256025958094, guid: 65c5c039c44d228448b30333d2d3bc43, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3665186620779167568, guid: 65c5c039c44d228448b30333d2d3bc43, type: 3}
       propertyPath: m_Size.x
       value: 3.75
