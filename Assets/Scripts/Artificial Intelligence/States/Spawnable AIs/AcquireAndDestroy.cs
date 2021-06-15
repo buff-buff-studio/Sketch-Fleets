@@ -1,5 +1,4 @@
-using System.Collections;
-using ManyTools.UnityExtended;
+using System;
 using SketchFleets.AI;
 using UnityEngine;
 
@@ -11,8 +10,8 @@ namespace SketchFleets
     public class AcquireAndDestroy : BaseSpawnableAIState
     {
         #region Private Fields
-        
-        Transform cachedTransform;
+
+        private Transform CachedTransform { get; set; }
 
         #endregion
 
@@ -24,13 +23,12 @@ namespace SketchFleets
         public override void Enter()
         {
             AI = StateMachine as SpawnableShipAI;
-
+            
             if (AI == null)
             {
                 Debug.LogError("AimAndFireState expects a EnemyShipAI State Machine!");
             }
-
-            cachedTransform = transform;
+            
             base.Enter();
         }
 
@@ -40,8 +38,7 @@ namespace SketchFleets
         public override void StateUpdate()
         {
             base.StateUpdate();
-            cachedTransform.up = cachedTransform.right;
-            cachedTransform.Translate(AI.Ship.Attributes.Speed * Time.deltaTime * Time.timeScale,
+            transform.Translate(AI.Ship.Attributes.Speed * Time.deltaTime * Time.timeScale,
                 0f, 0f, Space.World);
 
             AI.Ship.Fire();
@@ -53,6 +50,22 @@ namespace SketchFleets
         public override void Exit()
         {
             StopAllCoroutines();
+        }
+
+        #endregion
+
+        // This shouldn't be here, but I'll refactor most of this plugin next semester anyway, no reason to
+        // fix it now just to tear it down later.
+        #region Unity Callbacks
+
+        private void OnEnable()
+        {
+            if (CachedTransform == null)
+            {
+                CachedTransform = transform;
+            }
+
+            CachedTransform.up = CachedTransform.right;
         }
 
         #endregion
