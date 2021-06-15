@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 672930784}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Fire Transform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 755801484}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Fire Transform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,6 +60,18 @@ Transform:
   m_Father: {fileID: 4466933568370573922}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
+--- !u!114 &1436517141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040831720659525790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d238588c27f5c49bbe7497196675d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5822363360341530554
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,7 +81,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1466310954417257511}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Fire Transform (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,19 +102,6 @@ Transform:
   m_Father: {fileID: 4466933568370573922}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15}
---- !u!114 &1436517141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040831720659525790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d238588c27f5c49bbe7497196675d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRange: 50
 --- !u!1 &7583092823297069540
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3493103604400292308}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Fire Transform (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4202989485892480711, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4249084107644192771, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_LocalPosition.y
@@ -278,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7775095967815198682, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7775095967815198682, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_TagString

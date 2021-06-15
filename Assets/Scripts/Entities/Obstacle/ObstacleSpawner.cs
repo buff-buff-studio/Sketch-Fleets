@@ -25,10 +25,6 @@ public class ObstacleSpawner : MonoBehaviour
     private AudioSource warningAudioSource;
     private WaitForSeconds cachedWarningTime;
 
-    private IEnumerator spawnObstacleRoutine;
-    private IEnumerator showWarningRoutine;
-
-
     #endregion
 
     #region Properties
@@ -42,10 +38,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void Start()
     {
         CacheComponents();
-
-        spawnObstacleRoutine = SpawnObstacles();
-        showWarningRoutine = ShowWarning();
-        StartCoroutine(spawnObstacleRoutine);
+        StartCoroutine(SpawnObstacles());
     }
 
     #endregion
@@ -67,22 +60,23 @@ public class ObstacleSpawner : MonoBehaviour
             yield return spawnWait;
 
             ObstacleAttributes drawnObstacle = DrawObstacleFromPool();
+            bool isDrawnObstacleValid = drawnObstacle != null;
 
             #if UNITY_EDITOR
 
-            Debug.Log(drawnObstacle == null ? 
+            Debug.Log(isDrawnObstacleValid ? 
                 "Drew no obstacle from pool." : 
                 $"Drew a {drawnObstacle.Name} obstacle from pool. Will warn: {drawnObstacle.WarnOnSpawn}");
   #endif
-
-            if (drawnObstacle != null && drawnObstacle.WarnOnSpawn)
+            
+            if (isDrawnObstacleValid && drawnObstacle.WarnOnSpawn)
             {
-                StartCoroutine(showWarningRoutine);
+                StartCoroutine(ShowWarning());
             }
 
             yield return warningPeriod;
 
-            if (drawnObstacle != null)
+            if (isDrawnObstacleValid)
             {
                 SpawnObstacle(drawnObstacle);
             }

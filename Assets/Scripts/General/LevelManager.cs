@@ -5,6 +5,7 @@ using SketchFleets.Data;
 using ManyTools.Variables;
 using ManyTools.UnityExtended.Poolable;
 using SketchFleets.Entities;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 namespace SketchFleets.General
@@ -14,15 +15,7 @@ namespace SketchFleets.General
     /// </summary>
     public class LevelManager : Singleton<LevelManager>
     {
-        #region Public Fields
-        [SerializeField]
-        public TMPro.TMP_Text pauseShellCount;
-        #endregion
-
         #region Private Fields
-        [SerializeField]
-        private TMPro.TMP_Text winShellCount;
-        
 
         [Header("Map Parameters")]
         [SerializeField, Tooltip("The attributes of the current map")]
@@ -33,14 +26,20 @@ namespace SketchFleets.General
         private Collider2D spawnArea;
         [SerializeField, Tooltip("The interval between spawning each ship")]
         private FloatReference spawnInterval = new FloatReference(1.5f);
+        [SerializeField, Tooltip("The interval between spawning each wave")]
+        private FloatReference waveInterval = new FloatReference(1.5f);
         [SerializeField, Tooltip("The variation of the interval between spawning each ship")]
         private FloatReference spawnIntervalDeviation = new FloatReference(0.5f);
 
-        [Header("Timer Variables")]
+        [Header("Variables")]
         [SerializeField]
         private StringReference mapTimer;
         [SerializeField, Tooltip("The seconds passed since the beginning of the level")]
         private IntReference seconds;
+        [SerializeField] 
+        private TMP_Text pauseShellCount;
+        [SerializeField]
+        private TMP_Text winShellCount;
 
         [Header("UI Parameters")]
         [SerializeField, Tooltip("The menu that appears when the game is won")]
@@ -76,6 +75,12 @@ namespace SketchFleets.General
         {
             get => gameEnded;
             set => gameEnded = value;
+        }
+
+        public TMP_Text PauseShellCount
+        {
+            get => pauseShellCount;
+            set => pauseShellCount = value;
         }
 
         #endregion
@@ -150,7 +155,7 @@ namespace SketchFleets.General
         {
             if (AreAllWavesOver())
             {
-                WinGame();
+                StartCoroutine(WinGame());
             }
             else
             {
@@ -190,10 +195,8 @@ namespace SketchFleets.General
         /// </summary>
         private IEnumerator SpawnWave()
         {
-            #if UNITY_EDITOR
-            Debug.Log($"Starting wave {currentWave}");
-            #endif
-
+            yield return new WaitForSeconds(waveInterval);
+            
             for (int index = 1; index <= mapAttributes.MaxEnemies[mapAttributes.Difficulty]; index++)
             {
                 SpawnShip();
@@ -273,13 +276,16 @@ namespace SketchFleets.General
         /// <summary>
         /// Freezes and wins the game
         /// </summary>
-        private void WinGame()
+        private IEnumerator WinGame()
         {
+            yield return new WaitForSeconds(3f);
+            
             if(mapAttributes.Difficulty == 4)
             {
                 SceneManager.LoadScene("EndGame");
-                return;
+                yield break;
             }
+            
             ProfileSystem.Profile.Data.Coins = pencilShell.Value;
             ProfileSystem.Profile.Data.TimeSeconds = seconds.Value;
             ProfileSystem.Profile.Data.Kills = totalEnemiesKilled.Value;

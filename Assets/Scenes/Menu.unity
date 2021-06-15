@@ -423,13 +423,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40562713}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 839016800}
   - {fileID: 1178529714}
-  m_Father: {fileID: 1021243913}
+  m_Father: {fileID: 1171329121}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -554,12 +554,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71267225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 712731568}
-  m_Father: {fileID: 1021243913}
+  m_Father: {fileID: 1171329121}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -669,7 +669,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
           UnityExtended
         m_MethodName: SwitchToMenu
@@ -720,11 +720,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79448364}
   m_CullTransparentMesh: 1
---- !u!1 &82029614 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7389238382134586719, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
-  m_PrefabInstance: {fileID: 7389238382057210225}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &82029615 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7389238382134586718, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
@@ -1040,7 +1035,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
           UnityExtended
         m_MethodName: SwitchToMenu
@@ -1684,7 +1679,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
           UnityExtended
         m_MethodName: SwitchToMenu
@@ -1907,13 +1902,13 @@ RectTransform:
   - {fileID: 117547407}
   - {fileID: 1122608990}
   - {fileID: 840077554}
-  m_Father: {fileID: 1021243913}
+  m_Father: {fileID: 1171329121}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1820, y: 980}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144942185
 MonoBehaviour:
@@ -3376,7 +3371,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243915}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SketchFleets.WebButton, Assembly-CSharp
         m_MethodName: GoURL
         m_Mode: 5
@@ -5348,7 +5343,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
           UnityExtended
         m_MethodName: SwitchToMenu
@@ -5698,7 +5693,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243915}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SketchFleets.WebButton, Assembly-CSharp
         m_MethodName: GoURL
         m_Mode: 5
@@ -6230,7 +6225,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243915}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SketchFleets.WebButton, Assembly-CSharp
         m_MethodName: GoURL
         m_Mode: 5
@@ -9893,7 +9888,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
           UnityExtended
         m_MethodName: SwitchToMenu
@@ -12404,13 +12399,13 @@ RectTransform:
   - {fileID: 2116198157}
   - {fileID: 1153281419}
   - {fileID: 106015974}
-  m_Father: {fileID: 1021243913}
+  m_Father: {fileID: 1171329121}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1820, y: 980}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969237695
 MonoBehaviour:
@@ -12888,94 +12883,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalText: 
---- !u!1 &1021243912
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1021243913}
-  - component: {fileID: 1021243914}
-  - component: {fileID: 1021243915}
-  m_Layer: 5
-  m_Name: Window Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1021243913
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021243912}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 40562714}
-  - {fileID: 1398234169}
-  - {fileID: 1679412712}
-  - {fileID: 71267226}
-  - {fileID: 144942184}
-  - {fileID: 969237694}
-  - {fileID: 82029615}
-  m_Father: {fileID: 1892919351}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -1820, y: -980}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1021243914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021243912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 960a494b396c4cd4c84cde8a1238d7e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openSound: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
-  closeSound: {fileID: 0}
-  menuAudioSource: {fileID: 885140493}
-  menuObjects:
-    _keyValueList:
-    - Key: Main
-      Value: {fileID: 40562713}
-    - Key: Settings
-      Value: {fileID: 1679412711}
-    - Key: Store
-      Value: {fileID: 1398234168}
-    - Key: Quit
-      Value: {fileID: 71267225}
-    - Key: Credits
-      Value: {fileID: 144942183}
-    - Key: Tutorial
-      Value: {fileID: 969237693}
-    - Key: Codex
-      Value: {fileID: 82029614}
-    _keyCollision: 0
---- !u!114 &1021243915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021243912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1880cfc7a852054f9b33928a0f1943a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1045561835
 GameObject:
   m_ObjectHideFlags: 0
@@ -13451,7 +13358,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243915}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SketchFleets.WebButton, Assembly-CSharp
         m_MethodName: GoURL
         m_Mode: 5
@@ -13681,7 +13588,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243915}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SketchFleets.WebButton, Assembly-CSharp
         m_MethodName: GoURL
         m_Mode: 5
@@ -14260,7 +14167,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
           UnityExtended
         m_MethodName: SwitchToMenu
@@ -14476,6 +14383,94 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170483960}
   m_CullTransparentMesh: 1
+--- !u!1 &1171329120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1171329121}
+  - component: {fileID: 1171329123}
+  - component: {fileID: 1171329122}
+  m_Layer: 5
+  m_Name: Menu Windows
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1171329121
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171329120}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 40562714}
+  - {fileID: 1398234169}
+  - {fileID: 1679412712}
+  - {fileID: 71267226}
+  - {fileID: 144942184}
+  - {fileID: 969237694}
+  - {fileID: 82029615}
+  m_Father: {fileID: 1892919351}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1171329122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171329120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1880cfc7a852054f9b33928a0f1943a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1171329123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171329120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960a494b396c4cd4c84cde8a1238d7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openSound: {fileID: 8300000, guid: b404ad6ca0fd6364e95fc28af7c472fc, type: 3}
+  closeSound: {fileID: 0}
+  menuAudioSource: {fileID: 885140493}
+  menuObjects:
+    _keyValueList:
+    - Key: Main
+      Value: {fileID: 0}
+    - Key: Settings
+      Value: {fileID: 0}
+    - Key: Store
+      Value: {fileID: 0}
+    - Key: Quit
+      Value: {fileID: 0}
+    - Key: Credits
+      Value: {fileID: 0}
+    - Key: Tutorial
+      Value: {fileID: 0}
+    - Key: Codex
+      Value: {fileID: 0}
+    _keyCollision: 0
 --- !u!1 &1178529713
 GameObject:
   m_ObjectHideFlags: 0
@@ -17088,7 +17083,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243915}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SketchFleets.WebButton, Assembly-CSharp
         m_MethodName: GoURL
         m_Mode: 5
@@ -17162,12 +17157,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398234168}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1458249346}
-  m_Father: {fileID: 1021243913}
+  m_Father: {fileID: 1171329121}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18178,7 +18173,7 @@ PrefabInstance:
     - target: {fileID: 7340449414384815656, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1021243914}
+      objectReference: {fileID: 0}
     - target: {fileID: 7340449414384815656, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SwitchToMenu
@@ -19883,7 +19878,7 @@ RectTransform:
   - {fileID: 224498236}
   - {fileID: 1224872427}
   - {fileID: 79448365}
-  m_Father: {fileID: 1021243913}
+  m_Father: {fileID: 1171329121}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -20734,7 +20729,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243915}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SketchFleets.WebButton, Assembly-CSharp
         m_MethodName: GoURL
         m_Mode: 5
@@ -21104,7 +21099,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
           UnityExtended
         m_MethodName: SwitchToMenu
@@ -22186,7 +22181,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
           UnityExtended
         m_MethodName: SwitchToMenu
@@ -22359,7 +22354,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243915}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SketchFleets.WebButton, Assembly-CSharp
         m_MethodName: GoURL
         m_Mode: 5
@@ -22462,7 +22457,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1021243913}
+  - {fileID: 1171329121}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22929,7 +22924,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
           UnityExtended
         m_MethodName: SwitchToMenu
@@ -23062,7 +23057,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ManyTools.UnityExtended.WindowManager, ManyTools
           UnityExtended
         m_MethodName: SwitchToMenu
@@ -23738,7 +23733,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021243915}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SketchFleets.WebButton, Assembly-CSharp
         m_MethodName: GoURL
         m_Mode: 5
@@ -25232,7 +25227,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1021243913}
+    m_TransformParent: {fileID: 1171329121}
     m_Modifications:
     - target: {fileID: 7389238382134586718, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
       propertyPath: m_Pivot.x
@@ -25264,11 +25259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7389238382134586718, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -1820
       objectReference: {fileID: 0}
     - target: {fileID: 7389238382134586718, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -980
       objectReference: {fileID: 0}
     - target: {fileID: 7389238382134586718, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25288,15 +25283,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7389238382134586718, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7389238382134586718, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7389238382134586718, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7389238382134586718, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -25322,9 +25317,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Codex Window
       objectReference: {fileID: 0}
+    - target: {fileID: 7389238382134586719, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7389238382408276575, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1021243914}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389238383440508208, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389238383440508208, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389238383440508208, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -35.5589
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389238383732016381, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389238383732016381, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389238383732016381, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.67906666
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86a87675c9b28f1418b4a118715383a1, type: 3}
