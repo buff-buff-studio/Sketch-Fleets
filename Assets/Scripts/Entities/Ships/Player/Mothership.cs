@@ -108,6 +108,15 @@ namespace SketchFleets.Entities
         #region Ship<T> Overrides
 
         /// <summary>
+        /// Makes the ship die
+        /// </summary>
+        public override void Die()
+        {
+            EnableOrDisableSpawnMenu(false);
+            base.Die();
+        }
+
+        /// <summary>
         /// Resets all instance-specific variables
         /// </summary>
         protected override void ResetInstanceVariables()
