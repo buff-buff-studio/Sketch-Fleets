@@ -1,8 +1,6 @@
 ﻿using SketchFleets.Data;
-using ManyTools.Variables;
 using SketchFleets.General;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SketchFleets.Enemies
 {
@@ -11,6 +9,18 @@ namespace SketchFleets.Enemies
     /// </summary>
     public class EnemyShip : Ship<ShipAttributes>
     {
+        /// <summary>
+        /// Emerges the Poolable object from the pool
+        /// </summary>
+        /// <param name="position">The position at which to emerge the object</param>
+        /// <param name="rotation">The rotation to emerge the object with</param>
+        public override void Emerge(Vector3 position, Quaternion rotation)
+        {
+            base.Emerge(position, rotation);
+            // TODO: This is a band-aid to fix a bug. Make sure to remove it later
+            Invoke(nameof(Die), 60f);
+        }
+
         public override void Die()
         {
             base.Die();
