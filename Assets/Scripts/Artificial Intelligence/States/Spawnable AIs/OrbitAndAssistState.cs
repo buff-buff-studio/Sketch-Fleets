@@ -1,6 +1,7 @@
 using ManyTools.UnityExtended;
 using SketchFleets.AI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SketchFleets
 {
@@ -9,6 +10,18 @@ namespace SketchFleets
     /// </summary>
     public class OrbitAndAssistState : BaseOrbitState
     {
+        #region Import Control
+
+        private PlayerControl playerControl;
+
+        private void Awake()
+        {
+            playerControl = new PlayerControl();
+            playerControl.Enable();
+        }
+
+        #endregion
+
         #region State Implementation
 
         /// <summary>
@@ -18,10 +31,12 @@ namespace SketchFleets
         {
             base.StateUpdate();
 
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                AI.Ship.Fire();
-            }
+            playerControl.Player.Shoot.performed += FireCall;
+        }
+
+        void FireCall(InputAction.CallbackContext context)
+        {
+            AI.Ship.Fire();
         }
 
         #endregion

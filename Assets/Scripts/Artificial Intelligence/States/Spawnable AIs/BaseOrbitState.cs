@@ -1,5 +1,7 @@
+using SketchFleets.Entities;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SketchFleets.AI
 {
@@ -12,11 +14,18 @@ namespace SketchFleets.AI
 
         private float startingOrbitAngle;
         private float orbitAngle;
+        private PlayerControl playerControl;
 
         #endregion
 
         #region State Implementation
 
+        private void Awake()
+        {
+            playerControl = new PlayerControl();
+            playerControl.Enable();
+        }
+        
         /// <summary>
         /// Runs when the state is entered
         /// </summary>
@@ -40,7 +49,7 @@ namespace SketchFleets.AI
         public override void StateUpdate()
         {
             ParametricOrbit(Time.time * AI.Ship.Attributes.Speed);
-            AI.Ship.Look(AI.MainCamera.ScreenToWorldPoint(Input.mousePosition));
+            AI.Ship.Look(AI.Player.GetComponent<Mothership>()._ShootingTarget.target);
         }
 
         #endregion

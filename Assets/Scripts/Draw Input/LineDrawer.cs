@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Path;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -24,35 +24,55 @@ public class LineDrawer : MonoBehaviour
 
     private CreateLine currentLine;
     private Camera cam;
+    private PlayerControl playerControl;
 
     [HideInInspector]
     public List<GameObject> lines = new List<GameObject>();
 
+    [Space(15)]
     public List<ShapeType> Shapes;
     
-    private Vector2 mousePos => cam.ScreenToWorldPoint(Input.mousePosition);
+    [Space(15f)]
+    public UnityEvent EndEvent;
+
+    private Vector2 mousePos
+    {
+        get
+        {
+            Vector2 pos;
+#if PLATFORM_ANDROID
+            pos = cam.ScreenToWorldPoint(playerControl.Draw.Draw.ReadValue<Vector2>());
+#endif
+#if !PLATFORM_ANDROID
+            pos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+#endif
+            return pos;
+        }
+    }
 
     private int FormSelect;
     
-    void Start()
+    private void Awake()
     {
+        playerControl = new PlayerControl();
+        playerControl.Enable();
         cam = Camera.main;
     }
-    
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-            BeginDraw();
+        playerControl.Draw.StartDraw.performed += BeginDraw;
         
         if(currentLine != null)
             Draw();
-        
-        if (Input.GetMouseButtonUp(0))
-            EndDraw();
+
+        playerControl.Draw.StartDraw.canceled += EndDraw;
     }
 
-    void BeginDraw()
+    void BeginDraw(InputAction.CallbackContext context)
     {
+        if(currentLine != null)
+            Destroy(currentLine.gameObject);
         currentLine = Instantiate(linePrefab, this.transform).GetComponent<CreateLine>();
         
         inputTrail.transform.position = mousePos;
@@ -70,7 +90,7 @@ public class LineDrawer : MonoBehaviour
         currentLine.AddPoint(mousePos);
     }
 
-    void EndDraw()
+    void EndDraw(InputAction.CallbackContext context)
     {
         if (currentLine != null)
         {
@@ -86,9 +106,10 @@ public class LineDrawer : MonoBehaviour
                 lines.Add(currentLine.gameObject);
                 FormSelect = FormDetector.Detector(currentLine.lineRenderer, Shapes);
                 currentLine.transform.name = Shapes[FormSelect].shapeName + " - " + currentLine.lineRenderer.positionCount;
-                Destroy(currentLine.gameObject, 1f);
+                Destroy(currentLine.gameObject);
                 ShapeShow();
                 currentLine = null;
+                EndEvent.Invoke();
             }
         }
         
@@ -97,10 +118,11 @@ public class LineDrawer : MonoBehaviour
     
     private void ShapeShow()
     {
-        Tuple<Vector3, float> shapeInfo = currentLine.GetLineCenter(Shapes[FormSelect].shapeName);
+        /*
+        Tuple<Vector3, float> shapeInfo = currentLine.GetLineCenter(Shapes[FormSelect].shapeName);        
+        
         Vector2 ViewportPosition = cam.WorldToScreenPoint(shapeInfo.Item1);
 
-        /*
         inputSprite.rectTransform.localScale = Vector2.one*(shapeInfo.Item2 / spriteSize);
         inputSprite.rectTransform.anchoredPosition = transform.InverseTransformPoint(ViewportPosition);
         inputSprite.sprite = Shapes[FormSelect].shapeSprite;

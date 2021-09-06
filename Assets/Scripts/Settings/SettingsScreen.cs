@@ -44,6 +44,8 @@ namespace SketchFleets
 
         private const int WINDOWS_MODE = 6;
         private const int VSYNC = 7;
+        
+        private const int SENSE = 8;
         #endregion
 
         #region Public Fields
@@ -55,6 +57,7 @@ namespace SketchFleets
         public Slider volumeMaster;
         public Slider volumeMusic;
         public Slider volumeSfx;
+        public Slider sense;
         #endregion
         
         #region Unity Callbacks
@@ -105,6 +108,10 @@ namespace SketchFleets
             volumeMaster.value = Settings.Get<float>("volume_master");
             volumeMusic.value = Settings.Get<float>("volume_music");
             volumeSfx.value = Settings.Get<float>("volume_sfx");
+            #endregion
+            
+            #region Volume
+            sense.value = PlayerPrefs.GetFloat("JoystickSense");
             #endregion
 
             //FullScreenMode.Windowed
@@ -168,6 +175,12 @@ namespace SketchFleets
                     SettingsManager.SetVolume(SettingsManager.instance.volumeSfxParam,SettingsManager.instance.volumeSfxMixer,volumeSfx.value);
                 }
                 break;
+                
+                case SENSE:
+                {
+                    PlayerPrefs.SetFloat("JoystickSense", sense.value);
+                }
+                    break;
             }
         }
         #endregion

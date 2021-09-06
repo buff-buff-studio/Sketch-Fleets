@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using SketchFleets.Data;
 using ManyTools.Variables;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ using Random = UnityEngine.Random;
 using ManyTools.UnityExtended;
 using SketchFleets.Inventory;
 using SketchFleets.General;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 namespace SketchFleets.Entities
 {
@@ -41,7 +44,9 @@ namespace SketchFleets.Entities
         private Camera mainCamera;
 
         private IEnumerator regenerateRoutine;
-        
+
+        private PlayerControl playerControl;
+
         #endregion
 
         #region Properties
@@ -54,6 +59,8 @@ namespace SketchFleets.Entities
 
         public override FloatReference MaxHealth => new FloatReference(GetMaxHealth());
 
+        public ShootingTarget _ShootingTarget; //ManyTools Vector2 don1t work... Gambiarra bro
+
         #endregion
 
         #region Unity Callbacks
@@ -63,6 +70,10 @@ namespace SketchFleets.Entities
             attributesBonuses = ScriptableObject.CreateInstance<MothershipAttributesBonuses>();
             IngameEffectApplier.OnEffectsChange = OnEffectsChange;
             IngameEffectApplier.Clear();
+            playerControl = new PlayerControl();
+            playerControl.Enable();
+            EnhancedTouchSupport.Enable();
+            TouchSimulation.Enable();
         }
 
         // Start runs once before the first update
@@ -380,31 +391,68 @@ namespace SketchFleets.Entities
         {
             // Moves and rotates the ship
             Move();
-            Look(mainCamera.ScreenToWorldPoint(Input.mousePosition));
+            
+            Look(_ShootingTarget.target);
+            Debug.DrawRay(transform.position, _ShootingTarget.target, Color.red);
+            Debug.DrawLine(transform.position, _ShootingTarget.target, Color.red);
             
             // Enables or disables the spawn menu
-            if (Input.GetKeyDown(KeyCode.Space) && !IsGameOver())
+            if (!IsGameOver())
             {
-                EnableOrDisableSpawnMenu(true);
-            }
-
-            if (Input.GetKeyUp(KeyCode.Space) && !IsGameOver())
-            {
-                EnableOrDisableSpawnMenu(false);
+                playerControl.Player.SummonShips.started += SpawnStartCall;
+                #if  !PLATFORM_ANDROID
+                      playerControl.Player.SummonShips.canceled += SpawnEndCall;          
+                #endif
             }
 
             // Fires stuff
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                Fire();
-            }
+            playerControl.Player.Shoot.started += FireCall;
+            playerControl.Player.Shoot.canceled += FireCall;
 
             // Uses regen ability
-            if (Input.GetKeyDown(KeyCode.R) && IsAbilityAvailable())
+            playerControl.Player.Regen.performed += RegenCall;
+        }
+
+        private void SpawnStartCall(InputAction.CallbackContext context)
+        {
+            if(!shipSpawnMenu.activeSelf)
+                EnableOrDisableSpawnMenu(true);
+        }
+        private void SpawnEndCall(InputAction.CallbackContext context)
+        {
+            if(shipSpawnMenu.activeSelf)
+                EnableOrDisableSpawnMenu(false);
+        }
+        
+        private void FireCall(InputAction.CallbackContext context)
+        {
+            if (Time.timeScale == 1)
             {
-                StartCoroutine(RegenerateShips());
+                if (context.started)
+                {
+                    StartCoroutine(MobileFire());
+                }
+                else if (context.canceled)
+                {
+                    StopCoroutine(MobileFire());
+                }
             }
         }
+        
+        private void RegenCall(InputAction.CallbackContext context)
+        {
+            StartCoroutine(RegenerateShips());
+        }
+
+        private IEnumerator MobileFire()
+        {
+            while (true)
+            {
+                Fire();
+                yield return null;
+            }
+        }
+        
         
         /// <summary>
         /// Gets the fire cooldown
@@ -428,7 +476,7 @@ namespace SketchFleets.Entities
         /// Enables or disables the ship spawn menu
         /// </summary>
         /// <param name="enable">Whether to enable or disable the ship spawn menu</param>
-        private void EnableOrDisableSpawnMenu(bool enable)
+        public void EnableOrDisableSpawnMenu(bool enable)
         {
             hud.SetActive(!enable);
             shipSpawnMenu.SetActive(enable);
@@ -440,7 +488,8 @@ namespace SketchFleets.Entities
         private void Move()
         {
             // Gets movement input
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
+
+            Vector2 movement = playerControl.Player.Move.ReadValue<Vector2>();
 
             // Translates
         
