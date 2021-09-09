@@ -14,7 +14,8 @@ namespace SketchFleets
         [SerializeField]
         private FloatReference launchSpeedMultiplier = new FloatReference(5f);
         
-        private bool explode;
+        [HideInInspector]
+        public bool explode;
 
         #endregion
 
@@ -28,11 +29,6 @@ namespace SketchFleets
             if (!explode)
             {
                 base.StateUpdate();
-
-                if (Input.GetKeyDown(KeyCode.Mouse1))
-                {
-                    explode = true;
-                }
             }
             else
             {
@@ -44,6 +40,13 @@ namespace SketchFleets
 
         #endregion
 
+        public void LookAtTarget(Vector2 pos) //TODO: Remove
+        {
+            AI.Ship.Look(pos);
+            base.StateUpdate();
+            explode = true;
+        }
+        
         #region Unity Callbacks
 
         private void OnCollisionEnter2D(Collision2D other)

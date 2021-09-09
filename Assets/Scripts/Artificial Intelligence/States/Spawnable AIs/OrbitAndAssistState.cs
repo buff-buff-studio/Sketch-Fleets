@@ -1,3 +1,4 @@
+using System.Collections;
 using ManyTools.UnityExtended;
 using SketchFleets.AI;
 using UnityEngine;
@@ -10,18 +11,6 @@ namespace SketchFleets
     /// </summary>
     public class OrbitAndAssistState : BaseOrbitState
     {
-        #region Import Control
-
-        private PlayerControl playerControl;
-
-        private void Awake()
-        {
-            playerControl = new PlayerControl();
-            playerControl.Enable();
-        }
-
-        #endregion
-
         #region State Implementation
 
         /// <summary>
@@ -30,13 +19,15 @@ namespace SketchFleets
         public override void StateUpdate()
         {
             base.StateUpdate();
-
-            playerControl.Player.Shoot.performed += FireCall;
         }
 
-        void FireCall(InputAction.CallbackContext context)
+        public IEnumerator MobileFire()
         {
-            AI.Ship.Fire();
+            while (true)
+            {
+                AI.Ship.Fire();
+                yield return null;
+            }
         }
 
         #endregion

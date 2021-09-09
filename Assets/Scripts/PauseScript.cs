@@ -9,19 +9,10 @@ namespace SketchFleets
 {
     public class PauseScript : MonoBehaviour
     {
-        private PlayerControl playerControl;
-
         public GameObject PauseMenu;
-
-        private void Awake()
-        {
-            playerControl = new PlayerControl();
-            playerControl.Enable();
-        }
 
         void Update()
         {
-            playerControl.Player.Pause.performed += PauseCall;
 
             try
             {
@@ -31,20 +22,6 @@ namespace SketchFleets
             catch
             {
                 SceneManager.LoadScene("Menu");
-            }
-        }
-
-        public void PauseCall(InputAction.CallbackContext context)
-        {
-            if (Time.timeScale == 1)
-            {
-                PauseMenu.SetActive(true);
-                Time.timeScale = 0;
-            }
-            else
-            {
-                PauseMenu.SetActive(false);
-                Time.timeScale = 1;
             }
         }
 

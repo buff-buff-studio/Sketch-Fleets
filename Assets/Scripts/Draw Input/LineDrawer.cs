@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -57,21 +58,31 @@ public class LineDrawer : MonoBehaviour
         playerControl = new PlayerControl();
         playerControl.Enable();
         cam = Camera.main;
+        playerControl.Draw.StartDraw.canceled += EndDraw;
+    }
+
+    private void OnDisable()
+    {
+        playerControl.Draw.StartDraw.canceled -= EndDraw;
     }
 
     void Update()
     {
-        playerControl.Draw.StartDraw.performed += BeginDraw;
-        
         if(currentLine != null)
             Draw();
-
-        playerControl.Draw.StartDraw.canceled += EndDraw;
     }
 
-    void BeginDraw(InputAction.CallbackContext context)
+    public void DrawCallBack(InputAction.CallbackContext context)
     {
-        if(currentLine != null)
+        if(context.started)
+            BeginDraw();
+        else if(context.canceled)
+            EndDraw(context);
+    }
+
+    void BeginDraw()
+    {
+        if(currentLine != null && SceneManager.GetActiveScene().name == "Game")
             Destroy(currentLine.gameObject);
         currentLine = Instantiate(linePrefab, this.transform).GetComponent<CreateLine>();
         
@@ -113,7 +124,8 @@ public class LineDrawer : MonoBehaviour
             }
         }
         
-        inputTrail.SetActive(false);
+        if(SceneManager.GetActiveScene().name == "Game")
+            inputTrail.SetActive(false);
     }
     
     private void ShapeShow()

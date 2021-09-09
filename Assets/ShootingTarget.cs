@@ -20,6 +20,7 @@ namespace SketchFleets
         
         private float sense;
 
+        public float XSense;
         public Vector2 target;
 
         private void Awake()
@@ -36,7 +37,7 @@ namespace SketchFleets
             TryGetComponent(out rectTransform);
             ControlTarget(true);
 
-            if (PlayerPrefs.GetFloat("JoystickSense") < 5)
+            if (PlayerPrefs.GetFloat("JoystickSense") < 10)
                 PlayerPrefs.SetFloat("JoystickSense", 15);
 
             sense = PlayerPrefs.GetFloat("JoystickSense");
@@ -60,8 +61,8 @@ namespace SketchFleets
             if (joystickPos != Vector2.zero || forceUpdate)
             {
                 Vector2 pos = Vector2.zero;
-                if (TargetX(joystickPos.x * sense))
-                    pos += Vector2.right * joystickPos.x;
+                if (TargetX(joystickPos.x * XSense * sense))
+                    pos += Vector2.right * (joystickPos.x * XSense);
 
                 if (TargetY(joystickPos.y * sense))
                     pos += Vector2.up * joystickPos.y;

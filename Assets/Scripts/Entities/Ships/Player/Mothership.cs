@@ -394,57 +394,9 @@ namespace SketchFleets.Entities
             
             Look(_ShootingTarget.target);
             Debug.DrawRay(transform.position, _ShootingTarget.target, Color.red);
-            Debug.DrawLine(transform.position, _ShootingTarget.target, Color.red);
-            
-            // Enables or disables the spawn menu
-            if (!IsGameOver())
-            {
-                playerControl.Player.SummonShips.started += SpawnStartCall;
-                #if  !PLATFORM_ANDROID
-                      playerControl.Player.SummonShips.canceled += SpawnEndCall;          
-                #endif
-            }
-
-            // Fires stuff
-            playerControl.Player.Shoot.started += FireCall;
-            playerControl.Player.Shoot.canceled += FireCall;
-
-            // Uses regen ability
-            playerControl.Player.Regen.performed += RegenCall;
         }
 
-        private void SpawnStartCall(InputAction.CallbackContext context)
-        {
-            if(!shipSpawnMenu.activeSelf)
-                EnableOrDisableSpawnMenu(true);
-        }
-        private void SpawnEndCall(InputAction.CallbackContext context)
-        {
-            if(shipSpawnMenu.activeSelf)
-                EnableOrDisableSpawnMenu(false);
-        }
-        
-        private void FireCall(InputAction.CallbackContext context)
-        {
-            if (Time.timeScale == 1)
-            {
-                if (context.started)
-                {
-                    StartCoroutine(MobileFire());
-                }
-                else if (context.canceled)
-                {
-                    StopCoroutine(MobileFire());
-                }
-            }
-        }
-        
-        private void RegenCall(InputAction.CallbackContext context)
-        {
-            StartCoroutine(RegenerateShips());
-        }
-
-        private IEnumerator MobileFire()
+        public IEnumerator MobileFire()
         {
             while (true)
             {
@@ -476,16 +428,18 @@ namespace SketchFleets.Entities
         /// Enables or disables the ship spawn menu
         /// </summary>
         /// <param name="enable">Whether to enable or disable the ship spawn menu</param>
+        
         public void EnableOrDisableSpawnMenu(bool enable)
         {
-            hud.SetActive(!enable);
-            shipSpawnMenu.SetActive(enable);
+            //hud.SetActive(!enable);
+            Debug.Log("eee");
+            //shipSpawnMenu.SetActive(enable);
         }
 
         /// <summary>
         /// Moves and rotates the Mothership
         /// </summary>
-        private void Move()
+        public void Move()
         {
             // Gets movement input
 
