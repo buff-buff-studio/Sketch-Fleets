@@ -1,3 +1,4 @@
+using System;
 using ManyTools.Variables;
 using SketchFleets.AI;
 using UnityEngine;
@@ -43,7 +44,6 @@ namespace SketchFleets
         public void LookAtTarget(Vector2 pos) //TODO: Remove
         {
             AI.Ship.Look(pos);
-            base.StateUpdate();
             explode = true;
         }
         
@@ -57,7 +57,13 @@ namespace SketchFleets
                 other.gameObject.CompareTag("PlayerSpawn") ||
                 other.gameObject.CompareTag("bullet")) return;
 
+            explode = false;
             AI.Ship.Die();
+        }
+
+        private void OnEnable()
+        {
+            explode = false;
         }
 
         private void OnDisable()
