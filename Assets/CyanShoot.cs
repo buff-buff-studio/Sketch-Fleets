@@ -74,8 +74,8 @@ namespace SketchFleets
         {
             while (true)
             {
-                InputTrail.position =
-                    Camera.main.ScreenToWorldPoint(playerControl.Player.CyanLocate.ReadValue<Vector2>());
+                Vector2 pos = Camera.main.ScreenToWorldPoint(playerControl.Player.CyanLocate.ReadValue<Vector2>());
+                InputTrail.position = new Vector3(pos.x, pos.y, -8);
                 Debug.DrawLine(InputTrail.position, transform.position, Color.magenta);
                 yield return null;
             }

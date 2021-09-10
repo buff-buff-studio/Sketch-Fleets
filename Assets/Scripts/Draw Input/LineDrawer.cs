@@ -126,6 +126,8 @@ public class LineDrawer : MonoBehaviour
         
         if(SceneManager.GetActiveScene().name == "Game")
             inputTrail.SetActive(false);
+        EndEvent.Invoke();
+        transform.parent.gameObject.SetActive(false);
     }
     
     private void ShapeShow()
