@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15912a8ce3ef65b409825ef632335e38, type: 3}
+  m_Name: MA_DifficultyAttributes
+  m_EditorClassIdentifier: 
+  objectName:
+    _useConstant: 1
+    _constant: Name
+    _variable: {fileID: 0}
+  description: 
+  prefab: {fileID: 0}
+  currentMap:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  currentDifficulty:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
+  mapDifficulty:
+  - _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 2
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 3
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 5
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 4
+    _variable: {fileID: 0}
+  minMaxWaves:
+  - _useConstant: 1
+    _constant: {x: 0, y: 0}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 2, y: 3}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 3, y: 4}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 5, y: 6}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 8, y: 9}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 5, y: 7}
+    _variable: {fileID: 0}
+  mapHeight:
+    _useConstant: 1
+    _constant: 10
+    _variable: {fileID: 0}
+  mapStartSpawn:
+    _useConstant: 1
+    _constant: 35
+    _variable: {fileID: 0}
+  mapColor:
+  - {r: 1, g: 1, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.64705884, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.5019608, g: 0, b: 1, a: 1}
+  enemyPool:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
+  - {fileID: 11400000, guid: 0d588b8ea96ff8a48bcbd40a252912b2, type: 2}
+  - {fileID: 11400000, guid: 21aadf55678505b4f8cf6b8dc48cfd02, type: 2}
+  - {fileID: 11400000, guid: 93c528ea34cac92448854ed4432fc98c, type: 2}
+  - {fileID: 11400000, guid: af78d5c9d95e0f34ba5c2048e894dbe4, type: 2}
+  maxEnemies:
+  - _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 7
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 5
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 6
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 9
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 7
+    _variable: {fileID: 0}
+  obstaclePool:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: de0dd0574f2a08448ba21b0512632550, type: 2}
+  - {fileID: 11400000, guid: d2b1241bbd8de8940871989b5e190119, type: 2}
+  - {fileID: 11400000, guid: 531c3dccf5c26154188ec39c91f9f4f4, type: 2}
+  - {fileID: 11400000, guid: f30fa76c0f0149243a7403d6db229d80, type: 2}
+  - {fileID: 11400000, guid: 746e4e835d193ee4392f46948ea9849b, type: 2}

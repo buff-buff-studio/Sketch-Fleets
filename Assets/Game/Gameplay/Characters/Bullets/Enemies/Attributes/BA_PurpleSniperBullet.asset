@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
+  m_Name: BA_PurpleSniperBullet
+  m_EditorClassIdentifier: 
+  objectName:
+    _useConstant: 1
+    _constant: Purple Sniper Bullet
+    _variable: {fileID: 0}
+  description: A bullet fired by the Purple Sniper
+  prefab: {fileID: 1783608495342115787, guid: fce93fb6c53b2f5479fd5d4d54eb709f, type: 3}
+  directDamage:
+    _useConstant: 1
+    _constant: 150
+    _variable: {fileID: 0}
+  maxDamageVariation:
+    _useConstant: 1
+    _constant: 1.5
+    _variable: {fileID: 0}
+  speed:
+    _useConstant: 1
+    _constant: 125
+    _variable: {fileID: 0}
+  impactRadius:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  indirectDamage:
+    _useConstant: 1
+    _constant: 1
+    _variable: {fileID: 0}
+  ignorePlayer:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  angleJitter:
+    _useConstant: 1
+    _constant: 0.1
+    _variable: {fileID: 0}
+  cooldown:
+    _useConstant: 1
+    _constant: 5
+    _variable: {fileID: 0}
+  fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
+  pitchVariation:
+    _useConstant: 1
+    _constant: 0.25
+    _variable: {fileID: 0}
+  fireEffect: {fileID: 2457878437404487259, guid: fce049f0b3f98804ab4556bf130281cf, type: 3}
+  hitEffect: {fileID: 0}
