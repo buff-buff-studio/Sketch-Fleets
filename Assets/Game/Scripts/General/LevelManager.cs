@@ -128,7 +128,7 @@ namespace SketchFleets.General
 
 #if UNITY_EDITOR
             Debug.Log($"{activeShips} ships left in wave {currentWave} out of wave {mapWaveCount}");
-  #endif
+#endif
             
             if (!IsWaveOver()) return;
             EndWave();

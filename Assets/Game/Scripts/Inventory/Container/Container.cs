@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.InputSystem;
 
 namespace SketchFleets.Inventory
 {
@@ -87,7 +88,7 @@ namespace SketchFleets.Inventory
         {
             //Check mouse over slot
             PointerEventData ev = new PointerEventData(EventSystem.current);
-            ev.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            ev.position = Mouse.current.position.ReadValue();
             List<RaycastResult> results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(ev,results);
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 //Based On: https://answers.unity.com/questions/1280592/pinch-and-zoom-functionality-on-canvas-ui-images.html
 /// <summary>
@@ -61,10 +62,10 @@ public class ZoomComponent : ScrollRect
                 }
             }
             //pc input
-            float scrollWheelInput = Input.GetAxis("Mouse ScrollWheel");
+            float scrollWheelInput = Mouse.current.scroll.ReadValue().y/512;
             if (Mathf.Abs(scrollWheelInput) > float.Epsilon)
             {
-                SimulateScroll(scrollWheelInput, (Vector2)Input.mousePosition);
+                SimulateScroll(scrollWheelInput, Mouse.current.position.ReadValue());
             }
         }
 

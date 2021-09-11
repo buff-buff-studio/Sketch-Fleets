@@ -95,12 +95,13 @@ namespace SketchFleets.ProfileSystem
                 GetData().save = Save.FromBytes(File.ReadAllBytes(FilePath),EditMode.Fixed);
                 runningThread = false;
             });
-            
+
             runningThread = true;
             thread.Start();
 
             while(runningThread)
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForSeconds(0.05f);
+
             if(callback != null)
                 callback(GetData());
         }
@@ -134,7 +135,8 @@ namespace SketchFleets.ProfileSystem
             thread.Start();
 
             while(runningThread)
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForSeconds(0.05f);
+
             if(callback != null)
                 callback(GetData());
         }

@@ -13,8 +13,12 @@ namespace SketchFleets
 
         [SerializeField]
         private FloatReference launchSpeedMultiplier = new FloatReference(5f);
-        
-        private bool explode;
+
+        #endregion
+
+        #region Properties
+
+        public bool Explode { get; private set; }
 
         #endregion
 
@@ -25,14 +29,9 @@ namespace SketchFleets
         /// </summary>
         public override void StateUpdate()
         {
-            if (!explode)
+            if (!Explode)
             {
                 base.StateUpdate();
-
-                if (Input.GetKeyDown(KeyCode.Mouse1))
-                {
-                    explode = true;
-                }
             }
             else
             {
@@ -48,18 +47,42 @@ namespace SketchFleets
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (!explode) return;
+            if (!Explode) return;
             
             if (other.gameObject.CompareTag("Player") ||
                 other.gameObject.CompareTag("PlayerSpawn") ||
-                other.gameObject.CompareTag("bullet")) return;
+                other.gameObject.CompareTag("bullet"))
+            {
+                return;
+            }
 
+            Explode = false;
             AI.Ship.Die();
+        }
+
+        private void OnEnable()
+        {
+            Explode = false;
         }
 
         private void OnDisable()
         {
-            explode = false;
+            Explode = false;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void LightFuse()
+        {
+            Explode = true;
+        }
+        
+        public void LookAtTarget(Vector2 pos) //TODO: Remove
+        {
+            AI.Ship.Look(pos);
+            Explode = true;
         }
 
         #endregion

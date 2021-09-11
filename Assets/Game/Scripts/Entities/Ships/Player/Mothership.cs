@@ -1,68 +1,79 @@
 using System.Collections;
-using UnityEngine;
-using SketchFleets.Data;
-using ManyTools.Variables;
 using System.Collections.Generic;
+using ManyTools.UnityExtended;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
-using Unity.Mathematics;
-using Random = UnityEngine.Random;
-using ManyTools.UnityExtended;
-using SketchFleets.Inventory;
+using ManyTools.Variables;
+using SketchFleets.Data;
 using SketchFleets.General;
+using SketchFleets.Inventory;
+using Unity.Mathematics;
+using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Random = UnityEngine.Random;
 
 namespace SketchFleets.Entities
 {
     /// <summary>
-    /// A class that controls the mothership
+    ///     A class that controls the mothership
     /// </summary>
     public class Mothership : Ship<MothershipAttributes>
     {
         #region Private Fields
 
         [Header("Mothership Specific")]
-        [SerializeField, RequiredField()]
+        [SerializeField]
+        [RequiredField]
         private Transform shipSpawnPoint;
-        [SerializeField, RequiredField()]
+
+        [SerializeField]
+        [RequiredField]
         private GameObject shipSpawnMenu;
-        [SerializeField, RequiredField()]
+
+        [SerializeField]
+        [RequiredField]
         private GameObject hud;
 
-        private UnityDictionary<SpawnableShipAttributes, SpawnMetaData> spawnMetaDatas =
-            new UnityDictionary<SpawnableShipAttributes, SpawnMetaData>();
-
-        private MothershipAttributesBonuses attributesBonuses;
+        [SerializeField]
+        private SpawnableShipAttributes cyanShipAttributes;
 
         private List<ItemEffect> activeEffects;
         private List<StatusEffect> activeSpawnEffects;
 
-        private float abilityTimer = 0f;
-
         private Camera mainCamera;
 
         private IEnumerator regenerateRoutine;
-        
+
+        private PlayerControl playerControl;
+
         #endregion
 
         #region Properties
 
-        public MothershipAttributesBonuses AttributesBonuses => attributesBonuses;
+        public MothershipAttributesBonuses AttributesBonuses { get; private set; }
 
-        public UnityDictionary<SpawnableShipAttributes, SpawnMetaData> SpawnMetaDatas => spawnMetaDatas;
+        public UnityDictionary<SpawnableShipAttributes, SpawnMetaData> SpawnMetaDatas { get; } =
+            new UnityDictionary<SpawnableShipAttributes, SpawnMetaData>();
 
-        public float AbilityTimer => abilityTimer;
+        public float AbilityTimer { get; private set; }
 
         public override FloatReference MaxHealth => new FloatReference(GetMaxHealth());
+
+        public ShootingTarget _ShootingTarget; //ManyTools Vector2 don1t work... Gambiarra bro
 
         #endregion
 
         #region Unity Callbacks
-        
-        protected void Awake() 
+
+        protected void Awake()
         {
-            attributesBonuses = ScriptableObject.CreateInstance<MothershipAttributesBonuses>();
+            AttributesBonuses = ScriptableObject.CreateInstance<MothershipAttributesBonuses>();
             IngameEffectApplier.OnEffectsChange = OnEffectsChange;
             IngameEffectApplier.Clear();
+            playerControl = new PlayerControl();
+            playerControl.Enable();
+            EnhancedTouchSupport.Enable();
+            TouchSimulation.Enable();
         }
 
         // Start runs once before the first update
@@ -73,7 +84,7 @@ namespace SketchFleets.Entities
             mainCamera = Camera.main;
             regenerateRoutine = RegenerateShips();
         }
-        
+
         // Start runs once every frame
         protected override void Update()
         {
@@ -81,8 +92,7 @@ namespace SketchFleets.Entities
 
             HandlePlayerInput();
             TickTimers();
-            
-            //DebugMonitorVariables();
+            Fire();
         }
 
         #endregion
@@ -95,20 +105,21 @@ namespace SketchFleets.Entities
 
             Transform cachedTransform = transform;
 
-            if (Attributes.HealEffect != null)
+            if (Attributes.HealEffect == null) return;
+
+            if (PoolManager.Instance != null)
             {
-                if(PoolManager.Instance != null)
-                PoolManager.Instance.Request(Attributes.HealEffect).
-                    Emerge(cachedTransform.position, cachedTransform.rotation);
+                PoolManager.Instance.Request(Attributes.HealEffect)
+                    .Emerge(cachedTransform.position, cachedTransform.rotation);
             }
         }
 
         #endregion
-        
+
         #region Ship<T> Overrides
 
         /// <summary>
-        /// Makes the ship die
+        ///     Makes the ship die
         /// </summary>
         public override void Die()
         {
@@ -117,7 +128,7 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Resets all instance-specific variables
+        ///     Resets all instance-specific variables
         /// </summary>
         protected override void ResetInstanceVariables()
         {
@@ -127,11 +138,11 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Fires the ship's weapons
+        ///     Fires the ship's weapons
         /// </summary>
         public override void Fire()
         {
-            if (fireTimer > 0f || Time.timeScale == 0) return;
+            if (!CanFire()) return;
 
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
@@ -140,16 +151,17 @@ namespace SketchFleets.Entities
 
                 bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
-                BulletController bt = bullet.GetComponent<BulletController>();
-                bt.DamageMultiplier = AttributesBonuses.DamageMultiplier;
-                bt.DamageIncrease = AttributesBonuses.DamageIncrease;
+
+                BulletController bulletController = bullet.GetComponent<BulletController>();
+                bulletController.DamageMultiplier = AttributesBonuses.DamageMultiplier;
+                bulletController.DamageIncrease = AttributesBonuses.DamageIncrease;
             }
 
             fireTimer = GetFireCooldown();
         }
 
         /// <summary>
-        /// Regenerates the ship's shields
+        ///     Regenerates the ship's shields
         /// </summary>
         protected override void RegenShield()
         {
@@ -167,8 +179,22 @@ namespace SketchFleets.Entities
 
         #region Public Methods
 
+        public OrbitAndExplodeState GetCyanShip()
+        {
+            for (int index = 0, max = SpawnMetaDatas[cyanShipAttributes].CurrentlyActive.Count; index < max; index++)
+            {
+                if (SpawnMetaDatas[cyanShipAttributes].CurrentlyActive[index] != null)
+                {
+                    return SpawnMetaDatas[cyanShipAttributes].CurrentlyActive[index]
+                        .GetComponent<OrbitAndExplodeState>();
+                }
+            }
+
+            return null;
+        }
+
         /// <summary>
-        /// Gets whether the Mothership can currently regenerate its shields
+        ///     Gets whether the Mothership can currently regenerate its shields
         /// </summary>
         /// <returns>Whether the mothership can regenerate its shields</returns>
         public bool CanRegenShield()
@@ -177,36 +203,36 @@ namespace SketchFleets.Entities
                    !Mathf.Approximately(Attributes.ShieldRegen, 0) &&
                    !Mathf.Approximately(CurrentShield.Value, GetMaxShield());
         }
-        
+
         /// <summary>
-        /// Gets the shield regen for the current point in time
+        ///     Gets the shield regen for the current point in time
         /// </summary>
         /// <returns>The shield regen for the current point in time</returns>
         public float GetShieldRegen()
         {
             return (Attributes.ShieldRegen + AttributesBonuses.ShieldRegen) * Time.deltaTime * Time.timeScale;
         }
-        
+
         /// <summary>
-        /// Gets the max health of the mothership
+        ///     Gets the max health of the mothership
         /// </summary>
         /// <returns>The max health</returns>
         public float GetMaxHealth()
         {
             return Attributes.MaxHealth + AttributesBonuses.MaxHealth + AttributesBonuses.HealthIncrease;
         }
-        
+
         /// <summary>
-        /// Gets the max shield of the mothership
+        ///     Gets the max shield of the mothership
         /// </summary>
         /// <returns>The max shield</returns>
         public float GetMaxShield()
         {
             return Attributes.MaxShield + AttributesBonuses.MaxShield + AttributesBonuses.ShieldIncrease;
         }
-        
+
         /// <summary>
-        /// Summons a ship of a given type
+        ///     Summons a ship of a given type
         /// </summary>
         /// <param name="shipType">The ship type to spawn</param>
         public void SummonShip(SpawnableShipAttributes shipType)
@@ -236,7 +262,7 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Removes a specific active summon
+        ///     Removes a specific active summon
         /// </summary>
         /// <param name="shipToRemove">The active summon to remove</param>
         public void RemoveActiveSummon(SpawnedShip shipToRemove)
@@ -245,7 +271,7 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Gets the cost of spawning a specific ship
+        ///     Gets the cost of spawning a specific ship
         /// </summary>
         /// <param name="shipType">The type of the ship to get the cost of</param>
         /// <returns>The cost of spawning said ship</returns>
@@ -257,7 +283,7 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Get the cooldown of spawning a specific ship
+        ///     Get the cooldown of spawning a specific ship
         /// </summary>
         /// <param name="shipType">The type of ship to get the cooldown of</param>
         /// <returns>The cooldown of said type of ship</returns>
@@ -267,7 +293,7 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Gets whether the ship can be spawned (wouldn't exceed spawn limit)
+        ///     Gets whether the ship can be spawned (wouldn't exceed spawn limit)
         /// </summary>
         /// <param name="shipType">The type of ship to check for</param>
         /// <returns>Whether there is remaining space to spawn the ship</returns>
@@ -277,7 +303,7 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Gets the maximum ship count of a given ship type
+        ///     Gets the maximum ship count of a given ship type
         /// </summary>
         /// <param name="shipType">The ship type to check for maximum count</param>
         /// <returns>The maximum count of a given ship type</returns>
@@ -287,18 +313,18 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Gets whether the given ship type can be spawned at the moment
+        ///     Gets whether the given ship type can be spawned at the moment
         /// </summary>
         /// <param name="shipType">The ship type to check for spawn ability</param>
         /// <returns>Whether the ship can be spawned</returns>
         public bool CanSpawnShip(SpawnableShipAttributes shipType)
         {
-            return IsThereSpaceForSpawn(shipType) && GetSpawnCooldown(shipType) <= 0 && 
+            return IsThereSpaceForSpawn(shipType) && GetSpawnCooldown(shipType) <= 0 &&
                    CurrentHealth > GetSpawnCost(shipType);
         }
 
         /// <summary>
-        /// Gets the maximum spawn cooldown of a given ship type
+        ///     Gets the maximum spawn cooldown of a given ship type
         /// </summary>
         /// <param name="shipType">The type of the desired ship</param>
         /// <returns>The maximum cooldown of the given ship type</returns>
@@ -308,24 +334,22 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Generates spawn meta data for a given ship type
+        ///     Generates spawn meta data for a given ship type
         /// </summary>
         /// <param name="shipType">The type to which generate a spawn meta data for</param>
         public SpawnMetaData GetSpawnMetaData(SpawnableShipAttributes shipType)
         {
-            if (spawnMetaDatas.ContainsKey(shipType))
+            if (SpawnMetaDatas.ContainsKey(shipType))
             {
-                return spawnMetaDatas[shipType];
+                return SpawnMetaDatas[shipType];
             }
-            else
-            {
-                SpawnMetaDatas.Add(shipType, new SpawnMetaData(shipType));
-                return spawnMetaDatas[shipType];
-            }
+
+            SpawnMetaDatas.Add(shipType, new SpawnMetaData(shipType));
+            return SpawnMetaDatas[shipType];
         }
 
         /// <summary>
-        /// Gets the maximum ability cooldown
+        ///     Gets the maximum ability cooldown
         /// </summary>
         /// <returns>The maximum ability cooldown</returns>
         public float GetMaxAbilityCooldown()
@@ -334,7 +358,7 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Gets whether the ability can be used
+        ///     Gets whether the ability can be used
         /// </summary>
         /// <returns>Whether the ability can be used</returns>
         public bool IsAbilityAvailable()
@@ -343,12 +367,12 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Gets the speed of the ship for the current point in time
+        ///     Gets the speed of the ship for the current point in time
         /// </summary>
         /// <returns>The speed of the ship for the current point in time</returns>
         public float GetSpeed()
-        {   
-            return (Attributes.Speed + AttributesBonuses.SpeedIncrease) 
+        {
+            return (Attributes.Speed + AttributesBonuses.SpeedIncrease)
                    * AttributesBonuses.SpeedMultiplier * Time.timeScale * Time.deltaTime;
         }
 
@@ -356,99 +380,80 @@ namespace SketchFleets.Entities
 
         #region Private Methods
 
-        private void DebugMonitorVariables()
-        {
-            Debug.Log($"<color=green>Health: {currentHealth.Value}/{GetMaxHealth()}</color> \n" +
-                      $"<color=cyan>Shields: {CurrentShield.Value}/{GetMaxShield()}</color>, Can regen: <b>{CanRegenShield()}</b> \n" +
-                      $"<color=orange>Ability: {abilityTimer}/{GetMaxAbilityCooldown()}</color>, Can use: <b>{IsAbilityAvailable()}</b>");
-        }
-        
         /// <summary>
-        /// Ticks all timers related to the mothership
+        ///     Checks whether the Mothership can fire
+        /// </summary>
+        /// <returns>Whether the Mothership can fire</returns>
+        private bool CanFire()
+        {
+            return fireTimer <= 0f && Time.timeScale != 0;
+        }
+
+        /// <summary>
+        ///     Ticks all timers related to the mothership
         /// </summary>
         private void TickTimers()
         {
             IngameEffectApplier.TickItems(Time.deltaTime);
             UpdateSummonTimers();
-            abilityTimer = AbilityTimer - Time.deltaTime * Time.timeScale;
+            AbilityTimer = AbilityTimer - Time.deltaTime * Time.timeScale;
         }
-        
+
         /// <summary>
-        /// Handles player input
+        ///     Handles player input
         /// </summary>
         private void HandlePlayerInput()
         {
             // Moves and rotates the ship
             Move();
-            Look(mainCamera.ScreenToWorldPoint(Input.mousePosition));
-            
-            // Enables or disables the spawn menu
-            if (Input.GetKeyDown(KeyCode.Space) && !IsGameOver())
-            {
-                EnableOrDisableSpawnMenu(true);
-            }
-
-            if (Input.GetKeyUp(KeyCode.Space) && !IsGameOver())
-            {
-                EnableOrDisableSpawnMenu(false);
-            }
-
-            // Fires stuff
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                Fire();
-            }
-
-            // Uses regen ability
-            if (Input.GetKeyDown(KeyCode.R) && IsAbilityAvailable())
-            {
-                StartCoroutine(RegenerateShips());
-            }
+            Look(_ShootingTarget.target);
         }
-        
+
         /// <summary>
-        /// Gets the fire cooldown
+        ///     Gets the fire cooldown
         /// </summary>
         /// <returns>The fire cooldown</returns>
         private float GetFireCooldown()
         {
             return Attributes.Fire.Cooldown;
         }
-        
+
         /// <summary>
-        /// Gets whether the game has ended
+        ///     Gets whether the game has ended
         /// </summary>
         /// <returns>Whether the game has ended</returns>
         private bool IsGameOver()
         {
             return LevelManager.Instance.GameEnded;
         }
-        
+
         /// <summary>
-        /// Enables or disables the ship spawn menu
+        ///     Enables or disables the ship spawn menu
         /// </summary>
         /// <param name="enable">Whether to enable or disable the ship spawn menu</param>
-        private void EnableOrDisableSpawnMenu(bool enable)
+        public void EnableOrDisableSpawnMenu(bool enable)
         {
-            hud.SetActive(!enable);
-            shipSpawnMenu.SetActive(enable);
+            //hud.SetActive(!enable);
+            Debug.Log("eee");
+            //shipSpawnMenu.SetActive(enable);
         }
 
         /// <summary>
-        /// Moves and rotates the Mothership
+        ///     Moves and rotates the Mothership
         /// </summary>
-        private void Move()
+        public void Move()
         {
             // Gets movement input
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
+
+            Vector2 movement = playerControl.Player.Move.ReadValue<Vector2>();
 
             // Translates
-        
+
             transform.Translate(movement * GetSpeed(), Space.World);
         }
 
         /// <summary>
-        /// Updates all spawn cooldowns
+        ///     Updates all spawn cooldowns
         /// </summary>
         private void UpdateSummonTimers()
         {
@@ -461,15 +466,15 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        /// Sacrifices all ships for health
+        ///     Sacrifices all ships for health
         /// </summary>
         private IEnumerator RegenerateShips()
         {
             WaitForSeconds killInterval = new WaitForSeconds(Attributes.RegenerateKillInterval);
-            abilityTimer = GetMaxAbilityCooldown();
+            AbilityTimer = GetMaxAbilityCooldown();
 
             // For every spawned ship type
-            foreach (var metaData in spawnMetaDatas)
+            foreach (var metaData in SpawnMetaDatas)
             {
                 // For every ship
                 for (int index = metaData.Value.CurrentlyActive.Count - 1; index >= 0; index--)
@@ -494,31 +499,32 @@ namespace SketchFleets.Entities
         #endregion
 
         #region Effects
-        
+
         private void OnEffectsChange()
         {
-            IngameEffectResult result = IngameEffectApplier.GetResult(attributes.ItemRegister,attributes.UpgradeRegister);
-            
-            attributesBonuses.HealthIncrease.Value = result.upgradeLifeIncrease;
-            attributesBonuses.DamageIncrease.Value = result.upgradeDamageIncrease;
-            attributesBonuses.ShieldIncrease.Value = result.upgradeShieldIncrease;
-            attributesBonuses.SpeedIncrease.Value = result.upgradeSpeedIncrease;
+            IngameEffectResult result =
+                IngameEffectApplier.GetResult(attributes.ItemRegister, attributes.UpgradeRegister);
 
-            attributesBonuses.HealthRegen.Value = result.healthRegen;
-            attributesBonuses.ShieldRegen.Value = result.shieldRegen;
-            attributesBonuses.ExtraSpawnSlots.Value = result.spawnSlotBonus;
-            attributesBonuses.SpawnCooldownMultiplier.Value = result.spawnCooldownMultiplierBonus;
-            attributesBonuses.AbilityCooldownMultiplier.Value = result.abilityCooldownMultiplierBonus;
-            attributesBonuses.MaxHealth.Value = result.maxHealthBonus;
-            attributesBonuses.MaxShield.Value = result.maxShieldBonus;
-            attributesBonuses.DamageMultiplier.Value = result.damageMultiplierBonus;
-            attributesBonuses.SpeedMultiplier.Value = result.speedMultiplierBonus;
-            attributesBonuses.Defense.Value = result.defenseBonus;
+            AttributesBonuses.HealthIncrease.Value = result.upgradeLifeIncrease;
+            AttributesBonuses.DamageIncrease.Value = result.upgradeDamageIncrease;
+            AttributesBonuses.ShieldIncrease.Value = result.upgradeShieldIncrease;
+            AttributesBonuses.SpeedIncrease.Value = result.upgradeSpeedIncrease;
 
-            Heal(attributesBonuses.HealthRegen);
-            CurrentShield.Value = Mathf.Min(GetMaxShield(), CurrentShield.Value + attributesBonuses.ShieldRegen);
+            AttributesBonuses.HealthRegen.Value = result.healthRegen;
+            AttributesBonuses.ShieldRegen.Value = result.shieldRegen;
+            AttributesBonuses.ExtraSpawnSlots.Value = result.spawnSlotBonus;
+            AttributesBonuses.SpawnCooldownMultiplier.Value = result.spawnCooldownMultiplierBonus;
+            AttributesBonuses.AbilityCooldownMultiplier.Value = result.abilityCooldownMultiplierBonus;
+            AttributesBonuses.MaxHealth.Value = result.maxHealthBonus;
+            AttributesBonuses.MaxShield.Value = result.maxShieldBonus;
+            AttributesBonuses.DamageMultiplier.Value = result.damageMultiplierBonus;
+            AttributesBonuses.SpeedMultiplier.Value = result.speedMultiplierBonus;
+            AttributesBonuses.Defense.Value = result.defenseBonus;
+
+            Heal(AttributesBonuses.HealthRegen);
+            CurrentShield.Value = Mathf.Min(GetMaxShield(), CurrentShield.Value + AttributesBonuses.ShieldRegen);
         }
-        
+
         #endregion
     }
 }

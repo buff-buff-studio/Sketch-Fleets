@@ -1,6 +1,4 @@
-using ManyTools.UnityExtended;
 using SketchFleets.AI;
-using UnityEngine;
 
 namespace SketchFleets
 {
@@ -17,11 +15,7 @@ namespace SketchFleets
         public override void StateUpdate()
         {
             base.StateUpdate();
-
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                AI.Ship.Fire();
-            }
+            AI.Ship.Fire();
         }
 
         #endregion
