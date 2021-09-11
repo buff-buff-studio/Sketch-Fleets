@@ -20,5 +20,8 @@ MonoBehaviour:
   allowSpaces: 0
   ignoreScriptAssets: 1
   namingRules: []
-  ignoredPaths: []
+  ignoredPaths:
+  - Assets/Presets
+  - Assets/Plugins
+  - Assets/Plugins/TextMesh Pro/Shaders
   ignoredAssets: []
