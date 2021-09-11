@@ -6,28 +6,28 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SA_Intro.unity
+    path: Assets/Scenes/Intro.unity
     guid: f6b25e9f69d3e594691b5b2b70b145ae
   - enabled: 1
-    path: Assets/Scenes/SA_Map.unity
+    path: Assets/Scenes/Map.unity
     guid: 586b51b03b6581249b9b6e6061a5d8f1
   - enabled: 1
-    path: Assets/Scenes/SA_EndGame.unity
+    path: Assets/Scenes/EndGame.unity
     guid: 6a45eb91c883fa44fa4b292c04be6cc4
   - enabled: 1
-    path: Assets/Scenes/SA_Game.unity
+    path: Assets/Scenes/Game.unity
     guid: 72c33d13fef9625409a381f43e3fe526
   - enabled: 1
-    path: Assets/Scenes/SA_LanguageTesting.unity
+    path: Assets/Scenes/LanguageTesting.unity
     guid: 9cbd567cf156f2a4a814cd9c20befc1b
   - enabled: 1
-    path: Assets/Scenes/SA_Loading.unity
+    path: Assets/Scenes/Loading.unity
     guid: 88de515e0a68afa4ab5d81313355941f
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 47d2c8dc0c60f7b439971547996295d6
   - enabled: 1
-    path: Assets/Scenes/SA_Shop.unity
+    path: Assets/Scenes/Shop.unity
     guid: 04efd53ff688f784cbdf8db480d3cef6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 278193525f1a59748bb9a47bafd36dc9, type: 2}
