@@ -22,8 +22,7 @@ namespace SketchFleets
 
         [SerializeField]
         private GameObject cyanHUD;
-
-        private PlayerControl playerControl;
+        
         private OrbitAndExplodeState CyanShip;
         private bool CloseUI;
         private Camera mainCameraCache;
@@ -47,8 +46,6 @@ namespace SketchFleets
         private void Awake()
         {
             mainCameraCache = Camera.main;
-            playerControl = new PlayerControl();
-            playerControl.Enable();
         }
 
         private void Update()
@@ -73,6 +70,7 @@ namespace SketchFleets
             CyanShip = null;
         }
 
+        /*
         public void CyanFire(InputAction.CallbackContext context)
         {
             if (context.started)
@@ -121,6 +119,7 @@ namespace SketchFleets
             }
         }
 
+*/
         private IEnumerator TimerToClose()
         {
             WaitForSeconds wait = new WaitForSeconds(1f);

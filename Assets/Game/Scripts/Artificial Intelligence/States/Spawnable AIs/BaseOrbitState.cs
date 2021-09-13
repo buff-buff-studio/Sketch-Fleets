@@ -14,18 +14,11 @@ namespace SketchFleets.AI
 
         private float startingOrbitAngle;
         private float orbitAngle;
-        private PlayerControl playerControl;
 
         #endregion
 
         #region State Implementation
 
-        private void Awake()
-        {
-            playerControl = new PlayerControl();
-            playerControl.Enable();
-        }
-        
         /// <summary>
         /// Runs when the state is entered
         /// </summary>
