@@ -27,6 +27,14 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""d65ad010-16ee-455a-a950-3c4747e9ff41"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""37486250-f384-4ca0-9f07-954cc49dce50"",
@@ -51,35 +59,27 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Look"",
+                    ""name"": ""MoveRadius"",
                     ""type"": ""Value"",
-                    ""id"": ""5e40e799-201f-4690-92e8-259b726ad04f"",
+                    ""id"": ""96eeb021-05e1-4a84-9aff-04027eb0db65"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""CyanLocate"",
+                    ""name"": ""LookRadius"",
                     ""type"": ""Value"",
-                    ""id"": ""8b591345-8004-4b1e-b70f-d350108b659d"",
+                    ""id"": ""7c1e74c1-d7c4-47aa-b018-7bff66a2295c"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""CyanClick"",
-                    ""type"": ""Button"",
-                    ""id"": ""02c80a99-bec8-472a-b482-0077ba71cb4c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Hold""
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""cd716097-b8ad-4076-8078-aa414373abe4"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<WebGLGamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
@@ -144,6 +144,17 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c0a66b42-7b54-47da-b941-a23d9685e5b7"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""1cee869d-8e4f-4e97-9d53-3911dd5ce0c9"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -199,10 +210,10 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""69682d58-e06b-4aed-8315-bca454d1002a"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""id"": ""aed10a85-7dce-4244-a7d5-2020a4c7348c"",
+                    ""path"": ""<WebGLGamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false,invertY=false)"",
+                    ""processors"": """",
                     ""groups"": ""Control Scheme"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -210,23 +221,34 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fb52d840-6753-476d-95e1-3eb0c9f1a8d8"",
-                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""id"": ""327588de-c64f-4562-826d-cf185d399173"",
+                    ""path"": ""<Touchscreen>/touch1/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
-                    ""action"": ""CyanLocate"",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""247893e2-3d87-44f2-a19f-34f52a56ac37"",
-                    ""path"": ""<Touchscreen>/touch0/press"",
+                    ""id"": ""d9d3d515-b744-4213-b092-eefe8e640954"",
+                    ""path"": ""<Touchscreen>/touch0/radius"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
-                    ""action"": ""CyanClick"",
+                    ""action"": ""MoveRadius"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d3aa410-1e01-40c7-916c-077051567d81"",
+                    ""path"": ""<Touchscreen>/touch1/radius"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""LookRadius"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -832,12 +854,12 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_SummonShips = m_Player.FindAction("SummonShips", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_CyanLocate = m_Player.FindAction("CyanLocate", throwIfNotFound: true);
-        m_Player_CyanClick = m_Player.FindAction("CyanClick", throwIfNotFound: true);
+        m_Player_MoveRadius = m_Player.FindAction("MoveRadius", throwIfNotFound: true);
+        m_Player_LookRadius = m_Player.FindAction("LookRadius", throwIfNotFound: true);
         // Draw
         m_Draw = asset.FindActionMap("Draw", throwIfNotFound: true);
         m_Draw_StartDraw = m_Draw.FindAction("Start Draw", throwIfNotFound: true);
@@ -904,23 +926,23 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_SummonShips;
     private readonly InputAction m_Player_Pause;
-    private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_CyanLocate;
-    private readonly InputAction m_Player_CyanClick;
+    private readonly InputAction m_Player_MoveRadius;
+    private readonly InputAction m_Player_LookRadius;
     public struct PlayerActions
     {
         private @IAA_PlayerControl m_Wrapper;
         public PlayerActions(@IAA_PlayerControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @SummonShips => m_Wrapper.m_Player_SummonShips;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
-        public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @CyanLocate => m_Wrapper.m_Player_CyanLocate;
-        public InputAction @CyanClick => m_Wrapper.m_Player_CyanClick;
+        public InputAction @MoveRadius => m_Wrapper.m_Player_MoveRadius;
+        public InputAction @LookRadius => m_Wrapper.m_Player_LookRadius;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -933,6 +955,9 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
@@ -942,15 +967,12 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @CyanLocate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanLocate;
-                @CyanLocate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanLocate;
-                @CyanLocate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanLocate;
-                @CyanClick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanClick;
-                @CyanClick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanClick;
-                @CyanClick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanClick;
+                @MoveRadius.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRadius;
+                @MoveRadius.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRadius;
+                @MoveRadius.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRadius;
+                @LookRadius.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookRadius;
+                @LookRadius.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookRadius;
+                @LookRadius.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookRadius;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -958,6 +980,9 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
@@ -967,15 +992,12 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
-                @CyanLocate.started += instance.OnCyanLocate;
-                @CyanLocate.performed += instance.OnCyanLocate;
-                @CyanLocate.canceled += instance.OnCyanLocate;
-                @CyanClick.started += instance.OnCyanClick;
-                @CyanClick.performed += instance.OnCyanClick;
-                @CyanClick.canceled += instance.OnCyanClick;
+                @MoveRadius.started += instance.OnMoveRadius;
+                @MoveRadius.performed += instance.OnMoveRadius;
+                @MoveRadius.canceled += instance.OnMoveRadius;
+                @LookRadius.started += instance.OnLookRadius;
+                @LookRadius.performed += instance.OnLookRadius;
+                @LookRadius.canceled += instance.OnLookRadius;
             }
         }
     }
@@ -1138,12 +1160,12 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnSummonShips(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
-        void OnCyanLocate(InputAction.CallbackContext context);
-        void OnCyanClick(InputAction.CallbackContext context);
+        void OnMoveRadius(InputAction.CallbackContext context);
+        void OnLookRadius(InputAction.CallbackContext context);
     }
     public interface IDrawActions
     {

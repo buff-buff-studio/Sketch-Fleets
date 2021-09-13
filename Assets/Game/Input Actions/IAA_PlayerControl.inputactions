@@ -1,5 +1,5 @@
 {
-    "name": "PlayerControl",
+    "name": "IAA_PlayerControl",
     "maps": [
         {
             "name": "Player",
@@ -9,6 +9,14 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "c3e8bb9d-d6f5-4743-8e8b-2a4fae4f3a5b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "d65ad010-16ee-455a-a950-3c4747e9ff41",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -38,35 +46,27 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Look",
+                    "name": "MoveRadius",
                     "type": "Value",
-                    "id": "5e40e799-201f-4690-92e8-259b726ad04f",
+                    "id": "96eeb021-05e1-4a84-9aff-04027eb0db65",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "CyanLocate",
+                    "name": "LookRadius",
                     "type": "Value",
-                    "id": "8b591345-8004-4b1e-b70f-d350108b659d",
+                    "id": "7c1e74c1-d7c4-47aa-b018-7bff66a2295c",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "CyanClick",
-                    "type": "Button",
-                    "id": "02c80a99-bec8-472a-b482-0077ba71cb4c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold"
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "cd716097-b8ad-4076-8078-aa414373abe4",
-                    "path": "<Gamepad>/leftStick",
+                    "path": "<WebGLGamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Control Scheme",
@@ -131,6 +131,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c0a66b42-7b54-47da-b941-a23d9685e5b7",
+                    "path": "<Touchscreen>/touch0/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control Scheme",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1cee869d-8e4f-4e97-9d53-3911dd5ce0c9",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -186,10 +197,10 @@
                 },
                 {
                     "name": "",
-                    "id": "69682d58-e06b-4aed-8315-bca454d1002a",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "aed10a85-7dce-4244-a7d5-2020a4c7348c",
+                    "path": "<WebGLGamepad>/rightStick",
                     "interactions": "",
-                    "processors": "InvertVector2(invertX=false,invertY=false)",
+                    "processors": "",
                     "groups": "Control Scheme",
                     "action": "Look",
                     "isComposite": false,
@@ -197,23 +208,34 @@
                 },
                 {
                     "name": "",
-                    "id": "fb52d840-6753-476d-95e1-3eb0c9f1a8d8",
-                    "path": "<Touchscreen>/touch0/position",
+                    "id": "327588de-c64f-4562-826d-cf185d399173",
+                    "path": "<Touchscreen>/touch1/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Control Scheme",
-                    "action": "CyanLocate",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "247893e2-3d87-44f2-a19f-34f52a56ac37",
-                    "path": "<Touchscreen>/touch0/press",
+                    "id": "d9d3d515-b744-4213-b092-eefe8e640954",
+                    "path": "<Touchscreen>/touch0/radius",
                     "interactions": "",
                     "processors": "",
                     "groups": "Control Scheme",
-                    "action": "CyanClick",
+                    "action": "MoveRadius",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1d3aa410-1e01-40c7-916c-077051567d81",
+                    "path": "<Touchscreen>/touch1/radius",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control Scheme",
+                    "action": "LookRadius",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

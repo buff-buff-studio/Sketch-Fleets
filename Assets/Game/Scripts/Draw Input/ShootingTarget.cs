@@ -1,92 +1,71 @@
 using ManyTools.Variables;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace SketchFleets
 {
     public sealed class ShootingTarget : MonoBehaviour
     {
-        private PlayerControl playerControl;
-        private RectTransform rectTransform;
-
-        private float CanvasX;
-        private float CanvasY;
-
-        private float sense;
+        #region Private Fields
         
-        private Rect canvasRect;
+        private IAA_PlayerControl PlayerControl;
+        
+        private Transform targetTransform;
 
         private Camera mainCameraCache;
         
-        [FormerlySerializedAs("canvas")]
-        public RectTransform canvasRectTransform;
+        #endregion
+
+        #region Public Fields
+
+        public Transform mothershipTransform;
+        
+        public Transform targetPoint;
         
         public Vector2Reference targetPos;
-
-        public float XSense;
+        
         public Vector2 target;
+
+        #endregion
+
+        public Text t;
 
         #region Unity Callbacks
 
         private void Awake()
         {
             mainCameraCache = Camera.main;
-            playerControl = new PlayerControl();
-            playerControl.Enable();
-
-            canvasRect = canvasRectTransform.rect;
-            CanvasX = canvasRect.width;
-            CanvasY = canvasRect.height;
+            PlayerControl = new IAA_PlayerControl();
+            PlayerControl.Enable();
         }
 
         private void Start()
         {
-            TryGetComponent(out rectTransform);
+            TryGetComponent(out targetTransform);
             ControlTarget(true);
-
-            if (PlayerPrefs.GetFloat("JoystickSense") < 10)
-            {
-                PlayerPrefs.SetFloat("JoystickSense", 15);
-            }
-
-            sense = PlayerPrefs.GetFloat("JoystickSense");
         }
 
         private void Update()
         {
-            if (!Mathf.Approximately(CanvasX, canvasRect.width))
-            {
-                CanvasX = canvasRect.width;
-                CanvasY = canvasRect.height;
-            }
-
             ControlTarget(false);
+            
+            Debug.DrawLine(targetPoint.position, GetMothershipPosition(), Color.blue);
+            Vector2 vec = PlayerControl.Player.MoveRadius.ReadValue<Vector2>();
+            t.text = ((vec.x + vec.y) / 2).ToString();
         }
 
         #endregion
 
         private void ControlTarget(bool forceUpdate)
         {
-            Vector2 joystickPos = playerControl.Player.Look.ReadValue<Vector2>();
-
-            if (joystickPos != Vector2.zero || forceUpdate)
-            {
-                Vector2 pos = Vector2.zero;
-
-                if (TargetX(joystickPos.x * XSense * sense))
-                {
-                    pos += Vector2.right * (joystickPos.x * XSense);
-                }
-
-                if (TargetY(joystickPos.y * sense))
-                {
-                    pos += Vector2.up * joystickPos.y;
-                }
-
-                rectTransform.Translate(pos * sense, Space.World);
-            }
-
-            target = GetTargetPosition();
+            Look(GetMothershipPosition());
+            
+            Vector2 joystickPos = PlayerControl.Player.Look.ReadValue<Vector2>();
+            target = targetPoint.position;
+            
+            if (joystickPos == Vector2.zero || !forceUpdate) return;
+            targetTransform.position = GetTargetPosition();
         }
 
         #region Private Methods
@@ -97,35 +76,23 @@ namespace SketchFleets
         /// <returns>The</returns>
         private Vector2 GetTargetPosition()
         {
-            return mainCameraCache.ViewportToWorldPoint(mainCameraCache.ScreenToViewportPoint(rectTransform.position));
+            return mainCameraCache.ViewportToWorldPoint(mainCameraCache.ScreenToViewportPoint(targetTransform.position));
         }
-
-        /// <summary>
-        ///     
-        /// </summary>
-        public void SetSense()
+        
+        private Vector2 GetMothershipPosition()
         {
-            sense = PlayerPrefs.GetFloat("JoystickSense");
+            return mothershipTransform.position;
         }
-
-        private bool TargetX(float x)
+        
+        private void Look(Vector2 target)
         {
-            if (rectTransform.anchoredPosition.x >= 0)
-            {
-                return rectTransform.anchoredPosition.x + x <= CanvasX / 2 - rectTransform.sizeDelta.x / 2;
-            }
+            // Workaround, this should be done using a proper Pausing interface
+            if (Mathf.Approximately(0f, Time.timeScale)) return;
 
-            return rectTransform.anchoredPosition.x + x >= -(CanvasX / 2 - rectTransform.sizeDelta.x / 2);
-        }
-
-        private bool TargetY(float y)
-        {
-            if (rectTransform.anchoredPosition.y >= 0)
-            {
-                return rectTransform.anchoredPosition.y + y <= CanvasY / 2 - rectTransform.sizeDelta.y / 2;
-            }
-
-            return rectTransform.anchoredPosition.y + y >= -(CanvasY / 2 - rectTransform.sizeDelta.y / 2);
+            // This doesn't really solve the problem. The transform should be a member variable
+            // to avoid the constant marshalling
+            Transform transformCache = transform;
+            transformCache.up = (Vector3)target - transformCache.position;
         }
 
         #endregion

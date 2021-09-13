@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace SketchFleets
 {
-    public sealed class PlayerInput : MonoBehaviour
+    public sealed class MasterController : MonoBehaviour
     {
         [SerializeField]
         private PauseScript pauseScript;
