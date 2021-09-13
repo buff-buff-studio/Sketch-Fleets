@@ -140,6 +140,8 @@ public class LineDrawer : MonoBehaviour
             ShapeShow();
             currentLine = null;
         }
+        
+        RestoreUI();
     }
 
     private void RestoreUI()

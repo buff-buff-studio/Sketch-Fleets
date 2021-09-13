@@ -74,16 +74,5 @@ namespace SketchFleets
             else
                 shootingTarget.ControlTarget(playerControl.Player.TouchTwo.ReadValue<Vector2>(),playerControl.Player.TouchTwoRadius.ReadValue<Vector2>());
         }
-        
-        public void ShootCyan(InputAction.CallbackContext context)
-        {
-            if (!_cyanPathDrawer.GameHUD.activeSelf) return;
-            _cyanPathDrawer.CyanFire(context);
-        }
-
-        public void Pause()
-        {
-            pauseScript.PauseVoid(true);
-        }
     }
 }
