@@ -26,6 +26,8 @@ public class LineDrawer : MonoBehaviour
     private CreateLine currentLine;
     private Camera cam;
     private IAA_PlayerControl playerControl;
+    
+    private int FormSelect;
 
     [HideInInspector]
     public List<GameObject> lines = new List<GameObject>();
@@ -46,13 +48,10 @@ public class LineDrawer : MonoBehaviour
         }
     }
 
-    private int FormSelect;
-
     private void OnEnable()
     {
         playerControl = new IAA_PlayerControl();
         playerControl.Enable();
-        Debug.Log("sa");
     }
 
     private void OnDisable()
@@ -112,35 +111,47 @@ public class LineDrawer : MonoBehaviour
     private void EndDraw(InputAction.CallbackContext context)
     {
         inputTrail.SetActive(false);
-        
-        if (currentLine != null)
-        {
-            currentLine.lineRenderer.Simplify(simplifyTolerance);
 
-            if (currentLine.lineRenderer.positionCount <= 3)
-            {
-                Destroy(currentLine.gameObject);
-            }
-            else
-            {
-                currentLine.lineRenderer.SetPosition(currentLine.lineRenderer.positionCount - 1,
-                    currentLine.lineRenderer.GetPosition(0));
-                
-                lines.Add(currentLine.gameObject);
-                
-                FormSelect = FormDetector.Detector(currentLine.lineRenderer, Shapes);
-                
-                currentLine.transform.name =
-                    Shapes[FormSelect].shapeName + " - " + currentLine.lineRenderer.positionCount;
-                
-                Destroy(currentLine.gameObject);
-                ShapeShow();
-                currentLine = null;
-            }
+        if (!IsLineValid())
+        {
+            RestoreUI();
+            return;
         }
+            
+        currentLine.lineRenderer.Simplify(simplifyTolerance);
+
+        if (currentLine.lineRenderer.positionCount <= 3)
+        {
+            Destroy(currentLine.gameObject);
+        }
+        else
+        {
+            currentLine.lineRenderer.SetPosition(currentLine.lineRenderer.positionCount - 1,
+                currentLine.lineRenderer.GetPosition(0));
+                
+            lines.Add(currentLine.gameObject);
+                
+            FormSelect = FormDetector.Detector(currentLine.lineRenderer, Shapes);
+                
+            currentLine.transform.name =
+                Shapes[FormSelect].shapeName + " - " + currentLine.lineRenderer.positionCount;
+                
+            Destroy(currentLine.gameObject);
+            ShapeShow();
+            currentLine = null;
+        }
+    }
+
+    private void RestoreUI()
+    {
         EndEvent.Invoke();
         Time.timeScale = 1;
         gameObject.SetActive(false);
+    }
+
+    private bool IsLineValid()
+    {
+        return currentLine != null;
     }
 
     private void ShapeShow()

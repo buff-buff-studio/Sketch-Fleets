@@ -19,44 +19,12 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
             ""id"": ""667e7e09-1f96-4b67-8a93-9d934fd3613f"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""c3e8bb9d-d6f5-4743-8e8b-2a4fae4f3a5b"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""d65ad010-16ee-455a-a950-3c4747e9ff41"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""37486250-f384-4ca0-9f07-954cc49dce50"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)""
-                },
-                {
-                    ""name"": ""SummonShips"",
-                    ""type"": ""Button"",
-                    ""id"": ""9328ae32-1dca-4eeb-9044-84789f690212"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""51c383a1-243b-40cd-af0e-511508b6944b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Start Draw"",
@@ -118,83 +86,6 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""cd716097-b8ad-4076-8078-aa414373abe4"",
-                    ""path"": ""<WebGLGamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""a8d10ff9-0320-4f59-a094-4badeace9153"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""5e47b9bd-08e1-4ec8-a977-7ccef0b2c6fb"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""69c93c65-0473-4603-9650-64e61a2beb8c"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""10044b8b-0741-4e7d-bd7e-5c732a61217b"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""f49cc1b5-6754-46c8-bb07-7f41ea8cf831"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c0a66b42-7b54-47da-b941-a23d9685e5b7"",
-                    ""path"": ""<Touchscreen>/touch0/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1cee869d-8e4f-4e97-9d53-3911dd5ce0c9"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -212,61 +103,6 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
                     ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2621cc1e-3ac4-4eca-9b2d-84e2afaec9fc"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""SummonShips"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6a4b4428-df2e-4835-ab20-8b9baea4a1ff"",
-                    ""path"": ""<Touchscreen>/touch1/tap"",
-                    ""interactions"": ""MultiTap"",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""SummonShips"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cccc3303-d212-499a-872f-7cd17dddb0b2"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""aed10a85-7dce-4244-a7d5-2020a4c7348c"",
-                    ""path"": ""<WebGLGamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""327588de-c64f-4562-826d-cf185d399173"",
-                    ""path"": ""<Touchscreen>/touch1/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -902,11 +738,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
-        m_Player_SummonShips = m_Player.FindAction("SummonShips", throwIfNotFound: true);
-        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_StartDraw = m_Player.FindAction("Start Draw", throwIfNotFound: true);
         m_Player_Draw = m_Player.FindAction("Draw", throwIfNotFound: true);
         m_Player_TouchOneStart = m_Player.FindAction("TouchOneStart", throwIfNotFound: true);
@@ -975,11 +807,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Shoot;
-    private readonly InputAction m_Player_SummonShips;
-    private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_StartDraw;
     private readonly InputAction m_Player_Draw;
     private readonly InputAction m_Player_TouchOneStart;
@@ -991,11 +819,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
     {
         private @IAA_PlayerControl m_Wrapper;
         public PlayerActions(@IAA_PlayerControl wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
-        public InputAction @SummonShips => m_Wrapper.m_Player_SummonShips;
-        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @StartDraw => m_Wrapper.m_Player_StartDraw;
         public InputAction @Draw => m_Wrapper.m_Player_Draw;
         public InputAction @TouchOneStart => m_Wrapper.m_Player_TouchOneStart;
@@ -1012,21 +836,9 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
-                @SummonShips.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSummonShips;
-                @SummonShips.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSummonShips;
-                @SummonShips.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSummonShips;
-                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @StartDraw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
                 @StartDraw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
                 @StartDraw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
@@ -1052,21 +864,9 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
-                @SummonShips.started += instance.OnSummonShips;
-                @SummonShips.performed += instance.OnSummonShips;
-                @SummonShips.canceled += instance.OnSummonShips;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
                 @StartDraw.started += instance.OnStartDraw;
                 @StartDraw.performed += instance.OnStartDraw;
                 @StartDraw.canceled += instance.OnStartDraw;
@@ -1208,11 +1008,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
     }
     public interface IPlayerActions
     {
-        void OnMove(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
-        void OnSummonShips(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
         void OnStartDraw(InputAction.CallbackContext context);
         void OnDraw(InputAction.CallbackContext context);
         void OnTouchOneStart(InputAction.CallbackContext context);
