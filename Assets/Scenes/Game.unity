@@ -292,7 +292,7 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_ActionsAsset: {fileID: -944628639613478452, guid: e28fe31e206a8b645910c38972e3db52, type: 3}
   m_PointAction: {fileID: 8098792779003624719, guid: e28fe31e206a8b645910c38972e3db52, type: 3}
-  m_MoveAction: {fileID: -5953425393576041178, guid: e28fe31e206a8b645910c38972e3db52, type: 3}
+  m_MoveAction: {fileID: 819039638509352380, guid: e28fe31e206a8b645910c38972e3db52, type: 3}
   m_SubmitAction: {fileID: 4039701135121484410, guid: e28fe31e206a8b645910c38972e3db52, type: 3}
   m_CancelAction: {fileID: -7277250105606290263, guid: e28fe31e206a8b645910c38972e3db52, type: 3}
   m_LeftClickAction: {fileID: -514839675055223111, guid: e28fe31e206a8b645910c38972e3db52, type: 3}
@@ -359,32 +359,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: c3e8bb9d-d6f5-4743-8e8b-2a4fae4f3a5b
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 37486250-f384-4ca0-9f07-954cc49dce50
     m_ActionName: Player/Shoot[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9328ae32-1dca-4eeb-9044-84789f690212
-    m_ActionName: Player/SummonShips[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SketchFleets.ControlsScript, Assembly-CSharp
-        m_MethodName: Pause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 51c383a1-243b-40cd-af0e-511508b6944b
-    m_ActionName: Player/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 6a790438-550a-4db5-ad3d-a234230f73ec
@@ -425,22 +401,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4d4b53f1-f6ba-49f2-903c-edb12448800f
     m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 931731096}
-        m_TargetAssemblyTypeName: SketchFleets.ShootingTarget, Assembly-CSharp
-        m_MethodName: TargetLook
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: d65ad010-16ee-455a-a950-3c4747e9ff41
-    m_ActionName: Player/Look[/Mouse/position]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 96eeb021-05e1-4a84-9aff-04027eb0db65
@@ -529,6 +489,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 55d0cde5-b97f-4f09-9bd6-9e401fdc5a94
     m_ActionName: Player/TouchOneStart
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 255e1ce5-9f6a-4cf6-9a34-97c75aae6279
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -7339,7 +7303,7 @@ MonoBehaviour:
     _useConstant: 0
     _constant: {x: 0, y: 0}
     _variable: {fileID: 11400000, guid: e5a00621273aa8d459ebcad539f05296, type: 2}
-  radiusMultiply: 45
+  radiusMultiply: 50
 --- !u!4 &931731097
 Transform:
   m_ObjectHideFlags: 0
@@ -15155,7 +15119,7 @@ PrefabInstance:
       objectReference: {fileID: 1366040304}
     - target: {fileID: -2970886270262360389, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
       propertyPath: radiusMultiply
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -2970886270262360389, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
       propertyPath: _ShootingTarget
@@ -17222,9 +17186,9 @@ RectTransform:
   m_Father: {fileID: 997691303}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18, y: 23}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -140, y: -402}
   m_SizeDelta: {x: 128, y: 128}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2144700234
