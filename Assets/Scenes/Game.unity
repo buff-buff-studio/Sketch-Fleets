@@ -6542,6 +6542,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle Warning
       objectReference: {fileID: 0}
+    - target: {fileID: 2027092257602897078, guid: 3d4c38050dd15814f82f004cfb3d9a69, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2027092257602897079, guid: 3d4c38050dd15814f82f004cfb3d9a69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
