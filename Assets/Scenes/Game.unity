@@ -7339,7 +7339,7 @@ MonoBehaviour:
     _useConstant: 0
     _constant: {x: 0, y: 0}
     _variable: {fileID: 11400000, guid: e5a00621273aa8d459ebcad539f05296, type: 2}
-  radiusMultiply: 35
+  radiusMultiply: 45
 --- !u!4 &931731097
 Transform:
   m_ObjectHideFlags: 0
@@ -15155,7 +15155,7 @@ PrefabInstance:
       objectReference: {fileID: 1366040304}
     - target: {fileID: -2970886270262360389, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
       propertyPath: radiusMultiply
-      value: 65
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: -2970886270262360389, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
       propertyPath: _ShootingTarget
