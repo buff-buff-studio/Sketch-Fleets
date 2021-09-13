@@ -14,6 +14,8 @@ namespace SketchFleets
         private Transform targetTransform;
 
         private Camera mainCameraCache;
+
+        private float radiusSpeed = 2.78f;
         
         #endregion
 
@@ -24,12 +26,10 @@ namespace SketchFleets
         public Transform targetPoint;
         
         public Vector2Reference targetPos;
-        
-        public Vector2 target;
+
+        public float radiusMultiply;
 
         #endregion
-
-        public Text t;
 
         #region Unity Callbacks
 
@@ -43,29 +43,20 @@ namespace SketchFleets
         private void Start()
         {
             TryGetComponent(out targetTransform);
-            ControlTarget(true);
-        }
-
-        private void Update()
-        {
-            ControlTarget(false);
-            
-            Debug.DrawLine(targetPoint.position, GetMothershipPosition(), Color.blue);
-            Vector2 vec = PlayerControl.Player.MoveRadius.ReadValue<Vector2>();
-            t.text = ((vec.x + vec.y) / 2).ToString();
         }
 
         #endregion
 
-        private void ControlTarget(bool forceUpdate)
+        public void ControlTarget(Vector2 targetPos, Vector2 targetRad)
+        {
+            targetTransform.position = GetTargetPosition(targetPos);
+
+            targetPoint.localPosition = Vector2.MoveTowards(targetPoint.localPosition, GetRadiusPosition(targetRad), radiusSpeed*Time.deltaTime);
+        }
+
+        public void TargetLook()
         {
             Look(GetMothershipPosition());
-            
-            Vector2 joystickPos = PlayerControl.Player.Look.ReadValue<Vector2>();
-            target = targetPoint.position;
-            
-            if (joystickPos == Vector2.zero || !forceUpdate) return;
-            targetTransform.position = GetTargetPosition();
         }
 
         #region Private Methods
@@ -74,9 +65,15 @@ namespace SketchFleets
         ///     Sets the target position
         /// </summary>
         /// <returns>The</returns>
-        private Vector2 GetTargetPosition()
+        private Vector2 GetTargetPosition(Vector2 targetPos)
         {
-            return mainCameraCache.ViewportToWorldPoint(mainCameraCache.ScreenToViewportPoint(targetTransform.position));
+            return mainCameraCache.ViewportToWorldPoint(mainCameraCache.ScreenToViewportPoint(targetPos));
+        }
+
+        private Vector2 GetRadiusPosition(Vector2 targetRad)
+        {
+            float radius = (float)System.Math.Round(Mathf.Lerp(targetRad.x,targetRad.y,.5f),3);
+            return new Vector2(0, 1.5f + radius * radiusMultiply);
         }
         
         private Vector2 GetMothershipPosition()

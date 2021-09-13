@@ -59,7 +59,39 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""MoveRadius"",
+                    ""name"": ""Start Draw"",
+                    ""type"": ""Button"",
+                    ""id"": ""b138a13c-c250-4778-83b6-f29825fd84ab"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Draw"",
+                    ""type"": ""Value"",
+                    ""id"": ""6bc5e98a-d4b6-4334-ba2b-9cf2a8f3b78b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchOneStart"",
+                    ""type"": ""Button"",
+                    ""id"": ""55d0cde5-b97f-4f09-9bd6-9e401fdc5a94"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchOne"",
+                    ""type"": ""Value"",
+                    ""id"": ""dc01c8bd-be98-46bc-a0f7-796be22a17b3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchOneRadius"",
                     ""type"": ""Value"",
                     ""id"": ""96eeb021-05e1-4a84-9aff-04027eb0db65"",
                     ""expectedControlType"": ""Vector2"",
@@ -67,7 +99,15 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""LookRadius"",
+                    ""name"": ""TouchTwo"",
+                    ""type"": ""Value"",
+                    ""id"": ""80a7c669-f085-4de5-95e2-26a43de71335"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchTwoRadius"",
                     ""type"": ""Value"",
                     ""id"": ""7c1e74c1-d7c4-47aa-b018-7bff66a2295c"",
                     ""expectedControlType"": ""Vector2"",
@@ -168,7 +208,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""102ab674-2814-4305-8f57-0a844c33b3eb"",
                     ""path"": ""<Touchscreen>/touch1/press"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
                     ""action"": ""Shoot"",
@@ -232,12 +272,56 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""32022dc2-8ed7-479f-a59d-ce7121fb989e"",
+                    ""path"": ""<Touchscreen>/touch0/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""Start Draw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b84160c-c87f-4485-991e-28f147a5479c"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""Draw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96d21303-b7a6-4a6a-b547-d57184385136"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""TouchOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d9d3d515-b744-4213-b092-eefe8e640954"",
                     ""path"": ""<Touchscreen>/touch0/radius"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
-                    ""action"": ""MoveRadius"",
+                    ""action"": ""TouchOneRadius"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06f9aa13-65f5-402d-9c59-87f280945059"",
+                    ""path"": ""<Touchscreen>/touch1/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""TouchTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -248,53 +332,18 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
-                    ""action"": ""LookRadius"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Draw"",
-            ""id"": ""eca2833c-b067-4228-b8c1-24666bad70cc"",
-            ""actions"": [
-                {
-                    ""name"": ""Start Draw"",
-                    ""type"": ""Button"",
-                    ""id"": ""3c4561cf-b294-45dd-9288-1a891777219d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Draw"",
-                    ""type"": ""Value"",
-                    ""id"": ""cdc3da72-d2ba-4c0b-a2fa-2136b92be823"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""dca88d01-81c7-447d-8cf4-a89b0cc229c4"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Start Draw"",
+                    ""action"": ""TouchTwoRadius"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""03611810-4ead-4b5c-bda1-c4b4367dd138"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""id"": ""64ee42f0-33de-4128-a563-168e19dae2f3"",
+                    ""path"": ""<Touchscreen>/touch0/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
-                    ""action"": ""Draw"",
+                    ""action"": ""TouchOneStart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -858,12 +907,13 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_SummonShips = m_Player.FindAction("SummonShips", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        m_Player_MoveRadius = m_Player.FindAction("MoveRadius", throwIfNotFound: true);
-        m_Player_LookRadius = m_Player.FindAction("LookRadius", throwIfNotFound: true);
-        // Draw
-        m_Draw = asset.FindActionMap("Draw", throwIfNotFound: true);
-        m_Draw_StartDraw = m_Draw.FindAction("Start Draw", throwIfNotFound: true);
-        m_Draw_Draw = m_Draw.FindAction("Draw", throwIfNotFound: true);
+        m_Player_StartDraw = m_Player.FindAction("Start Draw", throwIfNotFound: true);
+        m_Player_Draw = m_Player.FindAction("Draw", throwIfNotFound: true);
+        m_Player_TouchOneStart = m_Player.FindAction("TouchOneStart", throwIfNotFound: true);
+        m_Player_TouchOne = m_Player.FindAction("TouchOne", throwIfNotFound: true);
+        m_Player_TouchOneRadius = m_Player.FindAction("TouchOneRadius", throwIfNotFound: true);
+        m_Player_TouchTwo = m_Player.FindAction("TouchTwo", throwIfNotFound: true);
+        m_Player_TouchTwoRadius = m_Player.FindAction("TouchTwoRadius", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -930,8 +980,13 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_SummonShips;
     private readonly InputAction m_Player_Pause;
-    private readonly InputAction m_Player_MoveRadius;
-    private readonly InputAction m_Player_LookRadius;
+    private readonly InputAction m_Player_StartDraw;
+    private readonly InputAction m_Player_Draw;
+    private readonly InputAction m_Player_TouchOneStart;
+    private readonly InputAction m_Player_TouchOne;
+    private readonly InputAction m_Player_TouchOneRadius;
+    private readonly InputAction m_Player_TouchTwo;
+    private readonly InputAction m_Player_TouchTwoRadius;
     public struct PlayerActions
     {
         private @IAA_PlayerControl m_Wrapper;
@@ -941,8 +996,13 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @SummonShips => m_Wrapper.m_Player_SummonShips;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
-        public InputAction @MoveRadius => m_Wrapper.m_Player_MoveRadius;
-        public InputAction @LookRadius => m_Wrapper.m_Player_LookRadius;
+        public InputAction @StartDraw => m_Wrapper.m_Player_StartDraw;
+        public InputAction @Draw => m_Wrapper.m_Player_Draw;
+        public InputAction @TouchOneStart => m_Wrapper.m_Player_TouchOneStart;
+        public InputAction @TouchOne => m_Wrapper.m_Player_TouchOne;
+        public InputAction @TouchOneRadius => m_Wrapper.m_Player_TouchOneRadius;
+        public InputAction @TouchTwo => m_Wrapper.m_Player_TouchTwo;
+        public InputAction @TouchTwoRadius => m_Wrapper.m_Player_TouchTwoRadius;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -967,12 +1027,27 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @MoveRadius.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRadius;
-                @MoveRadius.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRadius;
-                @MoveRadius.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRadius;
-                @LookRadius.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookRadius;
-                @LookRadius.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookRadius;
-                @LookRadius.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookRadius;
+                @StartDraw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
+                @StartDraw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
+                @StartDraw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
+                @Draw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDraw;
+                @Draw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDraw;
+                @Draw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDraw;
+                @TouchOneStart.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneStart;
+                @TouchOneStart.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneStart;
+                @TouchOneStart.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneStart;
+                @TouchOne.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
+                @TouchOne.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
+                @TouchOne.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
+                @TouchOneRadius.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneRadius;
+                @TouchOneRadius.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneRadius;
+                @TouchOneRadius.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneRadius;
+                @TouchTwo.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwo;
+                @TouchTwo.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwo;
+                @TouchTwo.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwo;
+                @TouchTwoRadius.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwoRadius;
+                @TouchTwoRadius.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwoRadius;
+                @TouchTwoRadius.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwoRadius;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -992,57 +1067,31 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @MoveRadius.started += instance.OnMoveRadius;
-                @MoveRadius.performed += instance.OnMoveRadius;
-                @MoveRadius.canceled += instance.OnMoveRadius;
-                @LookRadius.started += instance.OnLookRadius;
-                @LookRadius.performed += instance.OnLookRadius;
-                @LookRadius.canceled += instance.OnLookRadius;
-            }
-        }
-    }
-    public PlayerActions @Player => new PlayerActions(this);
-
-    // Draw
-    private readonly InputActionMap m_Draw;
-    private IDrawActions m_DrawActionsCallbackInterface;
-    private readonly InputAction m_Draw_StartDraw;
-    private readonly InputAction m_Draw_Draw;
-    public struct DrawActions
-    {
-        private @IAA_PlayerControl m_Wrapper;
-        public DrawActions(@IAA_PlayerControl wrapper) { m_Wrapper = wrapper; }
-        public InputAction @StartDraw => m_Wrapper.m_Draw_StartDraw;
-        public InputAction @Draw => m_Wrapper.m_Draw_Draw;
-        public InputActionMap Get() { return m_Wrapper.m_Draw; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(DrawActions set) { return set.Get(); }
-        public void SetCallbacks(IDrawActions instance)
-        {
-            if (m_Wrapper.m_DrawActionsCallbackInterface != null)
-            {
-                @StartDraw.started -= m_Wrapper.m_DrawActionsCallbackInterface.OnStartDraw;
-                @StartDraw.performed -= m_Wrapper.m_DrawActionsCallbackInterface.OnStartDraw;
-                @StartDraw.canceled -= m_Wrapper.m_DrawActionsCallbackInterface.OnStartDraw;
-                @Draw.started -= m_Wrapper.m_DrawActionsCallbackInterface.OnDraw;
-                @Draw.performed -= m_Wrapper.m_DrawActionsCallbackInterface.OnDraw;
-                @Draw.canceled -= m_Wrapper.m_DrawActionsCallbackInterface.OnDraw;
-            }
-            m_Wrapper.m_DrawActionsCallbackInterface = instance;
-            if (instance != null)
-            {
                 @StartDraw.started += instance.OnStartDraw;
                 @StartDraw.performed += instance.OnStartDraw;
                 @StartDraw.canceled += instance.OnStartDraw;
                 @Draw.started += instance.OnDraw;
                 @Draw.performed += instance.OnDraw;
                 @Draw.canceled += instance.OnDraw;
+                @TouchOneStart.started += instance.OnTouchOneStart;
+                @TouchOneStart.performed += instance.OnTouchOneStart;
+                @TouchOneStart.canceled += instance.OnTouchOneStart;
+                @TouchOne.started += instance.OnTouchOne;
+                @TouchOne.performed += instance.OnTouchOne;
+                @TouchOne.canceled += instance.OnTouchOne;
+                @TouchOneRadius.started += instance.OnTouchOneRadius;
+                @TouchOneRadius.performed += instance.OnTouchOneRadius;
+                @TouchOneRadius.canceled += instance.OnTouchOneRadius;
+                @TouchTwo.started += instance.OnTouchTwo;
+                @TouchTwo.performed += instance.OnTouchTwo;
+                @TouchTwo.canceled += instance.OnTouchTwo;
+                @TouchTwoRadius.started += instance.OnTouchTwoRadius;
+                @TouchTwoRadius.performed += instance.OnTouchTwoRadius;
+                @TouchTwoRadius.canceled += instance.OnTouchTwoRadius;
             }
         }
     }
-    public DrawActions @Draw => new DrawActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1164,13 +1213,13 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnSummonShips(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnMoveRadius(InputAction.CallbackContext context);
-        void OnLookRadius(InputAction.CallbackContext context);
-    }
-    public interface IDrawActions
-    {
         void OnStartDraw(InputAction.CallbackContext context);
         void OnDraw(InputAction.CallbackContext context);
+        void OnTouchOneStart(InputAction.CallbackContext context);
+        void OnTouchOne(InputAction.CallbackContext context);
+        void OnTouchOneRadius(InputAction.CallbackContext context);
+        void OnTouchTwo(InputAction.CallbackContext context);
+        void OnTouchTwoRadius(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

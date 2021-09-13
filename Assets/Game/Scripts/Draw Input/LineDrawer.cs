@@ -25,7 +25,7 @@ public class LineDrawer : MonoBehaviour
 
     private CreateLine currentLine;
     private Camera cam;
-    private PlayerControl playerControl;
+    private IAA_PlayerControl playerControl;
 
     [HideInInspector]
     public List<GameObject> lines = new List<GameObject>();
@@ -42,39 +42,35 @@ public class LineDrawer : MonoBehaviour
         {
             cam ??= Camera.main;
 
-            if (playerControl == null)
-            {
-                InitializePlayerControl();
-            }
-            
-            return cam.ScreenToWorldPoint(playerControl.Draw.Draw.ReadValue<Vector2>());
+            return cam.ScreenToWorldPoint(playerControl.Player.Draw.ReadValue<Vector2>());
         }
     }
 
     private int FormSelect;
 
-    private void Awake()
+    private void OnEnable()
     {
-        InitializePlayerControl();
+        playerControl = new IAA_PlayerControl();
+        playerControl.Enable();
+        Debug.Log("sa");
     }
 
     private void OnDisable()
     {
-        playerControl.Draw.StartDraw.canceled -= EndDraw;
+        playerControl.Player.StartDraw.canceled -= EndDraw;
+        playerControl.Disable();
+        playerControl = null;
     }
 
-    private void Update()
+    public void BulletTime(float time)
     {
-        if (currentLine != null)
-        {
-            Draw();
-        }
-
-        playerControl.Draw.StartDraw.canceled += EndDraw;
+        Time.timeScale = time;
     }
 
     public void DrawCallBack(InputAction.CallbackContext context)
     {
+        if(!gameObject.activeSelf) return;
+        
         if (context.started)
         {
             BeginDraw();
@@ -85,30 +81,24 @@ public class LineDrawer : MonoBehaviour
         }
     }
 
-    private void InitializePlayerControl()
-    {
-        playerControl = new PlayerControl();
-        playerControl.Enable();
-        playerControl.Draw.StartDraw.canceled += EndDraw;
-    }
-    
     private void BeginDraw()
     {
         if (currentLine != null && SceneManager.GetActiveScene().name == "Game")
         {
             Destroy(currentLine.gameObject);
         }
-
-        currentLine = Instantiate(linePrefab, transform).GetComponent<CreateLine>();
-
+        
         inputTrail.transform.position = mousePos;
+        currentLine = Instantiate(linePrefab, transform).GetComponent<CreateLine>();
         currentLine.SetPointsMinDistance(linePointsMinDist);
         currentLine.SetLineWidht(lineWidht);
         inputTrail.SetActive(true);
     }
 
-    private void Draw()
+    public void Draw()
     {
+        if (currentLine == null) return;
+            
         inputTrail.transform.position = mousePos;
 
         if (currentLine.pointCount >= 1 && Vector2.Distance(mousePos, currentLine.GetLastPoint()) < linePointsMinDist)
@@ -121,6 +111,8 @@ public class LineDrawer : MonoBehaviour
 
     private void EndDraw(InputAction.CallbackContext context)
     {
+        inputTrail.SetActive(false);
+        
         if (currentLine != null)
         {
             currentLine.lineRenderer.Simplify(simplifyTolerance);
@@ -144,22 +136,11 @@ public class LineDrawer : MonoBehaviour
                 Destroy(currentLine.gameObject);
                 ShapeShow();
                 currentLine = null;
-                EndEvent.Invoke();
             }
         }
-
-        if (SceneManager.GetActiveScene().name == "Game")
-        {
-            if (inputTrail == null)
-            {
-                return;
-            }
-            
-            inputTrail.SetActive(false);
-        }
-
         EndEvent.Invoke();
-        transform.parent.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        gameObject.SetActive(false);
     }
 
     private void ShapeShow()

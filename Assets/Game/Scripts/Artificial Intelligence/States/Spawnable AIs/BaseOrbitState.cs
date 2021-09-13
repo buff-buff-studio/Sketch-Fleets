@@ -49,7 +49,7 @@ namespace SketchFleets.AI
         public override void StateUpdate()
         {
             ParametricOrbit(Time.time * AI.Ship.Attributes.Speed);
-            AI.Ship.Look(AI.Player.GetComponent<Mothership>()._ShootingTarget.target);
+            AI.Ship.Look(AI.Player.GetComponent<Mothership>()._ShootingTarget.targetPoint.position);
         }
 
         #endregion

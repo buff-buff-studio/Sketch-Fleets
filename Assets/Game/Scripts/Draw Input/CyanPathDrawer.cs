@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using SketchFleets.Entities;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace SketchFleets
 {
@@ -28,6 +30,12 @@ namespace SketchFleets
 
         #endregion
 
+        #region Public Fields
+
+        public Button CyanButton;
+
+        #endregion
+
         #region Properties
 
         public GameObject GameHUD => gameHUD;
@@ -43,7 +51,27 @@ namespace SketchFleets
             playerControl.Enable();
         }
 
+        private void Update()
+        {
+            try
+            {
+                CyanShip = mothership.GetCyanShip();
+                CyanButton.enabled = false;
+            }
+            catch
+            {
+                CyanButton.enabled = true;
+            }
+        }
+
         #endregion
+
+        public void CyanGO()
+        {
+            CyanShip = mothership.GetCyanShip();
+            CyanShip.LookAtTarget(mothership._ShootingTarget.targetPoint.position);
+            CyanShip = null;
+        }
 
         public void CyanFire(InputAction.CallbackContext context)
         {

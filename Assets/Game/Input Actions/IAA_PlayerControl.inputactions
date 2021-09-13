@@ -46,7 +46,39 @@
                     "interactions": ""
                 },
                 {
-                    "name": "MoveRadius",
+                    "name": "Start Draw",
+                    "type": "Button",
+                    "id": "b138a13c-c250-4778-83b6-f29825fd84ab",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Draw",
+                    "type": "Value",
+                    "id": "6bc5e98a-d4b6-4334-ba2b-9cf2a8f3b78b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TouchOneStart",
+                    "type": "Button",
+                    "id": "55d0cde5-b97f-4f09-9bd6-9e401fdc5a94",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TouchOne",
+                    "type": "Value",
+                    "id": "dc01c8bd-be98-46bc-a0f7-796be22a17b3",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TouchOneRadius",
                     "type": "Value",
                     "id": "96eeb021-05e1-4a84-9aff-04027eb0db65",
                     "expectedControlType": "Vector2",
@@ -54,7 +86,15 @@
                     "interactions": ""
                 },
                 {
-                    "name": "LookRadius",
+                    "name": "TouchTwo",
+                    "type": "Value",
+                    "id": "80a7c669-f085-4de5-95e2-26a43de71335",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TouchTwoRadius",
                     "type": "Value",
                     "id": "7c1e74c1-d7c4-47aa-b018-7bff66a2295c",
                     "expectedControlType": "Vector2",
@@ -155,7 +195,7 @@
                     "name": "",
                     "id": "102ab674-2814-4305-8f57-0a844c33b3eb",
                     "path": "<Touchscreen>/touch1/press",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "Control Scheme",
                     "action": "Shoot",
@@ -219,12 +259,56 @@
                 },
                 {
                     "name": "",
+                    "id": "32022dc2-8ed7-479f-a59d-ce7121fb989e",
+                    "path": "<Touchscreen>/touch0/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control Scheme",
+                    "action": "Start Draw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b84160c-c87f-4485-991e-28f147a5479c",
+                    "path": "<Touchscreen>/touch0/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control Scheme",
+                    "action": "Draw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96d21303-b7a6-4a6a-b547-d57184385136",
+                    "path": "<Touchscreen>/touch0/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control Scheme",
+                    "action": "TouchOne",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d9d3d515-b744-4213-b092-eefe8e640954",
                     "path": "<Touchscreen>/touch0/radius",
                     "interactions": "",
                     "processors": "",
                     "groups": "Control Scheme",
-                    "action": "MoveRadius",
+                    "action": "TouchOneRadius",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "06f9aa13-65f5-402d-9c59-87f280945059",
+                    "path": "<Touchscreen>/touch1/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control Scheme",
+                    "action": "TouchTwo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -235,53 +319,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Control Scheme",
-                    "action": "LookRadius",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Draw",
-            "id": "eca2833c-b067-4228-b8c1-24666bad70cc",
-            "actions": [
-                {
-                    "name": "Start Draw",
-                    "type": "Button",
-                    "id": "3c4561cf-b294-45dd-9288-1a891777219d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Draw",
-                    "type": "Value",
-                    "id": "cdc3da72-d2ba-4c0b-a2fa-2136b92be823",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "dca88d01-81c7-447d-8cf4-a89b0cc229c4",
-                    "path": "<Touchscreen>/primaryTouch/press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Control Scheme",
-                    "action": "Start Draw",
+                    "action": "TouchTwoRadius",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "03611810-4ead-4b5c-bda1-c4b4367dd138",
-                    "path": "<Touchscreen>/position",
+                    "id": "64ee42f0-33de-4128-a563-168e19dae2f3",
+                    "path": "<Touchscreen>/touch0/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "Control Scheme",
-                    "action": "Draw",
+                    "action": "TouchOneStart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
