@@ -461,7 +461,7 @@ namespace SketchFleets.Entities
         public void Move(Vector2 movePos, Vector2 moveRad)
         {
             // Gets movement input
-            
+
             Debug.Log($"MotherShip: {movePos}");
             transform.localPosition = Vector2.MoveTowards(transform.localPosition, GetRadiusPosition(moveRad), radiusSpeed*Time.deltaTime);
 

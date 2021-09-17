@@ -45,7 +45,8 @@ namespace SketchFleets
         private const int WINDOWS_MODE = 6;
         private const int VSYNC = 7;
         
-        private const int SENSE = 8;
+        private const int TOUCH_RAY = 8;
+        private const int DEBUG_MODE = 9;
         #endregion
 
         #region Public Fields
@@ -54,10 +55,11 @@ namespace SketchFleets
         public TMP_Dropdown resolutionDropdown;
         public TMP_Dropdown windowsModeDropdown;
         public Toggle vsyncToggle;
+        public Toggle touchRayToggle;
+        public Toggle debugModeToggle;
         public Slider volumeMaster;
         public Slider volumeMusic;
         public Slider volumeSfx;
-        public Slider sense;
         #endregion
         
         #region Unity Callbacks
@@ -92,6 +94,7 @@ namespace SketchFleets
             #endregion
 
             #region Screen
+            /*
             if(resolutionDropdown != null)
                 resolutionDropdown.value = Settings.Get<int>("resolution");
             if(windowsModeDropdown != null)
@@ -102,6 +105,7 @@ namespace SketchFleets
             if(vsyncToggle != null)
                 vsyncToggle.isOn = Settings.Get<bool>("vsync");
             SettingsManager.RefreshWindow();
+            */
             #endregion
 
             #region Volume
@@ -110,8 +114,11 @@ namespace SketchFleets
             volumeSfx.value = Settings.Get<float>("volume_sfx");
             #endregion
             
-            #region Volume
-            sense.value = PlayerPrefs.GetFloat("JoystickSense");
+            #region Gameplay
+            if(touchRayToggle != null)
+                touchRayToggle.isOn = Settings.Get<bool>("touchRay");
+            if(debugModeToggle != null)
+                debugModeToggle.isOn = Settings.Get<bool>("debugMode");
             #endregion
 
             //FullScreenMode.Windowed
@@ -136,6 +143,7 @@ namespace SketchFleets
                 }
                 break;
 
+                /*
                 case RESOLUTION:
                 {
                     SettingsManager.SetResolution(resolutionDropdown.value);
@@ -154,7 +162,7 @@ namespace SketchFleets
                     SettingsManager.RefreshWindow();
                 }
                 break;
-
+                */
                 case VOLUME_MASTER:
                 {
                     Settings.Set<string>("volume_master",volumeMaster.value);
@@ -176,11 +184,17 @@ namespace SketchFleets
                 }
                 break;
                 
-                case SENSE:
+                case TOUCH_RAY:
                 {
-                    PlayerPrefs.SetFloat("JoystickSense", sense.value);
+                    Settings.Set<bool>("touchRay",touchRayToggle.isOn);
+                } 
+                break;
+                
+                case DEBUG_MODE:
+                {
+                    Settings.Set<bool>("debugMode",debugModeToggle.isOn);
                 }
-                    break;
+                break;
             }
         }
         #endregion

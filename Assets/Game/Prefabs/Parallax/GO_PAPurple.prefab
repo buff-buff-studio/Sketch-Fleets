@@ -64,7 +64,7 @@ MonoBehaviour:
     infiniteVerticalScrolling: 0
   - layerRenderer: {fileID: 6627263685781950698}
     parallaxFactor: {x: 1, y: 1}
-    infiniteHorizontalScrolling: 0
+    infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
 --- !u!1 &6627263685550538794
 GameObject:

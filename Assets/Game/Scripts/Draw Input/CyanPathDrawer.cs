@@ -53,11 +53,11 @@ namespace SketchFleets
             try
             {
                 CyanShip = mothership.GetCyanShip();
-                CyanButton.enabled = false;
+                CyanButton.interactable = true;
             }
             catch
             {
-                CyanButton.enabled = true;
+                CyanButton.interactable = false;
             }
         }
 
