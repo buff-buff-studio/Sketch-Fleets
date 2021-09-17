@@ -103,10 +103,11 @@ namespace SketchFleets.SettingsSystem
 
         public static void RefreshWindow()
         {
+            /*
             int resolution = Settings.Get<int>("resolution");
             FullScreenMode mode = (FullScreenMode) (Settings.Get<int>("winMode") + 1);
             int vsync = Settings.Get<bool>("vsync") ? 0 : 60;
-
+            
             switch (resolution)
             {
                 case 0:
@@ -128,6 +129,7 @@ namespace SketchFleets.SettingsSystem
                     Screen.SetResolution(2560,1080,mode,vsync);
                     break;                 
             }
+            */
         }
     }
 }

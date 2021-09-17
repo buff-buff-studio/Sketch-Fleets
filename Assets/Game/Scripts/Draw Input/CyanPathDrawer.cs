@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using SketchFleets.Entities;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace SketchFleets
 {
@@ -20,11 +22,16 @@ namespace SketchFleets
 
         [SerializeField]
         private GameObject cyanHUD;
-
-        private PlayerControl playerControl;
+        
         private OrbitAndExplodeState CyanShip;
         private bool CloseUI;
         private Camera mainCameraCache;
+
+        #endregion
+
+        #region Public Fields
+
+        public Button CyanButton;
 
         #endregion
 
@@ -39,12 +46,31 @@ namespace SketchFleets
         private void Awake()
         {
             mainCameraCache = Camera.main;
-            playerControl = new PlayerControl();
-            playerControl.Enable();
+        }
+
+        private void Update()
+        {
+            try
+            {
+                CyanShip = mothership.GetCyanShip();
+                CyanButton.interactable = true;
+            }
+            catch
+            {
+                CyanButton.interactable = false;
+            }
         }
 
         #endregion
 
+        public void CyanGO()
+        {
+            CyanShip = mothership.GetCyanShip();
+            CyanShip.LookAtTarget(mothership._ShootingTarget.targetPoint.position);
+            CyanShip = null;
+        }
+
+        /*
         public void CyanFire(InputAction.CallbackContext context)
         {
             if (context.started)
@@ -93,6 +119,7 @@ namespace SketchFleets
             }
         }
 
+*/
         private IEnumerator TimerToClose()
         {
             WaitForSeconds wait = new WaitForSeconds(1f);

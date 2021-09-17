@@ -44,7 +44,12 @@ namespace SketchFleets.Entities
 
         private IEnumerator regenerateRoutine;
 
-        private PlayerControl playerControl;
+        private IAA_PlayerControl playerControl;
+
+        [SerializeField] 
+        private float radiusMultiply;
+        
+        private float radiusSpeed = 2.78f;
 
         #endregion
 
@@ -70,7 +75,7 @@ namespace SketchFleets.Entities
             AttributesBonuses = ScriptableObject.CreateInstance<MothershipAttributesBonuses>();
             IngameEffectApplier.OnEffectsChange = OnEffectsChange;
             IngameEffectApplier.Clear();
-            playerControl = new PlayerControl();
+            playerControl = new IAA_PlayerControl();
             playerControl.Enable();
             EnhancedTouchSupport.Enable();
             TouchSimulation.Enable();
@@ -405,8 +410,20 @@ namespace SketchFleets.Entities
         private void HandlePlayerInput()
         {
             // Moves and rotates the ship
-            Move();
-            Look(_ShootingTarget.target);
+            if (Time.timeScale != 1) return;
+            //Move();
+            RadiusLook(_ShootingTarget.targetPoint.position);
+        }
+        
+        private void RadiusLook(Vector2 target)
+        {
+            // Workaround, this should be done using a proper Pausing interface
+            if (Mathf.Approximately(0f, Time.timeScale)) return;
+
+            // This doesn't really solve the problem. The transform should be a member variable
+            // to avoid the constant marshalling
+            Transform transformCache = transform.parent;
+            transformCache.up = (Vector3)target - transformCache.position;
         }
 
         /// <summary>
@@ -441,15 +458,25 @@ namespace SketchFleets.Entities
         /// <summary>
         ///     Moves and rotates the Mothership
         /// </summary>
-        public void Move()
+        public void Move(Vector2 movePos, Vector2 moveRad)
         {
             // Gets movement input
 
-            Vector2 movement = playerControl.Player.Move.ReadValue<Vector2>();
+            Debug.Log($"MotherShip: {movePos}");
+            transform.localPosition = Vector2.MoveTowards(transform.localPosition, GetRadiusPosition(moveRad), radiusSpeed*Time.deltaTime);
 
-            // Translates
-
-            transform.Translate(movement * GetSpeed(), Space.World);
+            transform.parent.position = Vector2.MoveTowards(transform.parent.position, GetMovePosition(movePos), GetSpeed());
+        }
+        
+        private Vector2 GetMovePosition(Vector2 movePos)
+        {
+            return mainCamera.ViewportToWorldPoint(mainCamera.ScreenToViewportPoint(movePos));
+        }
+        
+        private Vector2 GetRadiusPosition(Vector2 moveRad)
+        {
+            float radius = (float)System.Math.Round(Mathf.Lerp(moveRad.x,moveRad.y,.5f),3);
+            return new Vector2(0, 1.5f + radius * radiusMultiply);
         }
 
         /// <summary>

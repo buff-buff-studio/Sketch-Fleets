@@ -21,7 +21,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
-                    ""id"": ""c3e8bb9d-d6f5-4743-8e8b-2a4fae4f3a5b"",
+                    ""id"": ""255e1ce5-9f6a-4cf6-9a34-97c75aae6279"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -35,113 +35,63 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""interactions"": ""Press(behavior=2)""
                 },
                 {
-                    ""name"": ""SummonShips"",
+                    ""name"": ""Start Draw"",
                     ""type"": ""Button"",
-                    ""id"": ""9328ae32-1dca-4eeb-9044-84789f690212"",
+                    ""id"": ""b138a13c-c250-4778-83b6-f29825fd84ab"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""51c383a1-243b-40cd-af0e-511508b6944b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Look"",
+                    ""name"": ""Draw"",
                     ""type"": ""Value"",
-                    ""id"": ""5e40e799-201f-4690-92e8-259b726ad04f"",
+                    ""id"": ""6bc5e98a-d4b6-4334-ba2b-9cf2a8f3b78b"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""CyanLocate"",
+                    ""name"": ""TouchOneStart"",
+                    ""type"": ""Button"",
+                    ""id"": ""55d0cde5-b97f-4f09-9bd6-9e401fdc5a94"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchOne"",
                     ""type"": ""Value"",
-                    ""id"": ""8b591345-8004-4b1e-b70f-d350108b659d"",
+                    ""id"": ""dc01c8bd-be98-46bc-a0f7-796be22a17b3"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""CyanClick"",
-                    ""type"": ""Button"",
-                    ""id"": ""02c80a99-bec8-472a-b482-0077ba71cb4c"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""TouchOneRadius"",
+                    ""type"": ""Value"",
+                    ""id"": ""96eeb021-05e1-4a84-9aff-04027eb0db65"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": ""Hold""
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchTwo"",
+                    ""type"": ""Value"",
+                    ""id"": ""80a7c669-f085-4de5-95e2-26a43de71335"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchTwoRadius"",
+                    ""type"": ""Value"",
+                    ""id"": ""7c1e74c1-d7c4-47aa-b018-7bff66a2295c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""cd716097-b8ad-4076-8078-aa414373abe4"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""a8d10ff9-0320-4f59-a094-4badeace9153"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""5e47b9bd-08e1-4ec8-a977-7ccef0b2c6fb"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""69c93c65-0473-4603-9650-64e61a2beb8c"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""10044b8b-0741-4e7d-bd7e-5c732a61217b"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""f49cc1b5-6754-46c8-bb07-7f41ea8cf831"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
                 {
                     ""name"": """",
                     ""id"": ""1cee869d-8e4f-4e97-9d53-3911dd5ce0c9"",
@@ -157,7 +107,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""102ab674-2814-4305-8f57-0a844c33b3eb"",
                     ""path"": ""<Touchscreen>/touch1/press"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
                     ""action"": ""Shoot"",
@@ -166,98 +116,8 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2621cc1e-3ac4-4eca-9b2d-84e2afaec9fc"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""SummonShips"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6a4b4428-df2e-4835-ab20-8b9baea4a1ff"",
-                    ""path"": ""<Touchscreen>/touch1/tap"",
-                    ""interactions"": ""MultiTap"",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""SummonShips"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cccc3303-d212-499a-872f-7cd17dddb0b2"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""69682d58-e06b-4aed-8315-bca454d1002a"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false,invertY=false)"",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fb52d840-6753-476d-95e1-3eb0c9f1a8d8"",
-                    ""path"": ""<Touchscreen>/touch0/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""CyanLocate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""247893e2-3d87-44f2-a19f-34f52a56ac37"",
+                    ""id"": ""32022dc2-8ed7-479f-a59d-ce7121fb989e"",
                     ""path"": ""<Touchscreen>/touch0/press"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""CyanClick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Draw"",
-            ""id"": ""eca2833c-b067-4228-b8c1-24666bad70cc"",
-            ""actions"": [
-                {
-                    ""name"": ""Start Draw"",
-                    ""type"": ""Button"",
-                    ""id"": ""3c4561cf-b294-45dd-9288-1a891777219d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Draw"",
-                    ""type"": ""Value"",
-                    ""id"": ""cdc3da72-d2ba-4c0b-a2fa-2136b92be823"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""dca88d01-81c7-447d-8cf4-a89b0cc229c4"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
@@ -267,12 +127,199 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""03611810-4ead-4b5c-bda1-c4b4367dd138"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""id"": ""6b84160c-c87f-4485-991e-28f147a5479c"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
                     ""action"": ""Draw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96d21303-b7a6-4a6a-b547-d57184385136"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""TouchOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9d3d515-b744-4213-b092-eefe8e640954"",
+                    ""path"": ""<Touchscreen>/touch0/radius"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""TouchOneRadius"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06f9aa13-65f5-402d-9c59-87f280945059"",
+                    ""path"": ""<Touchscreen>/touch1/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""TouchTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d3aa410-1e01-40c7-916c-077051567d81"",
+                    ""path"": ""<Touchscreen>/touch1/radius"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""TouchTwoRadius"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64ee42f0-33de-4128-a563-168e19dae2f3"",
+                    ""path"": ""<Touchscreen>/touch0/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""TouchOneStart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb6439bb-1d16-4f65-9ced-8a79de249bf7"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""2fb991ce-751b-496f-8ee2-050736924182"",
+                    ""path"": ""Dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""3c896640-bdbc-47cd-8f3c-ed986255b4cb"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""05264f1c-fd55-4c32-8fed-4dca8a1087cb"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""a087bbd9-92d7-4cca-92dc-d08eaba99d57"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""9f05697a-9fd0-4523-b877-d3a317fc7fb1"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""6d0bf529-41a9-4e9d-b989-c24d5de81a6c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""6f7789f5-d174-4006-b96f-460137999940"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""dcde69d2-1a55-417e-b87b-9146f93dcf59"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""60203ba4-937d-415a-b1b3-83d2b4186145"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80a4c7fd-4548-4abb-9d4d-556fad90250c"",
+                    ""path"": ""<XRController>/{Primary2DAxis}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XR"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b983cae4-d838-45a9-af7e-c129aba2a86e"",
+                    ""path"": ""<Joystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -833,15 +880,13 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
-        m_Player_SummonShips = m_Player.FindAction("SummonShips", throwIfNotFound: true);
-        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_CyanLocate = m_Player.FindAction("CyanLocate", throwIfNotFound: true);
-        m_Player_CyanClick = m_Player.FindAction("CyanClick", throwIfNotFound: true);
-        // Draw
-        m_Draw = asset.FindActionMap("Draw", throwIfNotFound: true);
-        m_Draw_StartDraw = m_Draw.FindAction("Start Draw", throwIfNotFound: true);
-        m_Draw_Draw = m_Draw.FindAction("Draw", throwIfNotFound: true);
+        m_Player_StartDraw = m_Player.FindAction("Start Draw", throwIfNotFound: true);
+        m_Player_Draw = m_Player.FindAction("Draw", throwIfNotFound: true);
+        m_Player_TouchOneStart = m_Player.FindAction("TouchOneStart", throwIfNotFound: true);
+        m_Player_TouchOne = m_Player.FindAction("TouchOne", throwIfNotFound: true);
+        m_Player_TouchOneRadius = m_Player.FindAction("TouchOneRadius", throwIfNotFound: true);
+        m_Player_TouchTwo = m_Player.FindAction("TouchTwo", throwIfNotFound: true);
+        m_Player_TouchTwoRadius = m_Player.FindAction("TouchTwoRadius", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -905,22 +950,26 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Shoot;
-    private readonly InputAction m_Player_SummonShips;
-    private readonly InputAction m_Player_Pause;
-    private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_CyanLocate;
-    private readonly InputAction m_Player_CyanClick;
+    private readonly InputAction m_Player_StartDraw;
+    private readonly InputAction m_Player_Draw;
+    private readonly InputAction m_Player_TouchOneStart;
+    private readonly InputAction m_Player_TouchOne;
+    private readonly InputAction m_Player_TouchOneRadius;
+    private readonly InputAction m_Player_TouchTwo;
+    private readonly InputAction m_Player_TouchTwoRadius;
     public struct PlayerActions
     {
         private @IAA_PlayerControl m_Wrapper;
         public PlayerActions(@IAA_PlayerControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
-        public InputAction @SummonShips => m_Wrapper.m_Player_SummonShips;
-        public InputAction @Pause => m_Wrapper.m_Player_Pause;
-        public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @CyanLocate => m_Wrapper.m_Player_CyanLocate;
-        public InputAction @CyanClick => m_Wrapper.m_Player_CyanClick;
+        public InputAction @StartDraw => m_Wrapper.m_Player_StartDraw;
+        public InputAction @Draw => m_Wrapper.m_Player_Draw;
+        public InputAction @TouchOneStart => m_Wrapper.m_Player_TouchOneStart;
+        public InputAction @TouchOne => m_Wrapper.m_Player_TouchOne;
+        public InputAction @TouchOneRadius => m_Wrapper.m_Player_TouchOneRadius;
+        public InputAction @TouchTwo => m_Wrapper.m_Player_TouchTwo;
+        public InputAction @TouchTwoRadius => m_Wrapper.m_Player_TouchTwoRadius;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -936,21 +985,27 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
-                @SummonShips.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSummonShips;
-                @SummonShips.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSummonShips;
-                @SummonShips.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSummonShips;
-                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @CyanLocate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanLocate;
-                @CyanLocate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanLocate;
-                @CyanLocate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanLocate;
-                @CyanClick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanClick;
-                @CyanClick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanClick;
-                @CyanClick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCyanClick;
+                @StartDraw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
+                @StartDraw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
+                @StartDraw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
+                @Draw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDraw;
+                @Draw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDraw;
+                @Draw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDraw;
+                @TouchOneStart.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneStart;
+                @TouchOneStart.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneStart;
+                @TouchOneStart.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneStart;
+                @TouchOne.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
+                @TouchOne.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
+                @TouchOne.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
+                @TouchOneRadius.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneRadius;
+                @TouchOneRadius.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneRadius;
+                @TouchOneRadius.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneRadius;
+                @TouchTwo.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwo;
+                @TouchTwo.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwo;
+                @TouchTwo.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwo;
+                @TouchTwoRadius.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwoRadius;
+                @TouchTwoRadius.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwoRadius;
+                @TouchTwoRadius.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwoRadius;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -961,66 +1016,31 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
-                @SummonShips.started += instance.OnSummonShips;
-                @SummonShips.performed += instance.OnSummonShips;
-                @SummonShips.canceled += instance.OnSummonShips;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
-                @CyanLocate.started += instance.OnCyanLocate;
-                @CyanLocate.performed += instance.OnCyanLocate;
-                @CyanLocate.canceled += instance.OnCyanLocate;
-                @CyanClick.started += instance.OnCyanClick;
-                @CyanClick.performed += instance.OnCyanClick;
-                @CyanClick.canceled += instance.OnCyanClick;
-            }
-        }
-    }
-    public PlayerActions @Player => new PlayerActions(this);
-
-    // Draw
-    private readonly InputActionMap m_Draw;
-    private IDrawActions m_DrawActionsCallbackInterface;
-    private readonly InputAction m_Draw_StartDraw;
-    private readonly InputAction m_Draw_Draw;
-    public struct DrawActions
-    {
-        private @IAA_PlayerControl m_Wrapper;
-        public DrawActions(@IAA_PlayerControl wrapper) { m_Wrapper = wrapper; }
-        public InputAction @StartDraw => m_Wrapper.m_Draw_StartDraw;
-        public InputAction @Draw => m_Wrapper.m_Draw_Draw;
-        public InputActionMap Get() { return m_Wrapper.m_Draw; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(DrawActions set) { return set.Get(); }
-        public void SetCallbacks(IDrawActions instance)
-        {
-            if (m_Wrapper.m_DrawActionsCallbackInterface != null)
-            {
-                @StartDraw.started -= m_Wrapper.m_DrawActionsCallbackInterface.OnStartDraw;
-                @StartDraw.performed -= m_Wrapper.m_DrawActionsCallbackInterface.OnStartDraw;
-                @StartDraw.canceled -= m_Wrapper.m_DrawActionsCallbackInterface.OnStartDraw;
-                @Draw.started -= m_Wrapper.m_DrawActionsCallbackInterface.OnDraw;
-                @Draw.performed -= m_Wrapper.m_DrawActionsCallbackInterface.OnDraw;
-                @Draw.canceled -= m_Wrapper.m_DrawActionsCallbackInterface.OnDraw;
-            }
-            m_Wrapper.m_DrawActionsCallbackInterface = instance;
-            if (instance != null)
-            {
                 @StartDraw.started += instance.OnStartDraw;
                 @StartDraw.performed += instance.OnStartDraw;
                 @StartDraw.canceled += instance.OnStartDraw;
                 @Draw.started += instance.OnDraw;
                 @Draw.performed += instance.OnDraw;
                 @Draw.canceled += instance.OnDraw;
+                @TouchOneStart.started += instance.OnTouchOneStart;
+                @TouchOneStart.performed += instance.OnTouchOneStart;
+                @TouchOneStart.canceled += instance.OnTouchOneStart;
+                @TouchOne.started += instance.OnTouchOne;
+                @TouchOne.performed += instance.OnTouchOne;
+                @TouchOne.canceled += instance.OnTouchOne;
+                @TouchOneRadius.started += instance.OnTouchOneRadius;
+                @TouchOneRadius.performed += instance.OnTouchOneRadius;
+                @TouchOneRadius.canceled += instance.OnTouchOneRadius;
+                @TouchTwo.started += instance.OnTouchTwo;
+                @TouchTwo.performed += instance.OnTouchTwo;
+                @TouchTwo.canceled += instance.OnTouchTwo;
+                @TouchTwoRadius.started += instance.OnTouchTwoRadius;
+                @TouchTwoRadius.performed += instance.OnTouchTwoRadius;
+                @TouchTwoRadius.canceled += instance.OnTouchTwoRadius;
             }
         }
     }
-    public DrawActions @Draw => new DrawActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1139,16 +1159,13 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
-        void OnSummonShips(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
-        void OnCyanLocate(InputAction.CallbackContext context);
-        void OnCyanClick(InputAction.CallbackContext context);
-    }
-    public interface IDrawActions
-    {
         void OnStartDraw(InputAction.CallbackContext context);
         void OnDraw(InputAction.CallbackContext context);
+        void OnTouchOneStart(InputAction.CallbackContext context);
+        void OnTouchOne(InputAction.CallbackContext context);
+        void OnTouchOneRadius(InputAction.CallbackContext context);
+        void OnTouchTwo(InputAction.CallbackContext context);
+        void OnTouchTwoRadius(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

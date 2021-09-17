@@ -25,7 +25,9 @@ public class LineDrawer : MonoBehaviour
 
     private CreateLine currentLine;
     private Camera cam;
-    private PlayerControl playerControl;
+    private IAA_PlayerControl playerControl;
+    
+    private int FormSelect;
 
     [HideInInspector]
     public List<GameObject> lines = new List<GameObject>();
@@ -42,39 +44,32 @@ public class LineDrawer : MonoBehaviour
         {
             cam ??= Camera.main;
 
-            if (playerControl == null)
-            {
-                InitializePlayerControl();
-            }
-            
-            return cam.ScreenToWorldPoint(playerControl.Draw.Draw.ReadValue<Vector2>());
+            return cam.ScreenToWorldPoint(playerControl.Player.Draw.ReadValue<Vector2>());
         }
     }
 
-    private int FormSelect;
-
-    private void Awake()
+    private void OnEnable()
     {
-        InitializePlayerControl();
+        playerControl = new IAA_PlayerControl();
+        playerControl.Enable();
     }
 
     private void OnDisable()
     {
-        playerControl.Draw.StartDraw.canceled -= EndDraw;
+        playerControl.Player.StartDraw.canceled -= EndDraw;
+        playerControl.Disable();
+        playerControl = null;
     }
 
-    private void Update()
+    public void BulletTime(float time)
     {
-        if (currentLine != null)
-        {
-            Draw();
-        }
-
-        playerControl.Draw.StartDraw.canceled += EndDraw;
+        Time.timeScale = time;
     }
 
     public void DrawCallBack(InputAction.CallbackContext context)
     {
+        if(!gameObject.activeSelf) return;
+        
         if (context.started)
         {
             BeginDraw();
@@ -85,30 +80,24 @@ public class LineDrawer : MonoBehaviour
         }
     }
 
-    private void InitializePlayerControl()
-    {
-        playerControl = new PlayerControl();
-        playerControl.Enable();
-        playerControl.Draw.StartDraw.canceled += EndDraw;
-    }
-    
     private void BeginDraw()
     {
         if (currentLine != null && SceneManager.GetActiveScene().name == "Game")
         {
             Destroy(currentLine.gameObject);
         }
-
-        currentLine = Instantiate(linePrefab, transform).GetComponent<CreateLine>();
-
+        
         inputTrail.transform.position = mousePos;
+        currentLine = Instantiate(linePrefab, transform).GetComponent<CreateLine>();
         currentLine.SetPointsMinDistance(linePointsMinDist);
         currentLine.SetLineWidht(lineWidht);
         inputTrail.SetActive(true);
     }
 
-    private void Draw()
+    public void Draw()
     {
+        if (currentLine == null) return;
+            
         inputTrail.transform.position = mousePos;
 
         if (currentLine.pointCount >= 1 && Vector2.Distance(mousePos, currentLine.GetLastPoint()) < linePointsMinDist)
@@ -121,45 +110,50 @@ public class LineDrawer : MonoBehaviour
 
     private void EndDraw(InputAction.CallbackContext context)
     {
-        if (currentLine != null)
-        {
-            currentLine.lineRenderer.Simplify(simplifyTolerance);
+        inputTrail.SetActive(false);
 
-            if (currentLine.lineRenderer.positionCount <= 3)
-            {
-                Destroy(currentLine.gameObject);
-            }
-            else
-            {
-                currentLine.lineRenderer.SetPosition(currentLine.lineRenderer.positionCount - 1,
-                    currentLine.lineRenderer.GetPosition(0));
-                
-                lines.Add(currentLine.gameObject);
-                
-                FormSelect = FormDetector.Detector(currentLine.lineRenderer, Shapes);
-                
-                currentLine.transform.name =
-                    Shapes[FormSelect].shapeName + " - " + currentLine.lineRenderer.positionCount;
-                
-                Destroy(currentLine.gameObject);
-                ShapeShow();
-                currentLine = null;
-                EndEvent.Invoke();
-            }
+        if (!IsLineValid())
+        {
+            RestoreUI();
+            return;
         }
-
-        if (SceneManager.GetActiveScene().name == "Game")
-        {
-            if (inputTrail == null)
-            {
-                return;
-            }
             
-            inputTrail.SetActive(false);
-        }
+        currentLine.lineRenderer.Simplify(simplifyTolerance);
 
+        if (currentLine.lineRenderer.positionCount <= 3)
+        {
+            Destroy(currentLine.gameObject);
+        }
+        else
+        {
+            currentLine.lineRenderer.SetPosition(currentLine.lineRenderer.positionCount - 1,
+                currentLine.lineRenderer.GetPosition(0));
+                
+            lines.Add(currentLine.gameObject);
+                
+            FormSelect = FormDetector.Detector(currentLine.lineRenderer, Shapes);
+                
+            currentLine.transform.name =
+                Shapes[FormSelect].shapeName + " - " + currentLine.lineRenderer.positionCount;
+                
+            Destroy(currentLine.gameObject);
+            ShapeShow();
+            currentLine = null;
+        }
+        
+        RestoreUI();
+    }
+
+    private void RestoreUI()
+    {
         EndEvent.Invoke();
-        transform.parent.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        gameObject.SetActive(false);
+    }
+
+    private bool IsLineValid()
+    {
+        return currentLine != null;
     }
 
     private void ShapeShow()
