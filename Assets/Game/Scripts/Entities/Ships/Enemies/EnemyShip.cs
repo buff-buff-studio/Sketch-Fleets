@@ -1,4 +1,5 @@
-﻿using SketchFleets.Data;
+﻿using ManyTools.UnityExtended;
+using SketchFleets.Data;
 using SketchFleets.General;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace SketchFleets.Enemies
     /// <summary>
     /// A class that controls an enemy ship
     /// </summary>
-    public class EnemyShip : Ship<ShipAttributes>
+    public sealed class EnemyShip : Ship<ShipAttributes>
     {
         /// <summary>
         /// Emerges the Poolable object from the pool
@@ -17,8 +18,9 @@ namespace SketchFleets.Enemies
         public override void Emerge(Vector3 position, Quaternion rotation)
         {
             base.Emerge(position, rotation);
+            
             // TODO: This is a band-aid to fix a bug. Make sure to remove it later
-            Invoke(nameof(Die), 60f);
+            DelayProvider.Instance.DoDelayed(Die, 60f, GetInstanceID());
         }
 
         public override void Die()

@@ -25,7 +25,7 @@ namespace ManyTools.UnityExtended.Poolable
         public virtual void Submerge()
         {
             StopAllCoroutines();
-            CancelInvoke();
+            DelayProvider.Instance.CancelDoDelayed(GetInstanceID());
             gameObject.SetActive(false);
 
             if (isSubmerged) return;
@@ -39,7 +39,7 @@ namespace ManyTools.UnityExtended.Poolable
         /// <param name="delay">The delay in seconds to wait before submerging the object</param>
         public void SubmergeDelayed(float delay)
         {
-            Invoke(nameof(Submerge), delay);
+            DelayProvider.Instance.DoDelayed(Submerge, delay, GetInstanceID());
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using ManyTools.UnityExtended.Poolable;
+﻿using ManyTools.UnityExtended;
+using ManyTools.UnityExtended.Poolable;
 using SketchFleets.Data;
 using SketchFleets.General;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace SketchFleets.Entities
     /// <summary>
     /// A class that controls a spawned ship
     /// </summary>
-    public class SpawnedShip : Ship<SpawnableShipAttributes>
+    public sealed class SpawnedShip : Ship<SpawnableShipAttributes>
     {
         #region Properties
 
@@ -28,7 +29,7 @@ namespace SketchFleets.Entities
             base.Emerge(position, rotation);
             // The invoke here is beyond horrible in terms of performance, but I'd rather not spend
             // more time in this script, the deadline is looming
-            Invoke(nameof(EmergeSpawnEffect), 0.1f);
+            DelayProvider.Instance.DoDelayed(EmergeSpawnEffect, 0.1f, GetInstanceID());
         }
 
         #endregion

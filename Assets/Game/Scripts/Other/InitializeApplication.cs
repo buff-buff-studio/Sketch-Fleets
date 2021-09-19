@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 namespace SketchFleets
 {
     /// <summary>
-    /// A script that runs on the application's initialize
+    ///     A script that runs on the application's initialize
     /// </summary>
     public sealed class InitializeApplication : MonoBehaviour
     {
@@ -18,8 +18,12 @@ namespace SketchFleets
         [SerializeField]
         private string menuSceneName;
 
+        [Header("Logging")]
+        [SerializeField]
+        private GameObject backTraceClient;
+
         #endregion
-        
+
         #region Unity Callbacks
 
         // Start is called before the first frame update
@@ -27,6 +31,10 @@ namespace SketchFleets
         {
             SetTargetFramerate();
             LoadMainMenu();
+#if !UNITY_EDITOR
+            CreateBackTraceClient();
+#endif
+
 #if DEVELOPMENT_BUILD
             Debug.Log(Application.targetFrameRate);
 #endif
@@ -37,7 +45,7 @@ namespace SketchFleets
         #region Private Methods
 
         /// <summary>
-        /// Sets the application's target framerate
+        ///     Sets the application's target framerate
         /// </summary>
         private void SetTargetFramerate()
         {
@@ -45,11 +53,19 @@ namespace SketchFleets
         }
 
         /// <summary>
-        /// Loads the game's main menu
+        ///     Loads the game's main menu
         /// </summary>
         private void LoadMainMenu()
         {
             SceneManager.LoadSceneAsync(menuSceneName);
+        }
+
+        /// <summary>
+        ///     Creates a backtrace client for error-tracking
+        /// </summary>
+        private void CreateBacktraceClient()
+        {
+            Instantiate(backTraceClient);
         }
 
         #endregion
@@ -57,7 +73,7 @@ namespace SketchFleets
         #region Private Enums
 
         /// <summary>
-        /// A simple refresh rate enumeration
+        ///     A simple refresh rate enumeration
         /// </summary>
         private enum RefreshRate
         {
