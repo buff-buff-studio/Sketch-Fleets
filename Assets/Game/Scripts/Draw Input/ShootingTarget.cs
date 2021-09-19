@@ -49,14 +49,10 @@ namespace SketchFleets
 
         public void ControlTarget(Vector2 targetPos, Vector2 targetRad)
         {
-            Debug.Log($"Target: {targetPos}");
             targetTransform.position = GetTargetPosition(targetPos);
 
             targetPoint.localPosition = Vector2.MoveTowards(targetPoint.localPosition, GetRadiusPosition(targetRad), radiusSpeed*Time.deltaTime);
-        }
-
-        public void TargetLook()
-        {
+            
             Look(GetMothershipPosition());
         }
 
