@@ -984,7 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29e5933e73a7094a93f14bd11d3ae4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warningImage: {fileID: 1891676300}
+  warningImage: {fileID: 1891676301}
   mapAttributes: {fileID: 11400000, guid: dc2bc714a40a7734baff81f9ef937a4d, type: 2}
   spawnArea: {fileID: 1180849233}
   spawnDelay:
@@ -5926,11 +5926,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862975512}
   m_CullTransparentMesh: 1
---- !u!1 &1891676300 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2027092257602897078, guid: 3d4c38050dd15814f82f004cfb3d9a69, type: 3}
-  m_PrefabInstance: {fileID: 2027092258949248058}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1891676301 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2027092257602897079, guid: 3d4c38050dd15814f82f004cfb3d9a69, type: 3}
@@ -6628,6 +6623,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366599038}
     m_Modifications:
+    - target: {fileID: 2027092257439859279, guid: 3d4c38050dd15814f82f004cfb3d9a69, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027092257439859279, guid: 3d4c38050dd15814f82f004cfb3d9a69, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027092257439859279, guid: 3d4c38050dd15814f82f004cfb3d9a69, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2027092257602897078, guid: 3d4c38050dd15814f82f004cfb3d9a69, type: 3}
       propertyPath: m_Name
       value: Obstacle Warning

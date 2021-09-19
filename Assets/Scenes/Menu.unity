@@ -19755,7 +19755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 291760970439095453, guid: 26a64a6f96361a643a201bf8de45371a, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 291760970439095453, guid: 26a64a6f96361a643a201bf8de45371a, type: 3}
       propertyPath: RotationModule.curve.minMaxState
@@ -19775,7 +19775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 291760970439095453, guid: 26a64a6f96361a643a201bf8de45371a, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 291760970439095453, guid: 26a64a6f96361a643a201bf8de45371a, type: 3}
       propertyPath: InitialModule.startRotationX.scalar
@@ -19823,7 +19823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 291760970439095453, guid: 26a64a6f96361a643a201bf8de45371a, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].time
-      value: 0.9915161
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 291760970439095453, guid: 26a64a6f96361a643a201bf8de45371a, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[3].time
@@ -19903,11 +19903,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4996838374973800577, guid: 26a64a6f96361a643a201bf8de45371a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.63
+      value: -9.48
       objectReference: {fileID: 0}
     - target: {fileID: 4996838374973800577, guid: 26a64a6f96361a643a201bf8de45371a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9
+      value: 4.93
       objectReference: {fileID: 0}
     - target: {fileID: 4996838374973800577, guid: 26a64a6f96361a643a201bf8de45371a, type: 3}
       propertyPath: m_LocalPosition.z
