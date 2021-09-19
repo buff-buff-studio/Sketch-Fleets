@@ -14,14 +14,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Shoot",
-                    "type": "Button",
-                    "id": "37486250-f384-4ca0-9f07-954cc49dce50",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=2)"
-                },
-                {
                     "name": "Start Draw",
                     "type": "Button",
                     "id": "b138a13c-c250-4778-83b6-f29825fd84ab",
@@ -34,14 +26,6 @@
                     "type": "Value",
                     "id": "6bc5e98a-d4b6-4334-ba2b-9cf2a8f3b78b",
                     "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "TouchOneStart",
-                    "type": "Button",
-                    "id": "55d0cde5-b97f-4f09-9bd6-9e401fdc5a94",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -79,28 +63,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "1cee869d-8e4f-4e97-9d53-3911dd5ce0c9",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Control Scheme",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "102ab674-2814-4305-8f57-0a844c33b3eb",
-                    "path": "<Touchscreen>/touch1/press",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "Control Scheme",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "32022dc2-8ed7-479f-a59d-ce7121fb989e",
@@ -164,17 +126,6 @@
                     "processors": "",
                     "groups": "Control Scheme",
                     "action": "TouchTwoRadius",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "64ee42f0-33de-4128-a563-168e19dae2f3",
-                    "path": "<Touchscreen>/touch0/press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Control Scheme",
-                    "action": "TouchOneStart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -52,7 +52,7 @@ namespace SketchFleets
                     $"CPU: {SystemInfo.processorFrequency}Mhz - {SystemInfo.processorType}\n" +
                     $"RAM: {SystemInfo.systemMemorySize/1024}Gb\n" +
                     $"GPU: {SystemInfo.graphicsDeviceName} / {SystemInfo.graphicsDeviceType} / {SystemInfo.graphicsMemorySize / 1024}Gb\n" +
-                    $"Battery: {SystemInfo.batteryLevel}% - {SystemInfo.batteryStatus}",
+                    $"Battery: {(int)(SystemInfo.batteryLevel*100)}% - {SystemInfo.batteryStatus}",
                     style);
             }
 

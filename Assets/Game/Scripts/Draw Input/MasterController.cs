@@ -46,6 +46,12 @@ namespace SketchFleets
                 closeFinger = 0;
             else if (closeFinger == 0)
                 SelectInput();
+            else
+            {
+                TouchOnePos();
+                if (Touch.activeTouches.Count > 1)
+                    TouchTwoePos();
+            }
         }
 
         public void SelectInput()
@@ -63,7 +69,7 @@ namespace SketchFleets
                 closeFinger = 1;
         }
 
-        public void TouchOnePos(InputAction.CallbackContext context)
+        public void TouchOnePos()
         {
             if(Time.timeScale != 1 || closeFinger == 0) return;
             
@@ -73,7 +79,7 @@ namespace SketchFleets
                 shootingTarget.ControlTarget(playerControl.Player.TouchOne.ReadValue<Vector2>(),TouchOneRadius());
         }
         
-        public void TouchTwoePos(InputAction.CallbackContext context)
+        public void TouchTwoePos()
         {
             if(Time.timeScale != 1 || closeFinger == 0) return;
             
