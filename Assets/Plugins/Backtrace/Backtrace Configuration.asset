@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ServerUrl: https://submit.backtrace.io/ninitoph/2826f7a49c02fdd38c3bd186e5f65ea558f4516633d9ac9bda527d4a4b6bbbd7/json
   Token: 
-  ReportPerMin: 50
+  ReportPerMin: 20
   HandleUnhandledExceptions: 1
   IgnoreSslValidation: 0
   DestroyOnLoad: 0
   Sampling: 1
-  ReportFilterType: 0
+  ReportFilterType: 1
   GameObjectDepth: -1
   NumberOfLogs: 10
   PerformanceStatistics: 1
