@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using ManyTools.Variables;
+using SketchFleets;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class LineDrawer : MonoBehaviour
 {
@@ -52,7 +54,7 @@ public class LineDrawer : MonoBehaviour
         {
             cam ??= Camera.main;
 
-            return cam.ScreenToWorldPoint(playerControl.Player.Draw.ReadValue<Vector2>());
+            return cam.ScreenToWorldPoint(playerControl.Player.TouchOne.ReadValue<Vector2>());
         }
     }
 
@@ -64,9 +66,14 @@ public class LineDrawer : MonoBehaviour
 
     private void OnDisable()
     {
-        playerControl.Player.StartDraw.canceled -= EndDraw;
         playerControl.Disable();
         playerControl = null;
+    }
+
+    private void Update()
+    {
+        if (Touch.activeTouches.Count == 1)
+            Draw();
     }
 
     public void BulletTime(float time)
@@ -84,7 +91,7 @@ public class LineDrawer : MonoBehaviour
         }
         else if (context.canceled)
         {
-            EndDraw(context);
+            EndDraw();
         }
     }
 
@@ -101,27 +108,7 @@ public class LineDrawer : MonoBehaviour
         SetTrailColor();
     }
 
-    private void SetTrailColor()
-    {
-        inputTrail.transform.position = mousePos;
-        
-        colorKey[0].color = collectedShellColor;
-        colorKey[1].color = collectedShellColor;
-        colorKey[0].time = 0f;
-        colorKey[1].time = 1f;
-        alphaKeys[0].alpha = 1f;
-        alphaKeys[1].alpha = 1f;
-        alphaKeys[0].time = 0f;
-        alphaKeys[1].time = 1f;
-        
-        trailGradient.SetKeys(colorKey, alphaKeys);
-
-        inputTrail.GetComponent<TrailRenderer>().colorGradient = trailGradient;
-        currentLine.SetLineColor(trailGradient);
-        inputTrail.SetActive(true);
-    }
-
-    public void Draw()
+    private void Draw()
     {
         if (currentLine == null) return;
             
@@ -135,7 +122,7 @@ public class LineDrawer : MonoBehaviour
         currentLine.AddPoint(mousePos);
     }
 
-    private void EndDraw(InputAction.CallbackContext context)
+    private void EndDraw()
     {
         inputTrail.SetActive(false);
 
@@ -159,7 +146,7 @@ public class LineDrawer : MonoBehaviour
             lines.Add(currentLine.gameObject);
                 
             FormSelect = FormDetector.Detector(currentLine.lineRenderer, Shapes);
-                
+
             currentLine.transform.name =
                 Shapes[FormSelect].shapeName + " - " + currentLine.lineRenderer.positionCount;
                 
@@ -169,6 +156,26 @@ public class LineDrawer : MonoBehaviour
         }
         
         RestoreUI();
+    }
+    
+    private void SetTrailColor()
+    {
+        inputTrail.transform.position = mousePos;
+        
+        colorKey[0].color = collectedShellColor;
+        colorKey[1].color = collectedShellColor;
+        colorKey[0].time = 0f;
+        colorKey[1].time = 1f;
+        alphaKeys[0].alpha = 1f;
+        alphaKeys[1].alpha = 1f;
+        alphaKeys[0].time = 0f;
+        alphaKeys[1].time = 1f;
+        
+        trailGradient.SetKeys(colorKey, alphaKeys);
+
+        inputTrail.GetComponent<TrailRenderer>().colorGradient = trailGradient;
+        currentLine.SetLineColor(trailGradient);
+        inputTrail.SetActive(true);
     }
 
     private void RestoreUI()

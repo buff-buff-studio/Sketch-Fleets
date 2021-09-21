@@ -269,10 +269,6 @@ MonoBehaviour:
     m_ActionId: 96eeb021-05e1-4a84-9aff-04027eb0db65
     m_ActionName: Player/MoveRadius
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7c1e74c1-d7c4-47aa-b018-7bff66a2295c
-    m_ActionName: Player/LookRadius
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 28016849}
         m_TargetAssemblyTypeName: LineDrawer, Assembly-CSharp
@@ -289,33 +285,17 @@ MonoBehaviour:
     m_ActionId: b138a13c-c250-4778-83b6-f29825fd84ab
     m_ActionName: Player/Start Draw
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 28016849}
-        m_TargetAssemblyTypeName: LineDrawer, Assembly-CSharp
-        m_MethodName: Draw
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 6bc5e98a-d4b6-4334-ba2b-9cf2a8f3b78b
-    m_ActionName: Player/Draw
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: dc01c8bd-be98-46bc-a0f7-796be22a17b3
-    m_ActionName: Player/TouchOne
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 80a7c669-f085-4de5-95e2-26a43de71335
-    m_ActionName: Player/TouchTwo
-  - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 255e1ce5-9f6a-4cf6-9a34-97c75aae6279
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 142e234f-1ef7-4870-9c40-d824059d90e0
+    m_ActionName: Player/TouchOne
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d84b0e37-58d8-4216-97df-3826a5d48959
+    m_ActionName: Player/TouchTwo
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3219,7 +3199,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: -4837687819692613893, guid: 225fe7d3b3531b64ea2a5e6408342482, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3322,7 +3302,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: -4837687819692613893, guid: 225fe7d3b3531b64ea2a5e6408342482, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4461,7 +4441,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -4900,6 +4880,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5463477034772257765, guid: be5269f8a7a3133408424a786ac07b08, type: 3}
+      propertyPath: db
+      value: 
+      objectReference: {fileID: 1366599041}
+    - target: {fileID: 5463477034772257765, guid: be5269f8a7a3133408424a786ac07b08, type: 3}
       propertyPath: inputSprite
       value: 
       objectReference: {fileID: 0}
@@ -4909,7 +4893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5463477034772257765, guid: be5269f8a7a3133408424a786ac07b08, type: 3}
       propertyPath: simplifyTolerance
-      value: 0.85
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 5463477034772257765, guid: be5269f8a7a3133408424a786ac07b08, type: 3}
       propertyPath: collectedShellColor._variable
@@ -6383,11 +6367,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 721584913580660350, guid: 934de1d0975d6a54cba2329eb777183c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 721584913580660350, guid: 934de1d0975d6a54cba2329eb777183c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 721584913580660350, guid: 934de1d0975d6a54cba2329eb777183c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6560,11 +6544,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1467957940589869071, guid: 0991e58958aef5943b87ce7cc8e3ee0e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1467957940589869071, guid: 0991e58958aef5943b87ce7cc8e3ee0e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1467957940589869071, guid: 0991e58958aef5943b87ce7cc8e3ee0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6884,6 +6868,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 939894646}
+    - target: {fileID: 7894418009717998857, guid: e4ee44797a57a14499348211a207009d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4ee44797a57a14499348211a207009d, type: 3}
 --- !u!222 &3008056942346794018
@@ -7066,7 +7054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4078349488462062288, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4078349488462062288, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7244,17 +7232,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9029d82695ac342baeed24a0e469a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRotation: 16
-  maxRotation: 25
-  minRotationInitial: 15
-  maxRotationInitial: 15
-  minRotationSpeed: 160
-  maxRotationSpeed: 200
-  minScaleSpeed: 120
-  maxScaleSpeed: 180
+  minRotation: -3.251336e-18
+  maxRotation: 4.75e-43
+  minRotationInitial: -2.405472e-16
+  maxRotationInitial: 4.75e-43
+  minRotationSpeed: -2.4051162e-16
+  maxRotationSpeed: 4.75e-43
+  minScaleSpeed: -1.074486e-12
+  maxScaleSpeed: 4.75e-43
   minTimeOffset: 0
-  maxTimeOffset: 7
-  hovering: 0
+  maxTimeOffset: 0
+  hovering: 224
 --- !u!1 &5532369186132233064
 GameObject:
   m_ObjectHideFlags: 0
@@ -7413,11 +7401,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7003173534913712756, guid: ac48660ef0fe8db4da6d67d88ef48e8e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7003173534913712756, guid: ac48660ef0fe8db4da6d67d88ef48e8e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7003173534913712756, guid: ac48660ef0fe8db4da6d67d88ef48e8e, type: 3}
       propertyPath: m_LocalPosition.x

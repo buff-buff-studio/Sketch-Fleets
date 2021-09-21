@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8800615591025078332}
   - component: {fileID: 4350449131870452855}
+  - component: {fileID: 5494814018893135261}
   m_Layer: 0
   m_Name: Backtrace Client
   m_TagString: Untagged
@@ -44,3 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Configuration: {fileID: 11400000, guid: b445c42537e794d4c8ec30f746283d43, type: 2}
+--- !u!114 &5494814018893135261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235468680211577704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8073cb8663e5dff40aae45bd51b77a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Configuration: {fileID: 0}

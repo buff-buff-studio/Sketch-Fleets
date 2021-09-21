@@ -22,25 +22,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Draw",
+                    "name": "TouchOneRadius",
                     "type": "Value",
-                    "id": "6bc5e98a-d4b6-4334-ba2b-9cf2a8f3b78b",
+                    "id": "96eeb021-05e1-4a84-9aff-04027eb0db65",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone(max=0.07)",
                     "interactions": ""
                 },
                 {
                     "name": "TouchOne",
                     "type": "Value",
-                    "id": "dc01c8bd-be98-46bc-a0f7-796be22a17b3",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "TouchOneRadius",
-                    "type": "Value",
-                    "id": "96eeb021-05e1-4a84-9aff-04027eb0db65",
+                    "id": "142e234f-1ef7-4870-9c40-d824059d90e0",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -48,15 +40,7 @@
                 {
                     "name": "TouchTwo",
                     "type": "Value",
-                    "id": "80a7c669-f085-4de5-95e2-26a43de71335",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "TouchTwoRadius",
-                    "type": "Value",
-                    "id": "7c1e74c1-d7c4-47aa-b018-7bff66a2295c",
+                    "id": "d84b0e37-58d8-4216-97df-3826a5d48959",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -76,56 +60,12 @@
                 },
                 {
                     "name": "",
-                    "id": "6b84160c-c87f-4485-991e-28f147a5479c",
-                    "path": "<Touchscreen>/touch0/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Control Scheme",
-                    "action": "Draw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "96d21303-b7a6-4a6a-b547-d57184385136",
-                    "path": "<Touchscreen>/touch0/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Control Scheme",
-                    "action": "TouchOne",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d9d3d515-b744-4213-b092-eefe8e640954",
-                    "path": "<Touchscreen>/touch0/radius",
+                    "path": "<Touchscreen>/primaryTouch/radius",
                     "interactions": "",
                     "processors": "",
                     "groups": "Control Scheme",
                     "action": "TouchOneRadius",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "06f9aa13-65f5-402d-9c59-87f280945059",
-                    "path": "<Touchscreen>/touch1/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Control Scheme",
-                    "action": "TouchTwo",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1d3aa410-1e01-40c7-916c-077051567d81",
-                    "path": "<Touchscreen>/touch1/radius",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Control Scheme",
-                    "action": "TouchTwoRadius",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -258,6 +198,28 @@
                     "processors": "",
                     "groups": "Joystick",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa230067-7565-4fb4-92d6-7bc69d984f50",
+                    "path": "<Touchscreen>/touch0/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control Scheme",
+                    "action": "TouchOne",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1882cbcf-40d3-467e-b34c-d2435c4bc0da",
+                    "path": "<Touchscreen>/touch1/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control Scheme",
+                    "action": "TouchTwo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -663,7 +625,7 @@
                     "path": "<Touchscreen>/touch*/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Touch",
+                    "groups": "Touch;Control Scheme",
                     "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -696,7 +658,7 @@
                     "path": "<Touchscreen>/touch*/press",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Touch",
+                    "groups": "Touch;Control Scheme",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -747,6 +709,17 @@
                 },
                 {
                     "name": "",
+                    "id": "163e9a87-6c11-4898-9d43-ddbb6789dc04",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "53c54504-6a0f-4d3a-ad8b-3df6a05709b2",
                     "path": "<XRController>/devicePosition",
                     "interactions": "",
@@ -776,17 +749,7 @@
             "bindingGroup": "Control Scheme",
             "devices": [
                 {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": true,
-                    "isOR": false
-                },
-                {
                     "devicePath": "<Mouse>",
-                    "isOptional": true,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<Gamepad>",
                     "isOptional": true,
                     "isOR": false
                 },
@@ -796,17 +759,12 @@
                     "isOR": false
                 },
                 {
-                    "devicePath": "<Pen>",
+                    "devicePath": "<AndroidGamepadXboxController>",
                     "isOptional": false,
                     "isOR": false
                 },
                 {
-                    "devicePath": "<Pointer>",
-                    "isOptional": false,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<TrackedDevice>",
+                    "devicePath": "<Joystick>",
                     "isOptional": false,
                     "isOR": false
                 }

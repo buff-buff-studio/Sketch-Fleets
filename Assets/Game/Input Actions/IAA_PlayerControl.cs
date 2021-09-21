@@ -35,25 +35,17 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Draw"",
+                    ""name"": ""TouchOneRadius"",
                     ""type"": ""Value"",
-                    ""id"": ""6bc5e98a-d4b6-4334-ba2b-9cf2a8f3b78b"",
+                    ""id"": ""96eeb021-05e1-4a84-9aff-04027eb0db65"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone(max=0.07)"",
                     ""interactions"": """"
                 },
                 {
                     ""name"": ""TouchOne"",
                     ""type"": ""Value"",
-                    ""id"": ""dc01c8bd-be98-46bc-a0f7-796be22a17b3"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""TouchOneRadius"",
-                    ""type"": ""Value"",
-                    ""id"": ""96eeb021-05e1-4a84-9aff-04027eb0db65"",
+                    ""id"": ""142e234f-1ef7-4870-9c40-d824059d90e0"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -61,15 +53,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 {
                     ""name"": ""TouchTwo"",
                     ""type"": ""Value"",
-                    ""id"": ""80a7c669-f085-4de5-95e2-26a43de71335"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""TouchTwoRadius"",
-                    ""type"": ""Value"",
-                    ""id"": ""7c1e74c1-d7c4-47aa-b018-7bff66a2295c"",
+                    ""id"": ""d84b0e37-58d8-4216-97df-3826a5d48959"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -89,56 +73,12 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6b84160c-c87f-4485-991e-28f147a5479c"",
-                    ""path"": ""<Touchscreen>/touch0/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""Draw"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""96d21303-b7a6-4a6a-b547-d57184385136"",
-                    ""path"": ""<Touchscreen>/touch0/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""TouchOne"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""d9d3d515-b744-4213-b092-eefe8e640954"",
-                    ""path"": ""<Touchscreen>/touch0/radius"",
+                    ""path"": ""<Touchscreen>/primaryTouch/radius"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control Scheme"",
                     ""action"": ""TouchOneRadius"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""06f9aa13-65f5-402d-9c59-87f280945059"",
-                    ""path"": ""<Touchscreen>/touch1/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""TouchTwo"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1d3aa410-1e01-40c7-916c-077051567d81"",
-                    ""path"": ""<Touchscreen>/touch1/radius"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Control Scheme"",
-                    ""action"": ""TouchTwoRadius"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -271,6 +211,28 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Joystick"",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa230067-7565-4fb4-92d6-7bc69d984f50"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""TouchOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1882cbcf-40d3-467e-b34c-d2435c4bc0da"",
+                    ""path"": ""<Touchscreen>/touch1/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control Scheme"",
+                    ""action"": ""TouchTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -676,7 +638,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""path"": ""<Touchscreen>/touch*/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Touch"",
+                    ""groups"": ""Touch;Control Scheme"",
                     ""action"": ""Point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -709,7 +671,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""path"": ""<Touchscreen>/touch*/press"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Touch"",
+                    ""groups"": ""Touch;Control Scheme"",
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -760,6 +722,17 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""163e9a87-6c11-4898-9d43-ddbb6789dc04"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""53c54504-6a0f-4d3a-ad8b-3df6a05709b2"",
                     ""path"": ""<XRController>/devicePosition"",
                     ""interactions"": """",
@@ -789,17 +762,7 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
             ""bindingGroup"": ""Control Scheme"",
             ""devices"": [
                 {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": true,
-                    ""isOR"": false
-                },
-                {
                     ""devicePath"": ""<Mouse>"",
-                    ""isOptional"": true,
-                    ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<Gamepad>"",
                     ""isOptional"": true,
                     ""isOR"": false
                 },
@@ -809,17 +772,12 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                     ""isOR"": false
                 },
                 {
-                    ""devicePath"": ""<Pen>"",
+                    ""devicePath"": ""<AndroidGamepadXboxController>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 },
                 {
-                    ""devicePath"": ""<Pointer>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<TrackedDevice>"",
+                    ""devicePath"": ""<Joystick>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -831,11 +789,9 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_StartDraw = m_Player.FindAction("Start Draw", throwIfNotFound: true);
-        m_Player_Draw = m_Player.FindAction("Draw", throwIfNotFound: true);
-        m_Player_TouchOne = m_Player.FindAction("TouchOne", throwIfNotFound: true);
         m_Player_TouchOneRadius = m_Player.FindAction("TouchOneRadius", throwIfNotFound: true);
+        m_Player_TouchOne = m_Player.FindAction("TouchOne", throwIfNotFound: true);
         m_Player_TouchTwo = m_Player.FindAction("TouchTwo", throwIfNotFound: true);
-        m_Player_TouchTwoRadius = m_Player.FindAction("TouchTwoRadius", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -899,22 +855,18 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_StartDraw;
-    private readonly InputAction m_Player_Draw;
-    private readonly InputAction m_Player_TouchOne;
     private readonly InputAction m_Player_TouchOneRadius;
+    private readonly InputAction m_Player_TouchOne;
     private readonly InputAction m_Player_TouchTwo;
-    private readonly InputAction m_Player_TouchTwoRadius;
     public struct PlayerActions
     {
         private @IAA_PlayerControl m_Wrapper;
         public PlayerActions(@IAA_PlayerControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @StartDraw => m_Wrapper.m_Player_StartDraw;
-        public InputAction @Draw => m_Wrapper.m_Player_Draw;
-        public InputAction @TouchOne => m_Wrapper.m_Player_TouchOne;
         public InputAction @TouchOneRadius => m_Wrapper.m_Player_TouchOneRadius;
+        public InputAction @TouchOne => m_Wrapper.m_Player_TouchOne;
         public InputAction @TouchTwo => m_Wrapper.m_Player_TouchTwo;
-        public InputAction @TouchTwoRadius => m_Wrapper.m_Player_TouchTwoRadius;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -930,21 +882,15 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 @StartDraw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
                 @StartDraw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
                 @StartDraw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartDraw;
-                @Draw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDraw;
-                @Draw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDraw;
-                @Draw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDraw;
-                @TouchOne.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
-                @TouchOne.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
-                @TouchOne.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
                 @TouchOneRadius.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneRadius;
                 @TouchOneRadius.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneRadius;
                 @TouchOneRadius.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOneRadius;
+                @TouchOne.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
+                @TouchOne.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
+                @TouchOne.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchOne;
                 @TouchTwo.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwo;
                 @TouchTwo.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwo;
                 @TouchTwo.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwo;
-                @TouchTwoRadius.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwoRadius;
-                @TouchTwoRadius.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwoRadius;
-                @TouchTwoRadius.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchTwoRadius;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -955,21 +901,15 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
                 @StartDraw.started += instance.OnStartDraw;
                 @StartDraw.performed += instance.OnStartDraw;
                 @StartDraw.canceled += instance.OnStartDraw;
-                @Draw.started += instance.OnDraw;
-                @Draw.performed += instance.OnDraw;
-                @Draw.canceled += instance.OnDraw;
-                @TouchOne.started += instance.OnTouchOne;
-                @TouchOne.performed += instance.OnTouchOne;
-                @TouchOne.canceled += instance.OnTouchOne;
                 @TouchOneRadius.started += instance.OnTouchOneRadius;
                 @TouchOneRadius.performed += instance.OnTouchOneRadius;
                 @TouchOneRadius.canceled += instance.OnTouchOneRadius;
+                @TouchOne.started += instance.OnTouchOne;
+                @TouchOne.performed += instance.OnTouchOne;
+                @TouchOne.canceled += instance.OnTouchOne;
                 @TouchTwo.started += instance.OnTouchTwo;
                 @TouchTwo.performed += instance.OnTouchTwo;
                 @TouchTwo.canceled += instance.OnTouchTwo;
-                @TouchTwoRadius.started += instance.OnTouchTwoRadius;
-                @TouchTwoRadius.performed += instance.OnTouchTwoRadius;
-                @TouchTwoRadius.canceled += instance.OnTouchTwoRadius;
             }
         }
     }
@@ -1092,11 +1032,9 @@ public class @IAA_PlayerControl : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnStartDraw(InputAction.CallbackContext context);
-        void OnDraw(InputAction.CallbackContext context);
-        void OnTouchOne(InputAction.CallbackContext context);
         void OnTouchOneRadius(InputAction.CallbackContext context);
+        void OnTouchOne(InputAction.CallbackContext context);
         void OnTouchTwo(InputAction.CallbackContext context);
-        void OnTouchTwoRadius(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
