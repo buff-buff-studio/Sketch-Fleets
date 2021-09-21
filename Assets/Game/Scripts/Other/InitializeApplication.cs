@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,9 @@ namespace SketchFleets
         [SerializeField]
         private GameObject backTraceClient;
 
+        [SerializeField] 
+        private RectTransform loadingIcon;
+
         #endregion
 
         #region Unity Callbacks
@@ -38,6 +42,11 @@ namespace SketchFleets
 #if DEVELOPMENT_BUILD
             Debug.Log(Application.targetFrameRate);
 #endif
+        }
+
+        private void Update()
+        {
+            loadingIcon.eulerAngles += Vector3.forward * 10;
         }
 
         #endregion

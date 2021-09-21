@@ -52,10 +52,7 @@ namespace SketchFleets
             targetTransform.position = GetTargetPosition(targetPos);
 
             targetPoint.localPosition = Vector2.MoveTowards(targetPoint.localPosition, GetRadiusPosition(targetRad), radiusSpeed*Time.deltaTime);
-        }
-
-        public void TargetLook()
-        {
+            
             Look(GetMothershipPosition());
         }
 
