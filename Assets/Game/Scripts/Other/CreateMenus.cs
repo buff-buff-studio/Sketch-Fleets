@@ -66,6 +66,10 @@
         public const int shipRegisterOrder = 2;
         public const string shipRegisterMenuName = "Sketch Fleets/Inventory Container/Ship Register";
         public const string shipRegisterFileName = "Ship Register";
+        
+        public const int shipFormationOrder = 2;
+        public const string shipFormationMenuName = "Sketch Fleets/Other/Ship Formation";
+        public const string shipFormationFileName = "Ship Formation";
 
         #endregion
     }
