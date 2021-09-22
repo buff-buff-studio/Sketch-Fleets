@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SketchFleets.SettingsSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace SketchFleets
@@ -12,6 +13,7 @@ namespace SketchFleets
         private GUIStyle style = new GUIStyle();
         //[HideInInspector]
         public List<string> debugText = new List<string>();
+        public PlayerInput pi;
         void Start()
         {
             style.normal.textColor = Color.black;
@@ -54,7 +56,6 @@ namespace SketchFleets
                     $"GPU: {SystemInfo.graphicsDeviceName} / {SystemInfo.graphicsDeviceType} / {SystemInfo.graphicsMemorySize / 1024}Gb\n" +
                     $"Battery: {(int)(SystemInfo.batteryLevel*100)}% - {SystemInfo.batteryStatus}",style);
             }
-
             for (int i = 0; i < debugText.Count; i++)
             {
                 GUI.Label(new Rect(10, 50+(i*style.fontSize)+10, 512, 50), debugText[i], style);

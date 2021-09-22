@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using SketchFleets.Entities;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -34,15 +35,27 @@ namespace SketchFleets
 
         private int closeFinger = 0;
 
+        private bool DrawTime = false;
+
         private int controlsMode => PlayerPrefs.GetInt("controlsMode");
         private int eventsMode => PlayerPrefs.GetInt("eventsMode");
 
         public DebugScript db;
 
-        private void Start()
+        private void OnEnable()
         {
             playerControl = new IAA_PlayerControl();
             playerControl.Enable();
+        }
+
+        private void OnDisable()
+        {
+            playerControl.Disable();
+            playerControl = null;
+        }
+        
+        private void Start()
+        {
             EnhancedTouchSupport.Enable();
             
             ControlsSet();
@@ -65,12 +78,29 @@ namespace SketchFleets
 
         private void Update()
         {
-            db.UpdateDebug($"{controlsMode}",9);
-            db.UpdateDebug($"{eventsMode}",8);
-            db.UpdateDebug($"{playerControl.Player.Target.ReadValue<Vector2>()}",7);
-            
-            if (HUD.activeSelf && Time.timeScale == 1);
+            db.UpdateDebug($"Control Mode: {controlsMode}",9);
+            db.UpdateDebug($"Event Mode: {eventsMode}",8);
+            db.UpdateDebug($"Touch Count: {Touch.activeTouches.Count}",7);
+
+            if (HUD.activeSelf && Time.timeScale == 1)
+            {
                 ControlsUpdate();
+                EventsUpdate();
+            }
+            else if(Touch.activeTouches.Count == 0 && DrawTime)
+            {
+                playerControl.Player.StartDraw.started += DrawInput;
+                playerControl.Player.StartDraw.canceled += DrawInput;
+            }
+        }
+
+        private void EventsUpdate()
+        {
+            if (eventsMode != 1)
+            {
+                playerControl.Player.InputDraw.started += OpenDraw;
+                playerControl.Player.ShipFire.started += FireShip;
+            }
         }
 
         private void ControlsUpdate()
@@ -185,18 +215,32 @@ namespace SketchFleets
 
         #region Events Controls
 
-        public void OpenDraw()
+        private void OpenDraw(InputAction.CallbackContext context)
         {
             if (Touch.activeTouches.Count != 2 && !HUD.activeSelf) return;
             HUD.SetActive(false);
             _lineDrawer.gameObject.SetActive(true);
             _lineDrawer.BulletTime(.5f);
+            StartCoroutine(TimeToDraw());
         }
 
-        public void FireShip()
+        private void DrawInput(InputAction.CallbackContext context)
+        {
+            _lineDrawer.DrawCallBack(context);
+            if (context.canceled)
+                DrawTime = false;
+        }
+        
+        private void FireShip(InputAction.CallbackContext context)
         {
             if (Touch.activeTouches.Count != 1 && !HUD.activeSelf) return;
                 _cyanPathDrawer.CyanGO();
+        }
+
+        IEnumerator TimeToDraw()
+        {
+            yield return new WaitForSeconds(.1f);
+            DrawTime = true;
         }
 
         #endregion
