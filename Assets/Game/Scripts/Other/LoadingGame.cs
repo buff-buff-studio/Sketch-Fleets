@@ -23,7 +23,7 @@ namespace SketchFleets
 
         IEnumerator LoadingScene()
         {
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Game");
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Gameplay");
 
             while (!asyncOperation.isDone)
             {

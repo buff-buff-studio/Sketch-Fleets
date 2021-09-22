@@ -31,20 +31,23 @@ namespace SketchFleets
         [SerializeField] 
         private GameObject commandsButtons;
 
-        private IAA_PlayerControl playerControl;
+        private IAA_SketchFleetsInputs playerControl;
 
         private int closeFinger = 0;
-
-        private bool DrawTime = false;
 
         private int controlsMode => PlayerPrefs.GetInt("controlsMode");
         private int eventsMode => PlayerPrefs.GetInt("eventsMode");
 
         public DebugScript db;
 
+        private void Awake()
+        {
+            GetComponent<PlayerInput>().enabled = false;
+        }
+
         private void OnEnable()
         {
-            playerControl = new IAA_PlayerControl();
+            playerControl = new IAA_SketchFleetsInputs();
             playerControl.Enable();
         }
 
@@ -65,14 +68,13 @@ namespace SketchFleets
 
         private void ControlsSet()
         {
-            if (controlsMode == 1)
+            if (controlsMode != 0)
             {
                 movementJoysticks[0].SetActive(true);
-                movementJoysticks[1].SetActive(false);
             }
-            else if(controlsMode==2)
+            else if(controlsMode!=1)
             {
-                movementJoysticks[0].SetActive(true);
+                movementJoysticks[controlsMode-1].SetActive(false);
             }
         }
 
@@ -85,21 +87,6 @@ namespace SketchFleets
             if (HUD.activeSelf && Time.timeScale == 1)
             {
                 ControlsUpdate();
-                EventsUpdate();
-            }
-            else if(Touch.activeTouches.Count == 0 && DrawTime)
-            {
-                playerControl.Player.StartDraw.started += DrawInput;
-                playerControl.Player.StartDraw.canceled += DrawInput;
-            }
-        }
-
-        private void EventsUpdate()
-        {
-            if (eventsMode != 1)
-            {
-                playerControl.Player.InputDraw.started += OpenDraw;
-                playerControl.Player.ShipFire.started += FireShip;
             }
         }
 
@@ -133,7 +120,7 @@ namespace SketchFleets
         {
             if (Time.timeScale != 1) return;
             
-            Vector2 touch = Camera.main.ViewportToWorldPoint(Camera.main.ScreenToViewportPoint(playerControl.Player.TouchOne.ReadValue<Vector2>()));
+            Vector2 touch = Camera.main.ViewportToWorldPoint(Camera.main.ScreenToViewportPoint(playerControl.InGame.TouchOne.ReadValue<Vector2>()));
 
             float distShip = Vector2.Distance(touch, mothership.transform.position);
             float distTarget = Vector2.Distance(touch, shootingTarget.transform.position);
@@ -149,9 +136,9 @@ namespace SketchFleets
             if(Time.timeScale != 1 || closeFinger == 0) return;
             
             if(closeFinger == 1)
-                mothership.Move(playerControl.Player.TouchOne.ReadValue<Vector2>(),TouchOneRadius());
+                mothership.Move(playerControl.InGame.TouchOne.ReadValue<Vector2>(),TouchOneRadius());
             else
-                shootingTarget.ControlTarget(playerControl.Player.TouchOne.ReadValue<Vector2>(),TouchOneRadius());
+                shootingTarget.ControlTarget(playerControl.InGame.TouchOne.ReadValue<Vector2>(),TouchOneRadius());
         }
         
         public void TouchTwoePos()
@@ -159,15 +146,15 @@ namespace SketchFleets
             if(Time.timeScale != 1 || closeFinger == 0) return;
             
             if(closeFinger == 2)
-                mothership.Move(playerControl.Player.TouchTwo.ReadValue<Vector2>(),TouchOneRadius());
+                mothership.Move(playerControl.InGame.TouchTwo.ReadValue<Vector2>(),TouchOneRadius());
             else
-                shootingTarget.ControlTarget(playerControl.Player.TouchTwo.ReadValue<Vector2>(),TouchOneRadius());
+                shootingTarget.ControlTarget(playerControl.InGame.TouchTwo.ReadValue<Vector2>(),TouchOneRadius());
         }
         
         private Vector2 TouchOneRadius()
         {
             if(Settings.Get<bool>("touchRay"))
-                return playerControl.Player.TouchOne.ReadValue<Vector2>();
+                return playerControl.InGame.TouchOne.ReadValue<Vector2>();
             else
                 return Vector2.one*.04f;
         }
@@ -175,7 +162,7 @@ namespace SketchFleets
         private Vector2 TouchTwoRadius()
         {
             if(Settings.Get<bool>("touchRay"))
-                return playerControl.Player.TouchOne.ReadValue<Vector2>();
+                return playerControl.InGame.TouchOne.ReadValue<Vector2>();
             else
                 return Vector2.one*.04f;
         }
@@ -186,9 +173,19 @@ namespace SketchFleets
 
         private void TouchJoystickInput()
         {
-            closeFinger = 1;
-            TouchOnePos();
-            JoystickTarget();
+            if (controlsMode == 2)
+            {
+                closeFinger = 1;
+                TouchOnePos();
+                JoystickTarget();
+            }
+            else
+            {
+                closeFinger = 2;
+                TouchOnePos();
+                JoystickMove();
+            }
+
         }
 
         #endregion
@@ -208,39 +205,30 @@ namespace SketchFleets
         
         private void JoystickTarget()
         {
-            shootingTarget.JoystickControlTarget(playerControl.Player.Target.ReadValue<Vector2>());
+            shootingTarget.JoystickControlTarget(playerControl.Player.Look.ReadValue<Vector2>());
         }
 
         #endregion
 
         #region Events Controls
 
-        private void OpenDraw(InputAction.CallbackContext context)
+        public void OpenDraw()
         {
             if (Touch.activeTouches.Count != 2 && !HUD.activeSelf) return;
             HUD.SetActive(false);
             _lineDrawer.gameObject.SetActive(true);
             _lineDrawer.BulletTime(.5f);
-            StartCoroutine(TimeToDraw());
         }
 
-        private void DrawInput(InputAction.CallbackContext context)
+        public void DrawInput(InputAction.CallbackContext context)
         {
             _lineDrawer.DrawCallBack(context);
-            if (context.canceled)
-                DrawTime = false;
         }
         
-        private void FireShip(InputAction.CallbackContext context)
+        public void FireShip()
         {
             if (Touch.activeTouches.Count != 1 && !HUD.activeSelf) return;
                 _cyanPathDrawer.CyanGO();
-        }
-
-        IEnumerator TimeToDraw()
-        {
-            yield return new WaitForSeconds(.1f);
-            DrawTime = true;
         }
 
         #endregion
