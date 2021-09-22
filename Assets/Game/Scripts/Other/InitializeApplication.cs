@@ -72,7 +72,7 @@ namespace SketchFleets
         /// <summary>
         ///     Creates a backtrace client for error-tracking
         /// </summary>
-        private void CreateBacktraceClient()
+        private void CreateBackTraceClient()
         {
             Instantiate(backTraceClient);
         }

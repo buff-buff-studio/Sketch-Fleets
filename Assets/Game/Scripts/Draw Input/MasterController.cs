@@ -17,14 +17,21 @@ namespace SketchFleets
         private ShootingTarget shootingTarget;
         [SerializeField]
         private Mothership mothership;
-        
         [FormerlySerializedAs("cyanShoot")]
         [SerializeField]
         private CyanPathDrawer _cyanPathDrawer;
 
+        [SerializeField] 
+        private GameObject[] movementJoysticks;
+        
+        [SerializeField] 
+        private GameObject commandsButtons;
+
         private IAA_PlayerControl playerControl;
 
         private int closeFinger = 0;
+
+        private int inputMode => Settings.Get<int>("inputMode");
 
         public DebugScript db;
 
@@ -41,6 +48,18 @@ namespace SketchFleets
             db.UpdateDebug("Rad1: " + TouchOneRadius().ToString("0.0000"),5); 
             db.UpdateDebug("Pos1: " + playerControl.Player.TouchOne.ReadValue<Vector2>().ToString(),4);
 
+            if(inputMode == 0) 
+                TouchInput();
+            else if (inputMode == 1)
+                TouchJoystickInput();
+            else
+                JoystickInput();
+        }
+
+        #region Touch Input
+        
+        private void TouchInput()
+        {
             if (Touch.activeTouches.Count == 0)
                 closeFinger = 0;
             else if (closeFinger == 0)
@@ -87,7 +106,7 @@ namespace SketchFleets
             else
                 shootingTarget.ControlTarget(playerControl.Player.TouchTwo.ReadValue<Vector2>(),TouchOneRadius());
         }
-
+        
         private Vector2 TouchOneRadius()
         {
             if(Settings.Get<bool>("touchRay"))
@@ -103,5 +122,36 @@ namespace SketchFleets
             else
                 return Vector2.one*.04f;
         }
+        
+        #endregion
+
+        #region Touch & Joystick Input
+
+        private void TouchJoystickInput()
+        {
+            closeFinger = 1;
+            TouchOnePos();
+        }
+
+        #endregion
+
+        #region Joystick Input
+
+        private void JoystickInput()
+        {
+            
+        }
+        
+        private void JoystickMove()
+        {
+            
+        }
+        
+        private void JoystickTarget()
+        {
+            
+        }
+
+        #endregion
     }
 }
