@@ -296,6 +296,42 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: d84b0e37-58d8-4216-97df-3826a5d48959
     m_ActionName: Player/TouchTwo
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 27501bc9-46bb-4e64-bef4-421ac317dc4e
+    m_ActionName: Player/Target[/XInputControllerWindows/rightStick,/XInputControllerWindows/rightStick,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 27482775}
+        m_TargetAssemblyTypeName: SketchFleets.MasterController, Assembly-CSharp
+        m_MethodName: OpenDraw
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e841528b-5052-471d-b5c9-e82fc33bbe68
+    m_ActionName: Player/InputDraw[/XInputControllerWindows/dpad/up,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 27482775}
+        m_TargetAssemblyTypeName: SketchFleets.MasterController, Assembly-CSharp
+        m_MethodName: FireShip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ca2e5a47-5622-46ab-8cdf-c821046d58d5
+    m_ActionName: Player/ShipFire[/XInputControllerWindows/dpad/down,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -313,10 +349,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82390aefa0105041b45b48d5bf0f9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseScript: {fileID: 1366599040}
   shootingTarget: {fileID: 931731096}
   mothership: {fileID: 939894646}
   _cyanPathDrawer: {fileID: 1834216014}
+  _lineDrawer: {fileID: 28016849}
+  HUD: {fileID: 997691302}
   movementJoysticks:
   - {fileID: 683691399}
   - {fileID: 1384417506}
@@ -6913,7 +6950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2931466892152834321, guid: e4ee44797a57a14499348211a207009d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -18
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2931466892152834321, guid: e4ee44797a57a14499348211a207009d, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6955,6 +6992,30 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 938546391}
+    - target: {fileID: 5460422722026868887, guid: e4ee44797a57a14499348211a207009d, type: 3}
+      propertyPath: m_MovementRange
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386264007853440274, guid: e4ee44797a57a14499348211a207009d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386264007853440274, guid: e4ee44797a57a14499348211a207009d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386264007853440274, guid: e4ee44797a57a14499348211a207009d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -68
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386264007853440274, guid: e4ee44797a57a14499348211a207009d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -184
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805572401482079147, guid: e4ee44797a57a14499348211a207009d, type: 3}
+      propertyPath: m_MovementRange
+      value: 115
+      objectReference: {fileID: 0}
     - target: {fileID: 7894418009717998856, guid: e4ee44797a57a14499348211a207009d, type: 3}
       propertyPath: target
       value: 
