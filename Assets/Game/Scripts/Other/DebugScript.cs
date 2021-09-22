@@ -41,7 +41,7 @@ namespace SketchFleets
 
         void OnGUI()
         {
-            if(!Settings.Get<bool>("debugMode")) return;
+            if(PlayerPrefs.GetInt("debugMode") == 0) return;
 
             if (SceneManager.GetActiveScene().name == "Menu")
             {

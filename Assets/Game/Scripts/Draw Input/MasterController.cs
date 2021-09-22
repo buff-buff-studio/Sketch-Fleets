@@ -12,14 +12,17 @@ namespace SketchFleets
     public sealed class MasterController : MonoBehaviour
     {
         [SerializeField]
-        private PauseScript pauseScript;
-        [SerializeField]
         private ShootingTarget shootingTarget;
         [SerializeField]
         private Mothership mothership;
         [FormerlySerializedAs("cyanShoot")]
         [SerializeField]
         private CyanPathDrawer _cyanPathDrawer;
+        [SerializeField]
+        private LineDrawer _lineDrawer;
+        
+        [SerializeField]
+        private GameObject HUD;
 
         [SerializeField] 
         private GameObject[] movementJoysticks;
@@ -31,26 +34,50 @@ namespace SketchFleets
 
         private int closeFinger = 0;
 
-        private int inputMode => Settings.Get<int>("inputMode");
+        private int controlsMode => PlayerPrefs.GetInt("controlsMode");
+        private int eventsMode => PlayerPrefs.GetInt("eventsMode");
 
         public DebugScript db;
 
-        private void Awake()
+        private void Start()
         {
             playerControl = new IAA_PlayerControl();
             playerControl.Enable();
             EnhancedTouchSupport.Enable();
+            
+            ControlsSet();
+            if(eventsMode==0)
+                commandsButtons.SetActive(false);
+        }
+
+        private void ControlsSet()
+        {
+            if (controlsMode == 1)
+            {
+                movementJoysticks[0].SetActive(true);
+                movementJoysticks[1].SetActive(false);
+            }
+            else if(controlsMode==2)
+            {
+                movementJoysticks[0].SetActive(true);
+            }
         }
 
         private void Update()
-        { 
-            db.UpdateDebug("Pos2: " + playerControl.Player.TouchTwo.ReadValue<Vector2>().ToString(),7);
-            db.UpdateDebug("Rad1: " + TouchOneRadius().ToString("0.0000"),5); 
-            db.UpdateDebug("Pos1: " + playerControl.Player.TouchOne.ReadValue<Vector2>().ToString(),4);
+        {
+            db.UpdateDebug($"{controlsMode}",9);
+            db.UpdateDebug($"{eventsMode}",8);
+            db.UpdateDebug($"{playerControl.Player.Target.ReadValue<Vector2>()}",7);
+            
+            if (HUD.activeSelf && Time.timeScale == 1);
+                ControlsUpdate();
+        }
 
-            if(inputMode == 0) 
+        private void ControlsUpdate()
+        {
+            if (controlsMode == 0)
                 TouchInput();
-            else if (inputMode == 1)
+            else if (controlsMode == 1)
                 TouchJoystickInput();
             else
                 JoystickInput();
@@ -131,6 +158,7 @@ namespace SketchFleets
         {
             closeFinger = 1;
             TouchOnePos();
+            JoystickTarget();
         }
 
         #endregion
@@ -139,17 +167,36 @@ namespace SketchFleets
 
         private void JoystickInput()
         {
-            
+            JoystickMove();
+            JoystickTarget();
         }
         
         private void JoystickMove()
         {
-            
+            mothership.JoystickMove(playerControl.Player.Move.ReadValue<Vector2>());
         }
         
         private void JoystickTarget()
         {
-            
+            shootingTarget.JoystickControlTarget(playerControl.Player.Target.ReadValue<Vector2>());
+        }
+
+        #endregion
+
+        #region Events Controls
+
+        public void OpenDraw()
+        {
+            if (Touch.activeTouches.Count != 2 && !HUD.activeSelf) return;
+            HUD.SetActive(false);
+            _lineDrawer.gameObject.SetActive(true);
+            _lineDrawer.BulletTime(.5f);
+        }
+
+        public void FireShip()
+        {
+            if (Touch.activeTouches.Count != 1 && !HUD.activeSelf) return;
+                _cyanPathDrawer.CyanGO();
         }
 
         #endregion

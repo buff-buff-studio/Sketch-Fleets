@@ -458,6 +458,17 @@ namespace SketchFleets.Entities
         /// <summary>
         ///     Moves and rotates the Mothership
         /// </summary>
+        /// 
+        
+        public void JoystickMove(Vector2 moveDir)
+        {
+            Transform transformCache = transform;
+            Transform parent = transformCache.parent;
+
+            transformCache.localPosition = Vector2.zero;
+            parent.Translate(moveDir * GetSpeed(), Space.World);
+        }
+        
         public void Move(Vector2 movePos, Vector2 moveRad)
         {
             // Gets movement input

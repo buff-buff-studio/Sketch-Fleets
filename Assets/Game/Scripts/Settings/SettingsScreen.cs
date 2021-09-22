@@ -47,6 +47,9 @@ namespace SketchFleets
         
         private const int TOUCH_RAY = 8;
         private const int DEBUG_MODE = 9;
+        
+        private const int CONTROLS_MODE = 10;
+        private const int EVENTS_MODE = 11;
         #endregion
 
         #region Public Fields
@@ -54,6 +57,8 @@ namespace SketchFleets
         public TMP_Dropdown graphicsQuality;
         public TMP_Dropdown resolutionDropdown;
         public TMP_Dropdown windowsModeDropdown;
+        public TMP_Dropdown controlsModeDropdown;
+        public TMP_Dropdown eventsModeDropdown;
         public Toggle vsyncToggle;
         public Toggle touchRayToggle;
         public Toggle debugModeToggle;
@@ -115,8 +120,21 @@ namespace SketchFleets
             #endregion
             
             #region Gameplay
+            if(controlsModeDropdown != null)
+            {
+                //controlsModeDropdown.GetComponent<LocalizableDropdown>().UpdateLocalization();
+                controlsModeDropdown.value = PlayerPrefs.GetInt("controlsMode");
+            }
+            
+            if(eventsModeDropdown != null)
+            {
+                //eventsModeDropdown.GetComponent<LocalizableDropdown>().UpdateLocalization();
+                eventsModeDropdown.value = PlayerPrefs.GetInt("eventsMode");
+            }
+            
             if(touchRayToggle != null)
                 touchRayToggle.isOn = Settings.Get<bool>("touchRay");
+            
             if(debugModeToggle != null)
                 debugModeToggle.isOn = Settings.Get<bool>("debugMode");
             #endregion
@@ -184,15 +202,30 @@ namespace SketchFleets
                 }
                 break;
                 
+                case CONTROLS_MODE:
+                {
+                    Settings.Set<int>("controlsMode",controlsModeDropdown.value);
+                    PlayerPrefs.SetInt("controlsMode",controlsModeDropdown.value);
+                } 
+                break;
+                
+                case EVENTS_MODE:
+                {
+                    Settings.Set<int>("eventsMode",eventsModeDropdown.value);
+                    PlayerPrefs.SetInt("eventsMode",eventsModeDropdown.value);
+                } 
+                break;
+                
                 case TOUCH_RAY:
                 {
                     Settings.Set<bool>("touchRay",touchRayToggle.isOn);
+                    PlayerPrefs.SetInt("touchRay",touchRayToggle.isOn.GetHashCode());
                 } 
                 break;
                 
                 case DEBUG_MODE:
                 {
-                    Settings.Set<bool>("debugMode",debugModeToggle.isOn);
+                    PlayerPrefs.SetInt("debugMode",debugModeToggle.isOn.GetHashCode());
                 }
                 break;
             }
