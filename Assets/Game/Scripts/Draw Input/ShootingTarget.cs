@@ -8,9 +8,7 @@ namespace SketchFleets
     public sealed class ShootingTarget : MonoBehaviour
     {
         #region Private Fields
-        
-        private IAA_PlayerControl PlayerControl;
-        
+
         private Transform targetTransform;
 
         private Camera mainCameraCache;
@@ -43,9 +41,7 @@ namespace SketchFleets
         private void Awake()
         {
             mainCameraCache = Camera.main;
-            PlayerControl = new IAA_PlayerControl();
-            PlayerControl.Enable();
-            
+
             canvasRect = canvasRectTransform.rect;
             CanvasX = canvasRect.width;
             CanvasY = canvasRect.height;

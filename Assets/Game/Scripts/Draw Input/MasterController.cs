@@ -40,11 +40,6 @@ namespace SketchFleets
 
         public DebugScript db;
 
-        private void Awake()
-        {
-            GetComponent<PlayerInput>().enabled = false;
-        }
-
         private void OnEnable()
         {
             playerControl = new IAA_SketchFleetsInputs();
@@ -69,13 +64,10 @@ namespace SketchFleets
         private void ControlsSet()
         {
             if (controlsMode != 0)
-            {
                 movementJoysticks[0].SetActive(true);
-            }
-            else if(controlsMode!=1)
-            {
+            
+            if(controlsMode!=1)
                 movementJoysticks[controlsMode-1].SetActive(false);
-            }
         }
 
         private void Update()
@@ -83,10 +75,22 @@ namespace SketchFleets
             db.UpdateDebug($"Control Mode: {controlsMode}",9);
             db.UpdateDebug($"Event Mode: {eventsMode}",8);
             db.UpdateDebug($"Touch Count: {Touch.activeTouches.Count}",7);
+            db.UpdateDebug($"Pos2: {playerControl.InGame.TouchTwo.ReadValue<Vector2>()}",6);
+            db.UpdateDebug($"Pos1: {playerControl.InGame.TouchOne.ReadValue<Vector2>()}",5);
+            db.UpdateDebug($"Rad: {playerControl.InGame.TouchOneRadius.ReadValue<Vector2>()}",4);
 
             if (HUD.activeSelf && Time.timeScale == 1)
             {
                 ControlsUpdate();
+                if (playerControl.InGame.InputDraw.triggered)
+                    OpenDraw();
+                if (playerControl.InGame.ShipFire.triggered)
+                    FireShip();
+            }
+            else
+            {
+                playerControl.InGame.StartDraw.started += DrawInput;
+                playerControl.InGame.StartDraw.canceled += DrawInput;
             }
         }
 
@@ -95,9 +99,9 @@ namespace SketchFleets
             if (controlsMode == 0)
                 TouchInput();
             else if (controlsMode == 1)
-                TouchJoystickInput();
-            else
                 JoystickInput();
+            else
+                TouchJoystickInput();
         }
 
         #region Touch Input
@@ -112,7 +116,7 @@ namespace SketchFleets
             {
                 TouchOnePos();
                 if (Touch.activeTouches.Count > 1)
-                    TouchTwoePos();
+                    TouchTwoPos();
             }
         }
 
@@ -133,7 +137,7 @@ namespace SketchFleets
 
         public void TouchOnePos()
         {
-            if(Time.timeScale != 1 || closeFinger == 0) return;
+            if(Time.timeScale != 1 || closeFinger == 0 || playerControl.InGame.TouchOne.ReadValue<Vector2>() == Vector2.zero) return;
             
             if(closeFinger == 1)
                 mothership.Move(playerControl.InGame.TouchOne.ReadValue<Vector2>(),TouchOneRadius());
@@ -141,9 +145,9 @@ namespace SketchFleets
                 shootingTarget.ControlTarget(playerControl.InGame.TouchOne.ReadValue<Vector2>(),TouchOneRadius());
         }
         
-        public void TouchTwoePos()
+        public void TouchTwoPos()
         {
-            if(Time.timeScale != 1 || closeFinger == 0) return;
+            if(Time.timeScale != 1 || closeFinger == 0 || playerControl.InGame.TouchTwo.ReadValue<Vector2>() == Vector2.zero) return;
             
             if(closeFinger == 2)
                 mothership.Move(playerControl.InGame.TouchTwo.ReadValue<Vector2>(),TouchOneRadius());
@@ -175,15 +179,31 @@ namespace SketchFleets
         {
             if (controlsMode == 2)
             {
-                closeFinger = 1;
-                TouchOnePos();
                 JoystickTarget();
+                if (playerControl.Player.Look.ReadValue<Vector2>() == Vector2.zero)
+                {
+                    closeFinger = 1;
+                    TouchOnePos();
+                }
+                else
+                {
+                    closeFinger = 2;
+                    TouchTwoPos();
+                }          
             }
             else
             {
-                closeFinger = 2;
-                TouchOnePos();
                 JoystickMove();
+                if (playerControl.Player.Move.ReadValue<Vector2>() == Vector2.zero)
+                {
+                    closeFinger = 2;
+                    TouchOnePos();
+                }
+                else
+                {
+                    closeFinger = 1;
+                    TouchTwoPos();
+                }
             }
 
         }

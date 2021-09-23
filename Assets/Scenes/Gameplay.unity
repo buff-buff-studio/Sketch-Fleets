@@ -529,7 +529,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 246103466}
-  - component: {fileID: 246103465}
   - component: {fileID: 246103467}
   m_Layer: 0
   m_Name: PlayerInput
@@ -538,148 +537,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &246103465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246103464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: dbf332b162253284698da707552c67a4, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 1374739392}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4c1a8b3f-2ded-4e13-9f94-fd27288561d7
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 75825d1c-196b-480a-9753-e6763f26b266
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9a341f07-676e-43be-a84f-fb67bf0a91d6
-    m_ActionName: Player/Fire[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0f9b7a40-c3d0-4e53-a6e5-02460f73c37d
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 78430967-57af-4285-b15e-f716f37cb20a
-    m_ActionName: UI/Submit[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 77a45275-c80f-4647-bffc-bf01ae787ab7
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7f762c89-9b10-46e1-9253-7586f8bf0ed4
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: d78c1c91-723a-4ab8-8a36-a1a095334ffd
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e039c6d1-90e8-4216-b51b-01600e59e655
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ed530ce0-1675-42d4-9157-5361ba92ef33
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bcf4fa61-aef3-4313-ade9-8d7c43572826
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fd374ffc-2aba-4d3f-8461-1f8fd8ddd00d
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: baa88e5b-7f04-4619-9c4a-e6b878dbe553
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 246103467}
-        m_TargetAssemblyTypeName: SketchFleets.MasterController, Assembly-CSharp
-        m_MethodName: FireShip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 8ade9832-1bac-4dfe-9854-562c2be15327
-    m_ActionName: InGame/ShipFire[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 246103467}
-        m_TargetAssemblyTypeName: SketchFleets.MasterController, Assembly-CSharp
-        m_MethodName: OpenDraw
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: edb6a644-8b17-4a44-9c4e-9955bc215c67
-    m_ActionName: InGame/InputDraw[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5b91b4b8-bad4-4e03-b77a-43b9b0f29dda
-    m_ActionName: InGame/TouchTwo
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: da5e7129-d2b0-44e1-89ee-0ed6a047b269
-    m_ActionName: InGame/TouchOne
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 28345e8c-9067-4a08-8aee-2c67a655a188
-    m_ActionName: InGame/TouchOneRadius
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 246103467}
-        m_TargetAssemblyTypeName: SketchFleets.MasterController, Assembly-CSharp
-        m_MethodName: DrawInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 3fa2f84a-b805-413d-8fcf-2579b9bc70f1
-    m_ActionName: InGame/Start Draw[/Mouse/leftButton]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 2096931361}
 --- !u!4 &246103466
 Transform:
   m_ObjectHideFlags: 0
@@ -713,8 +570,8 @@ MonoBehaviour:
   HUD: {fileID: 927899975}
   movementJoysticks:
   - {fileID: 638911493}
-  - {fileID: 445425363}
   - {fileID: 1277911918}
+  - {fileID: 445425363}
   commandsButtons: {fileID: 657811866}
   db: {fileID: 2071217371}
 --- !u!1 &269005192
@@ -7689,7 +7546,7 @@ GameObject:
   - component: {fileID: 2096931359}
   - component: {fileID: 2096931358}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

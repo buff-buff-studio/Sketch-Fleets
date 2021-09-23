@@ -44,8 +44,6 @@ namespace SketchFleets.Entities
 
         private IEnumerator regenerateRoutine;
 
-        private IAA_PlayerControl playerControl;
-
         [SerializeField] 
         private float radiusMultiply;
         
@@ -75,8 +73,6 @@ namespace SketchFleets.Entities
             AttributesBonuses = ScriptableObject.CreateInstance<MothershipAttributesBonuses>();
             IngameEffectApplier.OnEffectsChange = OnEffectsChange;
             IngameEffectApplier.Clear();
-            playerControl = new IAA_PlayerControl();
-            playerControl.Enable();
             EnhancedTouchSupport.Enable();
             TouchSimulation.Enable();
         }
