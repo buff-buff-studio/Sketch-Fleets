@@ -68,7 +68,7 @@ namespace SketchFleets.Inventory
             IngameEffectResult result = new IngameEffectResult();
 
             //Apply upgrades
-            foreach(ItemStack up in ProfileSystem.Profile.Data.inventoryUpgrades)
+            foreach(ItemStack up in ProfileSystem.Profile.GetData().inventoryUpgrades)
             {
                 Upgrade upgrade = (Upgrade) upgradeRegister.items[up.Id];
                 result.upgradeLifeIncrease += upgrade.UpgradeLifeIncrease * up.Amount;

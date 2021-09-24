@@ -101,8 +101,9 @@ namespace SketchFleets.General
 
         private void Start()
         {
-            pencilShell.Value = ProfileSystem.Profile.Data.Coins;
-            totalEnemiesKilled.Value = ProfileSystem.Profile.Data.Kills;
+
+            pencilShell.Value = ProfileSystem.Profile.GetData().Coins;
+            totalEnemiesKilled.Value = ProfileSystem.Profile.GetData().Kills;
             if (mapAttributes.Map == 0)
             {
                 seconds.Value = 0;
