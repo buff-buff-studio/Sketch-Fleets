@@ -25,8 +25,10 @@ namespace SketchFleets
         [SerializeField]
         private GameObject HUD;
 
-        [SerializeField] 
-        private GameObject[] movementJoysticks;
+        [SerializeField]
+        private RectTransform JoystickL;
+        [SerializeField]
+        private RectTransform JoystickR;
         
         [SerializeField] 
         private GameObject commandsButtons;
@@ -63,21 +65,34 @@ namespace SketchFleets
 
         private void ControlsSet()
         {
-            if (controlsMode != 0)
-                movementJoysticks[0].SetActive(true);
-            
-            if(controlsMode!=1)
-                movementJoysticks[controlsMode-1].SetActive(false);
+            if (controlsMode == 0)
+            {
+                JoystickL.gameObject.SetActive(false);
+                JoystickR.gameObject.SetActive(false);
+            }
+            else if (controlsMode == 2)
+            {
+                JoystickL.gameObject.SetActive(false);
+            }else if (controlsMode == 3)
+            {
+                JoystickR.gameObject.SetActive(false);
+            }
         }
 
         private void Update()
         {
-            db.UpdateDebug($"Control Mode: {controlsMode}",9);
-            db.UpdateDebug($"Event Mode: {eventsMode}",8);
-            db.UpdateDebug($"Touch Count: {Touch.activeTouches.Count}",7);
-            db.UpdateDebug($"Pos2: {playerControl.InGame.TouchTwo.ReadValue<Vector2>()}",6);
-            db.UpdateDebug($"Pos1: {playerControl.InGame.TouchOne.ReadValue<Vector2>()}",5);
-            db.UpdateDebug($"Rad: {playerControl.InGame.TouchOneRadius.ReadValue<Vector2>()}",4);
+            db.UpdateDebug($"JRight: {Vector2.Distance(TouchOne, JoystickRightPos) < JoystickR.sizeDelta.x*.75f}",18);
+            db.UpdateDebug($"JLeft: {Vector2.Distance(TouchOne, JoystickLeftPos) < JoystickL.sizeDelta.x*.75f}",17);
+            db.UpdateDebug($"SizeR: {JoystickR.sizeDelta.x} / {JoystickR.position}",16);
+            db.UpdateDebug($"SizeL: {JoystickL.sizeDelta.x} / {JoystickL.position}",15);
+            db.UpdateDebug($"DistR: {Vector2.Distance(TouchOne, JoystickRightPos)}",14);
+            db.UpdateDebug($"DistL: {Vector2.Distance(TouchOne, JoystickLeftPos)}",13);
+            db.UpdateDebug($"Control Mode: {controlsMode}",12);
+            db.UpdateDebug($"Event Mode: {eventsMode}",11);
+            db.UpdateDebug($"Touch Count: {Touch.activeTouches.Count}",10);
+            db.UpdateDebug($"Pos2: {TouchTwo}",9);
+            db.UpdateDebug($"Pos1: {TouchOne}",8);
+            db.UpdateDebug($"Rad: {TouchRad}",7);
 
             if (HUD.activeSelf && Time.timeScale == 1)
             {
@@ -124,12 +139,12 @@ namespace SketchFleets
         {
             if (Time.timeScale != 1) return;
             
-            Vector2 touch = Camera.main.ViewportToWorldPoint(Camera.main.ScreenToViewportPoint(playerControl.InGame.TouchOne.ReadValue<Vector2>()));
+            Vector2 touch = Camera.main.ViewportToWorldPoint(Camera.main.ScreenToViewportPoint(TouchOne));
 
             float distShip = Vector2.Distance(touch, mothership.transform.position);
             float distTarget = Vector2.Distance(touch, shootingTarget.transform.position);
 
-            if (distShip*1.25f > distTarget)
+            if (distShip*1.5f > distTarget)
                 closeFinger = 2;
             else
                 closeFinger = 1;
@@ -137,28 +152,28 @@ namespace SketchFleets
 
         public void TouchOnePos()
         {
-            if(Time.timeScale != 1 || closeFinger == 0 || playerControl.InGame.TouchOne.ReadValue<Vector2>() == Vector2.zero) return;
+            if(Time.timeScale != 1 || closeFinger == 0 || TouchOne == Vector2.zero) return;
             
             if(closeFinger == 1)
-                mothership.Move(playerControl.InGame.TouchOne.ReadValue<Vector2>(),TouchOneRadius());
+                mothership.Move(TouchOne,TouchOneRadius());
             else
-                shootingTarget.ControlTarget(playerControl.InGame.TouchOne.ReadValue<Vector2>(),TouchOneRadius());
+                shootingTarget.ControlTarget(TouchOne,TouchOneRadius());
         }
         
         public void TouchTwoPos()
         {
-            if(Time.timeScale != 1 || closeFinger == 0 || playerControl.InGame.TouchTwo.ReadValue<Vector2>() == Vector2.zero) return;
+            if(Time.timeScale != 1 || closeFinger == 0 || TouchTwo == Vector2.zero) return;
             
             if(closeFinger == 2)
-                mothership.Move(playerControl.InGame.TouchTwo.ReadValue<Vector2>(),TouchOneRadius());
+                mothership.Move(TouchTwo,TouchOneRadius());
             else
-                shootingTarget.ControlTarget(playerControl.InGame.TouchTwo.ReadValue<Vector2>(),TouchOneRadius());
+                shootingTarget.ControlTarget(TouchTwo,TouchOneRadius());
         }
         
         private Vector2 TouchOneRadius()
         {
             if(Settings.Get<bool>("touchRay"))
-                return playerControl.InGame.TouchOne.ReadValue<Vector2>();
+                return TouchRad;
             else
                 return Vector2.one*.04f;
         }
@@ -166,7 +181,7 @@ namespace SketchFleets
         private Vector2 TouchTwoRadius()
         {
             if(Settings.Get<bool>("touchRay"))
-                return playerControl.InGame.TouchOne.ReadValue<Vector2>();
+                return TouchRad;
             else
                 return Vector2.one*.04f;
         }
@@ -180,29 +195,29 @@ namespace SketchFleets
             if (controlsMode == 2)
             {
                 JoystickTarget();
-                if (playerControl.Player.Look.ReadValue<Vector2>() == Vector2.zero)
+                if (Vector2.Distance(TouchOne, JoystickRightPos) < JoystickR.sizeDelta.x*.75f || JoystickRight != Vector2.zero)
+                {
+                    closeFinger = 2;
+                    TouchTwoPos();
+                }
+                else
                 {
                     closeFinger = 1;
                     TouchOnePos();
                 }
-                else
-                {
-                    closeFinger = 2;
-                    TouchTwoPos();
-                }          
             }
             else
             {
                 JoystickMove();
-                if (playerControl.Player.Move.ReadValue<Vector2>() == Vector2.zero)
-                {
-                    closeFinger = 2;
-                    TouchOnePos();
-                }
-                else
+                if (Vector2.Distance(TouchOne, JoystickLeftPos) < JoystickL.sizeDelta.x*.75f || JoystickLeft != Vector2.zero)
                 {
                     closeFinger = 1;
                     TouchTwoPos();
+                }
+                else
+                {
+                    closeFinger = 2;
+                    TouchOnePos();
                 }
             }
 
@@ -220,12 +235,12 @@ namespace SketchFleets
         
         private void JoystickMove()
         {
-            mothership.JoystickMove(playerControl.Player.Move.ReadValue<Vector2>());
+            mothership.JoystickMove(JoystickLeft);
         }
         
         private void JoystickTarget()
         {
-            shootingTarget.JoystickControlTarget(playerControl.Player.Look.ReadValue<Vector2>());
+            shootingTarget.JoystickControlTarget(JoystickRight);
         }
 
         #endregion
@@ -252,5 +267,13 @@ namespace SketchFleets
         }
 
         #endregion
+
+        private Vector2 TouchOne => playerControl.InGame.TouchOne.ReadValue<Vector2>();
+        private Vector2 TouchTwo => playerControl.InGame.TouchTwo.ReadValue<Vector2>();
+        private Vector2 TouchRad => playerControl.InGame.TouchOneRadius.ReadValue<Vector2>();
+        private Vector2 JoystickLeft => playerControl.Player.Move.ReadValue<Vector2>();
+        private Vector2 JoystickRight => playerControl.Player.Look.ReadValue<Vector2>();
+        private Vector2 JoystickRightPos => (Vector2)JoystickR.position - (Vector2.one * JoystickR.sizeDelta / 2);
+        private Vector2 JoystickLeftPos => (Vector2)JoystickL.position + (Vector2.one * JoystickL.sizeDelta / 2);
     }
 }
