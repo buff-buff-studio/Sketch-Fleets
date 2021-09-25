@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using SketchFleets.SaveSystem;
 using System.IO;
 
 namespace SketchFleets.ProfileSystem
@@ -39,6 +38,7 @@ namespace SketchFleets.ProfileSystem
         /// <returns></returns>
         public static bool Exists()
         {
+            Debug.Log(FilePath);
             return File.Exists(FilePath);
         }
 
@@ -66,6 +66,7 @@ namespace SketchFleets.ProfileSystem
             }
             else
             {
+                Debug.Log("saving new");
                 SaveProfile(callback);
             }
         }   
@@ -76,6 +77,7 @@ namespace SketchFleets.ProfileSystem
         /// <param name="callback"></param>
         public static void SaveProfile(System.Action<ProfileData> callback)
         {
+             Debug.Log("going: " + runningThread);
             behaviour.StartCoroutine(_Save(callback));
         }
         #endregion
@@ -88,11 +90,13 @@ namespace SketchFleets.ProfileSystem
         /// <returns></returns>
         public static IEnumerator _Load(System.Action<ProfileData> callback)
         {
+            Debug.Log("Loading!");
             while(runningThread)
                 yield return new WaitForEndOfFrame();
 
             var thread = new System.Threading.Thread(() => {       
-                GetData().save = Save.FromBytes(File.ReadAllBytes(FilePath),EditMode.Fixed);
+                 Debug.Log("Loaded!");
+                GetData().saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(FilePath));
                 runningThread = false;
             });
 
@@ -115,19 +119,23 @@ namespace SketchFleets.ProfileSystem
         {
             while(runningThread)
                 yield return new WaitForEndOfFrame();
+
+            Debug.Log("aa");
                 
             var thread = new System.Threading.Thread(() => {
                 try
                 {
+                          Debug.Log("saving");
                 //Save data
                 GetData().SaveInventories();
 
-                File.WriteAllBytes(FilePath,GetData().save.ToBytes());
+                File.WriteAllText(FilePath,JsonUtility.ToJson(GetData().saveObject));
                 runningThread = false;
                 }
-                catch(System.Exception)
+                catch(System.Exception e)
                 {
-                    callback(GetData());
+                    Debug.Log(e);
+                    //callback(GetData());
                 }
             });
             

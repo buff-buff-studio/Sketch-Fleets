@@ -1,18 +1,64 @@
 using UnityEngine;
-using SketchFleets.SaveSystem;
+using System.Collections.Generic;
 using SketchFleets.Inventory;
 
 namespace SketchFleets.ProfileSystem
 {
+    [System.Serializable]
+    public class MapData
+    {
+        public int currentStar = 0;
+        public List<int> openPath = new List<int>();
+        public List<int> openQueue = new List<int>();
+        public List<int> choosen = new List<int>();
+        public int seed = -1; //0 = any random seed
+    }
+
+    [System.Serializable]
+    public class SaveObject
+    {
+        public int coins = 0;
+        public int totalCoins = 0;
+        public int seconds = 0;
+        public int kills = 0;
+
+        public List<ProfileItem> items = new List<ProfileItem>();
+        public List<ProfileItem> upgrades = new List<ProfileItem>();
+        public List<CodexItem> codex = new List<CodexItem>();
+
+        public MapData mapData = new MapData();
+    }
+
+    [System.Serializable]
+    public class CodexItem
+    {
+        public int type;
+        public int id;
+
+        public CodexItem(int type, int id)
+        {
+            this.id = id;
+            this.type = type;
+        }
+    }
+
+    [System.Serializable]
+    public class ProfileItem
+    {
+        public int id;
+        public int amount;
+
+        public ProfileItem(int id, int amount)
+        {
+            this.id = id;
+            this.amount = amount;
+        }
+    }
     /// <summary>
     /// Main profile system
     /// </summary>
     public class ProfileData
     {
-        #region Private Fields
-        private Save _save;
-        #endregion
-
         #region Public Fields
         //Game Inventories
         public ItemInventory inventoryUpgrades;
@@ -20,16 +66,16 @@ namespace SketchFleets.ProfileSystem
         //Codex inventories
         public CodexInventory codex = new CodexInventory();
 
-        public int Coins { get => save.Get<int>("coins"); set { save.Set("coins", value); Profile.SaveProfile((data) => { }); } }
-        public int TotalCoins { get => save.Get<int>("totalCoins"); set { save.Set("totalCoins", value); Profile.SaveProfile((data) => { }); } }
-        public int TimeSeconds { get => save.Get<int>("seconds"); set { save.Set("seconds", value); Profile.SaveProfile((data) => { }); } }
-        public int Kills { get => save.Get<int>("kkkkkkills"); set { save.Set("kkkkkkills", value); Profile.SaveProfile((data) => { }); } }
-        
+        public int Coins { get => saveObject.coins; set { saveObject.coins = value; Profile.SaveProfile((data) => { }); } }
+        public int TotalCoins { get => saveObject.totalCoins; set { saveObject.totalCoins = value; Profile.SaveProfile((data) => { }); } }
+        public int TimeSeconds { get => saveObject.seconds; set { saveObject.seconds = value; Profile.SaveProfile((data) => { }); } }
+        public int Kills { get => saveObject.kills; set { saveObject.kills = value; Profile.SaveProfile((data) => { }); } }
+        public MapData Map => saveObject.mapData;
 
         #endregion
 
-        #region Properties
-        public Save save { get { return _save; } set { _save = value; ReloadInventories(); } }
+        #region Core Object
+        public SaveObject saveObject;
         #endregion
 
         /// <summary>
@@ -37,7 +83,10 @@ namespace SketchFleets.ProfileSystem
         /// </summary>
         public ProfileData()
         {
-            save = new Save();
+            inventoryUpgrades = new ItemInventory(4);
+            inventoryItems = new PlayerItemInventory(24);
+            codex = new CodexInventory();
+            saveObject = new SaveObject();
         }
 
         /// <summary>
@@ -50,40 +99,22 @@ namespace SketchFleets.ProfileSystem
             codex = new CodexInventory();
 
             //Read inventory data
-            if (save.HasKey("items"))
+            foreach (ProfileItem o in saveObject.items)
             {
-                SaveListObject list = save.Get<SaveListObject>("items");
-
-                foreach (SaveObject o in list)
-                {
-                    inventoryItems.AddItem(new ItemStack(o.Get<int>("id"), o.Get<int>("amount")));
-                }
+                inventoryItems.AddItem(new ItemStack(o.id, o.amount));
             }
 
-            if (save.HasKey("upgrades"))
+            foreach (ProfileItem o in saveObject.upgrades)
             {
-                SaveListObject list = save.Get<SaveListObject>("upgrades");
-
-                foreach (SaveObject o in list)
-                {
-                    inventoryUpgrades.AddItem(new ItemStack(o.Get<int>("id"), o.Get<int>("amount")));
-                }
+                inventoryUpgrades.AddItem(new ItemStack(o.id, o.amount));
             }
 
             //Load codex
-            if (save.HasKey("codex"))
+            foreach (CodexItem item in saveObject.codex)
             {
-                SaveListObject list = save.Get<SaveListObject>("codex");
-
-                for(int i = 0; i < list.Count; i ++)
-                {
-                    SaveListObject entry = list.Get<SaveListObject>(i);
-                    for(int j = 0; j < entry.Count; j ++)
-                    {
-                        codex.AddItem(new CodexEntry((CodexEntryType) i, entry.Get<int>(j)));
-                    }
-                }
+                codex.AddItem(new CodexEntry((CodexEntryType)item.type, item.id));
             }
+
         }
 
         /// <summary>
@@ -91,68 +122,43 @@ namespace SketchFleets.ProfileSystem
         /// </summary>
         public void SaveInventories()
         {
-            SaveListObject list = save.CreateChildList();
+            saveObject.items.Clear();
             //Write inventory data
             foreach (ItemStack i in inventoryItems)
-            {
-                SaveObject o = list.CreateChild();
-                o["id"] = i.Id;
-                o["amount"] = i.Amount;
+                saveObject.items.Add(new ProfileItem(i.Id,i.Amount));
 
-                list.Add(o);
-            }
-            save["items"] = list;
-
-            list = save.CreateChildList();
-            
+            saveObject.upgrades.Clear();
             //Write upgrades data
             foreach (ItemStack i in inventoryUpgrades)
-            {
-                SaveObject o = list.CreateChild();
-                o["id"] = i.Id;
-                o["amount"] = i.Amount;
-
-                list.Add(o);
-            }
-            save["upgrades"] = list;
+                saveObject.upgrades.Add(new ProfileItem(i.Id,i.Amount));
 
             //Save Codex
-            SaveListObject codex = save.CreateChildList();
-            foreach(CodexEntryType type in System.Enum.GetValues(typeof(CodexEntryType)))
+            saveObject.codex.Clear();
+            foreach (CodexEntryType type in System.Enum.GetValues(typeof(CodexEntryType)))
             {
-                int id = (int) type;
-                SaveListObject current = save.CreateChildList();
-                foreach(CodexEntry entry in this.codex.GetUnlockedEntries(type))
-                {
-                    current.Add(entry.ID);
-                }
-
-                codex.Add(current);
+                int id = (int)type;
+                foreach (CodexEntry entry in this.codex.GetUnlockedEntries(type))
+                    saveObject.codex.Add(new CodexItem(id,entry.ID));
             }
-            save["codex"] = codex;
         }
 
         public static int ConvertCoinsToTotalCoins(int coins)
         {
-            return coins/5;
+            return coins / 5;
         }
 
-        public void Clear(MonoBehaviour behaviour,System.Action<ProfileData> callback)
+        public void Clear(MonoBehaviour behaviour, System.Action<ProfileData> callback)
         {
-            save.Remove("mapState");
-            save.Remove("items");
-            save.Remove("coins");
-            save.Remove("seconds");
-            save.Remove("kkkkkkills");
-
+            saveObject = new SaveObject();
             ReloadInventories();
-            
+
             try
             {
                 Profile.SaveProfile(callback);
             }
-            catch(System.Exception)
+            catch (System.Exception e)
             {
+                Debug.Log(e);
                 callback(this);
             }
         }

@@ -91,10 +91,10 @@ public class ConstelationMap : MonoBehaviour
         //Init constelation state
         MapLevelInteraction.state.SetConstelation(constelation);
         
-        int seed = MapLevelInteraction.state.seed == 0 ? (int)System.DateTime.Now.Ticks : MapLevelInteraction.state.seed;
+        int seed = SketchFleets.ProfileSystem.Profile.GetData().Map.seed == -1 ? (int)System.DateTime.Now.Ticks :SketchFleets.ProfileSystem.Profile.GetData().Map.seed;
         //Current map system - Generate from seed
         Random.InitState(seed);
-        MapLevelInteraction.state.seed = seed;
+        SketchFleets.ProfileSystem.Profile.GetData().Map.seed = seed;
         
         //Set map
         MapLevelInteraction.map = this;
@@ -397,7 +397,7 @@ public class ConstelationMap : MonoBehaviour
                 star.Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * (star.scale + (Mathf.Sin(Time.time * Mathf.Deg2Rad * 60 + ((star.Id - 5)%10) * 10) + 0.75f) * 0.1f);
             
             
-            star.Object.GetComponent<RectTransform>().anchoredPosition = star.position + new Vector2(Mathf.Sin(Time.time * Mathf.Deg2Rad * 90 + ((star.Id - 5)%10) * 10),Mathf.Cos(Time.time * Mathf.Deg2Rad * 45 + ((star.Id - 5)%10) * 10)) * (((MapLevelInteraction.state.seed * star.Id << (star.Id%7))%10) - 5); 
+            star.Object.GetComponent<RectTransform>().anchoredPosition = star.position + new Vector2(Mathf.Sin(Time.time * Mathf.Deg2Rad * 90 + ((star.Id - 5)%10) * 10),Mathf.Cos(Time.time * Mathf.Deg2Rad * 45 + ((star.Id - 5)%10) * 10)) * (((SketchFleets.ProfileSystem.Profile.GetData().Map.seed * star.Id << (star.Id%7))%10) - 5); 
             //star.Object.GetComponent<RectTransform>().localEulerAngles = new Vector3(0,0,Mathf.Sin(-Time.time * Mathf.Deg2Rad * ((star.Id << 3)%20) + 30) * ((MapLevelInteraction.state.seed << star.Id%7)%10 + 10) * 10f);
             
             foreach(Constelation.StarJunction j in star.toJunctions)
@@ -415,6 +415,7 @@ public class ConstelationMap : MonoBehaviour
     /// <param name="starNumber">Get star from index</param>
     public void OnClickStar(int starNumber)
     {
+        Debug.Log("Clicked at: " + starNumber);
         if(!InputEnabled)
             return;
 
