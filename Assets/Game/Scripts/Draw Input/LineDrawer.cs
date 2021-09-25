@@ -35,7 +35,7 @@ public class LineDrawer : MonoBehaviour
 
     private CreateLine currentLine;
     private Camera cam;
-    private IAA_PlayerControl playerControl;
+    private IAA_SketchFleetsInputs playerControl;
     
     private int FormSelect;
 
@@ -54,13 +54,13 @@ public class LineDrawer : MonoBehaviour
         {
             cam ??= Camera.main;
 
-            return cam.ScreenToWorldPoint(playerControl.Player.TouchOne.ReadValue<Vector2>());
+            return cam.ScreenToWorldPoint(playerControl.InGame.TouchOne.ReadValue<Vector2>());
         }
     }
 
     private void OnEnable()
     {
-        playerControl = new IAA_PlayerControl();
+        playerControl = new IAA_SketchFleetsInputs();
         playerControl.Enable();
     }
 
@@ -97,7 +97,7 @@ public class LineDrawer : MonoBehaviour
 
     private void BeginDraw()
     {
-        if (currentLine != null && SceneManager.GetActiveScene().name == "Game")
+        if (currentLine != null)
         {
             Destroy(currentLine.gameObject);
         }

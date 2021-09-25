@@ -44,8 +44,6 @@ namespace SketchFleets.Entities
 
         private IEnumerator regenerateRoutine;
 
-        private IAA_PlayerControl playerControl;
-
         [SerializeField] 
         private float radiusMultiply;
         
@@ -75,8 +73,6 @@ namespace SketchFleets.Entities
             AttributesBonuses = ScriptableObject.CreateInstance<MothershipAttributesBonuses>();
             IngameEffectApplier.OnEffectsChange = OnEffectsChange;
             IngameEffectApplier.Clear();
-            playerControl = new IAA_PlayerControl();
-            playerControl.Enable();
             EnhancedTouchSupport.Enable();
             TouchSimulation.Enable();
         }
@@ -458,6 +454,17 @@ namespace SketchFleets.Entities
         /// <summary>
         ///     Moves and rotates the Mothership
         /// </summary>
+        /// 
+        
+        public void JoystickMove(Vector2 moveDir)
+        {
+            Transform transformCache = transform;
+            Transform parent = transformCache.parent;
+
+            transformCache.localPosition = Vector2.zero;
+            parent.Translate(moveDir * GetSpeed(), Space.World);
+        }
+        
         public void Move(Vector2 movePos, Vector2 moveRad)
         {
             // Gets movement input

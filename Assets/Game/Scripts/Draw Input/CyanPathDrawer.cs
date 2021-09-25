@@ -23,7 +23,8 @@ namespace SketchFleets
         [SerializeField]
         private GameObject cyanHUD;
         
-        private OrbitAndExplodeState CyanShip;
+        [HideInInspector]
+        public OrbitAndExplodeState CyanShip;
         private bool CloseUI;
         private Camera mainCameraCache;
 
@@ -65,9 +66,16 @@ namespace SketchFleets
 
         public void CyanGO()
         {
-            CyanShip = mothership.GetCyanShip();
-            CyanShip.LookAtTarget(mothership._ShootingTarget.targetPoint.position);
-            CyanShip = null;
+            try
+            {
+                CyanShip = mothership.GetCyanShip();
+                CyanShip.LookAtTarget(mothership._ShootingTarget.targetPoint.position);
+                CyanShip = null;
+            }
+            catch
+            {
+                CyanButton.interactable = false;
+            }
         }
 
         /*
