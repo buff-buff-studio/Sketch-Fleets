@@ -51,7 +51,7 @@ namespace SketchFleets
 
         #region Public Fields
         public TMP_Dropdown languageDropdown;
-        public TMP_Dropdown graphicsQuality;
+        public LocalizableSelector graphicsQuality;
         public TMP_Dropdown resolutionDropdown;
         public TMP_Dropdown windowsModeDropdown;
         public Toggle vsyncToggle;
@@ -88,7 +88,7 @@ namespace SketchFleets
             #region Graphics Quality
             if(graphicsQuality != null)
             {
-                graphicsQuality.GetComponent<LocalizableDropdown>().UpdateLocalization();
+                graphicsQuality.UpdateLocalization();
                 graphicsQuality.value = Settings.Get<int>("graphicsQuality");
             }
             #endregion
