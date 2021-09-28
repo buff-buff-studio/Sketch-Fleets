@@ -56,8 +56,11 @@ namespace SketchFleets.Entities
         private void EmergeSpawnEffect()
         {
             Transform cachedTransform = transform;
-            PoolManager.Instance.Request(Attributes.SpawnEffect).
-                Emerge(cachedTransform.position, cachedTransform.rotation);
+            PoolMember spawn = PoolManager.Instance.Request(Attributes.SpawnEffect);
+            spawn.Emerge(cachedTransform.position, cachedTransform.rotation);
+            
+            ParticleSystem spawnCache = spawn.GetComponent<ParticleSystem>();
+            spawnCache.startColor = shipColor;
         }
 
         #endregion

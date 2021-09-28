@@ -117,6 +117,10 @@ MonoBehaviour:
     _useConstant: 0
     _constant: {r: 0, g: 0, b: 0, a: 0}
     _variable: {fileID: 11400000, guid: 1bc42a043e5678149974e3c5e32d0cc5, type: 2}
+  enemyDeathColor:
+    _useConstant: 0
+    _constant: {r: 1, g: 1, b: 1, a: 1}
+    _variable: {fileID: 11400000, guid: 85746415c082a3641923f338f45db626, type: 2}
   shellWorth:
     _useConstant: 1
     _constant: 2

@@ -105,9 +105,9 @@ public class MapLevelInteraction : MonoBehaviour
     public static void ReturnToMapOpeningStar()
     {
         LoadScene("Scenes/Map",() => {
-            Debug.Log("aaa");
+            //Debug.Log("aaa");
             ConstelationMap.onMapLoad = () => {
-                Debug.Log("bbb");
+                //Debug.Log("bbb");
                 map.OpenInstantly();
 
                 Time.timeScale = 1;
