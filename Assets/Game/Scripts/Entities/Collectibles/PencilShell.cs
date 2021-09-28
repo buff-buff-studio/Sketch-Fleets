@@ -16,6 +16,8 @@ namespace SketchFleets.Entities
         [SerializeField]
         private ColorReference shellColor = new ColorReference(Color.white);
         [SerializeField]
+        private ColorReference enemyDeathColor = new ColorReference(Color.white);
+        [SerializeField]
         private IntReference shellWorth = new IntReference(1);
         [SerializeField]
         private GameObject collectEffect;
@@ -113,6 +115,7 @@ namespace SketchFleets.Entities
         public void SetDropColor(Color dropColor)
         {
             spriteRenderer.color = dropColor;
+            enemyDeathColor.Value = dropColor;
         }
 
         #endregion

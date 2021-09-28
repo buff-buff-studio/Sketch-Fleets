@@ -249,7 +249,7 @@ namespace SketchFleets
 
         public void OpenDraw()
         {
-            if (Touch.activeTouches.Count != 2 && !HUD.activeSelf) return;
+            if (!HUD.activeSelf || _lineDrawer.enemyDeathColor == Color.white) return;
             HUD.SetActive(false);
             _lineDrawer.gameObject.SetActive(true);
             _lineDrawer.BulletTime(.5f);

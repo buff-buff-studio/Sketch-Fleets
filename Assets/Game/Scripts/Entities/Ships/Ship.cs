@@ -38,6 +38,7 @@ namespace SketchFleets
         protected float collisionTimer;
 
         private bool isDead = false; 
+        
 
         #endregion
 
@@ -45,7 +46,13 @@ namespace SketchFleets
 
         protected FloatReference currentHealth = new FloatReference(0f);
         protected FloatReference currentShield = new FloatReference(0f);
+        
+        protected readonly int redMultiplier = Shader.PropertyToID("_redMul");
+        protected readonly int blueMultiplier = Shader.PropertyToID("_bluMul");
+        protected readonly int greenMultiplier = Shader.PropertyToID("_greMul");
         private readonly int blinkColor = Shader.PropertyToID("_blinkColor");
+        
+        protected Color shipColor;
 
         #endregion
 
@@ -196,6 +203,7 @@ namespace SketchFleets
         // Start is called before the first update
         protected virtual void Start()
         {
+            shipColor = spriteRenderer.material.GetColor(redMultiplier);
             ResetInstanceVariables();
         }
 
@@ -247,6 +255,7 @@ namespace SketchFleets
                 PoolMember bullet = PoolManager.Instance.Request(attributes.Fire.Prefab);
                 bullet.Emerge(bulletSpawnPoints[index].position, bulletSpawnPoints[index].rotation);
 
+                bullet.GetComponent<SpriteRenderer>().color = spriteRenderer.material.GetColor(redMultiplier);
                 bullet.transform.Rotate(0f, 0f,
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
             }
@@ -278,7 +287,11 @@ namespace SketchFleets
 
             if (Attributes.DeathEffect != null)
             {
-                PoolManager.Instance.Request(Attributes.DeathEffect).Emerge(transform.position, Quaternion.identity);
+                PoolMember death = PoolManager.Instance.Request(Attributes.DeathEffect);
+                death.Emerge(transform.position, Quaternion.identity);
+                
+                ParticleSystem deathCache = death.GetComponent<ParticleSystem>();
+                deathCache.startColor = shipColor;
             }
 
             if (deathEvent != null)
