@@ -570,7 +570,7 @@ MonoBehaviour:
   HUD: {fileID: 927899975}
   JoystickL: {fileID: 1277911919}
   JoystickR: {fileID: 445425364}
-  commandsButtons: {fileID: 657811866}
+  fireShipButton: {fileID: 1162185797}
   db: {fileID: 2071217371}
 --- !u!1 &269005192
 GameObject:
@@ -2431,11 +2431,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652491674}
   m_CullTransparentMesh: 1
---- !u!1 &657811866 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6790532072646397594, guid: e4ee44797a57a14499348211a207009d, type: 3}
-  m_PrefabInstance: {fileID: 927899972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &694294626
 GameObject:
   m_ObjectHideFlags: 0
@@ -3978,6 +3973,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2071217370}
+    - target: {fileID: 2931466892152834320, guid: e4ee44797a57a14499348211a207009d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2931466892152834321, guid: e4ee44797a57a14499348211a207009d, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -4149,7 +4148,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2931466892152834322, guid: e4ee44797a57a14499348211a207009d, type: 3}
   m_PrefabInstance: {fileID: 927899972}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1162185797}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -4873,6 +4872,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.1139703, y: 4.41}
   m_EdgeRadius: 0
+--- !u!1 &1162185797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2931466892152834320, guid: e4ee44797a57a14499348211a207009d, type: 3}
+  m_PrefabInstance: {fileID: 927899972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1200899178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5276,7 +5280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.80557, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7037363, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -7542,7 +7546,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugText: []
-  pi: {fileID: 0}
 --- !u!114 &2071217372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7749,7 +7752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.80557, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7037363, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}

@@ -775,6 +775,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ShipFireTwo",
+                    "type": "Button",
+                    "id": "1476aea2-6889-49f2-a0f0-b12d8e8b3891",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "InputDraw",
                     "type": "Button",
                     "id": "edb6a644-8b17-4a44-9c4e-9955bc215c67",
@@ -911,6 +920,28 @@
                 },
                 {
                     "name": "",
+                    "id": "71fc2716-88ff-4e04-a8e9-65749962f8ae",
+                    "path": "<Touchscreen>/touch0/tap",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": "Touch Scheme;Touch",
+                    "action": "ShipFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "171a55bd-8e06-4bab-ba37-86b7d480cd6f",
+                    "path": "<Touchscreen>/touch0/press",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": "Touch Scheme;Touch",
+                    "action": "ShipFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9091f453-005c-4bcf-9bb9-a7c2705c4d68",
                     "path": "<Gamepad>/dpad/down",
                     "interactions": "",
@@ -922,23 +953,34 @@
                 },
                 {
                     "name": "",
-                    "id": "71fc2716-88ff-4e04-a8e9-65749962f8ae",
-                    "path": "<Touchscreen>/touch0/tap",
-                    "interactions": "MultiTap",
+                    "id": "45b9d563-1fb0-44ec-8873-ff3d0350699c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
                     "processors": "",
-                    "groups": "Touch Scheme",
+                    "groups": "Keyboard Scheme;Keyboard&Mouse",
                     "action": "ShipFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "45b9d563-1fb0-44ec-8873-ff3d0350699c",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
+                    "id": "513917ce-42fc-474d-a783-8a784cb7cf19",
+                    "path": "<Touchscreen>/touch1/press",
+                    "interactions": "MultiTap",
                     "processors": "",
-                    "groups": "Keyboard Scheme",
-                    "action": "ShipFire",
+                    "groups": "Touch Scheme;Touch",
+                    "action": "ShipFireTwo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "848420a8-eec2-44b8-996f-03ad3fcdf3da",
+                    "path": "<Touchscreen>/touch1/tap",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": "Touch Scheme;Touch",
+                    "action": "ShipFireTwo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
