@@ -31,14 +31,13 @@ namespace SketchFleets
         private RectTransform JoystickR;
         
         [SerializeField] 
-        private GameObject commandsButtons;
+        private GameObject fireShipButton;
 
         private IAA_SketchFleetsInputs playerControl;
 
         private int closeFinger = 0;
 
         private int controlsMode => PlayerPrefs.GetInt("controlsMode");
-        private int eventsMode => PlayerPrefs.GetInt("eventsMode");
 
         public DebugScript db;
 
@@ -59,8 +58,6 @@ namespace SketchFleets
             EnhancedTouchSupport.Enable();
             
             ControlsSet();
-            if(eventsMode==0)
-                commandsButtons.SetActive(false);
         }
 
         private void ControlsSet()
@@ -69,11 +66,14 @@ namespace SketchFleets
             {
                 JoystickL.gameObject.SetActive(false);
                 JoystickR.gameObject.SetActive(false);
+                fireShipButton.SetActive(false);
             }
             else if (controlsMode == 2)
             {
                 JoystickL.gameObject.SetActive(false);
-            }else if (controlsMode == 3)
+                fireShipButton.SetActive(false);
+            }
+            else if (controlsMode == 3)
             {
                 JoystickR.gameObject.SetActive(false);
             }
@@ -81,6 +81,24 @@ namespace SketchFleets
 
         private void Update()
         {
+            UpdateDebug();
+
+            if (HUD.activeSelf && Time.timeScale == 1)
+            {
+                ControlsUpdate();
+                if (playerControl.InGame.InputDraw.triggered)
+                    OpenDraw();
+            }
+            else
+            {
+                playerControl.InGame.StartDraw.started += DrawInput;
+                playerControl.InGame.StartDraw.canceled += DrawInput;
+            }
+        }
+
+        private void UpdateDebug()
+        {
+            if(PlayerPrefs.GetInt("debugMode") == 0) return;
             db.UpdateDebug($"JRight: {Vector2.Distance(TouchOne, JoystickRightPos) < JoystickR.sizeDelta.x*.75f}",18);
             db.UpdateDebug($"JLeft: {Vector2.Distance(TouchOne, JoystickLeftPos) < JoystickL.sizeDelta.x*.75f}",17);
             db.UpdateDebug($"SizeR: {JoystickR.sizeDelta.x} / {JoystickR.position}",16);
@@ -88,25 +106,11 @@ namespace SketchFleets
             db.UpdateDebug($"DistR: {Vector2.Distance(TouchOne, JoystickRightPos)}",14);
             db.UpdateDebug($"DistL: {Vector2.Distance(TouchOne, JoystickLeftPos)}",13);
             db.UpdateDebug($"Control Mode: {controlsMode}",12);
-            db.UpdateDebug($"Event Mode: {eventsMode}",11);
+            db.UpdateDebug($"Ship Fire: {playerControl.InGame.ShipFire.triggered}",11);
             db.UpdateDebug($"Touch Count: {Touch.activeTouches.Count}",10);
             db.UpdateDebug($"Pos2: {TouchTwo}",9);
             db.UpdateDebug($"Pos1: {TouchOne}",8);
             db.UpdateDebug($"Rad: {TouchRad}",7);
-
-            if (HUD.activeSelf && Time.timeScale == 1)
-            {
-                ControlsUpdate();
-                if (playerControl.InGame.InputDraw.triggered)
-                    OpenDraw();
-                if (playerControl.InGame.ShipFire.triggered)
-                    FireShip();
-            }
-            else
-            {
-                playerControl.InGame.StartDraw.started += DrawInput;
-                playerControl.InGame.StartDraw.canceled += DrawInput;
-            }
         }
 
         private void ControlsUpdate()
@@ -123,6 +127,7 @@ namespace SketchFleets
         
         private void TouchInput()
         {
+            TouchFireShip();
             if (Touch.activeTouches.Count == 0)
                 closeFinger = 0;
             else if (closeFinger == 0)
@@ -186,6 +191,16 @@ namespace SketchFleets
                 return Vector2.one*.04f;
         }
         
+        public void TouchFireShip()
+        {
+            if (!HUD.activeSelf) return;
+
+            if (closeFinger == 1)
+                playerControl.InGame.ShipFireTwo.performed += FireShip;
+            else
+                playerControl.InGame.ShipFire.performed += FireShip;
+        }
+        
         #endregion
 
         #region Touch & Joystick Input
@@ -219,6 +234,7 @@ namespace SketchFleets
                     closeFinger = 2;
                     TouchOnePos();
                 }
+                playerControl.InGame.ShipFire.performed += FireShip;
             }
 
         }
@@ -231,6 +247,7 @@ namespace SketchFleets
         {
             JoystickMove();
             JoystickTarget();
+            JoystickFireShip();
         }
         
         private void JoystickMove()
@@ -241,6 +258,12 @@ namespace SketchFleets
         private void JoystickTarget()
         {
             shootingTarget.JoystickControlTarget(JoystickRight);
+        }
+
+        private void JoystickFireShip()
+        {
+            if (!HUD.activeSelf) return;
+            playerControl.InGame.ShipFire.performed += FireShip;
         }
 
         #endregion
@@ -260,10 +283,15 @@ namespace SketchFleets
             _lineDrawer.DrawCallBack(context);
         }
         
-        public void FireShip()
+        public void FireShip(InputAction.CallbackContext context)
         {
-            if (Touch.activeTouches.Count != 1 && !HUD.activeSelf) return;
-                _cyanPathDrawer.CyanGO();
+            _cyanPathDrawer.CyanGO();
+        }
+        
+        public void FireShipButton()
+        {
+            if (!HUD.activeSelf) return;
+            _cyanPathDrawer.CyanGO();
         }
 
         #endregion

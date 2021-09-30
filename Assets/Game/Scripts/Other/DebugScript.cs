@@ -11,9 +11,8 @@ namespace SketchFleets
     public class DebugScript : MonoBehaviour
     {
         private GUIStyle style = new GUIStyle();
-        //[HideInInspector]
+        [HideInInspector]
         public List<string> debugText = new List<string>();
-        public PlayerInput pi;
         void Start()
         {
             style.normal.textColor = Color.black;

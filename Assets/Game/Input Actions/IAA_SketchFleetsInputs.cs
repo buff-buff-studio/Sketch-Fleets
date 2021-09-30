@@ -797,6 +797,15 @@ public partial class @IAA_SketchFleetsInputs : IInputActionCollection2, IDisposa
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""ShipFireTwo"",
+                    ""type"": ""Button"",
+                    ""id"": ""1476aea2-6889-49f2-a0f0-b12d8e8b3891"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""InputDraw"",
                     ""type"": ""Button"",
                     ""id"": ""edb6a644-8b17-4a44-9c4e-9955bc215c67"",
@@ -933,6 +942,28 @@ public partial class @IAA_SketchFleetsInputs : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
+                    ""id"": ""71fc2716-88ff-4e04-a8e9-65749962f8ae"",
+                    ""path"": ""<Touchscreen>/touch0/tap"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": ""Touch Scheme;Touch"",
+                    ""action"": ""ShipFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""171a55bd-8e06-4bab-ba37-86b7d480cd6f"",
+                    ""path"": ""<Touchscreen>/touch0/press"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": ""Touch Scheme;Touch"",
+                    ""action"": ""ShipFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9091f453-005c-4bcf-9bb9-a7c2705c4d68"",
                     ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
@@ -944,23 +975,34 @@ public partial class @IAA_SketchFleetsInputs : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
-                    ""id"": ""71fc2716-88ff-4e04-a8e9-65749962f8ae"",
-                    ""path"": ""<Touchscreen>/touch0/tap"",
-                    ""interactions"": ""MultiTap"",
+                    ""id"": ""45b9d563-1fb0-44ec-8873-ff3d0350699c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Touch Scheme"",
+                    ""groups"": ""Keyboard Scheme;Keyboard&Mouse"",
                     ""action"": ""ShipFire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""45b9d563-1fb0-44ec-8873-ff3d0350699c"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
+                    ""id"": ""513917ce-42fc-474d-a783-8a784cb7cf19"",
+                    ""path"": ""<Touchscreen>/touch1/press"",
+                    ""interactions"": ""MultiTap"",
                     ""processors"": """",
-                    ""groups"": ""Keyboard Scheme"",
-                    ""action"": ""ShipFire"",
+                    ""groups"": ""Touch Scheme;Touch"",
+                    ""action"": ""ShipFireTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""848420a8-eec2-44b8-996f-03ad3fcdf3da"",
+                    ""path"": ""<Touchscreen>/touch1/tap"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": ""Touch Scheme;Touch"",
+                    ""action"": ""ShipFireTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1050,6 +1092,7 @@ public partial class @IAA_SketchFleetsInputs : IInputActionCollection2, IDisposa
         // InGame
         m_InGame = asset.FindActionMap("InGame", throwIfNotFound: true);
         m_InGame_ShipFire = m_InGame.FindAction("ShipFire", throwIfNotFound: true);
+        m_InGame_ShipFireTwo = m_InGame.FindAction("ShipFireTwo", throwIfNotFound: true);
         m_InGame_InputDraw = m_InGame.FindAction("InputDraw", throwIfNotFound: true);
         m_InGame_TouchTwo = m_InGame.FindAction("TouchTwo", throwIfNotFound: true);
         m_InGame_TouchOne = m_InGame.FindAction("TouchOne", throwIfNotFound: true);
@@ -1269,6 +1312,7 @@ public partial class @IAA_SketchFleetsInputs : IInputActionCollection2, IDisposa
     private readonly InputActionMap m_InGame;
     private IInGameActions m_InGameActionsCallbackInterface;
     private readonly InputAction m_InGame_ShipFire;
+    private readonly InputAction m_InGame_ShipFireTwo;
     private readonly InputAction m_InGame_InputDraw;
     private readonly InputAction m_InGame_TouchTwo;
     private readonly InputAction m_InGame_TouchOne;
@@ -1279,6 +1323,7 @@ public partial class @IAA_SketchFleetsInputs : IInputActionCollection2, IDisposa
         private @IAA_SketchFleetsInputs m_Wrapper;
         public InGameActions(@IAA_SketchFleetsInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @ShipFire => m_Wrapper.m_InGame_ShipFire;
+        public InputAction @ShipFireTwo => m_Wrapper.m_InGame_ShipFireTwo;
         public InputAction @InputDraw => m_Wrapper.m_InGame_InputDraw;
         public InputAction @TouchTwo => m_Wrapper.m_InGame_TouchTwo;
         public InputAction @TouchOne => m_Wrapper.m_InGame_TouchOne;
@@ -1296,6 +1341,9 @@ public partial class @IAA_SketchFleetsInputs : IInputActionCollection2, IDisposa
                 @ShipFire.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnShipFire;
                 @ShipFire.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnShipFire;
                 @ShipFire.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnShipFire;
+                @ShipFireTwo.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnShipFireTwo;
+                @ShipFireTwo.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnShipFireTwo;
+                @ShipFireTwo.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnShipFireTwo;
                 @InputDraw.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnInputDraw;
                 @InputDraw.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnInputDraw;
                 @InputDraw.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnInputDraw;
@@ -1318,6 +1366,9 @@ public partial class @IAA_SketchFleetsInputs : IInputActionCollection2, IDisposa
                 @ShipFire.started += instance.OnShipFire;
                 @ShipFire.performed += instance.OnShipFire;
                 @ShipFire.canceled += instance.OnShipFire;
+                @ShipFireTwo.started += instance.OnShipFireTwo;
+                @ShipFireTwo.performed += instance.OnShipFireTwo;
+                @ShipFireTwo.canceled += instance.OnShipFireTwo;
                 @InputDraw.started += instance.OnInputDraw;
                 @InputDraw.performed += instance.OnInputDraw;
                 @InputDraw.canceled += instance.OnInputDraw;
@@ -1404,6 +1455,7 @@ public partial class @IAA_SketchFleetsInputs : IInputActionCollection2, IDisposa
     public interface IInGameActions
     {
         void OnShipFire(InputAction.CallbackContext context);
+        void OnShipFireTwo(InputAction.CallbackContext context);
         void OnInputDraw(InputAction.CallbackContext context);
         void OnTouchTwo(InputAction.CallbackContext context);
         void OnTouchOne(InputAction.CallbackContext context);
