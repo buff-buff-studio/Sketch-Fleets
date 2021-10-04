@@ -17,7 +17,8 @@ namespace SketchFleets
             int i = 1;
             foreach (var version in versionNotes.versionNotes)
             {
-                inputField.text += $"Version: {version.versionNumber} {version.versionType.ToString()}:\n" +
+                string versionName = (version.versionNotesLanguage[0].versionName != "") ? $" - {version.versionNotesLanguage[0].versionName}" : "";
+                inputField.text += $"Version: {version.versionNumber} {version.versionType.ToString()}{versionName}:\n" +
                                    $"Added:\n" +
                                    $"{version.versionNotesLanguage[0].versionAdded}\n \n" +
                                    $"Changed:\n" +
