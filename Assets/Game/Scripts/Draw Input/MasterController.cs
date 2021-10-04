@@ -20,10 +20,14 @@ namespace SketchFleets
         [SerializeField]
         private CyanPathDrawer _cyanPathDrawer;
         [SerializeField]
-        private LineDrawer _lineDrawer;
+        private LineDrawer _lineDrawer;        
+        [SerializeField]
+        private ColorsInventory _colorsInventory;
         
         [SerializeField]
         private GameObject HUD;
+        [SerializeField]
+        private GameObject InventoryHUD;
 
         [SerializeField]
         private RectTransform JoystickL;
@@ -272,8 +276,9 @@ namespace SketchFleets
 
         public void OpenDraw()
         {
-            if (!HUD.activeSelf || _lineDrawer.enemyDeathColor == Color.white) return;
+            if (!HUD.activeSelf || _colorsInventory.drawColor == Color.black) return;
             HUD.SetActive(false);
+            InventoryHUD.SetActive(true);
             _lineDrawer.gameObject.SetActive(true);
             _lineDrawer.BulletTime(.5f);
         }

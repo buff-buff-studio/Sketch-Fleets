@@ -36,8 +36,9 @@ namespace SketchFleets.Entities
 
         [SerializeField]
         private SpawnableShipAttributes cyanShipAttributes;
-        [Tooltip("The color of the last enemy killed")]
-        public ColorReference enemyDeathColor;
+        
+        [SerializeField]
+        private ColorsInventory colorsInventory;
 
         private List<ItemEffect> activeEffects;
         private List<StatusEffect> activeSpawnEffects;
@@ -83,7 +84,6 @@ namespace SketchFleets.Entities
         protected override void Start()
         {
             base.Start();
-            enemyDeathColor.Value = Color.white;
             // Caches necessary components
             mainCamera = Camera.main;
             regenerateRoutine = RegenerateShips();
@@ -257,8 +257,8 @@ namespace SketchFleets.Entities
             // Spawns the ship
             PoolMember spawn = PoolManager.Instance.Request(shipType.Prefab);
             spawn.Emerge(shipSpawnPoint.position, Quaternion.identity);
-            spawn.GetComponent<SpriteRenderer>().material.SetColor(redMultiplier, enemyDeathColor);
-            enemyDeathColor.Value = Color.white;
+            spawn.GetComponent<SpriteRenderer>().material.SetColor(redMultiplier, colorsInventory.drawColor);
+            colorsInventory.UseColor();
 
             SpawnedShip shipController = spawn.GetComponent<SpawnedShip>();
 
@@ -508,10 +508,10 @@ namespace SketchFleets.Entities
         
         private void SetCrystalColor()
         {
-            if (enemyDeathColor == Color.white)
+            if (colorsInventory.drawColor == Color.black)
                 spriteRenderer.material.SetColor(blueMultiplier, Color.black);
             else
-                spriteRenderer.material.SetColor(blueMultiplier, enemyDeathColor);
+                spriteRenderer.material.SetColor(blueMultiplier, colorsInventory.drawColor);
         }
 
         /// <summary>
