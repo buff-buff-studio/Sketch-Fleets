@@ -17,7 +17,7 @@ MonoBehaviour:
     versionType: 3
     versionNotesLanguage:
     - versionNotesLanguage: ptBr
-      versionName: "Atualiza\xE7\xE3o do Inventario de cor "
+      versionName: "Atualiza\xE7\xE3o do Inventario de cor"
       versionAdded: "- Inventario de Cores:\nAgora voc\xEA pode estocar as cores
         que voc\xEA absorve, um limite de 3.\nSe voc\xEA estiver com os 3 slots de
         cores a proxima que voc\xEA for absorver ir\xE1 consumir a cor mais antiga
@@ -110,9 +110,10 @@ MonoBehaviour:
         o Ray Tracing, ent\xE3o algumas configura\xE7\xF5es sairam e outras entraram.\nAdicionados:
         \nTipo de Controle\nInput Ray\nRemovidos:\nResolu\xE7\xE3o de tela\nV-Sync"
       versionRemoved: Nenhum
-      versionBugFix: '- Lag em alguns celulares:
+      versionBugFix: '- BUG-01UI: Lag em alguns celulares:
 
-        Trocado de MONO para IL2CPP'
+        Trocado de MONO
+        para IL2CPP'
     - versionNotesLanguage: enUS
       versionName: 
       versionAdded: '- Gesture Inputs:
@@ -158,6 +159,7 @@ MonoBehaviour:
         anymore, so some settings are gone and others are in.\r\nAdded:\r\nControl
         Type\r\nInput Ray\r\nRemoved:\r\nScreen resolution\r\nV-Sync"
       versionRemoved: None
-      versionBugFix: '- Lag on some cell phones:
+      versionBugFix: '- BUG-01GI: Lag on some cell phones:
 
-        Switched from MONO to IL2CPP'
+        Switched from
+        MONO to IL2CPP'
