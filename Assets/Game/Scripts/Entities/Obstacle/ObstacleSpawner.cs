@@ -149,7 +149,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (obstacle.IsStatic)
         {
-            spawnRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+            spawnRotation = Quaternion.Euler(0f, Random.Range(-13f, 13.1f), Random.Range(0f, 360f));
         }
 
         Instantiate(obstacle.Prefab, spawnPoint, spawnRotation);

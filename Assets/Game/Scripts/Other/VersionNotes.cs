@@ -26,7 +26,7 @@ public struct VersionNews
     [Header("Version Name")]
     public string versionNumber;
     public versionTypes versionType;
-    
+
     [Header("Version Notes"),Space(15f)]
     public VersionNewsText[] versionNotesLanguage;
 }
@@ -36,6 +36,9 @@ public struct VersionNewsText
 {
     [TextArea(0,1)]
     public string versionNotesLanguage;
+    [TextArea(0,1)]
+    [Tooltip("If the version does not contain a name, leave it empty.")]
+    public string versionName;
     [TextArea(1,100)]
     public string versionAdded;
     [TextArea(1,100)]
