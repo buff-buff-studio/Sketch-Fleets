@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Sketch News
   m_EditorClassIdentifier: Assembly-CSharp:SketchFleets:UpdateNotesSO
   versionNotes:
+  - versionNumber: 1.5.5
+    versionType: 3
+    versionNotesLanguage:
+    - versionNotesLanguage: ptBr
+      versionAdded: "- Inventario de Cores:\nAgora voc\xEA pode estocar as cores
+        que voc\xEA absorve, um limite de 3.\nSe voc\xEA estiver com os 3 slots de
+        cores a proxima que voc\xEA for absorver ir\xE1 consumir a cor mais antiga
+        do seu inventario."
+      versionChanged: Nenhum
+      versionRemoved: Nenhum
+      versionBugFix: "- Inventario de itens n\xE3o aparece:\nBug do inventario n\xE3o
+        aparecer na aba de sumonar as naves foi corrigido."
   - versionNumber: 1.5.0
     versionType: 3
     versionNotesLanguage:
@@ -140,5 +152,4 @@ MonoBehaviour:
       versionRemoved: None
       versionBugFix: '- Lag on some cell phones:
 
-        Switched from MONO to
-        IL2CPP'
+        Switched from MONO to IL2CPP'
