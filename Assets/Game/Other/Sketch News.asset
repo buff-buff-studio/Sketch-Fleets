@@ -17,23 +17,28 @@ MonoBehaviour:
     versionType: 3
     versionNotesLanguage:
     - versionNotesLanguage: ptBr
+      versionName: "Atualiza\xE7\xE3o do Inventario de cor "
       versionAdded: "- Inventario de Cores:\nAgora voc\xEA pode estocar as cores
         que voc\xEA absorve, um limite de 3.\nSe voc\xEA estiver com os 3 slots de
         cores a proxima que voc\xEA for absorver ir\xE1 consumir a cor mais antiga
         do seu inventario."
       versionChanged: Nenhum
       versionRemoved: Nenhum
-      versionBugFix: "- Inventario de itens n\xE3o aparece:\nBug do inventario n\xE3o
-        aparecer na aba de sumonar as naves foi corrigido."
+      versionBugFix: "- BUG-01UI: Inventario de itens n\xE3o aparece:\nBug do inventario
+        n\xE3o aparecer na aba de sumonar as naves foi corrigido.\n- BUG-01M: Parallax
+        do Menu:\nBug que fazia com que o parallax do menu ficasse sendo cortado.\n-
+        BUG-01GP: Obstaculos e Itens spawnando no meio da tela:\nCaixas de grafites
+        e borrachas apareciam no meio na tela do player."
   - versionNumber: 1.5.0
     versionType: 3
     versionNotesLanguage:
     - versionNotesLanguage: ptBr
-      versionAdded: "- The Sketch News (Notas de Atualiza\xE7\xE3o)\n- Ship Color
-        System (WIP):\nAgora para voc\xEA sumonar uma nave voc\xEA deve conter uma
-        cor em seu inventario.\nCores se obtem ao matar naves inimigas.\nSuas naves
-        agora nascem com a cor do seu inventario.\n- Novo sistema de particulas para
-        as naves aliadas."
+      versionName: "Atualiza\xE7\xE3o das Aliadas Coloridas"
+      versionAdded: "- The Sketch News (Notas de Atualiza\xE7\xE3o)\n- Sistema de
+        Cores das Naves (WIP):\nAgora para voc\xEA sumonar uma nave voc\xEA deve
+        conter uma cor em seu inventario.\nCores se obtem ao matar naves inimigas.\nSuas
+        naves agora nascem com a cor do seu inventario.\n- Novo sistema de particulas
+        para as naves aliadas."
       versionChanged: "- Trocado o input de jogar a nave Explosiva:\nAntes: Clicar
         em um bot\xE3o.\nAgora: Clique 2 vezes na mira para jogar a nave.\nAviso
         I: O bot\xE3o continua no modo Touch & Joystick.\nAviso II: Caso estiver
@@ -43,6 +48,7 @@ MonoBehaviour:
       versionRemoved: Nenhum
       versionBugFix: Nenhum
     - versionNotesLanguage: enUS
+      versionName: Color Allies Update
       versionAdded: '- The Sketch News (Update Notes)
 
         - Ship Color System
@@ -86,6 +92,7 @@ MonoBehaviour:
     versionType: 3
     versionNotesLanguage:
     - versionNotesLanguage: ptBr
+      versionName: 
       versionAdded: "- Inputs Gestuais:\nSe moviemente e mire com os seus dedos de
         cheetos!\nClicar para atirar? Pff! Agora voc\xEA gasta bala a cada frame!\nPrefere
         Joystick? Tudo bem, n\xF3s deixamos.\n- Inputs de desenho:\nLiberte o seu
@@ -107,6 +114,7 @@ MonoBehaviour:
 
         Trocado de MONO para IL2CPP'
     - versionNotesLanguage: enUS
+      versionName: 
       versionAdded: '- Gesture Inputs:
 
         Move and aim with your cheeto fingers!
