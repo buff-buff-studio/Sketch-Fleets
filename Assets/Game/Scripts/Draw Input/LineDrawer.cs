@@ -21,8 +21,8 @@ public class LineDrawer : MonoBehaviour
     private GradientColorKey[] colorKey = new GradientColorKey[2];
     private GradientAlphaKey[] alphaKeys = new GradientAlphaKey[2];
     
-    [Tooltip("The color of the last enemy killed")]
-    public ColorReference enemyDeathColor;
+    [SerializeField]
+    private ColorsInventory colorsInventory;
 
     [SerializeField]
     private float linePointsMinDist;
@@ -63,7 +63,7 @@ public class LineDrawer : MonoBehaviour
         playerControl = new IAA_SketchFleetsInputs();
         playerControl.Enable();
         
-        Debug.Log(enemyDeathColor.ToString());
+        Debug.Log(colorsInventory.drawColor.ToString());
     }
 
     private void OnDisable()
@@ -164,8 +164,8 @@ public class LineDrawer : MonoBehaviour
     {
         inputTrail.transform.position = mousePos;
         
-        colorKey[0].color = enemyDeathColor;
-        colorKey[1].color = enemyDeathColor;
+        colorKey[0].color = colorsInventory.drawColor;
+        colorKey[1].color = colorsInventory.drawColor;
         colorKey[0].time = 0f;
         colorKey[1].time = 1f;
         alphaKeys[0].alpha = 1f;
