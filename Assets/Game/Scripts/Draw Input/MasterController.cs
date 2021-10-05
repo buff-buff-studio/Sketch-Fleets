@@ -75,11 +75,12 @@ namespace SketchFleets
             else if (controlsMode == 2)
             {
                 JoystickL.gameObject.SetActive(false);
-                fireShipButton.SetActive(false);
+                
             }
             else if (controlsMode == 3)
             {
                 JoystickR.gameObject.SetActive(false);
+                fireShipButton.SetActive(false);
             }
         }
 
