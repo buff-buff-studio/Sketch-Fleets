@@ -7,7 +7,7 @@ using TMPro;
 using SketchFleets.SettingsSystem;
 
 namespace SketchFleets
-{   
+{
     #region Utils
     public class OptionData : TMP_Dropdown.OptionData
     {
@@ -16,11 +16,11 @@ namespace SketchFleets
         #endregion
 
         #region Properties
-        public string value { get => _value;}
+        public string value { get => _value; }
         #endregion
 
         #region Constructors
-        public OptionData(string name,string value) : base(name)
+        public OptionData(string name, string value) : base(name)
         {
             this._value = value;
         }
@@ -44,7 +44,7 @@ namespace SketchFleets
 
         private const int WINDOWS_MODE = 6;
         private const int VSYNC = 7;
-        
+
         private const int TOUCH_RAY = 8;
         private const int DEBUG_MODE = 9;
         
@@ -54,7 +54,7 @@ namespace SketchFleets
 
         #region Public Fields
         public TMP_Dropdown languageDropdown;
-        public TMP_Dropdown graphicsQuality;
+        public LocalizableSelector graphicsQuality;
         public TMP_Dropdown resolutionDropdown;
         public TMP_Dropdown windowsModeDropdown;
         public TMP_Dropdown controlsModeDropdown;
@@ -66,24 +66,24 @@ namespace SketchFleets
         public Slider volumeMusic;
         public Slider volumeSfx;
         #endregion
-        
+
         #region Unity Callbacks
-        private void OnEnable() 
+        private void OnEnable()
         {
             #region Language
-            if(languageDropdown != null)
+            if (languageDropdown != null)
             {
                 languageDropdown.ClearOptions();
                 List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
                 int value = 0;
                 int i = 0;
-                string lang = Settings.Get<string>("language");
-                foreach(Language s in LanguageManager.GetAllLanguages())
+                string lang = Settings.GetObject().language;
+                foreach (Language s in LanguageManager.GetAllLanguages())
                 {
-                    data.Add(new OptionData(s.Name,s.Code));
-                    if(s.Code == lang) 
+                    data.Add(new OptionData(s.Name, s.Code));
+                    if (s.Code == lang)
                         value = i;
-                    i ++;
+                    i++;
                 }
                 languageDropdown.AddOptions(data);
                 languageDropdown.value = value;
@@ -91,10 +91,10 @@ namespace SketchFleets
             #endregion
 
             #region Graphics Quality
-            if(graphicsQuality != null)
+            if (graphicsQuality != null)
             {
-                graphicsQuality.GetComponent<LocalizableDropdown>().UpdateLocalization();
-                graphicsQuality.value = Settings.Get<int>("graphicsQuality");
+                graphicsQuality.UpdateLocalization();
+                graphicsQuality.value = Settings.GetObject().graphicsQuality;
             }
             #endregion
 
@@ -114,52 +114,42 @@ namespace SketchFleets
             #endregion
 
             #region Volume
-            volumeMaster.value = Settings.Get<float>("volume_master");
-            volumeMusic.value = Settings.Get<float>("volume_music");
-            volumeSfx.value = Settings.Get<float>("volume_sfx");
+            volumeMaster.value = Settings.GetObject().volumeMaster;
+            volumeMusic.value = Settings.GetObject().volumeMusic;
+            volumeSfx.value = Settings.GetObject().volumeSfx;
             #endregion
-            
+
             #region Gameplay
-            if(controlsModeDropdown != null)
-            {
-                //controlsModeDropdown.GetComponent<LocalizableDropdown>().UpdateLocalization();
-                controlsModeDropdown.value = PlayerPrefs.GetInt("controlsMode");
-            }
-            
-            if(eventsModeDropdown != null)
-            {
-                //eventsModeDropdown.GetComponent<LocalizableDropdown>().UpdateLocalization();
-                eventsModeDropdown.value = PlayerPrefs.GetInt("eventsMode");
-            }
-            
-            if(touchRayToggle != null)
-                touchRayToggle.isOn = Settings.Get<bool>("touchRay");
-            
-            if(debugModeToggle != null)
-                debugModeToggle.isOn = Settings.Get<bool>("debugMode");
+            if (touchRayToggle != null)
+                touchRayToggle.isOn = Settings.GetObject().touchRay;
+            if (debugModeToggle != null)
+                debugModeToggle.isOn = Settings.GetObject().debugMode;
             #endregion
 
             //FullScreenMode.Windowed
         }
+
 
         public void OnChangeValue(int dropdownId)
         {
             switch (dropdownId)
             {
                 case LANGUAGE:
-                {
-                    string language = ((OptionData)languageDropdown.options[languageDropdown.value]).value;
-                    LanguageManager.ChangeLanguage(language);
-                    Settings.Set<string>("language",language);
-                }
-                break;
+                    {
+                        string language = ((OptionData)languageDropdown.options[languageDropdown.value]).value;
+                        LanguageManager.ChangeLanguage(language);
+                        Settings.GetObject().language = language;
+                        Settings.Save();
+                    }
+                    break;
 
                 case GRAPHICS_QUALITY:
-                {
-                    QualitySettings.SetQualityLevel(graphicsQuality.value);
-                    Settings.Set<string>("graphicsQuality",graphicsQuality.value);
-                }
-                break;
+                    {
+                        QualitySettings.SetQualityLevel(graphicsQuality.value);
+                        Settings.GetObject().graphicsQuality = graphicsQuality.value;
+                        Settings.Save();
+                    }
+                    break;
 
                 /*
                 case RESOLUTION:
@@ -182,52 +172,42 @@ namespace SketchFleets
                 break;
                 */
                 case VOLUME_MASTER:
-                {
-                    Settings.Set<string>("volume_master",volumeMaster.value);
-                    SettingsManager.SetVolume(SettingsManager.instance.volumeMasterParam,SettingsManager.instance.volumeMasterMixer,volumeMaster.value);
-                }
-                break;
+                    {
+                        Settings.GetObject().volumeMaster = volumeMaster.value;
+                        SettingsManager.SetVolume(SettingsManager.instance.volumeMasterParam, SettingsManager.instance.volumeMasterMixer, volumeMaster.value);
+                        Settings.Save();
+                    }
+                    break;
 
                 case VOLUME_MUSIC:
-                {
-                    Settings.Set<string>("volume_music",volumeMusic.value);
-                    SettingsManager.SetVolume(SettingsManager.instance.volumeMusicParam,SettingsManager.instance.volumeMusicMixer,volumeMusic.value);
-                }
-                break;
+                    {
+                        Settings.GetObject().volumeMusic = volumeMusic.value;
+                        SettingsManager.SetVolume(SettingsManager.instance.volumeMusicParam, SettingsManager.instance.volumeMusicMixer, volumeMusic.value);
+                        Settings.Save();
+                    }
+                    break;
 
                 case VOLUME_SFX:
-                {
-                    Settings.Set<string>("volume_sfx",volumeSfx.value);
-                    SettingsManager.SetVolume(SettingsManager.instance.volumeSfxParam,SettingsManager.instance.volumeSfxMixer,volumeSfx.value);
-                }
-                break;
-                
-                case CONTROLS_MODE:
-                {
-                    Settings.Set<int>("controlsMode",controlsModeDropdown.value);
-                    PlayerPrefs.SetInt("controlsMode",controlsModeDropdown.value);
-                } 
-                break;
-                
-                case EVENTS_MODE:
-                {
-                    Settings.Set<int>("eventsMode",eventsModeDropdown.value);
-                    PlayerPrefs.SetInt("eventsMode",eventsModeDropdown.value);
-                } 
-                break;
-                
+                    {
+                        Settings.GetObject().volumeSfx = volumeSfx.value;
+                        SettingsManager.SetVolume(SettingsManager.instance.volumeSfxParam, SettingsManager.instance.volumeSfxMixer, volumeSfx.value);
+                        Settings.Save();
+                    }
+                    break;
+
                 case TOUCH_RAY:
-                {
-                    Settings.Set<bool>("touchRay",touchRayToggle.isOn);
-                    PlayerPrefs.SetInt("touchRay",touchRayToggle.isOn.GetHashCode());
-                } 
-                break;
-                
+                    {
+                        Settings.GetObject().touchRay = touchRayToggle.isOn;
+                        Settings.Save();
+                    }
+                    break;
+
                 case DEBUG_MODE:
-                {
-                    PlayerPrefs.SetInt("debugMode",debugModeToggle.isOn.GetHashCode());
-                }
-                break;
+                    {
+                        Settings.GetObject().debugMode = debugModeToggle.isOn;
+                        Settings.Save();
+                    }
+                    break;
             }
         }
         #endregion

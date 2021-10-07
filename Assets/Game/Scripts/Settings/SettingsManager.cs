@@ -35,6 +35,7 @@ namespace SketchFleets.SettingsSystem
         {
             instance = this;
             //Default settings
+            /*
             Settings.WithDefault<string>("language","enUS");
             Settings.WithDefault<int>("graphicsQuality",2);
             Settings.WithDefault<int>("resolution",1);
@@ -42,20 +43,20 @@ namespace SketchFleets.SettingsSystem
             Settings.WithDefault<float>("volume_music",1f);
             Settings.WithDefault<float>("volume_sfx",1f);
             Settings.WithDefault<bool>("vsync",true);
+            */
 
             Settings.Load(this,() => {
                 //Resolution
-                SetResolution(Settings.Get<int>("resolution"));
+                SetResolution(Settings.GetObject().resolution);
                 //Volumes
-                SetVolume(volumeMasterParam,volumeMasterMixer,Settings.Get<float>("volume_master"));
-                SetVolume(volumeMusicParam,volumeMusicMixer,Settings.Get<float>("volume_music"));
-                SetVolume(volumeSfxParam,volumeSfxMixer,Settings.Get<float>("volume_sfx"));
+                SetVolume(volumeMasterParam,volumeMasterMixer,Settings.GetObject().volumeMaster);
+                SetVolume(volumeMusicParam,volumeMusicMixer,Settings.GetObject().volumeMusic);
+                SetVolume(volumeSfxParam,volumeSfxMixer,Settings.GetObject().volumeSfx);
                 StartCoroutine(WaitToLoadLanguage());
 
                 if(menuMusicSource != null)
                     if(menuMusicSource.isPlaying)
                     {
-                        
                         menuMusicSource.Stop();
                         menuMusicSource.Play();
                     }
@@ -81,7 +82,7 @@ namespace SketchFleets.SettingsSystem
                 yield return new WaitForEndOfFrame();
 
             //Change language
-            LanguageManager.ChangeLanguage(Settings.Get<string>("language"));
+            LanguageManager.ChangeLanguage(Settings.GetObject().language);
         }
 
         public static void SetVolume(string param,AudioMixer mixer,float value)
@@ -91,13 +92,13 @@ namespace SketchFleets.SettingsSystem
 
         public static void SetResolution(int resolution)
         {
-            Settings.Set<int>("resolution",resolution);
+            Settings.GetObject().resolution = resolution;
             RefreshWindow();
         }
 
         public static void SetWindowMode(int mode)
         {
-            Settings.Set<int>("winMode",mode);
+            Settings.GetObject().winMode = mode;
             RefreshWindow();
         }
 

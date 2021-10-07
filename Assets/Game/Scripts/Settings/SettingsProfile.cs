@@ -4,10 +4,27 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
-using SketchFleets.SaveSystem;
 
 namespace SketchFleets.SettingsSystem
 {
+    [System.Serializable]
+    public class SettingsObject
+    {
+        public int graphicsQuality = 2;
+
+        public int resolution = 1;
+        public int winMode = 0;
+
+        public float volumeMaster = 0.5f;
+        public float volumeMusic = 1;
+        public float volumeSfx = 1;
+
+        public bool touchRay;
+        public bool debugMode;
+
+        public String language = "enUS";
+    }
+
     #region Delegates
     public delegate void OnParameterChange();
     #endregion
@@ -18,16 +35,16 @@ namespace SketchFleets.SettingsSystem
     public class Settings
     {
         #region Static Fields
-        private static Dictionary<string,object> defaultFields = new Dictionary<string, object>();
-        private static readonly string FilePath = Application.persistentDataPath + "/" + "settings.data"; 
+        private static Dictionary<string, object> defaultFields = new Dictionary<string, object>();
+        private static readonly string FilePath = Application.persistentDataPath + "/" + "settings.data";
         private static bool loaded = false;
-        private static Dictionary<string,OnParameterChange> eventHandlers = new Dictionary<string, OnParameterChange>();
+        //private static Dictionary<string, OnParameterChange> eventHandlers = new Dictionary<string, OnParameterChange>();
         private static bool runningThread = false;
         private static MonoBehaviour behaviour;
         #endregion
 
         #region Private Fields
-        private static Save save;
+        private static SettingsObject settingsObject;
         #endregion
 
         #region Saving/Loading Handler
@@ -36,33 +53,45 @@ namespace SketchFleets.SettingsSystem
         #endregion
 
         #region Default
+        /*
         /// <summary>
         /// Set a default value
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <typeparam name="T"></typeparam>
-        public static void WithDefault<T>(string key,T value)
+        public static void WithDefault<T>(string key, T value)
         {
             defaultFields[key] = value;
 
-            if(eventHandlers.ContainsKey(key))
+            if (eventHandlers.ContainsKey(key))
                 eventHandlers[key]();
+        }
+        */
+
+        public static void SetBehaviour(MonoBehaviour behaviour)
+        {
+            Settings.behaviour = behaviour;
         }
         #endregion
 
         #region Public Methods
+        public static SettingsObject GetObject()
+        {
+            return settingsObject;
+        }
+
         /// <summary>
         /// Load all settings value
         /// </summary>
         /// <param name="behaviour"></param>
         /// <param name="callback"></param>
-        public static void Load(MonoBehaviour behaviour,Action callback)
+        public static void Load(MonoBehaviour behaviour, Action callback)
         {
             //Behaviour
             Settings.behaviour = behaviour;
 
-            if(loaded)
+            if (loaded)
             {
                 callback();
                 return;
@@ -70,62 +99,16 @@ namespace SketchFleets.SettingsSystem
             else
             {
                 //Load and callback
-                if(System.IO.File.Exists(FilePath))
+                if (System.IO.File.Exists(FilePath))
                 {
                     behaviour.StartCoroutine(_Load(callback));
                 }
                 else
                 {
-                    save = new Save();
+                    settingsObject = new SettingsObject();
                     callback();
                 }
             }
-        }
-
-        /// <summary>
-        /// Get parameter value
-        /// </summary>
-        /// <param name="key"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static T Get<T>(string key)
-        {     
-            if(loaded)
-            {
-                if(save.HasKey(key))
-                    return (T) save[key];
-            }
-                
-            if(defaultFields.ContainsKey(key))
-                return (T) defaultFields[key];
-
-            return default(T);
-        }
-
-        /// <summary>
-        /// Set a parameter value
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <typeparam name="T"></typeparam>
-        public static void Set<T>(string key,object value)
-        {
-            save[key] = value;
-
-            if(eventHandlers.ContainsKey(key))
-                eventHandlers[key]();
-
-            behaviour.StartCoroutine(_Save());
-        }
-
-        /// <summary>
-        /// Check if save contains a key
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public static bool Contains(string key)
-        {
-            return save.HasKey(key);
         }
 
         /// <summary>
@@ -135,6 +118,10 @@ namespace SketchFleets.SettingsSystem
         /// <typeparam name="T"></typeparam>
         public static void ResetToDefault<T>(string key)
         {
+            settingsObject = new SettingsObject();
+            behaviour.StartCoroutine(_Save());
+
+            /*
             List<PairPointer> pointers = new List<PairPointer>(save);
         
             save.Clear();
@@ -145,18 +132,25 @@ namespace SketchFleets.SettingsSystem
                 if(eventHandlers.ContainsKey(pair.Key))
                     eventHandlers[pair.Key]();
             }
+            */
+        }
+
+        public static void Save()
+        {
+            behaviour.StartCoroutine(_Save());
         }
         #endregion
 
         #region Handlers
+        /*
         /// <summary>
         /// Add parameter change value
         /// </summary>
         /// <param name="key"></param>
         /// <param name="handler"></param>
-        public static void AddHandler(string key,OnParameterChange handler)
+        public static void AddHandler(string key, OnParameterChange handler)
         {
-            if(eventHandlers.ContainsKey(key))
+            if (eventHandlers.ContainsKey(key))
                 eventHandlers[key] = eventHandlers[key] + handler;
             else
                 eventHandlers[key] = handler;
@@ -170,7 +164,7 @@ namespace SketchFleets.SettingsSystem
         {
             eventHandlers.Remove(key);
         }
-
+    
         /// <summary>
         /// Clear all handler
         /// </summary>
@@ -178,13 +172,14 @@ namespace SketchFleets.SettingsSystem
         {
             eventHandlers.Clear();
         }
+        */
 
         /// <summary>
         /// Set save and load handlers
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        public static void SetSaveLoadHandlers(Action start,Action end)
+        public static void SetSaveLoadHandlers(Action start, Action end)
         {
             SavingOrLoadingHandler = start;
             SavedOrLoadedHandler = end;
@@ -194,60 +189,64 @@ namespace SketchFleets.SettingsSystem
         #region Threads
         public static IEnumerator _Load(Action callback)
         {
-            if(SavingOrLoadingHandler != null)
+            if (SavingOrLoadingHandler != null)
                 SavingOrLoadingHandler();
 
-            while(runningThread)
+            while (runningThread)
                 yield return new WaitForEndOfFrame();
 
-            var thread = new System.Threading.Thread(() => {
-                save = Save.FromBytes(File.ReadAllBytes(FilePath),EditMode.Fixed);
+            var thread = new System.Threading.Thread(() =>
+            {
+                settingsObject = JsonUtility.FromJson<SettingsObject>(File.ReadAllText(FilePath));
 
-                runningThread = false;              
+                runningThread = false;
             });
-            
+
             runningThread = true;
             thread.Start();
 
-            while(runningThread)
+            while (runningThread)
                 yield return new WaitForEndOfFrame();
 
             loaded = true;
 
-            if(callback != null)
+            if (callback != null)
                 callback();
 
             //Update save
+            /*
             foreach(PairPointer pair in save)
             {
                 if(eventHandlers.ContainsKey(pair.Key))
                     eventHandlers[pair.Key]();
             }
+            */
 
-            if(SavedOrLoadedHandler != null)
+            if (SavedOrLoadedHandler != null)
                 SavedOrLoadedHandler();
         }
 
         public static IEnumerator _Save()
         {
-            if(SavingOrLoadingHandler != null)
+            if (SavingOrLoadingHandler != null)
                 SavingOrLoadingHandler();
 
-            while(runningThread)
+            while (runningThread)
                 yield return new WaitForEndOfFrame();
 
-            var thread = new System.Threading.Thread(() => {
-                File.WriteAllBytes(FilePath,save.ToBytes());
+            var thread = new System.Threading.Thread(() =>
+            {
+                File.WriteAllText(FilePath, JsonUtility.ToJson(settingsObject));
                 runningThread = false;
             });
-            
+
             runningThread = true;
             thread.Start();
 
-            while(runningThread)
+            while (runningThread)
                 yield return new WaitForEndOfFrame();
 
-            if(SavedOrLoadedHandler != null)
+            if (SavedOrLoadedHandler != null)
                 SavedOrLoadedHandler();
         }
         #endregion

@@ -16,7 +16,7 @@ namespace SketchFleets
         void Start()
         {
             style.normal.textColor = Color.black;
-            style.fontSize = (int)(15*((float)Screen.currentResolution.width/1000));
+            style.fontSize = (int)(15 * ((float)Screen.currentResolution.width / 1000));
         }
 
         public void UpdateDebug(string text, int n)
@@ -28,7 +28,7 @@ namespace SketchFleets
             catch
             {
                 DebugAdd(n);
-                debugText[n-1] = text;
+                debugText[n - 1] = text;
             }
         }
 
@@ -42,7 +42,7 @@ namespace SketchFleets
 
         void OnGUI()
         {
-            if(PlayerPrefs.GetInt("debugMode") == 0) return;
+            if (!Settings.GetObject().debugMode) return;
 
             if (SceneManager.GetActiveScene().name == "Menu")
             {
@@ -51,13 +51,13 @@ namespace SketchFleets
                     $"Device: {SystemInfo.deviceModel} / {SystemInfo.operatingSystem}\n" +
                     $"Screen: {Screen.currentResolution}\n" +
                     $"CPU: {SystemInfo.processorFrequency}Mhz - {SystemInfo.processorType}\n" +
-                    $"RAM: {SystemInfo.systemMemorySize/1024}Gb\n" +
+                    $"RAM: {SystemInfo.systemMemorySize / 1024}Gb\n" +
                     $"GPU: {SystemInfo.graphicsDeviceName} / {SystemInfo.graphicsDeviceType} / {SystemInfo.graphicsMemorySize / 1024}Gb\n" +
-                    $"Battery: {(int)(SystemInfo.batteryLevel*100)}% - {SystemInfo.batteryStatus}",style);
+                    $"Battery: {(int)(SystemInfo.batteryLevel * 100)}% - {SystemInfo.batteryStatus}", style);
             }
             for (int i = 0; i < debugText.Count; i++)
             {
-                GUI.Label(new Rect(10, 50+(i*style.fontSize)+10, 512, 50), debugText[i], style);
+                GUI.Label(new Rect(10, 50 + (i * style.fontSize) + 10, 512, 50), debugText[i], style);
             }
         }
     }
