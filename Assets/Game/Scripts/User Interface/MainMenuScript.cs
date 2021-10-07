@@ -14,7 +14,6 @@ public class MainMenuScript : MonoBehaviour
     /// </summary>
     private void Start() 
     {
-       
         buttonContinue.interactable = false;
         MapLevelInteraction.HasGameToContinue(this,(has) => {
             buttonContinue.interactable = has;

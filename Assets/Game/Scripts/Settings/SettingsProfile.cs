@@ -36,7 +36,7 @@ namespace SketchFleets.SettingsSystem
     {
         #region Static Fields
         private static Dictionary<string, object> defaultFields = new Dictionary<string, object>();
-        private static readonly string FilePath = Application.persistentDataPath + "/" + "settings.data";
+        private static readonly string FilePath = Application.persistentDataPath + "/data/" + "playersettings.data";
         private static bool loaded = false;
         //private static Dictionary<string, OnParameterChange> eventHandlers = new Dictionary<string, OnParameterChange>();
         private static bool runningThread = false;
@@ -91,6 +91,8 @@ namespace SketchFleets.SettingsSystem
             //Behaviour
             Settings.behaviour = behaviour;
 
+            Debug.Log("Loading: " + loaded);
+
             if (loaded)
             {
                 callback();
@@ -98,6 +100,10 @@ namespace SketchFleets.SettingsSystem
             }
             else
             {
+                if (!Directory.Exists(Application.persistentDataPath + "/data"))
+                    Directory.CreateDirectory(Application.persistentDataPath + "/data");
+
+                Debug.Log(FilePath + " " + System.IO.File.Exists(FilePath));
                 //Load and callback
                 if (System.IO.File.Exists(FilePath))
                 {

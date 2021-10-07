@@ -10,7 +10,7 @@ namespace SketchFleets.ProfileSystem
     public class Profile
     {
         #region Private Fields
-        private static readonly string FilePath = Application.persistentDataPath + "/" + "save.data";
+        private static readonly string FilePath = Application.persistentDataPath + "/data/" + "save.data";
         private static ProfileData data;
         private static bool runningThread = false;
         private static MonoBehaviour behaviour;
@@ -60,6 +60,11 @@ namespace SketchFleets.ProfileSystem
         /// <param name="callback"></param>
         public static void LoadProfile(System.Action<ProfileData> callback)
         {
+            Debug.Log("File: " + FilePath + " " + System.IO.File.Exists(FilePath));
+
+            if (!Directory.Exists(Application.persistentDataPath + "/data"))
+                Directory.CreateDirectory(Application.persistentDataPath + "/data");
+
             if(System.IO.File.Exists(FilePath))
             {
                 behaviour.StartCoroutine(_Load(callback));
@@ -90,12 +95,11 @@ namespace SketchFleets.ProfileSystem
         /// <returns></returns>
         public static IEnumerator _Load(System.Action<ProfileData> callback)
         {
-            Debug.Log("Loading!");
+            Debug.Log("Loading save!");
             while(runningThread)
                 yield return new WaitForEndOfFrame();
-
+            Debug.Log("SAVE Loading");
             var thread = new System.Threading.Thread(() => {       
-                 Debug.Log("Loaded!");
                 GetData().saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(FilePath));
                 runningThread = false;
             });
@@ -105,6 +109,8 @@ namespace SketchFleets.ProfileSystem
 
             while(runningThread)
                 yield return new WaitForSeconds(0.05f);
+
+            Debug.Log("lOADED SAVE! " + File.ReadAllText(FilePath) + " " + GetData().saveObject.mapData.seed);
 
             if(callback != null)
                 callback(GetData());

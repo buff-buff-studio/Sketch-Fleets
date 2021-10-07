@@ -222,7 +222,8 @@ public class MapLevelInteraction : MonoBehaviour
     {
         SketchFleets.ProfileSystem.Profile.LoadProfile((data) =>
         {
-            callback(SketchFleets.ProfileSystem.Profile.GetData().Map.seed > -1);
+            Debug.Log("aa: " + SketchFleets.ProfileSystem.Profile.GetData().Map.seed);
+            callback(SketchFleets.ProfileSystem.Profile.GetData().Map.seed != -1);
         });
     }
     #endregion
