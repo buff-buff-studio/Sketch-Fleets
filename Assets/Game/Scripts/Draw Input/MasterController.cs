@@ -183,7 +183,7 @@ namespace SketchFleets
         private Vector2 TouchOneRadius()
         {
             if(Settings.GetObject().touchRay)
-                return playerControl.Player.TouchOne.ReadValue<Vector2>();
+                return playerControl.Player.Move.ReadValue<Vector2>();
             else
                 return Vector2.one*.04f;
         }
@@ -191,7 +191,7 @@ namespace SketchFleets
         private Vector2 TouchTwoRadius()
         {
             if(Settings.GetObject().touchRay)
-                return playerControl.Player.TouchOne.ReadValue<Vector2>();
+                return playerControl.Player.Look.ReadValue<Vector2>();
             else
                 return Vector2.one*.04f;
         }
