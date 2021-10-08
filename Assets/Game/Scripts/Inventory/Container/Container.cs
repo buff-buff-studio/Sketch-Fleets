@@ -86,6 +86,7 @@ namespace SketchFleets.Inventory
 
         protected virtual void Update() 
         {
+            /*
             //Check mouse over slot
             PointerEventData ev = new PointerEventData(EventSystem.current);
             ev.position = Mouse.current.position.ReadValue();
@@ -172,6 +173,7 @@ namespace SketchFleets.Inventory
                     heldItem.hovering = false;
                 heldItem = null;
             }
+            */
         }
 
         private int lastHoveredSlot = -1;

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using SketchFleets.ProfileSystem;
 
 /// <summary>
 /// Holds interaction between map and level
@@ -174,29 +175,23 @@ public class MapLevelInteraction : MonoBehaviour
     /// <param name="callback"></param>
     public static void LoadMapState(MonoBehaviour source, bool continueGame, Action callback)
     {
-        if (state == null)
-            state = new ConstelationState(null);
+        //if (state == null)
+        state = new ConstelationState(null);
 
         //Check if there's data to be loaded
-        Debug.Log(continueGame ? "Loading..." : "Creating new game...");
         SketchFleets.ProfileSystem.Profile.LoadProfile((save) =>
         {
 
             if (continueGame)
-            {
-                Debug.Log("Map Loaded!");
+            {      
                 callback();
             }
             else
             {
-                 Debug.Log("clearing");
                 SketchFleets.ProfileSystem.Profile.Data.Clear(source, (data) =>
                 {
-                     Debug.Log("goo");
-                     callback();
-                    //SaveMapState(source,callback);
+                    callback();
                 });
-                //SaveMapState(source,callback);
             }
         });
     }
