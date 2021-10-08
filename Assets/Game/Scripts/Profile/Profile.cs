@@ -95,10 +95,8 @@ namespace SketchFleets.ProfileSystem
         /// <returns></returns>
         public static IEnumerator _Load(System.Action<ProfileData> callback)
         {
-            Debug.Log("Loading save!");
             while(runningThread)
                 yield return new WaitForEndOfFrame();
-            Debug.Log("SAVE Loading");
             var thread = new System.Threading.Thread(() => {       
                 GetData().saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(FilePath));
                 runningThread = false;
@@ -110,7 +108,7 @@ namespace SketchFleets.ProfileSystem
             while(runningThread)
                 yield return new WaitForSeconds(0.05f);
 
-            Debug.Log("lOADED SAVE! " + File.ReadAllText(FilePath) + " " + GetData().saveObject.mapData.seed);
+            Debug.Log("Saved Loaded:" + File.ReadAllText(FilePath) + " " + GetData().saveObject.mapData.seed);
 
             if(callback != null)
                 callback(GetData());
@@ -126,17 +124,14 @@ namespace SketchFleets.ProfileSystem
             while(runningThread)
                 yield return new WaitForEndOfFrame();
 
-            Debug.Log("aa");
-                
             var thread = new System.Threading.Thread(() => {
                 try
                 {
-                          Debug.Log("saving");
-                //Save data
-                GetData().SaveInventories();
+                    //Save data
+                    GetData().SaveInventories();
 
-                File.WriteAllText(FilePath,JsonUtility.ToJson(GetData().saveObject));
-                runningThread = false;
+                    File.WriteAllText(FilePath,JsonUtility.ToJson(GetData().saveObject));
+                    runningThread = false;
                 }
                 catch(System.Exception e)
                 {

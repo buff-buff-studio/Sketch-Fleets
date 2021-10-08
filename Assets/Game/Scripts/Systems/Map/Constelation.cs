@@ -75,8 +75,6 @@ public class Constelation : IEnumerable
         allStars.Add(star);
         star.Id = id;
 
-        Debug.Log("Added star: " + star);
-
         //Register on click
         star.Object.GetComponent<Button>().onClick.AddListener(() => map.OnClickStar(id));
     }

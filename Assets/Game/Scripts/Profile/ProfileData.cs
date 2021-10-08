@@ -9,7 +9,7 @@ namespace SketchFleets.ProfileSystem
     {
         public int currentStar = 0;
         public List<int> openPath = new List<int>();
-        public List<int> openQueue = new List<int>();
+        //public List<int> openQueue = new List<int>();
         public List<int> choosen = new List<int>();
         public int seed = -1; //0 = any random seed
     }

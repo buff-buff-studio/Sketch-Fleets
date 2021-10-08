@@ -9,6 +9,7 @@ public class ConstelationState
 {   
     #region Private Fields
     public Constelation constelation;
+    private List<int> openQueue = new List<int>();
     #endregion
 
     #region Public Methods
@@ -46,7 +47,7 @@ public class ConstelationState
     /// <returns></returns>
     public bool IsOpen(int star)
     {
-        return Profile.GetData().Map.openPath.Contains(star);
+        return Profile.GetData().Map.openPath.Contains(star) && !openQueue.Contains(star);
     }
 
     /// <summary>
@@ -67,8 +68,8 @@ public class ConstelationState
         if(!IsOpen(star))
         {
             //Remove from open queue
-            if(Profile.GetData().Map.openQueue.Contains(star))
-                Profile.GetData().Map.openQueue.Remove(star);
+            if(openQueue.Contains(star))
+                openQueue.Remove(star);
 
             Profile.GetData().Map.openPath.Add(star);
             _Open(star);
@@ -81,8 +82,13 @@ public class ConstelationState
     /// <param name="star"></param>
     public void AddToOpenQueue(int star)
     {
-        if(!Profile.GetData().Map.openQueue.Contains(star) && !Profile.GetData().Map.openPath.Contains(star))
-            Profile.GetData().Map.openQueue.Add(star);
+        if(!openQueue.Contains(star) && !Profile.GetData().Map.openPath.Contains(star))
+        {
+            openQueue.Add(star);
+            Profile.GetData().Map.openPath.Add(star);
+        }
+        //if(!Profile.GetData().Map.openQueue.Contains(star) && !Profile.GetData().Map.openPath.Contains(star))
+            //Profile.GetData().Map.openQueue.Add(star);
     }
 
     /// <summary>
