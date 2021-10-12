@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using ManyTools.Variables;
+using SketchFleets;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class LineDrawer : MonoBehaviour
 {
@@ -13,6 +16,13 @@ public class LineDrawer : MonoBehaviour
     public Image inputSprite;
 
     public float spriteSize;
+
+    public Gradient trailGradient;
+    private GradientColorKey[] colorKey = new GradientColorKey[2];
+    private GradientAlphaKey[] alphaKeys = new GradientAlphaKey[2];
+    
+    [SerializeField]
+    private ColorsInventory colorsInventory;
 
     [SerializeField]
     private float linePointsMinDist;
@@ -25,7 +35,7 @@ public class LineDrawer : MonoBehaviour
 
     private CreateLine currentLine;
     private Camera cam;
-    private IAA_PlayerControl playerControl;
+    private IAA_SketchFleetsInputs playerControl;
     
     private int FormSelect;
 
@@ -44,21 +54,28 @@ public class LineDrawer : MonoBehaviour
         {
             cam ??= Camera.main;
 
-            return cam.ScreenToWorldPoint(playerControl.Player.Draw.ReadValue<Vector2>());
+            return cam.ScreenToWorldPoint(playerControl.InGame.TouchOne.ReadValue<Vector2>());
         }
     }
 
     private void OnEnable()
     {
-        playerControl = new IAA_PlayerControl();
+        playerControl = new IAA_SketchFleetsInputs();
         playerControl.Enable();
+        
+        Debug.Log(colorsInventory.drawColor.ToString());
     }
 
     private void OnDisable()
     {
-        playerControl.Player.StartDraw.canceled -= EndDraw;
         playerControl.Disable();
         playerControl = null;
+    }
+
+    private void Update()
+    {
+        if (Touch.activeTouches.Count == 1)
+            Draw();
     }
 
     public void BulletTime(float time)
@@ -69,32 +86,31 @@ public class LineDrawer : MonoBehaviour
     public void DrawCallBack(InputAction.CallbackContext context)
     {
         if(!gameObject.activeSelf) return;
-        
+
         if (context.started)
         {
             BeginDraw();
         }
         else if (context.canceled)
         {
-            EndDraw(context);
+            EndDraw();
         }
     }
 
     private void BeginDraw()
     {
-        if (currentLine != null && SceneManager.GetActiveScene().name == "Game")
+        if (currentLine != null)
         {
             Destroy(currentLine.gameObject);
         }
         
-        inputTrail.transform.position = mousePos;
         currentLine = Instantiate(linePrefab, transform).GetComponent<CreateLine>();
         currentLine.SetPointsMinDistance(linePointsMinDist);
         currentLine.SetLineWidht(lineWidht);
-        inputTrail.SetActive(true);
+        SetTrailColor();
     }
 
-    public void Draw()
+    private void Draw()
     {
         if (currentLine == null) return;
             
@@ -108,7 +124,7 @@ public class LineDrawer : MonoBehaviour
         currentLine.AddPoint(mousePos);
     }
 
-    private void EndDraw(InputAction.CallbackContext context)
+    private void EndDraw()
     {
         inputTrail.SetActive(false);
 
@@ -132,7 +148,7 @@ public class LineDrawer : MonoBehaviour
             lines.Add(currentLine.gameObject);
                 
             FormSelect = FormDetector.Detector(currentLine.lineRenderer, Shapes);
-                
+
             currentLine.transform.name =
                 Shapes[FormSelect].shapeName + " - " + currentLine.lineRenderer.positionCount;
                 
@@ -143,11 +159,31 @@ public class LineDrawer : MonoBehaviour
         
         RestoreUI();
     }
+    
+    private void SetTrailColor()
+    {
+        inputTrail.transform.position = mousePos;
+        
+        colorKey[0].color = colorsInventory.drawColor;
+        colorKey[1].color = colorsInventory.drawColor;
+        colorKey[0].time = 0f;
+        colorKey[1].time = 1f;
+        alphaKeys[0].alpha = 1f;
+        alphaKeys[1].alpha = 1f;
+        alphaKeys[0].time = 0f;
+        alphaKeys[1].time = 1f;
+        
+        trailGradient.SetKeys(colorKey, alphaKeys);
+
+        inputTrail.GetComponent<TrailRenderer>().colorGradient = trailGradient;
+        currentLine.SetLineColor(trailGradient);
+        inputTrail.SetActive(true);
+    }
 
     private void RestoreUI()
     {
-        EndEvent.Invoke();
         Time.timeScale = 1;
+        EndEvent.Invoke();
         gameObject.SetActive(false);
     }
 

@@ -27,19 +27,19 @@ MonoBehaviour:
     _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
-    _constant: 300
+    _constant: 375
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
-    _constant: 125
+    _constant: 0
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
-    _constant: 15
+    _constant: 0
     _variable: {fileID: 0}
   shieldRegenDelay:
     _useConstant: 1
-    _constant: 5
+    _constant: 0
     _variable: {fileID: 0}
   damageMultiplier:
     _useConstant: 1
@@ -51,7 +51,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
-    _constant: 1.25
+    _constant: 1
     _variable: {fileID: 0}
   collisionDamage:
     _useConstant: 1

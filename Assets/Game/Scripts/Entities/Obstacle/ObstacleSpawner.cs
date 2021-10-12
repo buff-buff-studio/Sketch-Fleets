@@ -11,8 +11,9 @@ public class ObstacleSpawner : MonoBehaviour
 
     [Header("Warning")]
     [FormerlySerializedAs("CautionImage")] [SerializeField]
-    private GameObject warningImage;
+    private RectTransform warningImage;
     private FloatReference warningDuration = new FloatReference(1.3f);
+    private Vector3 spawnPoint;
 
     [Header("Obstacles")]
     [SerializeField, Tooltip("The pool of spawnable obstacles")]
@@ -71,13 +72,16 @@ public class ObstacleSpawner : MonoBehaviour
             
             if (isDrawnObstacleValid && drawnObstacle.WarnOnSpawn)
             {
+                spawnPoint = new Vector3(spawnArea.transform.position.x, GetRandomYInSpawnArea());
+                
                 StartCoroutine(ShowWarning());
             }
-
+            
             yield return warningPeriod;
 
             if (isDrawnObstacleValid)
             {
+                spawnPoint = new Vector3(spawnArea.transform.position.x, GetRandomYInSpawnArea());
                 SpawnObstacle(drawnObstacle);
             }
         }
@@ -119,8 +123,12 @@ public class ObstacleSpawner : MonoBehaviour
             warningAudioSource.Play();
         }
 
-        warningImage.SetActive(warn);
+        warningImage.anchoredPosition = new Vector2(warningImage.anchoredPosition.x, GetObstaclePos.y);
+        warningImage.gameObject.SetActive(warn);
+        
     }
+
+    private Vector2 GetObstaclePos => Camera.main.WorldToViewportPoint(Camera.main.ViewportToScreenPoint(new Vector2(0, spawnPoint.y)));
 
     /// <summary>
     /// Draws an obstacle attribute from the pool
@@ -138,12 +146,11 @@ public class ObstacleSpawner : MonoBehaviour
     /// <param name="obstacle">The obstacle to spawn</param>
     private void SpawnObstacle(ObstacleAttributes obstacle)
     {
-        Vector3 spawnPoint = new Vector3(spawnArea.transform.position.x, GetRandomYInSpawnArea());
         Quaternion spawnRotation = Quaternion.identity;
 
         if (obstacle.IsStatic)
         {
-            spawnRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+            spawnRotation = Quaternion.Euler(0f, 0, Random.Range(0f, 360f));
         }
 
         Instantiate(obstacle.Prefab, spawnPoint, spawnRotation);

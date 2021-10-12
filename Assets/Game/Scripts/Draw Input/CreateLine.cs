@@ -27,7 +27,7 @@ public class CreateLine : MonoBehaviour
         return (Vector2)lineRenderer.GetPosition(points.Count-1);
     }
 
-    public void SetLineCOlor(Gradient colorGradient)
+    public void SetLineColor(Gradient colorGradient)
     {
         lineRenderer.colorGradient = colorGradient;
     }

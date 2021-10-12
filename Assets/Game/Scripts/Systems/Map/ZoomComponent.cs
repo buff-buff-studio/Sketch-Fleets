@@ -62,11 +62,13 @@ public class ZoomComponent : ScrollRect
                 }
             }
             //pc input
+#if !PLATFORM_ANDROID
             float scrollWheelInput = Mouse.current.scroll.ReadValue().y/512;
             if (Mathf.Abs(scrollWheelInput) > float.Epsilon)
             {
                 SimulateScroll(scrollWheelInput, Mouse.current.position.ReadValue());
             }
+#endif
         }
 
         //Update animation

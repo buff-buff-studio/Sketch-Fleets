@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using SketchFleets.ProfileSystem;
 
 /// <summary>
 /// Holds a state of constelation with unlocked path and other infos
@@ -8,16 +9,9 @@ public class ConstelationState
 {   
     #region Private Fields
     public Constelation constelation;
+    private List<int> openQueue = new List<int>();
     #endregion
 
-    #region Public Fields
-    public int currentStar = 0;
-    public List<int> openPath = new List<int>();
-    private List<int> openQueue = new List<int>();
-    public List<int> choosen = new List<int>();
-    public int seed = 0; //0 = any random seed
-    #endregion
-    
     #region Public Methods
     /// <summary>
     /// Creates a new constelation state
@@ -34,7 +28,7 @@ public class ConstelationState
     /// <param name="currentStar"></param>
     public void SetCurrentStar(int currentStar)
     {
-        this.currentStar = currentStar;
+        Profile.GetData().Map.currentStar = currentStar;
     }
 
     /// <summary>
@@ -43,7 +37,7 @@ public class ConstelationState
     /// <returns></returns>
     public int GetCurrentStar()
     {
-        return currentStar;
+        return Profile.GetData().Map.currentStar;
     }
 
     /// <summary>
@@ -53,7 +47,7 @@ public class ConstelationState
     /// <returns></returns>
     public bool IsOpen(int star)
     {
-        return openPath.Contains(star);
+        return Profile.GetData().Map.openPath.Contains(star) && !openQueue.Contains(star);
     }
 
     /// <summary>
@@ -77,7 +71,7 @@ public class ConstelationState
             if(openQueue.Contains(star))
                 openQueue.Remove(star);
 
-            openPath.Add(star);
+            Profile.GetData().Map.openPath.Add(star);
             _Open(star);
         }
     }
@@ -88,8 +82,13 @@ public class ConstelationState
     /// <param name="star"></param>
     public void AddToOpenQueue(int star)
     {
-        if(!openQueue.Contains(star) && !openPath.Contains(star))
+        if(!openQueue.Contains(star) && !Profile.GetData().Map.openPath.Contains(star))
+        {
             openQueue.Add(star);
+            Profile.GetData().Map.openPath.Add(star);
+        }
+        //if(!Profile.GetData().Map.openQueue.Contains(star) && !Profile.GetData().Map.openPath.Contains(star))
+            //Profile.GetData().Map.openQueue.Add(star);
     }
 
     /// <summary>
@@ -99,7 +98,7 @@ public class ConstelationState
     /// <returns></returns>
     public bool IsChoosen(int star)
     {
-        return choosen.Contains(star);
+        return Profile.GetData().Map.choosen.Contains(star);
     }
     
     /// <summary>
@@ -110,8 +109,8 @@ public class ConstelationState
     {   
         if(!IsChoosen(star))
         {
-            currentStar = star;
-            choosen.Add(star);
+            Profile.GetData().Map.currentStar = star;
+            Profile.GetData().Map.choosen.Add(star);
             _Choose(star);
         }
     }
@@ -121,10 +120,10 @@ public class ConstelationState
     /// </summary>
     public void Init()
     {
-        foreach(int i in openPath)
+        foreach(int i in Profile.GetData().Map.openPath)
             _Open(i);
         
-        foreach(int i in choosen)
+        foreach(int i in Profile.GetData().Map.choosen)
             _Choose(i);
     }
     #endregion
@@ -203,114 +202,6 @@ public class ConstelationState
     #endregion
 
     /// <summary>
-    /// Load data of constelation state from bytes
-    /// </summary>
-    /// <param name="data"></param>
-    /// <returns></returns>
-    public ConstelationState LoadData(byte[] data)
-    {
-        //Clear all current data
-        openPath.Clear();
-        choosen.Clear();
-        openQueue.Clear();
-
-        //Current byte section
-        int section = 0;
-
-        //Hold seed bytes
-        List<byte> seedHolder = new List<byte>();
-
-        //Iterate over all bytes
-        for(int i = 0; i < data.Length; i ++)
-        {
-            if(data[i] == 255)
-            {
-                section ++;
-                continue;
-            }
-
-            switch (section)
-            {
-                case 0:
-                    openPath.Add(data[i]);
-                    break;
-                case 1:
-                    choosen.Add(data[i]);
-                    break;
-                case 2:
-                    currentStar = data[i];
-                    break;
-                case 3:
-                    seedHolder.Add(data[i]);
-                    break;
-            }
-        }
-        
-        //Convert all bytes to seed
-        byte[] bytes = seedHolder.ToArray();
-        if (System.BitConverter.IsLittleEndian)
-            System.Array.Reverse(bytes);
-        seed = System.BitConverter.ToInt32(bytes, 0);
-
-        //Update
-        return this;
-    }
-
-    /// <summary>
-    /// Get bytes from ConstelationState to save
-    /// </summary>
-    /// <returns></returns>
-    public byte[] ToData()
-    {
-        List<int> fullOpen = new List<int>();
-        fullOpen.AddRange(openPath);
-        fullOpen.AddRange(openQueue);
-
-        byte[] data = new byte[fullOpen.Count + 1 + choosen.Count + 7];
-        
-        //Set open path data
-        for(int i = 0; i < fullOpen.Count; i ++)
-        {
-            int v = fullOpen[i];
-            byte a = (byte) (v);
-            data[i] = a;
-        }
-
-        //Seperator
-        data[fullOpen.Count] = 255;
-
-        //Set choosen count
-        for(int i = 0; i < choosen.Count; i ++)
-        {
-            int v = choosen[i];
-            byte a = (byte) (v);
-            data[fullOpen.Count + 1 + i] = a;
-        }
-
-        //Seperator
-        data[fullOpen.Count + 1 + choosen.Count] = 255;
-
-        //Set current choosen
-        data[fullOpen.Count + 1 + choosen.Count + 1] = (byte) currentStar;
-
-        //Seperator
-        data[fullOpen.Count + 1 + choosen.Count + 2] = 255;
-
-        //Set current seed
-        byte[] bt = System.BitConverter.GetBytes(seed);
-        
-        if (System.BitConverter.IsLittleEndian)
-            System.Array.Reverse(bt);
-
-        data[fullOpen.Count + 1 + choosen.Count + 3] = bt[0];
-        data[fullOpen.Count + 1 + choosen.Count + 4] = bt[1];
-        data[fullOpen.Count + 1 + choosen.Count + 5] = bt[2];
-        data[fullOpen.Count + 1 + choosen.Count + 6] = bt[3];
-
-        return data;
-    }
-
-    /// <summary>
     /// To string helper
     /// </summary>
     /// <returns></returns>
@@ -318,22 +209,22 @@ public class ConstelationState
     {
         string s = "openPath(";
 
-        for(int i = 0; i < openPath.Count; i ++)
+        for(int i = 0; i < Profile.GetData().Map.openPath.Count; i ++)
         {
             if(i > 0)
                 s += ",";
-            s += openPath[i].ToString();
+            s += Profile.GetData().Map.openPath[i].ToString();
         }
 
         s += "),choosen(";
 
-        for(int i = 0; i < choosen.Count; i ++)
+        for(int i = 0; i < Profile.GetData().Map.choosen.Count; i ++)
         {
             if(i > 0)
                 s += ",";
-            s += choosen[i].ToString();
+            s += Profile.GetData().Map.choosen[i].ToString();
         }
 
-        return s + "),currentStar=" + currentStar + ",seed=" + seed;
+        return s + "),currentStar=" + Profile.GetData().Map.currentStar + ",seed=" + Profile.GetData().Map.seed;
     }
 }

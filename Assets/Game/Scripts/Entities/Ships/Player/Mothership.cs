@@ -36,6 +36,9 @@ namespace SketchFleets.Entities
 
         [SerializeField]
         private SpawnableShipAttributes cyanShipAttributes;
+        
+        [SerializeField]
+        private ColorsInventory colorsInventory;
 
         private List<ItemEffect> activeEffects;
         private List<StatusEffect> activeSpawnEffects;
@@ -43,8 +46,6 @@ namespace SketchFleets.Entities
         private Camera mainCamera;
 
         private IEnumerator regenerateRoutine;
-
-        private IAA_PlayerControl playerControl;
 
         [SerializeField] 
         private float radiusMultiply;
@@ -75,8 +76,6 @@ namespace SketchFleets.Entities
             AttributesBonuses = ScriptableObject.CreateInstance<MothershipAttributesBonuses>();
             IngameEffectApplier.OnEffectsChange = OnEffectsChange;
             IngameEffectApplier.Clear();
-            playerControl = new IAA_PlayerControl();
-            playerControl.Enable();
             EnhancedTouchSupport.Enable();
             TouchSimulation.Enable();
         }
@@ -98,6 +97,8 @@ namespace SketchFleets.Entities
             HandlePlayerInput();
             TickTimers();
             Fire();
+            
+            SetCrystalColor();
         }
 
         #endregion
@@ -256,6 +257,8 @@ namespace SketchFleets.Entities
             // Spawns the ship
             PoolMember spawn = PoolManager.Instance.Request(shipType.Prefab);
             spawn.Emerge(shipSpawnPoint.position, Quaternion.identity);
+            spawn.GetComponent<SpriteRenderer>().material.SetColor(redMultiplier, colorsInventory.drawColor);
+            colorsInventory.UseColor();
 
             SpawnedShip shipController = spawn.GetComponent<SpawnedShip>();
 
@@ -458,6 +461,17 @@ namespace SketchFleets.Entities
         /// <summary>
         ///     Moves and rotates the Mothership
         /// </summary>
+        /// 
+        
+        public void JoystickMove(Vector2 moveDir)
+        {
+            Transform transformCache = transform;
+            Transform parent = transformCache.parent;
+
+            transformCache.localPosition = Vector2.zero;
+            parent.Translate(moveDir * GetSpeed(), Space.World);
+        }
+        
         public void Move(Vector2 movePos, Vector2 moveRad)
         {
             // Gets movement input
@@ -490,6 +504,14 @@ namespace SketchFleets.Entities
             {
                 metaData.Value.SummonTimer.Value -= Time.deltaTime * Time.timeScale;
             }
+        }
+        
+        private void SetCrystalColor()
+        {
+            if (colorsInventory.drawColor == Color.black)
+                spriteRenderer.material.SetColor(blueMultiplier, Color.black);
+            else
+                spriteRenderer.material.SetColor(blueMultiplier, colorsInventory.drawColor);
         }
 
         /// <summary>

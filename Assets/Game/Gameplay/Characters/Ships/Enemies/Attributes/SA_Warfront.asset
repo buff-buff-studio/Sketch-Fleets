@@ -37,11 +37,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   shieldRegen:
     _useConstant: 1
-    _constant: 10
+    _constant: 0
     _variable: {fileID: 0}
   shieldRegenDelay:
     _useConstant: 1
-    _constant: 1.5
+    _constant: 0
     _variable: {fileID: 0}
   damageMultiplier:
     _useConstant: 1
@@ -49,11 +49,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 150
+    _constant: 115
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
-    _constant: 0.75
+    _constant: 1
     _variable: {fileID: 0}
   collisionDamage:
     _useConstant: 1
