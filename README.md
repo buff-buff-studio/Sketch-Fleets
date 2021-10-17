@@ -116,7 +116,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 * Paulo Oliveira, Project Manager and Programmer - paulo@ninito.me
 * Luiz Bozzi, Game Designer and Artist - lfbozzi86@gmail.com
 * Julia Moraes, Artist - juliamoraesfreitas@gmail.com
-* Sérgio Macellani, Programmer - sergiododec@gmail.com
+* Sérgio Macellani, Programmer - sergiomacellani@sergiom.dev
 * Árnilsen Arthur, Programmer - arnilsenarthur@gmail.com
 * Renzo Diniz, Generalist and Production Assistant - renzo.diniz@sga.pucminas.br
 
