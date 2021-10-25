@@ -29,6 +29,7 @@ namespace SketchFleets.Data
 
         #region Properties
 
+        public GameObject FormationGameObject => formationObject;
         public ShipAttributes[] Ships => ships;
         public Formation Formation => formation;
 
