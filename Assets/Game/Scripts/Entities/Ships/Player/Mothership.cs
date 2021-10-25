@@ -125,15 +125,6 @@ namespace SketchFleets.Entities
         #region Ship<T> Overrides
 
         /// <summary>
-        ///     Makes the ship die
-        /// </summary>
-        public override void Die()
-        {
-            EnableOrDisableSpawnMenu(false);
-            base.Die();
-        }
-
-        /// <summary>
         ///     Resets all instance-specific variables
         /// </summary>
         protected override void ResetInstanceVariables()
@@ -445,17 +436,6 @@ namespace SketchFleets.Entities
         private bool IsGameOver()
         {
             return LevelManager.Instance.GameEnded;
-        }
-
-        /// <summary>
-        ///     Enables or disables the ship spawn menu
-        /// </summary>
-        /// <param name="enable">Whether to enable or disable the ship spawn menu</param>
-        public void EnableOrDisableSpawnMenu(bool enable)
-        {
-            //hud.SetActive(!enable);
-            Debug.Log("eee");
-            //shipSpawnMenu.SetActive(enable);
         }
 
         /// <summary>
