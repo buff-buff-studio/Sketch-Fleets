@@ -3554,15 +3554,15 @@ MonoBehaviour:
   spawnArea: {fileID: 875232497}
   spawnInterval:
     _useConstant: 1
-    _constant: 1.5
+    _constant: 4
     _variable: {fileID: 0}
   waveInterval:
     _useConstant: 1
-    _constant: 3
+    _constant: 7
     _variable: {fileID: 0}
   spawnIntervalDeviation:
     _useConstant: 1
-    _constant: 0.5
+    _constant: 1.75
     _variable: {fileID: 0}
   totalEnemiesKilled:
     _useConstant: 0
@@ -5423,7 +5423,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7037363, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 13.687787, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -8243,7 +8243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7037363, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 13.687787, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}
