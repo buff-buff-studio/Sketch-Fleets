@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(AudioSource))]
-public class ObstacleSpawner : MonoBehaviour
+public sealed class ObstacleSpawner : MonoBehaviour
 {
     #region Private Fields
 
