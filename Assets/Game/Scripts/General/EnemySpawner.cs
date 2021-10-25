@@ -164,22 +164,27 @@ namespace SketchFleets.Systems
         {
             ShipFormation drawnFormation = DrawFormationFromPool();
 
-            Vector3 spawnCenterPoint = GetRandomSpawnPoint(drawnFormation.Formation.GetBounds());
+            Vector3 spawnPoint = GetRandomSpawnPoint(drawnFormation.Formation.GetBounds());
 
-            for (int index = 0; index < drawnFormation.Ships.Length; index++)
+            GameObject formationObject = Instantiate(drawnFormation.GameObject, spawnPoint,
+                Quaternion.Euler(0f, 0f, 90f));
+
+            for (int index = 0, max = formationObject.transform.childCount; index < max; index++)
             {
-                SpawnShip(drawnFormation.Ships[index],
-                    spawnCenterPoint + drawnFormation.Formation.FormationPoints[index].position);
+                Transform formationPoint = formationObject.transform.GetChild(index).transform;
+                SpawnShip(drawnFormation.Ships[index], formationPoint.position, formationPoint.rotation);
             }
+            
+            Destroy(formationObject);
         }
 
         /// <summary>
         /// Spawns an individual ship in the formation
         /// </summary>
-        private void SpawnShip(ShipAttributes shipToSpawn, Vector3 spawnPosition)
+        private void SpawnShip(ShipAttributes shipToSpawn, Vector3 spawnPosition, Quaternion spawnRotation)
         {
             PoolMember ship = PoolManager.Instance.Request(shipToSpawn.Prefab);
-            ship.Emerge(spawnPosition, Quaternion.identity);
+            ship.Emerge(spawnPosition, spawnRotation);
             ((EnemyShip)ship).Spawner = this;
             activeShips++;
         }
@@ -199,8 +204,8 @@ namespace SketchFleets.Systems
         /// <returns>A random Y coordinate in the spawn area</returns>
         private float GetRandomYInSpawnArea(Vector2 formationExtents)
         {
-            return spawnArea.transform.position.y + spawnArea.bounds.extents.y * Random.Range(-1f + formationExtents.x,
-                1f + formationExtents.y);
+            Bounds bounds = spawnArea.bounds;
+            return Random.Range(bounds.min.y + formationExtents.x, bounds.max.y - formationExtents.y);
         }
 
         /// <summary>
