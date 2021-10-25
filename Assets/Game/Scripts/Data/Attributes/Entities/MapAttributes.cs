@@ -9,41 +9,51 @@ namespace SketchFleets.Data
     /// </summary>
     [CreateAssetMenu(order = CreateMenus.difficultyAttributesOrder, fileName = CreateMenus.difficultyAttributesFileName,
         menuName = CreateMenus.difficultyAttributesMenuName)]
-    public class MapAttributes : Attributes
+    public sealed class MapAttributes : Attributes
     {
         #region Protected Fields
 
         [Header("Level")]
         [SerializeField]
         private IntReference currentMap;
+
         [SerializeField]
         private IntReference currentDifficulty;
 
         [Header("Attributes")]
         [Tooltip("Multiplies the amount of enemies in the map")]
         [SerializeField]
-        protected IntReference[] mapDifficulty;
+        private IntReference[] mapDifficulty;
+
         [FormerlySerializedAs("mapWaves")]
         [Tooltip("The minum and maximum number of waves in a map")]
         [SerializeField]
-        protected Vector2Reference[] minMaxWaves;
+        private Vector2Reference[] minMaxWaves;
+
         [SerializeField]
-        protected FloatReference mapHeight;
+        private FloatReference mapHeight;
+
         [Tooltip("Map Start Spawn.")]
         [SerializeField]
-        protected FloatReference mapStartSpawn;
+        private FloatReference mapStartSpawn;
+
         [Tooltip("Map color on the chart.")]
         [SerializeField]
         [ColorHEXCode]
-        protected Color[] mapColor;
+        private Color[] mapColor;
 
         [Header("Enemies and Obstacles")]
-        [SerializeField, Tooltip("The pool of enemies used for this map")]
-        protected AttributePool[] enemyPool;
-        [SerializeField, Tooltip("The maximum amount of enemies that can spawn at any given time")]
-        protected IntReference[] maxEnemies;
-        [SerializeField, Tooltip("The pool of obstacles used for this map")]
-        protected AttributePool[] obstaclePool;
+        [SerializeField]
+        [Tooltip("The pool of enemies used for this map")]
+        private FormationPool[] enemyPool;
+
+        [SerializeField]
+        [Tooltip("The maximum amount of enemies that can spawn at any given time")]
+        private IntReference[] maxEnemies;
+
+        [SerializeField]
+        [Tooltip("The pool of obstacles used for this map")]
+        private AttributePool[] obstaclePool;
 
         #endregion
 
@@ -58,10 +68,9 @@ namespace SketchFleets.Data
         public FloatReference MapStartSpawn => mapStartSpawn;
         public Color[] MapColor => mapColor;
 
-        public AttributePool[] EnemyPool => enemyPool;
+        public FormationPool[] EnemyPool => enemyPool;
         public IntReference[] MaxEnemies => maxEnemies;
         public AttributePool[] ObstaclePool => obstaclePool;
-
 
         #endregion
     }
