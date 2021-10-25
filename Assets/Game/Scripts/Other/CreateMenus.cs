@@ -58,16 +58,20 @@
         public const int attributePoolOrder = 0;
         public const string attributePoolMenuName = "Sketch Fleets/Data Containers/Attribute Pool";
         public const string attributePoolFileName = "Attribute Pool";
+        
+        public const int shipFormationPoolOrder = 1;
+        public const string shipFormationPoolMenuName = "Sketch Fleets/Other/Ship Formation Pool";
+        public const string shipFormationPoolFileName = "Ship Formation Pool";
 
-        public const int itemRegisterOrder = 1;
+        public const int itemRegisterOrder = 2;
         public const string itemRegisterMenuName = "Sketch Fleets/Inventory Container/Item Register";
         public const string itemRegisterFileName = "Item Register";
 
-        public const int shipRegisterOrder = 2;
+        public const int shipRegisterOrder = 3;
         public const string shipRegisterMenuName = "Sketch Fleets/Inventory Container/Ship Register";
         public const string shipRegisterFileName = "Ship Register";
         
-        public const int shipFormationOrder = 2;
+        public const int shipFormationOrder = 4;
         public const string shipFormationMenuName = "Sketch Fleets/Other/Ship Formation";
         public const string shipFormationFileName = "Ship Formation";
 
