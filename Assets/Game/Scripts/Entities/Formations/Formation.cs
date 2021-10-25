@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SketchFleets.Entities
 {
     /// <summary>
-    ///     A class that holds points in a formation
+    /// A class that holds points in a formation
     /// </summary>
     public sealed class Formation : MonoBehaviour
     {
@@ -43,7 +43,7 @@ namespace SketchFleets.Entities
         #region Public Methods
 
         /// <summary>
-        ///     Gets the center point of the formation
+        /// Gets the center point of the formation
         /// </summary>
         /// <returns>The center point of the formation</returns>
         public Vector3 GetCenterPoint()
@@ -60,13 +60,40 @@ namespace SketchFleets.Entities
 
             return new Vector3(avgXCoord, avgYCoord, avgZCoord);
         }
+        
+        /// <summary>
+        /// Gets the bounds (min and max Y positions of the formation)
+        /// </summary>
+        /// <returns>The min and max Y positions of the formation</returns>
+        public Vector2 GetBounds()
+        {
+            return new Vector2(GetMinY(), GetMaxY());
+        }
 
         #endregion
 
         #region Private Methods
 
         /// <summary>
-        ///     Draws a Gizmo display of the center point
+        /// Gets the maximum Y of the formation
+        /// </summary>
+        /// <returns>The maximum Y of the formation</returns>
+        private float GetMaxY()
+        {
+            return formationPoints.Max(formationPoint => formationPoint.position.y);
+        }
+
+        /// <summary>
+        /// Gets the minimum Y of the formation
+        /// </summary>
+        /// <returns>The minimum Y of the formation</returns>
+        private float GetMinY()
+        {
+            return formationPoints.Min(formationPoint => formationPoint.position.y);
+        }
+        
+        /// <summary>
+        /// Draws a Gizmo display of the center point
         /// </summary>
         private void DrawCenterPointDebugDisplay()
         {
@@ -82,7 +109,7 @@ namespace SketchFleets.Entities
         }
 
         /// <summary>
-        ///     Gets all points in the formation
+        /// Gets all points in the formation
         /// </summary>
         private void GetFormationPoints()
         {
