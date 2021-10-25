@@ -27,7 +27,6 @@ public class MainMenuScript : MonoBehaviour
     /// </summary>
     public void LoadNewGame()
     {
-         Debug.Log("aaaa");
         try
         {
             MapLevelInteraction.OpenMap(this,false);

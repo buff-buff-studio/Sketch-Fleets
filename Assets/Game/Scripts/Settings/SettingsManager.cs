@@ -45,11 +45,9 @@ namespace SketchFleets.SettingsSystem
             Settings.WithDefault<bool>("vsync",true);
             */
 
-            Debug.Log("Loading settings...");
 
             Settings.Load(this,() => {
 
-                Debug.Log("Loaded!");
                 //Resolution
                 SetResolution(Settings.GetObject().resolution);
                 //Volumes
