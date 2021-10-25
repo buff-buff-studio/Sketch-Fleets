@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3365,6 +3365,7 @@ GameObject:
   - component: {fileID: 854705800}
   - component: {fileID: 854705799}
   - component: {fileID: 854705798}
+  - component: {fileID: 854705801}
   - component: {fileID: 854705797}
   m_Layer: 0
   m_Name: Spawner
@@ -3482,20 +3483,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
-  mapAttributes: {fileID: 11400000, guid: dc2bc714a40a7734baff81f9ef937a4d, type: 2}
-  spawnArea: {fileID: 875232497}
-  spawnInterval:
-    _useConstant: 1
-    _constant: 1.5
-    _variable: {fileID: 0}
-  waveInterval:
-    _useConstant: 1
-    _constant: 1.5
-    _variable: {fileID: 0}
-  spawnIntervalDeviation:
-    _useConstant: 1
-    _constant: 0.5
-    _variable: {fileID: 0}
   mapTimer:
     _useConstant: 0
     _constant: 
@@ -3551,6 +3538,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &854705801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854705796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96b8af35c16464c834268c4584257a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapAttributes: {fileID: 11400000, guid: dc2bc714a40a7734baff81f9ef937a4d, type: 2}
+  spawnArea: {fileID: 875232497}
+  spawnInterval:
+    _useConstant: 1
+    _constant: 1.5
+    _variable: {fileID: 0}
+  waveInterval:
+    _useConstant: 1
+    _constant: 3
+    _variable: {fileID: 0}
+  spawnIntervalDeviation:
+    _useConstant: 1
+    _constant: 0.5
+    _variable: {fileID: 0}
+  totalEnemiesKilled:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: 8a0de06510999f640bb44839925e8b30, type: 2}
 --- !u!1 &872903980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5406,7 +5423,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.80557, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7037363, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -8226,7 +8243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.80557, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7037363, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}
