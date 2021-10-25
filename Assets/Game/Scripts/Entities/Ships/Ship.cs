@@ -252,6 +252,8 @@ namespace SketchFleets
 
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
+                Debug.Log(attributes.Fire.Prefab);
+                Debug.Log(PoolManager.Instance);
                 PoolMember bullet = PoolManager.Instance.Request(attributes.Fire.Prefab);
                 bullet.Emerge(bulletSpawnPoints[index].position, bulletSpawnPoints[index].rotation);
 

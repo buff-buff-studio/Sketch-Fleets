@@ -74,7 +74,7 @@ public class BulletController : PoolMember
         hasFireEffect = Attributes.FireEffect != null;
     }
 
-    private void Update()
+    private void Move()
     {
         transform.Translate(Vector3.up * Time.deltaTime * Attributes.Speed, Space.Self);
     }

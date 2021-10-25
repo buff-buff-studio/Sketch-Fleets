@@ -26,6 +26,9 @@ namespace SketchFleets.Data
 
         [SerializeField]
         private FloatReference upgradeSpeedIncrease = new FloatReference(0);
+        
+        [SerializeField]
+        private IntReference upgradeColorInventorySize = new IntReference(0);
 
         [SerializeField]
         private CodexEntryRarity codexEntryRarity;
@@ -62,6 +65,11 @@ namespace SketchFleets.Data
         {
             get => upgradeSpeedIncrease;
             set => upgradeSpeedIncrease = value;
+        }
+        public IntReference UpgradeColorInventorySize
+        {
+            get => upgradeColorInventorySize;
+            set => upgradeColorInventorySize = value;
         }
 
         #endregion
