@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Compact Fuel Tank
+    _constant: Small Fuel Tank
     _variable: {fileID: 0}
   description: Slightly increases player speed
   prefab: {fileID: 0}
+  unlocalizedName: 
+  unlocalizedDescription: 
   healthRegen:
     _useConstant: 1
     _constant: 0

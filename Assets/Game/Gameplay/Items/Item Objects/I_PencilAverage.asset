@@ -21,7 +21,8 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 250
     _variable: {fileID: 0}
-  icon: {fileID: 9131733960054217854, guid: 754a14a9899896346b01c08a42db253d, type: 3}
+  icon: {fileID: 2441829298573143382, guid: d35bcc39a5c427e4faf0c25faeab5824, type: 3}
   id: 11
   effect: {fileID: 11400000, guid: 2487a2ed8248e0c438f17657940cd415, type: 2}
   isConsumable: 1
+  codexEntryRarity: 0
