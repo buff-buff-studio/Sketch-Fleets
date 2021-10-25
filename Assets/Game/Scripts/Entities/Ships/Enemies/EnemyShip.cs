@@ -1,6 +1,6 @@
 ﻿using ManyTools.UnityExtended;
 using SketchFleets.Data;
-using SketchFleets.General;
+using SketchFleets.Systems;
 using UnityEngine;
 
 namespace SketchFleets.Enemies
@@ -10,6 +10,10 @@ namespace SketchFleets.Enemies
     /// </summary>
     public sealed class EnemyShip : Ship<ShipAttributes>
     {
+        public EnemySpawner Spawner { get; set; }
+
+        #region Public Methods
+
         /// <summary>
         /// Emerges the Poolable object from the pool
         /// </summary>
@@ -22,12 +26,13 @@ namespace SketchFleets.Enemies
             // TODO: This is a band-aid to fix a bug. Make sure to remove it later
             DelayProvider.Instance.DoDelayed(Die, 60f, GetInstanceID());
         }
-
+        
         public override void Die()
         {
             base.Die();
-
-            LevelManager.Instance.CountShipDeath();
+            Spawner.CountShipDeath();
         }
+
+        #endregion
     }
 }
