@@ -1,3 +1,4 @@
+using System.Collections;
 using ManyTools.Events;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
@@ -36,9 +37,12 @@ namespace SketchFleets
         protected float fireTimer;
         protected float shieldRegenTimer;
         protected float collisionTimer;
+        protected Transform lockParent;
 
-        private bool isDead = false; 
+        protected int lockHit = 0;
+        protected bool isLocked = false;
         
+        private bool isDead = false;
 
         #endregion
 
@@ -248,12 +252,10 @@ namespace SketchFleets
         /// </summary>
         public virtual void Fire()
         {
-            if (fireTimer > 0f) return;
+            if (fireTimer > 0f || isLocked) return;
 
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
-                Debug.Log(attributes.Fire.Prefab);
-                Debug.Log(PoolManager.Instance);
                 PoolMember bullet = PoolManager.Instance.Request(attributes.Fire.Prefab);
                 bullet.Emerge(bulletSpawnPoints[index].position, bulletSpawnPoints[index].rotation);
 
@@ -272,7 +274,7 @@ namespace SketchFleets
         public virtual void Look(Vector2 target)
         {
             // Workaround, this should be done using a proper Pausing interface
-            if (Mathf.Approximately(0f, Time.timeScale)) return;
+            if (Mathf.Approximately(0f, Time.timeScale) || isLocked) return;
 
             // This doesn't really solve the problem. The transform should be a member variable
             // to avoid the constant marshalling
@@ -398,5 +400,14 @@ namespace SketchFleets
         }
 
         #endregion
+
+        protected virtual IEnumerator LockState(float lockTime)
+        {
+            isLocked = true;
+            
+            yield return new WaitForSeconds(lockTime);
+            
+            isLocked = false;
+        }
     }
 }

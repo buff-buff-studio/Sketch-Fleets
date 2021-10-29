@@ -72,6 +72,7 @@ MonoBehaviour:
     _constant: 0.08
     _variable: {fileID: 0}
   fire: {fileID: 11400000, guid: 064c35b9c67f7ce4a9d4aabf5d93fe8a, type: 2}
+  dropedFire: {fileID: 4233880130515042751, guid: 41c81b45178066245a25e62d96d261ed, type: 3}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 2685658488167287599, guid: 8925daef909aa374386f8a38b855cd35, type: 3}
   healEffect: {fileID: 0}

@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _animFPS: 3
+    - _animFPS: 4
     - _frameX: 3
     - _frameY: 1
     m_Colors:
@@ -41,7 +41,7 @@ Material:
     - _GreMult: {r: 0, g: 1, b: 0, a: 0}
     - _RedMult: {r: 1, g: 0, b: 0, a: 0}
     - _blinkColor: {r: 1, g: 0, b: 0, a: 0}
-    - _bluMul: {r: 0.8117648, g: 0.40000004, b: 0.09411766, a: 1}
-    - _greMul: {r: 1, g: 0.51204044, b: 0, a: 1}
-    - _redMul: {r: 1, g: 0.42622954, b: 0, a: 1}
+    - _bluMul: {r: 0.9925282, g: 1, b: 0, a: 1}
+    - _greMul: {r: 1, g: 1, b: 1, a: 1}
+    - _redMul: {r: 1, g: 0.5, b: 0, a: 1}
   m_BuildTextureStacks: []

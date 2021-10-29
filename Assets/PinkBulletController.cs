@@ -10,40 +10,60 @@ namespace SketchFleets
     public class PinkBulletController : BulletController
     {
         [SerializeField]
-        private FloatReference bounceCooldown = new FloatReference(4f);
-        private Transform cachedTransform;
-        private Vector3 moveDirection;
-        private float bounceTimer;
-        protected bool CanBounce => bounceTimer <= 0f;
-
-        private void Awake()
+        private float maxBounceLife = 4;
+        
+        private float bounceLife = 4;
+        private Vector3 maxScale = new Vector3(.5f,.5f,.5f);
+            
+        public override void Emerge(Vector3 position, Quaternion rotation)
         {
-            cachedTransform = transform;
-            moveDirection = cachedTransform.up;
+            bounceLife = maxBounceLife;
+            if(transform.localScale.x < maxScale.x)
+                transform.localScale = maxScale;
+            base.Emerge(position, rotation);
         }
-        private void Update()
+
+        protected override void Update()
         {
-            cachedTransform.Translate(moveDirection * Attributes.Speed, Space.World);
+            if(PlayerBuletVelocity == 0)
+                Move(Vector3.up * Attributes.Speed, Space.Self);
+            else
+                Move(Vector3.up * PlayerBuletVelocity, Space.World);
         }
         
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Bounce(!other.gameObject.CompareTag("bullet"));
+            Bounce(other.gameObject.CompareTag("bullet"));
+        }
+        
+        protected override void OnTriggerEnter2D(Collider2D col)
+        {
+            Bounce(col.gameObject.CompareTag("bullet"));
+        }
+        
+        protected override void DealDamageToTarget(bool directDamage, GameObject target)
+        {
+            if (target.CompareTag("Player") || target.CompareTag("PlayerSpawn"))
+            {
+                if (Attributes.IgnorePlayer) return;
+                target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+            }
+            else
+            {
+                target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+            }
         }
 
-        private void Bounce(bool ignoreCooldown = true)
+        private void Bounce(bool ignoreCooldown)
         {
-            if (!ignoreCooldown)
-            {
-                if (!CanBounce) return;
-            }
+            if (!gameObject.activeSelf || ignoreCooldown) return;
 
-            float random = Random.Range(0.1f, 0.3f);
-            Vector3 randomDirection = new Vector3(random, random, 0f);
-            moveDirection *= -1f;
-            moveDirection += randomDirection;
-
-            bounceTimer = bounceCooldown;
+            transform.Rotate(new Vector3(0,0,Random.Range(80,101)));
+            bounceLife--;
+            if(bounceLife < maxBounceLife-1)
+                transform.localScale *= .85f;
+            if(bounceLife <= 0 && gameObject.activeSelf)
+                Submerge();
         }
     }
 }

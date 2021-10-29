@@ -11,6 +11,8 @@ namespace SketchFleets.Entities
     /// </summary>
     public sealed class SpawnedShip : Ship<SpawnableShipAttributes>
     {
+        public GameObject bulletPrefab;
+
         #region Properties
 
         public int SpawnNumber { get; set; }
@@ -27,6 +29,7 @@ namespace SketchFleets.Entities
         public override void Emerge(Vector3 position, Quaternion rotation)
         {
             base.Emerge(position, rotation);
+            GenerateBullet();
             // The invoke here is beyond horrible in terms of performance, but I'd rather not spend
             // more time in this script, the deadline is looming
             DelayProvider.Instance.DoDelayed(EmergeSpawnEffect, 0.1f, GetInstanceID());
@@ -50,6 +53,16 @@ namespace SketchFleets.Entities
 
         #region Private Methods
 
+        private void GenerateBullet()
+        {
+            GameObject cacheBullet = Attributes.Fire.Prefab;
+            bulletPrefab = Instantiate(bulletPrefab, transform);
+            bulletPrefab.GetComponent<SpriteRenderer>().sprite =
+                cacheBullet.GetComponent<SpriteRenderer>().sprite;
+            bulletPrefab.transform.localScale = cacheBullet.transform.localScale;
+            bulletPrefab.gameObject.SetActive(false);
+        }
+        
         /// <summary>
         /// Emerges a spawn effect at the ship's position
         /// </summary>
@@ -61,6 +74,25 @@ namespace SketchFleets.Entities
             
             ParticleSystem spawnCache = spawn.GetComponent<ParticleSystem>();
             spawnCache.startColor = shipColor;
+        }
+        
+        public override void Fire()
+        {
+            if (fireTimer > 0f || isLocked) return;
+
+            for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
+            {
+                PoolMember bullet = PoolManager.Instance.Request(bulletPrefab);
+                bullet.Emerge(bulletSpawnPoints[index].position, bulletSpawnPoints[index].rotation);
+                bullet.GetComponent<BulletController>().PlayerBuletVelocity = Attributes.Fire.Speed;
+
+                bullet.GetComponent<SpriteRenderer>().color = spriteRenderer.material.GetColor(redMultiplier);
+                bullet.transform.Rotate(0f, 0f,
+                    Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
+                bullet.gameObject.SetActive(true);
+            }
+
+            fireTimer = Attributes.Fire.Cooldown;
         }
 
         #endregion

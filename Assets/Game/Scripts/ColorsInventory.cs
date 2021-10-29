@@ -13,7 +13,9 @@ namespace SketchFleets
     {
         [Tooltip("The color of the last enemy killed")]
         [SerializeField]
-        private ColorReference enemyDeathColor;
+        private ColorReference enemyDeathColor;        
+        [SerializeField]
+        private GameObjectReference enemyDeathBullet;
         
         [SerializeField]
         private GameObject colorInvPrefab;        
@@ -21,13 +23,14 @@ namespace SketchFleets
         private Transform colorInvParent;
         
         [SerializeField] 
-        private List<Color> colorsInventory;
+        private List<ColorInfo> colorsInventory;
         [SerializeField]
         private List<Image> colorsSlot;
 
         public int invCol;
 
-        public Color drawColor => colorsInventory[colorsInventory.Count-1];
+        public Color drawColor => colorsInventory[colorsInventory.Count-1].color;
+        public GameObject bulletColor => colorsInventory[colorsInventory.Count-1].bulletPrefab;
         
         protected readonly int redMultiplier = Shader.PropertyToID("_redMul");
 
@@ -40,7 +43,7 @@ namespace SketchFleets
             {
                 colorsSlot.Add(Instantiate(colorInvPrefab, colorInvParent).GetComponent<Image>());
                 
-                colorsInventory.Add(Color.black);
+                colorsInventory.Add(SetColorInfo(Color.black, new GameObject()));
             }
             
             ColorUpdate();
@@ -50,7 +53,7 @@ namespace SketchFleets
         {
             if (enemyDeathColor != Color.black)
             {
-                NewColor(enemyDeathColor);
+                NewColor(enemyDeathColor, enemyDeathBullet);
             }
         }
 
@@ -58,19 +61,20 @@ namespace SketchFleets
         {
             for (int i = 0; i < colorsSlot.Count; i++)
             {
-                colorsSlot[i].color = colorsInventory[i];
+                colorsSlot[i].color = colorsInventory[i].color;
                 //colorsSlot[i].GetComponent<Image>().material.SetColor(redMultiplier, colorsInventory[i]);
             }
         }
 
-        private void NewColor(Color col)
+        private void NewColor(Color col, GameObject bullet)
         {
             enemyDeathColor.Value = Color.black;
+            enemyDeathBullet.Value = null;
             for (int i = 0; i < colorsSlot.Count-1; i++)
             {
                 colorsInventory[i] = colorsInventory[i+1];
             }
-            colorsInventory[colorsSlot.Count-1] = col;
+            colorsInventory[colorsSlot.Count-1] = SetColorInfo(col, bullet);;
 
             ColorUpdate();
         }
@@ -83,8 +87,23 @@ namespace SketchFleets
             {
                 colorsInventory[i] = colorsInventory[i-1];
             }
-            colorsInventory[0] = Color.black;
+            colorsInventory[0] = SetColorInfo(Color.black, new GameObject());
             ColorUpdate();
         }
+
+        private ColorInfo SetColorInfo(Color col, GameObject gm)
+        {
+            ColorInfo colInf;
+            colInf.color = col;
+            colInf.bulletPrefab = gm;
+            return colInf;
+        }
     }
+}
+
+[System.Serializable]
+public struct ColorInfo
+{
+    public Color color;
+    public GameObject bulletPrefab;
 }

@@ -33,14 +33,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _animFPS: 0
-    - _frameX: 2
-    - _frameY: 2
+    - _frameX: 3
+    - _frameY: 1
     m_Colors:
     - _BlinkColor: {r: 1, g: 1, b: 1, a: 0}
     - _BluMult: {r: 0, g: 0, b: 1, a: 0}
     - _GreMult: {r: 0, g: 1, b: 0, a: 0}
     - _RedMult: {r: 1, g: 0, b: 0, a: 0}
-    - _blinkColor: {r: 1, g: 1, b: 1, a: 0}
+    - _blinkColor: {r: 1, g: 0, b: 0, a: 0}
     - _bluMul: {r: 1, g: 1, b: 1, a: 1}
     - _greMul: {r: 1, g: 1, b: 1, a: 1}
     - _redMul: {r: 1, g: 0, b: 1, a: 1}
