@@ -865,17 +865,6 @@ public partial class @IAA_SketchFleetsInputs : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7caabe90-0530-4e15-a247-15fead650a07"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard Scheme"",
-                    ""action"": ""Start Draw"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""32c45a4c-d4af-4d93-948c-81b1318939fd"",
                     ""path"": ""<Touchscreen>/touch0/radius"",
                     ""interactions"": """",

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,39 +11,70 @@ namespace SketchFleets
 {
     public class ColorsInventory : MonoBehaviour
     {
-        [SerializeField]
-        private Color[] colorsInventory = new Color[3]{Color.black, Color.black, Color.black};
         [Tooltip("The color of the last enemy killed")]
         [SerializeField]
-        private ColorReference enemyDeathColor;
-
+        private ColorReference enemyDeathColor;        
+        [SerializeField]
+        private GameObjectReference enemyDeathBullet;
+        
+        [SerializeField]
+        private GameObject colorInvPrefab;        
+        [SerializeField]
+        private Transform colorInvParent;
+        
         [SerializeField] 
-        private Image[] colorsSlot = new Image[3];
+        private List<ColorInfo> colorsInventory;
+        [SerializeField]
+        private List<Image> colorsSlot;
 
-        public Color drawColor => colorsInventory[0];
+        public int invCol;
+
+        public Color drawColor => colorsInventory[colorsInventory.Count-1].color;
+        public GameObject bulletColor => colorsInventory[colorsInventory.Count-1].bulletPrefab;
+        
+        protected readonly int redMultiplier = Shader.PropertyToID("_redMul");
+
+        private void Awake()
+        {
+            colorsSlot.Clear();
+            colorsInventory.Clear();
+            
+            for (int i = 0; i < invCol; i++)
+            {
+                colorsSlot.Add(Instantiate(colorInvPrefab, colorInvParent).GetComponent<Image>());
+                
+                colorsInventory.Add(SetColorInfo(Color.black, new GameObject()));
+            }
+            
+            ColorUpdate();
+        }
 
         private void Update()
         {
             if (enemyDeathColor != Color.black)
             {
-                NewColor(enemyDeathColor);
+                NewColor(enemyDeathColor, enemyDeathBullet);
             }
         }
 
         private void ColorUpdate()
         {
-            colorsSlot[0].color = colorsInventory[0];
-            colorsSlot[1].color = colorsInventory[1];
-            colorsSlot[2].color = colorsInventory[2];
+            for (int i = 0; i < colorsSlot.Count; i++)
+            {
+                colorsSlot[i].color = colorsInventory[i].color;
+                //colorsSlot[i].GetComponent<Image>().material.SetColor(redMultiplier, colorsInventory[i]);
+            }
         }
 
-        private void NewColor(Color col)
+        private void NewColor(Color col, GameObject bullet)
         {
             enemyDeathColor.Value = Color.black;
-            
-            colorsInventory[2] = colorsInventory[1];
-            colorsInventory[1] = colorsInventory[0];
-            colorsInventory[0] = col;
+            enemyDeathBullet.Value = null;
+            for (int i = 0; i < colorsSlot.Count-1; i++)
+            {
+                colorsInventory[i] = colorsInventory[i+1];
+            }
+            colorsInventory[colorsSlot.Count-1] = SetColorInfo(col, bullet);;
 
             ColorUpdate();
         }
@@ -49,12 +82,28 @@ namespace SketchFleets
         public void UseColor()
         {
             enemyDeathColor.Value = Color.black;
-            
-            colorsInventory[0] = colorsInventory[1];
-            colorsInventory[1] = colorsInventory[2];
-            colorsInventory[2] = Color.black;
 
+            for (int i = colorsSlot.Count-1; i > 0; i--)
+            {
+                colorsInventory[i] = colorsInventory[i-1];
+            }
+            colorsInventory[0] = SetColorInfo(Color.black, new GameObject());
             ColorUpdate();
         }
+
+        private ColorInfo SetColorInfo(Color col, GameObject gm)
+        {
+            ColorInfo colInf;
+            colInf.color = col;
+            colInf.bulletPrefab = gm;
+            return colInf;
+        }
     }
+}
+
+[System.Serializable]
+public struct ColorInfo
+{
+    public Color color;
+    public GameObject bulletPrefab;
 }

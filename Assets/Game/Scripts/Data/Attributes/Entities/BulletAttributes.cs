@@ -31,6 +31,18 @@ namespace SketchFleets.Data
         [Tooltip("Whether the bullet should not deal damage to player and player-related ships.")]
         [SerializeField]
         private BoolReference ignorePlayer = new BoolReference(false);
+        [Tooltip("How many times the bullet will bounce.")]
+        [SerializeField]
+        private FloatReference maxBounce = new FloatReference(0);        
+        [Tooltip("Time the target will be stationary in seconds.")]
+        [SerializeField]
+        private FloatReference downtime = new FloatReference(0);    
+        [Tooltip("Time the target will be stationary in seconds.")]
+        [SerializeField]
+        private FloatReference continuousDamageTime  = new FloatReference(0);   
+        [Tooltip("How many shots does the target have to take to stop.")]
+        [SerializeField]
+        private IntReference hitsLock = new IntReference(0);
         [SerializeField]
         [Tooltip("The maximum angle variance on firing a shot")]
         private FloatReference angleJitter = new FloatReference(8f);
@@ -69,6 +81,14 @@ namespace SketchFleets.Data
         public FloatReference DirectDamage => directDamage;
 
         public BoolReference IgnorePlayer => ignorePlayer;
+        
+        public FloatReference MaxBounce => maxBounce;
+        
+        public FloatReference Downtime => downtime;
+        
+        public FloatReference ContinuousDamageTime => continuousDamageTime;
+        
+        public IntReference HitsLock => hitsLock;
 
         public FloatReference AngleJitter => angleJitter;
 

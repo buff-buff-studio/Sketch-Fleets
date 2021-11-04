@@ -63,6 +63,7 @@ namespace SketchFleets.AI
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            Debug.Log(other.gameObject.name);
             Bounce(!other.gameObject.CompareTag("bullet"));
         }
 

@@ -14,6 +14,8 @@ namespace SketchFleets.SettingsSystem
 
         public int resolution = 1;
         public int winMode = 0;
+        
+        public int controlMode = 0;
 
         public float volumeMaster = 0.5f;
         public float volumeMusic = 1;

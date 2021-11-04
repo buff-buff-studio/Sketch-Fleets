@@ -18,6 +18,8 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: 
   prefab: {fileID: 0}
+  unlocalizedName: 
+  unlocalizedDescription: 
   currentMap:
     _useConstant: 1
     _constant: 0
@@ -81,7 +83,7 @@ MonoBehaviour:
   - {r: 0.5019608, g: 0, b: 1, a: 1}
   enemyPool:
   - {fileID: 0}
-  - {fileID: 11400000, guid: 393a02fad8f233946997430909ecbb2a, type: 2}
+  - {fileID: 11400000, guid: 6d602fc14c96e2747a43e1f9224b4141, type: 2}
   - {fileID: 11400000, guid: 0d588b8ea96ff8a48bcbd40a252912b2, type: 2}
   - {fileID: 11400000, guid: 21aadf55678505b4f8cf6b8dc48cfd02, type: 2}
   - {fileID: 11400000, guid: 93c528ea34cac92448854ed4432fc98c, type: 2}

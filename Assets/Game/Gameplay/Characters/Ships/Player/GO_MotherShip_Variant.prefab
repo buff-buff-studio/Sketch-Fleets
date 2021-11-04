@@ -41,6 +41,29 @@ MonoBehaviour:
   spriteRenderer: {fileID: 158676202154423924}
   shipSpawnPoint: {fileID: 5884656632747410054}
   shipSpawnMenu: {fileID: 0}
+  hud: {fileID: 0}
+  cyanShipAttributes: {fileID: 11400000, guid: 8bb9c71799f1ee4428d5adb48e69f124, type: 2}
+  colorsInventory: {fileID: 0}
+  radiusMultiply: 100
+  _ShootingTarget: {fileID: 0}
+--- !u!114 &808714954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52908406865915231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8023f8bf9e6f7fa4983482a45276c72c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mothership: {fileID: -2970886270262360389}
+  inputTrail: {fileID: 0}
+  gameHUD: {fileID: 0}
+  cyanHUD: {fileID: 0}
+  CyanShip: {fileID: 0}
+  CyanButton: {fileID: 0}
 --- !u!1001 &411118004048914757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50,7 +73,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 364618190254605338, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_Name
-      value: MotherShip
+      value: GO_MotherShip_Variant
       objectReference: {fileID: 0}
     - target: {fileID: 364618190254605338, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_Layer
@@ -73,6 +96,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 586fc404af3a0c9438c403197ec60729, type: 3}
     - target: {fileID: 542453475185958705, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_Color.b
+      value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 542453475185958705, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_Color.g
+      value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 542453475185958705, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
+      propertyPath: m_Color.r
+      value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 542453475185958705, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_DrawMode
       value: 0
       objectReference: {fileID: 0}
@@ -94,27 +129,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.23375662
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7012698
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7012698
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.020834
+      value: -18.74
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7560365
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 3928010553609692902, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalRotation.w
@@ -150,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6061305938245331907, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 2.12
       objectReference: {fileID: 0}
     - target: {fileID: 6106272454926486791, guid: 063d417ad9b99f5409009f73b91f8e17, type: 3}
       propertyPath: m_Layer

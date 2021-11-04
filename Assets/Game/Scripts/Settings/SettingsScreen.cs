@@ -44,12 +44,10 @@ namespace SketchFleets
 
         private const int WINDOWS_MODE = 6;
         private const int VSYNC = 7;
-
-        private const int TOUCH_RAY = 8;
+        
         private const int DEBUG_MODE = 9;
         
         private const int CONTROLS_MODE = 10;
-        private const int EVENTS_MODE = 11;
         #endregion
 
         #region Public Fields
@@ -58,9 +56,7 @@ namespace SketchFleets
         public TMP_Dropdown resolutionDropdown;
         public TMP_Dropdown windowsModeDropdown;
         public TMP_Dropdown controlsModeDropdown;
-        public TMP_Dropdown eventsModeDropdown;
         public Toggle vsyncToggle;
-        public Toggle touchRayToggle;
         public Toggle debugModeToggle;
         public Slider volumeMaster;
         public Slider volumeMusic;
@@ -120,15 +116,16 @@ namespace SketchFleets
             #endregion
 
             #region Gameplay
-            if (touchRayToggle != null)
-                touchRayToggle.isOn = Settings.GetObject().touchRay;
+            if (controlsModeDropdown != null)
+            {
+                controlsModeDropdown.value = Settings.GetObject().controlMode;
+            }
             if (debugModeToggle != null)
                 debugModeToggle.isOn = Settings.GetObject().debugMode;
             #endregion
 
             //FullScreenMode.Windowed
         }
-
 
         public void OnChangeValue(int dropdownId)
         {
@@ -195,18 +192,18 @@ namespace SketchFleets
                     }
                     break;
 
-                case TOUCH_RAY:
-                    {
-                        Settings.GetObject().touchRay = touchRayToggle.isOn;
-                        Settings.Save();
-                    }
-                    break;
-
                 case DEBUG_MODE:
                     {
                         Settings.GetObject().debugMode = debugModeToggle.isOn;
                         Settings.Save();
                     }
+                    break;
+                
+                case CONTROLS_MODE:
+                {
+                    Settings.GetObject().controlMode = controlsModeDropdown.value;
+                    Settings.Save();
+                }
                     break;
             }
         }

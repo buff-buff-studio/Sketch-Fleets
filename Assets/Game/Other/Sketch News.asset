@@ -13,11 +13,28 @@ MonoBehaviour:
   m_Name: Sketch News
   m_EditorClassIdentifier: Assembly-CSharp:SketchFleets:UpdateNotesSO
   versionNotes:
-  - versionNumber: 1.5.5
+  - versionNumber: 1.5.9
     versionType: 3
     versionNotesLanguage:
     - versionNotesLanguage: ptBr
-      versionName: "Atualiza\xE7\xE3o do Inventario de cor"
+      versionName: Pre-Colors Update
+      versionAdded: '- Novas naves inimigas (WIP):
+
+        As novas naves inimigas
+        podem ser testadas no planeta verde.
+
+        Somente a nave rosa tem uma
+        mecanica implementada.'
+      versionChanged: '- Novos icones:
+
+        Estamos mudando de visual, aproveite.'
+      versionRemoved: "- Inventario InGame removido ate corre\xE7\xE3o de bug"
+      versionBugFix: Nenhum
+  - versionNumber: 1.5.6
+    versionType: 3
+    versionNotesLanguage:
+    - versionNotesLanguage: ptBr
+      versionName: Colors In Buckets Update
       versionAdded: "- Inventario de Cores:\nAgora voc\xEA pode estocar as cores
         que voc\xEA absorve, um limite de 3.\nSe voc\xEA estiver com os 3 slots de
         cores a proxima que voc\xEA for absorver ir\xE1 consumir a cor mais antiga
@@ -28,7 +45,8 @@ MonoBehaviour:
         n\xE3o aparecer na aba de sumonar as naves foi corrigido.\n- BUG-01M: Parallax
         do Menu:\nBug que fazia com que o parallax do menu ficasse sendo cortado.\n-
         BUG-01GP: Obstaculos e Itens spawnando no meio da tela:\nCaixas de grafites
-        e borrachas apareciam no meio na tela do player."
+        e borrachas apareciam no meio na tela do player.\n- BUG-02SY: Save do jogo
+        n\xE3o funcionava"
   - versionNumber: 1.5.0
     versionType: 3
     versionNotesLanguage:
