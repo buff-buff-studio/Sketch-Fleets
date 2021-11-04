@@ -74,7 +74,7 @@ namespace SketchFleets
 
         #region IDamageable Implementation
 
-       public virtual void Damage(float amount, bool makeInvincible = false, bool piercing = false)
+        public virtual void Damage(float amount, bool makeInvincible = false, bool piercing = false)
         {
             // Rejects damage during invincibility time or death
             if (collisionTimer > 0 || isDead) return;
@@ -408,6 +408,15 @@ namespace SketchFleets
             yield return new WaitForSeconds(lockTime);
             
             isLocked = false;
+        }
+
+        public IEnumerator ContinuousDamage(float damage, float time)
+        {
+            for (int i = 1; i <= Mathf.Abs(time); i++)
+            {
+                Damage(damage/i);
+                yield return new WaitForSeconds(1);
+            }
         }
     }
 }

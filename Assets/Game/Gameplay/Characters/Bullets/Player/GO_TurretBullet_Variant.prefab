@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 3193503612161820667, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: attributes
       value: 
-      objectReference: {fileID: 11400000, guid: 2db28cda6305f704995b626c1a89da45, type: 2}
+      objectReference: {fileID: 11400000, guid: ced973144c92f6c4fb94299a5991b35a, type: 2}
     - target: {fileID: 5125356830891273459, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Name
       value: GO_TurretBullet_Variant

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7876139235758731748}
   - component: {fileID: 7737613713382677164}
   - component: {fileID: 1608742048415914550}
-  - component: {fileID: 5852217688056259228}
+  - component: {fileID: -657193372597390331}
   - component: {fileID: 4368884315494171580}
   - component: {fileID: 9151770784009454947}
   m_Layer: 7
@@ -204,7 +204,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5852217688056259228
+--- !u!114 &-657193372597390331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,11 +213,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4199103658155674004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 924295ecf478dca44ac3ceb72ec14fa0, type: 3}
+  m_Script: {fileID: 11500000, guid: fdf16ae1bf6494045867b189d4e669db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributes: {fileID: 11400000, guid: 1a95095a5c7bc7b4793c89ef24101bf1, type: 2}
+  attributes: {fileID: 11400000, guid: 8c103a976f5b3854ba546cede8a0f166, type: 2}
   soundSource: {fileID: 1608742048415914550}
+  PlayerBuletVelocity: 0
 --- !u!70 &4368884315494171580
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

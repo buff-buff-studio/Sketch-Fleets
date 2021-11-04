@@ -36,7 +36,10 @@ namespace SketchFleets.Data
         private FloatReference maxBounce = new FloatReference(0);        
         [Tooltip("Time the target will be stationary in seconds.")]
         [SerializeField]
-        private FloatReference downtime = new FloatReference(0);        
+        private FloatReference downtime = new FloatReference(0);    
+        [Tooltip("Time the target will be stationary in seconds.")]
+        [SerializeField]
+        private FloatReference continuousDamageTime  = new FloatReference(0);   
         [Tooltip("How many shots does the target have to take to stop.")]
         [SerializeField]
         private IntReference hitsLock = new IntReference(0);
@@ -82,6 +85,8 @@ namespace SketchFleets.Data
         public FloatReference MaxBounce => maxBounce;
         
         public FloatReference Downtime => downtime;
+        
+        public FloatReference ContinuousDamageTime => continuousDamageTime;
         
         public IntReference HitsLock => hitsLock;
 

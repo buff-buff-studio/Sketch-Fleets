@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace SketchFleets
 {
-    public class PinkBulletController : BulletController
+    public class BounceBulletController : BulletController
     {
         [SerializeField]
         private float maxBounceLife = 4;
