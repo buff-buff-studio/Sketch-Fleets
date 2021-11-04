@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FOP_Easy_DiagonalAcesInverted
   m_EditorClassIdentifier: 
   ships:
-  - {fileID: 11400000, guid: a358d82563d284d4abc42402d32804a8, type: 2}
-  - {fileID: 11400000, guid: a358d82563d284d4abc42402d32804a8, type: 2}
-  - {fileID: 11400000, guid: a358d82563d284d4abc42402d32804a8, type: 2}
-  - {fileID: 11400000, guid: a358d82563d284d4abc42402d32804a8, type: 2}
+  - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
+  - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
+  - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
+  - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
   formationObject: {fileID: 9029505295488963948, guid: 2e7155a0904fa6e4f9e27fd9aa91c525, type: 3}

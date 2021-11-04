@@ -82,30 +82,30 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 0.5019608, g: 0, b: 1, a: 1}
   enemyPool:
-  - {fileID: 11400000, guid: 83a20818f38360745a14a799b89fb1d5, type: 2}
-  - {fileID: 11400000, guid: 83a20818f38360745a14a799b89fb1d5, type: 2}
-  - {fileID: 11400000, guid: 83a20818f38360745a14a799b89fb1d5, type: 2}
-  - {fileID: 11400000, guid: 83a20818f38360745a14a799b89fb1d5, type: 2}
-  - {fileID: 11400000, guid: 83a20818f38360745a14a799b89fb1d5, type: 2}
-  - {fileID: 11400000, guid: 83a20818f38360745a14a799b89fb1d5, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 216a251f897491d4eba86efa57d0b7b0, type: 2}
+  - {fileID: 11400000, guid: 0a0349ef1e55e234eb7594e268d6b89a, type: 2}
+  - {fileID: 11400000, guid: 3dc2bcd5aaab4474e84a3d32e16ec2ce, type: 2}
+  - {fileID: 11400000, guid: 204ef1cf3dbec504d823d0045df82d66, type: 2}
+  - {fileID: 11400000, guid: 204ef1cf3dbec504d823d0045df82d66, type: 2}
   maxEnemies:
   - _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 7
-    _variable: {fileID: 0}
-  - _useConstant: 1
-    _constant: 5
-    _variable: {fileID: 0}
-  - _useConstant: 1
     _constant: 6
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 9
+    _constant: 8
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 7
+    _constant: 8
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 10
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 10
     _variable: {fileID: 0}
   obstaclePool:
   - {fileID: 0}
