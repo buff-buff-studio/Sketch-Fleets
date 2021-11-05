@@ -65,7 +65,7 @@ namespace SketchFleets.Entities
 
         public override FloatReference MaxHealth => new FloatReference(GetMaxHealth());
 
-        public ShootingTarget _ShootingTarget; //ManyTools Vector2 don1t work... Gambiarra bro
+        public ShootingTarget ShootingTarget; //ManyTools Vector2 don1t work... Gambiarra bro
 
         #endregion
 
@@ -415,7 +415,7 @@ namespace SketchFleets.Entities
             // Moves and rotates the ship
             if (Time.timeScale != 1) return;
             //Move();
-            RadiusLook(_ShootingTarget.targetPoint.position);
+            RadiusLook(ShootingTarget.targetPoint.position);
         }
         
         private void RadiusLook(Vector2 target)
