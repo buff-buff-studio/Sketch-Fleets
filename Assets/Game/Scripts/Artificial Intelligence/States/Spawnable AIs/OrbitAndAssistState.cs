@@ -5,7 +5,7 @@ namespace SketchFleets
     /// <summary>
     /// An AI state that orbits around the player and fires when he does so
     /// </summary>
-    public class OrbitAndAssistState : BaseOrbitState
+    public sealed class OrbitAndAssistState : BaseOrbitState
     {
         #region State Implementation
 
@@ -15,6 +15,7 @@ namespace SketchFleets
         public override void StateUpdate()
         {
             base.StateUpdate();
+            
             AI.Ship.Fire();
         }
 
