@@ -3,7 +3,7 @@ namespace SketchFleets.AI
     /// <summary>
     /// An AI state that aims and fires
     /// </summary>
-    public class AimAndFireState : BaseEnemyAIState
+    public sealed class AimAndFireState : BaseEnemyAIState
     {
         #region State Implementation
 
@@ -12,9 +12,9 @@ namespace SketchFleets.AI
         /// </summary>
         public override void StateUpdate()
         {
-            if (!shipRenderer.isVisible) return;
+            if (!ShouldBeActive()) return;
             
-            AI.Ship.Look(AI.Player.transform.position);
+            AI.Ship.Look(AI.Target.transform.position);
             AI.Ship.Fire();
         }
 
