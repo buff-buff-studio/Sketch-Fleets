@@ -1,7 +1,7 @@
+using SketchFleets.Data;
 using SketchFleets.Entities;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace SketchFleets.AI
 {
@@ -12,8 +12,8 @@ namespace SketchFleets.AI
     {
         #region Private Fields
 
-        private float startingOrbitAngle;
-        private float orbitAngle;
+        private Transform _crosshair;
+        private float _startingOrbitAngle;
 
         #endregion
 
@@ -24,16 +24,10 @@ namespace SketchFleets.AI
         /// </summary>
         public override void Enter()
         {
-            AI = StateMachine as SpawnableShipAI;
-
-            if (AI == null)
-            {
-                Debug.LogError($"{GetType().Name} expects a {typeof(SpawnableShipAI)} State Machine!");
-            }
-            
-            startingOrbitAngle = 360f / (float)AI.Ship.Attributes.MaximumShips * AI.Ship.SpawnNumber;
-
             base.Enter();
+
+            _crosshair = AI.Player.GetComponent<Mothership>().ShootingTarget.targetPoint;
+            _startingOrbitAngle = 360f / (float)AI.Ship.Attributes.MaximumShips * AI.Ship.SpawnNumber;
         }
 
         /// <summary>
@@ -42,7 +36,10 @@ namespace SketchFleets.AI
         public override void StateUpdate()
         {
             ParametricOrbit(Time.time * AI.Ship.Attributes.Speed);
-            AI.Ship.Look(AI.Player.GetComponent<Mothership>()._ShootingTarget.targetPoint.position);
+
+            AI.Ship.Look(AI.Faction == ShipAttributes.Faction.Friendly
+                ? _crosshair.position
+                : AI.Target.transform.position);
         }
 
         #endregion
@@ -54,12 +51,12 @@ namespace SketchFleets.AI
         /// </summary>
         private void ParametricOrbit(float orbitCompletion)
         {
-            // 
+            // Calculate the orbit angle
             orbitCompletion *= 360f;
-            
+
             // The X and Y positions of the GameObject in the radius
-            float orbitX = math.cos(orbitCompletion + startingOrbitAngle) * AI.Ship.Attributes.OrbitRadius;
-            float orbitY = math.sin(orbitCompletion + startingOrbitAngle) * AI.Ship.Attributes.OrbitRadius;
+            float orbitX = math.cos(orbitCompletion + _startingOrbitAngle) * AI.Ship.Attributes.OrbitRadius;
+            float orbitY = math.sin(orbitCompletion + _startingOrbitAngle) * AI.Ship.Attributes.OrbitRadius;
 
             // Updates the transform position
             transform.position = AI.Player.transform.position + new Vector3(orbitX, orbitY);
