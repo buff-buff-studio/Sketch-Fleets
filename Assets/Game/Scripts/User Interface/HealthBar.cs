@@ -58,15 +58,18 @@ namespace SketchFleets.UI
             // NOTE: Why the fuck is this here? The health bar of all things is responsible for throwing game over?
             if (!IsGameOver()) return;
 
-            LevelManager.Instance.GameEnded = true;
-            ShowGameOver();
-            RewardPlayer();
+            if (!LevelManager.Instance.GameEnded)
+            {
+                LevelManager.Instance.GameEnded = true;
+                ShowGameOver();
+                RewardPlayer();
 
-            // Forces the healthbar to be at 0
-            healthBar.fillAmount = 0;
+                // Forces the healthbar to be at 0
+                healthBar.fillAmount = 0;
 
-            // Clears map-specific data
-            SketchFleets.ProfileSystem.Profile.Data.Clear(this, (data) => { });
+                // Clears map-specific data
+                SketchFleets.ProfileSystem.Profile.Data.Clear(this, (data) => { });
+            }
         }
 
         #endregion
@@ -75,8 +78,8 @@ namespace SketchFleets.UI
 
         private bool IsGameOver()
         {
-            return true;
-            //return target.CurrentHealth <= 0 && gameOverScreen.activeSelf == false;
+            //return true;
+            return target.CurrentHealth <= 0 && gameOverScreen.activeSelf == false;
         }
 
         /// <summary>
@@ -104,7 +107,7 @@ namespace SketchFleets.UI
             CanvasGroup canvasGroup = gameOverScreen.GetComponent<CanvasGroup>();
             while ((actual = Time.unscaledTime - timer) < 1.5f)
             {
-                canvasGroup.alpha = actual/1.5f;
+                canvasGroup.alpha = actual / 1.5f;
                 yield return 0;
             }
         }
