@@ -12,6 +12,7 @@ TagManager:
   - Obstacle
   - PlayerSpawn
   - Drop
+  - BounceCollider
   layers:
   - Default
   - TransparentFX

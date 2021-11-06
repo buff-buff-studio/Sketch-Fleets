@@ -41,7 +41,7 @@ namespace SketchFleets
 
         private int closeFinger = 0;
 
-        private int controlsMode => PlayerPrefs.GetInt("controlsMode");
+        private int controlsMode => Settings.GetObject().controlMode;
 
         public DebugScript db;
 

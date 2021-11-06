@@ -53,7 +53,7 @@ public class LineDrawer : MonoBehaviour
         get
         {
             cam ??= Camera.main;
-
+            
             return cam.ScreenToWorldPoint(playerControl.InGame.TouchOne.ReadValue<Vector2>());
         }
     }
@@ -121,6 +121,7 @@ public class LineDrawer : MonoBehaviour
             return;
         }
 
+        if (currentLine == null) return;
         currentLine.AddPoint(mousePos);
     }
 

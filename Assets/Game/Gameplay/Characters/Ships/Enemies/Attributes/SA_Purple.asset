@@ -17,7 +17,7 @@ MonoBehaviour:
     _constant: Purple Ship
     _variable: {fileID: 0}
   description: "\t"
-  prefab: {fileID: 6812927983558368271, guid: 25d7f9715e358bb4eae872cd310d25f5, type: 3}
+  prefab: {fileID: 5416960533882797331, guid: 77732756d1cfbd5439a595b3f0f9e47e, type: 3}
   unlocalizedName: ship_purple
   unlocalizedDescription: desc_ship_purple
   codexRarity: 2
@@ -71,7 +71,8 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 0.08
     _variable: {fileID: 0}
-  fire: {fileID: 0}
+  fire: {fileID: 11400000, guid: 550dd3e518aab5c45bdad97835ef007a, type: 2}
+  dropedFire: {fileID: 4233880130515042751, guid: 39b0d4eda8907624d8bcbf804c666566, type: 3}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 2685658488167287599, guid: 8925daef909aa374386f8a38b855cd35, type: 3}
   healEffect: {fileID: 0}

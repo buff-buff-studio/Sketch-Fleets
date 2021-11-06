@@ -11,7 +11,8 @@
                     "id": "4c1a8b3f-2ded-4e13-9f94-fd27288561d7",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Look",
@@ -19,7 +20,8 @@
                     "id": "75825d1c-196b-480a-9753-e6763f26b266",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Fire",
@@ -27,7 +29,8 @@
                     "id": "9a341f07-676e-43be-a84f-fb67bf0a91d6",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -252,7 +255,8 @@
                     "id": "0f9b7a40-c3d0-4e53-a6e5-02460f73c37d",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Submit",
@@ -260,7 +264,8 @@
                     "id": "78430967-57af-4285-b15e-f716f37cb20a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Cancel",
@@ -268,7 +273,8 @@
                     "id": "77a45275-c80f-4647-bffc-bf01ae787ab7",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Point",
@@ -276,7 +282,8 @@
                     "id": "7f762c89-9b10-46e1-9253-7586f8bf0ed4",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Click",
@@ -284,7 +291,8 @@
                     "id": "d78c1c91-723a-4ab8-8a36-a1a095334ffd",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ScrollWheel",
@@ -292,7 +300,8 @@
                     "id": "e039c6d1-90e8-4216-b51b-01600e59e655",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "MiddleClick",
@@ -300,7 +309,8 @@
                     "id": "ed530ce0-1675-42d4-9157-5361ba92ef33",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "RightClick",
@@ -308,7 +318,8 @@
                     "id": "bcf4fa61-aef3-4313-ade9-8d7c43572826",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "TrackedDevicePosition",
@@ -316,7 +327,8 @@
                     "id": "fd374ffc-2aba-4d3f-8461-1f8fd8ddd00d",
                     "expectedControlType": "Vector3",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "TrackedDeviceOrientation",
@@ -324,7 +336,8 @@
                     "id": "baa88e5b-7f04-4619-9c4a-e6b878dbe553",
                     "expectedControlType": "Quaternion",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -758,7 +771,8 @@
                     "id": "8ade9832-1bac-4dfe-9854-562c2be15327",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "MultiTap"
+                    "interactions": "MultiTap",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ShipFireTwo",
@@ -766,7 +780,8 @@
                     "id": "1476aea2-6889-49f2-a0f0-b12d8e8b3891",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "MultiTap"
+                    "interactions": "MultiTap",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "InputDraw",
@@ -774,7 +789,8 @@
                     "id": "edb6a644-8b17-4a44-9c4e-9955bc215c67",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "TouchTwo",
@@ -782,7 +798,8 @@
                     "id": "5b91b4b8-bad4-4e03-b77a-43b9b0f29dda",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "TouchOne",
@@ -790,7 +807,8 @@
                     "id": "da5e7129-d2b0-44e1-89ee-0ed6a047b269",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "TouchOneRadius",
@@ -798,7 +816,8 @@
                     "id": "28345e8c-9067-4a08-8aee-2c67a655a188",
                     "expectedControlType": "Vector2",
                     "processors": "StickDeadzone(max=0.07)",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Start Draw",
@@ -806,7 +825,8 @@
                     "id": "3fa2f84a-b805-413d-8fcf-2579b9bc70f1",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -817,17 +837,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch Scheme",
-                    "action": "Start Draw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7caabe90-0530-4e15-a247-15fead650a07",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard Scheme",
                     "action": "Start Draw",
                     "isComposite": false,
                     "isPartOfComposite": false

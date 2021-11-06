@@ -1,3 +1,4 @@
+using System;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class BulletController : PoolMember
     private float damageIncrease = 0f;
 
     #endregion
+
+    public float PlayerBuletVelocity;
 
     #region Properties
 
@@ -69,17 +72,27 @@ public class BulletController : PoolMember
 
     #region Unity Callbacks
 
-    private void Start()
+    protected virtual void Start()
     {
         hasFireEffect = Attributes.FireEffect != null;
+        PlayerBuletVelocity = 0;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        transform.Translate(Vector3.up * Time.deltaTime * Attributes.Speed, Space.Self);
+        if(PlayerBuletVelocity == 0)
+            Move(Vector3.up * Attributes.Speed, Space.Self);
+        else
+            Move(Vector3.up * PlayerBuletVelocity, Space.Self);
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    protected void Move(Vector3 pos, Space space)
+    {
+        transform.Translate(pos * Time.deltaTime, space);
+        //transform.Translate(Vector3.up * Time.deltaTime * Attributes.Speed, Space.Self);
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("EndMap"))
         {
@@ -141,7 +154,7 @@ public class BulletController : PoolMember
     /// </summary>
     /// <param name="directDamage">Whether the damage is direct or indirect</param>
     /// <param name="target">The target to deal the damage to</param>
-    private void DealDamageToTarget(bool directDamage, GameObject target)
+    protected virtual void DealDamageToTarget(bool directDamage, GameObject target)
     {
         if (target.CompareTag("Player") || target.CompareTag("PlayerSpawn"))
         {
@@ -160,7 +173,7 @@ public class BulletController : PoolMember
     /// Gets the damage of the bullet
     /// </summary>
     /// <returns>The damage of the bullet</returns>
-    private float GetDamage(bool direct)
+    protected float GetDamage(bool direct)
     {
         float damageVariation = Random.Range(0, Attributes.MaxDamageVariation);
         float baseDamage = direct ? Attributes.DirectDamage : Attributes.IndirectDamage;

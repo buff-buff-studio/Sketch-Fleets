@@ -72,8 +72,12 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4249084107644192771, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249084107644192771, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.9
+      value: 2.48
       objectReference: {fileID: 0}
     - target: {fileID: 4810691136368083704, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: states.Array.size
@@ -101,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6371126793961981222, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8.8
       objectReference: {fileID: 0}
     - target: {fileID: 6371126793961981222, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_LocalPosition.y
@@ -109,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6371126793961981222, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 6371126793961981222, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_LocalRotation.w
@@ -157,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b6234dc9699c59a40a6ff1ef18cd0d0c, type: 2}
     - target: {fileID: 7775095967815198682, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Name
-      value: Magenta Ship
+      value: GO_MagentaShip_Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7775095967815198682, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Layer

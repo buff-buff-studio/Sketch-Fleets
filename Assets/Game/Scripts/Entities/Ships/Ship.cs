@@ -1,3 +1,4 @@
+using System.Collections;
 using ManyTools.Events;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
@@ -36,9 +37,12 @@ namespace SketchFleets
         protected float fireTimer;
         protected float shieldRegenTimer;
         protected float collisionTimer;
+        protected Transform lockParent;
 
-        private bool isDead = false; 
+        protected int lockHit = 0;
+        protected bool isLocked = false;
         
+        private bool isDead = false;
 
         #endregion
 
@@ -70,7 +74,7 @@ namespace SketchFleets
 
         #region IDamageable Implementation
 
-       public virtual void Damage(float amount, bool makeInvincible = false, bool piercing = false)
+        public virtual void Damage(float amount, bool makeInvincible = false, bool piercing = false)
         {
             // Rejects damage during invincibility time or death
             if (collisionTimer > 0 || isDead) return;
@@ -248,7 +252,7 @@ namespace SketchFleets
         /// </summary>
         public virtual void Fire()
         {
-            if (fireTimer > 0f) return;
+            if (fireTimer > 0f || isLocked) return;
 
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
@@ -270,7 +274,7 @@ namespace SketchFleets
         public virtual void Look(Vector2 target)
         {
             // Workaround, this should be done using a proper Pausing interface
-            if (Mathf.Approximately(0f, Time.timeScale)) return;
+            if (Mathf.Approximately(0f, Time.timeScale) || isLocked) return;
 
             // This doesn't really solve the problem. The transform should be a member variable
             // to avoid the constant marshalling
@@ -396,5 +400,23 @@ namespace SketchFleets
         }
 
         #endregion
+
+        protected virtual IEnumerator LockState(float lockTime)
+        {
+            isLocked = true;
+            
+            yield return new WaitForSeconds(lockTime);
+            
+            isLocked = false;
+        }
+
+        public IEnumerator ContinuousDamage(float damage, float time)
+        {
+            for (int i = 1; i <= Mathf.Abs(time); i++)
+            {
+                Damage(damage/i);
+                yield return new WaitForSeconds(1);
+            }
+        }
     }
 }

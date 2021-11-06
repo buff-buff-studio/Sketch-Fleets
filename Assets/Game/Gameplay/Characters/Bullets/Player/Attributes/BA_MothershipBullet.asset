@@ -18,9 +18,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: A bullet fired by the mothership
   prefab: {fileID: 7188275951484046036, guid: 1233159e84246884b810832defa6e525, type: 3}
+  unlocalizedName: 
+  unlocalizedDescription: 
   directDamage:
     _useConstant: 1
-    _constant: 25
+    _constant: 250
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
@@ -41,6 +43,18 @@ MonoBehaviour:
   ignorePlayer:
     _useConstant: 1
     _constant: 1
+    _variable: {fileID: 0}
+  maxBounce:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  downtime:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  hitsLock:
+    _useConstant: 1
+    _constant: 0
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1

@@ -65,6 +65,9 @@ namespace SketchFleets.Data
         [Tooltip("The prefab spawned by the ship by an attack.")]
         [SerializeField, RequiredField()]
         protected BulletAttributes fire;
+        [Tooltip("The bullet prefab that the player will win.")]
+        [SerializeField]
+        protected GameObject dropedFire;
 
         [Header("Special Effects")]
         [Tooltip("The sound effect when the ship gets hit")]
@@ -92,6 +95,8 @@ namespace SketchFleets.Data
         public FloatReference Speed => speed;
 
         public BulletAttributes Fire => fire;
+        
+        public GameObject DropedFire => dropedFire;
 
         public FloatReference Defense => defense;
 
