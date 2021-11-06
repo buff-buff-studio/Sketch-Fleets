@@ -53,12 +53,13 @@ public class MapLevelInteraction : MonoBehaviour
             if (state.constelation.GetStar(clickedStar).Difficulty == 0)
             {
                 //Open level
-                LoadScene("Scenes/Shop", () => { });
+                SketchFleets.LoadingGame.SceneLoad = "Scenes/Shop";
+                LoadScene("Scenes/Loading", () => { });
             }
             else
             {
                 //Open level
-                //LoadScene("Scenes/Shop",() => {});
+                SketchFleets.LoadingGame.SceneLoad = "Scenes/Gameplay";
                 LoadScene("Scenes/Loading", () => { });
             }
         });
@@ -69,6 +70,7 @@ public class MapLevelInteraction : MonoBehaviour
     /// </summary>
     public static void ReturnToMap()
     {
+      
         LoadScene("Scenes/Map", () =>
         {
             ConstelationMap.onMapLoad = () =>
@@ -84,10 +86,8 @@ public class MapLevelInteraction : MonoBehaviour
         //Clear save data and return to menu
         SketchFleets.ProfileSystem.Profile.Data.Clear(behaviour, (data) =>
         {
-            LoadScene("Scenes/Menu", () =>
-            {
-
-            });
+            SketchFleets.LoadingGame.SceneLoad = "Scenes/Menu";
+            LoadScene("Scenes/Loading", () => { });
         });
     }
 
@@ -135,11 +135,12 @@ public class MapLevelInteraction : MonoBehaviour
     /// </summary>
     public static void OpenMap(MonoBehaviour source, bool continueGame)
     {
-         Debug.Log("loaddd");
+        
+        
         LoadMapState(source, continueGame, () =>
         {
-            Debug.Log("aaa");
-            LoadScene("Scenes/Map", () =>
+            SketchFleets.LoadingGame.SceneLoad = "Scenes/Map";
+            LoadScene("Scenes/Loading", () =>
             {
                 ConstelationMap.onMapLoad = () =>
                 {
@@ -225,7 +226,7 @@ public class MapLevelInteraction : MonoBehaviour
 
     #region Unity Callbacks
     /// <summary>
-    /// Unity handler for on scene loaded
+    /// /// Unity handler for on scene loaded
     /// </summary>
     /// <param name="scene"></param>
     /// <param name="mode"></param>

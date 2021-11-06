@@ -17,6 +17,10 @@ namespace SketchFleets.Data
         [SerializeField]
         private IntReference itemCost = new IntReference(100);
 
+
+        [SerializeField]
+        private IntReference itemCostIncreasePerUnit = new IntReference(0);
+
         [SerializeField]
         private Sprite icon;
         #endregion
@@ -26,6 +30,12 @@ namespace SketchFleets.Data
         {
             get => itemCost;
             set => itemCost = value;
+        }
+
+        public IntReference ItemCostIncreasePerUnit
+        {
+            get => itemCostIncreasePerUnit;
+            set => itemCostIncreasePerUnit = value;
         }
         
         public string UnlocalizedName

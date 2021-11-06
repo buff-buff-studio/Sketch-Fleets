@@ -114,7 +114,6 @@ namespace SketchFleets.ProfileSystem
             {
                 codex.AddItem(new CodexEntry((CodexEntryType)item.type, item.id));
             }
-
         }
 
         /// <summary>

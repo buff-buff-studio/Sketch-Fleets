@@ -5,6 +5,9 @@ using ManyTools.Variables;
 using SketchFleets.Entities;
 using SketchFleets.General;
 
+using System.Collections;
+using System.Collections.Generic;
+
 namespace SketchFleets.UI
 {
     /// <summary>
@@ -57,13 +60,13 @@ namespace SketchFleets.UI
 
             LevelManager.Instance.GameEnded = true;
             ShowGameOver();
-            RewardPlayer();        
+            RewardPlayer();
 
             // Forces the healthbar to be at 0
             healthBar.fillAmount = 0;
-                
+
             // Clears map-specific data
-            SketchFleets.ProfileSystem.Profile.Data.Clear(this,(data) => {});
+            SketchFleets.ProfileSystem.Profile.Data.Clear(this, (data) => { });
         }
 
         #endregion
@@ -72,9 +75,10 @@ namespace SketchFleets.UI
 
         private bool IsGameOver()
         {
-            return target.CurrentHealth <= 0 && gameOverScreen.activeSelf == false;
+            return true;
+            //return target.CurrentHealth <= 0 && gameOverScreen.activeSelf == false;
         }
-        
+
         /// <summary>
         /// Changes the graphic part of the life bar 
         /// </summary>
@@ -89,18 +93,31 @@ namespace SketchFleets.UI
         private void ShowGameOver()
         {
             gameOverScreen.SetActive(true);
+            StartCoroutine(LerpGameOverScreen());
             Time.timeScale = 0;
         }
-        
+
+        IEnumerator LerpGameOverScreen()
+        {
+            float timer = Time.unscaledTime;
+            float actual = 0;
+            CanvasGroup canvasGroup = gameOverScreen.GetComponent<CanvasGroup>();
+            while ((actual = Time.unscaledTime - timer) < 1.5f)
+            {
+                canvasGroup.alpha = actual/1.5f;
+                yield return 0;
+            }
+        }
+
         /// <summary>
         /// Rewards the player
         /// </summary>
         private void RewardPlayer()
         {
-            ProfileSystem.Profile.Data.TotalCoins += 
+            ProfileSystem.Profile.Data.TotalCoins +=
                 ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(pencilShell.Value);
             PencilBoxText.AddedAmount = pencilShell.Value;
-            pencilShell.Value = 0;           
+            pencilShell.Value = 0;
         }
 
         #endregion
