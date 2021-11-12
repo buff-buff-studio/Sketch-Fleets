@@ -108,6 +108,8 @@ namespace SketchFleets.ProfileSystem
             while(runningThread)
                 yield return new WaitForSeconds(0.05f);
 
+            GetData().ReloadInventories();
+
             Debug.Log("Saved Loaded:" + File.ReadAllText(FilePath) + " " + GetData().saveObject.mapData.seed);
 
             if(callback != null)
@@ -129,7 +131,8 @@ namespace SketchFleets.ProfileSystem
                 {
                     //Save data
                     GetData().SaveInventories();
-
+                
+                    Debug.Log("Saving data to: " + FilePath);
                     File.WriteAllText(FilePath,JsonUtility.ToJson(GetData().saveObject));
                     runningThread = false;
                 }

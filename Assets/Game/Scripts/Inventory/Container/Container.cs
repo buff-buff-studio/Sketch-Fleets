@@ -128,8 +128,6 @@ namespace SketchFleets.Inventory
 
         protected virtual void Update()
         {
-
-
             if (heldSlot >= 0 && GetItemInSlot(heldSlot) != null)
             {
                 ItemStackAnimation anim = slots[heldSlot].GetComponentInChildren<ItemStackAnimation>();
