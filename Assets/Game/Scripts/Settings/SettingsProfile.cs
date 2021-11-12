@@ -93,8 +93,6 @@ namespace SketchFleets.SettingsSystem
             //Behaviour
             Settings.behaviour = behaviour;
 
-            Debug.Log("Loading: " + loaded);
-
             if (loaded)
             {
                 callback();
@@ -105,7 +103,6 @@ namespace SketchFleets.SettingsSystem
                 if (!Directory.Exists(Application.persistentDataPath + "/data"))
                     Directory.CreateDirectory(Application.persistentDataPath + "/data");
 
-                Debug.Log(FilePath + " " + System.IO.File.Exists(FilePath));
                 //Load and callback
                 if (System.IO.File.Exists(FilePath))
                 {

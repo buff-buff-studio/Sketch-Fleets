@@ -2,7 +2,7 @@
 using ManyTools.UnityExtended;
 using ManyTools.Variables;
 using SketchFleets.Data;
-using SketchFleets.General;
+using SketchFleets.Systems;
 using UnityEngine;
 
 namespace SketchFleets.Enemies
@@ -12,11 +12,23 @@ namespace SketchFleets.Enemies
     /// </summary>
     public sealed class EnemyShip : Ship<ShipAttributes>
     {
+        #region Private Fields
+
         [SerializeField]
         private ColorReference enemyDeathColor = new ColorReference(Color.white);
         [SerializeField]
         private GameObjectReference enemyDeathBullet;
-        
+
+        #endregion
+
+        #region Properties
+
+        public EnemySpawner Spawner { get; set; }
+
+        #endregion
+
+        #region Public Methods
+
         /// <summary>
         /// Emerges the Poolable object from the pool
         /// </summary>
@@ -33,10 +45,10 @@ namespace SketchFleets.Enemies
         public override void Die()
         {
             base.Die();
+            Spawner.CountShipDeath();
 
             enemyDeathColor.Value = Attributes.ShipColor;
             enemyDeathBullet.Value = Attributes.DropedFire;
-            LevelManager.Instance.CountShipDeath();
         }
         
         public void Lock(int lockMax, float lockTime)
@@ -64,5 +76,7 @@ namespace SketchFleets.Enemies
             isLocked = false;
             transform.parent = null;
         }
+
+        #endregion
     }
 }

@@ -8,7 +8,7 @@ namespace SketchFleets.Data
     /// </summary>
     [CreateAssetMenu(fileName = CreateMenus.obstacleFileName, 
         menuName = CreateMenus.obstacleMenuName, order = CreateMenus.obstacleAttributesOrder)]
-    public class ObstacleAttributes : Attributes
+    public sealed class ObstacleAttributes : Attributes
     {
         #region Private Fields
 
