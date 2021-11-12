@@ -845,9 +845,9 @@ public class ConstelationMap : MonoBehaviour
             GameObject sa = s.Object.transform.GetChild(1).gameObject;
             GameObject sb = s.Object.transform.GetChild(2).gameObject;
 
-            if(sa.active)
+            if(sa.activeInHierarchy)
                 imagesToFade.Add(sa.GetComponent<Image>());
-            if(sb.active)
+            if(sb.activeInHierarchy)
                 imagesToFade.Add(sb.GetComponent<Image>());
 
             foreach(Constelation.StarJunction j in s.toJunctions)

@@ -85,7 +85,12 @@ namespace SketchFleets.Inventory
         }
 
         protected virtual void Update() 
-        {
+        {   
+            SketchFleets.ProfileSystem.Profile.Data.Coins = 9999999;
+            //Disable item tooltip
+            if(tooltipBox.gameObject.activeInHierarchy)
+                tooltipBox.gameObject.SetActive(false);
+
             /*
             //Check mouse over slot
             PointerEventData ev = new PointerEventData(EventSystem.current);

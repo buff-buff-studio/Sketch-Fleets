@@ -9,7 +9,7 @@ using ManyTools;
 /// </summary>
 namespace SketchFleets.Interaction
 {
-    [CreateAssetMenu(fileName = CreateMenus.mapLevelInteractionFileName, menuName = CreateMenus.mapLevelInteractionMenuName, 
+    [CreateAssetMenu(fileName = CreateMenus.mapLevelInteractionFileName, menuName = CreateMenus.mapLevelInteractionMenuName,
         order = CreateMenus.mapLevelInteractionOrder)]
     public class MapLevelInteraction : ScriptableObject
     {
@@ -22,6 +22,8 @@ namespace SketchFleets.Interaction
         //Current map
         public static ConstelationMap map;
         public static ConstelationState state;
+
+        public bool onlyShop = false;
         #endregion
 
         #region String Variables
@@ -49,8 +51,8 @@ namespace SketchFleets.Interaction
                 Debug.Log("closed");
                 state.SetCurrentStar(clickedStar);
 
-            //Set variables 
-            map.currentLevel.Value = clickedStar;
+                //Set variables 
+                map.currentLevel.Value = clickedStar;
                 map.currentLevelDifficulty.Value = state.constelation.GetStar(clickedStar).Difficulty;
                 map.currentSeed.Value = SketchFleets.ProfileSystem.Profile.GetData().Map.seed;
 
@@ -63,17 +65,17 @@ namespace SketchFleets.Interaction
                 {
                 }
 
-                if (state.constelation.GetStar(clickedStar).Difficulty == 0)
+                if (state.constelation.GetStar(clickedStar).Difficulty == 0 || onlyShop)
                 {
-                //Open level
-                SketchFleets.LoadingGame.SceneLoad = sceneShop.Value;
+                    //Open level
+                    SketchFleets.LoadingGame.SceneLoad = sceneShop.Value;
                     LoadScene(sceneLoading.Value, () => { });
                 }
                 else
                 {
-                //Open level
-                //SketchFleets.LoadingGame.SceneLoad = "Scenes/Gameplay";
-                SketchFleets.LoadingGame.SceneLoad = sceneGameplay.Value;
+                    //Open level
+                    //SketchFleets.LoadingGame.SceneLoad = "Scenes/Gameplay";
+                    SketchFleets.LoadingGame.SceneLoad = sceneGameplay.Value;
                     LoadScene(sceneLoading.Value, () => { });
                 }
             });
