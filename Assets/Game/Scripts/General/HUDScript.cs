@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ManyTools.Variables;
 using UnityEngine.SceneManagement;
+using SketchFleets.Interaction;
 
 public class HUDScript : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class HUDScript : MonoBehaviour
     [SerializeField]
     private FloatReference life;
     private float lifeFull;
+    #endregion
+
+    #region Public Fields
+    public MapLevelInteraction interaction;
     #endregion
 
     #region Unity Callbacks
@@ -32,7 +37,7 @@ public class HUDScript : MonoBehaviour
         Time.timeScale = 1;
         life.Value = lifeFull;
         SceneManager.LoadScene("Menu");
-        MapLevelInteraction.OnGameOver(this);
+        interaction.OnGameOver(this);
     }
 
     public void Menu()
@@ -40,7 +45,7 @@ public class HUDScript : MonoBehaviour
         Time.timeScale = 1;
         life.Value = lifeFull;
         SceneManager.LoadScene("Menu");
-        MapLevelInteraction.SaveReturningToMenu(this);
+        interaction.SaveReturningToMenu(this);
     }
     #endregion
 }

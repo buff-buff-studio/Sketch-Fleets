@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using SketchFleets.Interaction;
 
 public class MainMenuScript : MonoBehaviour
 {   
     #region Public Fields
     public Button buttonContinue;
+    public MapLevelInteraction interaction;
     #endregion
 
     #region Unity Callbacks
@@ -15,7 +16,7 @@ public class MainMenuScript : MonoBehaviour
     private void Start() 
     {
         buttonContinue.interactable = false;
-        MapLevelInteraction.HasGameToContinue(this,(has) => {
+        interaction.HasGameToContinue(this,(has) => {
             buttonContinue.interactable = has;
         });
     }
@@ -30,12 +31,12 @@ public class MainMenuScript : MonoBehaviour
          Debug.Log("aaaa");
         try
         {
-            MapLevelInteraction.OpenMap(this,false);
+            interaction.OpenMap(this,false);
         }
         catch(System.Exception e)
         {
             Debug.Log(e);
-            MapLevelInteraction.OpenMap(this,false);
+            interaction.OpenMap(this,false);
         }
     }
 
@@ -44,7 +45,7 @@ public class MainMenuScript : MonoBehaviour
     /// </summary>
     public void ContinueGame()
     {
-        MapLevelInteraction.OpenMap(this,true);
+        interaction.OpenMap(this,true);
     }
 
     /// <summary>
