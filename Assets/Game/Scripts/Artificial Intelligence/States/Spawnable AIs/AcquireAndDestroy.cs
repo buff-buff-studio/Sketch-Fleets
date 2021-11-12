@@ -1,4 +1,3 @@
-using System;
 using SketchFleets.AI;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ namespace SketchFleets
     /// <summary>
     /// An AI state that acquires targets and fires at them
     /// </summary>
-    public class AcquireAndDestroy : BaseSpawnableAIState
+    public sealed class AcquireAndDestroy : BaseSpawnableAIState
     {
         #region Private Fields
 
@@ -23,12 +22,12 @@ namespace SketchFleets
         public override void Enter()
         {
             AI = StateMachine as SpawnableShipAI;
-            
+
             if (AI == null)
             {
                 Debug.LogError("AimAndFireState expects a EnemyShipAI State Machine!");
             }
-            
+
             base.Enter();
         }
 
@@ -54,8 +53,6 @@ namespace SketchFleets
 
         #endregion
 
-        // This shouldn't be here, but I'll refactor most of this plugin next semester anyway, no reason to
-        // fix it now just to tear it down later.
         #region Unity Callbacks
 
         private void OnEnable()

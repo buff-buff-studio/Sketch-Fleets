@@ -22,13 +22,7 @@ namespace SketchFleets.AI
         public override void Enter()
         {
             base.Enter();
-
-            AI = StateMachine as SpawnableShipAI;
-
-            if (AI == null)
-            {
-                Debug.LogError($"{GetType().Name} expects a {typeof(SpawnableShipAI)} State Machine!");
-            }
+            CacheComponents();
         }
 
         /// <summary>
@@ -45,6 +39,23 @@ namespace SketchFleets.AI
         public override void Exit()
         {
             
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Caches the AI components
+        /// </summary>
+        private void CacheComponents()
+        {
+            AI = StateMachine as SpawnableShipAI;
+
+            if (AI == null)
+            {
+                Debug.LogError($"{GetType().Name} expects a {typeof(SpawnableShipAI)} State Machine!");
+            }
         }
 
         #endregion

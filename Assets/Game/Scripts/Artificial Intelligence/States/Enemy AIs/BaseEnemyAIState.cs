@@ -24,14 +24,7 @@ namespace SketchFleets.AI
         {
             base.Enter();
 
-            AI = StateMachine as EnemyShipAI;
-
-            shipRenderer = GetComponent<Renderer>();
-
-            if (AI == null)
-            {
-                Debug.LogError($"{GetType().Name} expects a {typeof(EnemyShipAI)} State Machine!");
-            }
+            CacheComponents();
         }
 
         /// <summary>
@@ -48,6 +41,37 @@ namespace SketchFleets.AI
         public override void Exit()
         {
             
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        /// Checks whether the Ship's AI should be active
+        /// </summary>
+        /// <returns>Whether the ship's AI should be active</returns>
+        protected bool ShouldBeActive()
+        {
+            return shipRenderer.isVisible && AI.Target != null;
+        }
+        
+        #endregion
+        
+        #region Private Methods
+        
+        /// <summary>
+        /// Caches all components and dependencies
+        /// </summary>
+        private void CacheComponents()
+        {
+            AI = StateMachine as EnemyShipAI;
+            shipRenderer = GetComponent<Renderer>();
+
+            if (AI == null)
+            {
+                Debug.LogError($"{GetType().Name} expects a {typeof(EnemyShipAI)} State Machine!");
+            }
         }
 
         #endregion
