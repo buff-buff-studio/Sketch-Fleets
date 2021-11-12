@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1420,6 +1420,10 @@ PrefabInstance:
       propertyPath: shipSpawnMenu
       value: 
       objectReference: {fileID: 853362372}
+    - target: {fileID: -2970886270262360389, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
+      propertyPath: ShootingTarget
+      value: 
+      objectReference: {fileID: 269005193}
     - target: {fileID: -2970886270262360389, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
       propertyPath: _ShootingTarget
       value: 
@@ -3021,7 +3025,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7139063, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.701228, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -4943,7 +4947,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7139063, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.701228, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}

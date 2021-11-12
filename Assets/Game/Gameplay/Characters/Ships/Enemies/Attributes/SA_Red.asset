@@ -21,6 +21,7 @@ MonoBehaviour:
   unlocalizedName: ship_red
   unlocalizedDescription: desc_ship_red
   codexRarity: 0
+  shipFaction: 1
   shipColor:
     _useConstant: 1
     _constant: {r: 1, g: 0, b: 0, a: 1}
@@ -47,7 +48,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 35
+    _constant: 750
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
@@ -71,7 +72,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 0.02
     _variable: {fileID: 0}
-  fire: {fileID: 11400000, guid: b0db0062355fb774494c7bd130cd964f, type: 2}
+  fire: {fileID: 0}
   dropedFire: {fileID: 788092735145430477, guid: ea49f9582410a6940b3cc04717c5e38a, type: 3}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 2685658488167287599, guid: 8925daef909aa374386f8a38b855cd35, type: 3}

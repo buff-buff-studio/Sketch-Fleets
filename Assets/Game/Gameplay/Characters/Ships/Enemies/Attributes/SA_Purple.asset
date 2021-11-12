@@ -21,6 +21,7 @@ MonoBehaviour:
   unlocalizedName: ship_purple
   unlocalizedDescription: desc_ship_purple
   codexRarity: 2
+  shipFaction: 1
   shipColor:
     _useConstant: 1
     _constant: {r: 0.5674952, g: 0.1715023, b: 0.7735849, a: 1}

@@ -21,6 +21,7 @@ MonoBehaviour:
   unlocalizedName: ship_yellow
   unlocalizedDescription: desc_ship_yellow
   codexRarity: 1
+  shipFaction: 1
   shipColor:
     _useConstant: 1
     _constant: {r: 1, g: 0.9584458, b: 0, a: 1}

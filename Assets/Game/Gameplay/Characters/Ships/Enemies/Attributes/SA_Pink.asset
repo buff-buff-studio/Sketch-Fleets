@@ -21,6 +21,7 @@ MonoBehaviour:
   unlocalizedName: ship_pink
   unlocalizedDescription: desc_ship_pink
   codexRarity: 2
+  shipFaction: 1
   shipColor:
     _useConstant: 1
     _constant: {r: 0.9245283, g: 0.33579564, b: 0.9216444, a: 1}

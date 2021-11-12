@@ -415,7 +415,6 @@ namespace SketchFleets.Entities
         {
             // Moves and rotates the ship
             if (Time.timeScale != 1) return;
-            //Move();
             RadiusLook(ShootingTarget.targetPoint.position);
         }
         
