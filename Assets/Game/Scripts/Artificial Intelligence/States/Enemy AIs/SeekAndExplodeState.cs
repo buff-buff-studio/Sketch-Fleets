@@ -7,7 +7,7 @@ namespace SketchFleets
     /// An AI state that seeks the player and explodes upon colliding with him
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
-    public class SeekAndExplodeState : BaseEnemyAIState
+    public sealed class SeekAndExplodeState : BaseEnemyAIState
     {
         #region Private Fields
 
@@ -38,9 +38,9 @@ namespace SketchFleets
         /// </summary>
         public override void StateUpdate()
         {
-            if (!shipRenderer.isVisible) return;
+            if (!ShouldBeActive()) return;
             
-            AI.Ship.Look(AI.Player.transform.position);
+            AI.Ship.Look(AI.Target.transform.position);
             rigidbody2d.AddForce(transform.up * (AI.Ship.Attributes.Speed * Time.deltaTime));
         }
         

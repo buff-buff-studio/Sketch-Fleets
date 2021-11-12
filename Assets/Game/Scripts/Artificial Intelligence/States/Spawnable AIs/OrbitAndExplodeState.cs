@@ -7,7 +7,7 @@ namespace SketchFleets
     /// <summary>
     /// An AI state that orbits around the player and fires when he does so
     /// </summary>
-    public class OrbitAndExplodeState : BaseOrbitState
+    public sealed class OrbitAndExplodeState : BaseOrbitState
     {
         #region Private Fields
 

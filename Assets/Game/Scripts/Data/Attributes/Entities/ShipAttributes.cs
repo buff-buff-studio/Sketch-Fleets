@@ -18,6 +18,9 @@ namespace SketchFleets.Data
         [Tooltip("The ship's codex entry rarity")]
         [SerializeField]
         protected CodexEntryRarity codexRarity;
+        [Tooltip("The ship's faction for targeting purposes")]
+        [SerializeField]
+        protected Faction shipFaction;
         [Tooltip("The ship's color.")]
         [SerializeField]
         protected ColorReference shipColor = new ColorReference(new Color());
@@ -123,6 +126,19 @@ namespace SketchFleets.Data
         public FloatReference CodexDropChance => codexDropChance;
 
         public CodexEntryRarity CodexRarity => codexRarity;
+        
+        public Faction ShipFaction => shipFaction;
+
+        #endregion
+
+        #region Public Enums
+
+        public enum Faction
+        {
+            Friendly,
+            Hostile,
+            Neutral
+        }
 
         #endregion
     }

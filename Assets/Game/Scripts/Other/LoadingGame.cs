@@ -11,6 +11,8 @@ namespace SketchFleets
 {
     public class LoadingGame : MonoBehaviour
     {
+        public static string SceneLoad = "Gameplay";
+
         public Vector3 IconRotate;
         public Image LoadIcon;
         [FormerlySerializedAs("Difficulty")] public MapAttributes map;
@@ -23,7 +25,7 @@ namespace SketchFleets
 
         IEnumerator LoadingScene()
         {
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Gameplay");
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneLoad);
 
             while (!asyncOperation.isDone)
             {

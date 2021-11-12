@@ -134,7 +134,11 @@ namespace SketchFleets.Inventory
             #region Temporary
             if(stack != null)
             {
-                slots[index].GetChild(0).GetComponentInChildren<TMP_Text>().text = register.items[stack.Id].ItemCost + "$";
+                #region Increase price per bought amount
+                int increase = register.items[stack.Id].ItemCostIncreasePerUnit.Value * Profile.Data.inventoryUpgrades.SearchItem(stack);
+                #endregion
+
+                slots[index].GetChild(0).GetComponentInChildren<TMP_Text>().text = (register.items[stack.Id].ItemCost.Value + increase) + "$";
                 slots[index].GetChild(1).GetComponent<Image>().sprite = sprite;
             }
             slots[index].gameObject.SetActive(sprite != null);
@@ -150,7 +154,11 @@ namespace SketchFleets.Inventory
 
             int count = isUpgradeShop ? Profile.GetData().inventoryUpgrades.SearchItem(stack) : Profile.GetData().inventoryItems.SearchItem(stack);
 
-            itemBuyPrice.text = item.ItemCost.ToString();
+            #region Increase price per bought amount
+            int increase = register.items[stack.Id].ItemCostIncreasePerUnit.Value * Profile.Data.inventoryUpgrades.SearchItem(stack);
+            #endregion
+
+            itemBuyPrice.text = (item.ItemCost.Value + increase).ToString();
             string name = LanguageSystem.LanguageManager.Localize(item.UnlocalizedName);
             itemAmount.text = LanguageSystem.LanguageManager.Localize("ui_shop_amount",count.ToString(),name);
             itemBuyConfirmation.text = LanguageSystem.LanguageManager.Localize("ui_shop_buy_confirmation","1",name);
@@ -162,7 +170,13 @@ namespace SketchFleets.Inventory
 
             ShopObject item = register.items[stack.Id];
 
-            if (GetCoins() < item.ItemCost)
+            #region Increase price per bought amount
+            int increase = register.items[stack.Id].ItemCostIncreasePerUnit.Value * Profile.Data.inventoryUpgrades.SearchItem(stack);
+            #endregion
+                
+            int itemCost = item.ItemCost.Value + increase;
+
+            if (GetCoins() < itemCost)
             {
                 noMoneySound.Play();
                 //Money blink
@@ -171,7 +185,7 @@ namespace SketchFleets.Inventory
                 return;
             }
 
-            AddCoins(-item.ItemCost);
+            AddCoins(-itemCost);
 
             itemInformationPanel.SetActive(false);
 

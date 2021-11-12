@@ -69,7 +69,7 @@ namespace SketchFleets
             try
             {
                 CyanShip = mothership.GetCyanShip();
-                CyanShip.LookAtTarget(mothership._ShootingTarget.targetPoint.position);
+                CyanShip.LookAtTarget(mothership.ShootingTarget.targetPoint.position);
                 CyanShip = null;
             }
             catch
