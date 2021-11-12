@@ -33,18 +33,18 @@ namespace SketchFleets.Inventory
             base.Start();
 
             //Coin Icon
-            if(currencyIcon != null)
+            if (currencyIcon != null)
                 currencyIcon.sprite = isUpgradeInventory ? currencyIconSprites[1] : currencyIconSprites[0];
 
-            if(coinCounter != null)
-                if(isUpgradeInventory)
+            if (coinCounter != null)
+                if (isUpgradeInventory)
                     coinCounter.text = Profile.Data.TotalCoins.ToString();
                 else
                     coinCounter.text = Profile.Data.Coins.ToString();
-            
+
             items.Clear();
             foreach (ItemStack stack in Profile.GetData().inventoryItems)
-                if(FilterItem(stack))
+                if (FilterItem(stack))
                     items.Add(stack);
 
             Render();
@@ -59,13 +59,13 @@ namespace SketchFleets.Inventory
         #region Buttons
         public void NextPage()
         {
-            page ++;
+            page++;
             Render();
         }
 
         public void PreviousPage()
         {
-            page --;
+            page--;
             Render();
         }
         #endregion
@@ -75,10 +75,10 @@ namespace SketchFleets.Inventory
         {
             int firstslot = page * slotSize;
             int j = 0;
-            for(int i = firstslot; i < firstslot + slotSize; i ++)
+            for (int i = firstslot; i < firstslot + slotSize; i++)
             {
                 ItemStack stack = (i < items.Count) ? items[i] : null;
-                
+
 
                 Sprite sprite = null;
                 if (stack != null && stack.Amount > 0)
@@ -89,11 +89,11 @@ namespace SketchFleets.Inventory
                 obj.SetActive(sprite != null);
                 slots[j].GetChild(1).GetComponent<TMPro.TMP_Text>().text = sprite == null ? "" : (stack.Amount == 1 ? "" : stack.Amount.ToString());
 
-                j ++;
+                j++;
             }
 
-            if(slots.Length > slotSize)
-                for(int i = slotSize; i < slotSize + 4; i ++)
+            if (slots.Length > slotSize)
+                for (int i = slotSize; i < slotSize + 4; i++)
                 {
                     ItemStack stack = GetItemInSlot(i);
 
@@ -108,26 +108,41 @@ namespace SketchFleets.Inventory
 
                 }
 
-            int pageCount = (int) Mathf.Ceil(items.Count / (slotSize * 1f));
-            if(pageCount < 1)
+            int pageCount = (int)Mathf.Ceil(items.Count / (slotSize * 1f));
+            if (pageCount < 1)
                 pageCount = 1;
 
-            if(prevPageButton != null)
+            if (prevPageButton != null)
                 prevPageButton.interactable = page > 0;
-            if(nextPageButton != null)
+            if (nextPageButton != null)
                 nextPageButton.interactable = page < pageCount - 1;
-            if(pageHeader != null)
+            if (pageHeader != null)
                 pageHeader.text = (page + 1) + "/" + pageCount;
+
+            for (int i = 0; i < slots.Length; i++)
+            {
+
+                Button btn = slots[i].GetComponent<Button>();
+                int ji = i;
+                if (btn != null)
+                {
+                    btn.onClick.RemoveAllListeners();
+                    btn.onClick.AddListener(() =>
+                    {
+                        OnClickSlotInternal(ji);
+                    });
+                }
+            }
         }
         #endregion
 
         #region Utils
         public override ItemStack GetItemInSlot(int slot)
         {
-            if(slot >= slotSize)
+            if (slot >= slotSize)
             {
                 //Upgrades
-                return Profile.Data.inventoryUpgrades.SearchItem(new ItemStack(slot - slotSize,1)) > 0 ? new ItemStack(slot - slotSize,Profile.Data.inventoryUpgrades.SearchItem(new ItemStack(slot - slotSize))) : null;      
+                return Profile.Data.inventoryUpgrades.SearchItem(new ItemStack(slot - slotSize, 1)) > 0 ? new ItemStack(slot - slotSize, Profile.Data.inventoryUpgrades.SearchItem(new ItemStack(slot - slotSize))) : null;
             }
 
             int firstslot = page * slotSize;
@@ -136,7 +151,7 @@ namespace SketchFleets.Inventory
 
         public override ShopObjectRegister GetRegisterForSlot(int slot)
         {
-            if(slot >= slotSize)
+            if (slot >= slotSize)
                 return upgradeRegister;
 
             return register;
@@ -146,8 +161,8 @@ namespace SketchFleets.Inventory
         {
             base.Update();
 
-            if(coinCountBackground != null)
-                coinCountBackground.sizeDelta = new Vector2(coinCounter.GetRenderedValues(true).x + 200,130);
+            if (coinCountBackground != null)
+                coinCountBackground.sizeDelta = new Vector2(coinCounter.GetRenderedValues(true).x + 200, 130);
         }
         #endregion
     }
