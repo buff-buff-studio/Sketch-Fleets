@@ -76,5 +76,13 @@
         public const string shipFormationFileName = "Ship Formation";
 
         #endregion
+
+        #region Interaction
+
+        public const int mapLevelInteractionOrder = 0;
+        public const string mapLevelInteractionMenuName = "Sketch Fleets/Map Level Interaction";
+        public const string mapLevelInteractionFileName = "Map Level Interaction";
+
+        #endregion
     }
 }

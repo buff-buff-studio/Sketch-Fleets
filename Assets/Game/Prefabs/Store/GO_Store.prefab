@@ -2963,6 +2963,7 @@ MonoBehaviour:
   buySound: {fileID: 5004278501907214889}
   noMoneySound: {fileID: 198035720293930496}
   cardPrefab: {fileID: 638842756540695556}
+  interaction: {fileID: 0}
 --- !u!1 &7340449413753430553
 GameObject:
   m_ObjectHideFlags: 0
@@ -3902,6 +3903,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Inventory
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7340449413207734733}
+        m_TargetAssemblyTypeName: SketchFleets.Inventory.StoreContainer, Assembly-CSharp
+        m_MethodName: OnDisable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7340449414663308717

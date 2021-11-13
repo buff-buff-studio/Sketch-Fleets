@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ManyTools.Variables;
 using SketchFleets.Data;
+using SketchFleets.Interaction;
 
 /// <summary>
 /// Main map class (Display Constelation | MapLevelInteraction.state)
@@ -21,6 +22,7 @@ public class ConstelationMap : MonoBehaviour
     #endregion
 
     #region Public Fields
+    public MapLevelInteraction interaction;
     //Prefabs
     public GameObject mapPrefab;
     public GameObject pathPrefab;
@@ -86,7 +88,7 @@ public class ConstelationMap : MonoBehaviour
     private void Start() 
     {
         //Create new constelation
-        constelation = new Constelation(this);
+        constelation = new Constelation(this,interaction);
 
         //Init constelation state
         MapLevelInteraction.state.SetConstelation(constelation);
@@ -421,7 +423,7 @@ public class ConstelationMap : MonoBehaviour
         //Choose current star
         Constelation.Star star = constelation.GetStar(starNumber);
         MapLevelInteraction.state.Choose(star.Id); 
-        MapLevelInteraction.OnClickOnMapStar(starNumber);
+        interaction.OnClickOnMapStar(starNumber);
     }
 
     public void UnlockNextLevel()
@@ -842,9 +844,9 @@ public class ConstelationMap : MonoBehaviour
             GameObject sa = s.Object.transform.GetChild(1).gameObject;
             GameObject sb = s.Object.transform.GetChild(2).gameObject;
 
-            if(sa.active)
+            if(sa.activeInHierarchy)
                 imagesToFade.Add(sa.GetComponent<Image>());
-            if(sb.active)
+            if(sb.activeInHierarchy)
                 imagesToFade.Add(sb.GetComponent<Image>());
 
             foreach(Constelation.StarJunction j in s.toJunctions)

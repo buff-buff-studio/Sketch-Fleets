@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SketchFleets.Interaction;
 
 /// <summary>
 /// Holds a constelation of stars and all path between stars
@@ -12,7 +13,8 @@ public class Constelation : IEnumerable
     private List<List<Star>> stars = new List<List<Star>>();
     private List<Star> allStars = new List<Star>();
     private ConstelationMap map;
-    #endregion
+    private MapLevelInteraction interaction;
+    #endregion 
 
     #region Properties
     /// <summary>
@@ -41,9 +43,11 @@ public class Constelation : IEnumerable
     /// Start to construct a new constelation from a map
     /// </summary>
     /// <param name="map"></param>
-    public Constelation(ConstelationMap map)
+    /// <param name="interaction"></param>
+    public Constelation(ConstelationMap map,MapLevelInteraction interaction)
     {
         this.map = map;
+        this.interaction = interaction;
     }
     
     /// <summary>

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SketchFleets.Data;
 using System.Collections.Generic;
+using SketchFleets.Interaction;
 
 namespace SketchFleets.Inventory
 {
@@ -42,6 +43,8 @@ namespace SketchFleets.Inventory
         public AudioSource noMoneySound;
 
         public GameObject cardPrefab;
+
+        public MapLevelInteraction interaction;
         #endregion
 
         private static int selectItemIndex = -1;
@@ -270,7 +273,7 @@ namespace SketchFleets.Inventory
 
         public void CloseToMap()
         {
-            MapLevelInteraction.ReturnToMapOpeningStar();
+            interaction.ReturnToMapOpeningStar();
         }
 
         /// <summary>

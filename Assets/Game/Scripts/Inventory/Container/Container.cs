@@ -40,12 +40,34 @@ namespace SketchFleets.Inventory
         private ItemStackAnimation heldItem;
         #endregion
 
+        #region Tooltip
+        private Vector2 mouse;
+        private int heldSlot = -1;
+        #endregion
+
+        #region Public Fields
+        public bool centered = false;
+        #endregion
+
         /// <summary>
         /// Init container
         /// </summary>
-        public virtual void Start() 
+        public virtual void Start()
         {
+            HideTooltip();
             canvas = GetComponentInParent<Canvas>();
+        }
+
+        public void OnDisable()
+        {
+            HideTooltip();
+        }
+
+        public void HideTooltip()
+        {
+            heldSlot = -1;
+            if (tooltipBox.gameObject.activeInHierarchy)
+                tooltipBox.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -54,7 +76,7 @@ namespace SketchFleets.Inventory
         public virtual void Render()
         {
             //Render all items
-            for(int i = 0; i < slots.Length; i ++)
+            for (int i = 0; i < slots.Length; i++)
             {
                 RenderSlot(i);
             }
@@ -66,17 +88,41 @@ namespace SketchFleets.Inventory
         /// <param name="index"></param>
         public virtual void RenderSlot(int index)
         {
-            
-        }
 
+        }
         /// <summary>
         /// Handle slot click
         /// </summary>
         /// <param name="slot"></param>
         protected void OnClickSlotInternal(int slot)
         {
-            if(OnClickSlot != null)
-                OnClickSlot(slot);
+            //Hide
+            if (tooltipBox.gameObject.activeInHierarchy)
+                tooltipBox.gameObject.SetActive(false);
+
+            if (heldSlot == slot)
+            {
+                //heldSlot = -1;
+
+                if (OnClickSlot != null)
+                    OnClickSlot(slot);
+
+                return;
+            }
+
+            this.mouse = Mouse.current.position.ReadValue();
+            this.heldSlot = slot;
+
+            if (heldSlot >= 0 && GetItemInSlot(heldSlot) != null)
+            {
+                tooltipText.text = GetTooltipText(heldSlot);
+                tooltipDescription.text = GetTooltipDescription(heldSlot);
+
+                if (!tooltipBox.gameObject.activeInHierarchy)
+                    tooltipBox.gameObject.SetActive(true);
+            }
+
+            //Open toolbar
         }
 
         public virtual ItemStack GetItemInSlot(int slot)
@@ -84,8 +130,66 @@ namespace SketchFleets.Inventory
             return inventory.GetItem(slot);
         }
 
-        protected virtual void Update() 
+        protected virtual void Update()
         {
+            if (heldSlot >= 0 && GetItemInSlot(heldSlot) != null)
+            {
+                ItemStackAnimation anim = slots[heldSlot].GetComponentInChildren<ItemStackAnimation>();
+                if (anim != null)
+                    anim.hovering = true;
+
+                if (heldItem != null)
+                    if (anim == null || anim != heldItem)
+                    {
+                        heldItem.hovering = false;
+                    }
+
+                heldItem = anim;
+
+                Vector2 local;
+                Camera cam = canvas.worldCamera;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, mouse, cam, out local);
+
+                float off = tooltipText.GetRenderedValues(true).x * canvas.scaleFactor;
+                float desc = tooltipDescription.GetRenderedValues(true).y;
+
+                float w = tooltipText.GetRenderedValues(true).x;
+                tooltipBackground.sizeDelta = new Vector2(w, 100 + 5 + desc);
+
+                tooltipDescription.rectTransform.sizeDelta = new Vector2(w, 50);
+
+                if (centered)
+                {
+                    tooltipBackground.pivot = new Vector2(0f, 1f);
+                    tooltipText.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                    tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                    tooltipDescription.margin = new Vector4(0, 0, 0, 0);
+
+                    tooltipBox.anchoredPosition = new Vector2(-w/2f, 0);
+                }
+                else
+                {
+                    if (off + mouse.x > Screen.width - 50)
+                    {
+                        tooltipBackground.pivot = new Vector2(1, 1f);
+                        tooltipText.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                        tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                        tooltipDescription.margin = new Vector4(-w, 0, w, 0);
+
+                        tooltipBox.anchoredPosition = local + new Vector2(-70, 40) + new Vector2(0, changeY);
+                    }
+                    else
+                    {
+                        tooltipBackground.pivot = new Vector2(0, 1f);
+                        tooltipText.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                        tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                        tooltipDescription.margin = new Vector4(0, 0, 0, 0);
+
+                        tooltipBox.anchoredPosition = local + new Vector2(70, 40) + new Vector2(0, changeY);
+                    }
+                }
+            }
+
             /*
             //Check mouse over slot
             PointerEventData ev = new PointerEventData(EventSystem.current);
@@ -180,13 +284,13 @@ namespace SketchFleets.Inventory
         private string lastTooltipText = null;
         protected virtual string GetTooltipText(int slot)
         {
-            if(slot != lastHoveredSlot)
+            if (slot != lastHoveredSlot)
             {
                 lastHoveredSlot = slot;
                 //lastTooltipText = register.items[inventory.GetItem(slot).Id].UnlocalizedName;
                 lastTooltipText = LanguageSystem.LanguageManager.Localize(GetRegisterForSlot(slot).items[GetItemInSlot(slot).Id].UnlocalizedName);
             }
-            
+
             return lastTooltipText;
         }
 
@@ -194,13 +298,13 @@ namespace SketchFleets.Inventory
         private string lastTooltipTextDesc = null;
         protected virtual string GetTooltipDescription(int slot)
         {
-            if(slot != lastHoveredSlotDesc)
+            if (slot != lastHoveredSlotDesc)
             {
                 lastHoveredSlotDesc = slot;
                 //lastTooltipText = register.items[inventory.GetItem(slot).Id].UnlocalizedName;
                 lastTooltipTextDesc = LanguageSystem.LanguageManager.Localize("desc_" + GetRegisterForSlot(slot).items[GetItemInSlot(slot).Id].UnlocalizedName);
             }
-            
+
             return lastTooltipTextDesc;
         }
 

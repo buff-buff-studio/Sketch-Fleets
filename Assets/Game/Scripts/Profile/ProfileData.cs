@@ -98,6 +98,8 @@ namespace SketchFleets.ProfileSystem
             inventoryItems = new PlayerItemInventory(24);
             codex = new CodexInventory();
 
+            Debug.Log("Reloading inventories: " + saveObject.items.Count);
+
             //Read inventory data
             foreach (ProfileItem o in saveObject.items)
             {
