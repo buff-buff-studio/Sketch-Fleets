@@ -77,9 +77,8 @@ namespace SketchFleets.Inventory
             int j = 0;
             for (int i = firstslot; i < firstslot + slotSize; i++)
             {
+
                 ItemStack stack = (i < items.Count) ? items[i] : null;
-
-
                 Sprite sprite = null;
                 if (stack != null && stack.Amount > 0)
                     sprite = register.items[stack.Id].Icon;

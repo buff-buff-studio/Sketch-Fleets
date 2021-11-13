@@ -45,6 +45,10 @@ namespace SketchFleets.Inventory
         private int heldSlot = -1;
         #endregion
 
+        #region Public Fields
+        public bool centered = false;
+        #endregion
+
         /// <summary>
         /// Init container
         /// </summary>
@@ -98,7 +102,7 @@ namespace SketchFleets.Inventory
 
             if (heldSlot == slot)
             {
-                heldSlot = -1;
+                //heldSlot = -1;
 
                 if (OnClickSlot != null)
                     OnClickSlot(slot);
@@ -143,7 +147,8 @@ namespace SketchFleets.Inventory
                 heldItem = anim;
 
                 Vector2 local;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, mouse, GetComponentInParent<Canvas>().worldCamera, out local);
+                Camera cam = canvas.worldCamera;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, mouse, cam, out local);
 
                 float off = tooltipText.GetRenderedValues(true).x * canvas.scaleFactor;
                 float desc = tooltipDescription.GetRenderedValues(true).y;
@@ -153,23 +158,35 @@ namespace SketchFleets.Inventory
 
                 tooltipDescription.rectTransform.sizeDelta = new Vector2(w, 50);
 
-                if (off + mouse.x > Screen.width - 50)
+                if (centered)
                 {
-                    tooltipBackground.pivot = new Vector2(1, 1f);
-                    tooltipText.horizontalAlignment = HorizontalAlignmentOptions.Right;
-                    tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Right;
-                    tooltipDescription.margin = new Vector4(-w, 0, w, 0);
-
-                    tooltipBox.anchoredPosition = local + new Vector2(-70, 40) + new Vector2(0, changeY);
-                }
-                else
-                {
-                    tooltipBackground.pivot = new Vector2(0, 1f);
+                    tooltipBackground.pivot = new Vector2(0f, 1f);
                     tooltipText.horizontalAlignment = HorizontalAlignmentOptions.Left;
                     tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Left;
                     tooltipDescription.margin = new Vector4(0, 0, 0, 0);
 
-                    tooltipBox.anchoredPosition = local + new Vector2(70, 40) + new Vector2(0, changeY);
+                    tooltipBox.anchoredPosition = new Vector2(-w/2f, 0);
+                }
+                else
+                {
+                    if (off + mouse.x > Screen.width - 50)
+                    {
+                        tooltipBackground.pivot = new Vector2(1, 1f);
+                        tooltipText.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                        tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                        tooltipDescription.margin = new Vector4(-w, 0, w, 0);
+
+                        tooltipBox.anchoredPosition = local + new Vector2(-70, 40) + new Vector2(0, changeY);
+                    }
+                    else
+                    {
+                        tooltipBackground.pivot = new Vector2(0, 1f);
+                        tooltipText.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                        tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                        tooltipDescription.margin = new Vector4(0, 0, 0, 0);
+
+                        tooltipBox.anchoredPosition = local + new Vector2(70, 40) + new Vector2(0, changeY);
+                    }
                 }
             }
 

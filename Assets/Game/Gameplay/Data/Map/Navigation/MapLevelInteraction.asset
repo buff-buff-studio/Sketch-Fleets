@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a93e10658c2e14496a1ab381b0a946, type: 3}
   m_Name: MapLevelInteraction
   m_EditorClassIdentifier: 
-  onlyShop: 1
+  onlyShop: 0
   sceneMap: {fileID: 11400000, guid: 0c843b52f2517b9449205b9ce87dc685, type: 2}
   sceneLoading: {fileID: 11400000, guid: 585c700ebba34d74d9f520a54052966c, type: 2}
   sceneShop: {fileID: 11400000, guid: 070b7cac9daa626458dc3b2f76beeb4f, type: 2}

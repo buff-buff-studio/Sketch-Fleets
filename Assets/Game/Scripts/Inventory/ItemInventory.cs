@@ -22,6 +22,15 @@ namespace SketchFleets.Inventory
             get { return items[index]; }
             set { items[index] = value; }
         }
+
+        /// <summary>
+        /// Return the number of items in the inventory
+        /// </summary>
+        /// <value></value>
+        public int Count
+        {
+            get { return items.Length; }
+        }
         #endregion
 
         #region Constructors
@@ -116,7 +125,7 @@ namespace SketchFleets.Inventory
                 if (items[i] != null)
                     if (items[i].Equals(item))
                     {
-                        return RemoveItem(i,item.Amount);
+                        return RemoveItem(i, item.Amount);
                     }
             }
 
@@ -131,13 +140,13 @@ namespace SketchFleets.Inventory
         public int SearchItem(ItemStack item)
         {
             for (int i = 0; i < items.Length; i++)
-                if(items[i] != null)
+                if (items[i] != null)
                     if (items[i].Equals(item))
                         return items[i].Amount;
 
             return 0;
         }
-        
+
         /// <summary>
         /// Try to use item
         /// </summary>
@@ -146,9 +155,9 @@ namespace SketchFleets.Inventory
         public bool UseItem(ItemStack stack)
         {
             int count = SearchItem(stack);
-            if(count < stack.Amount)
+            if (count < stack.Amount)
                 return false;
-            
+
             RemoveItem(stack);
 
             return true;
@@ -168,9 +177,11 @@ namespace SketchFleets.Inventory
         public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < items.Length; i++)
+            {
                 if (items[i] != null)
-                    if(items[i].Amount > 0)
+                    if (items[i].Amount > 0)
                         yield return items[i];
+            }
         }
 
         /// <summary>
