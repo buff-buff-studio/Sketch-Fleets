@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class MainMenuScript : MonoBehaviour
+public sealed class MainMenuScript : MonoBehaviour
 {   
     #region Public Fields
     public Button buttonContinue;
