@@ -216,8 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429ae18c328fffe4886fc90516f86b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributes: {fileID: 11400000, guid: ced973144c92f6c4fb94299a5991b35a, type: 2}
+  attributes: {fileID: 0}
   soundSource: {fileID: 2808714492686491247}
+  PlayerBuletVelocity: 0
   isAreaDamage: 0
 --- !u!70 &867098571689625573
 CapsuleCollider2D:
@@ -232,8 +233,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.7}
+  m_Offset: {x: 0, y: 0.04}
+  m_Size: {x: 0.47, y: 1.88}
   m_Direction: 0
 --- !u!70 &5739969286402720058
 CapsuleCollider2D:
@@ -248,6 +249,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.7}
+  m_Offset: {x: 0, y: 0.03}
+  m_Size: {x: 0.31, y: 1.71}
   m_Direction: 0

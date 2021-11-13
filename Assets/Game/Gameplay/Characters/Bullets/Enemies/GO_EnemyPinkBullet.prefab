@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7775028945062924935}
   - component: {fileID: 1645101744639054365}
   - component: {fileID: 1887953119455015140}
-  - component: {fileID: 4334310225986767767}
-  - component: {fileID: 9189148666804833608}
+  - component: {fileID: 974492641606591906}
+  - component: {fileID: 8335867044296766252}
   m_Layer: 9
   m_Name: GO_EnemyPinkBullet
   m_TagString: bullet
@@ -218,9 +218,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributes: {fileID: 11400000, guid: 313519771c8d5784fa5aa6cb24595836, type: 2}
   soundSource: {fileID: 1645101744639054365}
+  PlayerBuletVelocity: 0
   maxBounceLife: 4
---- !u!70 &4334310225986767767
-CapsuleCollider2D:
+--- !u!58 &974492641606591906
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -233,10 +234,10 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.7}
-  m_Direction: 0
---- !u!70 &9189148666804833608
-CapsuleCollider2D:
+  serializedVersion: 2
+  m_Radius: 1
+--- !u!58 &8335867044296766252
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -249,5 +250,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.7}
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 0.8

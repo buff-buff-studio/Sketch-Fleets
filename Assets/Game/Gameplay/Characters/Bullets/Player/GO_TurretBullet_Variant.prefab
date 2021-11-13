@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 173183443748937732, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 173183443748937732, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_Size.y
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 173183443748937732, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 1165148629567444099, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -30,7 +42,19 @@ PrefabInstance:
     - target: {fileID: 3193503612161820667, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: attributes
       value: 
-      objectReference: {fileID: 11400000, guid: ced973144c92f6c4fb94299a5991b35a, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 4739967438635050715, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4739967438635050715, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_Size.y
+      value: 1.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4739967438635050715, guid: 113599297451dbb438c53ae78c03add3, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 5125356830891273459, guid: 113599297451dbb438c53ae78c03add3, type: 3}
       propertyPath: m_Name
       value: GO_TurretBullet_Variant
