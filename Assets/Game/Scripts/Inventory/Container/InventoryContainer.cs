@@ -92,7 +92,7 @@ namespace SketchFleets.Inventory
             }
 
             if (slots.Length > slotSize)
-                for (int i = slotSize; i < slotSize + 4; i++)
+                for (int i = slotSize; i < slotSize + upgradeRegister.items.Length; i++)
                 {
                     ItemStack stack = GetItemInSlot(i);
 

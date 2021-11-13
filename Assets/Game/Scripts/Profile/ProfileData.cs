@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using SketchFleets.Inventory;
 
+
 namespace SketchFleets.ProfileSystem
 {
     [System.Serializable]
@@ -72,6 +73,8 @@ namespace SketchFleets.ProfileSystem
         public int Kills { get => saveObject.kills; set { saveObject.kills = value; Profile.SaveProfile((data) => { }); } }
         public MapData Map => saveObject.mapData;
 
+        public int ColorUpgradeCount => inventoryUpgrades.SearchItem(4);
+
         #endregion
 
         #region Core Object
@@ -83,7 +86,7 @@ namespace SketchFleets.ProfileSystem
         /// </summary>
         public ProfileData()
         {
-            inventoryUpgrades = new ItemInventory(4);
+            inventoryUpgrades = new ItemInventory(5);
             inventoryItems = new PlayerItemInventory(24);
             codex = new CodexInventory();
             saveObject = new SaveObject();
@@ -94,7 +97,7 @@ namespace SketchFleets.ProfileSystem
         /// </summary>
         public void ReloadInventories()
         {
-            inventoryUpgrades = new ItemInventory(4);
+            inventoryUpgrades = new ItemInventory(5);
             inventoryItems = new PlayerItemInventory(24);
             codex = new CodexInventory();
 
