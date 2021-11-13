@@ -148,6 +148,21 @@ namespace SketchFleets.Inventory
         }
 
         /// <summary>
+        /// Count stored item amount
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public int SearchItem(int id)
+        {
+            for (int i = 0; i < items.Length; i++)
+                if (items[i] != null)
+                    if (items[i].Id == id)
+                        return items[i].Amount;
+
+            return 0;
+        }
+
+        /// <summary>
         /// Try to use item
         /// </summary>
         /// <param name="stack"></param>
