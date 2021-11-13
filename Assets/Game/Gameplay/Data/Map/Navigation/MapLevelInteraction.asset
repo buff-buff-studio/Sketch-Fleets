@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a93e10658c2e14496a1ab381b0a946, type: 3}
+  m_Name: MapLevelInteraction
+  m_EditorClassIdentifier: 
+  onlyShop: 0
+  sceneMap: {fileID: 11400000, guid: 0c843b52f2517b9449205b9ce87dc685, type: 2}
+  sceneLoading: {fileID: 11400000, guid: 585c700ebba34d74d9f520a54052966c, type: 2}
+  sceneShop: {fileID: 11400000, guid: 070b7cac9daa626458dc3b2f76beeb4f, type: 2}
+  sceneGameplay: {fileID: 11400000, guid: 2d424b2572dc1894daa9dadd578619d9, type: 2}
+  sceneMenu: {fileID: 11400000, guid: f2e4021c59def9d4bab9acdbc6ec34bb, type: 2}

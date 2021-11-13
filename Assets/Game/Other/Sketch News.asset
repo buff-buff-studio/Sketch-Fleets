@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1661263c999864a8ab83253369a6d6, type: 3}
+  m_Name: Sketch News
+  m_EditorClassIdentifier: Assembly-CSharp:SketchFleets:UpdateNotesSO
+  versionNotes:
+  - versionNumber: 1.5.9
+    versionType: 3
+    versionNotesLanguage:
+    - versionNotesLanguage: ptBr
+      versionName: Pre-Colors Update
+      versionAdded: '- Novas naves inimigas (WIP):
+
+        As novas naves inimigas
+        podem ser testadas no planeta verde.
+
+        Somente a nave rosa tem uma
+        mecanica implementada.'
+      versionChanged: '- Novos icones:
+
+        Estamos mudando de visual, aproveite.'
+      versionRemoved: "- Inventario InGame removido ate corre\xE7\xE3o de bug"
+      versionBugFix: Nenhum
+  - versionNumber: 1.5.6
+    versionType: 3
+    versionNotesLanguage:
+    - versionNotesLanguage: ptBr
+      versionName: Colors In Buckets Update
+      versionAdded: "- Inventario de Cores:\nAgora voc\xEA pode estocar as cores
+        que voc\xEA absorve, um limite de 3.\nSe voc\xEA estiver com os 3 slots de
+        cores a proxima que voc\xEA for absorver ir\xE1 consumir a cor mais antiga
+        do seu inventario."
+      versionChanged: Nenhum
+      versionRemoved: Nenhum
+      versionBugFix: "- BUG-01UI: Inventario de itens n\xE3o aparece:\nBug do inventario
+        n\xE3o aparecer na aba de sumonar as naves foi corrigido.\n- BUG-01M: Parallax
+        do Menu:\nBug que fazia com que o parallax do menu ficasse sendo cortado.\n-
+        BUG-01GP: Obstaculos e Itens spawnando no meio da tela:\nCaixas de grafites
+        e borrachas apareciam no meio na tela do player.\n- BUG-02SY: Save do jogo
+        n\xE3o funcionava"
+  - versionNumber: 1.5.0
+    versionType: 3
+    versionNotesLanguage:
+    - versionNotesLanguage: ptBr
+      versionName: "Atualiza\xE7\xE3o das Aliadas Coloridas"
+      versionAdded: "- The Sketch News (Notas de Atualiza\xE7\xE3o)\n- Sistema de
+        Cores das Naves (WIP):\nAgora para voc\xEA sumonar uma nave voc\xEA deve
+        conter uma cor em seu inventario.\nCores se obtem ao matar naves inimigas.\nSuas
+        naves agora nascem com a cor do seu inventario.\n- Novo sistema de particulas
+        para as naves aliadas."
+      versionChanged: "- Trocado o input de jogar a nave Explosiva:\nAntes: Clicar
+        em um bot\xE3o.\nAgora: Clique 2 vezes na mira para jogar a nave.\nAviso
+        I: O bot\xE3o continua no modo Touch & Joystick.\nAviso II: Caso estiver
+        com um dedo na tela e remover ele durante o duplo clique a a\xE7\xE3o ser\xE1
+        cancelada.\n- Mudan\xE7a de nome das naves aliadas:\nMagenta -> Atiradora\nAmarela
+        -> Torreta\nCiana -> Explosiva"
+      versionRemoved: Nenhum
+      versionBugFix: Nenhum
+    - versionNotesLanguage: enUS
+      versionName: Color Allies Update
+      versionAdded: '- The Sketch News (Update Notes)
+
+        - Ship Color System
+        (WIP):
+
+        Now for you to summon a ship you must have a color in your
+        inventory.
+
+        Colors are obtained by killing enemy ships.
+
+        Your
+        ships are now born with the color of your inventory.
+
+        - New particle
+        system for allied ships.'
+      versionChanged: '- Changed the input of playing the Explosive ship:
+
+        Before:
+        Clicking a button.
+
+        Now: Double click on the crosshair to throw the
+        ship.
+
+        Warning I: The button remains in Touch & Joystick mode.
+
+        Warning
+        II: If you have a finger on the screen and remove it during the double click,
+        the action will be cancelled.
+
+        - Change of name of allied ships:
+
+        Magenta
+        -> Shooter
+
+        Yellow -> Turret
+
+        Cyan -> Explosive'
+      versionRemoved: None
+      versionBugFix: None
+  - versionNumber: 1.4.0 - 1.0.8
+    versionType: 3
+    versionNotesLanguage:
+    - versionNotesLanguage: ptBr
+      versionName: 
+      versionAdded: "- Inputs Gestuais:\nSe moviemente e mire com os seus dedos de
+        cheetos!\nClicar para atirar? Pff! Agora voc\xEA gasta bala a cada frame!\nPrefere
+        Joystick? Tudo bem, n\xF3s deixamos.\n- Inputs de desenho:\nLiberte o seu
+        lado artista e veja se voc\xEA consegue desenhar formas geometricas!\nPara
+        sumonar a nave Magenta -> Triangulo\nPara sumonar a nave Amarela -> Quadrado\nPara
+        sumonar a nave Ciana -> Circulo\n- Blueprint (WIP):\nDescubra as suas estatisticas
+        para saber se \xE9 um bom explorador de papeis!\nVeja as suas conquistas.\n-
+        UI Nova:\nAgora que n\xF3s estamos mais perto do seu bolso a nossa UI mudou
+        para voc\xEA n\xE3o pirar na batatinha para clicar nos bot\xF5es."
+      versionChanged: "- NOVA LOGO:\nSim estamos de cara nova, e sobrenome novo tambem,
+        seja bem-vindo ao Sketch Fleets: Recolered! *skyrim_soundtrack.mp3*\n- Aviso
+        de Asteroide:\nA entidade do desenho te escutou e finalmente o aviso do asteroide
+        aparece onde ele ir\xE1 aparecer \U0001F44D=D\n- Menu de op\xE7\xF5es:\nAgora
+        que estamos no seu celular voc\xEA n\xE3o precisa mais se preocupar em ativar
+        o Ray Tracing, ent\xE3o algumas configura\xE7\xF5es sairam e outras entraram.\nAdicionados:
+        \nTipo de Controle\nInput Ray\nRemovidos:\nResolu\xE7\xE3o de tela\nV-Sync"
+      versionRemoved: Nenhum
+      versionBugFix: '- BUG-01SY: Lag em alguns celulares:
+
+        Trocado de MONO
+        para IL2CPP'
+    - versionNotesLanguage: enUS
+      versionName: 
+      versionAdded: '- Gesture Inputs:
+
+        Move and aim with your cheeto fingers!
+
+        Click
+        to shoot? Pff! Now you spend bullets every frame!
+
+        Do you prefer
+        Joystick? All right, we leave.
+
+        - Drawing inputs:
+
+        Release
+        your artist side and see if you can draw geometric shapes!
+
+        To summon
+        the Magenta ship -> Triangulo
+
+        To summon the Yellow ship -> Square
+
+        To
+        summon the Ciana ship -> Circle
+
+        - Blueprint (WIP):
+
+        Find
+        out your stats to find out if you are a good paper explorer!
+
+        See
+        your achievements.
+
+        - New UI:
+
+        Now that we''re closer to
+        your pocket, our UI has changed so you don''t freak out  to click buttons.'
+      versionChanged: "- NEW LOGO:\r\nYes, we have a new look, and a new surname
+        too, welcome to Sketch Fleets: Recolered! *skyrim_soundtrack.mp3*\r\n- Asteroid
+        Warning:\r\nThe design entity heard you and finally the asteroid warning
+        appears where it will appear \U0001F44D=D\r\n- Options menu:\r\nNow that
+        we're on your mobile you don't have to worry about activating Ray Tracing
+        anymore, so some settings are gone and others are in.\r\nAdded:\r\nControl
+        Type\r\nInput Ray\r\nRemoved:\r\nScreen resolution\r\nV-Sync"
+      versionRemoved: None
+      versionBugFix: '- BUG-01GI: Lag on some cell phones:
+
+        Switched from
+        MONO to IL2CPP'

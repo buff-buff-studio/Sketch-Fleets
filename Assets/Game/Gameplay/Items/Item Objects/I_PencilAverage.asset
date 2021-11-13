@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558e9bcca7cd1a746bb855873ce33f89, type: 3}
+  m_Name: I_PencilAverage
+  m_EditorClassIdentifier: 
+  unlocalized_name: pencil_average
+  rarity:
+    _useConstant: 1
+    _constant: 10
+    _variable: {fileID: 0}
+  itemCost:
+    _useConstant: 1
+    _constant: 250
+    _variable: {fileID: 0}
+  icon: {fileID: 2441829298573143382, guid: d35bcc39a5c427e4faf0c25faeab5824, type: 3}
+  id: 11
+  effect: {fileID: 11400000, guid: 2487a2ed8248e0c438f17657940cd415, type: 2}
+  isConsumable: 1
+  codexEntryRarity: 0

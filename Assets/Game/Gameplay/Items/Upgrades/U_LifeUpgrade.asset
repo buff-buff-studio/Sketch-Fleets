@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9b96d639fdcc1459efcba399acd839, type: 3}
+  m_Name: U_LifeUpgrade
+  m_EditorClassIdentifier: 
+  unlocalized_name: life_upgrade
+  rarity:
+    _useConstant: 1
+    _constant: 10
+    _variable: {fileID: 0}
+  itemCost:
+    _useConstant: 1
+    _constant: 500
+    _variable: {fileID: 0}
+  itemCostIncreasePerUnit:
+    _useConstant: 1
+    _constant: 100
+    _variable: {fileID: 0}
+  icon: {fileID: -7115533550564687437, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
+  upgradeLifeIncrease:
+    _useConstant: 1
+    _constant: 200
+    _variable: {fileID: 0}
+  upgradeDamageIncrease:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  upgradeShieldIncrease:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  upgradeSpeedIncrease:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  upgradeColorInventorySize:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  codexEntryRarity: 2

@@ -1,0 +1,263 @@
+name=Português
+
+#
+# MAIN MENU BUTTONS
+#
+
+ui_settings=Opções
+ui_menu=Menu
+ui_credits=Créditos
+ui_resolution=Resolução
+ui_map=Mapa
+ui_store=Loja do Bufo
+
+#
+# SETTINGS MENU
+#
+
+ui_subtitle_displaysettings=Opções de Tela
+ui_subtitle_languagesettings=Opções de Idioma
+ui_subtitle_resolutionsettings=Opções de Resolução
+ui_subtitle_graphicssettings=Qualidade Gráfica
+ui_subtitle_fullscreensettings=Modo de Tela
+
+ui_language_english=English
+ui_language_portuguese=Português
+
+ui_subtitle_volumemaster=Volume Mestre
+ui_subtitle_volumemusic=Volume de Música
+ui_subtitle_volumesfx=Volume de Efeitos Sonoros
+
+ui_graphics_low=Baixo
+ui_graphics_medium=Médio
+ui_graphics_high=Alto
+
+resolution_low=Baixa
+resolution_medium=Média
+resolution_high=Alta
+
+windowed=Modo Janela
+fs_windowed=Janela em Tela Cheia
+fullscreen=Tela Cheia
+
+#
+# CREDITS MENU
+#
+
+ui_occupation_artist=Artista
+ui_occupation_programmer=Programador
+ui_occupation_ui=Designer de UI
+ui_occupation_you=Você!
+ui_occupation_teacher=Professor
+ui_occupation_dev=Desenvolvedor
+ui_occupation_university=Universidade
+
+ui_credits_hint=Clique nos desenvolvedores para saber mais
+
+#
+# QUIT MENU
+#
+
+ui_quit_confirm=Você tem certeza?
+ui_quit_yes=Sim!
+ui_quit_no=Não!
+
+#
+# UPDATE NOTES
+#
+
+ui_version=Versão
+
+#
+# MAP
+#
+
+map_easy=Fácil
+map_medium=Médio
+map_hard=Difícil
+map_veryhard=Muito Difícil
+map_boss=???
+
+#
+# IN-GAME
+#
+
+ui_enemies=Inimigos
+
+ui_deadTitle=Você Morreu!
+ui_runtime=Tempo da partida
+
+ui_winTitle=Planeta Completado!
+
+ui_pauseTitle=Jogo Pausado!
+ui_pauseReturn=Voltar
+
+ui_button_newgame=Novo Jogo
+ui_button_continue=Continuar
+ui_button_store=Loja
+
+ui_title_settings=Opções
+
+ui_pressSpace=Aperta a barra de espaço para invocar reforços e usar itens
+
+#
+# SHOP MENU
+#
+
+ui_shop_buy_confirmation=Você realmente quer comprar {0} '{1}'?
+ui_shop_amount=Você tem {0} '{1}'
+ui_shop_buy=Comprar
+ui_shop_buy=Cancelar
+
+#
+# TUTORIAL
+#
+
+ui_tutorial_title=Tutorial
+ui_tutorial_r=Aperte R para chamar todas suas naves invocadas de volta para a nave mãe e recuperar sua vida gasta
+ui_tutorial_space=Segure a Barra de Espaço para poder invocar aliados! Lembre-se que invocá-las utiliza parte da sua vida, então tenha cuidado!
+ui_tutorial_spacebtt=Barra de Espaço
+ui_tutorial_frog1=Bufo Bufo diz:
+ui_tutorial_frog2=Esse manual de instruções vai te ajudar na sua jornada...
+ui_tutorial_wasd=WASD são as teclas de movimentação básicas.
+ui_tutorial_yellow=A Nave Amarela serve como uma torre, com pouca velocidade mas consegue atirar várias balas ao mesmo tempo
+ui_tutorial_cyan=Já a Ciano se joga nos inimigos ao clicar com o botão direito do mouse, e causa uma explosão enorme na área de contato
+ui_tutorial_magenta=Por fim, a Magenta. Apesar de ser frágil, ela atira extremamente rápido e podem existir várias em campo simultaneamente 
+
+ui_tutorial_store_planet=Durante sua jornada, você vai encontrar os Planetas-Loja, caracterizados por um outdoor visível pelo mapa e cor única. Lá você pode comprar diversos itens, usando Cascas de Lápis, que terão efeito até o fim da missão.
+ui_tutorial_money=As Cascas de Lápis são obtidas ao derrotar inimigos. Inimigos mais fortes deixam cair elas em maior quantidade, então se quiser os itens mais valiosos, arrisque explorar os planetas mais perigosos!
+
+No fim da sua jornada, todas as Cascas serão convertidas para Caixas. 5 Cascas são equivalentes a 1 Caixa.
+ui_tutorial_store=Já a loja do Menu é onde você consegue comprar upgrades permanentes para sua nave, pelo preço certo.
+
+#
+# SHIP DESCRIPTIONS / CODEX
+#
+
+ui_codex=Codex
+
+#
+# ITEM NAMES
+#
+
+armor_extra=Armadura Extra
+armor_heavy=Armadura Pesada
+cursed_ammunition=Balas Amaldiçoadas
+cursed_propulsion=Propulsores Amaldiçoados
+fuel_tank_compact=Tanque de Combustível Compacto
+fuel_tank_large=Tanque de Combustível Grande
+mothership_ability_upgrade=Upgrade de Habilidade
+mothership_cooldown_upgrade=Upgrade de Cooldown
+mothership_dock_upgrade=Upgrade de Invocação
+mpencil_new=Lapiseira Nova
+mpencil_used=Lapiseira Usada
+pencil_average=Lápis Normal
+pencil_broken=Lápis Quebrado
+pencil_perfect=Lápis Perfeito
+pencil_sharpener=Apontador de Lápis
+shield_battery=Bateria de Escudo
+
+#
+# ITEM DESCRIPTION
+#
+
+desc_armor_extra=Aumenta um pouco da armadura
+
+desc_armor_heavy=Aumenta armadura mas reduz a velocidade de movimento 
+
+desc_cursed_ammunition=Suas balas ficam amaldiçoadas.
+Dobra o seu dano, mas receba dano em dobro.
+
+desc_cursed_propulsion=Seus propulsores ficam amaldiçoados.
+Aumenta bastante a velocidade de movimento, mas reduz vida máxima pela metade.
+
+desc_fuel_tank_compact=Aumenta um pouco a velocidade de movimento
+
+desc_fuel_tank_large=Aumenta bastante a velocidade de movimento
+
+desc_mothership_ability_upgrade=Reduz o tempo de recarga da habilidade R
+
+desc_mothership_cooldown_upgrade=Reduz o tempo entre invocações de aliados
+
+desc_mothership_dock_upgrade=Aumenta a quantidade de aliados que a Nave Mãe controla
+
+desc_mpencil_new=Aumenta a Vida Máxima em 500 pontos
+
+desc_mpencil_used=Aumenta a Vida Máxima em 250 pontos
+
+desc_pencil_average=Recupera 500 pontos de Vida
+
+desc_pencil_broken=Recupera 250 pontos de Vida
+
+desc_pencil_perfect=Recupera 750 pontos de Vida
+
+desc_pencil_sharpener=Dobra o dano da Nave Mãe durante 30 segundos
+
+desc_shield_battery=Aumenta o Escudo Máximo em 150 pontos
+
+#
+# UPGRADE NAMES
+#
+
+damage_upgrade=Melhoria De Dano
+life_upgrade=Melhoria De Vida
+shield_upgrade=Melhoria De Escudo
+speed_upgrade=Melhoria De Velocidade
+color_upgrade=Aumento do Inventario de Cores
+
+#
+# UPGRADE DESCRIPTION
+#
+
+desc_damage_upgrade=Aumenta o dano da Nave Mãe
+desc_life_upgrade=Aumenta a Vida Máxima da Nave Mãe
+desc_shield_upgrade=Aumenta o Escudo Máximo da Nave Mãe
+desc_speed_upgrade=Aumenta a Velocidade de movimento da Nave Mãe
+
+
+ui_inventory=Inventário
+ui_items=Itens
+
+#
+# ENDGAME
+#
+
+ui_endgame_title=Você venceu o jogo!
+
+#
+# SHIP NAMES
+#
+
+ship_mother=Nave-Mãe
+ship_magenta=Thompson
+ship_cyan=A Granada
+ship_yellow=A Torreta
+
+ship_spinner=Spinner
+ship_shockwave=Onda de Choque
+ship_spire=Spire
+
+ship_ace=Ace
+ship_skysplitter=Divisora
+ship_starburst=Super Nova
+
+ship_seeker=Olheiro
+ship_destroyer=Destroyer
+ship_warfront=Ares
+
+desc_ship_mother=Ahh.. A nave-mãe, meu primeiro desenho! Uma nave exploratoria do cosmos como nenhuma outra!
+desc_ship_magenta=A sua melhor amiga sem duvidas, ela absolutamente atira em tudo, claro, sob seu comando!
+desc_ship_cyan=A única nave que você convocará sempre quiser alguem bem especifico morto, bem morto mesmo!
+desc_ship_yellow=Essa dai vai ficar ali pra sempre, ela vai ficar lá atirando... ate um asteroide a atingir!
+
+desc_ship_spinner=Uma nave giratória que dispara em quatro direções! A Ciana é uma boa contramedida contra ele!
+desc_ship_shockwave=Uma nave giratória que libera uma onda de choque de balas! Se esconda nas areas em que as balas não chegam!
+desc_ship_spire=Uma nave giratória que preenche toda a tela com balas, você vai ficar louco! É melhor matar isso rapido!
+
+desc_ship_ace=A nave padrão da Autocracia em todo o cosmos, Ace I! Taxa de tiro lenta, baixo dano, muito roxo!
+desc_ship_skysplitter=Este modelo Ace, Divisora, é forjada nas bordas da galáxia! E ela tem tiros duplos e mais vida!
+desc_ship_starburst=Uma variante mortal do modelo Ace, Super Nova, capaz de disparar tiros muito rápidos, dando danos devastadores!
+
+desc_ship_seeker=A nave Seeker prefere a morte a ver você vivo! Mate-a antes que ela chegue em você!
+desc_ship_destroyer=Uma nave de busca, com uma armadura bem pesada e propulsores muito rápidos! Seu núcleo é instável então se prepare para o impacto!
+desc_ship_warfront=Uma gigantesca nave de busca feita de unobtanium! Incrivelmente lenta e resistente. Não deixe chegar perto ou você vai se arrepender!

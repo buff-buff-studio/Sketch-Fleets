@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e908b13f7467f4185f3f45d43568c4, type: 3}
+  m_Name: Backtrace Configuration
+  m_EditorClassIdentifier: 
+  ServerUrl: https://submit.backtrace.io/ninitoph/2826f7a49c02fdd38c3bd186e5f65ea558f4516633d9ac9bda527d4a4b6bbbd7/json
+  Token: 
+  ReportPerMin: 20
+  HandleUnhandledExceptions: 1
+  IgnoreSslValidation: 0
+  DestroyOnLoad: 0
+  Sampling: 1
+  ReportFilterType: 1
+  GameObjectDepth: -1
+  NumberOfLogs: 10
+  PerformanceStatistics: 1
+  SendUnhandledGameCrashesOnGameStartup: 1
+  CaptureNativeCrashes: 1
+  HandleANR: 1
+  OomReports: 1
+  ClientSideUnwinding: 0
+  SymbolsUploadToken: 224467f9572e40f4f49940911c4acbc06ecfed6ae2d42712e42cfec5ea9e116c
+  DeduplicationStrategy: -1
+  EnableBreadcrumbsSupport: 0
+  BacktraceBreadcrumbsLevel: 0
+  LogLevel: 0
+  UseNormalizedExceptionMessage: 0
+  MinidumpType: 524286
+  GenerateScreenshotOnException: 1
+  AttachmentPaths:
+  - 
+  DatabasePath: ${Application.persistentDataPath}
+  EnableMetricsSupport: 1
+  TimeIntervalInMin: 30
+  Enabled: 1
+  AddUnityLogToReport: 0
+  AutoSendMode: 1
+  CreateDatabase: 1
+  MaxRecordCount: 8
+  MaxDatabaseSize: 15
+  RetryInterval: 30
+  RetryLimit: 3
+  RetryOrder: 0
