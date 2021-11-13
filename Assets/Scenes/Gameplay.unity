@@ -2117,6 +2117,7 @@ MonoBehaviour:
   tooltipDescription: {fileID: 2142147093}
   tooltipBackground: {fileID: 2142147095}
   changeY: 514
+  centered: 1
   pageHeader: {fileID: 0}
   prevPageButton: {fileID: 0}
   nextPageButton: {fileID: 0}
@@ -5287,7 +5288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.185203, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 2.7408037, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -7834,7 +7835,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.185203, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 2.7408037, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}
