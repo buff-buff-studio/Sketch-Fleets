@@ -17,9 +17,11 @@ namespace SketchFleets.Data
         [SerializeField]
         private IntReference itemCost = new IntReference(100);
 
-
         [SerializeField]
         private IntReference itemCostIncreasePerUnit = new IntReference(0);
+
+        [SerializeField]
+        private IntReference itemAmountLimit = new IntReference(0);
 
         [SerializeField]
         private Sprite icon;
@@ -36,6 +38,12 @@ namespace SketchFleets.Data
         {
             get => itemCostIncreasePerUnit;
             set => itemCostIncreasePerUnit = value;
+        }
+
+        public IntReference ItemAmountLimit
+        {
+            get => itemAmountLimit;
+            set => itemAmountLimit = value;
         }
         
         public string UnlocalizedName

@@ -138,24 +138,29 @@ namespace SketchFleets.Inventory
             if(stack != null)
             {
                 #region Increase price per bought amount
-                int increase = register.items[stack.Id].ItemCostIncreasePerUnit.Value * Profile.Data.inventoryUpgrades.SearchItem(stack);
+                int count = isUpgradeShop ? Profile.GetData().inventoryUpgrades.SearchItem(stack) : Profile.GetData().inventoryItems.SearchItem(stack);
+                ShopObject item = register.items[stack.Id];
+                int increase = item.ItemCostIncreasePerUnit.Value * count;
                 #endregion
 
-                slots[index].GetChild(0).GetComponentInChildren<TMP_Text>().text = (register.items[stack.Id].ItemCost.Value + increase) + "$";
+                slots[index].GetChild(0).GetComponentInChildren<TMP_Text>().text = (item.ItemCost.Value + increase) + "$";
                 slots[index].GetChild(1).GetComponent<Image>().sprite = sprite;
+                slots[index].GetChild(1).GetComponent<ItemStackAnimation>().isBuyable = item.ItemAmountLimit == 0 || count < item.ItemAmountLimit;
             }
             slots[index].gameObject.SetActive(sprite != null);
             #endregion
         }
 
         public void OpenItemInformation()
-        {
-            itemInformationPanel.SetActive(true);
+        {   
             ItemStack stack = inventory.GetItem(selectItemIndex);
-
             ShopObject item = register.items[stack.Id];
 
             int count = isUpgradeShop ? Profile.GetData().inventoryUpgrades.SearchItem(stack) : Profile.GetData().inventoryItems.SearchItem(stack);
+            if(item.ItemAmountLimit != 0 && count >= item.ItemAmountLimit)
+                return;
+
+            itemInformationPanel.SetActive(true);
 
             #region Increase price per bought amount
             int increase = register.items[stack.Id].ItemCostIncreasePerUnit.Value * Profile.Data.inventoryUpgrades.SearchItem(stack);
@@ -216,6 +221,9 @@ namespace SketchFleets.Inventory
 
             //Clone item
             CloneItem(selectItemIndex);
+            
+            //Refresh container
+            Render();
 
             Profile.SaveProfile((data) => { });
         }
