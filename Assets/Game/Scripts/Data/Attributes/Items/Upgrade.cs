@@ -12,8 +12,6 @@ namespace SketchFleets.Data
     public class Upgrade : ShopObject
     {
         #region Private Fields
-        [SerializeField]
-        private FloatReference itemCostIncreasePerLevel = new FloatReference(100);
 
         [SerializeField]
         private FloatReference upgradeLifeIncrease = new FloatReference(0);
@@ -36,12 +34,6 @@ namespace SketchFleets.Data
 
         #region Properties
         public CodexEntryRarity CodexEntryRarity => codexEntryRarity;
-
-        public FloatReference ItemCostIncreasePerLevel
-        {
-            get => itemCostIncreasePerLevel;
-            set => itemCostIncreasePerLevel = value;
-        }
 
         public FloatReference UpgradeLifeIncrease
         {

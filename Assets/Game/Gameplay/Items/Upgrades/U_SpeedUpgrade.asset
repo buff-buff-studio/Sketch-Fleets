@@ -21,11 +21,11 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 250
     _variable: {fileID: 0}
-  icon: {fileID: 3200293333359873023, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
-  itemCostIncreasePerLevel:
+  itemCostIncreasePerUnit:
     _useConstant: 1
     _constant: 100
     _variable: {fileID: 0}
+  icon: {fileID: 3200293333359873023, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
   upgradeLifeIncrease:
     _useConstant: 1
     _constant: 0

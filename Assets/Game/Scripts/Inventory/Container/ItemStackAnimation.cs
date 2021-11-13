@@ -33,6 +33,8 @@ namespace SketchFleets
         public float maxTimeOffset = 7;
 
         public bool hovering = false;
+        
+        public bool isBuyable = false;
         #endregion
 
         #region Private Fields
@@ -73,7 +75,7 @@ namespace SketchFleets
             rectTransform.localEulerAngles = new Vector3(0,0,180 + rotationInitial + rotation * Mathf.Sin((Time.time + randomTimeOffset) * rotationSpeed * Mathf.Deg2Rad));
             rectTransform.localScale = Vector3.one * (1 + Mathf.Cos((Time.time + randomTimeOffset ) * scaleSpeed * Mathf.Deg2Rad) * scaleDifference);
 
-            image.color = hovering ? new Color(1,1,1,targetAlpha) : new Color(1,1,1,1);
+            image.color = isBuyable ? (hovering ? new Color(1,1,1,targetAlpha) : new Color(1,1,1,1)) : new Color(0.5f,0.5f,0.5f,0.325f);
 
             targetAlpha = Mathf.Sin(Time.time * Mathf.Deg2Rad * 540)/3f + 1/3f + 0.5f;
         }
