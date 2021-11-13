@@ -22,7 +22,7 @@ MonoBehaviour:
   unlocalizedDescription: 
   directDamage:
     _useConstant: 1
-    _constant: 250
+    _constant: 40
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
@@ -49,6 +49,10 @@ MonoBehaviour:
     _constant: 0
     _variable: {fileID: 0}
   downtime:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  continuousDamageTime:
     _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
