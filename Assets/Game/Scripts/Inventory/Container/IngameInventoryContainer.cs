@@ -49,7 +49,7 @@ namespace SketchFleets.Inventory
                         items.Clear();
                         foreach (ItemStack stackb in ProfileSystem.Profile.GetData().inventoryItems)
                             if(FilterItem(stackb))
-                                items.Add(stackb);
+                            items.Add(stackb);
 
                         Render();
                         break;
