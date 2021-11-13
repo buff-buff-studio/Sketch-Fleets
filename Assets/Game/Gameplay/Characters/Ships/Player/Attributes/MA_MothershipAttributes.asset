@@ -21,6 +21,7 @@ MonoBehaviour:
   unlocalizedName: ship_mother
   unlocalizedDescription: desc_ship_mother
   codexRarity: 0
+  shipFaction: 0
   shipColor:
     _useConstant: 0
     _constant: {r: 0, g: 0, b: 0, a: 0}
@@ -47,7 +48,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 15
+    _constant: 20
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
@@ -55,7 +56,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   collisionDamage:
     _useConstant: 1
-    _constant: 40
+    _constant: 200
     _variable: {fileID: 0}
   invincibilityTime:
     _useConstant: 1
@@ -72,6 +73,7 @@ MonoBehaviour:
     _constant: 0.02
     _variable: {fileID: 0}
   fire: {fileID: 11400000, guid: b0967743feca18e449eb47263e1ec0d8, type: 2}
+  dropedFire: {fileID: 0}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 5077195437519626923, guid: 9f26ea5f3b9c43d43bddb1e9480e47e0, type: 3}
   healEffect: {fileID: 3722199005660995477, guid: 3dfb043eb3f266142bb1341272a4da94, type: 3}

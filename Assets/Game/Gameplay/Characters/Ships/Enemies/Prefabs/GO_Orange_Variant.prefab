@@ -21,6 +21,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &4385730796693299675
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8216439689345414673}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 4.15, y: 5.0000005}
+  m_Direction: 0
+--- !u!70 &7366025495256024523
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8216439689345414673}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.62, y: 4.18}
+  m_Direction: 0
 --- !u!114 &395625897727369235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +176,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 059c5a5e6fade0f40bd8997bc151934d, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7985856386147995172, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+    - {fileID: 1775835985480320962, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
 --- !u!1 &8216439689345414673 stripped
 GameObject:

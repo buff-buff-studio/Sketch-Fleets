@@ -415,7 +415,6 @@ public class ConstelationMap : MonoBehaviour
     /// <param name="starNumber">Get star from index</param>
     public void OnClickStar(int starNumber)
     {
-        Debug.Log("Clicked at: " + starNumber);
         if(!InputEnabled)
             return;
 

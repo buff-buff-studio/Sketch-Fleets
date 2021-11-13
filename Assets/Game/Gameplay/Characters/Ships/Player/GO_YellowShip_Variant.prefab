@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: -8391862255508861888, guid: e2b3be49bdb0e3f43a31c615f5c6da2e, type: 2}
     - target: {fileID: 1661921463805644437, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Radius
-      value: 2.25
+      value: 1.42
       objectReference: {fileID: 0}
     - target: {fileID: 4202989485892480711, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Icon
@@ -227,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7018345160470710131, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Radius
-      value: 2.1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 7597287069921410289, guid: 9022595d3d9fbe945880ad4cfdd81694, type: 3}
       propertyPath: m_Size.x

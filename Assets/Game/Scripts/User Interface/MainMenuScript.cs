@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class MainMenuScript : MonoBehaviour
+public sealed class MainMenuScript : MonoBehaviour
 {   
     #region Public Fields
     public Button buttonContinue;
@@ -27,7 +27,6 @@ public class MainMenuScript : MonoBehaviour
     /// </summary>
     public void LoadNewGame()
     {
-         Debug.Log("aaaa");
         try
         {
             MapLevelInteraction.OpenMap(this,false);

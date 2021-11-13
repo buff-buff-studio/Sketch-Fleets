@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3c23a35f8cd73404488235a0cc7d2586, type: 3}
+  m_Sprite: {fileID: -6139296588668583971, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,10 +117,6 @@ MonoBehaviour:
     _useConstant: 0
     _constant: {r: 0, g: 0, b: 0, a: 0}
     _variable: {fileID: 11400000, guid: 1bc42a043e5678149974e3c5e32d0cc5, type: 2}
-  enemyDeathColor:
-    _useConstant: 0
-    _constant: {r: 1, g: 1, b: 1, a: 1}
-    _variable: {fileID: 11400000, guid: 85746415c082a3641923f338f45db626, type: 2}
   shellWorth:
     _useConstant: 1
     _constant: 1

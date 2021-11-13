@@ -60,8 +60,6 @@ namespace SketchFleets.ProfileSystem
         /// <param name="callback"></param>
         public static void LoadProfile(System.Action<ProfileData> callback)
         {
-            Debug.Log("File: " + FilePath + " " + System.IO.File.Exists(FilePath));
-
             if (!Directory.Exists(Application.persistentDataPath + "/data"))
                 Directory.CreateDirectory(Application.persistentDataPath + "/data");
 
@@ -71,7 +69,6 @@ namespace SketchFleets.ProfileSystem
             }
             else
             {
-                Debug.Log("saving new");
                 SaveProfile(callback);
             }
         }   
@@ -82,7 +79,6 @@ namespace SketchFleets.ProfileSystem
         /// <param name="callback"></param>
         public static void SaveProfile(System.Action<ProfileData> callback)
         {
-             Debug.Log("going: " + runningThread);
             behaviour.StartCoroutine(_Save(callback));
         }
         #endregion
@@ -107,8 +103,6 @@ namespace SketchFleets.ProfileSystem
 
             while(runningThread)
                 yield return new WaitForSeconds(0.05f);
-
-            Debug.Log("Saved Loaded:" + File.ReadAllText(FilePath) + " " + GetData().saveObject.mapData.seed);
 
             if(callback != null)
                 callback(GetData());

@@ -27,13 +27,10 @@ public class MapLevelInteraction : MonoBehaviour
     public static void OnClickOnMapStar(int clickedStar)
     {
         //Save state
-         Debug.Log("...");
         SaveMapState(map, () => { });
-        Debug.Log("OnClick at: " + clickedStar);
 
         map.CloseAnimation(() =>
         {
-            Debug.Log("closed");
             state.SetCurrentStar(clickedStar);
 
             //Set variables 
@@ -53,13 +50,12 @@ public class MapLevelInteraction : MonoBehaviour
             if (state.constelation.GetStar(clickedStar).Difficulty == 0)
             {
                 //Open level
-                SketchFleets.LoadingGame.SceneLoad = "Scenes/Shop";
-                LoadScene("Scenes/Loading", () => { });
+                LoadScene("Scenes/Shop", () => { });
             }
             else
             {
                 //Open level
-                SketchFleets.LoadingGame.SceneLoad = "Scenes/Gameplay";
+                //LoadScene("Scenes/Shop",() => {});
                 LoadScene("Scenes/Loading", () => { });
             }
         });
@@ -70,7 +66,6 @@ public class MapLevelInteraction : MonoBehaviour
     /// </summary>
     public static void ReturnToMap()
     {
-      
         LoadScene("Scenes/Map", () =>
         {
             ConstelationMap.onMapLoad = () =>
@@ -86,8 +81,10 @@ public class MapLevelInteraction : MonoBehaviour
         //Clear save data and return to menu
         SketchFleets.ProfileSystem.Profile.Data.Clear(behaviour, (data) =>
         {
-            SketchFleets.LoadingGame.SceneLoad = "Scenes/Menu";
-            LoadScene("Scenes/Loading", () => { });
+            LoadScene("Scenes/Menu", () =>
+            {
+
+            });
         });
     }
 
@@ -135,12 +132,9 @@ public class MapLevelInteraction : MonoBehaviour
     /// </summary>
     public static void OpenMap(MonoBehaviour source, bool continueGame)
     {
-        
-        
         LoadMapState(source, continueGame, () =>
         {
-            SketchFleets.LoadingGame.SceneLoad = "Scenes/Map";
-            LoadScene("Scenes/Loading", () =>
+            LoadScene("Scenes/Map", () =>
             {
                 ConstelationMap.onMapLoad = () =>
                 {
@@ -202,10 +196,8 @@ public class MapLevelInteraction : MonoBehaviour
     /// </summary>
     public static void SaveMapState(MonoBehaviour source, Action callback)
     {
-        Debug.Log("Saving...");
         SketchFleets.ProfileSystem.Profile.SaveProfile((save) =>
         {
-            Debug.Log("Map saved!");
             callback();
         });
     }
@@ -218,7 +210,6 @@ public class MapLevelInteraction : MonoBehaviour
     {
         SketchFleets.ProfileSystem.Profile.LoadProfile((data) =>
         {
-            Debug.Log("aa: " + SketchFleets.ProfileSystem.Profile.GetData().Map.seed);
             callback(SketchFleets.ProfileSystem.Profile.GetData().Map.seed != -1);
         });
     }
@@ -226,7 +217,7 @@ public class MapLevelInteraction : MonoBehaviour
 
     #region Unity Callbacks
     /// <summary>
-    /// /// Unity handler for on scene loaded
+    /// Unity handler for on scene loaded
     /// </summary>
     /// <param name="scene"></param>
     /// <param name="mode"></param>
