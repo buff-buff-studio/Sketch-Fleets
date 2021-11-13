@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributes: {fileID: 11400000, guid: 550dd3e518aab5c45bdad97835ef007a, type: 2}
   soundSource: {fileID: 1645101744639054365}
+  PlayerBuletVelocity: 0
 --- !u!70 &4334310225986767767
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -231,8 +232,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.7}
+  m_Offset: {x: 0, y: 0.04}
+  m_Size: {x: 0.47, y: 1.88}
   m_Direction: 0
 --- !u!70 &9189148666804833608
 CapsuleCollider2D:
@@ -247,6 +248,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.7}
+  m_Offset: {x: 0, y: 0.03}
+  m_Size: {x: 0.31, y: 1.71}
   m_Direction: 0

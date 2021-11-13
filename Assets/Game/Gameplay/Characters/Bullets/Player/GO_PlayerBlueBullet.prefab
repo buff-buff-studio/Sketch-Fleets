@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 0f819d0314b8672499fea6682e1364fc, type: 3}
-  m_Color: {r: 0, g: 0.5, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.50196075, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributes: {fileID: 11400000, guid: d59e8ac203da63d43a216dd43cdc0af5, type: 2}
   soundSource: {fileID: 1645101744639054365}
+  PlayerBuletVelocity: 0
   isAreaDamage: 0
 --- !u!70 &4334310225986767767
 CapsuleCollider2D:
@@ -232,8 +233,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.7}
+  m_Offset: {x: 0, y: 0.04}
+  m_Size: {x: 0.47, y: 1.88}
   m_Direction: 0
 --- !u!70 &9189148666804833608
 CapsuleCollider2D:
@@ -248,6 +249,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.7}
+  m_Offset: {x: 0, y: 0.03}
+  m_Size: {x: 0.31, y: 1.71}
   m_Direction: 0
