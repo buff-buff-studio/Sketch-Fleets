@@ -99,6 +99,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &748954653266896909
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +199,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &1438398538672798132
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2890409509781067523, guid: 04a052041ca315248bf523345bf3ad90, type: 3}
+  m_Sprite: {fileID: -6620421715167199524, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -522,7 +524,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2890409509781067523, guid: 04a052041ca315248bf523345bf3ad90, type: 3}
+  m_Sprite: {fileID: -6620421715167199524, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -644,7 +646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2890409509781067523, guid: 04a052041ca315248bf523345bf3ad90, type: 3}
+  m_Sprite: {fileID: -6620421715167199524, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -797,6 +799,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &3439362450519450842
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,7 +1002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2890409509781067523, guid: 04a052041ca315248bf523345bf3ad90, type: 3}
+  m_Sprite: {fileID: -6620421715167199524, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1420,6 +1423,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &4285085052198886092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,6 +1805,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &5094166034695894010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,6 +2468,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &6352553958828029910
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,6 +2568,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &6791399686515517243
 GameObject:
   m_ObjectHideFlags: 0
@@ -3036,6 +3043,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &8007638076547360021
 GameObject:
   m_ObjectHideFlags: 0
@@ -3613,7 +3621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2890409509781067523, guid: 04a052041ca315248bf523345bf3ad90, type: 3}
+  m_Sprite: {fileID: -6620421715167199524, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4712,7 +4720,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 107, y: -106}
-  m_SizeDelta: {x: 60, y: 100}
+  m_SizeDelta: {x: 80, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8556762190403444565
 CanvasRenderer:
@@ -4908,6 +4916,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &8659214842712740666
 GameObject:
   m_ObjectHideFlags: 0
@@ -5007,6 +5016,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &8674790426154862950
 GameObject:
   m_ObjectHideFlags: 0
@@ -5240,6 +5250,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1001 &4805011860581011558
 PrefabInstance:
   m_ObjectHideFlags: 0
