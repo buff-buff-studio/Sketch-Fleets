@@ -28,7 +28,7 @@ namespace SketchFleets.Entities
         /// <param name="rotation">The rotation to emerge the object with</param>
         public override void Emerge(Vector3 position, Quaternion rotation)
         {
-            GenerateBullet();
+            //GenerateBullet();
             base.Emerge(position, rotation);
             // The invoke here is beyond horrible in terms of performance, but I'd rather not spend
             // more time in this script, the deadline is looming
