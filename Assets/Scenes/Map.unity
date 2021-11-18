@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1667,12 +1667,12 @@ MonoBehaviour:
     _constant: 0
     _variable: {fileID: 11400000, guid: b37686c9c4f4cbc40a57bb305a036dca, type: 2}
   planetIcons:
-  - {fileID: -6933502581219436949, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
-  - {fileID: -8131831931175726061, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
-  - {fileID: 1529275474537781392, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
-  - {fileID: -9181772123159090412, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
-  - {fileID: -2192022562841302822, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
-  - {fileID: 5215539951979972166, guid: 0732b12f0983cc742bba79ce8e644179, type: 3}
+  - {fileID: -6933502581219436949, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
+  - {fileID: 4831738590538752591, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
+  - {fileID: -9181772123159090412, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
+  - {fileID: 1529275474537781392, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
+  - {fileID: 5215539951979972166, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
+  - {fileID: -2192022562841302822, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
   parallaxSpeed: 5
 --- !u!1001 &1454686602
 PrefabInstance:
