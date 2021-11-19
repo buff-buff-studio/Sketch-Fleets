@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using SketchFleets.Enemies;
 using UnityEngine;
 
 namespace SketchFleets
 {
-    public class StopedBulletController : BulletController
+    public sealed class StoppedBulletController : BulletController
     {
-        [SerializeField] 
-        private bool isAreaDamage;
-
         protected override void DealDamageToTarget(bool directDamage, GameObject target)
         {
             if (target.CompareTag("Player") || target.CompareTag("PlayerSpawn"))
@@ -19,10 +14,15 @@ namespace SketchFleets
             }
             else
             {
-                if(target.CompareTag("Enemy"))
+                if (target.CompareTag("Enemy"))
+                {
                     target.GetComponent<EnemyShip>().Lock(Attributes.HitsLock, Attributes.Downtime);
+                }
+
                 target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
             }
+            
+            Submerge();
         }
     }
 }
