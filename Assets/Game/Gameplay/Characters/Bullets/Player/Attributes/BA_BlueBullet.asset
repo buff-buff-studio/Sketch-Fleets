@@ -17,7 +17,7 @@ MonoBehaviour:
     _constant: Blue Bullet
     _variable: {fileID: 0}
   description: A bullet fired by the Blue Ship
-  prefab: {fileID: 4233880130515042751, guid: c20c587674612d041ba5ec9f09e182c1, type: 3}
+  prefab: {fileID: 4233880130515042751, guid: ea08b1333724f144bafc43254ef1f88b, type: 3}
   unlocalizedName: 
   unlocalizedDescription: 
   directDamage:
@@ -51,6 +51,10 @@ MonoBehaviour:
   downtime:
     _useConstant: 1
     _constant: 3.5
+    _variable: {fileID: 0}
+  continuousDamageTime:
+    _useConstant: 1
+    _constant: 0
     _variable: {fileID: 0}
   continuousDamageTime:
     _useConstant: 1

@@ -250,7 +250,7 @@ namespace SketchFleets.Entities
             spawn.GetComponent<SpawnedShip>().bulletPrefab = colorsInventory.bulletColor;
             spawn.Emerge(shipSpawnPoint.position, Quaternion.identity);
             spawn.GetComponent<SpriteRenderer>().material.SetColor(redMultiplier, colorsInventory.drawColor);
-            colorsInventory.UseColor();
+            //colorsInventory.UseColor();
 
             SpawnedShip shipController = spawn.GetComponent<SpawnedShip>();
 

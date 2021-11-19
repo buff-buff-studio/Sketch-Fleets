@@ -27,7 +27,7 @@ namespace SketchFleets
         [SerializeField]
         private List<Image> colorsSlot;
 
-        public int invCol;
+        private int invCol => 2 + ProfileSystem.Profile.Data.ColorUpgradeCount;
 
         public Color drawColor => colorsInventory[colorsInventory.Count-1].color;
         public GameObject bulletColor => colorsInventory[colorsInventory.Count-1].bulletPrefab;

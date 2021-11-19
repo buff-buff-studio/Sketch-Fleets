@@ -21,6 +21,7 @@ MonoBehaviour:
   unlocalizedName: ship_cyan
   unlocalizedDescription: desc_ship_cyan
   codexRarity: 1
+  shipFaction: 0
   shipColor:
     _useConstant: 1
     _constant: {r: 0, g: 0, b: 0, a: 0}
@@ -71,7 +72,8 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 0.01
     _variable: {fileID: 0}
-  fire: {fileID: 11400000, guid: c59bb2fb53f61fc499bf47d800dd2ea9, type: 2}
+  fire: {fileID: 0}
+  dropedFire: {fileID: 0}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 1124593775013484982, guid: 103e894a9336a36419399406260d9f10, type: 3}
   healEffect: {fileID: 0}
