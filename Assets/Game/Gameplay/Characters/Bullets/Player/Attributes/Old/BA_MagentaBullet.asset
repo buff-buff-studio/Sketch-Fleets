@@ -10,27 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
-  m_Name: BA_PurpleBullet
+  m_Name: BA_MagentaBullet
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Purple Bullet
+    _constant: Magenta Bullet
     _variable: {fileID: 0}
-  description: A bullet fired by the Purple Ship
-  prefab: {fileID: 4233880130515042751, guid: 39b0d4eda8907624d8bcbf804c666566, type: 3}
-  unlocalizedName: 
-  unlocalizedDescription: 
+  description: A bullet fired by the magenta ship
+  prefab: {fileID: 972804462044644541, guid: 5ef568d8997acbe47832232ea8da3a32, type: 3}
   directDamage:
     _useConstant: 1
-    _constant: 10
+    _constant: 1
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
-    _constant: 1.5
+    _constant: 1
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 20
+    _constant: 70
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
@@ -44,29 +42,13 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 1
     _variable: {fileID: 0}
-  maxBounce:
-    _useConstant: 1
-    _constant: 0
-    _variable: {fileID: 0}
-  downtime:
-    _useConstant: 1
-    _constant: 0
-    _variable: {fileID: 0}
-  continuousDamageTime:
-    _useConstant: 1
-    _constant: 0
-    _variable: {fileID: 0}
-  hitsLock:
-    _useConstant: 1
-    _constant: 0
-    _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
     _constant: 0.1
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 0.8
+    _constant: 0.1
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
   pitchVariation:

@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924295ecf478dca44ac3ceb72ec14fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributes: {fileID: 0}
+  attributes: {fileID: 11400000, guid: b0db0062355fb774494c7bd130cd964f, type: 2}
   soundSource: {fileID: 2808714492686491247}
   PlayerBuletVelocity: 0
 --- !u!70 &867098571689625573

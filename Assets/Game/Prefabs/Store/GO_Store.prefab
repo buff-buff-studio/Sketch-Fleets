@@ -232,6 +232,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &1027276464324176151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,6 +2616,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &7340449412966209355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2714,6 +2716,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &7340449413181537777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,6 +2952,7 @@ MonoBehaviour:
   tooltipDescription: {fileID: 7008018544001550737}
   tooltipBackground: {fileID: 7522489690781924411}
   changeY: 0
+  centered: 0
   itemInformationPanel: {fileID: 6888051793734980118}
   itemBuyConfirmation: {fileID: 0}
   itemBuyPrice: {fileID: 7269352717847529721}
@@ -3063,6 +3067,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &7340449413915943820
 GameObject:
   m_ObjectHideFlags: 0
@@ -3162,6 +3167,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &7340449414071066068
 GameObject:
   m_ObjectHideFlags: 0
@@ -3505,6 +3511,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &7340449414241843019
 GameObject:
   m_ObjectHideFlags: 0
@@ -4138,6 +4145,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!1 &7340449414725695729
 GameObject:
   m_ObjectHideFlags: 0
@@ -4663,6 +4671,14 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1636660964412018238, guid: e64b56099fe4f1240ac4515660994631, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6620421715167199524, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
+    - target: {fileID: 2754041713085754213, guid: e64b56099fe4f1240ac4515660994631, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6620421715167199524, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
     - target: {fileID: 3217592216279822695, guid: e64b56099fe4f1240ac4515660994631, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1085
@@ -4679,6 +4695,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -47
       objectReference: {fileID: 0}
+    - target: {fileID: 4255709188632359160, guid: e64b56099fe4f1240ac4515660994631, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6620421715167199524, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
+    - target: {fileID: 5119127668422738972, guid: e64b56099fe4f1240ac4515660994631, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6620421715167199524, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
+    - target: {fileID: 5176491769023524991, guid: e64b56099fe4f1240ac4515660994631, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6620421715167199524, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
     - target: {fileID: 8556762188951110259, guid: e64b56099fe4f1240ac4515660994631, type: 3}
       propertyPath: m_SizeDelta.x
       value: 200
@@ -4805,7 +4833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8556762189392766326, guid: e64b56099fe4f1240ac4515660994631, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8556762189432333159, guid: e64b56099fe4f1240ac4515660994631, type: 3}
       propertyPath: m_SizeDelta.x
