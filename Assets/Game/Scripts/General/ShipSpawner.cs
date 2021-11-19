@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using SketchFleets.Data;
@@ -12,7 +13,7 @@ namespace SketchFleets.Systems
     /// <summary>
     /// A class that spawns enemies
     /// </summary>
-    public sealed class EnemySpawner : MonoBehaviour
+    public sealed class ShipSpawner : MonoBehaviour
     {
         #region Private Fields
 
@@ -43,7 +44,6 @@ namespace SketchFleets.Systems
         [Tooltip("The total of enemies killed, displayed in the UI")]
         private IntReference totalEnemiesKilled;
 
-        private int activeShips;
         private int mapWaveCount;
         private int currentWave;
         private bool waveStarted;
@@ -52,6 +52,7 @@ namespace SketchFleets.Systems
 
         #region Properties
 
+        public List<Transform> ActiveEnemyShips { get; } = new List<Transform>(10);
         public Action AllWavesAreOver { get; set; }
 
         #endregion
@@ -71,13 +72,14 @@ namespace SketchFleets.Systems
         /// <summary>
         /// Counts the death of a ship
         /// </summary>
-        public void CountShipDeath()
+        public void CountShipDeath(Ship<ShipAttributes> ship)
         {
-            activeShips--;
+            ActiveEnemyShips.Remove(ship.transform);
             totalEnemiesKilled.Value++;
 
 #if UNITY_EDITOR
-            Debug.Log($"{activeShips} ships left in wave {currentWave} out of wave {mapWaveCount}");
+            string waveStatus = ActiveEnemyShips.Count == 0 ? "Wave should end." : "Wave is ongoing.";
+            Debug.Log($"{ActiveEnemyShips.Count} ships left in wave {currentWave} out of wave {mapWaveCount}. {waveStatus}");
 #endif
 
             if (!IsWaveOver()) return;
@@ -137,7 +139,22 @@ namespace SketchFleets.Systems
         /// <returns>Whether the active wave is over</returns>
         private bool IsWaveOver()
         {
-            return activeShips == 0 && waveStarted;
+            PurgeNullShips();
+            return ActiveEnemyShips.Count == 0 && waveStarted;
+        }
+
+        /// <summary>
+        /// Removes any null entries from the active ships list
+        /// </summary>
+        private void PurgeNullShips()
+        {
+            if (ActiveEnemyShips.Count <= 0) return;
+
+            for (int index = ActiveEnemyShips.Count - 1; index >= 0; index--)
+            {
+                if (ActiveEnemyShips[index] != null) continue;
+                ActiveEnemyShips.RemoveAt(index);
+            }
         }
 
         /// <summary>
@@ -174,7 +191,7 @@ namespace SketchFleets.Systems
                 Transform formationPoint = formationObject.transform.GetChild(index).transform;
                 SpawnShip(drawnFormation.Ships[index], formationPoint.position, formationPoint.rotation);
             }
-            
+
             Destroy(formationObject);
         }
 
@@ -183,10 +200,21 @@ namespace SketchFleets.Systems
         /// </summary>
         private void SpawnShip(ShipAttributes shipToSpawn, Vector3 spawnPosition, Quaternion spawnRotation)
         {
+            if (shipToSpawn == null) return;
+            
             PoolMember ship = PoolManager.Instance.Request(shipToSpawn.Prefab);
             ship.Emerge(spawnPosition, spawnRotation);
-            ((EnemyShip)ship).Spawner = this;
-            activeShips++;
+            RegisterEnemyShip((EnemyShip)ship);
+        }
+
+        /// <summary>
+        /// Registers the enemy ship
+        /// </summary>
+        /// <param name="ship">The ship to register</param>
+        private void RegisterEnemyShip(EnemyShip ship)
+        {
+            ship.Spawner = this;
+            ActiveEnemyShips.Add(ship.transform);
         }
 
         /// <summary>
