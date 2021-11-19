@@ -76,7 +76,7 @@ namespace SketchFleets.General
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            GetComponent<EnemySpawner>().AllWavesAreOver -= WinGame;
+            GetComponent<ShipSpawner>().AllWavesAreOver -= WinGame;
             EndGame();
         }
 
@@ -102,7 +102,7 @@ namespace SketchFleets.General
         private void CacheComponentsAndData()
         {
             Player = FindObjectOfType<Mothership>();
-            GetComponent<EnemySpawner>().AllWavesAreOver += WinGame;
+            GetComponent<ShipSpawner>().AllWavesAreOver += WinGame;
         }
 
         /// <summary>
