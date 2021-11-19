@@ -119,21 +119,19 @@ namespace SketchFleets.AI
             return closestTransform;
         }
 
-        private Transform[] GetAllShips()
+        private List<Transform> GetAllShips()
         {
             // TODO: Change this to simply fetching a list from the EnemySpawner once the formations branch gets merged
 
             if (Faction == ShipAttributes.Faction.Friendly)
             {
-                return GameObject.FindGameObjectsWithTag("Enemy")
-                    .Select(ship => ship.transform)
-                    .ToArray();
+                return Ship.Spawner.ActiveEnemyShips;
             }
             else
             {
                 return GameObject.FindGameObjectsWithTag("PlayerSpawn")
                     .Select(ship => ship.transform)
-                    .Append(FindObjectOfType<Mothership>().transform).ToArray();
+                    .Append(FindObjectOfType<Mothership>().transform).ToList();
             }
         }
 
