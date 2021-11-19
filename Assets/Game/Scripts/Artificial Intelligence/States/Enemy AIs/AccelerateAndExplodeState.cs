@@ -13,21 +13,19 @@ namespace SketchFleets
 
         private Rigidbody2D rigidbody2d;
         private Transform cachedTransform;
-        
+
         #endregion
 
         #region Unity Callbacks
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!collision.gameObject.CompareTag("bullet"))
-            {
-                AI.Ship.Damage(AI.Ship.CurrentHealth * 2);
-            }
+            if (CollisionIsBullet(collision)) return;
+            AI.Ship.Damage(AI.Ship.CurrentHealth * 2);
         }
 
         #endregion
-        
+
         #region State Implementation
 
         /// <summary>
@@ -53,17 +51,30 @@ namespace SketchFleets
         public override void StateUpdate()
         {
             if (!ShouldBeActive()) return;
-            
+
             AI.Ship.Look(AI.Target.transform.position.x > cachedTransform.position.x ? Vector2.right : Vector2.left);
             rigidbody2d.AddForce(transform.up * (AI.Ship.Attributes.Speed * Time.deltaTime));
         }
-        
+
         /// <summary>
         /// Runs when the state exits
         /// </summary>
         public override void Exit()
         {
+        }
 
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Checks whether a given 2D collision is with a bullet
+        /// </summary>
+        /// <param name="collision">The collision to check</param>
+        /// <returns>Whether it is with a bullet</returns>
+        private static bool CollisionIsBullet(Collision2D collision)
+        {
+            return collision.gameObject.CompareTag("bullet");
         }
 
         #endregion
