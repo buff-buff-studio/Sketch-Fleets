@@ -17,7 +17,7 @@ MonoBehaviour:
     _constant: Purple Bullet
     _variable: {fileID: 0}
   description: A bullet fired by the Purple Ship
-  prefab: {fileID: 5255066281650577879, guid: 962e677705fd42348bf08516cc47d47f, type: 3}
+  prefab: {fileID: 788092735145430477, guid: ea49f9582410a6940b3cc04717c5e38a, type: 3}
   unlocalizedName: 
   unlocalizedDescription: 
   directDamage:
@@ -49,6 +49,10 @@ MonoBehaviour:
     _constant: 0
     _variable: {fileID: 0}
   downtime:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  continuousDamageTime:
     _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
