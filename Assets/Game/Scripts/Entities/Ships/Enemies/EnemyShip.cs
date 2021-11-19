@@ -23,7 +23,7 @@ namespace SketchFleets.Enemies
 
         #region Properties
 
-        public EnemySpawner Spawner { get; set; }
+        public ShipSpawner Spawner { get; set; }
 
         #endregion
 
@@ -45,7 +45,7 @@ namespace SketchFleets.Enemies
         public override void Die()
         {
             base.Die();
-            Spawner.CountShipDeath();
+            Spawner.CountShipDeath(this);
 
             enemyDeathColor.Value = Attributes.ShipColor;
             enemyDeathBullet.Value = Attributes.DropedFire;
