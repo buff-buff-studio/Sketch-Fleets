@@ -38,6 +38,9 @@ TextureImporter:
   - first:
       213: -3357103422022248469
     second: Icons_HealthBar
+  - first:
+      213: -6199977483985414534
+    second: Icons_CircleFill
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -360,7 +363,7 @@ TextureImporter:
         width: 379
         height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -381,7 +384,7 @@ TextureImporter:
         width: 731
         height: 180
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -402,7 +405,7 @@ TextureImporter:
         width: 729
         height: 182
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -410,6 +413,27 @@ TextureImporter:
       bones: []
       spriteID: be79d10793c2961d0800000000000000
       internalID: -3357103422022248469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_CircleFill
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 829
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7611a3c35145f9a0800000000000000
+      internalID: -6199977483985414534
       vertices: []
       indices: 
       edges: []

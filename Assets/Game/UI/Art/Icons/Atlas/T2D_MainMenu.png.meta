@@ -32,6 +32,9 @@ TextureImporter:
   - first:
       213: 607092284967959357
     second: Icons_Blueprint
+  - first:
+      213: -1606400669690319860
+    second: Icons_Paper
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -362,6 +365,27 @@ TextureImporter:
       bones: []
       spriteID: d3b35677733dc6800800000000000000
       internalID: 607092284967959357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_Paper
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 416
+        width: 198
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0ca82c1a1be4b9e0800000000000000
+      internalID: -1606400669690319860
       vertices: []
       indices: 
       edges: []
