@@ -721,6 +721,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!114 &274495083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,6 +821,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!114 &294134467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,6 +1446,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 0
   hovering: 224
+  isBuyable: 0
 --- !u!114 &409955917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1677,6 +1680,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!114 &436877155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2782,6 +2786,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!114 &808335428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3026,6 +3031,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!114 &812609206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3424,6 +3430,7 @@ MonoBehaviour:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 11400000, guid: 8a0de06510999f640bb44839925e8b30, type: 2}
+  enemyTeleportArea: {fileID: 875232497}
 --- !u!1 &872903980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5288,7 +5295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7408037, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.706195, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -5422,6 +5429,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333286776}
   m_CullTransparentMesh: 1
+--- !u!1 &1334097833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1334097834}
+  - component: {fileID: 1334097835}
+  m_Layer: 14
+  m_Name: Teleport Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1334097834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334097833}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2096931362}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1334097835
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334097833}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 25}
+  m_EdgeRadius: 0
 --- !u!1 &1374739390
 GameObject:
   m_ObjectHideFlags: 0
@@ -5924,6 +5988,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!114 &1580070803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7042,6 +7107,7 @@ MonoBehaviour:
   minTimeOffset: 0
   maxTimeOffset: 7
   hovering: 0
+  isBuyable: 0
 --- !u!114 &1818579726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7689,7 +7755,6 @@ MonoBehaviour:
   - color: {r: 0, g: 0, b: 0, a: 0}
     bulletPrefab: {fileID: 0}
   colorsSlot: []
-  invCol: 3
 --- !u!1 &2096931357
 GameObject:
   m_ObjectHideFlags: 0
@@ -7835,7 +7900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7408037, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.706195, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}
@@ -7843,6 +7908,7 @@ Transform:
   - {fileID: 1897801488}
   - {fileID: 1810383953}
   - {fileID: 875232496}
+  - {fileID: 1334097834}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
