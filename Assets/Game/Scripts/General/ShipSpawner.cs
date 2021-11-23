@@ -5,6 +5,7 @@ using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using SketchFleets.Data;
 using SketchFleets.Enemies;
+using SketchFleets.Entities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -35,18 +36,17 @@ namespace SketchFleets.Systems
         [Tooltip("The interval between spawning each wave")]
         private FloatReference waveInterval = new FloatReference(1.5f);
 
-        [SerializeField]
-        [Tooltip("The variation of the interval between spawning each ship")]
-        private FloatReference spawnIntervalDeviation = new FloatReference(0.5f);
-
         [Header("Other Parameters")]
         [SerializeField]
         [Tooltip("The total of enemies killed, displayed in the UI")]
         private IntReference totalEnemiesKilled;
+        
+        [SerializeField]
+        private Collider2D enemyTeleportArea;
 
         private int mapWaveCount;
         private int currentWave;
-        private bool waveStarted;
+        private int pendingSpawns;
 
         #endregion
 
@@ -77,14 +77,7 @@ namespace SketchFleets.Systems
             ActiveEnemyShips.Remove(ship.transform);
             totalEnemiesKilled.Value++;
 
-#if UNITY_EDITOR
-            string waveStatus = ActiveEnemyShips.Count == 0 ? "Wave should end." : "Wave is ongoing.";
-            Debug.Log($"{ActiveEnemyShips.Count} ships left in wave {currentWave} out of wave {mapWaveCount}. {waveStatus}");
-#endif
-
             if (!IsWaveOver()) return;
-            EndWave();
-
             HandleWaveProgress();
         }
 
@@ -93,18 +86,11 @@ namespace SketchFleets.Systems
         #region Private Methods
 
         /// <summary>
-        /// Ends the current wave
-        /// </summary>
-        private void EndWave()
-        {
-            waveStarted = false;
-        }
-
-        /// <summary>
         /// Handles wave progress by checking when waves are over and progressing accordingly
         /// </summary>
         private void HandleWaveProgress()
         {
+            
             if (AreAllWavesOver())
             {
                 AllWavesAreOver?.Invoke();
@@ -140,7 +126,7 @@ namespace SketchFleets.Systems
         private bool IsWaveOver()
         {
             PurgeNullShips();
-            return ActiveEnemyShips.Count == 0 && waveStarted;
+            return ActiveEnemyShips.Count <= 0 && pendingSpawns <= 0;
         }
 
         /// <summary>
@@ -162,16 +148,16 @@ namespace SketchFleets.Systems
         /// </summary>
         private IEnumerator SpawnWave()
         {
+            WaitForSeconds spawnWait = new WaitForSeconds(spawnInterval);
             yield return new WaitForSeconds(waveInterval);
+            pendingSpawns = mapAttributes.MaxEnemies.Length;
 
             for (int index = 1; index <= mapAttributes.MaxEnemies[mapAttributes.Difficulty]; index++)
             {
                 SpawnFormation();
-                float intervalDeviation = Random.Range(spawnIntervalDeviation * -1f, spawnIntervalDeviation);
-                yield return new WaitForSeconds(spawnInterval + intervalDeviation);
+                pendingSpawns--;
+                yield return spawnWait;
             }
-
-            waveStarted = true;
         }
 
         /// <summary>
@@ -214,6 +200,12 @@ namespace SketchFleets.Systems
         private void RegisterEnemyShip(EnemyShip ship)
         {
             ship.Spawner = this;
+
+            if (TryGetComponent(out ShipTeleporter teleporter))
+            {
+                teleporter.TeleportBounds = enemyTeleportArea.bounds;
+            }
+            
             ActiveEnemyShips.Add(ship.transform);
         }
 
