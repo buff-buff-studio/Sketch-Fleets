@@ -3434,10 +3434,6 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 7
     _variable: {fileID: 0}
-  spawnIntervalDeviation:
-    _useConstant: 1
-    _constant: 1.75
-    _variable: {fileID: 0}
   totalEnemiesKilled:
     _useConstant: 0
     _constant: 0
@@ -3641,6 +3637,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2071217368}
     m_Modifications:
+    - target: {fileID: 1467957940069928183, guid: 0991e58958aef5943b87ce7cc8e3ee0e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 61f2e21e913881642a1869628bc84ec3, type: 2}
+    - target: {fileID: 1467957940069928183, guid: 0991e58958aef5943b87ce7cc8e3ee0e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMapOpeningStar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467957940069928183, guid: 0991e58958aef5943b87ce7cc8e3ee0e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SketchFleets.Interaction.MapLevelInteraction, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1467957940589869070, guid: 0991e58958aef5943b87ce7cc8e3ee0e, type: 3}
       propertyPath: m_Name
       value: Win Menu
@@ -5347,7 +5355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7010565, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.701272, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -7952,7 +7960,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7010565, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.701272, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}
