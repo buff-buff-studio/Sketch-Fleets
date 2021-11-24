@@ -18,9 +18,10 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: Yellow ship summoned by the player
   prefab: {fileID: 1040831720659525790, guid: cc26e74262a8e9d47b4088dc58b31202, type: 3}
-  unlocalizedName: ship_yellow
-  unlocalizedDescription: desc_ship_yellow
+  unlocalizedName: ship_yellowOLD
+  unlocalizedDescription: desc_ship_yellowOLD
   codexRarity: 1
+  shipFaction: 0
   shipColor:
     _useConstant: 1
     _constant: {r: 0, g: 0, b: 0, a: 0}
@@ -72,6 +73,7 @@ MonoBehaviour:
     _constant: 0.01
     _variable: {fileID: 0}
   fire: {fileID: 11400000, guid: ced973144c92f6c4fb94299a5991b35a, type: 2}
+  dropedFire: {fileID: 0}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 630950013473707304, guid: 2e905cd8aff31a24292a463aa536e8dd, type: 3}
   healEffect: {fileID: 0}
