@@ -59,8 +59,6 @@ public class LineDrawer : MonoBehaviour
     {
         playerControl = new IAA_SketchFleetsInputs();
         playerControl.Enable();
-        
-        Debug.Log(colorsInventory.drawColor.ToString());
     }
 
     private void OnDisable()
