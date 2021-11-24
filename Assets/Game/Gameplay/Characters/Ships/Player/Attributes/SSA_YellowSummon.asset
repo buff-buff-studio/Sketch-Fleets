@@ -21,6 +21,7 @@ MonoBehaviour:
   unlocalizedName: ship_yellow
   unlocalizedDescription: desc_ship_yellow
   codexRarity: 1
+  shipFaction: 0
   shipColor:
     _useConstant: 1
     _constant: {r: 0, g: 0, b: 0, a: 0}
@@ -71,7 +72,8 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 0.01
     _variable: {fileID: 0}
-  fire: {fileID: 11400000, guid: ced973144c92f6c4fb94299a5991b35a, type: 2}
+  fire: {fileID: 11400000, guid: 12d02b44d08b2424a9d92e34983a38b9, type: 2}
+  dropedFire: {fileID: 0}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 630950013473707304, guid: 2e905cd8aff31a24292a463aa536e8dd, type: 3}
   healEffect: {fileID: 0}

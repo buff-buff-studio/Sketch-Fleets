@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using ManyTools.Events;
 using ManyTools.UnityExtended.Editor;
@@ -61,6 +62,8 @@ namespace SketchFleets
         #endregion
 
         #region Properties
+        
+        public Action TookDamage { get; set; }
 
         public FloatReference CurrentShield => currentShield;
 
@@ -95,6 +98,8 @@ namespace SketchFleets
                 // Reduces health
                 DamageHealth(RawToEffectiveDamage(amount, piercing));
             }
+            
+            TookDamage?.Invoke();
            
             // Applies shield regen cooldown 
             shieldRegenTimer = Attributes.ShieldRegenDelay;

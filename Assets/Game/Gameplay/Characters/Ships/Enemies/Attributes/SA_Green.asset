@@ -56,7 +56,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   collisionDamage:
     _useConstant: 1
-    _constant: 50
+    _constant: -50
     _variable: {fileID: 0}
   invincibilityTime:
     _useConstant: 1
