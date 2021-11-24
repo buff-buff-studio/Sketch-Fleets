@@ -47,6 +47,15 @@ TextureImporter:
   - first:
       213: 3200293333359873023
     second: Icons_UpgradeSpeed
+  - first:
+      213: -6377572828496038388
+    second: Icons_Checkbox
+  - first:
+      213: 9050338097313630832
+    second: Icons_Checkbox2
+  - first:
+      213: -6224577096474960569
+    second: Icons_Checkmark
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -175,7 +184,7 @@ TextureImporter:
       name: Icons_InventoryBackpack
       rect:
         serializedVersion: 2
-        x: 76
+        x: 15
         y: 768
         width: 200
         height: 238
@@ -196,8 +205,8 @@ TextureImporter:
       name: Icons_misterio
       rect:
         serializedVersion: 2
-        x: 283
-        y: 923
+        x: 222
+        y: 916
         width: 143
         height: 65
       alignment: 0
@@ -217,8 +226,8 @@ TextureImporter:
       name: Icons_Button
       rect:
         serializedVersion: 2
-        x: 432
-        y: 883
+        x: 370
+        y: 878
         width: 506
         height: 125
       alignment: 0
@@ -238,8 +247,8 @@ TextureImporter:
       name: Icons_ScrollBackground
       rect:
         serializedVersion: 2
-        x: 332
-        y: 18
+        x: 231
+        y: 19
         width: 80
         height: 870
       alignment: 0
@@ -259,8 +268,8 @@ TextureImporter:
       name: Icons_BackButton2
       rect:
         serializedVersion: 2
-        x: 422
-        y: 684
+        x: 320
+        y: 681
         width: 181
         height: 189
       alignment: 0
@@ -280,8 +289,8 @@ TextureImporter:
       name: Icons_UpgradeDamage
       rect:
         serializedVersion: 2
-        x: 653
-        y: 650
+        x: 517
+        y: 647
         width: 183
         height: 215
       alignment: 0
@@ -301,8 +310,8 @@ TextureImporter:
       name: Icons_BackButton
       rect:
         serializedVersion: 2
-        x: 868
-        y: 739
+        x: 897
+        y: 886
         width: 54
         height: 112
       alignment: 0
@@ -322,8 +331,8 @@ TextureImporter:
       name: Icons_PencilShell
       rect:
         serializedVersion: 2
-        x: 66
-        y: 544
+        x: 4
+        y: 542
         width: 215
         height: 220
       alignment: 0
@@ -343,8 +352,8 @@ TextureImporter:
       name: Icons_SettingsCog
       rect:
         serializedVersion: 2
-        x: 66
-        y: 324
+        x: 4
+        y: 322
         width: 212
         height: 208
       alignment: 0
@@ -364,8 +373,8 @@ TextureImporter:
       name: Icons_UpgradeShield
       rect:
         serializedVersion: 2
-        x: 433
-        y: 476
+        x: 325
+        y: 471
         width: 188
         height: 204
       alignment: 0
@@ -385,8 +394,8 @@ TextureImporter:
       name: Icons_UpgradeColors
       rect:
         serializedVersion: 2
-        x: 649
-        y: 428
+        x: 534
+        y: 423
         width: 218
         height: 205
       alignment: 0
@@ -406,8 +415,8 @@ TextureImporter:
       name: Icons_CloseButton
       rect:
         serializedVersion: 2
-        x: 92
-        y: 115
+        x: 30
+        y: 112
         width: 176
         height: 191
       alignment: 0
@@ -427,8 +436,8 @@ TextureImporter:
       name: Icons_UpgradeHealth
       rect:
         serializedVersion: 2
-        x: 424
-        y: 247
+        x: 321
+        y: 244
         width: 212
         height: 197
       alignment: 0
@@ -448,8 +457,8 @@ TextureImporter:
       name: Icons_ColorSlots
       rect:
         serializedVersion: 2
-        x: 667
-        y: 226
+        x: 553
+        y: 223
         width: 187
         height: 187
       alignment: 0
@@ -469,8 +478,8 @@ TextureImporter:
       name: Icons_UpgradeSpeed
       rect:
         serializedVersion: 2
-        x: 454
-        y: 27
+        x: 323
+        y: 25
         width: 162
         height: 203
       alignment: 0
@@ -482,6 +491,69 @@ TextureImporter:
       bones: []
       spriteID: ffb47ffa4d9b96c20800000000000000
       internalID: 3200293333359873023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_Checkbox
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 739
+        width: 131
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c067f446d4f4e77a0800000000000000
+      internalID: -6377572828496038388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_Checkbox2
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 739
+        width: 130
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a409b7c82499d70800000000000000
+      internalID: 9050338097313630832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_Checkmark
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 74
+        width: 202
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74dd3972c1cdd99a0800000000000000
+      internalID: -6224577096474960569
       vertices: []
       indices: 
       edges: []
