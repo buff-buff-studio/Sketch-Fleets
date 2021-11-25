@@ -406,13 +406,30 @@ namespace SketchFleets
 
         #endregion
 
+        public void Lock(int lockMax, float lockTime)
+        {
+            lockHit++;
+            if (lockHit >= lockMax)
+            {
+                lockHit = 0;
+                StartCoroutine(LockState(lockTime));
+            }
+        }
+        
         protected virtual IEnumerator LockState(float lockTime)
         {
+            lockParent ??= GameObject.Find("LockShip").transform;
+            transform.parent = lockParent;
             isLocked = true;
             
-            yield return new WaitForSeconds(lockTime);
+            do
+            {
+                yield return new WaitForSeconds(lockTime);
+            } 
+            while (lockHit != 0);
             
             isLocked = false;
+            transform.parent = null;
         }
 
         public IEnumerator ContinuousDamage(float damage, float time)

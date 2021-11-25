@@ -50,32 +50,6 @@ namespace SketchFleets.Enemies
             enemyDeathColor.Value = Attributes.ShipColor;
             enemyDeathBullet.Value = Attributes.DropedFire;
         }
-        
-        public void Lock(int lockMax, float lockTime)
-        {
-            lockHit++;
-            if (lockHit >= lockMax)
-            {
-                lockHit = 0;
-                StartCoroutine(LockState(lockTime));
-            }
-        }
-        
-        protected override IEnumerator LockState(float lockTime)
-        {
-            lockParent ??= GameObject.Find("LockShip").transform;
-            transform.parent = lockParent;
-            isLocked = true;
-            
-            do
-            {
-                yield return new WaitForSeconds(lockTime);
-            } 
-            while (lockHit != 0);
-            
-            isLocked = false;
-            transform.parent = null;
-        }
 
         #endregion
     }
