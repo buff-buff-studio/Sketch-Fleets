@@ -27770,6 +27770,10 @@ PrefabInstance:
       value: 0.87058824
       objectReference: {fileID: 0}
     - target: {fileID: 2953496525081462664, guid: 4c4cf3966dbb8d24ba77b825cef64cec, type: 3}
+      propertyPath: m_text
+      value: Blueprint
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953496525081462664, guid: 4c4cf3966dbb8d24ba77b825cef64cec, type: 3}
       propertyPath: m_fontSize
       value: 38.42
       objectReference: {fileID: 0}
@@ -28156,6 +28160,10 @@ PrefabInstance:
     - target: {fileID: 4926810134613675417, guid: 4c4cf3966dbb8d24ba77b825cef64cec, type: 3}
       propertyPath: m_fontColorGradient.bottomLeft.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954480563784066183, guid: 4c4cf3966dbb8d24ba77b825cef64cec, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4954480563784066183, guid: 4c4cf3966dbb8d24ba77b825cef64cec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
