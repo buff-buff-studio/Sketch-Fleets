@@ -102,6 +102,7 @@ namespace SketchFleets.Inventory
 
                     GameObject obj = slots[i].GetChild(0).gameObject;
                     obj.GetComponent<Image>().sprite = sprite;
+                    obj.GetComponent<ItemStackAnimation>().isBuyable = true;
                     obj.SetActive(sprite != null);
                     slots[i].GetChild(1).GetComponent<TMPro.TMP_Text>().text = sprite == null ? "" : stack.Amount.ToString();
 
