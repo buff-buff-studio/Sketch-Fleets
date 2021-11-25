@@ -52,7 +52,6 @@ namespace SketchFleets.Inventory
         #region Unity Callbacks
         public override void Start()
         {
-            Profile.Data.TotalCoins = 999999;
             base.Start();
 
             //Coin Icon
