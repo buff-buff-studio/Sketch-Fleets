@@ -13,7 +13,7 @@ namespace SketchFleets
 
         private Camera mainCameraCache;
 
-        private float radiusSpeed = 2.78f;
+        private float radiusSpeed = 4f;
 
         private float CanvasX;
         private float CanvasY;

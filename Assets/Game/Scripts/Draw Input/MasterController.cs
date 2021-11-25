@@ -217,7 +217,7 @@ namespace SketchFleets
             if (controlsMode == 2)
             {
                 JoystickTarget();
-                if (Vector2.Distance(TouchOne, JoystickRightPos) < JoystickR.sizeDelta.x * .75f || JoystickRight != Vector2.zero)
+                if ((Vector2.Distance(TouchOne, JoystickRightPos) < JoystickR.sizeDelta.x * 2 && Vector2.Distance(TouchTwo, JoystickRightPos) > JoystickR.sizeDelta.x * 2) || JoystickRight != Vector2.zero)
                 {
                     closeFinger = 2;
                     TouchTwoPos();
@@ -231,7 +231,7 @@ namespace SketchFleets
             else
             {
                 JoystickMove();
-                if (Vector2.Distance(TouchOne, JoystickLeftPos) < JoystickL.sizeDelta.x * .75f || JoystickLeft != Vector2.zero)
+                if ((Vector2.Distance(TouchOne, JoystickLeftPos) < JoystickL.sizeDelta.x * 2 && Vector2.Distance(TouchTwo, JoystickLeftPos) > JoystickL.sizeDelta.x * 2) || JoystickLeft != Vector2.zero)
                 {
                     closeFinger = 1;
                     TouchTwoPos();

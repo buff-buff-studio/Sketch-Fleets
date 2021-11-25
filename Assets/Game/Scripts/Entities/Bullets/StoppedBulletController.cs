@@ -1,4 +1,5 @@
 using SketchFleets.Enemies;
+using SketchFleets.Entities;
 using UnityEngine;
 
 namespace SketchFleets
@@ -7,10 +8,17 @@ namespace SketchFleets
     {
         protected override void DealDamageToTarget(bool directDamage, GameObject target)
         {
-            if (target.CompareTag("Player") || target.CompareTag("PlayerSpawn"))
+            if (target.CompareTag("Player"))
             {
                 if (Attributes.IgnorePlayer) return;
                 target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+                target.GetComponent<Mothership>().Lock(Attributes.HitsLock, Attributes.Downtime);
+            }
+            else if (target.CompareTag("PlayerSpawn"))
+            {
+                if (Attributes.IgnorePlayer) return;
+                target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+                target.GetComponent<SpawnedShip>().Lock(Attributes.HitsLock, Attributes.Downtime);
             }
             else
             {
