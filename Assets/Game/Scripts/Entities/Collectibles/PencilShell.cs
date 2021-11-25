@@ -8,15 +8,17 @@ namespace SketchFleets.Entities
     /// A class that controls the 
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
-    public class PencilShell : PoolMember, ICollectible
+    public sealed class PencilShell : PoolMember, ICollectible
     {
         #region Private Fields
 
         [Header("Shell Parameters")]
         [SerializeField]
         private ColorReference shellColor = new ColorReference(Color.white);
+
         [SerializeField]
         private IntReference shellWorth = new IntReference(1);
+
         [SerializeField]
         private GameObject collectEffect;
 
@@ -28,6 +30,7 @@ namespace SketchFleets.Entities
         [SerializeField]
         [Tooltip("The amount of player shells owned by the player")]
         private IntReference playerShells;
+
         [SerializeField]
         [Tooltip("The color of the last shell collected by the player")]
         private ColorReference playerShellColor;
@@ -72,9 +75,9 @@ namespace SketchFleets.Entities
             playerShellColor.Value = spriteRenderer.color;
 
             // If there is a collect effect, spawn it
-            if (collectEffect != null)
+            if (HasCollectEffect())
             {
-                PoolManager.Instance.Request(collectEffect).Emerge(cachedTransform.position, cachedTransform.rotation);
+                InstantiateCollectEffect();
             }
 
             // Sends its back to the pool
@@ -94,11 +97,11 @@ namespace SketchFleets.Entities
         {
             shellColor.Value = Color.white;
             shellWorth.Value = 1;
-            
+
             ApplyVariance();
-            
+
             base.Emerge(position, rotation);
-            
+
             SubmergeDelayed(10f);
         }
 
@@ -119,6 +122,25 @@ namespace SketchFleets.Entities
 
         #region Private Methods
 
+        /// <summary>
+        /// Instantiate the shell collect effect
+        /// </summary>
+        private void InstantiateCollectEffect()
+        {
+            PoolMember effect = PoolManager.Instance.Request(collectEffect);
+            effect.GetComponent<ColorableSpecialEffectController>().EffectColor = shellColor.Value;
+            effect.Emerge(cachedTransform.position, cachedTransform.rotation);
+        }
+
+        /// <summary>
+        /// Checks whether the shell has a collect effect
+        /// </summary>
+        /// <returns>Whether the shell has a collect effect</returns>
+        private bool HasCollectEffect()
+        {
+            return collectEffect != null;
+        }
+        
         /// <summary>
         /// Applies variance in scale and rotation speed
         /// </summary>
