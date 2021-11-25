@@ -15,16 +15,24 @@ namespace SketchFleets.Entities
         #region Private Fields
 
         [Header("Additional Parameters")]
-        [SerializeField, Tooltip("Whether the object should be randomly rotated on being spawned")]
+        [SerializeField]
+        [Tooltip("Whether the object should be randomly rotated on being spawned")]
         private BoolReference rotateOnAppear = new BoolReference(true);
-        [SerializeField, Tooltip("The variance in scale of the special effect being spawned")]
+
+        [SerializeField]
+        [Tooltip("The variance in scale of the special effect being spawned")]
         private FloatReference scaleVariation = new FloatReference(0.25f);
-        
-        private ParticleSystem visualParticleSystem;
+
         private AudioSource audioSource;
 
         private float lifetime;
         private Vector3 originalScale;
+
+        #endregion
+
+        #region Protected Fields
+
+        protected ParticleSystem visualParticleSystem;
 
         #endregion
 
@@ -38,22 +46,22 @@ namespace SketchFleets.Entities
         public override void Emerge(Vector3 position, Quaternion rotation)
         {
             base.Emerge(position, rotation);
-            
+
             // Applies optional effects
             if (rotateOnAppear)
             {
                 RotateByRandomAmount();
             }
 
-            if (!Mathf.Approximately(0f, scaleVariation))
+            if (ScaleVariates())
             {
                 VariateScale();
             }
-            
+
             // Plays effects
             visualParticleSystem.Play();
             audioSource.Play();
-            
+
             SubmergeDelayed(lifetime);
         }
 
@@ -65,7 +73,7 @@ namespace SketchFleets.Entities
             // Stops all effects
             visualParticleSystem.Clear();
             audioSource.Stop();
-            
+
             base.Submerge();
         }
 
@@ -77,14 +85,23 @@ namespace SketchFleets.Entities
         {
             visualParticleSystem = GetComponent<ParticleSystem>();
             audioSource = GetComponent<AudioSource>();
-            
+
             lifetime = CalculateLifetime();
             originalScale = transform.localScale;
         }
 
         #endregion
-        
+
         #region Private Methods
+
+        /// <summary>
+        /// Checks whether the effect's scale is variable
+        /// </summary>
+        /// <returns>Whether the effect's scale is variable</returns>
+        private bool ScaleVariates()
+        {
+            return !Mathf.Approximately(0f, scaleVariation);
+        }
 
         /// <summary>
         /// Returns the lifetime of this special effect object
