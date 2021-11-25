@@ -4415,6 +4415,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1467957940589869070, guid: 0991e58958aef5943b87ce7cc8e3ee0e, type: 3}
   m_PrefabInstance: {fileID: 885990977}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &885990981
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885990980}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &897778916
 GameObject:
   m_ObjectHideFlags: 0
