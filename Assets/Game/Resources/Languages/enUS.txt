@@ -168,11 +168,11 @@ desc_ship_yellow_enemy=Careful! Don't let it plug into an outlet or it it'll dra
 #
 
 armor_extra=Extra Armor
-armor_heavy=Heavy Armor
+armor_heavy=Ultra Heavy Armor
 cursed_ammunition=Cursed Bullets
-cursed_propulsion=Cursed Propulsion
-fuel_tank_compact=Compact Fuel Tank
-fuel_tank_large=Large Fuel Tank
+cursed_propulsion=Cursed Thrusters
+fuel_tank_compact=Speedy Fuel Tank
+fuel_tank_large=Super Speedy Fuel Tank
 mothership_ability_upgrade=Ability Cooldown Upgrade
 mothership_cooldown_upgrade=Summon Cooldown Upgrade
 mothership_dock_upgrade=Summon Capacity Upgrade
@@ -188,22 +188,20 @@ shield_battery=Phone Battery
 # ITEM DESCRIPTION
 #
 
-desc_armor_extra=Reinforced hull plating! Softens blows a little.
-desc_armor_heavy=Plating thick enough to soften heavy blows, but also to slow you down.
-desc_cursed_ammunition=What happens if we reroute energy from the core systems to the guns? Deal double damage, take double damage.
-desc_cursed_propulsion=What happens if we reroute energy from the core system to the propulsors? Greatly increases movement speed, reduces max health.
-desc_fuel_tank_compact=Slightly increases player speed.
-desc_fuel_tank_large=Greatly increases player speed.
-desc_mothership_ability_upgrade=Overclocking the transmission systems allows us to recall ships more often! Reduces the recall cooldown.
-desc_mothership_cooldown_upgrade=Overclocking the hangar systems allows us to summon ships more often! Reduces the ship summon cooldown.
+desc_armor_extra=When I said you should have more armor, I meant more but not this much. Jeez. Can you even handle that much? Decreases incoming damage.
+desc_armor_heavy=Alright, now you're just being silly. Yeah, sure, nothing's gonna get through those 25 layers of steel, but you can't even walk. Decreases incoming damage, decreases speed.
+desc_cursed_ammunition=Uhh... I think you might've made a blood pact or something... Your bullets ARE cursed but you're missing a few limbs. Increases damage, decreases health.
+desc_cursed_propulsion=Wait... What? You decided to sell off one third of your vital essence for an extra pair of thrusters? You know what... Not such a bad idea. Increases speed, decreases health.
+desc_fuel_tank_compact=Enough fuel to get you through a galaxy or two. What is it made of? I don't know, something about liquefied puppies, never heard of it.  Increases speed.
+desc_fuel_tank_large=Enough fuel to go to milky way and back! Not that you'd want to go there anyway... I heard there's humans over there. Greatly increases speed.
 desc_mothership_dock_upgrade=Using dimensional (paper) folding tech, we can fit more ships in the hangar! Increases the maximum active summon count.
-desc_mpencil_new=This pristine artifact from the tridimensional realm allows the ship to cross new boundaries of resilience! Increases max health by a lot!
-desc_mpencil_used=This artifact from the tridimensional realm allows us to reinforce our ship considerably! Increases max health slightly.
-desc_pencil_average=Enough to re-draw many missing pieces lost in battle! Heals instantly for 500 health.
-desc_pencil_broken=Enough to re-draw a few missing pieces lost in battle! Heals instantly for 250 health.
-desc_pencil_perfect=Enough to re-draw virtually all missing pieces lost in battle! Heals instantly for 750 health.
-desc_pencil_sharpener=Sharpens the pencil tips of your summons to the point you could impale someone with them! Increases their damage for 30 seconds!
-desc_shield_battery=We apparently can reroute the power from an artifact known as a 'Phone Battery' to overcharge our shields! Increases max shields by 150.
+desc_mpencil_new=Ugh... The New Ones and their innovations - a mechanical pencil. Back in my day, we wrote with blood-soaked pointy bones. Increases max health significantly.
+desc_mpencil_used=Not judging you but kinda judging you, you're pretty cheap. I mean, really? You couldn't be bothered to buy a new PENCIL? Wow. Increases max health slightly.
+desc_pencil_average=Not too big, not too small. No shame about it. Heals instantly for 500 health.
+desc_pencil_broken=If yours is bent like that, I would go to the hospital, but that's just me. Heals instantly for 250 health.
+desc_pencil_perfect=Man, this one is pristine! Pretty big too! Wait - not in that way! Heals instantly for 750 health.
+desc_pencil_sharpener=Sharp enough to stab someone with. You could use it to draw some pretty sharp things! Increases summon damage for 30 seconds!
+desc_shield_battery=Apparently we can reroute the power from an artifact known as a 'Phone Battery' to overclock the shields! Increases max shields by 150.
 
 #
 # UPGRADE NAMES
@@ -213,7 +211,7 @@ damage_upgrade=Damage Upgrade
 life_upgrade=Health Upgrade
 shield_upgrade=Shield Upgrade
 speed_upgrade=Speed Upgrade
-color_upgrade=Color Inventory Upgrade
+color_upgrade=Color Upgrade
 
 #
 # UPGRADE DESCRIPTION
@@ -232,4 +230,4 @@ ui_items=Items
 # ENDGAME
 #
 
-ui_endgame_title=You won the game!
+ui_endgame_title=A+ Baby! Congrats! You won!
