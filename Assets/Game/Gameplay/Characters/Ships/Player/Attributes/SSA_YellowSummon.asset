@@ -18,8 +18,8 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: Yellow ship summoned by the player
   prefab: {fileID: 1040831720659525790, guid: cc26e74262a8e9d47b4088dc58b31202, type: 3}
-  unlocalizedName: ship_yellowOLD
-  unlocalizedDescription: desc_ship_yellowOLD
+  unlocalizedName: ship_yellow
+  unlocalizedDescription: desc_ship_yellow
   codexRarity: 1
   shipFaction: 0
   shipColor:

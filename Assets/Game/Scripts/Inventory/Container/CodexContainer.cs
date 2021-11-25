@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using SketchFleets.ProfileSystem;
 using SketchFleets.Data;
@@ -9,27 +10,43 @@ namespace SketchFleets.Inventory
     /// <summary>
     /// Main Codex container class
     /// </summary>
-    public class CodexContainer : MonoBehaviour
+    public sealed class CodexContainer : MonoBehaviour
     {
         #region Registers
 
         [Header("Cards")]
-        [SerializeField, Tooltip("The card template")]
+        [SerializeField]
+        [Tooltip("The card template")]
         private GameObject codexCard;
-        [SerializeField, Tooltip("The locked card template")]
+
+        [SerializeField]
+        [Tooltip("The locked card template")]
         private GameObject lockedCodexCard;
-        
+
         [Header("Display Container")]
-        [SerializeField, Tooltip("The object that contains all cards")]
+        [SerializeField]
+        [Tooltip("The object that contains all cards")]
         private GameObject containerDisplay;
-        
+
         [Header("Registers")]
-        [SerializeField, Tooltip("The register for this kind of entry")]
+        [SerializeField]
+        [Tooltip("The register for this kind of entry")]
         private ShopObjectRegister registerItems;
-        [SerializeField, Tooltip("The register for this kind of entry")]
+
+        [SerializeField]
+        [Tooltip("The register for this kind of entry")]
         private ShopObjectRegister registerUpgrades;
-        [SerializeField, Tooltip("The register for this kind of entry")]
+
+        [SerializeField]
+        [Tooltip("The register for this kind of entry")]
         private ShipRegister registerShips;
+
+#if UNITY_EDITOR
+        [Header("Debug")]
+        [SerializeField]
+        [Tooltip("Unlocks all cards for viewing")]
+        private bool unlockAllCards;
+#endif
 
         #endregion
 
@@ -67,16 +84,19 @@ namespace SketchFleets.Inventory
         /// <typeparam name="T"></typeparam>
         private void DisplayAllCards<T>(CodexEntryType type, Register<T> register)
         {
-            List<int> unlockedList = new List<int>();
-
             //Add unlocked id
-            foreach (CodexEntry entry in Profile.GetData().codex.GetUnlockedEntries(type)) unlockedList.Add(entry.ID);
+            List<int> unlockedList =
+                Profile.GetData().codex.GetUnlockedEntries(type).Select(entry => entry.ID).ToList();
 
             //Render items
             for (int index = 0; index < register.items.Length; index++)
             {
                 bool isUnlocked = unlockedList.Contains(index);
+#if UNITY_EDITOR
+                DisplayCard(index, register.items[index], unlockAllCards || isUnlocked);
+#else
                 DisplayCard(index, register.items[index], isUnlocked);
+#endif
             }
         }
 
@@ -93,11 +113,11 @@ namespace SketchFleets.Inventory
             switch (item)
             {
                 case Item codexItem:
-                    CreateItemCard((Item) registerItems.items[id], unlocked);
+                    CreateItemCard((Item)registerItems.items[id], unlocked);
                     break;
-                
+
                 case Upgrade upgradeItem:
-                    CreateUpgradeCard((Upgrade) registerUpgrades.items[id], unlocked);
+                    CreateUpgradeCard((Upgrade)registerUpgrades.items[id], unlocked);
                     break;
 
                 case ShipAttributes codexShip:
@@ -109,7 +129,7 @@ namespace SketchFleets.Inventory
 
             return true;
         }
-        
+
         /// <summary>
         /// Creates a codex card with a ship
         /// </summary>
@@ -119,10 +139,8 @@ namespace SketchFleets.Inventory
         {
             Instantiate(unlocked ? codexCard : lockedCodexCard).TryGetComponent(out CodexCard card);
             AddToDisplay(card.gameObject);
-            if (unlocked)
-                card.FillCardWithShip(ship);
-            else
-                card.FillCardOnlyWithRarity(ship.CodexRarity);
+            if (unlocked) card.FillCardWithShip(ship);
+            else card.FillCardOnlyWithRarity(ship.CodexRarity);
         }
 
         /// <summary>
@@ -134,10 +152,8 @@ namespace SketchFleets.Inventory
         {
             Instantiate(unlocked ? codexCard : lockedCodexCard).TryGetComponent(out CodexCard card);
             AddToDisplay(card.gameObject);
-            if (unlocked)
-                card.FillCardWithItem(item);
-            else
-                card.FillCardOnlyWithRarity(item.CodexEntryRarity);
+            if (unlocked) card.FillCardWithItem(item);
+            else card.FillCardOnlyWithRarity(item.CodexEntryRarity);
         }
 
         /// <summary>
@@ -149,12 +165,10 @@ namespace SketchFleets.Inventory
         {
             Instantiate(unlocked ? codexCard : lockedCodexCard).TryGetComponent(out CodexCard card);
             AddToDisplay(card.gameObject);
-            if (unlocked)
-                card.FillCardWithUpgrade(upgrade);
-            else
-                card.FillCardOnlyWithRarity(upgrade.CodexEntryRarity);
+            if (unlocked) card.FillCardWithUpgrade(upgrade);
+            else card.FillCardOnlyWithRarity(upgrade.CodexEntryRarity);
         }
-        
+
         /// <summary>
         /// Adds a given card to the display
         /// </summary>
@@ -163,7 +177,7 @@ namespace SketchFleets.Inventory
         {
             card.transform.SetParent(containerDisplay.transform);
             card.transform.localScale = Vector3.one;
-            card.transform.localEulerAngles = new Vector3(0,0,Random.Range(-3f,3f));
+            card.transform.localEulerAngles = new Vector3(0, 0, Random.Range(-3f, 3f));
         }
 
         /// <summary>
