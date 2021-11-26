@@ -28,7 +28,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   maxHealth:
     _useConstant: 1
-    _constant: 175
+    _constant: 125
     _variable: {fileID: 0}
   maxShield:
     _useConstant: 1
@@ -48,7 +48,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 550
+    _constant: 500
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
@@ -70,7 +70,7 @@ MonoBehaviour:
   codexEntryTemplate: {fileID: 8509772390799679560, guid: 0dc7e6f6a0a097c48bb675e31e2587a3, type: 3}
   codexDropChance:
     _useConstant: 1
-    _constant: 0.02
+    _constant: 0.01
     _variable: {fileID: 0}
   fire: {fileID: 0}
   dropedFire: {fileID: 4199103658155674004, guid: f9d8bc9a4c1671942b350962bd2595f9, type: 3}

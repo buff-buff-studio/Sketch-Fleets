@@ -70,7 +70,7 @@ MonoBehaviour:
   codexEntryTemplate: {fileID: 8509772390799679560, guid: 0dc7e6f6a0a097c48bb675e31e2587a3, type: 3}
   codexDropChance:
     _useConstant: 1
-    _constant: 0.02
+    _constant: 0.03
     _variable: {fileID: 0}
   fire: {fileID: 11400000, guid: d59e8ac203da63d43a216dd43cdc0af5, type: 2}
   dropedFire: {fileID: 4233880130515042751, guid: c20c587674612d041ba5ec9f09e182c1, type: 3}
