@@ -22,15 +22,15 @@ MonoBehaviour:
   unlocalizedDescription: 
   directDamage:
     _useConstant: 1
-    _constant: 15
+    _constant: 50
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
-    _constant: 5
+    _constant: 0
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 35
+    _constant: 65
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
@@ -62,11 +62,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
-    _constant: 5
+    _constant: 3
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 0.3
+    _constant: 0.25
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: f274fbd3f38f1ae4889b150a2bff774a, type: 3}
   pitchVariation:

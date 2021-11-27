@@ -48,7 +48,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 30
+    _constant: 40
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   invincibilityTime:
     _useConstant: 1
-    _constant: 0.4
+    _constant: 0.5
     _variable: {fileID: 0}
   dropMinMaxCount:
     _useConstant: 1
