@@ -23,7 +23,7 @@ namespace SketchFleets.Enemies
 
         #region Properties
 
-        public EnemySpawner Spawner { get; set; }
+        public ShipSpawner Spawner { get; set; }
 
         #endregion
 
@@ -45,36 +45,10 @@ namespace SketchFleets.Enemies
         public override void Die()
         {
             base.Die();
-            Spawner.CountShipDeath();
+            Spawner.CountShipDeath(this);
 
             enemyDeathColor.Value = Attributes.ShipColor;
             enemyDeathBullet.Value = Attributes.DropedFire;
-        }
-        
-        public void Lock(int lockMax, float lockTime)
-        {
-            lockHit++;
-            if (lockHit >= lockMax)
-            {
-                lockHit = 0;
-                StartCoroutine(LockState(lockTime));
-            }
-        }
-        
-        protected override IEnumerator LockState(float lockTime)
-        {
-            lockParent ??= GameObject.Find("LockShip").transform;
-            transform.parent = lockParent;
-            isLocked = true;
-            
-            do
-            {
-                yield return new WaitForSeconds(lockTime);
-            } 
-            while (lockHit != 0);
-            
-            isLocked = false;
-            transform.parent = null;
         }
 
         #endregion

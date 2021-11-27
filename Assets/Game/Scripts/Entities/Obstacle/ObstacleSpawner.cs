@@ -63,13 +63,6 @@ public sealed class ObstacleSpawner : MonoBehaviour
             ObstacleAttributes drawnObstacle = DrawObstacleFromPool();
             bool isDrawnObstacleValid = drawnObstacle != null;
 
-            #if UNITY_EDITOR
-
-            Debug.Log(isDrawnObstacleValid ? 
-                "Drew no obstacle from pool." : 
-                $"Drew a {drawnObstacle.Name} obstacle from pool. Will warn: {drawnObstacle.WarnOnSpawn}");
-  #endif
-            
             if (isDrawnObstacleValid && drawnObstacle.WarnOnSpawn)
             {
                 spawnPoint = new Vector3(spawnArea.transform.position.x, GetRandomYInSpawnArea());

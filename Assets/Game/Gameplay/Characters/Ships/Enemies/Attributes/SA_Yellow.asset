@@ -18,8 +18,8 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: 
   prefab: {fileID: 715672341400399249, guid: bd0230752117bd8409edacb183b76730, type: 3}
-  unlocalizedName: ship_yellow
-  unlocalizedDescription: desc_ship_yellow
+  unlocalizedName: ship_yellow_enemy
+  unlocalizedDescription: desc_ship_yellow_enemy
   codexRarity: 1
   shipFaction: 1
   shipColor:

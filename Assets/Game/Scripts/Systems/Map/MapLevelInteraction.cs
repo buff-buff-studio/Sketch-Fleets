@@ -42,13 +42,10 @@ namespace SketchFleets.Interaction
         public void OnClickOnMapStar(int clickedStar)
         {
             //Save state
-            Debug.Log("...");
             SaveMapState(map, () => { });
-            Debug.Log("OnClick at: " + clickedStar);
 
             map.CloseAnimation(() =>
             {
-                Debug.Log("closed");
                 state.SetCurrentStar(clickedStar);
 
                 //Set variables 
@@ -86,7 +83,6 @@ namespace SketchFleets.Interaction
         /// </summary>
         public void ReturnToMap()
         {
-
             LoadScene(sceneMap.Value, () =>
             {
                 ConstelationMap.onMapLoad = () =>
@@ -131,10 +127,8 @@ namespace SketchFleets.Interaction
         {
             LoadScene(sceneMap.Value, () =>
             {
-                //Debug.Log("aaa");
                 ConstelationMap.onMapLoad = () =>
                 {
-                    //Debug.Log("bbb");
                     map.OpenInstantly();
 
                     Time.timeScale = 1;
@@ -218,10 +212,8 @@ namespace SketchFleets.Interaction
         /// </summary>
         public void SaveMapState(MonoBehaviour source, Action callback)
         {
-            Debug.Log("Saving...");
             SketchFleets.ProfileSystem.Profile.SaveProfile((save) =>
             {
-                Debug.Log("Map saved!");
                 callback();
             });
         }
@@ -234,7 +226,6 @@ namespace SketchFleets.Interaction
         {
             SketchFleets.ProfileSystem.Profile.LoadProfile((data) =>
             {
-                Debug.Log("aa: " + SketchFleets.ProfileSystem.Profile.GetData().Map.seed);
                 callback(SketchFleets.ProfileSystem.Profile.GetData().Map.seed != -1);
             });
         }

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Lime Bullet
+    _constant: Green Bullet
     _variable: {fileID: 0}
-  description: A bullet fired by the Lime Ship
-  prefab: {fileID: 2329831306282603820, guid: 99a4243c28cca7941b538f25fc22ffb1, type: 3}
+  description: 
+  prefab: {fileID: 2329831306282603820, guid: 8f0e7df35956d7d4a8f5de18b84cf043, type: 3}
   unlocalizedName: 
   unlocalizedDescription: 
   directDamage:
@@ -49,6 +49,10 @@ MonoBehaviour:
     _constant: 0
     _variable: {fileID: 0}
   downtime:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
+  continuousDamageTime:
     _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}

@@ -13,9 +13,6 @@ public class LineDrawer : MonoBehaviour
 {
     public GameObject linePrefab;
     public GameObject inputTrail;
-    public Image inputSprite;
-
-    public float spriteSize;
 
     public Gradient trailGradient;
     private GradientColorKey[] colorKey = new GradientColorKey[2];
@@ -62,8 +59,6 @@ public class LineDrawer : MonoBehaviour
     {
         playerControl = new IAA_SketchFleetsInputs();
         playerControl.Enable();
-        
-        Debug.Log(colorsInventory.drawColor.ToString());
     }
 
     private void OnDisable()
@@ -154,7 +149,7 @@ public class LineDrawer : MonoBehaviour
                 Shapes[FormSelect].shapeName + " - " + currentLine.lineRenderer.positionCount;
                 
             Destroy(currentLine.gameObject);
-            ShapeShow();
+            Shapes[FormSelect].shapeEvent.Invoke();
             currentLine = null;
         }
         
@@ -192,23 +187,6 @@ public class LineDrawer : MonoBehaviour
     {
         return currentLine != null;
     }
-
-    private void ShapeShow()
-    {
-        /*
-        Tuple<Vector3, float> shapeInfo = currentLine.GetLineCenter(Shapes[FormSelect].shapeName);        
-        
-        Vector2 ViewportPosition = cam.WorldToScreenPoint(shapeInfo.Item1);
-
-        inputSprite.rectTransform.localScale = Vector2.one*(shapeInfo.Item2 / spriteSize);
-        inputSprite.rectTransform.anchoredPosition = transform.InverseTransformPoint(ViewportPosition);
-        inputSprite.sprite = Shapes[FormSelect].shapeSprite;
-        inputSprite.color = Shapes[FormSelect].shapeColor;
-        inputSprite.GetComponent<Animator>().Play("showHide");
-        */
-
-        Shapes[FormSelect].shapeEvent.Invoke();
-    }
 }
 
 [Serializable]
@@ -216,7 +194,5 @@ public struct ShapeType
 {
     public string shapeName;
     public int shapeMaxVertices;
-    public Color shapeColor;
-    public Sprite shapeSprite;
     public UnityEvent shapeEvent;
 }

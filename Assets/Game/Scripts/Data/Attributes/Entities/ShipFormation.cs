@@ -1,3 +1,4 @@
+using System;
 using ManyTools.UnityExtended.Editor;
 using SketchFleets.Entities;
 using UnityEngine;
@@ -37,6 +38,11 @@ namespace SketchFleets.Data
 
         #region Unity Callbacks
 
+        private void OnEnable()
+        {
+            ValidateFormationObject();
+        }
+
         private void OnValidate()
         {
             ValidateFormationObject();
@@ -69,6 +75,7 @@ namespace SketchFleets.Data
         private void ValidateFormationObject()
         {
             if (formationObject.TryGetComponent(out formation)) return;
+            
             formationObject = null;
             Debug.LogError("The formation object must have a Formation component at the top level");
         }

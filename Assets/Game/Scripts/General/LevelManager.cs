@@ -76,7 +76,7 @@ namespace SketchFleets.General
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            GetComponent<EnemySpawner>().AllWavesAreOver -= WinGame;
+            GetComponent<ShipSpawner>().AllWavesAreOver -= WinGame;
             EndGame();
         }
 
@@ -102,7 +102,7 @@ namespace SketchFleets.General
         private void CacheComponentsAndData()
         {
             Player = FindObjectOfType<Mothership>();
-            GetComponent<EnemySpawner>().AllWavesAreOver += WinGame;
+            GetComponent<ShipSpawner>().AllWavesAreOver += WinGame;
         }
 
         /// <summary>
@@ -135,6 +135,20 @@ namespace SketchFleets.General
             SetOtherMenusActive(false);
             victoryMenu.SetActive(true);
             winShellCount.text = Profile.Data.Coins.ToString();
+
+            StartCoroutine(LerpGameOverScreen());
+        }
+
+        IEnumerator LerpGameOverScreen()
+        {
+            float timer = Time.unscaledTime;
+            float actual = 0;
+            CanvasGroup canvasGroup = victoryMenu.GetComponent<CanvasGroup>();
+            while ((actual = Time.unscaledTime - timer) < 1.5f)
+            {
+                canvasGroup.alpha = actual / 1.5f;
+                yield return 0;
+            }
         }
 
         /// <summary>

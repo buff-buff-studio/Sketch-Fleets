@@ -10,7 +10,7 @@ ui_credits=Credits
 ui_resolution=Resolution
 ui_map=Map
 ui_store=The Buff Store
-ui_codex=Card Deck
+ui_codex=Sticker Album
 
 #
 # SETTINGS MENU
@@ -29,9 +29,9 @@ ui_subtitle_volumemaster=Master Volume
 ui_subtitle_volumemusic=Music Volume
 ui_subtitle_volumesfx=Sound Effects Volume
 
-ui_graphics_low=Low
+ui_graphics_low=Potato
 ui_graphics_medium=Medium
-ui_graphics_high=High
+ui_graphics_high=RTX On
 
 resolution_low=Low
 resolution_medium=Medium
@@ -49,7 +49,7 @@ ui_occupation_artist=Artist
 ui_occupation_programmer=Programmer
 ui_occupation_ui=UI Designer
 ui_occupation_you=You!
-ui_occupation_teacher=Teacher
+ui_occupation_teacher=Professor
 ui_occupation_dev=Developer
 ui_occupation_university=University
 
@@ -59,7 +59,7 @@ ui_credits_hint=Click the on the developers' photos to know more!
 # QUIT MENU
 #
 
-ui_quit_confirm=Are you sure?
+ui_quit_confirm=Nooo, come on, you're really leaving?
 ui_quit_yes=Yes!
 ui_quit_no=No!
 
@@ -67,7 +67,7 @@ ui_quit_no=No!
 # UPDATE NOTES
 #
 
-ui_version=Versão
+ui_version=Version
 
 #
 # MAP
@@ -77,7 +77,7 @@ map_easy=Easy
 map_medium=Medium
 map_hard=Hard
 map_veryhard=Very Hard
-map_boss=???
+map_boss=WTF
 
 #
 # IN-GAME
@@ -85,21 +85,19 @@ map_boss=???
 
 ui_enemies=Enemies
 
-ui_deadTitle=You Died!
+ui_deadTitle=You got scribbled over!
 ui_runtime=Run Timer
 
-ui_winTitle=Planet Completed!
+ui_winTitle=Planet completed!
 
-ui_pauseTitle=Game Paused
+ui_pauseTitle=Paused
 ui_pauseReturn=Back
 
 ui_button_newgame=New Game
 ui_button_continue=Continue
-ui_button_store=The Buff Store
+ui_button_store=Store
 
 ui_title_settings=Options
-
-ui_pressSpace=Press the Spacebar to summon allies and use items!
 
 #
 # SHOP MENU
@@ -136,58 +134,50 @@ ui_tutorial_store=You can buy permanent upgrades using the Pencil Boxes, through
 #
 
 ship_mother=Mothership
-ship_magenta=Turret
-ship_cyan=Meteor
-ship_yellow=Tower
-
-ship_spinner=Spinner
-ship_shockwave=Shockwave
-ship_spire=Spire
-
-ship_ace=Ace
-ship_skysplitter=Skysplitter
-ship_starburst=Starburst
-
-ship_seeker=Seeker
-ship_destroyer=Destroyer
-ship_warfront=Warfront
+ship_magenta=Finger Gun
+ship_cyan=Meteor Bomb
+ship_yellow=Lovecraftian Thingy
 
 #
 # SHIP DESCRIPTIONS / CODEX
 #
 
 desc_ship_mother=The Mothership, an explorer of the cosmos unlike any other! It has seen countless worlds and destroyed countless foes! Truly the master of space!
-desc_ship_magenta=Your trusty best friend, absolutely gunning everything down in your way, at your command!
-desc_ship_cyan=The one ship you'll summon whenever you're sure you want something dead, and quickly!
-desc_ship_yellow=Just set it and forget it - let it do the dirty work! Until an asteroid inevitably hits it, that is.
+desc_ship_magenta=Finger guns were the first firearms ever discovered in the universe. They were used by the Old Ones to enslave the New Ones, and make friends, of course!
+desc_ship_cyan=Look at it. Look at the sadistic glee it carries as it is thrown into its own death. I think we could all learn a thing or two from it.
+desc_ship_yellow=A friendly unidentified ship. You can't tell what it is, but it's friendly for sure! I think... Just don't let it speak to you in your dreams.
 
-desc_ship_spinner=The huge lime bastard that makes you go 'Not this one again' every time it shows up. Well, when life give you limes, you destroy them with pencil tips!
-desc_ship_shockwave=This one makes you wish life gave you limes instead of pain, but if you've got this card, it wasn't the case. Well, at least you got the card, right?
-desc_ship_spire=Guaranteed to make you lose your cool every time it shows up. No exceptions. I mean - there's nowhere to go hide or go when these things start firing.
+ship_blue=Icebox
+ship_green=Pillfly
+ship_orange=Napalm Bomb
+ship_pink=Bouncy Boom
+ship_purple=Ugly Thingy
+ship_red=Sucker Punch
+ship_yellow_enemy=Pluggy
 
-desc_ship_ace=The standard opposition throughout the cosmos! Slow fire rate, low damage, lots of purple! Not enough to kill you - not alone anyways!
-desc_ship_skysplitter=The inventors of the Ace model noticed they weren't enough to kill you by themselves, so they made each Ace count for two! And now we have this.
-desc_ship_starburst=A surreptitiously devilish version of the Ace, equipped with the magical ability of making you say 'Wait, what hit me?' every time.
-
-desc_ship_seeker=The Seeker ship doesn't value its own life as much as it values your death! Destroy it before it reaches you - but you already know that.
-desc_ship_destroyer=The Seeker's big, bad brother. Faster and more resilient. You probably went "Wait, why is this one faster?" the first time you saw one.
-desc_ship_warfront=The Seeker's bigger, badder brother. Also the spaceship equivalent of a steamroller. Just hope there's enough space on the screen to avoid them!
+desc_ship_blue=On a galaxy-wide quest to combat universal warming and fend off the inevitable heat death of the universe! Careful or it'll freeze you too!
+desc_ship_green=You're sure to relapse any pill addiction you have when these guys show up! You'll literally brave gunfire for them!
+desc_ship_orange=As if war crimes and violating the Geneva convention wasn't enough, these nasty things are also known for being space pirates!
+desc_ship_pink=Ever wondered what a flak cannon that fires bouncy ball looks like? No? Well, the design team made this anyway. Don't blame me, I'm just the writer.
+desc_ship_purple=Some strange weirdo Old One made these. They were evidently not very good at making things. Dear god, its so ugly!
+desc_ship_red=The evil twin of the finger gun. Outlawed in most galactic empire jurisdictions, but still used by the young enemies of the Old Ones; the New Ones!
+desc_ship_yellow_enemy=Careful! Don't let it plug into an outlet or it it'll drain your phone's battery to charge itself! (And kill you, while its at it)
 
 #
 # ITEM NAMES
 #
 
 armor_extra=Extra Armor
-armor_heavy=Heavy Armor
+armor_heavy=Ultra Heavy Armor
 cursed_ammunition=Cursed Bullets
-cursed_propulsion=Cursed Propulsion
-fuel_tank_compact=Compact Fuel Tank
-fuel_tank_large=Large Fuel Tank
+cursed_propulsion=Cursed Thrusters
+fuel_tank_small=Speedy Fuel Tank
+fuel_tank_large=Super Speedy Fuel Tank
 mothership_ability_upgrade=Ability Cooldown Upgrade
 mothership_cooldown_upgrade=Summon Cooldown Upgrade
 mothership_dock_upgrade=Summon Capacity Upgrade
-mpencil_new=Pristine Mechanical Pencil
-mpencil_used=Mechanical Pencil
+mpencil_new=Brand New Mechanical Pencil
+mpencil_used=Used Mechanical Pencil
 pencil_average=Modest Pencil
 pencil_broken=Broken Pencil
 pencil_perfect=Pristine Pencil
@@ -198,39 +188,20 @@ shield_battery=Phone Battery
 # ITEM DESCRIPTION
 #
 
-desc_armor_extra=Reinforced hull plating! Softens blows a little.
-
-desc_armor_heavy=Plating thick enough to soften heavy blows, but also to slow you down.
-
-desc_cursed_ammunition=What happens if we reroute energy from the core systems to the guns?
-Deal double damage, take double damage.
-
-desc_cursed_propulsion=What happens if we reroute energy from the core system to the propulsors?
-Greatly increases movement speed, reduces max health.
-
-desc_fuel_tank_compact=Slightly increases player speed.
-
-desc_fuel_tank_large=Greatly increases player speed.
-
-desc_mothership_ability_upgrade=Overclocking the transmission systems allows us to recall ships more often! Reduces the recall cooldown.
-
-desc_mothership_cooldown_upgrade=Overclocking the hangar systems allows us to summon ships more often! Reduces the ship summon cooldown.
-
+desc_armor_extra=When I said you should have more armor, I meant more but not this much. Jeez. Can you even handle that much? Decreases incoming damage.
+desc_armor_heavy=Alright, now you're just being silly. Yeah, sure, nothing's gonna get through those 25 layers of steel, but you can't even walk. Decreases incoming damage, decreases speed.
+desc_cursed_ammunition=Uhh... I think you might've made a blood pact or something... Your bullets ARE cursed but you're missing a few limbs. Increases damage, decreases health.
+desc_cursed_propulsion=Wait... What? You decided to sell off one third of your vital essence for an extra pair of thrusters? You know what... Not such a bad idea. Increases speed, decreases health.
+desc_fuel_tank_small=Enough fuel to get you through a galaxy or two. What is it made of? I don't know, something about liquefied puppies, never heard of it.  Increases speed.
+desc_fuel_tank_large=Enough fuel to go to milky way and back! Not that you'd want to go there anyway... I heard there's humans over there. Gross. Greatly increases speed.
 desc_mothership_dock_upgrade=Using dimensional (paper) folding tech, we can fit more ships in the hangar! Increases the maximum active summon count.
-
-desc_mpencil_new=This pristine artifact from the tridimensional realm allows the ship to cross new boundaries of resilience! Increases max health by a lot!
-
-desc_mpencil_used=This artifact from the tridimensional realm allows us to reinforce our ship considerably! Increases max health slightly.
-
-desc_pencil_average=Enough to re-draw many missing pieces lost in battle! Heals instantly for 500 health.
-
-desc_pencil_broken=Enough to re-draw a few missing pieces lost in battle! Heals instantly for 250 health.
-
-desc_pencil_perfect=Enough to re-draw virtually all missing pieces lost in battle! Heals instantly for 750 health.
-
-desc_pencil_sharpener=Sharpens the pencil tips of your summons to the point you could impale someone with them! Increases their damage for 30 seconds!
-
-desc_shield_battery=We apparently can reroute the power from an artifact known as a 'Phone Battery' to overcharge our shields! Increases max shields by 150.
+desc_mpencil_new=Ugh... The New Ones and their innovations - a mechanical pencil. Back in my day, we wrote with blood-soaked pointy bones. Increases max health significantly.
+desc_mpencil_used=Not judging you but kinda judging you, you're pretty cheap. I mean, really? You couldn't be bothered to buy a new PENCIL? Wow. Increases max health slightly.
+desc_pencil_average=Not too big, not too small. No shame about it. Heals instantly for 500 health.
+desc_pencil_broken=If yours is bent like that, I would go to the hospital, but that's just me. Heals instantly for 250 health.
+desc_pencil_perfect=Man, this one is pristine! Pretty big too! Wait - not in that way! Heals instantly for 750 health.
+desc_pencil_sharpener=Built using the scraps of Excalibur's blade. You could use it to draw some pretty sharp things! Increases summon damage for 30 seconds!
+desc_shield_battery=Apparently we can reroute the power from an artifact known as a 'Phone Battery' to overclock the shields! Increases max shields by 150.
 
 #
 # UPGRADE NAMES
@@ -240,16 +211,17 @@ damage_upgrade=Damage Upgrade
 life_upgrade=Health Upgrade
 shield_upgrade=Shield Upgrade
 speed_upgrade=Speed Upgrade
-color_upgrade=Color Inventory Upgrade
+color_upgrade=Color Upgrade
 
 #
 # UPGRADE DESCRIPTION
 #
 
-desc_damage_upgrade=Increases Mothership's damage.
-desc_life_upgrade=Increases Mothership's max health.
-desc_shield_upgrade=Increases Mothership's max shield.
-desc_speed_upgrade=Increases Mothership's movement speed.
+desc_damage_upgrade=Fiery fire that glows red with flaming pain. Sure to make your enemies wince when they get hit. Increases the Mothership's damage.
+desc_life_upgrade=A tonic that increases your max health. Side effects may include nausea, dizziness, a creeping feeling of dread and extreme pain.
+desc_shield_upgrade=Scientifically proven to increase your max shield capacity by rerouting your phone battery's power.
+desc_speed_upgrade=Gotta go fast, boi! Overclocks the thruster systems in the ship to increase movement speed.
+desc_color_upgrade=Increases the maximum amount of colors you can hold at a time. Warning: may contain lead paint.
 
 ui_inventory=Inventory
 ui_items=Items
@@ -258,4 +230,4 @@ ui_items=Items
 # ENDGAME
 #
 
-ui_endgame_title=You won the game!
+ui_endgame_title=A+ Baby! Congrats! You won!

@@ -97,7 +97,7 @@ namespace SketchFleets.Entities
             HandlePlayerInput();
             TickTimers();
             Fire();
-            
+
             SetCrystalColor();
         }
 

@@ -134,7 +134,7 @@ ui_tutorial_store=Já a loja do Menu é onde você consegue comprar upgrades per
 # SHIP DESCRIPTIONS / CODEX
 #
 
-ui_codex=Codex
+ui_codex=Album de Figurinhas
 
 #
 # ITEM NAMES
@@ -212,8 +212,8 @@ color_upgrade=Aumento do Inventario de Cores
 desc_damage_upgrade=Aumenta o dano da Nave Mãe
 desc_life_upgrade=Aumenta a Vida Máxima da Nave Mãe
 desc_shield_upgrade=Aumenta o Escudo Máximo da Nave Mãe
-desc_speed_upgrade=Aumenta a Velocidade de movimento da Nave Mãe
-
+desc_speed_upgrade=Aumenta a Velocidade de Movimento da Nave Mãe
+desc_color_upgrade=Aumenta a quantidade de cores absorvidas pela Nave Mãe
 
 ui_inventory=Inventário
 ui_items=Itens
@@ -231,7 +231,7 @@ ui_endgame_title=Você venceu o jogo!
 ship_mother=Nave-Mãe
 ship_magenta=Thompson
 ship_cyan=A Granada
-ship_yellow=A Torreta
+ship_yellowOLD=A Torreta
 
 ship_spinner=Spinner
 ship_shockwave=Onda de Choque
@@ -248,7 +248,7 @@ ship_warfront=Ares
 desc_ship_mother=Ahh.. A nave-mãe, meu primeiro desenho! Uma nave exploratoria do cosmos como nenhuma outra!
 desc_ship_magenta=A sua melhor amiga sem duvidas, ela absolutamente atira em tudo, claro, sob seu comando!
 desc_ship_cyan=A única nave que você convocará sempre quiser alguem bem especifico morto, bem morto mesmo!
-desc_ship_yellow=Essa dai vai ficar ali pra sempre, ela vai ficar lá atirando... ate um asteroide a atingir!
+desc_ship_yellowOLD=Essa dai vai ficar ali pra sempre, ela vai ficar lá atirando... ate um asteroide a atingir!
 
 desc_ship_spinner=Uma nave giratória que dispara em quatro direções! A Ciana é uma boa contramedida contra ele!
 desc_ship_shockwave=Uma nave giratória que libera uma onda de choque de balas! Se esconda nas areas em que as balas não chegam!
@@ -261,3 +261,23 @@ desc_ship_starburst=Uma variante mortal do modelo Ace, Super Nova, capaz de disp
 desc_ship_seeker=A nave Seeker prefere a morte a ver você vivo! Mate-a antes que ela chegue em você!
 desc_ship_destroyer=Uma nave de busca, com uma armadura bem pesada e propulsores muito rápidos! Seu núcleo é instável então se prepare para o impacto!
 desc_ship_warfront=Uma gigantesca nave de busca feita de unobtanium! Incrivelmente lenta e resistente. Não deixe chegar perto ou você vai se arrepender!
+
+#
+#   NEW SHIPS AND DESCRIPTIONS
+#
+
+ship_blue=
+ship_green=
+ship_orange=
+ship_pink=
+ship_purple=
+ship_red=
+ship_yellow=
+
+desc_ship_blue=
+desc_ship_green=
+desc_ship_orange=
+desc_ship_pink=
+desc_ship_purple=
+desc_ship_red=
+desc_ship_yellow=
