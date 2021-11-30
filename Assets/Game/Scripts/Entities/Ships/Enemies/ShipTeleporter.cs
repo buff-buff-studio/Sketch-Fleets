@@ -1,5 +1,6 @@
 using ManyTools.UnityExtended.Poolable;
 using SketchFleets.Data;
+using SketchFleets.General;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -38,7 +39,7 @@ namespace SketchFleets.Entities
 
         #region Unity Callbacks
 
-        private void Start()
+        private void OnEnable()
         {
             TryGetComponent(out _ship);
             _ship.TookDamage += Teleport;
@@ -93,7 +94,7 @@ namespace SketchFleets.Entities
             float x = Random.Range(bounds.min.x, bounds.max.x);
             float y = Random.Range(bounds.min.y, bounds.max.y);
 
-            return new Vector2(x, y);
+            return new Vector2(x + LevelManager.Instance.Player.transform.position.x, y);
         }
 
         /// <summary>
