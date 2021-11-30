@@ -49,6 +49,7 @@ namespace SketchFleets.Entities
 
         private void OnDisable()
         {
+            TryGetComponent(out _ship);
             _ship.TookDamage -= Teleport;
         }
 
@@ -63,11 +64,20 @@ namespace SketchFleets.Entities
         {
             if (!ShouldTeleport()) return;
             
-            Instantiate(teleportEffectPrefab, transform.position, Quaternion.identity);
+            InstantiateTeleportEffect();
             transform.position = GetRandomPositionWithin(TeleportBounds);
-            Instantiate(teleportEffectPrefab, transform.position, Quaternion.identity);
+            InstantiateTeleportEffect();
 
             _currentTeleportCooldown = teleportCooldown;
+        }
+
+        /// <summary>
+        /// Instantiates the teleport effect prefab
+        /// </summary>
+        private void InstantiateTeleportEffect()
+        {
+            if (teleportEffectPrefab == null) return;
+            Instantiate(teleportEffectPrefab, transform.position, Quaternion.identity);
         }
 
         /// <summary>
