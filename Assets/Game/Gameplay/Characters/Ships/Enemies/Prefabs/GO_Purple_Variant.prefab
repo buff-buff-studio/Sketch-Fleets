@@ -58,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportChance: 40
   teleportCooldown: 1.5
-  teleportEffectPrefab: {fileID: 0}
+  teleportEffectPrefab: {fileID: 3543746267417542547, guid: 4babfa5e0444545488bc73c7b845bc87, type: 3}
 --- !u!1001 &3422460696942875550
 PrefabInstance:
   m_ObjectHideFlags: 0
