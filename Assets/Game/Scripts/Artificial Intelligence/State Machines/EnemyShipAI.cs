@@ -70,10 +70,15 @@ namespace SketchFleets.AI
         public void FlipFaction()
         {
             if (Faction == ShipAttributes.Faction.Neutral) return;
-
+            
             Faction = Faction == ShipAttributes.Faction.Friendly
                 ? ShipAttributes.Faction.Hostile
                 : ShipAttributes.Faction.Friendly;
+            
+            if (Faction == ShipAttributes.Faction.Hostile)
+            {
+                Ship.Spawner.CountShipDeath(Ship);
+            }
             
             TryGetTarget(out _target);
         }
