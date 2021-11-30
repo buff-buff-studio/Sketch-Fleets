@@ -1,3 +1,4 @@
+using ManyTools.UnityExtended.Poolable;
 using SketchFleets.Data;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,13 +17,14 @@ namespace SketchFleets.Entities
         [SerializeField]
         [Range(0f, 100f)]
         private float teleportChance;
+
         [SerializeField]
         private float teleportCooldown;
-        
+
         [Header("Visual Effects")]
         [SerializeField]
         private GameObject teleportEffectPrefab;
-        
+
         private Ship<ShipAttributes> _ship;
         private float _currentTeleportCooldown;
 
@@ -54,7 +56,7 @@ namespace SketchFleets.Entities
         }
 
         #endregion
-        
+
         #region Private Methods
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace SketchFleets.Entities
         private void Teleport()
         {
             if (!ShouldTeleport()) return;
-            
+
             InstantiateTeleportEffect();
             transform.position = GetRandomPositionWithin(TeleportBounds);
             InstantiateTeleportEffect();
@@ -77,7 +79,7 @@ namespace SketchFleets.Entities
         private void InstantiateTeleportEffect()
         {
             if (teleportEffectPrefab == null) return;
-            Instantiate(teleportEffectPrefab, transform.position, Quaternion.identity);
+            PoolManager.Instance.Request(teleportEffectPrefab).Emerge(transform.position, Quaternion.identity);
         }
 
         /// <summary>
@@ -85,11 +87,11 @@ namespace SketchFleets.Entities
         /// </summary>
         /// <param name="bounds">The bounds of the teleport zone</param>
         /// <returns>A random position within the bounds of the teleport zone</returns>
-        private static Vector2 GetRandomPositionWithin(Bounds bounds)
+        private Vector2 GetRandomPositionWithin(Bounds bounds)
         {
             float x = Random.Range(bounds.min.x, bounds.max.x);
             float y = Random.Range(bounds.min.y, bounds.max.y);
-            
+
             return new Vector2(x, y);
         }
 
@@ -99,7 +101,7 @@ namespace SketchFleets.Entities
         /// <returns>True if the ship should teleport</returns>
         private bool ShouldTeleport()
         {
-            return Random.Range(0f, 100f) < teleportChance && TeleportBounds != default && _currentTeleportCooldown <= 0;
+            return Random.Range(0f, 100f) <= teleportChance && _currentTeleportCooldown <= 0;
         }
 
         #endregion
