@@ -52,6 +52,7 @@ namespace SketchFleets.Entities
         private void OnDisable()
         {
             TryGetComponent(out _ship);
+            _currentTeleportCooldown = 0f;
             _ship.TookDamage -= Teleport;
         }
 
