@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c98ed9305751c4aa20fca42b67656f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportChance: 40
+  teleportChance: 75
   teleportCooldown: 1.5
   teleportEffectPrefab: {fileID: 3543746267417542547, guid: 4babfa5e0444545488bc73c7b845bc87, type: 3}
 --- !u!1001 &3422460696942875550
