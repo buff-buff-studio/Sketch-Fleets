@@ -3981,7 +3981,7 @@ MonoBehaviour:
     _useConstant: 0
     _constant: 0
     _variable: {fileID: 11400000, guid: 8a0de06510999f640bb44839925e8b30, type: 2}
-  enemyTeleportArea: {fileID: 875232497}
+  enemyTeleportArea: {fileID: 1334097835}
 --- !u!1 &872903980
 GameObject:
   m_ObjectHideFlags: 0
@@ -4142,7 +4142,7 @@ Transform:
   m_GameObject: {fileID: 875232495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 38.35, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.7125, z: 1}
   m_Children: []
   m_Father: {fileID: 2096931362}
   m_RootOrder: 4
@@ -6177,7 +6177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.185203, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7006693, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -8904,7 +8904,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.185203, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7006693, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}

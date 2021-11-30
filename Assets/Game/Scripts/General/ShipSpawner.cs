@@ -201,7 +201,7 @@ namespace SketchFleets.Systems
         {
             ship.Spawner = this;
 
-            if (TryGetComponent(out ShipTeleporter teleporter))
+            if (ship.TryGetComponent(out ShipTeleporter teleporter))
             {
                 teleporter.TeleportBounds = enemyTeleportArea.bounds;
             }

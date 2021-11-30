@@ -4,6 +4,7 @@ using ManyTools.UnityExtended;
 using SketchFleets.Data;
 using SketchFleets.Enemies;
 using SketchFleets.Entities;
+using SketchFleets.General;
 using UnityEngine;
 
 namespace SketchFleets.AI
@@ -74,7 +75,12 @@ namespace SketchFleets.AI
             Faction = Faction == ShipAttributes.Faction.Friendly
                 ? ShipAttributes.Faction.Hostile
                 : ShipAttributes.Faction.Friendly;
-            
+
+            if (Faction == ShipAttributes.Faction.Hostile)
+            {
+                Ship.Spawner.CountShipDeath(Ship);
+            }
+
             TryGetTarget(out _target);
         }
 
@@ -121,17 +127,15 @@ namespace SketchFleets.AI
 
         private List<Transform> GetAllShips()
         {
-            // TODO: Change this to simply fetching a list from the EnemySpawner once the formations branch gets merged
-
             if (Faction == ShipAttributes.Faction.Friendly)
             {
                 return Ship.Spawner.ActiveEnemyShips;
             }
             else
             {
-                return GameObject.FindGameObjectsWithTag("PlayerSpawn")
-                    .Select(ship => ship.transform)
-                    .Append(FindObjectOfType<Mothership>().transform).ToList();
+                List<GameObject> friendlyShips = GameObject.FindGameObjectsWithTag("PlayerSpawn").ToList();
+                friendlyShips.Add(LevelManager.Instance.Player.gameObject);
+                return friendlyShips.Where(ship => ship != null && ship.activeSelf).Select(ship => ship.transform).ToList();
             }
         }
 
