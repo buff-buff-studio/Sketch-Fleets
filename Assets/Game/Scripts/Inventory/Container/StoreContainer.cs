@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SketchFleets.Data;
 using System.Collections.Generic;
+using ManyTools.Events;
 using SketchFleets.Interaction;
 
 namespace SketchFleets.Inventory
@@ -22,9 +23,19 @@ namespace SketchFleets.Inventory
     /// <summary>
     /// Store container class
     /// </summary>
-    public class StoreContainer : Container
+    public sealed class StoreContainer : Container
     {
+        #region Private Fields
+
+        [Header("Events")]
+        [SerializeField]
+        private GameEvent onItemBought;
+
+        #endregion
+        
         #region Public Fields
+        
+        [Header("Shop Parameters")]
         public GameObject itemInformationPanel;
 
         public List<FallingItem> fallingItems = new List<FallingItem>();
@@ -199,16 +210,24 @@ namespace SketchFleets.Inventory
 
             //Add item to inventory
             if(isUpgradeShop)
+            {
                 Profile.GetData().inventoryUpgrades.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id, 1));
+            }
             else
+            {
                 Profile.GetData().inventoryItems.AddItem(new ItemStack(inventory.GetItem(selectItemIndex).Id, 1));
+                onItemBought?.Invoke();
+            }
 
             if(Random.Range(0,0.999f) <= 0.2f)
+            {
                 if(isUpgradeShop)
                 {
                     //Add id
                     if(Profile.GetData().codex.AddItem(new CodexEntry(CodexEntryType.Upgrade, stack.Id)) == 0)
+                    {
                         DropCard(selectItemIndex);
+                    }
                 }
                 else
                 {
@@ -216,6 +235,7 @@ namespace SketchFleets.Inventory
                     if(Profile.GetData().codex.AddItem(new CodexEntry(CodexEntryType.Item, stack.Id)) == 0)
                         DropCard(selectItemIndex);
                 }
+            }
 
             buySound.Play();
 
