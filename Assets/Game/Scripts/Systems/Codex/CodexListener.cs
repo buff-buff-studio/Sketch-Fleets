@@ -1,3 +1,4 @@
+using System.Linq;
 using ManyTools.UnityExtended;
 using ManyTools.UnityExtended.Editor;
 using SketchFleets.Data;
@@ -10,18 +11,22 @@ namespace SketchFleets.Systems.Codex
     /// <summary>
     /// A class that listens for new codex entries
     /// </summary>
-    public class CodexListener : Singleton<CodexListener>
+    public sealed class CodexListener : Singleton<CodexListener>
     {
         #region Private Fields
 
         [Header("Parameters")]
-        [SerializeField, Tooltip("The ship register ScriptableObject"), RequiredField()]
+        [SerializeField]
+        [Tooltip("The ship register ScriptableObject")]
+        [RequiredField]
         private ShipRegister shipRegister;
 
         #endregion
 
         #region Public Properties
+
         public ShipRegister ShipRegister => shipRegister;
+
         #endregion
 
         #region Public Fields
@@ -51,7 +56,7 @@ namespace SketchFleets.Systems.Codex
                     return index;
                 }
             }
-            
+
             Debug.LogError("Entry did not exist in the register!");
             return default;
         }

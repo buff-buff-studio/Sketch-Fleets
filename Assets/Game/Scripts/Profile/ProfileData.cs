@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using SketchFleets.Inventory;
+using SketchFleets.Systems.Tutorial;
 
 
 namespace SketchFleets.ProfileSystem
@@ -28,6 +29,7 @@ namespace SketchFleets.ProfileSystem
         public List<CodexItem> codex = new List<CodexItem>();
 
         public MapData mapData = new MapData();
+        public TutorialData tutorialData = new TutorialData();
     }
 
     [System.Serializable]
@@ -72,6 +74,7 @@ namespace SketchFleets.ProfileSystem
         public int TimeSeconds { get => saveObject.seconds; set { saveObject.seconds = value; Profile.SaveProfile((data) => { }); } }
         public int Kills { get => saveObject.kills; set { saveObject.kills = value; Profile.SaveProfile((data) => { }); } }
         public MapData Map => saveObject.mapData;
+        public TutorialData Tutorials => saveObject.tutorialData;
 
         public int ColorUpgradeCount => inventoryUpgrades.SearchItem(4);
 

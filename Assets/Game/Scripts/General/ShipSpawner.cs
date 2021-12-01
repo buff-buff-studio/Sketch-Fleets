@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using ManyTools.Events;
+using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using SketchFleets.Data;
@@ -43,6 +45,11 @@ namespace SketchFleets.Systems
         
         [SerializeField]
         private Collider2D enemyTeleportArea;
+
+        [Header("Events")]
+        [SerializeField]
+        [RequiredField]
+        private GameEvent onWaveEnd;
 
         private int mapWaveCount;
         private int currentWave;
@@ -90,7 +97,6 @@ namespace SketchFleets.Systems
         /// </summary>
         private void HandleWaveProgress()
         {
-            
             if (AreAllWavesOver())
             {
                 AllWavesAreOver?.Invoke();
@@ -98,6 +104,7 @@ namespace SketchFleets.Systems
             else
             {
                 StartNextWave();
+                onWaveEnd.Invoke();
             }
         }
 

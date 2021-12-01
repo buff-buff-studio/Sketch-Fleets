@@ -100,6 +100,64 @@ ui_button_store=Store
 ui_title_settings=Options
 
 #
+# TUTORIALS
+#
+
+ui_tutorial_colors_title_1=Ships & Colors
+ui_tutorial_colors_desc_1=Killing an enemy ship allows you to absorb their color and powers. You can use absorbed colors to summon your own ships!
+ui_tutorial_colors_button_1=You think I care?
+
+ui_tutorial_colors_title_2=Drawing Ships
+ui_tutorial_colors_desc_2=Whenever you have a color available, press the Draw button. Draw a Triangle, Square or Circle on the screen, and a ship will be summoned to help you, empowered by the color you used!
+ui_tutorial_colors_button_2=Yeah, whatever, nerd
+ui_tutorial_colors_pointer_2_1=Draw Button!
+ui_tutorial_colors_pointer_2_2=Available Colors!
+
+ui_tutorial_colors_title_3=Well Done!
+ui_tutorial_colors_desc_3=Whenever you have a color available, summon a ship! They'll be essential in your journey through the cosmos, especially on harder planets. Good luck!
+ui_tutorial_colors_button_3=Are you done talking?
+
+ui_tutorial_map_title_1=Welcome to the Galaxy!
+ui_tutorial_map_desc_1=This is the galaxy! Your goal is to explore planets until you reach the black hole at its center! Every time you begin a new game, your galaxy will be different. Some galaxies are short, others are long. Some are easy, others are hard!
+ui_tutorial_map_button_1=Don't remember asking
+
+ui_tutorial_map_title_2=Sure, but where do I go?
+ui_tutorial_map_desc_2=Throughout your journey, you'll find a myriad different worlds. You should know some will be easier than others.
+ui_tutorial_map_button_2=What's with all the park analogies?
+
+ui_tutorial_map_planet_green=A walk in the park!
+ui_tutorial_map_planet_orange=A walk in a park but the neighbors don't like you
+ui_tutorial_map_planet_red=A walk in the park where a berserk Pit Bull is loose
+ui_tutorial_map_planet_purple=A walk in the park but it's actually just pain
+
+ui_tutorial_map_title_3=And what are these?
+ui_tutorial_map_desc_3=Oh, yeah, and you'll find these too. Hoard as much money as Jeff Bezos and then visit a Shop planet. Or not. Its not like I'm your mom. There's also the Black Hole. Good luck with that.
+ui_tutorial_map_button_3=Alright, let me go!
+
+ui_tutorial_map_planet_yellow=A walk in the park but capitalism won so it's a shopping mall instead
+ui_tutorial_map_planet_black=A walk in the park where reality itself is collapsing and the Old Ones have returned
+
+ui_tutorial_codex_title=Were you ever addicted to trading cards?
+ui_tutorial_codex_desc=No? You were addicted to actual drugs? Alright, I didn't expect that. Either way, this is where any collected trading card are going to show up. Here, you can read about the philosophically sophisticated lore of Sketch Fleets, its ships and its items.
+ui_tutorial_codex_button=Gotta catch em all?
+
+ui_tutorial_codexdrop_title=Oh, look, that's shiny!
+ui_tutorial_codexdrop_desc=That right there is a Sketch Fleets trading card! Throw yourself at it like there's no tomorrow! Or not... It'll be collected whether you touch it not, no need to stress if you miss one. Visit the Trading Cards option in the menu to see your unlock!
+ui_tutorial_codexdrop_button=GIMME! GIMME!
+
+ui_tutorial_upgradeshop_title=Hold up! Only rich people past this point!
+ui_tutorial_upgradeshop_desc=Whenever you conquer the Black Hole, any Pencil Shavings will be converted into full-on PENCIL BOXES! Awesome, I know. You can use your converted pencil boxes to buy powerful, permanent upgrades. Get at it!
+ui_tutorial_upgradeshop_button=Sure, capitalist pig
+
+ui_tutorial_shop_title_1=MONEY!
+ui_tutorial_shop_desc_1=Welcome to the Seventh Sector's Eleventh Shop! You know those PENCIL SHAVINGS that make a nice 'pop' sound when you collect them? Well, you can spend them here to buy temporary items! (Or hoard them until the Black Hole to hopefully convert them into an even better currency!)
+ui_tutorial_shop_button_1=You think I'm Mr.Krabs now?
+
+ui_tutorial_shop_title_2=POOR CHOICE
+ui_tutorial_shop_desc_2=No, truly, that's probably, like, the worst item in the game, by far. Ehh, whatever, It's not like you can't make use of it anyways. If it's a PASSIVE item, it'll automatically apply its benefits. If its an ACTIVE item, make sure to click on the BACKPACK icon in-game, and then click on the item itself twice to activate it!
+ui_tutorial_shop_button_2=Whatever, captain obvious
+
+#
 # SHOP MENU
 #
 
@@ -107,27 +165,6 @@ ui_shop_buy_confirmation=Are you sure you want to buy {0} '{1}'?
 ui_shop_amount=You have {0} '{1}'
 ui_shop_buy=Buy
 ui_shop_buy=Cancel
-
-#
-# TUTORIAL
-#
-
-ui_tutorial_title=Tutorial
-ui_tutorial_r=Press R to recall all summoned ships and regenerate some of your health
-ui_tutorial_space=Use the Spacebar to summon allies! Summoning ships costs health so summon them wisely!
-ui_tutorial_spacebtt=Spacebar
-ui_tutorial_frog1=Buff Buff says:
-ui_tutorial_frog2=Follow these instructions, they will help on your space odyssey...
-ui_tutorial_wasd=Use WASD or the arrow keys to move your ship
-ui_tutorial_yellow=The yellow ship will remain stationary and fire five bullets forward in an arc. Place it wisely!
-ui_tutorial_cyan=The cyan ship will orbit you until you use the right mouse button to throw it your enemies! If it hits them, it will deal lots of damage!
-ui_tutorial_magenta=The magenta ship will orbit you and fire alongside the Mothership. They are your main source of damage, so summon them frequently!
-
-ui_tutorial_store_planet=In your space odyssey, you will find yellow Store-Planets. There you can use Pencil Shavings to buy various items and upgrades that can be consumed or used during your odyssey.
-ui_tutorial_money=Pencil Shavings are obtained by destroying enemies. Stronger enemies drop more Pencil Tips, so if you want luxurious and expensive items, go out there and take risks!
-
-Once you get destroyed or exit the black hole, all Pencil Shavings will be converted to Pencil Boxes. 5 Pencil Shavings are worth 1 Pencil Box.
-ui_tutorial_store=You can buy permanent upgrades using the Pencil Boxes, through The Buff Store in the main menu!
 
 #
 # SHIP NAMES

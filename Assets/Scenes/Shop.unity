@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -704,6 +704,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 424574528}
     - target: {fileID: 7340449413207734733, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
+      propertyPath: onItemBought
+      value: 
+      objectReference: {fileID: 11400000, guid: 03532b8f10878c6469a7d9d8add672d0, type: 2}
+    - target: {fileID: 7340449413207734733, guid: d20b2ae88fb5fbd4c9aa2a3bd2685ca6, type: 3}
       propertyPath: itemBuyConfirmation
       value: 
       objectReference: {fileID: 999187804}
@@ -1161,3 +1165,64 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &2067159733
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.8222237
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.985207
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.343746
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503174508907117015, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128461097686863408, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: tutorialCanvas
+      value: 
+      objectReference: {fileID: 1476433453}
+    - target: {fileID: 9004720472981596302, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
+      propertyPath: m_Name
+      value: GO_TutorialShop
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35eda567063706a45944b168c9fe5e01, type: 3}
