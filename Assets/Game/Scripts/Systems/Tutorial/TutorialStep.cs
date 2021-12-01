@@ -19,17 +19,39 @@ namespace SketchFleets.Systems.Tutorial
         [SerializeField]
         public GameObject Popup;
 
+        [HideInInspector]
         public bool IsNew = true;
-        public bool IsComplete;
+
+        #endregion
+
+        #region Properties
+
+        public Canvas Canvas { get; set; }
 
         #endregion
 
         #region Public Methods
 
+        /// <summary>
+        /// Shows the popup and begins the step
+        /// </summary>
         public void Begin()
         {
             IsNew = false;
-            Object.Instantiate(Popup);
+            InstantiatePopUp();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Instantiates the popup in the canvas
+        /// </summary>
+        private void InstantiatePopUp()
+        {
+            GameObject popup = Object.Instantiate(Popup, Canvas.transform);
+            popup.transform.SetAsLastSibling();
         }
 
         #endregion
