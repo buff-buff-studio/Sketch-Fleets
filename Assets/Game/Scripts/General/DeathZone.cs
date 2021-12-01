@@ -7,23 +7,21 @@ namespace SketchFleets.General
     /// A class that kills GameObjects which touch it
     /// </summary>
     [RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
-    public class DeathZone : MonoBehaviour
+    public sealed class DeathZone : MonoBehaviour
     {
         #region Unity Callbacks
 
         private void OnCollisionEnter2D(Collision2D other)
         {
             // Attempts to get a poolable out of colliding object
-            PoolMember poolable = other.gameObject.GetComponent<PoolMember>();
-
-            if (poolable == null)
+            if (other.gameObject.TryGetComponent(out PoolMember poolable))
             {
-                // If is poolable, submerge
+                Debug.Log(poolable);
                 poolable.Submerge();
             }
             else
             {
-                // If not, destroy
+                Debug.Log(other);
                 Destroy(other.gameObject);
             }
         }
