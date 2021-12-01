@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ManyTools.UnityExtended.Editor;
+using SketchFleets.ProfileSystem;
 using UnityEngine;
 
 namespace SketchFleets.Systems.Tutorial
@@ -35,6 +36,11 @@ namespace SketchFleets.Systems.Tutorial
 
         private void OnEnable()
         {
+            if (Profile.Data.Tutorials.Completed.Contains(name))
+            {
+                return;
+            }
+            
             InjectCanvasReferences();
 
             if (autoBeginFirstStep)
@@ -112,7 +118,8 @@ namespace SketchFleets.Systems.Tutorial
         /// </summary>
         private void CompleteTutorial()
         {
-            // TODO
+            Profile.Data.Tutorials.Completed.Add(name);
+            Profile.SaveProfile((data) => { });
         }
 
         /// <summary>
