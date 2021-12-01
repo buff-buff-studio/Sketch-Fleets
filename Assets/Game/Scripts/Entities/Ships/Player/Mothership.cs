@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ManyTools.Events;
 using ManyTools.UnityExtended;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
@@ -49,6 +50,11 @@ namespace SketchFleets.Entities
 
         [SerializeField] 
         private float radiusMultiply;
+        
+        [Header("Events")]
+        [SerializeField]
+        [RequiredField]
+        private GameEvent onShipSpawned;
         
         private float radiusSpeed = 2.78f;
 
@@ -259,6 +265,7 @@ namespace SketchFleets.Entities
             SpawnMetaDatas[shipType].CurrentlyActive.Add(shipController);
 
             shipController.SpawnNumber = SpawnMetaDatas[shipType].CurrentlyActive.Count;
+            onShipSpawned.Invoke();
         }
 
         /// <summary>
