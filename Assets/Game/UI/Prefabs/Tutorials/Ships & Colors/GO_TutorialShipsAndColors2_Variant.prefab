@@ -174,17 +174,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3687627139087875292}
-  m_LocalRotation: {x: 0, y: 0, z: -0.6345282, w: 0.7728997}
+  m_LocalRotation: {x: -0, y: -0, z: 0.09740913, w: 0.99524444}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8470586, y: 0.8470586, z: 0.8470588}
+  m_LocalScale: {x: 0.8470588, y: 0.8470588, z: 0.8470588}
   m_Children: []
-  m_Father: {fileID: 4286020395680743274}
-  m_RootOrder: 0
+  m_Father: {fileID: 8434217680883133431}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -78.77}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -5.3, y: 117.6}
-  m_SizeDelta: {x: 121.1777, y: 50}
+  m_AnchoredPosition: {x: -346.4456, y: -858.7038}
+  m_SizeDelta: {x: 190.9467, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &7112262769042362136
 MonoBehaviour:
@@ -327,11 +327,11 @@ RectTransform:
   m_Children:
   - {fileID: 442304208573444984}
   m_Father: {fileID: 8434217680883133431}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50.4}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 126.2, y: 317.5}
+  m_AnchoredPosition: {x: 162, y: 360}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7856676567437807792
@@ -400,14 +400,13 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7067982, w: 0.7074153}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2775997351900184814}
+  m_Children: []
   m_Father: {fileID: 8434217680883133431}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.95}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -62, y: -283}
+  m_AnchoredPosition: {x: -118.5, y: -311.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2267458109289802981
@@ -543,6 +542,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GO_TutorialShipsAndColors2_Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4909302137797018426, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5494526044118887250, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -563,13 +566,17 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8059977099866160292, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8152533610783603935, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_text
       value: '{ui_tutorial_colors_button_2}'
       objectReference: {fileID: 0}
     - target: {fileID: 8152533610783603935, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_fontSize
-      value: 23.8
+      value: 34.9
       objectReference: {fileID: 0}
     - target: {fileID: 8228022714571054883, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_text
@@ -577,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8228022714571054883, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_fontSize
-      value: 44.4
+      value: 72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
