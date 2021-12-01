@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ManyTools.UnityExtended.Editor;
 using UnityEngine;
 
 namespace SketchFleets.Systems.Tutorial
@@ -8,30 +9,110 @@ namespace SketchFleets.Systems.Tutorial
     /// </summary>
     public sealed class Tutorial : MonoBehaviour
     {
+        #region Private Fields
+
         [SerializeField]
         private List<TutorialStep> steps = new List<TutorialStep>();
 
+        [SerializeField]
+        [RequiredField]
+        private Canvas tutorialCanvas;
+
+        [SerializeField]
+        private bool autoBeginFirstStep = false;
+
+        private int currentStepIndex = 0;
+
+        #endregion
+
+        #region Properties
+
+        private TutorialStep CurrentStep => steps[currentStepIndex];
+
+        #endregion
+
         #region Unity Callbacks
 
-        
+        private void OnEnable()
+        {
+            InjectCanvasReferences();
+
+            if (autoBeginFirstStep)
+            {
+                BeginStep();
+            }
+            else
+            {
+                SubscribeCurrentStepToTrigger();
+            }
+        }
 
         #endregion
 
         #region Private Methods
 
-        private void OnEnable()
+        /// <summary>
+        /// Injects canvas references into all steps
+        /// </summary>
+        private void InjectCanvasReferences()
         {
+            foreach (TutorialStep step in steps)
+            {
+                step.Canvas = tutorialCanvas;
+            }
         }
 
+        /// <summary>
+        /// Subscribes a step to a trigger
+        /// </summary>
+        private void SubscribeCurrentStepToTrigger()
+        {
+            CurrentStep.Trigger.AddListener(BeginStep);
+        }
 
         /// <summary>
         /// Begins a step by showing its popup
         /// </summary>
-        /// <param name="step">The step to begin</param>
-        private void BeginStep(TutorialStep step)
+        private void BeginStep()
         {
-            if (!HasPreviousStepBeenCompleted(step) || IsStepOld(step)) return;
-            step.Begin();
+            if (IsStepOld(CurrentStep)) return;
+            CurrentStep.Begin();
+
+            ProgressSteps();
+        }
+
+        /// <summary>
+        /// Moves to the next step or ends the tutorial
+        /// </summary>
+        private void ProgressSteps()
+        {
+            UnsubscribeCurrentStepFromTrigger();
+
+            if (currentStepIndex + 1 >= steps.Count)
+            {
+                CompleteTutorial();
+                return;
+            }
+
+            currentStepIndex++;
+            SubscribeCurrentStepToTrigger();
+        }
+
+        /// <summary>
+        /// Unsubscribes the current step from its trigger
+        /// </summary>
+        private void UnsubscribeCurrentStepFromTrigger()
+        {
+            if (CurrentStep.Trigger == null) return;
+            CurrentStep.Trigger.RemoveListener(BeginStep);
+        }
+
+        /// <summary>
+        /// Marks the tutorial as complete
+        /// </summary>
+        private void CompleteTutorial()
+        {
+            // TODO
         }
 
         /// <summary>
@@ -42,17 +123,6 @@ namespace SketchFleets.Systems.Tutorial
         private static bool IsStepOld(TutorialStep step)
         {
             return !step.IsNew;
-        }
-        
-        /// <summary>
-        /// Checks whether the previous step has been completed
-        /// </summary>
-        /// <param name="step">The step to check</param>
-        /// <returns>Whether the previous step has been completed</returns>
-        private bool HasPreviousStepBeenCompleted(TutorialStep step)
-        {
-            int stepIndex = steps.IndexOf(step);
-            return stepIndex == 0 || steps[stepIndex - 1].IsComplete;
         }
 
         #endregion
