@@ -100,6 +100,24 @@ ui_button_store=Store
 ui_title_settings=Options
 
 #
+# TUTORIALS
+#
+
+ui_tutorial_colors_title_1=Ships & Colors
+ui_tutorial_colors_desc_1=Killing an enemy ship allows you to absorb their color and powers. You can use absorbed colors to summon your own ships!
+ui_tutorial_colors_button_1=You think I care?
+
+ui_tutorial_colors_title_2=Drawing Ships
+ui_tutorial_colors_desc_2=Whenever you have a color available, press the Draw button. Draw a Triangle, Square or Circle on the screen, and a ship will be summoned to help you, empowered by the color you used!
+ui_tutorial_colors_button_2=Yeah, whatever, nerd
+ui_tutorial_colors_pointer_2_1=Draw Button!
+ui_tutorial_colors_pointer_2_2=Available Colors!
+
+ui_tutorial_colors_title_3=Well Done!
+ui_tutorial_colors_desc_3=Whenever you have a color available, summon a ship! They'll be essential in your journey through the cosmos, especially on harder planets. Good luck!
+ui_tutorial_colors_button_3=Are you done talking?
+
+#
 # SHOP MENU
 #
 
