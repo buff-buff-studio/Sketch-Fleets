@@ -16,6 +16,7 @@ public class BulletController : PoolMember
 
     [SerializeField, RequiredField()]
     private BulletAttributes attributes;
+
     [SerializeField, RequiredField()]
     private AudioSource soundSource;
 
@@ -24,8 +25,6 @@ public class BulletController : PoolMember
     private float damageIncrease = 0f;
 
     #endregion
-
-    public float PlayerBuletVelocity;
 
     #region Properties
 
@@ -68,6 +67,16 @@ public class BulletController : PoolMember
         }
     }
 
+    public override void Submerge()
+    {
+        if (Attributes.HitEffect != null)
+        {
+            PoolManager.Instance.Request(Attributes.HitEffect).Emerge(transform.position, Quaternion.identity);
+        }
+
+        base.Submerge();
+    }
+
     #endregion
 
     #region Unity Callbacks
@@ -75,15 +84,11 @@ public class BulletController : PoolMember
     protected virtual void Start()
     {
         hasFireEffect = Attributes.FireEffect != null;
-        PlayerBuletVelocity = 0;
     }
 
     protected virtual void Update()
     {
-        if(PlayerBuletVelocity == 0)
-            Move(Vector3.up * Attributes.Speed, Space.Self);
-        else
-            Move(Vector3.up * PlayerBuletVelocity, Space.Self);
+        Move(Vector3.up * Attributes.Speed, Space.Self);
     }
 
     protected void Move(Vector3 pos, Space space)
@@ -141,11 +146,6 @@ public class BulletController : PoolMember
             if (directHit.gameObject == colliders[index].gameObject) continue;
 
             DealDamageToTarget(false, directHit.gameObject);
-        }
-
-        if (Attributes.HitEffect != null)
-        {
-            PoolManager.Instance.Request(Attributes.HitEffect).Emerge(transform.position, Quaternion.identity);
         }
     }
 

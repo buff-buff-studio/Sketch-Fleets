@@ -84,7 +84,6 @@ namespace SketchFleets.Entities
             {
                 PoolMember bullet = PoolManager.Instance.Request(bulletPrefab);
                 bullet.Emerge(bulletSpawnPoints[index].position, bulletSpawnPoints[index].rotation);
-                bullet.GetComponent<BulletController>().PlayerBuletVelocity = Attributes.Fire.Speed;
 
                 bullet.GetComponent<SpriteRenderer>().color = spriteRenderer.material.GetColor(redMultiplier);
                 bullet.transform.Rotate(0f, 0f,
