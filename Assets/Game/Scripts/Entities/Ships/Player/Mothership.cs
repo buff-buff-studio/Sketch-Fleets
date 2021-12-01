@@ -92,7 +92,6 @@ namespace SketchFleets.Entities
             base.Start();
             // Caches necessary components
             mainCamera = Camera.main;
-            regenerateRoutine = RegenerateShips();
         }
 
         // Start runs once every frame
@@ -249,8 +248,6 @@ namespace SketchFleets.Entities
             // If the new spawn would exceed the maximum amount, return
             if (!CanSpawnShip(shipType)) return;
 
-            Damage(GetSpawnCost(shipType), false, true);
-
             // Spawns the ship
             PoolMember spawn = PoolManager.Instance.Request(shipType.Prefab);
             spawn.GetComponent<SpawnedShip>().bulletPrefab = colorsInventory.bulletColor;
@@ -275,18 +272,6 @@ namespace SketchFleets.Entities
         public void RemoveActiveSummon(SpawnedShip shipToRemove)
         {
             SpawnMetaDatas[shipToRemove.Attributes].CurrentlyActive.Remove(shipToRemove);
-        }
-
-        /// <summary>
-        ///     Gets the cost of spawning a specific ship
-        /// </summary>
-        /// <param name="shipType">The type of the ship to get the cost of</param>
-        /// <returns>The cost of spawning said ship</returns>
-        public float GetSpawnCost(SpawnableShipAttributes shipType)
-        {
-            return shipType.GraphiteCost +
-                   shipType.GraphiteCostIncrease *
-                   math.max(GetSpawnMetaData(shipType).CurrentlyActive.Count, 1);
         }
 
         /// <summary>
@@ -326,8 +311,7 @@ namespace SketchFleets.Entities
         /// <returns>Whether the ship can be spawned</returns>
         public bool CanSpawnShip(SpawnableShipAttributes shipType)
         {
-            return IsThereSpaceForSpawn(shipType) && GetSpawnCooldown(shipType) <= 0 &&
-                   CurrentHealth > GetSpawnCost(shipType);
+            return IsThereSpaceForSpawn(shipType) && GetSpawnCooldown(shipType) <= 0;
         }
 
         /// <summary>
@@ -499,37 +483,6 @@ namespace SketchFleets.Entities
                 spriteRenderer.material.SetColor(blueMultiplier, Color.black);
             else
                 spriteRenderer.material.SetColor(blueMultiplier, colorsInventory.drawColor);
-        }
-
-        /// <summary>
-        ///     Sacrifices all ships for health
-        /// </summary>
-        private IEnumerator RegenerateShips()
-        {
-            WaitForSeconds killInterval = new WaitForSeconds(Attributes.RegenerateKillInterval);
-            AbilityTimer = GetMaxAbilityCooldown();
-
-            // For every spawned ship type
-            foreach (var metaData in SpawnMetaDatas)
-            {
-                // For every ship
-                for (int index = metaData.Value.CurrentlyActive.Count - 1; index >= 0; index--)
-                {
-                    // Ignore dead ships
-                    if (metaData.Value.CurrentlyActive[index] == null)
-                    {
-                        metaData.Value.CurrentlyActive.RemoveAt(index);
-                    }
-                    else
-                    {
-                        // Heal player for the spawn cost of the ship
-                        Heal(GetSpawnCost(metaData.Key));
-                        metaData.Value.CurrentlyActive[index].Die();
-
-                        yield return killInterval;
-                    }
-                }
-            }
         }
 
         #endregion
