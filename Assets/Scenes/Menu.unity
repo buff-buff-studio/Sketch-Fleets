@@ -2005,7 +2005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &144942184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13964,7 +13964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1046504694
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26732,6 +26732,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1752409134686253604, guid: b1658ce0b0454614592d7ad0b5103de2, type: 3}
+      propertyPath: tutorialCanvas
+      value: 
+      objectReference: {fileID: 1892919350}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1658ce0b0454614592d7ad0b5103de2, type: 3}
 --- !u!1 &3990980797004877504 stripped
