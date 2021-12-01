@@ -1,4 +1,6 @@
-﻿using ManyTools.UnityExtended.Poolable;
+﻿using ManyTools.Events;
+using ManyTools.UnityExtended.Editor;
+using ManyTools.UnityExtended.Poolable;
 using SketchFleets.Data;
 using SketchFleets.Systems.Codex;
 using UnityEngine;
@@ -8,14 +10,20 @@ namespace SketchFleets.Entities
     /// <summary>
     /// A class that controls a drop containing a codex entry
     /// </summary>
-    public class CodexEntryDrop : PoolMember, ICollectible
+    public sealed class CodexEntryDrop : PoolMember, ICollectible
     {
         #region Private Fields
 
         [Header("Parameters")]
-        [SerializeField, Tooltip("The effect spawned upon collection")]
+        [SerializeField]
+        [Tooltip("The effect spawned upon collection")]
         private GameObject deathEffect;
         
+        [Header("Events")]
+        [SerializeField]
+        [RequiredField]
+        private GameEvent onAppear;
+
         private ShipAttributes entry;
         private bool collected;
 
@@ -42,6 +50,7 @@ namespace SketchFleets.Entities
         {
             collected = false;
             base.Emerge(position, rotation);
+            onAppear.Invoke();
         }
 
         /// <summary>
@@ -55,7 +64,7 @@ namespace SketchFleets.Entities
         }
 
         #endregion
-        
+
         #region ICollectible Implementation
 
         /// <summary>
