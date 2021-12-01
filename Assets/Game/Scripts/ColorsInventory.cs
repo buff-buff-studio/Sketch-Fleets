@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ManyTools.Events;
+using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using Unity.Mathematics;
@@ -26,6 +28,11 @@ namespace SketchFleets
         private List<ColorInfo> colorsInventory;
         [SerializeField]
         private List<Image> colorsSlot;
+
+        [Header("Events")]
+        [SerializeField]
+        [RequiredField]
+        private GameEvent onColorAbsorbed;
 
         private int invCol => 2 + ProfileSystem.Profile.Data.ColorUpgradeCount;
 
@@ -77,6 +84,7 @@ namespace SketchFleets
             colorsInventory[colorsSlot.Count-1] = SetColorInfo(col, bullet);;
 
             ColorUpdate();
+            onColorAbsorbed.Invoke();
         }
 
         public void UseColor()
