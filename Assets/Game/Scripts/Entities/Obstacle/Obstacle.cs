@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using SketchFleets.Data;
@@ -42,6 +44,17 @@ namespace SketchFleets.Entities
             {
                 Die();
             }
+        }
+
+        /// <summary>
+        /// Damages the Damageable object by the given amount
+        /// </summary>
+        /// <param name="amount">The amount to damage for</param>
+        /// <param name="pulses">Over how many 'pulses' should the damage be applied</param>
+        /// <param name="time">Over how long should the pulses be spread</param>
+        public void DamageContinually(float amount, int pulses, float time)
+        {
+            StartCoroutine(ApplyDamagePulses(amount, pulses, time));
         }
         
         /// <summary>
@@ -132,6 +145,30 @@ namespace SketchFleets.Entities
         {
             PoolManager.Instance.Request(Attributes.DeathEffect).Emerge(transform.position, Quaternion.identity);
             Destroy(gameObject);
+        }
+        
+        /// <summary>
+        /// Applies multiple pulses of damage to the ship
+        /// </summary>
+        /// <param name="totalDamage">The total damage to be applied</param>
+        /// <param name="pulses">The amount of pulses to play</param>
+        /// <param name="time">The time to apply the pulses over</param>
+        /// <exception cref="ArgumentException">The amount of pulses cannot be negative</exception>
+        private IEnumerator ApplyDamagePulses(float totalDamage, int pulses, float time)
+        {
+            if (pulses <= 0)
+            {
+                throw new ArgumentException("Pulses must be greater than 0");
+            }
+
+            WaitForSeconds pulseInterval = new WaitForSeconds(time / pulses);
+            float damagePerPulse = totalDamage / pulses;
+            
+            for (int pulse = 0; pulse < pulses; pulse++)
+            {
+                Damage(damagePerPulse);
+                yield return pulseInterval;
+            }
         }
         
         #endregion
