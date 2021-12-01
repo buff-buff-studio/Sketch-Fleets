@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using ManyTools.Events;
 using ManyTools.Variables;
 using SketchFleets.Data;
 using SketchFleets.Interaction;
@@ -12,6 +13,13 @@ using SketchFleets.Interaction;
 public class ConstelationMap : MonoBehaviour
 {
     #region Private Fields
+
+    [Header("Events")]
+    [SerializeField]
+    private GameEvent generationAnimationOver;
+    [SerializeField]
+    private GameEvent zoomAnimationOver;
+    
     //Internal input enabled
     private bool inputEnabled = true;
     //Holds generate map size
@@ -22,6 +30,8 @@ public class ConstelationMap : MonoBehaviour
     #endregion
 
     #region Public Fields
+    
+    [Header("Map Parameters")]
     public MapLevelInteraction interaction;
     //Prefabs
     public GameObject mapPrefab;
@@ -816,6 +826,8 @@ public class ConstelationMap : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        generationAnimationOver.Invoke();
+
         yield return new WaitForSeconds(0.5f);
 
         //Focus into current level
@@ -941,7 +953,8 @@ public class ConstelationMap : MonoBehaviour
             if(Time.time - f > time)
                 break;
         }
-        
+
+        zoomAnimationOver.Invoke();
         InputEnabled = true; 
 
         if(callback != null) 
