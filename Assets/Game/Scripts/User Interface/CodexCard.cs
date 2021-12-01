@@ -88,7 +88,6 @@ namespace SketchFleets.UI
         /// </summary>
         private void WriteToCardShip(ShipAttributes ship)
         {
-            Debug.Log(ship.UnlocalizedName);
             cardName.text = LanguageManager.Localize(ship.UnlocalizedName);
             cardDescription.text = LanguageManager.Localize(ship.UnlocalizedDescription);
             cardHealth.text = ship.MaxHealth.Value.ToString();
