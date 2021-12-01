@@ -25,13 +25,17 @@ namespace SketchFleets
         [Header("Ship Properties")]
         [SerializeField, RequiredField()]
         protected T attributes;
+
         [SerializeField, RequiredField()]
         protected Transform[] bulletSpawnPoints;
+
         [SerializeField]
         private GameEvent deathEvent;
+
         [Header("Component Dependencies")]
         [SerializeField, RequiredField()]
         protected AudioSource soundSource;
+
         [SerializeField, RequiredField()]
         protected SpriteRenderer spriteRenderer;
 
@@ -42,8 +46,9 @@ namespace SketchFleets
 
         protected int lockHit = 0;
         protected bool isLocked = false;
-        
+
         private bool isDead = false;
+        private Coroutine continuousDamageCoroutine;
 
         #endregion
 
@@ -51,18 +56,18 @@ namespace SketchFleets
 
         protected FloatReference currentHealth = new FloatReference(0f);
         protected FloatReference currentShield = new FloatReference(0f);
-        
+
         protected readonly int redMultiplier = Shader.PropertyToID("_redMul");
         protected readonly int blueMultiplier = Shader.PropertyToID("_bluMul");
         protected readonly int greenMultiplier = Shader.PropertyToID("_greMul");
         private readonly int blinkColor = Shader.PropertyToID("_blinkColor");
-        
+
         protected Color shipColor;
 
         #endregion
 
         #region Properties
-        
+
         public Action TookDamage { get; set; }
 
         public FloatReference CurrentShield => currentShield;
@@ -98,9 +103,9 @@ namespace SketchFleets
                 // Reduces health
                 DamageHealth(RawToEffectiveDamage(amount, piercing));
             }
-            
+
             TookDamage?.Invoke();
-           
+
             // Applies shield regen cooldown 
             shieldRegenTimer = Attributes.ShieldRegenDelay;
 
@@ -114,6 +119,27 @@ namespace SketchFleets
         }
 
         /// <summary>
+        /// Damages the Damageable object by the given amount
+        /// </summary>
+        /// <param name="amount">The amount to damage for</param>
+        /// <param name="frequency">Over how many 'pulses' should the damage be applied</param>
+        /// <param name="time">Over how long should the pulses be spread</param>
+        public void DamageContinually(float amount, int frequency, float time)
+        {
+            if (gameObject.activeSelf == false) return;
+
+            if (continuousDamageCoroutine == null)
+            {
+                StartCoroutine(ApplyDamagePulses(amount, frequency, time));
+            }
+            else
+            {
+                StopCoroutine(continuousDamageCoroutine);
+                StartCoroutine(ApplyDamagePulses(amount, frequency, time));
+            }
+        }
+
+        /// <summary>
         /// Damages the health by the given amount
         /// </summary>
         /// <param name="amount">The amount to damage the health for</param>
@@ -121,7 +147,7 @@ namespace SketchFleets
         {
             currentHealth.Value -= amount;
         }
-        
+
         /// <summary>
         /// Damages shields and overflows any damage to the health
         /// </summary>
@@ -140,6 +166,7 @@ namespace SketchFleets
                 currentShield.Value = damageResult;
             }
         }
+
         /// <summary>
         /// Gets given damage as effective damage; I.E, after factoring defense and other bonuses
         /// </summary>
@@ -148,7 +175,7 @@ namespace SketchFleets
         {
             return piercingDamage ? rawDamage : rawDamage / Attributes.Defense;
         }
-        
+
         /// <summary>
         /// Makes the ship invulnerable for the given amount of time
         /// </summary>
@@ -156,7 +183,7 @@ namespace SketchFleets
         {
             collisionTimer = invulnerabilityTime;
         }
-        
+
         /// <summary>
         /// Plays visual effects related to taking damage
         /// </summary>
@@ -164,12 +191,12 @@ namespace SketchFleets
         {
             // Plays hit sounds
             soundSource.clip = Attributes.HitSound;
-            
+
             if (soundSource.clip != null)
             {
                 soundSource.Play();
             }
-            
+
             // Flashes red
             Color tempColor = spriteRenderer.material.GetColor(blinkColor);
             tempColor.a = 1f;
@@ -184,8 +211,8 @@ namespace SketchFleets
 
             if (Attributes.HealEffect != null)
             {
-                PoolManager.Instance.Request(Attributes.HealEffect).
-                    Emerge(cachedTransform.position, cachedTransform.rotation);
+                PoolManager.Instance.Request(Attributes.HealEffect)
+                    .Emerge(cachedTransform.position, cachedTransform.rotation);
             }
         }
 
@@ -238,7 +265,7 @@ namespace SketchFleets
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (CompareTag(other.tag)) return;
-            
+
             if (other.CompareTag("Enemy") ||
                 other.CompareTag("PlayerSpawn") ||
                 other.CompareTag("Player") ||
@@ -298,7 +325,7 @@ namespace SketchFleets
             {
                 PoolMember death = PoolManager.Instance.Request(Attributes.DeathEffect);
                 death.Emerge(transform.position, Quaternion.identity);
-                
+
                 ParticleSystem deathCache = death.GetComponent<ParticleSystem>();
                 deathCache.startColor = shipColor;
             }
@@ -346,8 +373,9 @@ namespace SketchFleets
                 DropShells();
             }
 
-            if (Random.Range(0f, 1f) <= Attributes.CodexDropChance && 
-                ProfileSystem.Profile.Data.codex.SearchItem(new Inventory.CodexEntry(Inventory.CodexEntryType.Ship,CodexListener.GetRegisterID(CodexListener.Instance.ShipRegister,attributes))) == 0)
+            if (Random.Range(0f, 1f) <= Attributes.CodexDropChance &&
+                ProfileSystem.Profile.Data.codex.SearchItem(new Inventory.CodexEntry(Inventory.CodexEntryType.Ship,
+                    CodexListener.GetRegisterID(CodexListener.Instance.ShipRegister, attributes))) == 0)
             {
                 DropCodexEntry();
             }
@@ -376,7 +404,7 @@ namespace SketchFleets
                 shell.SetDropColor(Attributes.ShipColor);
             }
         }
-        
+
         /// <summary>
         /// Drops the ship's codex entry
         /// </summary>
@@ -404,41 +432,57 @@ namespace SketchFleets
             isDead = false;
         }
 
+        /// <summary>
+        /// Applies multiple pulses of damage to the ship
+        /// </summary>
+        /// <param name="totalDamage">The total damage to be applied</param>
+        /// <param name="pulses">The amount of pulses to play</param>
+        /// <param name="time">The time to apply the pulses over</param>
+        /// <exception cref="ArgumentException">The amount of pulses cannot be negative</exception>
+        protected IEnumerator ApplyDamagePulses(float totalDamage, int pulses, float time)
+        {
+            if (pulses <= 0)
+            {
+                throw new ArgumentException("Pulses must be greater than 0");
+            }
+
+            WaitForSeconds pulseInterval = new WaitForSeconds(time / pulses);
+            float damagePerPulse = totalDamage / pulses;
+
+            for (int pulse = 0; pulse < pulses; pulse++)
+            {
+                Damage(damagePerPulse);
+                yield return pulseInterval;
+            }
+        }
+
         #endregion
 
         public void Lock(int lockMax, float lockTime)
         {
             lockHit++;
+
             if (lockHit >= lockMax)
             {
                 lockHit = 0;
                 StartCoroutine(LockState(lockTime));
             }
         }
-        
+
         protected virtual IEnumerator LockState(float lockTime)
         {
             lockParent ??= GameObject.Find("LockShip").transform;
             transform.parent = lockParent;
             isLocked = true;
-            
+
             do
             {
                 yield return new WaitForSeconds(lockTime);
-            } 
+            }
             while (lockHit != 0);
-            
+
             isLocked = false;
             transform.parent = null;
-        }
-
-        public IEnumerator ContinuousDamage(float damage, float time)
-        {
-            for (int i = 1; i <= Mathf.Abs(time); i++)
-            {
-                Damage(damage/i);
-                yield return new WaitForSeconds(1);
-            }
         }
     }
 }
