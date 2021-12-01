@@ -22,7 +22,7 @@ MonoBehaviour:
   unlocalizedDescription: 
   directDamage:
     _useConstant: 1
-    _constant: 10
+    _constant: 15
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
@@ -54,7 +54,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   continuousDamageTime:
     _useConstant: 1
-    _constant: 0
+    _constant: 5
     _variable: {fileID: 0}
   hitsLock:
     _useConstant: 1
@@ -74,4 +74,4 @@ MonoBehaviour:
     _constant: 0.25
     _variable: {fileID: 0}
   fireEffect: {fileID: 0}
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 6511845030710563950, guid: 528748119b2c1ba4aade207914d91f99, type: 3}
