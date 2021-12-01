@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ManyTools.Events.Types;
 using UnityEngine;
 
@@ -12,90 +13,151 @@ namespace ManyTools.Events
     public sealed class GameEvent : ScriptableObject, IEvent
     {
         #region Private Fields
-        [Multiline] [SerializeField]
-        private string _description = string.Empty;
-        [SerializeField] 
-        private bool _debug = false;
 
-        private List<EventListener> _listeners = new List<EventListener>();
+        [Multiline]
+        [SerializeField]
+        private string description = String.Empty;
+
+        [SerializeField]
+        private bool _debug;
+
         #endregion
 
         #region Properties
 
-        public List<EventListener> Listeners
-        {
-            get => _listeners;
-        }
+        public List<EventListener> Listeners { get; } = new List<EventListener>();
+        // TODO: This should be a single action. Remember to change it later on the plugin repo.
+        public List<Action> ActionListeners { get; } = new List<Action>();
 
         #endregion
-        
+
         #region Public Functions
+
         /// <summary>
-        /// Invokes the event
+        ///     Invokes the event
         /// </summary>
         public void Invoke()
         {
             if (_debug)
             {
-                Debug.Log($"<b>{name}</b> event raised successfully.", this);
+                Debug.Log($"<b>{name}</b> event raised to <b>{Listeners.Count + ActionListeners.Count}</b> listeners.", this);
             }
 
-            for (int index = 0, upper = _listeners.Count; index < upper; index++)
+            InvokeAllListeners();
+            InvokeAllActions();
+        }
+        
+        /// <summary>
+        /// Invokes all listeners
+        /// </summary>
+        private void InvokeAllListeners()
+        {
+            for (int index = Listeners.Count - 1; index >= 0; index--)
             {
-                _listeners[index].OnEventInvoked();
+                if (Listeners[index] == null)
+                {
+                    Listeners.RemoveAt(index);
+                    continue;
+                }
+
+                if (_debug)
+                {
+                    Debug.Log($"Listener <b>{Listeners[index]}</b> was called.");
+                }
+
+                Listeners[index].OnEventInvoked();
             }
         }
 
         /// <summary>
-        /// Adds a listener to the event
+        /// Invokes all action listeners
+        /// </summary>
+        private void InvokeAllActions()
+        {
+            for (int index = ActionListeners.Count - 1; index >= 0; index--)
+            {
+                if (ActionListeners[index] == null)
+                {
+                    ActionListeners.RemoveAt(index);
+                    continue;
+                }
+
+                if (_debug)
+                {
+                    Debug.Log($"Listener <b>{ActionListeners[index]}</b> was called.");
+                }
+
+                ActionListeners[index].Invoke();
+            }
+        }
+
+        /// <summary>
+        ///     Adds a listener to the event
         /// </summary>
         /// <param name="listener">The listener to be added</param>
         public void AddListener(EventListener listener)
         {
-            _listeners.Add(listener);
+            Listeners.Add(listener);
         }
 
         /// <summary>
-        /// Removes a listener from the event
+        ///     Removes a listener from the event
         /// </summary>
         /// <param name="listener">The listener to be removed</param>
         public void RemoveListener(EventListener listener)
         {
-            _listeners.Remove(listener);
+            Listeners.Remove(listener);
+        }
+        
+        /// <summary>
+        ///     Adds a listener to the event
+        /// </summary>
+        /// <param name="listener">The listener to be added</param>
+        public void AddListener(Action listener)
+        {
+            ActionListeners.Add(listener);
         }
 
         /// <summary>
-        /// Removes all listeners from the event
+        ///     Removes a listener from the event
+        /// </summary>
+        /// <param name="listener">The listener to be removed</param>
+        public void RemoveListener(Action listener)
+        {
+            ActionListeners.Remove(listener);
+        }
+
+        /// <summary>
+        ///     Removes all listeners from the event
         /// </summary>
         public void RemoveAllListeners()
         {
-            _listeners.Clear();
+            Listeners.Clear();
         }
-        #endregion
 
+        #endregion
     }
 
     public class GameEvent<T> : ScriptableObject, IEvent
     {
         #region Private Fields
 
-        [SerializeField] 
-        private T _value;
-        [Multiline] [SerializeField]
-        private string _description = string.Empty;
         [SerializeField]
-        private bool _debug = false;
+        private T _value;
 
-        private readonly List<IEventListener<T>> _listeners = new List<IEventListener<T>>();
-        
+        [Multiline]
+        [SerializeField]
+        private string description = String.Empty;
+
+        [SerializeField]
+        private bool _debug;
+
         #endregion
 
         #region Properties
 
-        public List<IEventListener<T>> Listeners
-        {
-            get => _listeners;
-        }
+        public List<IEventListener<T>> Listeners { get; } = new List<IEventListener<T>>();
+        public List<Action<T>> ActionListeners { get; } = new List<Action<T>>();
 
         public T Value
         {
@@ -104,66 +166,145 @@ namespace ManyTools.Events
         }
 
         #endregion
-        
+
         #region Public Functions
+
         /// <summary>
-        /// Invokes the event
+        ///     Invokes the event
         /// </summary>
         public void Invoke()
         {
             if (_debug)
             {
-                Debug.Log($"<b>{name}</b> event raised successfully with value: {_value}.", this);
+                Debug.Log(
+                    $"<b>{name}</b> event raised with value <b>{_value}</b> to <b>{Listeners.Count + ActionListeners.Count}</b> listeners.",
+                    this);
             }
 
-            for (int index = 0, upper = _listeners.Count; index < upper; index++)
+            for (int index = Listeners.Count - 1; index >= 0; index--)
             {
-                _listeners[index].OnEventInvoked(_value);
+                if (Listeners[index] == null)
+                {
+                    Listeners.RemoveAt(index);
+                    continue;
+                }
+                
+                if (_debug)
+                {
+                    Debug.Log($"Listener <b>{Listeners[index]}</b> was called.");
+                }
+
+                Listeners[index].OnEventInvoked(_value);
             }
         }
 
         /// <summary>
-        /// Invokes the event with a specific value
+        ///     Invokes the event with a specific value
         /// </summary>
         /// <param name="value">The specific value to invoke with</param>
         public void Invoke(T value)
         {
             if (_debug)
             {
-                Debug.Log($"<b>{name}</b> event raised successfully with value: {_value}.", this);
+                Debug.Log(
+                    $"<b>{name}</b> event raised with value <b>{value}</b> to <b>{Listeners.Count}</b> listeners.",
+                    this);
             }
 
-            for (int index = 0, upper = _listeners.Count; index < upper; index++)
+            InvokeAllListeners(value);
+            InvokeAllActions(value);
+        }
+
+        /// <summary>
+        /// Invokes all listeners
+        /// </summary>
+        /// <param name="value">The value to invoke with</param>
+        private void InvokeAllListeners(T value)
+        {
+            for (int index = Listeners.Count - 1; index >= 0; index--)
             {
-                _listeners[index].OnEventInvoked(value);
+                if (Listeners[index] == null)
+                {
+                    Listeners.RemoveAt(index);
+                    continue;
+                }
+
+                if (_debug)
+                {
+                    Debug.Log($"Listener <b>{Listeners[index]}</b> was called.");
+                }
+
+                Listeners[index].OnEventInvoked(value);
             }
         }
 
         /// <summary>
-        /// Adds a listener to the event
+        /// Invokes all action listeners
+        /// </summary>
+        /// <param name="value">The value to invoke with</param>
+        private void InvokeAllActions(T value)
+        {
+            for (int index = ActionListeners.Count - 1; index >= 0; index--)
+            {
+                if (ActionListeners[index] == null)
+                {
+                    ActionListeners.RemoveAt(index);
+                    continue;
+                }
+
+                if (_debug)
+                {
+                    Debug.Log($"Listener <b>{ActionListeners[index]}</b> was called.");
+                }
+
+                ActionListeners[index].Invoke(value);
+            }
+        }
+
+        /// <summary>
+        ///     Adds a listener to the event
         /// </summary>
         /// <param name="listener">The listener to be added</param>
         public void AddListener(IEventListener<T> listener)
         {
-            _listeners.Add(listener);
+            Listeners.Add(listener);
         }
 
         /// <summary>
-        /// Removes a listener from the event
+        ///     Removes a listener from the event
         /// </summary>
         /// <param name="listener">The listener to be removed</param>
         public void RemoveListener(IEventListener<T> listener)
         {
-            _listeners.Remove(listener);
+            Listeners.Remove(listener);
+        }
+        
+        /// <summary>
+        ///     Adds a listener to the event
+        /// </summary>
+        /// <param name="listener">The listener to be added</param>
+        public void AddListener(Action<T> listener)
+        {
+            ActionListeners.Add(listener);
         }
 
         /// <summary>
-        /// Removes all listeners from the event
+        ///     Removes a listener from the event
+        /// </summary>
+        /// <param name="listener">The listener to be removed</param>
+        public void RemoveListener(Action<T> listener)
+        {
+            ActionListeners.Remove(listener);
+        }
+
+        /// <summary>
+        ///     Removes all listeners from the event
         /// </summary>
         public void RemoveAllListeners()
         {
-            _listeners.Clear();
+            Listeners.Clear();
         }
+
         #endregion
     }
 }
