@@ -1,31 +1,38 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using ManyTools.Events;
 using ManyTools.UnityExtended.Editor;
-using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
-using Unity.Mathematics;
+using SketchFleets.Data;
+using SketchFleets.ProfileSystem;
+using SketchFleets.Variables;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace SketchFleets
 {
-    public class ColorsInventory : MonoBehaviour
+    /// <summary>
+    /// A class that manages an inventory of colors
+    /// </summary>
+    public sealed class ColorsInventory : MonoBehaviour
     {
+        #region Private Fields
+
         [Tooltip("The color of the last enemy killed")]
         [SerializeField]
-        private ColorReference enemyDeathColor;        
+        private ColorReference enemyDeathColor;
+
         [SerializeField]
-        private GameObjectReference enemyDeathBullet;
-        
+        private BulletAttributesReference enemyDeathBullet;
+
         [SerializeField]
-        private GameObject colorInvPrefab;        
+        private GameObject colorInvPrefab;
+
         [SerializeField]
         private Transform colorInvParent;
-        
-        [SerializeField] 
+
+        [SerializeField]
         private List<ColorInfo> colorsInventory;
+
         [SerializeField]
         private List<Image> colorsSlot;
 
@@ -34,25 +41,31 @@ namespace SketchFleets
         [RequiredField]
         private GameEvent onColorAbsorbed;
 
-        private int invCol => 2 + ProfileSystem.Profile.Data.ColorUpgradeCount;
+        private readonly int redMultiplier = Shader.PropertyToID("_redMul");
 
-        public Color drawColor => colorsInventory[colorsInventory.Count-1].color;
-        public GameObject bulletColor => colorsInventory[colorsInventory.Count-1].bulletPrefab;
-        
-        protected readonly int redMultiplier = Shader.PropertyToID("_redMul");
+        #endregion
+
+        #region Properties
+
+        public Color drawColor => colorsInventory[colorsInventory.Count - 1].color;
+        public BulletAttributes latestBullet => colorsInventory[colorsInventory.Count - 1].bulletAttributes;
+
+        private int ColorInventoryCapacity => 2 + Profile.Data.ColorUpgradeCount;
+
+        #endregion
+
 
         private void Awake()
         {
             colorsSlot.Clear();
             colorsInventory.Clear();
-            
-            for (int i = 0; i < invCol; i++)
+
+            for (int i = 0; i < ColorInventoryCapacity; i++)
             {
                 colorsSlot.Add(Instantiate(colorInvPrefab, colorInvParent).GetComponent<Image>());
-                
-                colorsInventory.Add(SetColorInfo(Color.black, new GameObject()));
+                colorsInventory.Add(SetColorInfo(Color.black, null));
             }
-            
+
             ColorUpdate();
         }
 
@@ -69,19 +82,20 @@ namespace SketchFleets
             for (int i = 0; i < colorsSlot.Count; i++)
             {
                 colorsSlot[i].color = colorsInventory[i].color;
-                //colorsSlot[i].GetComponent<Image>().material.SetColor(redMultiplier, colorsInventory[i]);
             }
         }
 
-        private void NewColor(Color col, GameObject bullet)
+        private void NewColor(Color col, BulletAttributes bullet)
         {
             enemyDeathColor.Value = Color.black;
             enemyDeathBullet.Value = null;
-            for (int i = 0; i < colorsSlot.Count-1; i++)
+
+            for (int i = 0; i < colorsSlot.Count - 1; i++)
             {
-                colorsInventory[i] = colorsInventory[i+1];
+                colorsInventory[i] = colorsInventory[i + 1];
             }
-            colorsInventory[colorsSlot.Count-1] = SetColorInfo(col, bullet);;
+
+            colorsInventory[colorsSlot.Count - 1] = SetColorInfo(col, bullet);
 
             ColorUpdate();
             onColorAbsorbed.Invoke();
@@ -91,27 +105,28 @@ namespace SketchFleets
         {
             enemyDeathColor.Value = Color.black;
 
-            for (int i = colorsSlot.Count-1; i > 0; i--)
+            for (int i = colorsSlot.Count - 1; i > 0; i--)
             {
-                colorsInventory[i] = colorsInventory[i-1];
+                colorsInventory[i] = colorsInventory[i - 1];
             }
-            colorsInventory[0] = SetColorInfo(Color.black, new GameObject());
+
+            colorsInventory[0] = SetColorInfo(Color.black, enemyDeathBullet);
             ColorUpdate();
         }
 
-        private ColorInfo SetColorInfo(Color col, GameObject gm)
+        private static ColorInfo SetColorInfo(Color col, BulletAttributes bullet)
         {
             ColorInfo colInf;
             colInf.color = col;
-            colInf.bulletPrefab = gm;
+            colInf.bulletAttributes = bullet;
             return colInf;
         }
     }
-}
 
-[System.Serializable]
-public struct ColorInfo
-{
-    public Color color;
-    public GameObject bulletPrefab;
+    [System.Serializable]
+    public struct ColorInfo
+    {
+        public Color color;
+        public BulletAttributes bulletAttributes;
+    }
 }
