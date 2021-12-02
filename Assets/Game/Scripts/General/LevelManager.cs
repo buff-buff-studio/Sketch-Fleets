@@ -154,7 +154,7 @@ namespace SketchFleets.General
         /// <summary>
         /// Saves player progress
         /// </summary>
-        private void SavePlayerProgress()
+        public void SavePlayerProgress()
         {
             Profile.Data.Coins = pencilShell.Value;
             Profile.Data.TimeSeconds = seconds.Value;

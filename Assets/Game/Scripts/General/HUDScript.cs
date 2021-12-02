@@ -4,6 +4,7 @@ using UnityEngine;
 using ManyTools.Variables;
 using UnityEngine.SceneManagement;
 using SketchFleets.Interaction;
+using SketchFleets.ProfileSystem;
 
 public class HUDScript : MonoBehaviour
 {
