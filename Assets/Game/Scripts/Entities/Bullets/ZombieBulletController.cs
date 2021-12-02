@@ -43,7 +43,7 @@ namespace SketchFleets
         /// <param name="target">The target to apply damage to</param>
         private void ApplyDamage(bool directDamage, GameObject target)
         {
-            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage), Attributes.DamageContext);
         }
     }
 }
