@@ -17,7 +17,7 @@ MonoBehaviour:
     _constant: Pink Bullet
     _variable: {fileID: 0}
   description: A bullet fired by the Pink Ship
-  prefab: {fileID: 4233880130515042751, guid: b8626f432a416de4eb65d9d0e8ca16e7, type: 3}
+  prefab: {fileID: 4233880130515042751, guid: 41c81b45178066245a25e62d96d261ed, type: 3}
   unlocalizedName: 
   unlocalizedDescription: 
   directDamage:
@@ -69,9 +69,13 @@ MonoBehaviour:
     _constant: 2
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
+  muteChance:
+    _useConstant: 1
+    _constant: 0.45
+    _variable: {fileID: 0}
   pitchVariation:
     _useConstant: 1
     _constant: 0.25
     _variable: {fileID: 0}
   fireEffect: {fileID: 0}
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 6511845030710563950, guid: 48b2444fcc231674c84b0a8c98d46fd3, type: 3}

@@ -158,6 +158,8 @@ namespace SketchFleets.Entities
                 bulletController.DamageMultiplier = AttributesBonuses.DamageMultiplier;
                 bulletController.DamageIncrease = AttributesBonuses.DamageIncrease;
             }
+            
+            PlayFireSound();
 
             fireTimer = GetFireCooldown();
         }

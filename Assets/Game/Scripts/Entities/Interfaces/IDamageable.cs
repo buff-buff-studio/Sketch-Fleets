@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace SketchFleets
 {
     public interface IDamageable
@@ -13,12 +9,20 @@ namespace SketchFleets
         /// <param name="makeInvulnerable">Whether the object should be made invulnerable after the damage</param>
         /// <param name="piercing">Whether the damage should ignore defense and shields</param>
         public void Damage(float amount, bool makeInvulnerable = false, bool piercing = false);
-        
+
         /// <summary>
         /// Heals the Damageable object by the given amount
         /// </summary>
         /// <param name="amount">The amount to damage for</param>
         public void Heal(float amount);
+
+        /// <summary>
+        /// Damages the Damageable object by the given amount
+        /// </summary>
+        /// <param name="amount">The amount to damage for</param>
+        /// <param name="pulses">Over how many 'pulses' should the damage be applied</param>
+        /// <param name="time">Over how long should the pulses be spread</param>
+        public void DamageContinually(float amount, int pulses, float time);
     }
 }
 

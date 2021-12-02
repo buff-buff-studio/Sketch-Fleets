@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,9 +12,11 @@ namespace SketchFleets
 
         [SerializeField]
         private float maxBounceLife = 4;
+        [SerializeField]
+        private GameObject bounceEffect;
 
         private float bounceLife;
-        private readonly Vector3 maxScale = new Vector3(.5f, .5f, .5f);
+        private Vector3 originalScale;
 
         #endregion
 
@@ -24,12 +25,8 @@ namespace SketchFleets
         public override void Emerge(Vector3 position, Quaternion rotation)
         {
             bounceLife = maxBounceLife;
+            transform.localScale = originalScale;
 
-            if (transform.localScale.x < maxScale.x)
-            {
-                transform.localScale = maxScale;
-            }
-            
             base.Emerge(position, rotation);
         }
 
@@ -37,16 +34,14 @@ namespace SketchFleets
 
         #region Unity Callbacks
 
+        private void Awake()
+        {
+            originalScale = transform.localScale;
+        }
+
         protected override void Update()
         {
-            if (PlayerBuletVelocity == 0)
-            {
-                Move(Vector3.up * Attributes.Speed, Space.Self);
-            }
-            else
-            {
-                Move(Vector3.up * PlayerBuletVelocity, Space.World);
-            }
+            Move(Vector3.up * Attributes.Speed, Space.Self);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -58,11 +53,6 @@ namespace SketchFleets
         {
             Bounce(col.gameObject.CompareTag("bullet"));
             DealDamageToTarget(false, col.gameObject);
-        }
-
-        private void OnDestroy()
-        {
-            Debug.Log($"Bounce Bullet ({gameObject}) destroyed!");
         }
 
         #endregion
@@ -117,6 +107,8 @@ namespace SketchFleets
             {
                 Submerge();
             }
+            
+            PlayHitEffect();
         }
 
         /// <summary>

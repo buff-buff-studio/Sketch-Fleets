@@ -69,9 +69,13 @@ MonoBehaviour:
     _constant: 1.5
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
+  muteChance:
+    _useConstant: 1
+    _constant: 0.45
+    _variable: {fileID: 0}
   pitchVariation:
     _useConstant: 1
     _constant: 0.25
     _variable: {fileID: 0}
   fireEffect: {fileID: 0}
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 6511845030710563950, guid: 76c991f5145f22440960876b3b5a8b15, type: 3}
