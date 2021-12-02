@@ -54,6 +54,9 @@ namespace SketchFleets.Data
         [Tooltip("The sound effect played when the bullet is shot")]
         [SerializeField]
         private AudioClip fireSound;
+        [Tooltip("The chance the bullet will not play the fire sound, to reduce spammy sounds")]
+        [SerializeField]
+        private FloatReference muteChance = new FloatReference(0f);
         [Tooltip("The pitch variation of the sound effect")]
         [SerializeField]
         private FloatReference pitchVariation = new FloatReference(0.25f);
@@ -95,6 +98,8 @@ namespace SketchFleets.Data
         public FloatReference Cooldown => cooldown;
 
         public AudioClip FireSound => fireSound;
+        
+        public FloatReference MuteChance => muteChance;
 
         public FloatReference MaxDamageVariation => maxDamageVariation;
 
