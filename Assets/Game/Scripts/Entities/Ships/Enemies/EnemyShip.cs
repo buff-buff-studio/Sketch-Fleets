@@ -2,6 +2,7 @@
 using SketchFleets.Data;
 using SketchFleets.Systems;
 using SketchFleets.Systems.DeathContext;
+using SketchFleets.Variables;
 using UnityEngine;
 
 namespace SketchFleets.Enemies
@@ -17,7 +18,7 @@ namespace SketchFleets.Enemies
         private ColorReference enemyDeathColor = new ColorReference(Color.white);
 
         [SerializeField]
-        private GameObjectReference enemyDeathBullet;
+        private BulletAttributesReference droppedBullet;
 
 
         #endregion
@@ -44,7 +45,8 @@ namespace SketchFleets.Enemies
         {
             if (LatestDamageContext != DamageContext.PlayerBullet && LatestDamageContext != DamageContext.PlayerCollision) return;
             enemyDeathColor.Value = Attributes.ShipColor;
-            enemyDeathBullet.Value = Attributes.DropedFire;
+
+            droppedBullet.Value = Attributes.DroppedFire;
         }
 
         #endregion
