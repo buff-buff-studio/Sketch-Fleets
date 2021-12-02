@@ -156,10 +156,16 @@ namespace SketchFleets.ProfileSystem
         {
             int totalCoins = TotalCoins;
             List<string> tutorial = Tutorials.Completed;
+            List<ProfileItem> upgrades = saveObject.upgrades;
+            List<CodexItem> codex = saveObject.codex;
+
             saveObject = new SaveObject();
-            ReloadInventories();
+           
             saveObject.totalCoins = totalCoins;
             saveObject.tutorialData.Completed = tutorial;
+            saveObject.upgrades = upgrades;
+            saveObject.codex = codex;
+            ReloadInventories();
 
             try
             {
