@@ -22,11 +22,11 @@ MonoBehaviour:
   unlocalizedDescription: 
   directDamage:
     _useConstant: 1
-    _constant: 10
+    _constant: 2
     _variable: {fileID: 0}
   maxDamageVariation:
     _useConstant: 1
-    _constant: 2.5
+    _constant: 0.5
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
