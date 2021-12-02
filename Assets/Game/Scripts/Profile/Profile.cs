@@ -59,8 +59,7 @@ namespace SketchFleets.ProfileSystem
         /// </summary>
         /// <param name="callback"></param>
         public static void LoadProfile(System.Action<ProfileData> callback)
-        {
-            Debug.Log("Path: " + Application.persistentDataPath + "/data");
+        {         
             if (!Directory.Exists(Application.persistentDataPath + "/data"))
                 Directory.CreateDirectory(Application.persistentDataPath + "/data");
 
