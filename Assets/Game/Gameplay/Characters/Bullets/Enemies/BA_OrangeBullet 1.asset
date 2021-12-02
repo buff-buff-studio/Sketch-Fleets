@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
-  m_Name: BA_OrangeBullet
+  m_Name: BA_OrangeBullet 1
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 45
+    _constant: 30
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
@@ -63,11 +63,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
-    _constant: 90
+    _constant: 190
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 0.125
+    _constant: 0.75
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
   muteChance:

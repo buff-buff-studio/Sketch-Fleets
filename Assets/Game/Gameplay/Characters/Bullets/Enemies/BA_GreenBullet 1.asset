@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
-  m_Name: BA_OrangeBullet
+  m_Name: BA_GreenBullet 1
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Purple Bullet
+    _constant: Green Bullet
     _variable: {fileID: 0}
-  description: A bullet fired by the Purple Ship
-  prefab: {fileID: 4199103658155674004, guid: f9d8bc9a4c1671942b350962bd2595f9, type: 3}
+  description: 
+  prefab: {fileID: 2329831306282603820, guid: 8f0e7df35956d7d4a8f5de18b84cf043, type: 3}
   unlocalizedName: 
   unlocalizedDescription: 
   directDamage:
     _useConstant: 1
-    _constant: 15
+    _constant: 2
     _variable: {fileID: 0}
   damageContext: 1
   maxDamageVariation:
     _useConstant: 1
-    _constant: 1.5
+    _constant: 0.5
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 45
+    _constant: 20
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
@@ -39,7 +39,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   indirectDamage:
     _useConstant: 1
-    _constant: 1
+    _constant: 5
     _variable: {fileID: 0}
   ignorePlayer:
     _useConstant: 1
@@ -55,7 +55,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   continuousDamageTime:
     _useConstant: 1
-    _constant: 5
+    _constant: 0
     _variable: {fileID: 0}
   hitsLock:
     _useConstant: 1
@@ -63,11 +63,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
-    _constant: 90
+    _constant: 0.1
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 0.125
+    _constant: 0.9
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
   muteChance:
@@ -79,4 +79,4 @@ MonoBehaviour:
     _constant: 0.25
     _variable: {fileID: 0}
   fireEffect: {fileID: 0}
-  hitEffect: {fileID: 6511845030710563950, guid: 528748119b2c1ba4aade207914d91f99, type: 3}
+  hitEffect: {fileID: 0}

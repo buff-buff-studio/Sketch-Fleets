@@ -61,6 +61,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 31f48cf9a1701f944bbeb66a78abb2ce, type: 2}
     - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: droppedBullet
+      value: 
+      objectReference: {fileID: 11400000, guid: 96a09753dad365047a5621146a313637, type: 2}
+    - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: droppedBullet._variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 96a09753dad365047a5621146a313637, type: 2}
+    - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: enemyDeathColor._variable
       value: 
       objectReference: {fileID: 11400000, guid: 85746415c082a3641923f338f45db626, type: 2}
@@ -143,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 7411695702990386598, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6db9d22eb917c0a42b04811f7c5aa5f0, type: 3}
+      objectReference: {fileID: 21300000, guid: 0aa40a303aa9e994f8a3488931e98639, type: 3}
     - target: {fileID: 7411695702990386598, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

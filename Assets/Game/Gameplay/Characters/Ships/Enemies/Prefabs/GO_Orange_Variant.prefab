@@ -93,6 +93,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c3e9f184e44eb454e9df67be139a5d86, type: 2}
     - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: droppedBullet
+      value: 
+      objectReference: {fileID: 11400000, guid: 96a09753dad365047a5621146a313637, type: 2}
+    - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: droppedBullet._variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 96a09753dad365047a5621146a313637, type: 2}
+    - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: enemyDeathColor._variable
       value: 
       objectReference: {fileID: 11400000, guid: 85746415c082a3641923f338f45db626, type: 2}
