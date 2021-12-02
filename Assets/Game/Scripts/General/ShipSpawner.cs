@@ -30,19 +30,11 @@ namespace SketchFleets.Systems
         [Tooltip("The area in which a ship can spawn")]
         private Collider2D spawnArea;
 
-        [SerializeField]
-        [Tooltip("The interval between spawning each ship")]
-        private FloatReference spawnInterval = new FloatReference(1.5f);
-
-        [SerializeField]
-        [Tooltip("The interval between spawning each wave")]
-        private FloatReference waveInterval = new FloatReference(1.5f);
-
         [Header("Other Parameters")]
         [SerializeField]
         [Tooltip("The total of enemies killed, displayed in the UI")]
         private IntReference totalEnemiesKilled;
-        
+
         [SerializeField]
         private Collider2D enemyTeleportArea;
 
@@ -155,8 +147,9 @@ namespace SketchFleets.Systems
         /// </summary>
         private IEnumerator SpawnWave()
         {
-            WaitForSeconds spawnWait = new WaitForSeconds(spawnInterval);
-            yield return new WaitForSeconds(waveInterval);
+            WaitForSeconds spawnWait =
+                new WaitForSeconds(mapAttributes.SpawnAndWaveInterval[mapAttributes.Difficulty].Value.x);
+            yield return new WaitForSeconds(mapAttributes.SpawnAndWaveInterval[mapAttributes.Difficulty].Value.y);
             pendingSpawns = mapAttributes.MaxEnemies[mapAttributes.Difficulty];
 
             for (int index = 0; index < mapAttributes.MaxEnemies[mapAttributes.Difficulty]; index++)
@@ -194,7 +187,7 @@ namespace SketchFleets.Systems
         private void SpawnShip(ShipAttributes shipToSpawn, Vector3 spawnPosition, Quaternion spawnRotation)
         {
             if (shipToSpawn == null) return;
-            
+
             PoolMember ship = PoolManager.Instance.Request(shipToSpawn.Prefab);
             ship.Emerge(spawnPosition, spawnRotation);
             RegisterEnemyShip((EnemyShip)ship);
@@ -212,7 +205,7 @@ namespace SketchFleets.Systems
             {
                 teleporter.TeleportArea = enemyTeleportArea;
             }
-            
+
             ActiveEnemyShips.Add(ship.transform);
         }
 
