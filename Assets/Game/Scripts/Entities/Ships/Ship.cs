@@ -9,6 +9,7 @@ using SketchFleets.Entities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using SketchFleets.Systems.Codex;
+using SketchFleets.Systems.DeathContext;
 
 namespace SketchFleets
 {
@@ -78,11 +79,15 @@ namespace SketchFleets
 
         #region IDamageable Implementation
 
-        public virtual void Damage(float amount, bool makeInvincible = false, bool piercing = false)
+        public DamageContext LatestDamageContext { get; set; } = DamageContext.Unknown;
+        
+        public virtual void Damage(float amount, DamageContext context, bool makeInvincible = false, bool piercing = false)
         {
             // Rejects damage during invincibility time or death
             if (collisionTimer > 0 || isDead) return;
 
+            LatestDamageContext = context;
+            
             // Adds invincibility time if necessary
             if (makeInvincible)
             {
@@ -120,18 +125,18 @@ namespace SketchFleets
         /// <param name="amount">The amount to damage for</param>
         /// <param name="frequency">Over how many 'pulses' should the damage be applied</param>
         /// <param name="time">Over how long should the pulses be spread</param>
-        public void DamageContinually(float amount, int frequency, float time)
+        public void DamageContinually(float amount, DamageContext context, int frequency, float time)
         {
             if (gameObject.activeSelf == false) return;
 
             if (continuousDamageCoroutine == null)
             {
-                continuousDamageCoroutine = StartCoroutine(ApplyDamagePulses(amount, frequency, time));
+                continuousDamageCoroutine = StartCoroutine(ApplyDamagePulses(amount, context, frequency, time));
             }
             else
             {
                 StopCoroutine(continuousDamageCoroutine);
-                continuousDamageCoroutine = StartCoroutine(ApplyDamagePulses(amount, frequency, time));
+                continuousDamageCoroutine = StartCoroutine(ApplyDamagePulses(amount, context, frequency, time));
             }
         }
 
@@ -279,7 +284,7 @@ namespace SketchFleets
                 other.CompareTag("Player") ||
                 other.CompareTag("Obstacle"))
             {
-                other.GetComponent<IDamageable>()?.Damage(Attributes.CollisionDamage, true);
+                other.GetComponent<IDamageable>()?.Damage(Attributes.CollisionDamage, Attributes.CollisionDamageContext);
             }
         }
 
@@ -457,10 +462,11 @@ namespace SketchFleets
         /// Applies multiple pulses of damage to the ship
         /// </summary>
         /// <param name="totalDamage">The total damage to be applied</param>
+        /// <param name="context">The context of the damage to apply</param>
         /// <param name="pulses">The amount of pulses to play</param>
         /// <param name="time">The time to apply the pulses over</param>
         /// <exception cref="ArgumentException">The amount of pulses cannot be negative</exception>
-        protected IEnumerator ApplyDamagePulses(float totalDamage, int pulses, float time)
+        protected IEnumerator ApplyDamagePulses(float totalDamage, DamageContext context, int pulses, float time)
         {
             if (pulses <= 0)
             {
@@ -472,7 +478,7 @@ namespace SketchFleets
 
             for (int pulse = 0; pulse < pulses; pulse++)
             {
-                Damage(damagePerPulse);
+                Damage(damagePerPulse, context);
                 yield return pulseInterval;
             }
 
