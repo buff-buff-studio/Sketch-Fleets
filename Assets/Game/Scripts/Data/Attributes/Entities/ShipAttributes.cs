@@ -91,7 +91,7 @@ namespace SketchFleets.Data
 
         [Tooltip("The bullet prefab that the player will win.")]
         [SerializeField]
-        protected GameObject dropedFire;
+        protected BulletAttributes droppedFire;
 
         [Header("Special Effects")]
         [Tooltip("The sound effect when the ship gets hit")]
@@ -122,7 +122,7 @@ namespace SketchFleets.Data
 
         public BulletAttributes Fire => fire;
 
-        public GameObject DropedFire => dropedFire;
+        public BulletAttributes DroppedFire => droppedFire;
 
         public FloatReference Defense => defense;
 
