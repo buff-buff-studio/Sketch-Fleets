@@ -11,7 +11,11 @@ namespace SketchFleets.Entities
     /// </summary>
     public sealed class SpawnedShip : Ship<SpawnableShipAttributes>
     {
-        public GameObject bulletPrefab;
+        #region Private Fields
+
+        private BulletAttributes bulletOverride;
+
+        #endregion
 
         #region Properties
 
@@ -46,20 +50,30 @@ namespace SketchFleets.Entities
             base.Die();
         }
 
+        protected override void PlayFireSound()
+        {
+            if (bulletOverride.FireSound == null || !(Random.Range(0f, 1f) > bulletOverride.MuteChance)) return;
+            soundSource.pitch = 1f + Random.Range(bulletOverride.PitchVariation * -1f, bulletOverride.PitchVariation);
+            soundSource.PlayOneShot(bulletOverride.FireSound);
+        }
+
         #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Overrides the ship's current bullet
+        /// </summary>
+        /// <param name="bullet">The bullet to override with</param>
+        public void OverrideBullet(BulletAttributes bullet)
+        {
+            bulletOverride = bullet;
+        }
+
+        #endregion
+        
         #region Private Methods
 
-        private void GenerateBullet()
-        {
-            GameObject cacheBullet = Attributes.Fire.Prefab;
-            bulletPrefab = Instantiate(bulletPrefab, transform);
-            bulletPrefab.GetComponent<SpriteRenderer>().sprite =
-                cacheBullet.GetComponent<SpriteRenderer>().sprite;
-            bulletPrefab.transform.localScale = cacheBullet.transform.localScale;
-            bulletPrefab.gameObject.SetActive(false);
-        }
-        
         /// <summary>
         /// Emerges a spawn effect at the ship's position
         /// </summary>
@@ -79,18 +93,18 @@ namespace SketchFleets.Entities
 
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
-                PoolMember bullet = PoolManager.Instance.Request(bulletPrefab);
+                PoolMember bullet = PoolManager.Instance.Request(bulletOverride.Prefab);
                 bullet.Emerge(bulletSpawnPoints[index].position, bulletSpawnPoints[index].rotation);
 
                 bullet.GetComponent<SpriteRenderer>().color = spriteRenderer.material.GetColor(redMultiplier);
                 bullet.transform.Rotate(0f, 0f,
-                    Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
+                    Random.Range(bulletOverride.AngleJitter * -1f, bulletOverride.AngleJitter));
                 bullet.gameObject.SetActive(true);
             }
 
             PlayFireSound();
 
-            fireTimer = Attributes.Fire.Cooldown;
+            fireTimer = bulletOverride.Cooldown;
         }
 
         #endregion

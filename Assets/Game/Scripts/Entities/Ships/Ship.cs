@@ -364,9 +364,9 @@ namespace SketchFleets
         /// <summary>
         /// Plays the ship's fire sound
         /// </summary>
-        protected void PlayFireSound()
+        protected virtual void PlayFireSound()
         {
-            if (!(Random.Range(0f, 1f) > Attributes.Fire.MuteChance)) return;
+            if (Attributes.Fire.FireSound == null || !(Random.Range(0f, 1f) > Attributes.Fire.MuteChance)) return;
             soundSource.pitch = 1f + Random.Range(Attributes.Fire.PitchVariation * -1f, Attributes.Fire.PitchVariation);
             soundSource.PlayOneShot(Attributes.Fire.FireSound);
         }

@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4121247499830264141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715672341400399249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca7eb1eebfd3764fb7f91f69a76945a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1870363109752038587
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,18 +42,6 @@ Transform:
   m_Father: {fileID: 4207187464980238189}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4121247499830264141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715672341400399249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ca7eb1eebfd3764fb7f91f69a76945a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7907609608210793244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69,6 +69,14 @@ PrefabInstance:
       propertyPath: attributes
       value: 
       objectReference: {fileID: 11400000, guid: d5f62a202075f1048b4968cc3a5ebf80, type: 2}
+    - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: droppedBullet
+      value: 
+      objectReference: {fileID: 11400000, guid: 96a09753dad365047a5621146a313637, type: 2}
+    - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: droppedBullet._variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 96a09753dad365047a5621146a313637, type: 2}
     - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: enemyDeathColor._variable
       value: 

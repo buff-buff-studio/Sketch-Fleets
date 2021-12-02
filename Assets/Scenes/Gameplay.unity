@@ -8847,16 +8847,16 @@ MonoBehaviour:
   enemyDeathBullet:
     _useConstant: 0
     _constant: {fileID: 0}
-    _variable: {fileID: 11400000, guid: 7b31786ad01610a4394009bd26bdf382, type: 2}
+    _variable: {fileID: 11400000, guid: 96a09753dad365047a5621146a313637, type: 2}
   colorInvPrefab: {fileID: 1953389344034832192, guid: dba4017c4c7af834196ab1f551e84df3, type: 3}
   colorInvParent: {fileID: 137213284}
   colorsInventory:
   - color: {r: 0, g: 0, b: 0, a: 0}
-    bulletPrefab: {fileID: 0}
+    bulletAttributes: {fileID: 0}
   - color: {r: 0, g: 0, b: 0, a: 0}
-    bulletPrefab: {fileID: 0}
+    bulletAttributes: {fileID: 0}
   - color: {r: 0, g: 0, b: 0, a: 0}
-    bulletPrefab: {fileID: 0}
+    bulletAttributes: {fileID: 0}
   colorsSlot: []
   onColorAbsorbed: {fileID: 11400000, guid: e6010e4a174a1a2449f70f243f50f9e0, type: 2}
 --- !u!1 &2096931357

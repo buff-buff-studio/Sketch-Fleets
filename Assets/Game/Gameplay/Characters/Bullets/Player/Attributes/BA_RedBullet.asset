@@ -63,11 +63,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
-    _constant: 0.1
+    _constant: 3
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 0.75
+    _constant: 0.1
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
   muteChance:
