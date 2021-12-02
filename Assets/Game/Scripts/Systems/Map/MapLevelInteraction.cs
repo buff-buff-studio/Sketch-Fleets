@@ -102,11 +102,12 @@ namespace SketchFleets.Interaction
                 LoadScene(sceneLoading.Value, () => { });
             });
         }
-
+        
         public void SaveReturningToMenu(MonoBehaviour behaviour)
         {
             Constelation.Star star = state.constelation.GetStar(state.GetCurrentStar());
 
+            /*
             foreach (Constelation.StarJunction j in star.toJunctions)
             {
                 if (!state.IsChoosen(j.starA.Id))
@@ -116,6 +117,7 @@ namespace SketchFleets.Interaction
                 state.Open(j.starA.Id);
                 state.Open(j.starB.Id);
             }
+            */
 
             SaveMapState(behaviour, () => { });
         }
