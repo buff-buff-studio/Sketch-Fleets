@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1345631316089863326, guid: 71e674368c9a1d742b6f4f48bcf14b92, type: 3}
+  m_Sprite: {fileID: 3305905959457765231, guid: 4d0c4608c1e6b6748b39e903d2a80e1c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2953,6 +2953,7 @@ MonoBehaviour:
   tooltipBackground: {fileID: 7522489690781924411}
   changeY: 0
   centered: 0
+  onItemBought: {fileID: 0}
   itemInformationPanel: {fileID: 6888051793734980118}
   itemBuyConfirmation: {fileID: 0}
   itemBuyPrice: {fileID: 7269352717847529721}
