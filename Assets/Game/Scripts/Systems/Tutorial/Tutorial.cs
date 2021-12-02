@@ -16,10 +16,6 @@ namespace SketchFleets.Systems.Tutorial
         private List<TutorialStep> steps = new List<TutorialStep>();
 
         [SerializeField]
-        [RequiredField]
-        private Canvas tutorialCanvas;
-
-        [SerializeField]
         private bool autoBeginFirstStep = false;
 
         private int currentStepIndex = 0;
@@ -27,7 +23,7 @@ namespace SketchFleets.Systems.Tutorial
         #endregion
 
         #region Properties
-
+        
         private TutorialStep CurrentStep => steps[currentStepIndex];
 
         #endregion
@@ -41,8 +37,6 @@ namespace SketchFleets.Systems.Tutorial
                 return;
             }
             
-            InjectCanvasReferences();
-
             if (autoBeginFirstStep)
             {
                 BeginStep();
@@ -56,17 +50,6 @@ namespace SketchFleets.Systems.Tutorial
         #endregion
 
         #region Private Methods
-
-        /// <summary>
-        /// Injects canvas references into all steps
-        /// </summary>
-        private void InjectCanvasReferences()
-        {
-            foreach (TutorialStep step in steps)
-            {
-                step.Canvas = tutorialCanvas;
-            }
-        }
 
         /// <summary>
         /// Subscribes a step to a trigger
