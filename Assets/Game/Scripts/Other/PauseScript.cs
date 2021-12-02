@@ -13,11 +13,10 @@ namespace SketchFleets
 
         void Update()
         {
-
             try
             {
                 SketchFleets.General.LevelManager.Instance.PauseShellCount.text =
-                    ProfileSystem.Profile.Data.Coins.ToString();
+                    ProfileSystem.Profile.Data.TotalCoins.ToString();
             }
             catch
             {
