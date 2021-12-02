@@ -1,4 +1,3 @@
-using System;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using UnityEngine;
@@ -9,16 +8,12 @@ using Random = UnityEngine.Random;
 /// <summary>
 /// A class that controls a bullet and its behaviour
 /// </summary>
-[RequireComponent(typeof(AudioSource))]
 public class BulletController : PoolMember
 {
     #region Private Fields
 
     [SerializeField, RequiredField()]
     private BulletAttributes attributes;
-
-    [SerializeField, RequiredField()]
-    private AudioSource soundSource;
 
     private bool hasFireEffect;
     private float damageMultiplier = 1f;
@@ -55,12 +50,6 @@ public class BulletController : PoolMember
     {
         base.Emerge(position, rotation);
 
-        soundSource.pitch = Random.Range(1 - Attributes.PitchVariation, 1 + Attributes.PitchVariation);
-
-        soundSource.clip = Attributes.FireSound;
-        soundSource.pitch = Random.Range(1 - Attributes.PitchVariation, 1 + Attributes.PitchVariation);
-        soundSource.Play();
-
         if (hasFireEffect)
         {
             PoolManager.Instance.Request(Attributes.FireEffect).Emerge(transform.position, Quaternion.identity);
@@ -69,11 +58,7 @@ public class BulletController : PoolMember
 
     public override void Submerge()
     {
-        if (Attributes.HitEffect != null)
-        {
-            PoolManager.Instance.Request(Attributes.HitEffect).Emerge(transform.position, Quaternion.identity);
-        }
-
+        PlayHitEffect();
         base.Submerge();
     }
 
@@ -93,8 +78,8 @@ public class BulletController : PoolMember
 
     protected void Move(Vector3 pos, Space space)
     {
-        transform.Translate(pos * Time.deltaTime, space);
-        //transform.Translate(Vector3.up * Time.deltaTime * Attributes.Speed, Space.Self);
+        //transform.Translate(pos * Time.deltaTime, space);
+        transform.Translate(Vector3.up * Time.deltaTime * Attributes.Speed, Space.Self);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D col)
@@ -107,11 +92,6 @@ public class BulletController : PoolMember
 
         if (!col.isTrigger) return;
         Hit(col);
-    }
-
-    private void Reset()
-    {
-        soundSource = GetComponent<AudioSource>();
     }
 
     #endregion
@@ -178,6 +158,21 @@ public class BulletController : PoolMember
         float damageVariation = Random.Range(0, Attributes.MaxDamageVariation);
         float baseDamage = direct ? Attributes.DirectDamage : Attributes.IndirectDamage;
         return baseDamage * DamageMultiplier + damageVariation + DamageIncrease;
+    }
+
+    #endregion
+
+    #region Protected Methods
+
+    /// <summary>
+    /// Plays the bullet's hit effect
+    /// </summary>
+    protected void PlayHitEffect()
+    {
+        if (Attributes.HitEffect != null)
+        {
+            PoolManager.Instance.Request(Attributes.HitEffect).Emerge(transform.position, Quaternion.identity);
+        }
     }
 
     #endregion
