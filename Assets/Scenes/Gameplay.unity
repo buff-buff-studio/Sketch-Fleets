@@ -307,32 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53e68ef3ccd4a1fb2fbb396e20241b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnButtons:
-    _keyValueList:
-    - Key: {fileID: 11400000, guid: 36ebd0995b0eb694289df5d07a1bbcd0, type: 2}
-      Value:
-        priceTag: {fileID: 0}
-        button: {fileID: 0}
-        summonReadinessFill: {fileID: 0}
-    - Key: {fileID: 11400000, guid: 25c365987b9243f4bbd868676d7eff46, type: 2}
-      Value:
-        priceTag: {fileID: 0}
-        button: {fileID: 0}
-        summonReadinessFill: {fileID: 0}
-    - Key: {fileID: 11400000, guid: 8bb9c71799f1ee4428d5adb48e69f124, type: 2}
-      Value:
-        priceTag: {fileID: 0}
-        button: {fileID: 0}
-        summonReadinessFill: {fileID: 0}
-    _keyCollision: 0
-  buttonUpdateInterval:
-    _useConstant: 1
-    _constant: 0.2
-    _variable: {fileID: 0}
-  timeScaleWhenActive:
-    _useConstant: 1
-    _constant: 0.3
-    _variable: {fileID: 0}
 --- !u!114 &49158626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6242,7 +6216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7048807, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7067614, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -8813,16 +8787,16 @@ MonoBehaviour:
   enemyDeathBullet:
     _useConstant: 0
     _constant: {fileID: 0}
-    _variable: {fileID: 11400000, guid: 7b31786ad01610a4394009bd26bdf382, type: 2}
+    _variable: {fileID: 11400000, guid: 96a09753dad365047a5621146a313637, type: 2}
   colorInvPrefab: {fileID: 1953389344034832192, guid: dba4017c4c7af834196ab1f551e84df3, type: 3}
   colorInvParent: {fileID: 137213284}
   colorsInventory:
   - color: {r: 0, g: 0, b: 0, a: 0}
-    bulletPrefab: {fileID: 0}
+    bulletAttributes: {fileID: 0}
   - color: {r: 0, g: 0, b: 0, a: 0}
-    bulletPrefab: {fileID: 0}
+    bulletAttributes: {fileID: 0}
   - color: {r: 0, g: 0, b: 0, a: 0}
-    bulletPrefab: {fileID: 0}
+    bulletAttributes: {fileID: 0}
   colorsSlot: []
   onColorAbsorbed: {fileID: 11400000, guid: e6010e4a174a1a2449f70f243f50f9e0, type: 2}
 --- !u!1 &2096931357
@@ -8970,7 +8944,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7048807, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 7.7067614, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}
