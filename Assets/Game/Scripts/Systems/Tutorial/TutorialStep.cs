@@ -22,11 +22,20 @@ namespace SketchFleets.Systems.Tutorial
         [HideInInspector]
         public bool IsNew = true;
 
+        private Canvas canvasCache;
+
         #endregion
 
         #region Properties
 
-        public Canvas Canvas { get; set; }
+        public Canvas Canvas
+        {
+            get
+            {
+                canvasCache ??= Object.FindObjectOfType<Canvas>();
+                return canvasCache;
+            }
+        }
 
         #endregion
 
