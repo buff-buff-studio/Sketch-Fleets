@@ -110,7 +110,8 @@ namespace SketchFleets.Inventory
                 return;
             }
 
-            this.mouse = Mouse.current.position.ReadValue();
+            this.mouse = slots[slot].position;
+            //this.mouse = Mouse.current.position.ReadValue();
             this.heldSlot = slot;
 
             if (heldSlot >= 0 && GetItemInSlot(heldSlot) != null)
