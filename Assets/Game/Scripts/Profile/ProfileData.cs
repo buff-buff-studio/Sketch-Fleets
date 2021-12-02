@@ -154,8 +154,12 @@ namespace SketchFleets.ProfileSystem
 
         public void Clear(MonoBehaviour behaviour, System.Action<ProfileData> callback)
         {
+            int totalCoins = TotalCoins;
+            List<string> tutorial = Tutorials.Completed;
             saveObject = new SaveObject();
             ReloadInventories();
+            saveObject.totalCoins = totalCoins;
+            saveObject.tutorialData.Completed = tutorial;
 
             try
             {
