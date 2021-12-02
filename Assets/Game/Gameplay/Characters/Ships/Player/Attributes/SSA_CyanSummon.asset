@@ -58,6 +58,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 300
     _variable: {fileID: 0}
+  collisionDamageContext: 2
   invincibilityTime:
     _useConstant: 1
     _constant: 0.3
@@ -78,14 +79,6 @@ MonoBehaviour:
   deathEffect: {fileID: 1124593775013484982, guid: 103e894a9336a36419399406260d9f10, type: 3}
   healEffect: {fileID: 0}
   spawnEffect: {fileID: 6815621210096123458, guid: 6c9ec62763d2bf143b7f6693a499923c, type: 3}
-  graphiteCost:
-    _useConstant: 1
-    _constant: 50
-    _variable: {fileID: 0}
-  graphiteCostIncrease:
-    _useConstant: 1
-    _constant: 0
-    _variable: {fileID: 0}
   maximumShips:
     _useConstant: 1
     _constant: 2

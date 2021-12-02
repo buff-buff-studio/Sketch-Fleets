@@ -1,4 +1,5 @@
 using SketchFleets.AI;
+using SketchFleets.Systems.DeathContext;
 using UnityEngine;
 
 namespace SketchFleets
@@ -21,7 +22,11 @@ namespace SketchFleets
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (CollisionIsBullet(collision)) return;
-            AI.Ship.Damage(AI.Ship.CurrentHealth * 2);
+
+            if (IsWall(collision))
+            {
+                SelfDestruct();
+            }
         }
 
         #endregion
@@ -75,6 +80,24 @@ namespace SketchFleets
         private static bool CollisionIsBullet(Collision2D collision)
         {
             return collision.gameObject.CompareTag("bullet");
+        }
+        
+        /// <summary>
+        /// Destroys the ship
+        /// </summary>
+        private void SelfDestruct()
+        {
+            AI.Ship.Damage(AI.Ship.CurrentHealth, DamageContext.ObstacleCollision, false, true);
+        }
+
+        /// <summary>
+        /// Checks whether a given 2D collision is with a wall
+        /// </summary>
+        /// <param name="collision">The collision to check</param>
+        /// <returns>Whether a given 2D collision is with a wall</returns>
+        private static bool IsWall(Collision2D collision)
+        {
+            return collision.gameObject.CompareTag("EndMap");
         }
 
         #endregion

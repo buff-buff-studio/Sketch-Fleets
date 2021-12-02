@@ -11,9 +11,9 @@ namespace SketchFleets
         {
             if ((target.CompareTag("Player") || target.CompareTag("PlayerSpawn")) && Attributes.IgnorePlayer) return;
 
-            target.GetComponent<IDamageable>()?.DamageContinually(GetDamage(directDamage),
+            target.GetComponent<IDamageable>()?.DamageContinually(GetDamage(directDamage), Attributes.DamageContext,
                 (int)Attributes.ContinuousDamageTime, Attributes.ContinuousDamageTime);
-            
+
             Submerge();
         }
     }

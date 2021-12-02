@@ -15,7 +15,7 @@ namespace SketchFleets
             }
 
             target.GetComponent<IFreezable>()?.Freeze(Attributes.Downtime);
-            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage), Attributes.DamageContext);
 
             Submerge();
         }

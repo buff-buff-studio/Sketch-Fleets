@@ -139,11 +139,11 @@ public class BulletController : PoolMember
         if (target.CompareTag("Player") || target.CompareTag("PlayerSpawn"))
         {
             if (Attributes.IgnorePlayer) return;
-            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage), Attributes.DamageContext);
         }
         else
         {
-            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage), Attributes.DamageContext);
         }
 
         Submerge();

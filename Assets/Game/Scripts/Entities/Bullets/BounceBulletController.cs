@@ -69,11 +69,11 @@ namespace SketchFleets
             if (IsPlayerOrSpawnedShip(target))
             {
                 if (Attributes.IgnorePlayer) return;
-                target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+                target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage), Attributes.DamageContext);
             }
             else
             {
-                target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+                target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage), Attributes.DamageContext);
             }
         }
 

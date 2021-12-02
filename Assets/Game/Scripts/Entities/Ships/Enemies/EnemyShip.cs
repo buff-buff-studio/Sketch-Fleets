@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using ManyTools.UnityExtended;
-using ManyTools.Variables;
+﻿using ManyTools.Variables;
 using SketchFleets.Data;
 using SketchFleets.Systems;
+using SketchFleets.Systems.DeathContext;
 using UnityEngine;
 
 namespace SketchFleets.Enemies
@@ -16,8 +15,10 @@ namespace SketchFleets.Enemies
 
         [SerializeField]
         private ColorReference enemyDeathColor = new ColorReference(Color.white);
+
         [SerializeField]
         private GameObjectReference enemyDeathBullet;
+
 
         #endregion
 
@@ -29,24 +30,19 @@ namespace SketchFleets.Enemies
 
         #region Public Methods
 
-        /// <summary>
-        /// Emerges the Poolable object from the pool
-        /// </summary>
-        /// <param name="position">The position at which to emerge the object</param>
-        /// <param name="rotation">The rotation to emerge the object with</param>
-        public override void Emerge(Vector3 position, Quaternion rotation)
-        {
-            base.Emerge(position, rotation);
-            
-            // TODO: This is a band-aid to fix a bug. Make sure to remove it later
-            DelayProvider.Instance.DoDelayed(Die, 60f, GetInstanceID());
-        }
-
         public override void Die()
         {
             base.Die();
             Spawner.CountShipDeath(this);
+            DropColor();
+        }
 
+        /// <summary>
+        /// Drops the ship's color
+        /// </summary>
+        private void DropColor()
+        {
+            if (LatestDamageContext != DamageContext.PlayerBullet && LatestDamageContext != DamageContext.PlayerCollision) return;
             enemyDeathColor.Value = Attributes.ShipColor;
             enemyDeathBullet.Value = Attributes.DropedFire;
         }
