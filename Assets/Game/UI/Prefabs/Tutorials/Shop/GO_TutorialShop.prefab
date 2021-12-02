@@ -45,10 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steps:
   - Trigger: {fileID: 0}
-    Popup: {fileID: 8339817050096998054, guid: 602088a6e441d5943928ac164ae45e84, type: 3}
+    Popup: {fileID: 8339817050096998054, guid: d6d3de8eea3a7d1409acb6de1f0d0a68, type: 3}
     IsNew: 1
   - Trigger: {fileID: 11400000, guid: 03532b8f10878c6469a7d9d8add672d0, type: 2}
-    Popup: {fileID: 8339817050096998054, guid: 602088a6e441d5943928ac164ae45e84, type: 3}
+    Popup: {fileID: 8339817050096998054, guid: 4837ef44dfd86bd4d8f43cf8087a1b87, type: 3}
     IsNew: 1
   tutorialCanvas: {fileID: 0}
   autoBeginFirstStep: 1
