@@ -33,7 +33,7 @@ namespace SketchFleets.Entities
 
         #region Properties
 
-        public Bounds TeleportBounds { get; set; }
+        public Collider2D TeleportArea { get; set; }
 
         #endregion
 
@@ -69,7 +69,7 @@ namespace SketchFleets.Entities
             if (!ShouldTeleport()) return;
 
             InstantiateTeleportEffect();
-            transform.position = GetRandomPositionWithin(TeleportBounds);
+            transform.position = GetRandomPositionWithin(TeleportArea.bounds);
             InstantiateTeleportEffect();
 
             _currentTeleportCooldown = teleportCooldown;
@@ -89,12 +89,12 @@ namespace SketchFleets.Entities
         /// </summary>
         /// <param name="bounds">The bounds of the teleport zone</param>
         /// <returns>A random position within the bounds of the teleport zone</returns>
-        private Vector2 GetRandomPositionWithin(Bounds bounds)
+        private static Vector2 GetRandomPositionWithin(Bounds bounds)
         {
             float x = Random.Range(bounds.min.x, bounds.max.x);
             float y = Random.Range(bounds.min.y, bounds.max.y);
 
-            return new Vector2(x + LevelManager.Instance.Player.transform.position.x, y);
+            return new Vector2(x, y);
         }
 
         /// <summary>

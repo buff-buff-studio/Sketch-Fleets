@@ -210,7 +210,7 @@ namespace SketchFleets.Systems
 
             if (ship.TryGetComponent(out ShipTeleporter teleporter))
             {
-                teleporter.TeleportBounds = enemyTeleportArea.bounds;
+                teleporter.TeleportArea = enemyTeleportArea;
             }
             
             ActiveEnemyShips.Add(ship.transform);
