@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,6 +12,8 @@ namespace SketchFleets
 
         [SerializeField]
         private float maxBounceLife = 4;
+        [SerializeField]
+        private GameObject bounceEffect;
 
         private float bounceLife;
         private Vector3 originalScale;
@@ -106,6 +107,8 @@ namespace SketchFleets
             {
                 Submerge();
             }
+            
+            PlayHitEffect();
         }
 
         /// <summary>
