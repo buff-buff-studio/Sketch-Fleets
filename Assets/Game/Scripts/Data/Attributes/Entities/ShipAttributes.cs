@@ -1,6 +1,7 @@
 using ManyTools.UnityExtended.Editor;
 using ManyTools.Variables;
 using SketchFleets.Inventory;
+using SketchFleets.Systems.DeathContext;
 using UnityEngine;
 
 namespace SketchFleets.Data
@@ -56,6 +57,10 @@ namespace SketchFleets.Data
         [Tooltip("How much a ship will take when colliding with this ship.")]
         [SerializeField]
         protected FloatReference collisionDamage = new FloatReference(100f);
+        
+        [Tooltip("The context of the damage given when colliding with this ship.")]
+        [SerializeField]
+        protected DamageContext collisionDamageContext;
 
         [Tooltip("How long the ship should be invincible after taking invincibility-triggering damage.")]
         [SerializeField]
@@ -132,6 +137,8 @@ namespace SketchFleets.Data
         public FloatReference ShieldRegenDelay => shieldRegenDelay;
 
         public FloatReference CollisionDamage => collisionDamage;
+        
+        public DamageContext CollisionDamageContext => collisionDamageContext;
 
         public GameObject ShellDrop => shellDrop;
 

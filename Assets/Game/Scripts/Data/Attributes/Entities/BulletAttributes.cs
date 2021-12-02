@@ -1,4 +1,5 @@
 ﻿using ManyTools.Variables;
+using SketchFleets.Systems.DeathContext;
 using UnityEngine;
 
 namespace SketchFleets.Data
@@ -16,6 +17,9 @@ namespace SketchFleets.Data
         [Tooltip("How much damage the bullet does if it hits an enemy directly.")]
         [SerializeField]
         private FloatReference directDamage = new FloatReference(0);
+        [Tooltip("The context of the damage to apply.")]
+        [SerializeField]
+        private DamageContext damageContext;
         [Tooltip("What is the most damage can vary per shot?")]
         [SerializeField]
         private FloatReference maxDamageVariation = new FloatReference(0);
@@ -82,6 +86,8 @@ namespace SketchFleets.Data
         public FloatReference Speed => speed;
 
         public FloatReference DirectDamage => directDamage;
+        
+        public DamageContext DamageContext => damageContext;
 
         public BoolReference IgnorePlayer => ignorePlayer;
         
