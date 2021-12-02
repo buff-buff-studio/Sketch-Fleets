@@ -68,6 +68,15 @@ namespace SketchFleets.Inventory
             heldSlot = -1;
             if (tooltipBox.gameObject.activeInHierarchy)
                 tooltipBox.gameObject.SetActive(false);
+
+            tooltipBox.GetComponent<CanvasGroup>().alpha = 0;
+        }
+
+        IEnumerator ShowToolTip(float time)
+        {
+            yield return new WaitForSeconds(time);
+        
+            tooltipBox.GetComponent<CanvasGroup>().alpha = 1;
         }
 
         /// <summary>
@@ -97,8 +106,7 @@ namespace SketchFleets.Inventory
         protected void OnClickSlotInternal(int slot)
         {
             //Hide
-            if (tooltipBox.gameObject.activeInHierarchy)
-                tooltipBox.gameObject.SetActive(false);
+            HideTooltip();
 
             if (heldSlot == slot)
             {
@@ -117,10 +125,12 @@ namespace SketchFleets.Inventory
             if (heldSlot >= 0 && GetItemInSlot(heldSlot) != null)
             {
                 tooltipText.text = GetTooltipText(heldSlot);
-                tooltipDescription.text = GetTooltipDescription(heldSlot);
+                tooltipDescription.text = GetTooltipDescription(heldSlot);  
 
                 if (!tooltipBox.gameObject.activeInHierarchy)
                     tooltipBox.gameObject.SetActive(true);
+
+                StartCoroutine(ShowToolTip(0.05f));
             }
 
             //Open toolbar
@@ -188,7 +198,7 @@ namespace SketchFleets.Inventory
 
                         tooltipBox.anchoredPosition = local + new Vector2(70, 40) + new Vector2(0, changeY);
                     }
-                }
+                }               
             }
 
             /*
