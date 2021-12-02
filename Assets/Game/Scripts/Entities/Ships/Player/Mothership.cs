@@ -252,7 +252,7 @@ namespace SketchFleets.Entities
 
             // Spawns the ship
             PoolMember spawn = PoolManager.Instance.Request(shipType.Prefab);
-            spawn.GetComponent<SpawnedShip>().bulletPrefab = colorsInventory.bulletColor;
+            spawn.GetComponent<SpawnedShip>().OverrideBullet(colorsInventory.latestBullet);
             spawn.Emerge(shipSpawnPoint.position, Quaternion.identity);
             spawn.GetComponent<SpriteRenderer>().material.SetColor(redMultiplier, colorsInventory.drawColor);
             colorsInventory.UseColor();
