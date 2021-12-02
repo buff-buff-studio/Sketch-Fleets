@@ -75,7 +75,7 @@ namespace SketchFleets.Entities
 
         public override void Fire()
         {
-            if (fireTimer > 0f || isLocked) return;
+            if (fireTimer > 0f) return;
 
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {

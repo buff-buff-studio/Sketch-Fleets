@@ -18,7 +18,7 @@ namespace SketchFleets
     /// <typeparam name="T">An attribute data structure that inherits from ShipAttributes</typeparam>
     [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public class Ship<T> : PoolMember, IHealthVerifiable, IDamageable where T : ShipAttributes
+    public class Ship<T> : PoolMember, IHealthVerifiable, IDamageable, IFreezable where T : ShipAttributes
     {
         #region Protected Fields
 
@@ -42,10 +42,6 @@ namespace SketchFleets
         protected float fireTimer;
         protected float shieldRegenTimer;
         protected float collisionTimer;
-        protected Transform lockParent;
-
-        protected int lockHit = 0;
-        protected bool isLocked = false;
 
         private bool isDead = false;
         private Coroutine continuousDamageCoroutine;
@@ -130,12 +126,12 @@ namespace SketchFleets
 
             if (continuousDamageCoroutine == null)
             {
-                StartCoroutine(ApplyDamagePulses(amount, frequency, time));
+                continuousDamageCoroutine = StartCoroutine(ApplyDamagePulses(amount, frequency, time));
             }
             else
             {
                 StopCoroutine(continuousDamageCoroutine);
-                StartCoroutine(ApplyDamagePulses(amount, frequency, time));
+                continuousDamageCoroutine = StartCoroutine(ApplyDamagePulses(amount, frequency, time));
             }
         }
 
@@ -218,6 +214,18 @@ namespace SketchFleets
 
         #endregion
 
+        #region IFreezable Implementation
+
+        public void Freeze(float duration)
+        {
+            if (fireTimer < duration)
+            {
+                fireTimer = duration;
+            }
+        }
+
+        #endregion
+
         #region PoolMember Overrides
 
         /// <summary>
@@ -284,7 +292,7 @@ namespace SketchFleets
         /// </summary>
         public virtual void Fire()
         {
-            if (fireTimer > 0f || isLocked) return;
+            if (fireTimer > 0f) return;
 
             for (int index = 0, upper = bulletSpawnPoints.Length; index < upper; index++)
             {
@@ -308,7 +316,7 @@ namespace SketchFleets
         public virtual void Look(Vector2 target)
         {
             // Workaround, this should be done using a proper Pausing interface
-            if (Mathf.Approximately(0f, Time.timeScale) || isLocked) return;
+            if (Mathf.Approximately(0f, Time.timeScale)) return;
 
             // This doesn't really solve the problem. The transform should be a member variable
             // to avoid the constant marshalling
@@ -467,35 +475,10 @@ namespace SketchFleets
                 Damage(damagePerPulse);
                 yield return pulseInterval;
             }
+
+            continuousDamageCoroutine = null;
         }
 
         #endregion
-
-        public void Lock(int lockMax, float lockTime)
-        {
-            lockHit++;
-
-            if (lockHit >= lockMax)
-            {
-                lockHit = 0;
-                StartCoroutine(LockState(lockTime));
-            }
-        }
-
-        protected virtual IEnumerator LockState(float lockTime)
-        {
-            lockParent ??= GameObject.Find("LockShip").transform;
-            transform.parent = lockParent;
-            isLocked = true;
-
-            do
-            {
-                yield return new WaitForSeconds(lockTime);
-            }
-            while (lockHit != 0);
-
-            isLocked = false;
-            transform.parent = null;
-        }
     }
 }
