@@ -78,6 +78,7 @@ namespace SketchFleets
         #region Localization
         public void UpdateLocalization()
         {
+            value = value;
         }
         #endregion
 
