@@ -50,6 +50,10 @@ namespace SketchFleets.Data
         [SerializeField]
         [Tooltip("The maximum amount of enemies that can spawn at any given time")]
         private IntReference[] maxEnemies;
+        
+        [SerializeField]
+        [Tooltip("The interval in seconds between each enemy spawn and each wave spawn, respectively")]
+        private Vector2Reference[] spawnAndWaveInterval;
 
         [SerializeField]
         [Tooltip("The pool of obstacles used for this map")]
@@ -64,6 +68,7 @@ namespace SketchFleets.Data
 
         public IntReference[] MapDifficulty => mapDifficulty;
         public Vector2Reference[] MinMaxWaves => minMaxWaves;
+        public Vector2Reference[] SpawnAndWaveInterval => spawnAndWaveInterval;
         public FloatReference MapHeight => mapHeight;
         public FloatReference MapStartSpawn => mapStartSpawn;
         public Color[] MapColor => mapColor;

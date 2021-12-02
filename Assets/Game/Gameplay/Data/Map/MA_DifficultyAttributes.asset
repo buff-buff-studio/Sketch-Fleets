@@ -107,6 +107,25 @@ MonoBehaviour:
   - _useConstant: 1
     _constant: 10
     _variable: {fileID: 0}
+  spawnAndWaveInterval:
+  - _useConstant: 0
+    _constant: {x: 4, y: 7}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 4, y: 7}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 4, y: 7}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 4, y: 7}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 4, y: 7}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 4, y: 7}
+    _variable: {fileID: 0}
   obstaclePool:
   - {fileID: 0}
   - {fileID: 11400000, guid: de0dd0574f2a08448ba21b0512632550, type: 2}
