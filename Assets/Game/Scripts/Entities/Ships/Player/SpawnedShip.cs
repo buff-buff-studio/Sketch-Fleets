@@ -1,4 +1,4 @@
-﻿using ManyTools.UnityExtended;
+using ManyTools.UnityExtended;
 using ManyTools.UnityExtended.Poolable;
 using SketchFleets.Data;
 using SketchFleets.General;
@@ -28,15 +28,12 @@ namespace SketchFleets.Entities
         /// <param name="rotation">The rotation to emerge the object with</param>
         public override void Emerge(Vector3 position, Quaternion rotation)
         {
-            //GenerateBullet();
             base.Emerge(position, rotation);
-            // The invoke here is beyond horrible in terms of performance, but I'd rather not spend
-            // more time in this script, the deadline is looming
             DelayProvider.Instance.DoDelayed(EmergeSpawnEffect, 0.1f, GetInstanceID());
         }
 
         #endregion
-        
+
         #region Ship Overrides
 
         /// <summary>
@@ -71,11 +68,11 @@ namespace SketchFleets.Entities
             Transform cachedTransform = transform;
             PoolMember spawn = PoolManager.Instance.Request(Attributes.SpawnEffect);
             spawn.Emerge(cachedTransform.position, cachedTransform.rotation);
-            
+
             ParticleSystem spawnCache = spawn.GetComponent<ParticleSystem>();
             spawnCache.startColor = shipColor;
         }
-        
+
         public override void Fire()
         {
             if (fireTimer > 0f || isLocked) return;
@@ -90,6 +87,8 @@ namespace SketchFleets.Entities
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
                 bullet.gameObject.SetActive(true);
             }
+
+            PlayFireSound();
 
             fireTimer = Attributes.Fire.Cooldown;
         }

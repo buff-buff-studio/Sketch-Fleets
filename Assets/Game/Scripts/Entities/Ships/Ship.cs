@@ -296,6 +296,8 @@ namespace SketchFleets
                     Random.Range(Attributes.Fire.AngleJitter * -1f, Attributes.Fire.AngleJitter));
             }
 
+            PlayFireSound();
+
             fireTimer = Attributes.Fire.Cooldown;
         }
 
@@ -345,6 +347,17 @@ namespace SketchFleets
         #endregion
 
         #region Protected Methods
+
+        /// <summary>
+        /// Plays the ship's fire sound
+        /// </summary>
+        protected void PlayFireSound()
+        {
+            if (!(Random.Range(0f, 1f) > Attributes.Fire.MuteChance)) return;
+            soundSource.pitch = 1f + Random.Range(Attributes.Fire.PitchVariation * -1f, Attributes.Fire.PitchVariation);
+            soundSource.PlayOneShot(Attributes.Fire.FireSound);
+        }
+
 
         /// <summary>
         /// Regenerates the ship's shields
