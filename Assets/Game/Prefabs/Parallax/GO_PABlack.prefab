@@ -59,38 +59,47 @@ MonoBehaviour:
     parallaxFactor: {x: 0.86, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 5
   - layerRenderer: {fileID: 3198431839559409059}
     parallaxFactor: {x: 0.87, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 5
   - layerRenderer: {fileID: 3407687278110246116}
     parallaxFactor: {x: 0.88, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 5
   - layerRenderer: {fileID: 5489673263982765004}
     parallaxFactor: {x: 0.8, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 5
   - layerRenderer: {fileID: 3198431838388912005}
     parallaxFactor: {x: 0.89, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 3
   - layerRenderer: {fileID: 3198431839280702054}
     parallaxFactor: {x: 0.9, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 3
   - layerRenderer: {fileID: 3198431838477736659}
     parallaxFactor: {x: 0.75, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 3
   - layerRenderer: {fileID: 3198431839994970512}
     parallaxFactor: {x: 0.975, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 3
   - layerRenderer: {fileID: 3198431839460619649}
     parallaxFactor: {x: 1, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 3
 --- !u!1 &3198431838026898584
 GameObject:
   m_ObjectHideFlags: 0

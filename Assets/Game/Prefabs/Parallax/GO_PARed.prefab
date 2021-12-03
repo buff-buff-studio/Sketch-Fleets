@@ -136,18 +136,22 @@ MonoBehaviour:
     parallaxFactor: {x: 0.8, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 5
   - layerRenderer: {fileID: 5976342677542079707}
     parallaxFactor: {x: 0.85, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 5
   - layerRenderer: {fileID: 5976342677762401046}
     parallaxFactor: {x: 0.95, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 5
   - layerRenderer: {fileID: 5976342676406959478}
     parallaxFactor: {x: 1, y: 1}
     infiniteHorizontalScrolling: 1
     infiniteVerticalScrolling: 0
+    repeatCount: 5
 --- !u!1 &5976342677542079704
 GameObject:
   m_ObjectHideFlags: 0

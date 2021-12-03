@@ -6316,7 +6316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.718562, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 11.425937, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -7241,6 +7241,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 4078349487242449748, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.7999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349487242449748, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349487242449749, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4078349487246019847, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5
@@ -7257,10 +7269,22 @@ PrefabInstance:
       propertyPath: relativeCamera
       value: 
       objectReference: {fileID: 2096931361}
+    - target: {fileID: 4078349487347497420, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: isCinemachineCamera
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349487347497421, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4078349487427527836, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: relativeCamera
       value: 
       objectReference: {fileID: 2096931361}
+    - target: {fileID: 4078349487427527836, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: isCinemachineCamera
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4078349487481671988, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5
@@ -7273,10 +7297,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 4078349487849763158, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.7999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349487849763158, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349487849763159, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4078349487919321458, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: relativeCamera
       value: 
       objectReference: {fileID: 2096931361}
+    - target: {fileID: 4078349487919321458, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: isCinemachineCamera
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4078349487962427400, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5
@@ -7284,6 +7324,18 @@ PrefabInstance:
     - target: {fileID: 4078349488073951845, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349488088849233, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.7999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349488088849233, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349488088849238, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4078349488131088408, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7341,13 +7393,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Parallax-Main
       objectReference: {fileID: 0}
+    - target: {fileID: 4078349488487513921, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4078349488487513923, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: relativeCamera
       value: 
       objectReference: {fileID: 2096931361}
+    - target: {fileID: 4078349488487513923, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: isCinemachineCamera
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4078349488547354180, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349488599865456, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349488599865459, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.7999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078349488599865459, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7999997
       objectReference: {fileID: 0}
     - target: {fileID: 4078349488642767965, guid: 66c7a1c19615f184e884d7a6dbb0bfbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9044,7 +9116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.718562, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 11.425937, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}
