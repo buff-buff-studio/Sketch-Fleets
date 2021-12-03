@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using SketchFleets.Entities;
+using SketchFleets.AI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
