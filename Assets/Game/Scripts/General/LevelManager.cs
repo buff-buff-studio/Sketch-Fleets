@@ -43,6 +43,10 @@ namespace SketchFleets.General
         [SerializeField]
         [Tooltip("The total of enemies killed, displayed in the UI")]
         private IntReference totalEnemiesKilled;
+        
+        [Header("References")]
+        [SerializeField]
+        private BulletTimeManager bulletTimeManager;
 
         [SerializeField]
         private IntReference pencilShell;
@@ -54,6 +58,7 @@ namespace SketchFleets.General
         #region Properties
 
         public Mothership Player { get; private set; }
+        public BulletTimeManager BulletTimeManager => bulletTimeManager;
 
         public bool GameEnded { get; set; }
 
