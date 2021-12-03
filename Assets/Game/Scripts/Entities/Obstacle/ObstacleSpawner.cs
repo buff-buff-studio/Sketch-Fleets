@@ -79,7 +79,7 @@ namespace SketchFleets.Systems
 
                 if (isDrawnObstacleValid)
                 {
-                    spawnPoint = new Vector3(spawnArea.transform.position.x, GetRandomYInSpawnArea());
+                    //spawnPoint = new Vector3(spawnArea.transform.position.x, GetRandomYInSpawnArea());
                     SpawnObstacle(drawnObstacle);
                 }
             }
