@@ -1,8 +1,8 @@
 using ManyTools.Variables;
-using SketchFleets.AI;
+using SketchFleets.General;
 using UnityEngine;
 
-namespace SketchFleets
+namespace SketchFleets.AI
 {
     /// <summary>
     /// An AI state that orbits around the player and fires when he does so
@@ -11,6 +11,13 @@ namespace SketchFleets
     {
         #region Private Fields
 
+        [Header("Bullet Time Settings")]
+        [SerializeField]
+        private AnimationCurve timeByRealTime = new AnimationCurve();
+        [SerializeField]
+        private float bulletTimeDuration = 1.3f;
+        
+        [Header("Launch Settings")]
         [SerializeField]
         private FloatReference launchSpeedMultiplier = new FloatReference(5f);
 
@@ -35,7 +42,7 @@ namespace SketchFleets
             }
             else
             {
-                Vector3 movement = Vector3.up * 
+                Vector3 movement = Vector3.up *
                                    (AI.Ship.Attributes.Speed * Time.deltaTime * Time.timeScale * launchSpeedMultiplier);
                 transform.Translate(movement);
             }
@@ -48,7 +55,7 @@ namespace SketchFleets
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (!Explode) return;
-            
+
             if (other.gameObject.CompareTag("Player") ||
                 other.gameObject.CompareTag("PlayerSpawn") ||
                 other.gameObject.CompareTag("bullet"))
@@ -68,6 +75,10 @@ namespace SketchFleets
         private void OnDisable()
         {
             Explode = false;
+
+            if (AI == null) return;
+            LevelManager.Instance.BulletTimeManager.StartBulletTime(timeByRealTime, bulletTimeDuration);
+            AI.Ship.Fire();
         }
 
         #endregion
@@ -78,12 +89,33 @@ namespace SketchFleets
         {
             Explode = true;
         }
-        
+
         public void LookAtTarget(Vector2 pos) //TODO: Remove
         {
             AI.Ship.Look(pos);
             Explode = true;
         }
+
+        #endregion
+
+        #region Private Methods
+
+#if UNITY_EDITOR
+        [ContextMenu("Add Fire Transforms for Bomb")]
+        private void AddCircularFireTransforms()
+        {
+            int totalTransformCount = 40;
+            
+            for (int index = 0; index < totalTransformCount; index++)
+            {
+                GameObject fireTransform = new GameObject($"Fire Transform ({index})");
+                fireTransform.transform.SetParent(transform);
+                fireTransform.transform.localPosition = Vector3.zero;
+                fireTransform.transform.localRotation = Quaternion.Euler(0, 0, 360f / totalTransformCount * index);
+                fireTransform.transform.Translate(0f, 2.5f, 0f, Space.Self);
+            }
+        }
+#endif
 
         #endregion
     }
