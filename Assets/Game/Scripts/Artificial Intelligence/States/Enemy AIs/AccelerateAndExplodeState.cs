@@ -41,6 +41,7 @@ namespace SketchFleets
             AI = StateMachine as EnemyShipAI;
             rigidbody2d = GetComponent<Rigidbody2D>();
             cachedTransform = transform;
+            cachedTransform.rotation = Quaternion.Euler(0, 0, 90f);
 
             if (AI == null)
             {
@@ -57,7 +58,6 @@ namespace SketchFleets
         {
             if (!ShouldBeActive()) return;
 
-            AI.Ship.Look(AI.Target.transform.position.x > cachedTransform.position.x ? Vector2.right : Vector2.left);
             rigidbody2d.AddForce(transform.up * (AI.Ship.Attributes.Speed * Time.deltaTime));
         }
 
