@@ -10,40 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
-  m_Name: BA_MothershipBullet 1
+  m_Name: BA_EnemyYellowBullet
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Mothership Bullet
+    _constant: Purple Bullet
     _variable: {fileID: 0}
-  description: A bullet fired by the mothership
-  prefab: {fileID: 7188275951484046036, guid: 1233159e84246884b810832defa6e525, type: 3}
+  description: A bullet fired by the Purple Ship
+  prefab: {fileID: 788092735145430477, guid: 00392ca4f103e654d8e0d7f8740c6381, type: 3}
   unlocalizedName: 
   unlocalizedDescription: 
   directDamage:
     _useConstant: 1
-    _constant: 50
+    _constant: 10
     _variable: {fileID: 0}
-  damageContext: 1
+  damageContext: 3
   maxDamageVariation:
     _useConstant: 1
-    _constant: 0
+    _constant: 1.5
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 65
+    _constant: 20
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
-    _constant: 0
+    _constant: 5
     _variable: {fileID: 0}
   indirectDamage:
     _useConstant: 1
-    _constant: 2
+    _constant: 10
     _variable: {fileID: 0}
   ignorePlayer:
     _useConstant: 1
-    _constant: 1
+    _constant: 0
     _variable: {fileID: 0}
   maxBounce:
     _useConstant: 1
@@ -51,7 +51,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   downtime:
     _useConstant: 1
-    _constant: 0
+    _constant: 3
     _variable: {fileID: 0}
   continuousDamageTime:
     _useConstant: 1
@@ -59,24 +59,24 @@ MonoBehaviour:
     _variable: {fileID: 0}
   hitsLock:
     _useConstant: 1
-    _constant: 0
+    _constant: 4
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
-    _constant: 3
+    _constant: 0.1
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 0.25
+    _constant: 0.8
     _variable: {fileID: 0}
-  fireSound: {fileID: 8300000, guid: f274fbd3f38f1ae4889b150a2bff774a, type: 3}
+  fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
   muteChance:
     _useConstant: 1
-    _constant: 0
+    _constant: 0.45
     _variable: {fileID: 0}
   pitchVariation:
     _useConstant: 1
     _constant: 0.25
     _variable: {fileID: 0}
   fireEffect: {fileID: 0}
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 6511845030710563950, guid: d998137b1f83a8947ac607060e38f1e6, type: 3}
