@@ -7,7 +7,7 @@ namespace SketchFleets
     /// An AI state that seeks the player and explodes upon colliding with him
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
-    public sealed class SeekAndExplodeState : BaseEnemyAIState
+    public sealed class SeekAndExplodeState : BaseEnemyAIState, INonLoopable
     {
         #region Private Fields
 
@@ -50,6 +50,15 @@ namespace SketchFleets
         public override void Exit()
         {
 
+        }
+
+        #endregion
+
+        #region INonLoopable Implementation
+
+        public void PreventLoop()
+        {
+            AI.Ship.Die();
         }
 
         #endregion
