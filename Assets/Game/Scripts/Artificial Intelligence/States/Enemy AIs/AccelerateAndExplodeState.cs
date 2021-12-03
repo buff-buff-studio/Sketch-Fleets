@@ -1,5 +1,3 @@
-using System;
-using ManyTools.UnityExtended;
 using SketchFleets.AI;
 using SketchFleets.Systems.DeathContext;
 using UnityEngine;
@@ -10,7 +8,7 @@ namespace SketchFleets
     /// An AI state that seeks the player and explodes upon colliding with him
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
-    public sealed class AccelerateAndExplodeState : BaseEnemyAIState
+    public sealed class AccelerateAndExplodeState : BaseEnemyAIState, INonLoopable
     {
         #region Private Fields
 
@@ -31,11 +29,6 @@ namespace SketchFleets
             }
         }
 
-        private void OnDisable()
-        {
-            DelayProvider.Instance.CancelDoDelayed(gameObject.GetInstanceID());
-        }
-
         #endregion
 
         #region State Implementation
@@ -49,7 +42,6 @@ namespace SketchFleets
             rigidbody2d = GetComponent<Rigidbody2D>();
             cachedTransform = transform;
             cachedTransform.rotation = Quaternion.Euler(0, 0, 90f);
-            DelayProvider.Instance.DoDelayed(AI.Ship.Die, 7f, gameObject.GetInstanceID());
 
             if (AI == null)
             {
@@ -74,6 +66,15 @@ namespace SketchFleets
         /// </summary>
         public override void Exit()
         {
+        }
+
+        #endregion
+
+        #region INonLoopable Implementation
+
+        public void PreventLoop()
+        {
+            AI.Ship.Die();
         }
 
         #endregion
