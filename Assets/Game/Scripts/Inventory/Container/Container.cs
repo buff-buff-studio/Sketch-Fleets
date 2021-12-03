@@ -106,7 +106,10 @@ namespace SketchFleets.Inventory
         protected void OnClickSlotInternal(int slot)
         {
             //Hide
-            HideTooltip();
+            if (tooltipBox.gameObject.activeInHierarchy)
+                tooltipBox.gameObject.SetActive(false);
+
+            tooltipBox.GetComponent<CanvasGroup>().alpha = 0;
 
             if (heldSlot == slot)
             {
