@@ -29,6 +29,16 @@ namespace SketchFleets.Enemies
 
         #endregion
 
+        #region Ship Overrides
+
+        public override void Damage(float amount, DamageContext context, bool makeInvincible = false, bool piercing = false)
+        {
+            if (spriteRenderer.isVisible == false) return;
+            base.Damage(amount, context, makeInvincible, piercing);
+        }
+
+        #endregion
+        
         #region Public Methods
 
         public override void Die()

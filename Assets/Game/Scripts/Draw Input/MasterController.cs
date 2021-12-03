@@ -90,7 +90,7 @@ namespace SketchFleets
         {
             UpdateDebug();
 
-            if (HUD.activeSelf && Time.timeScale == 1)
+            if (HUD.activeSelf && !Mathf.Approximately(Time.timeScale, 0f))
             {
                 ControlsUpdate();
                 if (playerControl.InGame.InputDraw.triggered)
@@ -149,7 +149,7 @@ namespace SketchFleets
 
         public void SelectInput()
         {
-            if (Time.timeScale != 1) return;
+            if (Mathf.Approximately(Time.timeScale, 0f)) return;
 
             Vector2 touch = Camera.main.ViewportToWorldPoint(Camera.main.ScreenToViewportPoint(TouchOne));
 
@@ -164,7 +164,7 @@ namespace SketchFleets
 
         public void TouchOnePos()
         {
-            if (Time.timeScale != 1 || closeFinger == 0 || TouchOne == Vector2.zero) return;
+            if (Mathf.Approximately(Time.timeScale, 0f) || closeFinger == 0 || TouchOne == Vector2.zero) return;
 
             if (closeFinger == 1)
                 mothership.Move(TouchOne, TouchOneRadius());
@@ -174,7 +174,7 @@ namespace SketchFleets
 
         public void TouchTwoPos()
         {
-            if (Time.timeScale != 1 || closeFinger == 0 || TouchTwo == Vector2.zero) return;
+            if (Mathf.Approximately(Time.timeScale, 0f) || closeFinger == 0 || TouchTwo == Vector2.zero) return;
 
             if (closeFinger == 2)
                 mothership.Move(TouchTwo, TouchOneRadius());

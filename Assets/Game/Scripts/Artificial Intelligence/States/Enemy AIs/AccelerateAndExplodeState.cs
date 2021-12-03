@@ -1,3 +1,5 @@
+using System;
+using ManyTools.UnityExtended;
 using SketchFleets.AI;
 using SketchFleets.Systems.DeathContext;
 using UnityEngine;
@@ -29,6 +31,11 @@ namespace SketchFleets
             }
         }
 
+        private void OnDisable()
+        {
+            DelayProvider.Instance.CancelDoDelayed(gameObject.GetInstanceID());
+        }
+
         #endregion
 
         #region State Implementation
@@ -41,6 +48,8 @@ namespace SketchFleets
             AI = StateMachine as EnemyShipAI;
             rigidbody2d = GetComponent<Rigidbody2D>();
             cachedTransform = transform;
+            cachedTransform.rotation = Quaternion.Euler(0, 0, 90f);
+            DelayProvider.Instance.DoDelayed(AI.Ship.Die, 7f, gameObject.GetInstanceID());
 
             if (AI == null)
             {
@@ -57,7 +66,6 @@ namespace SketchFleets
         {
             if (!ShouldBeActive()) return;
 
-            AI.Ship.Look(AI.Target.transform.position.x > cachedTransform.position.x ? Vector2.right : Vector2.left);
             rigidbody2d.AddForce(transform.up * (AI.Ship.Attributes.Speed * Time.deltaTime));
         }
 

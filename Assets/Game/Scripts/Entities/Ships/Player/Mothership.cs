@@ -398,7 +398,7 @@ namespace SketchFleets.Entities
         private void HandlePlayerInput()
         {
             // Moves and rotates the ship
-            if (Time.timeScale != 1) return;
+            if (Mathf.Approximately(Time.timeScale, 0f)) return;
             RadiusLook(ShootingTarget.targetPoint.position);
         }
         
