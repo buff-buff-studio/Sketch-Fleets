@@ -52,7 +52,7 @@ MonoBehaviour:
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 2, y: 3}
+    _constant: {x: 2, y: 2}
     _variable: {fileID: 0}
   - _useConstant: 1
     _constant: {x: 3, y: 4}
@@ -93,7 +93,7 @@ MonoBehaviour:
     _constant: 0
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 5
+    _constant: 4
     _variable: {fileID: 0}
   - _useConstant: 1
     _constant: 6
@@ -112,7 +112,7 @@ MonoBehaviour:
     _constant: {x: 4, y: 7}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 4.75, y: 6.75}
+    _constant: {x: 5.45, y: 6.75}
     _variable: {fileID: 0}
   - _useConstant: 1
     _constant: {x: 4, y: 7}
