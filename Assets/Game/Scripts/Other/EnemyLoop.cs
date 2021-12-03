@@ -14,10 +14,9 @@ namespace SketchFleets
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.gameObject.CompareTag("Enemy"))
-            {
-                col.transform.position = GetRandomSpawnPoint();
-            }
+            if (!col.gameObject.CompareTag("Enemy")) return;
+            col.gameObject.GetComponent<INonLoopable>()?.PreventLoop();
+            col.transform.position = GetRandomSpawnPoint();
         }
 
         #endregion
