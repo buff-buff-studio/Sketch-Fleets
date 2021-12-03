@@ -149,7 +149,12 @@ namespace SketchFleets.Systems
         {
             WaitForSeconds spawnWait =
                 new WaitForSeconds(mapAttributes.SpawnAndWaveInterval[mapAttributes.Difficulty].Value.x);
-            yield return new WaitForSeconds(mapAttributes.SpawnAndWaveInterval[mapAttributes.Difficulty].Value.y);
+
+            if (currentWave > 1)
+            {
+                yield return new WaitForSeconds(mapAttributes.SpawnAndWaveInterval[mapAttributes.Difficulty].Value.y);
+            }
+
             pendingSpawns = mapAttributes.MaxEnemies[mapAttributes.Difficulty];
 
             for (int index = 0; index < mapAttributes.MaxEnemies[mapAttributes.Difficulty]; index++)
