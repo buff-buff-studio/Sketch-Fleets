@@ -24,15 +24,11 @@ namespace ManyTools.UnityExtended.Parallax
         [SerializeField]
         [Tooltip("Whether the layer should be repeated vertically to allow for infinite scrolling")]
         private bool infiniteVerticalScrolling = false;
-
+        [SerializeField]
+        [Tooltip("How many times the parallax layer should be repeated. Increasing this value will slightly increase memory usage, but may fix issues with wide screens")]
+        private float repeatCount = 3;
+        
         private Vector2 textureUnitSize;
-
-        #endregion
-
-        #region Properties
-
-        public GameObject LayerOriginal => layerRenderer.gameObject;
-        public GameObject[] HorizontalClones { get; private set; }
 
         #endregion
 
@@ -58,13 +54,13 @@ namespace ManyTools.UnityExtended.Parallax
             if (infiniteHorizontalScrolling)
             {
                 textureUnitSize.x = layerTexture.width / sprite.pixelsPerUnit * localScale.x;
-                size = new Vector2(size.x * 3f, size.y);
+                size = new Vector2(size.x * repeatCount, size.y);
             }
 
             if (infiniteVerticalScrolling)
             {
                 textureUnitSize.y = layerTexture.height / sprite.pixelsPerUnit * localScale.y;
-                size = new Vector2(size.x, size.y * 3f);
+                size = new Vector2(size.x, size.y * repeatCount);
             }
 
             // Automatically extends the sprite to the necessary width
@@ -88,6 +84,8 @@ namespace ManyTools.UnityExtended.Parallax
                 // If the texture hasn't fully looped, don't seamlessly move it yet
                 if (Mathf.Abs(cameraPosition.x - position.x) >= textureUnitSize.x)
                 {
+                    Debug.Log("Scrolled horizontally");
+                    
                     // Get how much the texture moved beyond a full loop
                     float offset = (cameraPosition.x - position.x) % textureUnitSize.x;
                     // Seamlessly reposition the texture
