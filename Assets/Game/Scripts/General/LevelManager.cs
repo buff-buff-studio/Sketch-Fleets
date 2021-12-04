@@ -22,7 +22,7 @@ namespace SketchFleets.General
 
         [Header("Count of pencil sharps at start of level")]
         [SerializeField]
-        private int pencilShellAtStart;
+        public int pencilShellAtStart;
 
         [SerializeField]
         [Tooltip("The seconds passed since the beginning of the level")]

@@ -117,9 +117,9 @@ namespace SketchFleets.UI
         /// </summary>
         private void RewardPlayer()
         {
-            ProfileSystem.Profile.Data.TotalCoins +=
-                ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(pencilShell.Value);
-            PencilBoxText.AddedAmount = pencilShell.Value;
+            int n = pencilShell.Value - LevelManager.Instance.pencilShellAtStart;
+            ProfileSystem.Profile.Data.TotalCoins +=ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(N);
+            PencilBoxText.AddedAmount = n;
             pencilShell.Value = 0;
         }
 
