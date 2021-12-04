@@ -22,7 +22,7 @@ MonoBehaviour:
   unlocalizedDescription: 
   directDamage:
     _useConstant: 1
-    _constant: 37
+    _constant: 10
     _variable: {fileID: 0}
   damageContext: 3
   maxDamageVariation:
@@ -39,7 +39,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   indirectDamage:
     _useConstant: 1
-    _constant: 20
+    _constant: 15
     _variable: {fileID: 0}
   ignorePlayer:
     _useConstant: 1
