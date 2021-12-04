@@ -39,7 +39,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   indirectDamage:
     _useConstant: 1
-    _constant: 2
+    _constant: 0
     _variable: {fileID: 0}
   ignorePlayer:
     _useConstant: 1
@@ -47,7 +47,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   maxBounce:
     _useConstant: 1
-    _constant: 3
+    _constant: 1
     _variable: {fileID: 0}
   downtime:
     _useConstant: 1

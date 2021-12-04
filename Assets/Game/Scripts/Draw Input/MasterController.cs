@@ -12,6 +12,7 @@ namespace SketchFleets
 {
     public sealed class MasterController : MonoBehaviour
     {
+        [Header("System References")]
         [SerializeField]
         private ShootingTarget shootingTarget;
         [SerializeField]
@@ -24,6 +25,7 @@ namespace SketchFleets
         [SerializeField]
         private ColorsInventory _colorsInventory;
 
+        [Header("HUD Elements")]
         [SerializeField]
         private GameObject HUD;
         [SerializeField]
@@ -31,13 +33,19 @@ namespace SketchFleets
         [SerializeField]
         private GameObject ColorHUD;
 
+        [Header("Joysticks")]
         [SerializeField]
         private RectTransform JoystickL;
         [SerializeField]
         private RectTransform JoystickR;
 
+        [Header("Buttons")]
         [SerializeField]
         private GameObject fireShipButton;
+        
+        [Header("Other Configs")]
+        [SerializeField]
+        private float slowDownFactor = 0.5f;
 
         private IAA_SketchFleetsInputs playerControl;
 
@@ -283,7 +291,7 @@ namespace SketchFleets
             HUD.SetActive(false);
             ColorHUD.SetActive(true);
             _lineDrawer.gameObject.SetActive(true);
-            _lineDrawer.BulletTime(.5f);
+            _lineDrawer.BulletTime(slowDownFactor);
         }
 
         public void OpenInventory()
@@ -291,7 +299,7 @@ namespace SketchFleets
             if (!HUD.activeSelf) return;
             HUD.SetActive(false);
             InventoryHUD.SetActive(true);
-            Time.timeScale = 0.5f;
+            Time.timeScale = slowDownFactor;
         }
 
         public void CloseInventory()

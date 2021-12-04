@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f06b844695e3e284ebda169c79b2035f, type: 3}
-  m_Name: FOP_Hard_YellowDuo
+  m_Name: FOP_Hard_TriangleLargeR&P
   m_EditorClassIdentifier: 
   ships:
+  - {fileID: 11400000, guid: 8ba66633bc11093458ce85e32d68fe69, type: 2}
   - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
   - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
   - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
   - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
-  - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
-  - {fileID: 11400000, guid: d5f62a202075f1048b4968cc3a5ebf80, type: 2}
-  - {fileID: 11400000, guid: d5f62a202075f1048b4968cc3a5ebf80, type: 2}
-  - {fileID: 11400000, guid: 7e471b917b979d64790482eeadaf095e, type: 2}
-  formationObject: {fileID: 1606998352315720677, guid: f80915a11bab69345b23c137a7a66225, type: 3}
+  formationObject: {fileID: 8687753239053292706, guid: 1ba9b0908dd6771498dc0e782a92d10f, type: 3}
