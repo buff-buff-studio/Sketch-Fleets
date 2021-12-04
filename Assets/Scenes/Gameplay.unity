@@ -2484,7 +2484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1306087099679912495, guid: e650e5de693059c458c1931e204bb7aa, type: 3}
       propertyPath: dontDestroyOnLoad
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e650e5de693059c458c1931e204bb7aa, type: 3}
@@ -6316,7 +6316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275453999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.437213, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 5.718562, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750384827}
@@ -6697,30 +6697,14 @@ MonoBehaviour:
   defaultPoolSettings:
     PoolLimit: 20
     PreFillAmount: 0
-    CullExcessMembers: 1
+    CullExcessMembers: 0
     AdaptivePoolLimits: 0
     IntervalMemory: 0
     MinimumLimit: 0
   cullInterval: 40
   adaptInterval: 40
   defaultPools:
-    _keyValueList:
-    - Key: {fileID: 7188275951484046036, guid: 1233159e84246884b810832defa6e525, type: 3}
-      Value:
-        PoolLimit: 20
-        PreFillAmount: 10
-        CullExcessMembers: 1
-        AdaptivePoolLimits: 1
-        IntervalMemory: 10
-        MinimumLimit: 10
-    - Key: {fileID: 4108485770172352479, guid: 12680e9855c37684ea4f9c7f37017a4f, type: 3}
-      Value:
-        PoolLimit: 30
-        PreFillAmount: 30
-        CullExcessMembers: 1
-        AdaptivePoolLimits: 1
-        IntervalMemory: 10
-        MinimumLimit: 15
+    _keyValueList: []
     _keyCollision: 0
 --- !u!4 &1425043646
 Transform:
@@ -9116,7 +9100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096931357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.437213, y: -1.4597298, z: -10}
+  m_LocalPosition: {x: 5.718562, y: -1.4597298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706294878}
