@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3123a03eee314ca9ab2b63d6a62049f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connectedSprite: {fileID: 21300000, guid: d0cabebb0e3d6174b8b23cc00db33241, type: 3}
+  connectedSprite: {fileID: 21300000, guid: d0cabebb0e3d6174b8b23cc00db33241, type: 3}
 --- !u!1 &1334462205941648657
 GameObject:
   m_ObjectHideFlags: 0
