@@ -27,11 +27,11 @@ MonoBehaviour:
   damageContext: 3
   maxDamageVariation:
     _useConstant: 1
-    _constant: 15
+    _constant: 5
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 100
+    _constant: 87.5
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
@@ -39,7 +39,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   indirectDamage:
     _useConstant: 1
-    _constant: 15
+    _constant: 10
     _variable: {fileID: 0}
   ignorePlayer:
     _useConstant: 1
