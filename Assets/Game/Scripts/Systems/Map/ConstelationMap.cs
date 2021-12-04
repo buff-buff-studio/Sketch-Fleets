@@ -185,7 +185,7 @@ public class ConstelationMap : MonoBehaviour
                 if(i == 0)
                     difficulty = 1;
                 else if(i == columns - 1)
-                    difficulty = 4; //Black Holde
+                    difficulty = 4; //Black Hole
                 else if(i == columns - 2 && j%2 == 0)
                     difficulty = 0; //Shop
                 else if(Random.Range(0,10) > 8 && i > 0 && i != columns - 2)
@@ -203,17 +203,20 @@ public class ConstelationMap : MonoBehaviour
                     }
                     else
                     {
-                        if(Random.Range(0,10) > 7 && i > 1)
+                        if(Random.Range(0,10) > 7 && i >= columns/2)
                         {
                             difficulty = 5;
                         }
                         else
                         {
-                            float pg = (i * 1f)/(columns - 1);
-                            difficulty = Mathf.Clamp(Random.Range((int) pg * 4,(int) (pg * (columns/2f) + 1)) + 1,1,3);
+                            float pg = (i * 1.35f)/(columns - 1);
+                            difficulty = Mathf.Clamp(Random.Range((int) pg * 4,(int) (pg * (columns/2f) + 1)) + 1,1,3);  
                         }
                     }
                 }
+
+                if(i >= columns/2 && difficulty > 0 && difficulty <= 2)
+                    difficulty ++;
  
 
                 //o.transform.GetChild(0).GetComponent<Text>().text = constelation.Count + "";
@@ -224,14 +227,17 @@ public class ConstelationMap : MonoBehaviour
                 currentLineStars.Add(s);
                 constelation.AddStar(s);
 
-                if(difficulty == 5)
+                if(difficulty == 5 && i > columns/2)
                 {
-                    float pg = (i * 1f)/(columns - 1);
+                    float pg = (i * 1.15f)/(columns - 1);
                     s.Difficulty = Mathf.Clamp(Random.Range((int) pg * 4,(int) (pg * (columns/2f) + 1)) + 1,1,3);
                     purplePlanetsCandidates.Add(s);
+
+                    if(i >= columns/2 && s.Difficulty > 0 && s.Difficulty <= 2)
+                        s.Difficulty ++;
                 }
                 else if(difficulty == 1 || difficulty == 2 || difficulty == 3)
-                    if(i > 0)
+                    if(i >= columns/2)
                         allOtherPlanets.Add(s);
 
                 //Update bounds
@@ -328,7 +334,7 @@ public class ConstelationMap : MonoBehaviour
         }
 
         //Purple planets
-        int purplePlanetsCount = Random.Range(3,6);
+        int purplePlanetsCount = Random.Range(3,7);
 
         while(purplePlanetsCandidates.Count < purplePlanetsCount && allOtherPlanets.Count > 0)
         {
@@ -336,8 +342,8 @@ public class ConstelationMap : MonoBehaviour
             purplePlanetsCandidates.Add(allOtherPlanets[i]);
             allOtherPlanets.RemoveAt(i);
         }
-
-        for(int i = 0; i < purplePlanetsCount; i ++)
+  
+        for(int i = 0; i < Mathf.Min(purplePlanetsCount,purplePlanetsCandidates.Count); i ++)
         {
             int j = Random.Range(0,purplePlanetsCandidates.Count);
             purplePlanetsCandidates[j].Difficulty = 5;
