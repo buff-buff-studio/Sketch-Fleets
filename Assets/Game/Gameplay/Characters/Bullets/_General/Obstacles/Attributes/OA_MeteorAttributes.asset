@@ -18,9 +18,11 @@ MonoBehaviour:
     _variable: {fileID: 0}
   description: A meteor that flies by the environment. Hurts quite a bit.
   prefab: {fileID: 5208673320480033209, guid: 1f510187028854e409cce7f2696eb7ae, type: 3}
+  unlocalizedName: 
+  unlocalizedDescription: 
   collisionDamage:
     _useConstant: 1
-    _constant: 500
+    _constant: 250
     _variable: {fileID: 0}
   collideWithPlayerOnly:
     _useConstant: 1
