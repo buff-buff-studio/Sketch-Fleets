@@ -77,7 +77,7 @@ MonoBehaviour:
   droppedFire: {fileID: 0}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 630950013473707304, guid: 2e905cd8aff31a24292a463aa536e8dd, type: 3}
-  healEffect: {fileID: 0}
+  healEffect: {fileID: 3722199005660995477, guid: 3dfb043eb3f266142bb1341272a4da94, type: 3}
   spawnEffect: {fileID: 6815621210096123458, guid: 1e494c40819657449bbdc0368a4feda6, type: 3}
   maximumShips:
     _useConstant: 1
