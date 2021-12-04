@@ -84,8 +84,6 @@ namespace ManyTools.UnityExtended.Parallax
                 // If the texture hasn't fully looped, don't seamlessly move it yet
                 if (Mathf.Abs(cameraPosition.x - position.x) >= textureUnitSize.x)
                 {
-                    Debug.Log("Scrolled horizontally");
-                    
                     // Get how much the texture moved beyond a full loop
                     float offset = (cameraPosition.x - position.x) % textureUnitSize.x;
                     // Seamlessly reposition the texture
