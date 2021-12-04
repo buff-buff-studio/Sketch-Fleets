@@ -905,6 +905,7 @@ MonoBehaviour:
   JoystickL: {fileID: 1277911919}
   JoystickR: {fileID: 445425364}
   fireShipButton: {fileID: 1162185797}
+  slowDownFactor: 0.275
   db: {fileID: 2071217371}
 --- !u!1 &269005192
 GameObject:
