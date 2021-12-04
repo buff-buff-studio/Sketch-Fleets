@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ManyTools.UnityExtended.Editor;
 using SketchFleets.ProfileSystem;
 using UnityEngine;
@@ -50,7 +51,7 @@ namespace SketchFleets.Systems.Tutorial
 
         private void OnDestroy()
         {
-            foreach (TutorialStep step in steps)
+            foreach (TutorialStep step in steps.Where(step => step != null && step.Trigger != null))
             {
                 step.Trigger.RemoveListener(BeginStep);
             }
