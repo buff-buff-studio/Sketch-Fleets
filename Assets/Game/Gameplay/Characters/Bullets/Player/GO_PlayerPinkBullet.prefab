@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes: {fileID: 11400000, guid: 064c35b9c67f7ce4a9d4aabf5d93fe8a, type: 2}
-  maxBounceLife: 2
+  maxBounceLife: 4
   bounceEffect: {fileID: 0}
 --- !u!70 &4334310225986767767
 CapsuleCollider2D:
