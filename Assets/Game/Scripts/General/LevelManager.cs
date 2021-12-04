@@ -20,6 +20,10 @@ namespace SketchFleets.General
         [SerializeField]
         private StringReference mapTimer;
 
+        [Header("Count of pencil sharps at start of level")]
+        [SerializeField]
+        public int pencilShellAtStart;
+
         [SerializeField]
         [Tooltip("The seconds passed since the beginning of the level")]
         private IntReference seconds;
@@ -89,6 +93,7 @@ namespace SketchFleets.General
         {
             pencilShell.Value = Profile.Data.Coins;
             totalEnemiesKilled.Value = Profile.Data.Kills;
+            pencilShellAtStart = pencilShell.Value;
 
             updateTimerRoutine = StartCoroutine(UpdateTimer());
         }
@@ -125,6 +130,7 @@ namespace SketchFleets.General
         {
             yield return new WaitForSeconds(3f);
 
+            Profile.Data.TotalCoins += pencilShell.Value - pencilShellAtStart;
             SavePlayerProgress();
             ShowWinUI();
 
