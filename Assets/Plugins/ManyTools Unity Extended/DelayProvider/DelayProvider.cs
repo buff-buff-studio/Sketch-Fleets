@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using ManyTools.UnityExtended;
 using UnityEngine;
 
 namespace ManyTools.UnityExtended
@@ -12,9 +11,8 @@ namespace ManyTools.UnityExtended
     {
         #region Private Fields
 
-        private readonly List<Action> actions = new List<Action>();
-        private readonly List<float> times = new List<float>();
-        private readonly List<int> instanceIDs = new List<int>();
+        private readonly List<DelayedAction> delayedActions = new List<DelayedAction>();
+        private readonly HashSet<int> cancelRequests = new HashSet<int>();
 
         #endregion
 
@@ -22,6 +20,7 @@ namespace ManyTools.UnityExtended
 
         private void Update()
         {
+            PruneCanceledActions();
             InvokeTimedActions();
         }
 
@@ -34,25 +33,19 @@ namespace ManyTools.UnityExtended
         /// </summary>
         /// <param name="action">The action to do</param>
         /// <param name="delayInSeconds">The delay of the action</param>
-        /// <param name="instanceID">The instance ID linked with the action</param>
+        /// <param name="instanceID">The ID of the object that owns the action</param>
         public void DoDelayed(Action action, float delayInSeconds, int instanceID)
         {
-            actions.Add(action);
-            times.Add(Time.time + delayInSeconds);
-            instanceIDs.Add(instanceID);
+            delayedActions.Add(new DelayedAction(action, delayInSeconds, instanceID));
         }
 
         /// <summary>
         /// Cancels a delayed action
         /// </summary>
-        /// <param name="instanceID">The instance ID linked with the action</param>
-        public void CancelDoDelayed(int instanceID)
+        /// <param name="owner">The ID of the object that owns the action</param>
+        public void CancelDoDelayed(int owner)
         {
-            for (int index = instanceIDs.Count - 1; index >= 0; index--)
-            {
-                if (instanceIDs[index] != instanceID) continue;
-                RemoveAction(index);
-            }
+            cancelRequests.Add(owner);
         }
 
         #endregion
@@ -60,17 +53,27 @@ namespace ManyTools.UnityExtended
         #region Private Methods
 
         /// <summary>
+        /// Removes all cancelled actions from the list
+        /// </summary>
+        private void PruneCanceledActions()
+        {
+            if (cancelRequests.Count == 0) return;
+            delayedActions.RemoveAll(delayedAction => cancelRequests.Contains(delayedAction.OwnerID));
+            cancelRequests.Clear();
+        }
+        
+        /// <summary>
         ///     Invokes current timed actions
         /// </summary>
         private void InvokeTimedActions()
         {
-            int actionsCount = actions.Count;
+            int actionsCount = delayedActions.Count;
             if (actionsCount <= 0) return;
             
             for (int index = actionsCount - 1; index >= 0; index--)
             {
-                if (!(times[index] <= Time.time)) continue;
-                actions[index]?.Invoke();
+                if (!(delayedActions[index].ExecutionTime <= Time.time)) continue;
+                delayedActions[index].Action?.Invoke();
 
                 RemoveAction(index);
             }
@@ -82,11 +85,29 @@ namespace ManyTools.UnityExtended
         /// <param name="index">The index of the action to remove</param>
         private void RemoveAction(int index)
         {
-            if (index >= instanceIDs.Count || index < 0) return;
-            
-            times.RemoveAt(index);
-            actions.RemoveAt(index);
-            instanceIDs.RemoveAt(index);
+            if (index >= delayedActions.Count || index < 0) return;
+            delayedActions.RemoveAt(index);
+        }
+
+        #endregion
+
+        #region Nested Structs
+
+        /// <summary>
+        /// A struct that contains information about a delayed action
+        /// </summary>
+        private readonly struct DelayedAction
+        {
+            public readonly Action Action;
+            public readonly float ExecutionTime;
+            public readonly int OwnerID;
+
+            public DelayedAction(Action action, float delay, int ownerID)
+            {
+                Action = action;
+                ExecutionTime = Time.time + delay;
+                OwnerID = ownerID;
+            }
         }
 
         #endregion

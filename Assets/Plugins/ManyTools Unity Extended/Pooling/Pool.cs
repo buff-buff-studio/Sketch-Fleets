@@ -152,8 +152,8 @@ namespace ManyTools.UnityExtended.Poolable
                 // Gets its IPoolable component and immediately submerges it
                 PoolMember poolMember = poolable.GetComponent<PoolMember>();
                 poolMember.MotherPool = this;
-                poolMember.Submerge();
-
+                poolMember.gameObject.SetActive(false);
+                
                 // Adds it to the list
                 poolables.Add(poolMember);
             }
