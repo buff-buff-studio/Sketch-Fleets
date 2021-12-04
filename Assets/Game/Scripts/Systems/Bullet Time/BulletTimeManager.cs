@@ -55,6 +55,19 @@ namespace SketchFleets
             Time.timeScale = 1f;
             Time.fixedDeltaTime = _fixedDeltaTimeCache;
         }
+        
+        /// <summary>
+        /// Stops controlling timeScale
+        /// </summary>
+        private void RelinquishTimeControl()
+        {
+            if (_bulletTimeCoroutine != null)
+            {
+                StopCoroutine(_bulletTimeCoroutine);
+            }
+            
+            Time.fixedDeltaTime = _fixedDeltaTimeCache;
+        }
 
         /// <summary>
         /// Slows down time to make a bullet-time-like effect
@@ -64,10 +77,18 @@ namespace SketchFleets
         private IEnumerator BulletTime(AnimationCurve timeByRealTime, float duration)
         {
             WaitForSecondsRealtime waitForRealTime = new WaitForSecondsRealtime(duration / 20f);
+            float lastTimeScale = Time.timeScale;
             
             for (int index = 0; index < 20; index++)
             {
+                if (!Mathf.Approximately(Time.timeScale, lastTimeScale))
+                {
+                    RelinquishTimeControl();
+                    yield break;
+                }
+                
                 Time.timeScale = timeByRealTime.Evaluate(duration / 20f * index);
+                lastTimeScale = Time.timeScale;
                 Time.fixedDeltaTime = Time.timeScale * 0.02f;
                 yield return waitForRealTime;
             }
