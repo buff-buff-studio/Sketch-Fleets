@@ -14,33 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool:
   - item: {fileID: 11400000, guid: 757d786660a891e48a04b9b5cca79c82, type: 2}
-    weight: 10
+    weight: 5
   - item: {fileID: 11400000, guid: f9b109fd2b508c4479d2b0d8c7188e72, type: 2}
-    weight: 10
+    weight: 5
   - item: {fileID: 11400000, guid: 4d7bdd7a2efa2134691d55e12627161d, type: 2}
     weight: 0
   - item: {fileID: 11400000, guid: 4073b8f01fd36aa40976d5309a1494dc, type: 2}
-    weight: 8
+    weight: 5
   - item: {fileID: 11400000, guid: ab1d1f54238a8b64d9e52754be887578, type: 2}
-    weight: 12
+    weight: 6
   - item: {fileID: 11400000, guid: 2147483abfa316e41a33ded56b47d7b6, type: 2}
-    weight: 8
+    weight: 10
   - item: {fileID: 11400000, guid: 0f98552dee834714f9cc3ff7960b7ca1, type: 2}
-    weight: 3
+    weight: 6
   - item: {fileID: 11400000, guid: 9987c5feab4e57040b5442a5500831aa, type: 2}
-    weight: 2
+    weight: 5
   - item: {fileID: 11400000, guid: 7652e0675bae4784293dba47c0b0014c, type: 2}
-    weight: 1
+    weight: 5
   - item: {fileID: 11400000, guid: 365cba201e9adb842bb6c22bed072d22, type: 2}
-    weight: 1
+    weight: 5
   - item: {fileID: 11400000, guid: 97b1187b327367b4a9eb9edb5672c727, type: 2}
-    weight: 1
+    weight: 6
   - item: {fileID: 11400000, guid: 5a804ec6cdd3ac7478dda10518892f30, type: 2}
-    weight: 1
+    weight: 6
   - item: {fileID: 11400000, guid: 33d819c695a1a0a4098302d816b873d7, type: 2}
     weight: 6
   - item: {fileID: 11400000, guid: 706bd502c97f5ee4eb626e73705194cc, type: 2}
-    weight: 1
+    weight: 3
   - item: {fileID: 11400000, guid: 6d49e27f19f42654b8a845386289b55f, type: 2}
     weight: 3
   - item: {fileID: 11400000, guid: a7847440c685d464a998d966b79f6116, type: 2}
