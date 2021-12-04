@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using ManyTools.Variables;
 using SketchFleets.Entities;
 using SketchFleets.General;
-
 using System.Collections;
 using System.Collections.Generic;
 
@@ -20,14 +19,17 @@ namespace SketchFleets.UI
         [Header("Target")]
         [SerializeField, RequiredField()]
         private Mothership target;
+
         [SerializeField]
         private GameObject gameOverScreen;
 
         [Header("UI Settings")]
         [SerializeField]
         private FloatReference lerpSpeed;
+
         [SerializeField, RequiredField()]
         private Image healthBar;
+
         [SerializeField]
         private IntReference pencilShell;
 
@@ -105,6 +107,7 @@ namespace SketchFleets.UI
             float timer = Time.unscaledTime;
             float actual = 0;
             CanvasGroup canvasGroup = gameOverScreen.GetComponent<CanvasGroup>();
+
             while ((actual = Time.unscaledTime - timer) < 1.5f)
             {
                 canvasGroup.alpha = actual / 1.5f;
@@ -118,7 +121,7 @@ namespace SketchFleets.UI
         private void RewardPlayer()
         {
             int n = pencilShell.Value - LevelManager.Instance.pencilShellAtStart;
-            ProfileSystem.Profile.Data.TotalCoins +=ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(N);
+            ProfileSystem.Profile.Data.TotalCoins += ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(n);
             PencilBoxText.AddedAmount = n;
             pencilShell.Value = 0;
         }
