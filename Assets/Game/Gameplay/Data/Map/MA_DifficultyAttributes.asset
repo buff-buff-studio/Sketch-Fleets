@@ -33,6 +33,9 @@ MonoBehaviour:
     _constant: 0
     _variable: {fileID: 0}
   - _useConstant: 1
+    _constant: 4
+    _variable: {fileID: 0}
+  - _useConstant: 1
     _constant: 1
     _variable: {fileID: 0}
   - _useConstant: 1
@@ -44,12 +47,12 @@ MonoBehaviour:
   - _useConstant: 1
     _constant: 5
     _variable: {fileID: 0}
-  - _useConstant: 1
-    _constant: 4
-    _variable: {fileID: 0}
   minMaxWaves:
   - _useConstant: 1
     _constant: {x: 0, y: 0}
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: {x: 5, y: 7}
     _variable: {fileID: 0}
   - _useConstant: 1
     _constant: {x: 2, y: 2}
@@ -63,9 +66,6 @@ MonoBehaviour:
   - _useConstant: 1
     _constant: {x: 8, y: 9}
     _variable: {fileID: 0}
-  - _useConstant: 1
-    _constant: {x: 5, y: 7}
-    _variable: {fileID: 0}
   mapHeight:
     _useConstant: 1
     _constant: 10
@@ -76,21 +76,24 @@ MonoBehaviour:
     _variable: {fileID: 0}
   mapColor:
   - {r: 1, g: 1, b: 0, a: 1}
+  - {r: 0.5019608, g: 0, b: 1, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.64705884, b: 0, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}
-  - {r: 0.5019608, g: 0, b: 1, a: 1}
   enemyPool:
   - {fileID: 0}
+  - {fileID: 11400000, guid: 204ef1cf3dbec504d823d0045df82d66, type: 2}
   - {fileID: 11400000, guid: 216a251f897491d4eba86efa57d0b7b0, type: 2}
   - {fileID: 11400000, guid: 0a0349ef1e55e234eb7594e268d6b89a, type: 2}
   - {fileID: 11400000, guid: 3dc2bcd5aaab4474e84a3d32e16ec2ce, type: 2}
-  - {fileID: 11400000, guid: 204ef1cf3dbec504d823d0045df82d66, type: 2}
   - {fileID: 11400000, guid: 3dc2bcd5aaab4474e84a3d32e16ec2ce, type: 2}
   maxEnemies:
   - _useConstant: 1
     _constant: 0
+    _variable: {fileID: 0}
+  - _useConstant: 1
+    _constant: 10
     _variable: {fileID: 0}
   - _useConstant: 1
     _constant: 4
@@ -104,11 +107,11 @@ MonoBehaviour:
   - _useConstant: 1
     _constant: 10
     _variable: {fileID: 0}
-  - _useConstant: 1
-    _constant: 10
-    _variable: {fileID: 0}
   spawnAndWaveInterval:
   - _useConstant: 0
+    _constant: {x: 4, y: 7}
+    _variable: {fileID: 0}
+  - _useConstant: 1
     _constant: {x: 4, y: 7}
     _variable: {fileID: 0}
   - _useConstant: 1
@@ -123,13 +126,10 @@ MonoBehaviour:
   - _useConstant: 1
     _constant: {x: 4, y: 7}
     _variable: {fileID: 0}
-  - _useConstant: 1
-    _constant: {x: 4, y: 7}
-    _variable: {fileID: 0}
   obstaclePool:
   - {fileID: 0}
+  - {fileID: 11400000, guid: 746e4e835d193ee4392f46948ea9849b, type: 2}
   - {fileID: 11400000, guid: de0dd0574f2a08448ba21b0512632550, type: 2}
   - {fileID: 11400000, guid: d2b1241bbd8de8940871989b5e190119, type: 2}
   - {fileID: 11400000, guid: 531c3dccf5c26154188ec39c91f9f4f4, type: 2}
   - {fileID: 11400000, guid: f30fa76c0f0149243a7403d6db229d80, type: 2}
-  - {fileID: 11400000, guid: 746e4e835d193ee4392f46948ea9849b, type: 2}
