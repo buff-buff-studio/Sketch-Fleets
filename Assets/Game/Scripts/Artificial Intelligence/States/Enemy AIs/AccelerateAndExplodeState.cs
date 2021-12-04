@@ -96,6 +96,7 @@ namespace SketchFleets
         /// </summary>
         private void SelfDestruct()
         {
+            if (AI == null || AI.Ship == null) return;
             AI.Ship.Damage(AI.Ship.CurrentHealth, DamageContext.ObstacleCollision, false, true);
         }
 
