@@ -25,6 +25,11 @@ namespace SketchFleets
 
         IEnumerator LoadingScene()
         {
+            while(SceneLoad == null)
+            {
+                yield return null;
+            }
+
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneLoad);
 
             while (!asyncOperation.isDone)
