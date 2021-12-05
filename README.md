@@ -25,7 +25,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ninito-ph/Tank-Wrecks/blob/master/README.md">
-    <img src="https://imgur.com/J02dVnU.png" alt="Sketch Fleets Logo" width="350" height="350">
+    <img src="https://i.imgur.com/lZ764a8.png" alt="Sketch Fleets: Recolored Logo" width="350" height="350">
   </a>
  
 <h3 align="center">Sketch Fleets</h3>
