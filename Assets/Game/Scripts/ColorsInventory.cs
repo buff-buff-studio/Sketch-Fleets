@@ -119,7 +119,6 @@ namespace SketchFleets
 
         private void UpdateColorButton()
         {
-            Debug.Log(colorsInventory[colorsInventory.Count - 1].color);
             drawButton.UpdateButton(colorsInventory[colorsInventory.Count - 1].color);
         }
 
