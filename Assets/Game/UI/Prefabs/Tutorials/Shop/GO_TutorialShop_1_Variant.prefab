@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -6933502581219436949, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
+    - target: {fileID: 7065187245341798501, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
+      propertyPath: nextStepIsBlocked._variable
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7714045845944256229, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_text
       value: '{ui_tutorial_shop_desc_1}'

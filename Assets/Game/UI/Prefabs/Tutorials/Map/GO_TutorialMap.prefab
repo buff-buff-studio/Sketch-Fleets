@@ -46,12 +46,15 @@ MonoBehaviour:
   steps:
   - Trigger: {fileID: 11400000, guid: 3cfe2f3e3c1cc2442876be32510f4f8e, type: 2}
     Popup: {fileID: 8339817050096998054, guid: 6f0da04e21c678a479a3a3607ddbabbf, type: 3}
-    IsNew: 1
+    PopupDelay: 0
   - Trigger: {fileID: 11400000, guid: 4408bec8a576e164d95f3fbc1e8dcf3f, type: 2}
     Popup: {fileID: 8339817050096998054, guid: 536f87cdff089a340aca71344d26ff79, type: 3}
-    IsNew: 1
+    PopupDelay: 0
   - Trigger: {fileID: 11400000, guid: d44c8b341a3f42a47b4738a0bce1fa18, type: 2}
     Popup: {fileID: 8339817050096998054, guid: 3bcb4dd11f1e47a45b705c700c123ea4, type: 3}
-    IsNew: 1
-  tutorialCanvas: {fileID: 0}
+    PopupDelay: 0
   autoBeginFirstStep: 1
+  nextStepIsBlocked:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: b684176dafd806d489b338bcd8c4920d, type: 2}
