@@ -807,7 +807,7 @@ MonoBehaviour:
   ColorHUD: {fileID: 49158623}
   JoystickL: {fileID: 1277911919}
   JoystickR: {fileID: 445425364}
-  fireShipButton: {fileID: 0}
+  fireShipButton: {fileID: 927899973}
   slowDownFactor: 0.275
   db: {fileID: 2071217371}
 --- !u!1 &269005192
@@ -4876,7 +4876,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2931466892152834322, guid: e4ee44797a57a14499348211a207009d, type: 3}
   m_PrefabInstance: {fileID: 927899972}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 927899973}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -5067,6 +5067,11 @@ PrefabInstance:
       objectReference: {fileID: 808714953}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4ee44797a57a14499348211a207009d, type: 3}
+--- !u!1 &927899973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2931466892152834320, guid: e4ee44797a57a14499348211a207009d, type: 3}
+  m_PrefabInstance: {fileID: 927899972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &927899974 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2931466891139777023, guid: e4ee44797a57a14499348211a207009d, type: 3}
