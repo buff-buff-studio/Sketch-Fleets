@@ -44,15 +44,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steps:
-  - Trigger: {fileID: 11400000, guid: e6010e4a174a1a2449f70f243f50f9e0, type: 2}
+  - Trigger: {fileID: 0}
+    Popup: {fileID: 8339817050096998054, guid: 8d362bb8b3d6efe449a328ad7d40fa56, type: 3}
+    PopupDelay: 0
+  - Trigger: {fileID: 0}
+    Popup: {fileID: 8339817050096998054, guid: 3c23ee1baf3be754d8531f9afeb97bb2, type: 3}
+    PopupDelay: 0
+  - Trigger: {fileID: 11400000, guid: 6b9f0dd09ab978843a9b3ea46bbeea46, type: 2}
     Popup: {fileID: 8339817050096998054, guid: 6f907a35fff9db54d8e0f3ce8950c555, type: 3}
-    IsNew: 1
-    IsComplete: 0
-  - Trigger: {fileID: 11400000, guid: 90d6cd26538a0a042948b966a4a994e4, type: 2}
+    PopupDelay: 1
+  - Trigger: {fileID: 0}
     Popup: {fileID: 8339817050096998054, guid: e02551b4455c75442aa67132fe71bb09, type: 3}
-    IsNew: 1
-    IsComplete: 0
-  - Trigger: {fileID: 11400000, guid: 744ee124dc7e6ba42a670d4fd2bf1801, type: 2}
+    PopupDelay: 0
+  - Trigger: {fileID: 11400000, guid: 4c8bf7fc4f3d88b4992c5ca9d21fe565, type: 2}
+    Popup: {fileID: 2710605025681246676, guid: 26c6e93a20d1573419c24b761ed53b0c, type: 3}
+    PopupDelay: 0
+  - Trigger: {fileID: 11400000, guid: 6b9f0dd09ab978843a9b3ea46bbeea46, type: 2}
+    Popup: {fileID: 2710605025681246676, guid: a8a15812808f0034b98d5301f09ac163, type: 3}
+    PopupDelay: 0
+  - Trigger: {fileID: 11400000, guid: 6b9f0dd09ab978843a9b3ea46bbeea46, type: 2}
+    Popup: {fileID: 2710605025681246676, guid: 3f7c7380bc0c9234dafb9a46d0adb28a, type: 3}
+    PopupDelay: 0
+  - Trigger: {fileID: 11400000, guid: 8bb839a8d754236439a46264a48ac94e, type: 2}
+    Popup: {fileID: 2710605025681246676, guid: 6eae72a257cc948469a91d1327cae796, type: 3}
+    PopupDelay: 0.2
+  - Trigger: {fileID: 11400000, guid: df9f2c694f6160540bc9753a710ead39, type: 2}
     Popup: {fileID: 8339817050096998054, guid: 2cc3d89955db36b49bacd1a137f34b14, type: 3}
-    IsNew: 1
-    IsComplete: 0
+    PopupDelay: 1.4
+  autoBeginFirstStep: 1
+  nextStepIsBlocked:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: b684176dafd806d489b338bcd8c4920d, type: 2}
