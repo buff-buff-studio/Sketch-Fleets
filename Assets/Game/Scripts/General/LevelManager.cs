@@ -130,7 +130,11 @@ namespace SketchFleets.General
         {
             yield return new WaitForSeconds(3f);
 
-            Profile.Data.TotalCoins += pencilShell.Value - pencilShellAtStart;
+            //Add coins
+            int n = pencilShell.Value - pencilShellAtStart;
+            ProfileSystem.Profile.Data.TotalCoins += ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(n);
+            PencilBoxText.AddedAmount = n;
+
             SavePlayerProgress();
             ShowWinUI();
 
