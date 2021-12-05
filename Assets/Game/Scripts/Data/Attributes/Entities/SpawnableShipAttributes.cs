@@ -1,4 +1,5 @@
-﻿using ManyTools.Variables;
+﻿using ManyTools.Events;
+using ManyTools.Variables;
 using UnityEngine;
 
 namespace SketchFleets.Data
@@ -26,6 +27,10 @@ namespace SketchFleets.Data
         [Tooltip("The radius of the ship's orbit around the player, if it orbits him")]
         private FloatReference orbitRadius = new FloatReference(3f);
         
+        [Header("Events")]
+        [SerializeField]
+        private GameEvent onShipSpawned;
+
         #endregion
 
         #region Properties
@@ -34,6 +39,7 @@ namespace SketchFleets.Data
         public IntReference MaximumShips => maximumShips;
         public FloatReference OrbitRadius => orbitRadius;
         public GameObject SpawnEffect => spawnEffect;
+        public GameEvent OnShipSpawned => onShipSpawned;
 
         #endregion
     }
