@@ -291,7 +291,7 @@ namespace SketchFleets
             HUD.SetActive(false);
             ColorHUD.SetActive(true);
             _lineDrawer.gameObject.SetActive(true);
-            _lineDrawer.BulletTime(slowDownFactor);
+            LineDrawer.BulletTime(slowDownFactor);
         }
 
         public void OpenInventory()
