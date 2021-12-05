@@ -1,5 +1,6 @@
-﻿using System;
+﻿using ManyTools.Variables;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SketchFleets.Systems.Tutorial
 {
@@ -12,7 +13,31 @@ namespace SketchFleets.Systems.Tutorial
 
         [Header("Popup Options")]
         [SerializeField]
-        private bool PauseOnAppear = true;
+        private float timeScaleOnAppear = 0f;
+
+        [SerializeField]
+        private bool blockOtherPopups = false;
+
+        [SerializeField]
+        private BoolReference nextStepIsBlocked;
+
+        [SerializeField]
+        private bool unblockOnDestroy = false;
+
+        [Header("Popup Events")]
+        [SerializeField]
+        private UnityEvent onOpen;
+
+        [SerializeField]
+        private UnityEvent onClose;
+
+        private bool resume = true;
+
+        #endregion
+
+        #region Properties
+
+        public TutorialStep Step { get; set; }
 
         #endregion
 
@@ -20,15 +45,27 @@ namespace SketchFleets.Systems.Tutorial
 
         private void Start()
         {
-            if (PauseOnAppear)
+            onOpen.Invoke();
+
+            if (nextStepIsBlocked != null)
             {
-                PauseGame();
+                nextStepIsBlocked.Value = blockOtherPopups;
             }
+
+            EditTimeScale();
         }
 
         private void OnDestroy()
         {
-            ResumeGame();
+            if (unblockOnDestroy && nextStepIsBlocked != null)
+            {
+                nextStepIsBlocked.Value = false;
+            }
+
+            if (resume)
+            {
+                ResumeGame();
+            }
         }
 
         #endregion
@@ -36,20 +73,39 @@ namespace SketchFleets.Systems.Tutorial
         #region Public Methods
 
         /// <summary>
+        /// Steps forward in the parent tutorial
+        /// </summary>
+        public void StepForwardInTutorial() => Step.StepForward();
+
+        /// <summary>
+        /// Ends the tutorial of the parent step
+        /// </summary>
+        public void EndParentTutorial() => Step.EndTutorial();
+
+        /// <summary>
         /// Destroys the object containing the component
         /// </summary>
         public void Close()
         {
             Destroy(gameObject);
-            ResumeGame();
+        }
+
+        /// <summary>
+        /// Destroys the object containing the component
+        /// </summary>
+        public void CloseWithoutResuming()
+        {
+            resume = false;
+            Destroy(gameObject);
         }
 
         /// <summary>
         /// Pauses the game
         /// </summary>
-        public static void PauseGame()
+        public void EditTimeScale()
         {
-            Time.timeScale = 0;
+            Time.timeScale = timeScaleOnAppear;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
         }
 
         /// <summary>
@@ -58,6 +114,7 @@ namespace SketchFleets.Systems.Tutorial
         public static void ResumeGame()
         {
             Time.timeScale = 1;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
         }
 
         #endregion
