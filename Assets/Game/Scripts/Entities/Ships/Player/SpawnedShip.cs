@@ -1,3 +1,4 @@
+using ManyTools.Events;
 using ManyTools.UnityExtended;
 using ManyTools.UnityExtended.Poolable;
 using SketchFleets.Data;
@@ -33,6 +34,7 @@ namespace SketchFleets.Entities
         public override void Emerge(Vector3 position, Quaternion rotation)
         {
             base.Emerge(position, rotation);
+            Attributes.OnShipSpawned.Invoke();
             DelayProvider.Instance.DoDelayed(EmergeSpawnEffect, 0.1f, GetInstanceID());
         }
 

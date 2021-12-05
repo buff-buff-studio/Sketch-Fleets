@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using ManyTools.UnityExtended.Editor;
+using ManyTools.Variables;
 using SketchFleets.ProfileSystem;
 using UnityEngine;
 
@@ -20,12 +19,15 @@ namespace SketchFleets.Systems.Tutorial
         [SerializeField]
         private bool autoBeginFirstStep = false;
 
+        [SerializeField]
+        private BoolReference nextStepIsBlocked;
+
         private int currentStepIndex = 0;
 
         #endregion
 
         #region Properties
-        
+
         private TutorialStep CurrentStep => steps[currentStepIndex];
 
         #endregion
@@ -38,6 +40,8 @@ namespace SketchFleets.Systems.Tutorial
             {
                 return;
             }
+
+            InjectTutorialReferences();
             
             if (autoBeginFirstStep)
             {
@@ -59,13 +63,65 @@ namespace SketchFleets.Systems.Tutorial
 
         #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Ends the current step and begins the next one
+        /// </summary>
+        public void StepForward()
+        {
+            UnsubscribeCurrentStepFromTrigger();
+
+            if (currentStepIndex + 1 >= steps.Count)
+            {
+                CompleteTutorial();
+                return;
+            }
+
+            CurrentStep.Begin();
+            currentStepIndex++;
+            SubscribeCurrentStepToTrigger();
+        }
+
+        /// <summary>
+        /// Marks the tutorial as complete
+        /// </summary>
+        public void CompleteTutorial()
+        {
+            Profile.Data.Tutorials.Completed.Add(name);
+            Profile.SaveProfile((data) => { });
+        }
+        
+        /// <summary>
+        /// Unblocks the next step
+        /// </summary>
+        public void UnblockNextStep()
+        {
+            Debug.Log("Unblocking next step");
+            nextStepIsBlocked.Value = false;
+        }
+
+        #endregion
+
         #region Private Methods
 
+        /// <summary>
+        /// Injects references to the tutorial system into all steps
+        /// </summary>
+        private void InjectTutorialReferences()
+        {
+            foreach (TutorialStep step in steps)
+            {
+                step.Tutorial = this;
+            }
+        }
+        
         /// <summary>
         /// Subscribes a step to a trigger
         /// </summary>
         private void SubscribeCurrentStepToTrigger()
         {
+            if (CurrentStep.Trigger == null) return;
             CurrentStep.Trigger.AddListener(BeginStep);
         }
 
@@ -74,7 +130,7 @@ namespace SketchFleets.Systems.Tutorial
         /// </summary>
         private void BeginStep()
         {
-            if (IsStepOld(CurrentStep)) return;
+            if (IsStepOld(CurrentStep) || nextStepIsBlocked.Value) return;
             CurrentStep.Begin();
 
             ProgressSteps();
@@ -104,15 +160,6 @@ namespace SketchFleets.Systems.Tutorial
         {
             if (CurrentStep.Trigger == null) return;
             CurrentStep.Trigger.RemoveListener(BeginStep);
-        }
-
-        /// <summary>
-        /// Marks the tutorial as complete
-        /// </summary>
-        private void CompleteTutorial()
-        {
-            Profile.Data.Tutorials.Completed.Add(name);
-            Profile.SaveProfile((data) => { });
         }
 
         /// <summary>

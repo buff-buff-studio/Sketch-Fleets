@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using ManyTools.Events;
+using ManyTools.Variables;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -19,14 +21,21 @@ namespace SketchFleets.Systems.Tutorial
         [SerializeField]
         public GameObject Popup;
 
-        [HideInInspector]
-        public bool IsNew = true;
+        [SerializeField]
+        public float PopupDelay = 0f;
 
+        #endregion
+
+        #region Private Fields
+
+        private bool isNew = true;
         private Canvas canvasCache;
 
         #endregion
 
         #region Properties
+
+        public Tutorial Tutorial { get; set; }
 
         public Canvas Canvas
         {
@@ -37,9 +46,25 @@ namespace SketchFleets.Systems.Tutorial
             }
         }
 
+        public bool IsNew
+        {
+            get => isNew;
+            set => isNew = value;
+        }
+
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Ends the whole tutorial and marks it as complete
+        /// </summary>
+        public void EndTutorial() => Tutorial.CompleteTutorial();
+
+        /// <summary>
+        /// Shows the tutorial's next step
+        /// </summary>
+        public void StepForward() => Tutorial.StepForward();
 
         /// <summary>
         /// Shows the popup and begins the step
@@ -57,9 +82,15 @@ namespace SketchFleets.Systems.Tutorial
         /// <summary>
         /// Instantiates the popup in the canvas
         /// </summary>
-        private void InstantiatePopUp()
+        private async void InstantiatePopUp()
         {
-            GameObject popup = Object.Instantiate(Popup, Canvas.transform);
+            if (PopupDelay > 0)
+            {
+                await Task.Delay((int)(PopupDelay * 1000));
+            }
+
+            Popup popup = Object.Instantiate(Popup, Canvas.transform).GetComponent<Popup>();
+            popup.Step = this;
             popup.transform.SetAsLastSibling();
         }
 

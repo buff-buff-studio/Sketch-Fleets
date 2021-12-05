@@ -30,6 +30,7 @@ namespace SketchFleets
         {
             TryGetComponent(out button);
             TryGetComponent(out _image);
+            SetMaterialToGray();
         }
 
         #endregion
@@ -69,6 +70,16 @@ namespace SketchFleets
         #endregion
         
         #region Private Methods
+
+        /// <summary>
+        /// Sets the material to gray
+        /// </summary>
+        private void SetMaterialToGray()
+        {
+            _image.material.SetColor(GreMul, Color.gray);
+            _image.material.SetColor(RedMul, Color.gray);
+            _image.material.SetColor(BluMul, Color.gray);
+        }
         
         /// <summary>
         /// Gets the triad complementary colors of the given color

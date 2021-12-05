@@ -46,6 +46,9 @@ MonoBehaviour:
   steps:
   - Trigger: {fileID: 11400000, guid: 2510a7aa003bf80419caca0f34b031f4, type: 2}
     Popup: {fileID: 8339817050096998054, guid: 7a57146dc494b5c498266498c2c1fd0b, type: 3}
-    IsNew: 1
-  tutorialCanvas: {fileID: 0}
+    PopupDelay: 0
   autoBeginFirstStep: 0
+  nextStepIsBlocked:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: b684176dafd806d489b338bcd8c4920d, type: 2}

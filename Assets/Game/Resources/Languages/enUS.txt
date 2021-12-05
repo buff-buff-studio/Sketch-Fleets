@@ -103,19 +103,38 @@ ui_title_settings=Options
 # TUTORIALS
 #
 
-ui_tutorial_colors_title_1=Ships & Colors
-ui_tutorial_colors_desc_1=Killing an enemy ship allows you to absorb their color and powers. You can use absorbed colors to summon your own ships!
-ui_tutorial_colors_button_1=You think I care?
+ui_tutorial_colors_title_0=Can I interest you in a TUTORIAL?
+ui_tutorial_colors_desc_0=Ugh, sorry, I think I made it sound like I was offering you drugs there. Anyway, do you need any help? The cosmos is a dangerous place; wouldn't want to go out unprepared, would we?
+ui_tutorial_colors_button_0_1=Sure, hook me up!
+ui_tutorial_colors_button_0_2=Say no to Tutorials.
 
-ui_tutorial_colors_title_2=Drawing Ships
-ui_tutorial_colors_desc_2=Whenever you have a color available, press the Draw button. Draw a Triangle, Square or Circle on the screen, and a ship will be summoned to help you, empowered by the color you used!
-ui_tutorial_colors_button_2=Yeah, whatever, nerd
-ui_tutorial_colors_pointer_2_1=Draw Button!
-ui_tutorial_colors_pointer_2_2=Available Colors!
+ui_tutorial_colors_title_1=How to CONTROL a Spaceship
+ui_tutorial_colors_desc_1=MOVE by dragging your ship across the screen. AIM by dragging where your ship is shooting. If you're using JOYSTICK MODE, then just use the JOYSTICKS, dummy. Go ahead and DESTROY a ship to see if you've gotten the hang of it.
+ui_tutorial_colors_button_1=Bloodlust, here I come!
 
-ui_tutorial_colors_title_3=Well Done!
-ui_tutorial_colors_desc_3=Whenever you have a color available, summon a ship! They'll be essential in your journey through the cosmos, especially on harder planets. Good luck!
-ui_tutorial_colors_button_3=Are you done talking?
+ui_tutorial_colors_title_2=YES! YES! NOW PREPARE THE SUMMONING RITUAL WITH THEIR BLOOD!
+ui_tutorial_colors_desc_2=Uh... I mean COLOR! Prepare the ritual with their COLOR. See the bar at the top? Those are the COLORS you've taken from your fallen enemies. You always gain the COLOR of the last enemy you DESTROYED. Use them to summon an ally!
+ui_tutorial_colors_button_2=But... how?
+
+ui_tutorial_colors_title_3=It's EASY! Tap that button!
+ui_tutorial_colors_desc_3=Whenever you want to summon an ally with a COLOR, just tap the DRAW button on the center-bottom of the screen. It's the one with the arrow.
+ui_tutorial_colors_pointer_3_1=Click on this button over here!
+
+ui_tutorial_colors_title_4=Welcome to DRAW MODE
+ui_tutorial_colors_desc_4=Now, use the color you've taken from your enemies to summon an ally. You can do so by drawing a shape. First, let's try a TRIANGLE.
+
+ui_tutorial_colors_title_5=Welcome to DRAW MODE AGAIN!
+ui_tutorial_colors_desc_5=Excellent job with the triangle. I would have made it a bit pointier, but still. Now, let's try something else. Draw a SQUARE!
+
+ui_tutorial_colors_title_6=Welcome to DR- Yeah, you know.
+ui_tutorial_colors_desc_6=That was a nice square! On to your last drawing lesson: Draw a CIRCLE!
+
+ui_tutorial_colors_title_7=Now blow them up!
+ui_tutorial_colors_desc_7=Circles make for nice bombs, don't they? Tap twice on the screen or press the bomb icon to throw yours.
+
+ui_tutorial_colors_title_8=Great job! You've gone pro!
+ui_tutorial_colors_desc_8=Or terrorist, since you've just thrown a bomb. But that's not important. You've got a whole galactic journey ahead of you! And now, you've got the skills too! Godspeed, my friend!
+ui_tutorial_colors_button_8=Onwards I go!
 
 ui_tutorial_map_title_1=Welcome to the Galaxy!
 ui_tutorial_map_desc_1=This is the galaxy! Your goal is to explore planets until you reach the black hole at its center! Every time you begin a new game, your galaxy will be different. Some galaxies are short, others are long. Some are easy, others are hard!

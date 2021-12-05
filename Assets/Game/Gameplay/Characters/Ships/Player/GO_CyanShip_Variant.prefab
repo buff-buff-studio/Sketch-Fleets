@@ -913,6 +913,8 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 5000
     _variable: {fileID: 0}
+  onExplode: {fileID: 11400000, guid: df9f2c694f6160540bc9753a710ead39, type: 2}
+  onLaunch: {fileID: 11400000, guid: 52f9cae69be738a45ac0210bbfab8acc, type: 2}
 --- !u!1 &7285474050451864682
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using ManyTools.Events;
 using ManyTools.Variables;
 using SketchFleets.General;
 using UnityEngine;
@@ -20,6 +21,12 @@ namespace SketchFleets.AI
         [Header("Launch Settings")]
         [SerializeField]
         private FloatReference launchSpeedMultiplier = new FloatReference(5f);
+        
+        [Header("Events")]
+        [SerializeField]
+        private GameEvent onExplode;
+        [SerializeField]
+        private GameEvent onLaunch;
 
         #endregion
 
@@ -79,19 +86,16 @@ namespace SketchFleets.AI
             if (AI == null) return;
             LevelManager.Instance.BulletTimeManager.StartBulletTime(timeByRealTime, bulletTimeDuration);
             AI.Ship.Fire();
+            onExplode.Invoke();
         }
 
         #endregion
 
         #region Public Methods
 
-        public void LightFuse()
+        public void LookAtTarget(Vector2 pos)
         {
-            Explode = true;
-        }
-
-        public void LookAtTarget(Vector2 pos) //TODO: Remove
-        {
+            onLaunch.Invoke();
             AI.Ship.Look(pos);
             Explode = true;
         }
@@ -104,8 +108,8 @@ namespace SketchFleets.AI
         [ContextMenu("Add Fire Transforms for Bomb")]
         private void AddCircularFireTransforms()
         {
-            int totalTransformCount = 40;
-            
+            const int totalTransformCount = 40;
+
             for (int index = 0; index < totalTransformCount; index++)
             {
                 GameObject fireTransform = new GameObject($"Fire Transform ({index})");
