@@ -128,12 +128,16 @@ PrefabInstance:
       value: GO_TutorialShipsAndColors2_Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2954625162551529130, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2954625162551529130, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_SizeDelta.y
       value: 301.64
       objectReference: {fileID: 0}
     - target: {fileID: 2954625162551529130, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -175.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5494526044118887250, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_Sprite

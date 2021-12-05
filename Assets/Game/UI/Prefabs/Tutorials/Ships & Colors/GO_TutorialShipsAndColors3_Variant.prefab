@@ -259,9 +259,9 @@ RectTransform:
   m_Father: {fileID: 8434217680883133431}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 63.828}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 287, y: -382}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 269, y: 287}
   m_SizeDelta: {x: 145.7038, y: 145.7038}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2267458109289802981
@@ -398,12 +398,16 @@ PrefabInstance:
       value: GO_TutorialShipsAndColors3_Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2954625162551529130, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2954625162551529130, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_SizeDelta.y
       value: 296.77
       objectReference: {fileID: 0}
     - target: {fileID: 2954625162551529130, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -179.42
+      value: -48.661
       objectReference: {fileID: 0}
     - target: {fileID: 4909302137797018426, guid: 8046deac2055573458fe85f6ac20174d, type: 3}
       propertyPath: m_RootOrder
