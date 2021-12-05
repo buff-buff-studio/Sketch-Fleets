@@ -103,19 +103,38 @@ ui_title_settings=Opções
 # TUTORIALS
 #
 
-ui_tutorial_colors_title_1=Naves e Cores
-ui_tutorial_colors_desc_1=Matar um navio inimigo permite que você absorva sua cor e poderes. Você pode usar cores absorvidas para convocar seus próprios navios!
-ui_tutorial_colors_button_1=Você acha que eu ligo?
+ui_tutorial_colors_title_0=Posso te interessar em um TUTORIAL?
+ui_tutorial_colors_desc_0=Ugh, desculpe, acho que fiz parecer que estava oferecendo drogas. De qualquer forma, você precisa de ajuda? O cosmos é um lugar perigoso; não queremos sair despreparados, não é?
+ui_tutorial_colors_button_0_1=Sure, hook me up!
+ui_tutorial_colors_button_0_2=Say no to Tutorials.
 
-ui_tutorial_colors_title_2=Desenhando Naves!
-ui_tutorial_colors_desc_2=Sempre que você tiver uma cor disponível, pressione o botão Desenhar. Desenhe um Triângulo, um Quadrado ou um Círculo na tela e uma nave será convocada para ajudá-lo, com os poderes da cor que você usou!
-ui_tutorial_colors_button_2=Tanto faz, nerdola
-ui_tutorial_colors_pointer_2_1=Botão de desnhar!
-ui_tutorial_colors_pointer_2_2=Cores disponíveis!
+ui_tutorial_colors_title_1=Como CONTROLAR uma Nave Espacial
+ui_tutorial_colors_desc_1=MOVA-SE arrastando sua nave pela tela. MIRE arrastando onde a sua nave está atirando. Se você estiver usando o MODO JOYSTICK, é só usar os JOYSTICKS, bobão. Vá em frente e DESTRUA uma nave para ver se você pegou o jeito.
+ui_tutorial_colors_button_1=Aí vou eu!
 
-ui_tutorial_colors_title_3=Ótimo!
-ui_tutorial_colors_desc_3=Sempre que você tiver uma cor disponível, invoque uma nave! Eles serão essenciais em sua jornada pelo cosmos, especialmente nos planetas mais difíceis. Boa sorte!
-ui_tutorial_colors_button_3=Terminou de falar?
+ui_tutorial_colors_title_2=ISSO! AGORA PREPARE O RITUAL DE INVOCAÇÃO COM O SANGUE DELES!
+ui_tutorial_colors_desc_2=Uh ... quero dizer COR! Prepare o ritual com a COR deles. Tá vendo a barra no topo? Essas são as CORES que você arrancou dos seus inimigos caídos. Você sempre ganha a COR do último inimigo que DESTRUIU. Use uma cor para invocar um aliado!
+ui_tutorial_colors_button_2=Mas... Como?
+
+ui_tutorial_colors_title_3=É FÁCIL! Toque nesse botão!
+ui_tutorial_colors_desc_3=Sempre que você quiser invocar um aliado com uma COR, basta tocar no botão DESENHAR na parte inferior central da tela. É aquele com a seta.
+ui_tutorial_colors_pointer_3_1=Clique nesse botão aqui!
+
+ui_tutorial_colors_title_4=Bem-vindo ao MODO DE DESENHO
+ui_tutorial_colors_desc_4=Agora, use a COR que você arrancou do seus inimigos para invocar um aliado. Você pode fazer isso desenhando uma forma. Primeiro, vamos tentar um TRIÂNGULO.
+
+ui_tutorial_colors_title_5=Bem-vindo ao MODO DE DESENHO! (DE NOVO)
+ui_tutorial_colors_desc_5=Excelente trabalho com o triângulo. Eu teria feito ele um pouco mais pontiagudo, mas ainda assim. Agora, vamos tentar outra coisa. Desenhe um QUADRADO!
+
+ui_tutorial_colors_title_6=Bem-vindo ao MODO DE D- Você sabe...
+ui_tutorial_colors_desc_6=Foi um belo quadrado! Agora, na sua última lição de desenho: Desenhe um CÍRCULO!
+
+ui_tutorial_colors_title_7=Agora EXPLODE eles!
+ui_tutorial_colors_desc_7=Círculos são boas bombas, não é? TOQUE DUAS VEZES na tela ou pressione o ícone da bomba para lançar a sua.
+
+ui_tutorial_colors_title_8=Bom trabalho! Você é um profissional!
+ui_tutorial_colors_desc_8=Ou um terrorista, já que você acabou de arremessar uma bomba. Mas isso não é importante. Você tem uma jornada galáctica inteira pela frente! E agora você também tem as habilidades! Boa sorte, meu amigo!
+ui_tutorial_colors_button_8=Avante eu vou!
 
 ui_tutorial_map_title_1=Bem vindo a Galáxia!
 ui_tutorial_map_desc_1=Esta é a galáxia! Seu objetivo é explorar planetas até chegar ao buraco negro no centro! Cada vez que você começa um novo jogo, sua galáxia será diferente. Algumas galáxias são curtas, outras são longas. Algumas são fáceis, outras são difíceis!
