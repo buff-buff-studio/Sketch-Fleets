@@ -67,11 +67,10 @@ namespace SketchFleets.Systems
 
                 ObstacleAttributes drawnObstacle = DrawObstacleFromPool();
                 bool isDrawnObstacleValid = drawnObstacle != null;
+                spawnPoint = new Vector3(spawnArea.transform.position.x, GetRandomYInSpawnArea());
 
                 if (isDrawnObstacleValid && drawnObstacle.WarnOnSpawn)
                 {
-                    spawnPoint = new Vector3(spawnArea.transform.position.x, GetRandomYInSpawnArea());
-
                     StartCoroutine(ShowWarning());
                 }
 
@@ -79,7 +78,6 @@ namespace SketchFleets.Systems
 
                 if (isDrawnObstacleValid)
                 {
-                    //spawnPoint = new Vector3(spawnArea.transform.position.x, GetRandomYInSpawnArea());
                     SpawnObstacle(drawnObstacle);
                 }
             }
