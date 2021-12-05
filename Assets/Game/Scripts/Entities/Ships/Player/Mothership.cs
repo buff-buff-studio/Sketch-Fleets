@@ -440,9 +440,32 @@ namespace SketchFleets.Entities
         {
             Transform transformCache = transform;
             Transform parent = transformCache.parent;
+            Vector2 pos = Vector2.zero;
 
             transformCache.localPosition = Vector2.zero;
-            parent.Translate(moveDir * GetSpeed(), Space.World);
+            
+            if(MoveX(moveDir.x * GetSpeed(), parent))
+                pos += Vector2.right * ((moveDir.x * GetSpeed()));
+            if(MoveY(moveDir.y * GetSpeed(),parent))
+                pos += Vector2.up * ((moveDir.y * GetSpeed()));
+            
+            parent.Translate(pos, Space.World);
+        }
+        
+        private bool MoveX(float x, Transform parent)
+        {
+            if (x < 0)
+                return mainCamera.WorldToScreenPoint(parent.position).x - x > 10;
+            else
+                return mainCamera.WorldToScreenPoint(parent.position).x + x < Screen.width-10;
+        }
+
+        private bool MoveY(float y, Transform parent)
+        {
+            if (y < 0)
+                return mainCamera.WorldToScreenPoint(parent.position).y - y > 10;
+            else
+                return mainCamera.WorldToScreenPoint(parent.position).y + y < Screen.height-10;
         }
         
         public void Move(Vector2 movePos, Vector2 moveRad)
