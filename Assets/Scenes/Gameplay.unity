@@ -807,7 +807,7 @@ MonoBehaviour:
   ColorHUD: {fileID: 49158623}
   JoystickL: {fileID: 1277911919}
   JoystickR: {fileID: 445425364}
-  fireShipButton: {fileID: 1162185797}
+  fireShipButton: {fileID: 0}
   slowDownFactor: 0.275
   db: {fileID: 2071217371}
 --- !u!1 &269005192
@@ -2992,6 +2992,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652491674}
   m_CullTransparentMesh: 1
+--- !u!1 &668937815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2931466892670836941, guid: e4ee44797a57a14499348211a207009d, type: 3}
+  m_PrefabInstance: {fileID: 927899972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &668937817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668937815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c2a60255ccdd94e90bdaecd6de4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 668937819}
+--- !u!114 &668937819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2931466892670836943, guid: e4ee44797a57a14499348211a207009d, type: 3}
+  m_PrefabInstance: {fileID: 927899972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668937815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &694294626
 GameObject:
   m_ObjectHideFlags: 0
@@ -3558,7 +3587,7 @@ PrefabInstance:
     - target: {fileID: 1089010940436214626, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
       propertyPath: CyanButton
       value: 
-      objectReference: {fileID: 927899973}
+      objectReference: {fileID: 927646834}
     - target: {fileID: 1089010940436214626, guid: 00046ec4a128db94db81d6518fe231f0, type: 3}
       propertyPath: inputTrail
       value: 
@@ -4612,6 +4641,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897778916}
   m_CullTransparentMesh: 1
+--- !u!114 &927646834 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2931466892152834322, guid: e4ee44797a57a14499348211a207009d, type: 3}
+  m_PrefabInstance: {fileID: 927899972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &927899972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4727,21 +4767,25 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2071217370}
+    - target: {fileID: 2931466892152834320, guid: e4ee44797a57a14499348211a207009d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2931466892152834321, guid: e4ee44797a57a14499348211a207009d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2931466892152834321, guid: e4ee44797a57a14499348211a207009d, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2931466892152834321, guid: e4ee44797a57a14499348211a207009d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 85.55485
       objectReference: {fileID: 0}
     - target: {fileID: 2931466892152834321, guid: e4ee44797a57a14499348211a207009d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -134.1915
       objectReference: {fileID: 0}
     - target: {fileID: 2931466892152834322, guid: e4ee44797a57a14499348211a207009d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4761,6 +4805,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2931466892670836942, guid: e4ee44797a57a14499348211a207009d, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931466892670836943, guid: e4ee44797a57a14499348211a207009d, type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2931466892670836943, guid: e4ee44797a57a14499348211a207009d, type: 3}
@@ -4789,17 +4837,6 @@ PrefabInstance:
       objectReference: {fileID: 808714953}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4ee44797a57a14499348211a207009d, type: 3}
---- !u!114 &927899973 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2931466892152834322, guid: e4ee44797a57a14499348211a207009d, type: 3}
-  m_PrefabInstance: {fileID: 927899972}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162185797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &927899974 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2931466891139777023, guid: e4ee44797a57a14499348211a207009d, type: 3}
@@ -5582,11 +5619,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.1139703, y: 4.41}
   m_EdgeRadius: 0
---- !u!1 &1162185797 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2931466892152834320, guid: e4ee44797a57a14499348211a207009d, type: 3}
-  m_PrefabInstance: {fileID: 927899972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1250483716
 GameObject:
   m_ObjectHideFlags: 0
@@ -8420,7 +8452,8 @@ MonoBehaviour:
   - color: {r: 0, g: 0, b: 0, a: 0}
     bulletAttributes: {fileID: 0}
   colorsSlot: []
-  onColorAbsorbed: {fileID: 11400000, guid: e6010e4a174a1a2449f70f243f50f9e0, type: 2}
+  drawButton: {fileID: 668937817}
+  onColorAbsorbed: {fileID: 11400000, guid: 6b9f0dd09ab978843a9b3ea46bbeea46, type: 2}
 --- !u!1 &2096931357
 GameObject:
   m_ObjectHideFlags: 0
@@ -8889,6 +8922,10 @@ PrefabInstance:
       propertyPath: tutorialCanvas
       value: 
       objectReference: {fileID: 2071217374}
+    - target: {fileID: 3128461097686863408, guid: 65cf72e2e51c58b408e70bd85af1caa6, type: 3}
+      propertyPath: steps.Array.data[0].Trigger
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b9f0dd09ab978843a9b3ea46bbeea46, type: 2}
     - target: {fileID: 9004720472981596302, guid: 65cf72e2e51c58b408e70bd85af1caa6, type: 3}
       propertyPath: m_Name
       value: GO_TutorialColors
