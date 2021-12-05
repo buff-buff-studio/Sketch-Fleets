@@ -12,7 +12,7 @@ namespace SketchFleets.UI
     /// <summary>
     /// A class that controls a health bar display
     /// </summary>
-    public class HealthBar : MonoBehaviour
+    public sealed class HealthBar : MonoBehaviour
     {
         #region Private Fields
 
@@ -29,6 +29,9 @@ namespace SketchFleets.UI
 
         [SerializeField, RequiredField()]
         private Image healthBar;
+
+        [SerializeField, RequiredField]
+        private Image hurtOverlay;
 
         [SerializeField]
         private IntReference pencilShell;
@@ -55,23 +58,22 @@ namespace SketchFleets.UI
             if (!Mathf.Approximately(healthBar.fillAmount, FillAmount))
             {
                 LifeBarUpdate();
+                HurtOverlayUpdate();
             }
 
             // NOTE: Why the fuck is this here? The health bar of all things is responsible for throwing game over?
             if (!IsGameOver()) return;
 
-            if (!LevelManager.Instance.GameEnded)
-            {
-                LevelManager.Instance.GameEnded = true;
-                ShowGameOver();
-                RewardPlayer();
+            if (LevelManager.Instance.GameEnded) return;
+            LevelManager.Instance.GameEnded = true;
+            ShowGameOver();
+            RewardPlayer();
 
-                // Forces the healthbar to be at 0
-                healthBar.fillAmount = 0;
+            // Forces the healthbar to be at 0
+            healthBar.fillAmount = 0;
 
-                // Clears map-specific data
-                SketchFleets.ProfileSystem.Profile.Data.Clear(this, (data) => { });
-            }
+            // Clears map-specific data
+            SketchFleets.ProfileSystem.Profile.Data.Clear(this, (data) => { });
         }
 
         #endregion
@@ -90,6 +92,14 @@ namespace SketchFleets.UI
         private void LifeBarUpdate()
         {
             healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, FillAmount, Time.deltaTime * lerpSpeed);
+        }
+        
+        /// <summary>
+        /// Updates the opacity of the hurt overlay
+        /// </summary>
+        private void HurtOverlayUpdate()
+        {
+            hurtOverlay.color = new Color(1f, 1f, 1f, 1 - FillAmount);
         }
 
         /// <summary>
