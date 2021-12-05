@@ -35,13 +35,15 @@ namespace SketchFleets
 
         [SerializeField]
         private List<Image> colorsSlot;
+        
+        [Header("References")]
+        [SerializeField]
+        private DrawButton drawButton;
 
         [Header("Events")]
         [SerializeField]
         [RequiredField]
         private GameEvent onColorAbsorbed;
-
-        private readonly int redMultiplier = Shader.PropertyToID("_redMul");
 
         #endregion
 
@@ -63,7 +65,7 @@ namespace SketchFleets
             for (int i = 0; i < ColorInventoryCapacity; i++)
             {
                 colorsSlot.Add(Instantiate(colorInvPrefab, colorInvParent).GetComponent<Image>());
-                colorsInventory.Add(SetColorInfo(Color.black, null));
+                colorsInventory.Add(SetColorInfo(new Color(0.5f, 0.5f, 0.5f, 0f), null));
             }
 
             ColorUpdate();
@@ -71,7 +73,7 @@ namespace SketchFleets
 
         private void Update()
         {
-            if (enemyDeathColor != Color.black)
+            if (enemyDeathColor != new Color(0.5f, 0.5f, 0.5f, 0f))
             {
                 NewColor(enemyDeathColor, enemyDeathBullet);
             }
@@ -83,11 +85,13 @@ namespace SketchFleets
             {
                 colorsSlot[i].color = colorsInventory[i].color;
             }
+            
+            UpdateColorButton();
         }
 
         private void NewColor(Color col, BulletAttributes bullet)
         {
-            enemyDeathColor.Value = Color.black;
+            enemyDeathColor.Value = new Color(0.5f, 0.5f, 0.5f, 0f);
             enemyDeathBullet.Value = null;
 
             for (int i = 0; i < colorsSlot.Count - 1; i++)
@@ -98,20 +102,25 @@ namespace SketchFleets
             colorsInventory[colorsSlot.Count - 1] = SetColorInfo(col, bullet);
 
             ColorUpdate();
-            onColorAbsorbed.Invoke();
         }
 
         public void UseColor()
         {
-            enemyDeathColor.Value = Color.black;
+            enemyDeathColor.Value = new Color(0.5f, 0.5f, 0.5f, 0f);
 
             for (int i = colorsSlot.Count - 1; i > 0; i--)
             {
                 colorsInventory[i] = colorsInventory[i - 1];
             }
 
-            colorsInventory[0] = SetColorInfo(Color.black, enemyDeathBullet);
+            colorsInventory[0] = SetColorInfo(new Color(0.5f, 0.5f, 0.5f, 0f), enemyDeathBullet);
             ColorUpdate();
+        }
+
+        private void UpdateColorButton()
+        {
+            Debug.Log(colorsInventory[colorsInventory.Count - 1].color);
+            drawButton.UpdateButton(colorsInventory[colorsInventory.Count - 1].color);
         }
 
         private static ColorInfo SetColorInfo(Color col, BulletAttributes bullet)
