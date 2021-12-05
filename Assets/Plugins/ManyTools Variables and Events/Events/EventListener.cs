@@ -5,15 +5,12 @@ using UnityEngine.Events;
 
 namespace ManyTools.Events
 {
-    /// <summary>
-    /// Listens to an <see cref="GameEventBase"/>.
-    /// </summary>
     public class EventListener : MonoBehaviour
     {
         #region Private Fields
 
         [SerializeField] private GameEvent _gameEvent;
-        [SerializeField] private UnityEvent _onEventInvoked;
+        [SerializeField] private UnityEvent _onEventInvoked = new UnityEvent();
 
         #endregion
 
@@ -38,13 +35,26 @@ namespace ManyTools.Events
             }
         }
 
-        public UnityEvent UnityEvent
-        {
-            get => _onEventInvoked;
-        }
+        public UnityEvent UnityEvent => _onEventInvoked;
 
         #endregion
 
+        #region Unity Callbacks
+
+        private void Start()
+        {
+            if (GameEvent == null) return;
+            GameEvent.AddListener(this);
+        }
+
+        private void OnDestroy()
+        {
+            if (GameEvent == null) return;
+            GameEvent.RemoveListener(this);
+        }
+
+        #endregion
+        
         #region Public Methods
 
         /// <summary>
@@ -71,6 +81,22 @@ namespace ManyTools.Events
 
         #endregion
 
+        #region Unity Callbacks
+
+        private void Start()
+        {
+            if (GameEvent == null) return;
+            GameEvent.AddListener(this);
+        }
+
+        private void OnDestroy()
+        {
+            if (GameEvent == null) return;
+            GameEvent.RemoveListener(this);
+        }
+
+        #endregion
+        
         #region Public Methods
 
         /// <summary>
