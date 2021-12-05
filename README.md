@@ -25,7 +25,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ninito-ph/Tank-Wrecks/blob/master/README.md">
-    <img src="https://imgur.com/J02dVnU.png" alt="Sketch Fleets Logo" width="350" height="350">
+    <img src="https://i.imgur.com/lZ764a8.png" alt="Sketch Fleets: Recolored Logo" width="350" height="350">
   </a>
  
 <h3 align="center">Sketch Fleets</h3>
@@ -116,7 +116,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 * Paulo Oliveira, Project Manager and Programmer - paulo@ninito.me
 * Luiz Bozzi, Game Designer and Artist - lfbozzi86@gmail.com
 * Julia Moraes, Artist - juliamoraesfreitas@gmail.com
-* Sérgio Macellani, Programmer - sergiododec@gmail.com
+* Sérgio Macellani, Programmer - sergiomacellani@sergiom.dev
 * Árnilsen Arthur, Programmer - arnilsenarthur@gmail.com
 * Renzo Diniz, Generalist and Production Assistant - renzo.diniz@sga.pucminas.br
 
