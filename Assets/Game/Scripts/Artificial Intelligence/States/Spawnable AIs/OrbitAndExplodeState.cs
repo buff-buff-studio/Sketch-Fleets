@@ -83,7 +83,7 @@ namespace SketchFleets.AI
         {
             Explode = false;
 
-            if (AI == null) return;
+            if (AI == null || LevelManager.Instance == null) return;
             LevelManager.Instance.BulletTimeManager.StartBulletTime(timeByRealTime, bulletTimeDuration);
             AI.Ship.Fire();
             onExplode.Invoke();
