@@ -46,9 +46,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - _BluMult: {r: 1, g: 0, b: 0.63958263, a: 0}
-    - _GreMult: {r: 0, g: 0, b: 0, a: 0}
-    - _RedMult: {r: 0.7504206, g: 0, b: 1, a: 0}
+    - _BluMult: {r: 0.33823973, g: 0.225, b: 0.45, a: 1}
+    - _GreMult: {r: 0.9, g: 0.45655873, b: 0, a: 1}
+    - _RedMult: {r: 0.5411836, g: 0.35999998, b: 0.71999997, a: 1}
     - _WhiteMult: {r: 1, g: 1, b: 1, a: 0}
     - _WhitePow: {r: 0.5, g: 0.9, b: 1.35, a: 0}
     - _WhiteRef: {r: 0, g: 0, b: 0, a: 0}
