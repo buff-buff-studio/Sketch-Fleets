@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using ManyTools.Events;
-using ManyTools.Variables;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -41,7 +40,7 @@ namespace SketchFleets.Systems.Tutorial
         {
             get
             {
-                canvasCache ??= Object.FindObjectOfType<Canvas>();
+                canvasCache ??= GameObject.FindGameObjectWithTag("TutorialReceiver").GetComponent<Canvas>();
                 return canvasCache;
             }
         }
