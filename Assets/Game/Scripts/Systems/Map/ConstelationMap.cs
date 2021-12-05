@@ -1030,7 +1030,8 @@ public class ConstelationMap : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/Menu");
+        interaction.ReturnToMenu(this);
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/Menu");
     }
 
     #endregion
