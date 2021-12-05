@@ -68,7 +68,7 @@ MonoBehaviour:
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   shellDrop: {fileID: 0}
-  codexEntryTemplate: {fileID: 0}
+  codexEntryTemplate: {fileID: 8509772390799679560, guid: 0dc7e6f6a0a097c48bb675e31e2587a3, type: 3}
   codexDropChance:
     _useConstant: 1
     _constant: 0.01
@@ -91,3 +91,4 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
+  onShipSpawned: {fileID: 11400000, guid: 6191878487ab14a439cc8e3f050c3caa, type: 2}
