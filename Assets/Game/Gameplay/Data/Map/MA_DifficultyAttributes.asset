@@ -61,10 +61,10 @@ MonoBehaviour:
     _constant: {x: 3, y: 4}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 3, y: 4}
+    _constant: {x: 4, y: 5}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 8, y: 9}
+    _constant: {x: 3, y: 4}
     _variable: {fileID: 0}
   mapHeight:
     _useConstant: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a0349ef1e55e234eb7594e268d6b89a, type: 2}
   - {fileID: 11400000, guid: 3dc2bcd5aaab4474e84a3d32e16ec2ce, type: 2}
   - {fileID: 11400000, guid: 204ef1cf3dbec504d823d0045df82d66, type: 2}
-  - {fileID: 11400000, guid: 3dc2bcd5aaab4474e84a3d32e16ec2ce, type: 2}
+  - {fileID: 11400000, guid: f93d6c073a2191945a516a6e97c3a7d5, type: 2}
   maxEnemies:
   - _useConstant: 1
     _constant: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
     _constant: 10
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: 10
+    _constant: 14
     _variable: {fileID: 0}
   spawnAndWaveInterval:
   - _useConstant: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
     _constant: {x: 5, y: 6}
     _variable: {fileID: 0}
   - _useConstant: 1
-    _constant: {x: 4, y: 7}
+    _constant: {x: 4.5, y: 4.5}
     _variable: {fileID: 0}
   obstaclePool:
   - {fileID: 0}

@@ -111,6 +111,7 @@ namespace SketchFleets.Entities
         /// <summary>
         /// Gets all points in the formation
         /// </summary>
+        [ContextMenu("Get Formation Points")]
         private void GetFormationPoints()
         {
             formationPoints = GetComponentsInChildren<Transform>()

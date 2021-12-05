@@ -10,36 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41009a079ebf48daa39965b2c4596cb0, type: 3}
-  m_Name: BA_EnemyBlueBullet
+  m_Name: BA_EnemyOutletBullet
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Blue Bullet
+    _constant: Purple Bullet
     _variable: {fileID: 0}
-  description: A bullet fired by the Blue Ship
-  prefab: {fileID: 4233880130515042751, guid: c20c587674612d041ba5ec9f09e182c1, type: 3}
+  description: A bullet fired by the Purple Ship
+  prefab: {fileID: 4233880130515042751, guid: 59b77a08ea49b3d4da430462a9c9f4fb, type: 3}
   unlocalizedName: 
   unlocalizedDescription: 
   directDamage:
     _useConstant: 1
-    _constant: 75
+    _constant: 5
     _variable: {fileID: 0}
   damageContext: 3
   maxDamageVariation:
     _useConstant: 1
-    _constant: 15
+    _constant: 5
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 8.5
+    _constant: 40
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
-    _constant: 0
+    _constant: 5
     _variable: {fileID: 0}
   indirectDamage:
     _useConstant: 1
-    _constant: 0
+    _constant: 10
     _variable: {fileID: 0}
   ignorePlayer:
     _useConstant: 1
@@ -51,7 +51,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   downtime:
     _useConstant: 1
-    _constant: 2.8
+    _constant: 0
     _variable: {fileID: 0}
   continuousDamageTime:
     _useConstant: 1
@@ -63,20 +63,20 @@ MonoBehaviour:
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
-    _constant: 0
+    _constant: 0.1
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 2.25
+    _constant: 0.675
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
   muteChance:
     _useConstant: 1
-    _constant: 0
+    _constant: 0.45
     _variable: {fileID: 0}
   pitchVariation:
     _useConstant: 1
     _constant: 0.25
     _variable: {fileID: 0}
   fireEffect: {fileID: 0}
-  hitEffect: {fileID: 6511845030710563950, guid: 76c991f5145f22440960876b3b5a8b15, type: 3}
+  hitEffect: {fileID: 6511845030710563950, guid: d998137b1f83a8947ac607060e38f1e6, type: 3}
