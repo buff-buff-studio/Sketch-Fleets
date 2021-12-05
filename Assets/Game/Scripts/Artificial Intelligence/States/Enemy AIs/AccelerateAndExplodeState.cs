@@ -1,4 +1,5 @@
 using SketchFleets.AI;
+using SketchFleets.Systems.DeathContext;
 using UnityEngine;
 
 namespace SketchFleets
@@ -7,7 +8,7 @@ namespace SketchFleets
     /// An AI state that seeks the player and explodes upon colliding with him
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
-    public sealed class AccelerateAndExplodeState : BaseEnemyAIState
+    public sealed class AccelerateAndExplodeState : BaseEnemyAIState, INonLoopable
     {
         #region Private Fields
 
@@ -21,7 +22,11 @@ namespace SketchFleets
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (CollisionIsBullet(collision)) return;
-            AI.Ship.Damage(AI.Ship.CurrentHealth * 2);
+
+            if (IsWall(collision))
+            {
+                SelfDestruct();
+            }
         }
 
         #endregion
@@ -36,6 +41,7 @@ namespace SketchFleets
             AI = StateMachine as EnemyShipAI;
             rigidbody2d = GetComponent<Rigidbody2D>();
             cachedTransform = transform;
+            cachedTransform.rotation = Quaternion.Euler(0, 0, 90f);
 
             if (AI == null)
             {
@@ -52,7 +58,6 @@ namespace SketchFleets
         {
             if (!ShouldBeActive()) return;
 
-            AI.Ship.Look(AI.Target.transform.position.x > cachedTransform.position.x ? Vector2.right : Vector2.left);
             rigidbody2d.AddForce(transform.up * (AI.Ship.Attributes.Speed * Time.deltaTime));
         }
 
@@ -61,6 +66,15 @@ namespace SketchFleets
         /// </summary>
         public override void Exit()
         {
+        }
+
+        #endregion
+
+        #region INonLoopable Implementation
+
+        public void PreventLoop()
+        {
+            AI.Ship.Die();
         }
 
         #endregion
@@ -75,6 +89,25 @@ namespace SketchFleets
         private static bool CollisionIsBullet(Collision2D collision)
         {
             return collision.gameObject.CompareTag("bullet");
+        }
+        
+        /// <summary>
+        /// Destroys the ship
+        /// </summary>
+        private void SelfDestruct()
+        {
+            if (AI == null || AI.Ship == null) return;
+            AI.Ship.Damage(AI.Ship.CurrentHealth, DamageContext.ObstacleCollision, false, true);
+        }
+
+        /// <summary>
+        /// Checks whether a given 2D collision is with a wall
+        /// </summary>
+        /// <param name="collision">The collision to check</param>
+        /// <returns>Whether a given 2D collision is with a wall</returns>
+        private static bool IsWall(Collision2D collision)
+        {
+            return collision.gameObject.CompareTag("EndMap");
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using ManyTools.Variables;
+using SketchFleets.Systems.DeathContext;
 using UnityEngine;
 
 namespace SketchFleets.Data
@@ -16,6 +17,9 @@ namespace SketchFleets.Data
         [Tooltip("How much damage the bullet does if it hits an enemy directly.")]
         [SerializeField]
         private FloatReference directDamage = new FloatReference(0);
+        [Tooltip("The context of the damage to apply.")]
+        [SerializeField]
+        private DamageContext damageContext;
         [Tooltip("What is the most damage can vary per shot?")]
         [SerializeField]
         private FloatReference maxDamageVariation = new FloatReference(0);
@@ -54,6 +58,9 @@ namespace SketchFleets.Data
         [Tooltip("The sound effect played when the bullet is shot")]
         [SerializeField]
         private AudioClip fireSound;
+        [Tooltip("The chance the bullet will not play the fire sound, to reduce spammy sounds")]
+        [SerializeField]
+        private FloatReference muteChance = new FloatReference(0f);
         [Tooltip("The pitch variation of the sound effect")]
         [SerializeField]
         private FloatReference pitchVariation = new FloatReference(0.25f);
@@ -79,6 +86,8 @@ namespace SketchFleets.Data
         public FloatReference Speed => speed;
 
         public FloatReference DirectDamage => directDamage;
+        
+        public DamageContext DamageContext => damageContext;
 
         public BoolReference IgnorePlayer => ignorePlayer;
         
@@ -95,6 +104,8 @@ namespace SketchFleets.Data
         public FloatReference Cooldown => cooldown;
 
         public AudioClip FireSound => fireSound;
+        
+        public FloatReference MuteChance => muteChance;
 
         public FloatReference MaxDamageVariation => maxDamageVariation;
 

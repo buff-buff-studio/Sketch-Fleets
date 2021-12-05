@@ -17,28 +17,29 @@ MonoBehaviour:
     _constant: Blue Bullet
     _variable: {fileID: 0}
   description: A bullet fired by the Blue Ship
-  prefab: {fileID: 4233880130515042751, guid: c20c587674612d041ba5ec9f09e182c1, type: 3}
+  prefab: {fileID: 4233880130515042751, guid: ea08b1333724f144bafc43254ef1f88b, type: 3}
   unlocalizedName: 
   unlocalizedDescription: 
   directDamage:
     _useConstant: 1
-    _constant: 75
+    _constant: 10
     _variable: {fileID: 0}
+  damageContext: 1
   maxDamageVariation:
     _useConstant: 1
-    _constant: 15
+    _constant: 4.5
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 25
+    _constant: 23.5
     _variable: {fileID: 0}
   impactRadius:
     _useConstant: 1
-    _constant: 5
+    _constant: 0
     _variable: {fileID: 0}
   indirectDamage:
     _useConstant: 1
-    _constant: 2
+    _constant: 0
     _variable: {fileID: 0}
   ignorePlayer:
     _useConstant: 1
@@ -50,7 +51,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   downtime:
     _useConstant: 1
-    _constant: 3.5
+    _constant: 1
     _variable: {fileID: 0}
   continuousDamageTime:
     _useConstant: 1
@@ -58,20 +59,24 @@ MonoBehaviour:
     _variable: {fileID: 0}
   hitsLock:
     _useConstant: 1
-    _constant: 3
+    _constant: 0
     _variable: {fileID: 0}
   angleJitter:
     _useConstant: 1
-    _constant: 0
+    _constant: 5
     _variable: {fileID: 0}
   cooldown:
     _useConstant: 1
-    _constant: 1.5
+    _constant: 0.15
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 319ae37d517e7b041b257b13a9009939, type: 3}
+  muteChance:
+    _useConstant: 1
+    _constant: 0.375
+    _variable: {fileID: 0}
   pitchVariation:
     _useConstant: 1
     _constant: 0.25
     _variable: {fileID: 0}
   fireEffect: {fileID: 0}
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 6511845030710563950, guid: 76c991f5145f22440960876b3b5a8b15, type: 3}

@@ -44,6 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca7eb1eebfd3764fb7f91f69a76945a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7760784191648496089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5416960533882797331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c98ed9305751c4aa20fca42b67656f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportChance: 75
+  teleportCooldown: 1.5
+  teleportEffectPrefab: {fileID: 3543746267417542547, guid: 4babfa5e0444545488bc73c7b845bc87, type: 3}
 --- !u!1001 &3422460696942875550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,6 +86,14 @@ PrefabInstance:
       propertyPath: attributes
       value: 
       objectReference: {fileID: 11400000, guid: 7e471b917b979d64790482eeadaf095e, type: 2}
+    - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: droppedBullet
+      value: 
+      objectReference: {fileID: 11400000, guid: 96a09753dad365047a5621146a313637, type: 2}
+    - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: droppedBullet._variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 96a09753dad365047a5621146a313637, type: 2}
     - target: {fileID: 668844323882644294, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: enemyDeathColor._variable
       value: 
@@ -105,12 +128,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3837800068395647316, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.24
+      value: 2.93
       objectReference: {fileID: 0}
     - target: {fileID: 3837800068395647316, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3882482231209371536, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 6331946450490051697, guid: fc2a4f25c6f7b2c46ad0e03154ba59f0, type: 3}
       propertyPath: m_RootOrder
       value: 0

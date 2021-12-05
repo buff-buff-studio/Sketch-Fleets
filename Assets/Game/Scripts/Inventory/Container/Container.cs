@@ -14,6 +14,11 @@ namespace SketchFleets.Inventory
     /// </summary>
     public class Container : MonoBehaviour
     {
+        #region Public Static Fields
+        //Used to track tooltip
+        public static int tooltipId = 0;
+        #endregion
+
         #region Protected Fields
         [SerializeField]
         protected ShopObjectRegister register;
@@ -65,9 +70,29 @@ namespace SketchFleets.Inventory
 
         public void HideTooltip()
         {
+            tooltipId++;
             heldSlot = -1;
             if (tooltipBox.gameObject.activeInHierarchy)
                 tooltipBox.gameObject.SetActive(false);
+
+            tooltipBox.GetComponent<CanvasGroup>().alpha = 0;
+        }
+
+        IEnumerator ShowToolTip(float time)
+        {
+            tooltipId ++;
+            int id = tooltipId;
+            yield return new WaitForSeconds(time);
+
+            float t = Time.time;
+            while(tooltipId == id)
+            {
+                float tm = Mathf.Clamp01((Time.time - t) * 5);
+                tooltipBox.GetComponent<CanvasGroup>().alpha = tm;
+                if(tm == 1)
+                    break;
+                yield return null;
+            }
         }
 
         /// <summary>
@@ -97,20 +122,30 @@ namespace SketchFleets.Inventory
         protected void OnClickSlotInternal(int slot)
         {
             //Hide
-            if (tooltipBox.gameObject.activeInHierarchy)
-                tooltipBox.gameObject.SetActive(false);
+
 
             if (heldSlot == slot)
             {
                 //heldSlot = -1;
 
                 if (OnClickSlot != null)
+                {
+                    if (tooltipBox.gameObject.activeInHierarchy)
+                        tooltipBox.gameObject.SetActive(false);
+                    tooltipBox.GetComponent<CanvasGroup>().alpha = 0;
+
                     OnClickSlot(slot);
+                }
 
                 return;
             }
 
-            this.mouse = Mouse.current.position.ReadValue();
+            if (tooltipBox.gameObject.activeInHierarchy)
+                tooltipBox.gameObject.SetActive(false);
+            tooltipBox.GetComponent<CanvasGroup>().alpha = 0;
+
+            this.mouse = slots[slot].position;
+            //this.mouse = Mouse.current.position.ReadValue();
             this.heldSlot = slot;
 
             if (heldSlot >= 0 && GetItemInSlot(heldSlot) != null)
@@ -120,6 +155,8 @@ namespace SketchFleets.Inventory
 
                 if (!tooltipBox.gameObject.activeInHierarchy)
                     tooltipBox.gameObject.SetActive(true);
+
+                StartCoroutine(ShowToolTip(0.05f));
             }
 
             //Open toolbar
@@ -165,7 +202,7 @@ namespace SketchFleets.Inventory
                     tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Left;
                     tooltipDescription.margin = new Vector4(0, 0, 0, 0);
 
-                    tooltipBox.anchoredPosition = new Vector2(-w/2f, 0);
+                    tooltipBox.anchoredPosition = new Vector2(-w / 2f, 0);
                 }
                 else
                 {
@@ -176,7 +213,7 @@ namespace SketchFleets.Inventory
                         tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Right;
                         tooltipDescription.margin = new Vector4(-w, 0, w, 0);
 
-                        tooltipBox.anchoredPosition = local + new Vector2(-70, 40) + new Vector2(0, changeY);
+                        tooltipBox.anchoredPosition = local + new Vector2(-100, 40) + new Vector2(0, changeY);
                     }
                     else
                     {
@@ -185,7 +222,7 @@ namespace SketchFleets.Inventory
                         tooltipDescription.horizontalAlignment = HorizontalAlignmentOptions.Left;
                         tooltipDescription.margin = new Vector4(0, 0, 0, 0);
 
-                        tooltipBox.anchoredPosition = local + new Vector2(70, 40) + new Vector2(0, changeY);
+                        tooltipBox.anchoredPosition = local + new Vector2(100, 40) + new Vector2(0, changeY);
                     }
                 }
             }

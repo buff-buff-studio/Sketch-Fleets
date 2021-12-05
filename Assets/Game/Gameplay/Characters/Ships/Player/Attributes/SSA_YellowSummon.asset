@@ -58,6 +58,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 50
     _variable: {fileID: 0}
+  collisionDamageContext: 2
   invincibilityTime:
     _useConstant: 1
     _constant: 0.3
@@ -67,25 +68,17 @@ MonoBehaviour:
     _constant: {x: 0, y: 0}
     _variable: {fileID: 0}
   shellDrop: {fileID: 0}
-  codexEntryTemplate: {fileID: 0}
+  codexEntryTemplate: {fileID: 8509772390799679560, guid: 0dc7e6f6a0a097c48bb675e31e2587a3, type: 3}
   codexDropChance:
     _useConstant: 1
     _constant: 0.01
     _variable: {fileID: 0}
-  fire: {fileID: 11400000, guid: 12d02b44d08b2424a9d92e34983a38b9, type: 2}
-  dropedFire: {fileID: 0}
+  fire: {fileID: 0}
+  droppedFire: {fileID: 0}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 630950013473707304, guid: 2e905cd8aff31a24292a463aa536e8dd, type: 3}
-  healEffect: {fileID: 0}
+  healEffect: {fileID: 3722199005660995477, guid: 3dfb043eb3f266142bb1341272a4da94, type: 3}
   spawnEffect: {fileID: 6815621210096123458, guid: 1e494c40819657449bbdc0368a4feda6, type: 3}
-  graphiteCost:
-    _useConstant: 1
-    _constant: 50
-    _variable: {fileID: 0}
-  graphiteCostIncrease:
-    _useConstant: 1
-    _constant: 15
-    _variable: {fileID: 0}
   maximumShips:
     _useConstant: 1
     _constant: 3
@@ -98,3 +91,4 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 0
     _variable: {fileID: 0}
+  onShipSpawned: {fileID: 11400000, guid: 6191878487ab14a439cc8e3f050c3caa, type: 2}

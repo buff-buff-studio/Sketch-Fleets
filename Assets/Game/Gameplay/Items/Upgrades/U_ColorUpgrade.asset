@@ -23,7 +23,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   itemCostIncreasePerUnit:
     _useConstant: 1
-    _constant: 250
+    _constant: 350
     _variable: {fileID: 0}
   itemAmountLimit:
     _useConstant: 1
@@ -50,4 +50,4 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 1
     _variable: {fileID: 0}
-  codexEntryRarity: 1
+  codexEntryRarity: 2

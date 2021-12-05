@@ -24,6 +24,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 50
     _variable: {fileID: 0}
+  damageContext: 1
   maxDamageVariation:
     _useConstant: 1
     _constant: 0
@@ -69,6 +70,10 @@ MonoBehaviour:
     _constant: 0.25
     _variable: {fileID: 0}
   fireSound: {fileID: 8300000, guid: f274fbd3f38f1ae4889b150a2bff774a, type: 3}
+  muteChance:
+    _useConstant: 1
+    _constant: 0
+    _variable: {fileID: 0}
   pitchVariation:
     _useConstant: 1
     _constant: 0.25

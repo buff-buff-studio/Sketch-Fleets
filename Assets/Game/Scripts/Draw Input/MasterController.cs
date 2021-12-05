@@ -12,6 +12,7 @@ namespace SketchFleets
 {
     public sealed class MasterController : MonoBehaviour
     {
+        [Header("System References")]
         [SerializeField]
         private ShootingTarget shootingTarget;
         [SerializeField]
@@ -24,6 +25,7 @@ namespace SketchFleets
         [SerializeField]
         private ColorsInventory _colorsInventory;
 
+        [Header("HUD Elements")]
         [SerializeField]
         private GameObject HUD;
         [SerializeField]
@@ -31,13 +33,19 @@ namespace SketchFleets
         [SerializeField]
         private GameObject ColorHUD;
 
+        [Header("Joysticks")]
         [SerializeField]
         private RectTransform JoystickL;
         [SerializeField]
         private RectTransform JoystickR;
 
+        [Header("Buttons")]
         [SerializeField]
         private GameObject fireShipButton;
+        
+        [Header("Other Configs")]
+        [SerializeField]
+        private float slowDownFactor = 0.5f;
 
         private IAA_SketchFleetsInputs playerControl;
 
@@ -90,7 +98,7 @@ namespace SketchFleets
         {
             UpdateDebug();
 
-            if (HUD.activeSelf && Time.timeScale == 1)
+            if (HUD.activeSelf && !Mathf.Approximately(Time.timeScale, 0f))
             {
                 ControlsUpdate();
                 if (playerControl.InGame.InputDraw.triggered)
@@ -149,7 +157,7 @@ namespace SketchFleets
 
         public void SelectInput()
         {
-            if (Time.timeScale != 1) return;
+            if (Mathf.Approximately(Time.timeScale, 0f)) return;
 
             Vector2 touch = Camera.main.ViewportToWorldPoint(Camera.main.ScreenToViewportPoint(TouchOne));
 
@@ -164,7 +172,7 @@ namespace SketchFleets
 
         public void TouchOnePos()
         {
-            if (Time.timeScale != 1 || closeFinger == 0 || TouchOne == Vector2.zero) return;
+            if (Mathf.Approximately(Time.timeScale, 0f) || closeFinger == 0 || TouchOne == Vector2.zero) return;
 
             if (closeFinger == 1)
                 mothership.Move(TouchOne, TouchOneRadius());
@@ -174,7 +182,7 @@ namespace SketchFleets
 
         public void TouchTwoPos()
         {
-            if (Time.timeScale != 1 || closeFinger == 0 || TouchTwo == Vector2.zero) return;
+            if (Mathf.Approximately(Time.timeScale, 0f) || closeFinger == 0 || TouchTwo == Vector2.zero) return;
 
             if (closeFinger == 2)
                 mothership.Move(TouchTwo, TouchOneRadius());
@@ -283,7 +291,7 @@ namespace SketchFleets
             HUD.SetActive(false);
             ColorHUD.SetActive(true);
             _lineDrawer.gameObject.SetActive(true);
-            _lineDrawer.BulletTime(.5f);
+            LineDrawer.BulletTime(slowDownFactor);
         }
 
         public void OpenInventory()
@@ -291,7 +299,7 @@ namespace SketchFleets
             if (!HUD.activeSelf) return;
             HUD.SetActive(false);
             InventoryHUD.SetActive(true);
-            Time.timeScale = 0.5f;
+            Time.timeScale = slowDownFactor;
         }
 
         public void CloseInventory()

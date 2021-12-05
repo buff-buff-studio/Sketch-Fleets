@@ -92,32 +92,40 @@ namespace SketchFleets.Interaction
             });
         }
 
+        public void ReturnToMenu(MonoBehaviour behaviour)
+        {
+            SketchFleets.LoadingGame.SceneLoad = null;
+            LoadScene(sceneLoading.Value, () =>
+            {
+                 SketchFleets.LoadingGame.SceneLoad = sceneMenu.Value;
+            });
+        }
+
         //Clear
         public void OnGameOver(MonoBehaviour behaviour)
         {
             //Clear save data and return to menu
-            SketchFleets.ProfileSystem.Profile.Data.Clear(behaviour, (data) =>
+            SketchFleets.LoadingGame.SceneLoad = null;
+            LoadScene(sceneLoading.Value, () =>
             {
-                SketchFleets.LoadingGame.SceneLoad = sceneMenu.Value;
-                LoadScene(sceneLoading.Value, () => { });
+                SketchFleets.ProfileSystem.Profile.Data.Clear(behaviour, (data) =>
+                {
+                    SketchFleets.LoadingGame.SceneLoad = sceneMenu.Value;
+                });
             });
+
         }
 
         public void SaveReturningToMenu(MonoBehaviour behaviour)
         {
-            Constelation.Star star = state.constelation.GetStar(state.GetCurrentStar());
-
-            foreach (Constelation.StarJunction j in star.toJunctions)
+            SketchFleets.LoadingGame.SceneLoad = null;
+            LoadScene(sceneLoading.Value, () =>
             {
-                if (!state.IsChoosen(j.starA.Id))
-                    continue;
-
-                //Open linked starts
-                state.Open(j.starA.Id);
-                state.Open(j.starB.Id);
-            }
-
-            SaveMapState(behaviour, () => { });
+                SaveMapState(behaviour, () =>
+                {
+                    SketchFleets.LoadingGame.SceneLoad = sceneMenu.Value;
+                });
+            });
         }
 
         /// <summary>
@@ -125,6 +133,24 @@ namespace SketchFleets.Interaction
         /// </summary>
         public void ReturnToMapOpeningStar()
         {
+            SketchFleets.LoadingGame.SceneLoad = sceneMap.Value;
+            LoadScene(sceneLoading.Value, () =>
+            {
+                ConstelationMap.onMapLoad = () =>
+                {
+                    map.OpenInstantly();
+
+                    Time.timeScale = 1;
+
+                    //Schedule Open Star Animation
+                    map.UnlockNextLevel();
+
+                    //Save Map
+                    SaveMapState(map, () => { });
+                };
+            });
+
+            /*
             LoadScene(sceneMap.Value, () =>
             {
                 ConstelationMap.onMapLoad = () =>
@@ -140,6 +166,7 @@ namespace SketchFleets.Interaction
                     SaveMapState(map, () => { });
                 };
             });
+            */
         }
 
         /// <summary>
@@ -147,11 +174,12 @@ namespace SketchFleets.Interaction
         /// </summary>
         public void OpenMap(MonoBehaviour source, bool continueGame)
         {
-            LoadMapState(source, continueGame, () =>
+            SketchFleets.LoadingGame.SceneLoad = null;
+            LoadScene(sceneLoading.Value, () =>
             {
-                SketchFleets.LoadingGame.SceneLoad = sceneMap.Value;
-                LoadScene(sceneLoading.Value, () =>
+                LoadMapState(source, continueGame, () =>
                 {
+                    SketchFleets.LoadingGame.SceneLoad = sceneMap.Value;
                     ConstelationMap.onMapLoad = () =>
                     {
                         map.OpenAnimation(() => { });

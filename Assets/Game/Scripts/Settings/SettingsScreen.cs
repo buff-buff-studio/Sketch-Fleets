@@ -108,8 +108,7 @@ namespace SketchFleets
             #region Graphics Quality
 
             if (graphicsQuality != null)
-            {
-                graphicsQuality.UpdateLocalization();
+            {         
                 graphicsQuality.value = Settings.GetObject().graphicsQuality;
             }
 

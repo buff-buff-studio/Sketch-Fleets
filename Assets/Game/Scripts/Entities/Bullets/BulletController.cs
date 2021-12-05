@@ -1,4 +1,3 @@
-using System;
 using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using UnityEngine;
@@ -9,23 +8,18 @@ using Random = UnityEngine.Random;
 /// <summary>
 /// A class that controls a bullet and its behaviour
 /// </summary>
-[RequireComponent(typeof(AudioSource))]
 public class BulletController : PoolMember
 {
     #region Private Fields
 
     [SerializeField, RequiredField()]
     private BulletAttributes attributes;
-    [SerializeField, RequiredField()]
-    private AudioSource soundSource;
 
     private bool hasFireEffect;
     private float damageMultiplier = 1f;
     private float damageIncrease = 0f;
 
     #endregion
-
-    public float PlayerBuletVelocity;
 
     #region Properties
 
@@ -56,16 +50,16 @@ public class BulletController : PoolMember
     {
         base.Emerge(position, rotation);
 
-        soundSource.pitch = Random.Range(1 - Attributes.PitchVariation, 1 + Attributes.PitchVariation);
-
-        soundSource.clip = Attributes.FireSound;
-        soundSource.pitch = Random.Range(1 - Attributes.PitchVariation, 1 + Attributes.PitchVariation);
-        soundSource.Play();
-
         if (hasFireEffect)
         {
             PoolManager.Instance.Request(Attributes.FireEffect).Emerge(transform.position, Quaternion.identity);
         }
+    }
+
+    public override void Submerge()
+    {
+        PlayHitEffect();
+        base.Submerge();
     }
 
     #endregion
@@ -75,21 +69,17 @@ public class BulletController : PoolMember
     protected virtual void Start()
     {
         hasFireEffect = Attributes.FireEffect != null;
-        PlayerBuletVelocity = 0;
     }
 
     protected virtual void Update()
     {
-        if(PlayerBuletVelocity == 0)
-            Move(Vector3.up * Attributes.Speed, Space.Self);
-        else
-            Move(Vector3.up * PlayerBuletVelocity, Space.Self);
+        Move(Vector3.up * Attributes.Speed, Space.Self);
     }
 
     protected void Move(Vector3 pos, Space space)
     {
-        transform.Translate(pos * Time.deltaTime, space);
-        //transform.Translate(Vector3.up * Time.deltaTime * Attributes.Speed, Space.Self);
+        //transform.Translate(pos * Time.deltaTime, space);
+        transform.Translate(Vector3.up * Time.deltaTime * Attributes.Speed, Space.Self);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D col)
@@ -102,11 +92,6 @@ public class BulletController : PoolMember
 
         if (!col.isTrigger) return;
         Hit(col);
-    }
-
-    private void Reset()
-    {
-        soundSource = GetComponent<AudioSource>();
     }
 
     #endregion
@@ -142,11 +127,6 @@ public class BulletController : PoolMember
 
             DealDamageToTarget(false, directHit.gameObject);
         }
-
-        if (Attributes.HitEffect != null)
-        {
-            PoolManager.Instance.Request(Attributes.HitEffect).Emerge(transform.position, Quaternion.identity);
-        }
     }
 
     /// <summary>
@@ -159,11 +139,11 @@ public class BulletController : PoolMember
         if (target.CompareTag("Player") || target.CompareTag("PlayerSpawn"))
         {
             if (Attributes.IgnorePlayer) return;
-            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage), Attributes.DamageContext);
         }
         else
         {
-            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage));
+            target.GetComponent<IDamageable>()?.Damage(GetDamage(directDamage), Attributes.DamageContext);
         }
 
         Submerge();
@@ -178,6 +158,21 @@ public class BulletController : PoolMember
         float damageVariation = Random.Range(0, Attributes.MaxDamageVariation);
         float baseDamage = direct ? Attributes.DirectDamage : Attributes.IndirectDamage;
         return baseDamage * DamageMultiplier + damageVariation + DamageIncrease;
+    }
+
+    #endregion
+
+    #region Protected Methods
+
+    /// <summary>
+    /// Plays the bullet's hit effect
+    /// </summary>
+    protected void PlayHitEffect()
+    {
+        if (Attributes.HitEffect != null)
+        {
+            PoolManager.Instance.Request(Attributes.HitEffect).Emerge(transform.position, Quaternion.identity);
+        }
     }
 
     #endregion

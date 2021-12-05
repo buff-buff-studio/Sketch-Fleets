@@ -4,6 +4,7 @@ using UnityEngine;
 using ManyTools.Variables;
 using UnityEngine.SceneManagement;
 using SketchFleets.Interaction;
+using SketchFleets.ProfileSystem;
 
 public class HUDScript : MonoBehaviour
 {
@@ -25,18 +26,10 @@ public class HUDScript : MonoBehaviour
     #endregion
 
     #region Die Buttons
-    public void Replay()
-    {
-        Time.timeScale = 1;
-        life.Value = lifeFull;
-        SceneManager.LoadScene("Game");
-    }
-
     public void GameOver()
     {
         Time.timeScale = 1;
         life.Value = lifeFull;
-        SceneManager.LoadScene("Menu");
         interaction.OnGameOver(this);
     }
 
@@ -44,7 +37,6 @@ public class HUDScript : MonoBehaviour
     {
         Time.timeScale = 1;
         life.Value = lifeFull;
-        SceneManager.LoadScene("Menu");
         interaction.SaveReturningToMenu(this);
     }
     #endregion

@@ -1,6 +1,9 @@
+using System;
+using System.Collections;
 using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using SketchFleets.Data;
+using SketchFleets.Systems.DeathContext;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -28,20 +31,22 @@ namespace SketchFleets.Entities
 
         #region IDamageable Implementation
 
-        /// <summary>
-        /// Damages the Damageable object by the given amount
-        /// </summary>
-        /// <param name="amount">The amount to damage for</param>
-        /// <param name="makeInvulnerable">Whether the object should be made invulnerable after the damage</param>
-        /// <param name="piercing">Whether the damage should ignore defense and shields</param>
-        public void Damage(float amount, bool makeInvulnerable = false, bool piercing = false)
+        public DamageContext LatestDamageContext { get; set; }
+
+        public void Damage(float amount, DamageContext context, bool makeInvulnerable = false, bool piercing = false)
         {
             currentHealth.Value -= amount;
+            LatestDamageContext = context;
 
             if (CheckForDeath())
             {
                 Die();
             }
+        }
+
+        public void DamageContinually(float amount, DamageContext context, int pulses, float time)
+        {
+            StartCoroutine(ApplyDamagePulses(amount, context, pulses, time));
         }
         
         /// <summary>
@@ -108,7 +113,7 @@ namespace SketchFleets.Entities
         {
             if (Attributes.CollisionDamage > 0)
             {
-                damageable?.Damage(Attributes.CollisionDamage, true);
+                damageable?.Damage(Attributes.CollisionDamage, DamageContext.ObstacleCollision);
             }
             else
             {
@@ -132,6 +137,31 @@ namespace SketchFleets.Entities
         {
             PoolManager.Instance.Request(Attributes.DeathEffect).Emerge(transform.position, Quaternion.identity);
             Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// Applies multiple pulses of damage to the ship
+        /// </summary>
+        /// <param name="totalDamage">The total damage to be applied</param>
+        /// <param name="context">The context of the damage to apply</param>
+        /// <param name="pulses">The amount of pulses to play</param>
+        /// <param name="time">The time to apply the pulses over</param>
+        /// <exception cref="ArgumentException">The amount of pulses cannot be negative</exception>
+        private IEnumerator ApplyDamagePulses(float totalDamage, DamageContext context, int pulses, float time)
+        {
+            if (pulses <= 0)
+            {
+                throw new ArgumentException("Pulses must be greater than 0");
+            }
+
+            WaitForSeconds pulseInterval = new WaitForSeconds(time / pulses);
+            float damagePerPulse = totalDamage / pulses;
+            
+            for (int pulse = 0; pulse < pulses; pulse++)
+            {
+                Damage(damagePerPulse, context);
+                yield return pulseInterval;
+            }
         }
         
         #endregion

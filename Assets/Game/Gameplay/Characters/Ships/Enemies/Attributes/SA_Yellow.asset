@@ -48,7 +48,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
   speed:
     _useConstant: 1
-    _constant: 35
+    _constant: 425
     _variable: {fileID: 0}
   defense:
     _useConstant: 1
@@ -58,6 +58,7 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 150
     _variable: {fileID: 0}
+  collisionDamageContext: 4
   invincibilityTime:
     _useConstant: 1
     _constant: 0
@@ -72,8 +73,8 @@ MonoBehaviour:
     _useConstant: 1
     _constant: 0.02
     _variable: {fileID: 0}
-  fire: {fileID: 11400000, guid: 12d02b44d08b2424a9d92e34983a38b9, type: 2}
-  dropedFire: {fileID: 788092735145430477, guid: 00392ca4f103e654d8e0d7f8740c6381, type: 3}
+  fire: {fileID: 11400000, guid: 4681f8a43d3c9cb47928678b92493e14, type: 2}
+  droppedFire: {fileID: 11400000, guid: 12d02b44d08b2424a9d92e34983a38b9, type: 2}
   hitSound: {fileID: 0}
   deathEffect: {fileID: 2685658488167287599, guid: 8925daef909aa374386f8a38b855cd35, type: 3}
-  healEffect: {fileID: 0}
+  healEffect: {fileID: 3722199005660995477, guid: 3dfb043eb3f266142bb1341272a4da94, type: 3}

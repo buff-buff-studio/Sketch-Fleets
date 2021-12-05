@@ -9,35 +9,36 @@ ui_menu=Menu
 ui_credits=Créditos
 ui_resolution=Resolução
 ui_map=Mapa
-ui_store=Loja do Bufo
+ui_store=Loja Bufo
+ui_codex=Album de Figurinhas
 
 #
 # SETTINGS MENU
 #
 
-ui_subtitle_displaysettings=Opções de Tela
-ui_subtitle_languagesettings=Opções de Idioma
-ui_subtitle_resolutionsettings=Opções de Resolução
+ui_subtitle_displaysettings=Configurações de Exibição
+ui_subtitle_languagesettings=Configurações de Idioma
+ui_subtitle_resolutionsettings=Configurações de Resolução
 ui_subtitle_graphicssettings=Qualidade Gráfica
-ui_subtitle_fullscreensettings=Modo de Tela
+ui_subtitle_fullscreensettings=Configurações de Tela Cheia
 
 ui_language_english=English
 ui_language_portuguese=Português
 
 ui_subtitle_volumemaster=Volume Mestre
 ui_subtitle_volumemusic=Volume de Música
-ui_subtitle_volumesfx=Volume de Efeitos Sonoros
+ui_subtitle_volumesfx=Volume de Efeitos
 
-ui_graphics_low=Baixo
+ui_graphics_low=Batata
 ui_graphics_medium=Médio
-ui_graphics_high=Alto
+ui_graphics_high=RTX On
 
 resolution_low=Baixa
 resolution_medium=Média
 resolution_high=Alta
 
-windowed=Modo Janela
-fs_windowed=Janela em Tela Cheia
+windowed=Janela
+fs_windowed=Janela Sem Bordas
 fullscreen=Tela Cheia
 
 #
@@ -46,19 +47,25 @@ fullscreen=Tela Cheia
 
 ui_occupation_artist=Artista
 ui_occupation_programmer=Programador
-ui_occupation_ui=Designer de UI
+ui_occupation_ui=Designer de Interface
 ui_occupation_you=Você!
 ui_occupation_teacher=Professor
 ui_occupation_dev=Desenvolvedor
 ui_occupation_university=Universidade
 
-ui_credits_hint=Clique nos desenvolvedores para saber mais
+ui_credits_hint=Clique nas figuras para ver mais informações!
+
+ui_credits_others=Outros
+ui_credits_professors=Professores
+ui_non_illustrated_thank_you=Agradeçemos também
+ui_credits_you=Você!
+ui_credits_developer=Desenvolvedora
 
 #
 # QUIT MENU
 #
 
-ui_quit_confirm=Você tem certeza?
+ui_quit_confirm=Não! Qual é? Vai sair mesmo?
 ui_quit_yes=Sim!
 ui_quit_no=Não!
 
@@ -76,7 +83,7 @@ map_easy=Fácil
 map_medium=Médio
 map_hard=Difícil
 map_veryhard=Muito Difícil
-map_boss=???
+map_boss=Meu Deus!
 
 #
 # IN-GAME
@@ -84,12 +91,12 @@ map_boss=???
 
 ui_enemies=Inimigos
 
-ui_deadTitle=Você Morreu!
-ui_runtime=Tempo da partida
+ui_deadTitle=Te apagaram!
+ui_runtime=Timer Total
 
-ui_winTitle=Planeta Completado!
+ui_winTitle=Planeta completo!
 
-ui_pauseTitle=Jogo Pausado!
+ui_pauseTitle=Pausado
 ui_pauseReturn=Voltar
 
 ui_button_newgame=Novo Jogo
@@ -98,122 +105,187 @@ ui_button_store=Loja
 
 ui_title_settings=Opções
 
-ui_pressSpace=Aperta a barra de espaço para invocar reforços e usar itens
+#
+# TUTORIALS
+#
+
+ui_tutorial_colors_title_0=Posso te interessar em um TUTORIAL?
+ui_tutorial_colors_desc_0=Ugh, desculpe, acho que fiz parecer que estava oferecendo drogas. De qualquer forma, você precisa de ajuda? O cosmos é um lugar perigoso; não queremos sair despreparados, não é?
+ui_tutorial_colors_button_0_1=Sure, hook me up!
+ui_tutorial_colors_button_0_2=Say no to Tutorials.
+
+ui_tutorial_colors_title_1=Como CONTROLAR uma Nave Espacial
+ui_tutorial_colors_desc_1=MOVA-SE arrastando sua nave pela tela. MIRE arrastando onde a sua nave está atirando. Se você estiver usando o MODO JOYSTICK, é só usar os JOYSTICKS, bobão. Vá em frente e DESTRUA uma nave para ver se você pegou o jeito.
+ui_tutorial_colors_button_1=Aí vou eu!
+
+ui_tutorial_colors_title_2=ISSO! AGORA PREPARE O RITUAL DE INVOCAÇÃO COM O SANGUE DELES!
+ui_tutorial_colors_desc_2=Uh ... quero dizer COR! Prepare o ritual com a COR deles. Tá vendo a barra no topo? Essas são as CORES que você arrancou dos seus inimigos caídos. Você sempre ganha a COR do último inimigo que DESTRUIU. Use uma cor para invocar um aliado!
+ui_tutorial_colors_button_2=Mas... Como?
+
+ui_tutorial_colors_title_3=É FÁCIL! Toque nesse botão!
+ui_tutorial_colors_desc_3=Sempre que você quiser invocar um aliado com uma COR, basta tocar no botão DESENHAR na parte inferior central da tela. É aquele com a seta.
+ui_tutorial_colors_pointer_3_1=Clique nesse botão aqui!
+
+ui_tutorial_colors_title_4=Bem-vindo ao MODO DE DESENHO
+ui_tutorial_colors_desc_4=Agora, use a COR que você arrancou do seus inimigos para invocar um aliado. Você pode fazer isso desenhando uma forma. Primeiro, vamos tentar um TRIÂNGULO.
+
+ui_tutorial_colors_title_5=Bem-vindo ao MODO DE DESENHO! (DE NOVO)
+ui_tutorial_colors_desc_5=Excelente trabalho com o triângulo. Eu teria feito ele um pouco mais pontiagudo, mas ainda assim. Agora, vamos tentar outra coisa. Desenhe um QUADRADO!
+
+ui_tutorial_colors_title_6=Bem-vindo ao MODO DE D- Você sabe...
+ui_tutorial_colors_desc_6=Foi um belo quadrado! Agora, na sua última lição de desenho: Desenhe um CÍRCULO!
+
+ui_tutorial_colors_title_7=Agora EXPLODE eles!
+ui_tutorial_colors_desc_7=Círculos são boas bombas, não é? TOQUE DUAS VEZES na tela ou pressione o ícone da bomba para lançar a sua.
+
+ui_tutorial_colors_title_8=Bom trabalho! Você é um profissional!
+ui_tutorial_colors_desc_8=Ou um terrorista, já que você acabou de arremessar uma bomba. Mas isso não é importante. Você tem uma jornada galáctica inteira pela frente! E agora você também tem as habilidades! Boa sorte, meu amigo!
+ui_tutorial_colors_button_8=Avante eu vou!
+
+ui_tutorial_map_title_1=Bem vindo a Galáxia!
+ui_tutorial_map_desc_1=Esta é a galáxia! Seu objetivo é explorar planetas até chegar ao buraco negro no centro! Cada vez que você começa um novo jogo, sua galáxia será diferente. Algumas galáxias são curtas, outras são longas. Algumas são fáceis, outras são difíceis!
+ui_tutorial_map_button_1=Não perguntei
+
+ui_tutorial_map_title_2=Tá, mas onde eu vou?
+ui_tutorial_map_desc_2=Ao longo de sua jornada, você encontrará uma miríade de mundos diferentes. Eu acho de devia te contar que alguns serão mais fáceis do que outros.
+ui_tutorial_map_button_2=O que há com todas essas analogias de parque?
+
+ui_tutorial_map_planet_green=Um passeio no parque!
+ui_tutorial_map_planet_orange=Um passeio no parque, mas os vizinhos não gostam de você
+ui_tutorial_map_planet_red=Um passeio no parque onde um Pit Bull furioso está solto
+ui_tutorial_map_planet_purple=Um passeio no parque, mas na verdade é só dor
+
+ui_tutorial_map_title_3=E o quê são esses?
+ui_tutorial_map_desc_3=Ah, é, e você também vai encontrar esses. Acumule tanto dinheiro quanto Jeff Bezos e depois visite um planeta da Loja. Ou não. Não é como se eu fosse sua mãe. Também tem o Buraco Negro. Boa sorte com ele.
+ui_tutorial_map_button_3=Tá, me deixa ir!
+
+ui_tutorial_map_planet_yellow=Um passeio no parque, mas o capitalismo venceu, então é um shopping center
+ui_tutorial_map_planet_black=Um passeio no parque onde a própria realidade está entrando em colapso e os Old Ones voltaram
+
+ui_tutorial_codex_title=Já foi viciado em álbuns adesivos?
+ui_tutorial_codex_desc=Não? Você era viciado em drogas de verdade? Tá, eu não esperava por essa. De qualquer forma, é aqui que qualquer adesivo colecionável aparecerá. Aqui você pode ler a lore filosoficamente sofisticada de Sketch Fleets, seus navios e itens.
+ui_tutorial_codex_button=Gotta catch em all?
+
+ui_tutorial_codexdrop_title=Uuh, aquilo brilha!
+ui_tutorial_codexdrop_desc=Isso aí é um cartão colecionável Sketch Fleets! Se joga nele como se não houvesse amanhã! Ou não... Ele vai ser coletado mesmo se você não encostar nele, não precisa se estressar se você perder um. Visite a opção Album de Figurinhas no menu para ver o seu desbloqueio!
+ui_tutorial_codexdrop_button=ME DÁ! ME DÁ!
+
+ui_tutorial_upgradeshop_title=Peraí! Só gente rica a partir daqui!
+ui_tutorial_upgradeshop_desc=Sempre que você conquistar o Buraco Negro, quaisquer CASCAS DE LÁPIS serão convertidas em CAIXAS DE LÁPIS! Incrível, eu sei. Você pode usar suas caixas de lápis para comprar upgrades permanentes poderosos. Aliás, parece que tá rolando uma desconto de 100% agora, por que você não pega uma amostra grátis?
+ui_tutorial_upgradeshop_button=Beleza, capitalista porco
+
+ui_tutorial_shop_title_1=DINHEIRO!
+ui_tutorial_shop_desc_1=Bem-vindo ao Carrefive Galáctico! Sabe aquelas CASCAS DE LÁPIS que fazem um belo 'bop' quando você coleta elas? Bem, aqui você pode gastar elas pra comprar itens temporários! (Ou acumular cascas até o Buraco Negro para convertê-las em uma moeda ainda melhor!)
+ui_tutorial_shop_button_1=Tá, tá, varejeiro chato
+
+ui_tutorial_shop_title_2=PÉSSIMA ESCOLHA
+ui_tutorial_shop_desc_2=Não, de verdade, esse é provavelmente o pior item do jogo, de longe. Ehh, tanto faz, não é como se você não pudesse usar ele de qualquer maneira. Se for um item PASSIVO, ele aplicará automaticamente seus benefícios. Se for um item ATIVO, clique no ícone BACKPACK no jogo e, em seguida, clique no próprio item duas vezes para ativá-lo!
+ui_tutorial_shop_button_2=Tanto faz, Capitão Óbvio
 
 #
 # SHOP MENU
 #
 
-ui_shop_buy_confirmation=Você realmente quer comprar {0} '{1}'?
+ui_shop_buy_confirmation=Tem certeza que você quer comprar {0} '{1}'?
 ui_shop_amount=Você tem {0} '{1}'
 ui_shop_buy=Comprar
 ui_shop_buy=Cancelar
 
 #
-# TUTORIAL
+# SHIP NAMES
 #
 
-ui_tutorial_title=Tutorial
-ui_tutorial_r=Aperte R para chamar todas suas naves invocadas de volta para a nave mãe e recuperar sua vida gasta
-ui_tutorial_space=Segure a Barra de Espaço para poder invocar aliados! Lembre-se que invocá-las utiliza parte da sua vida, então tenha cuidado!
-ui_tutorial_spacebtt=Barra de Espaço
-ui_tutorial_frog1=Bufo Bufo diz:
-ui_tutorial_frog2=Esse manual de instruções vai te ajudar na sua jornada...
-ui_tutorial_wasd=WASD são as teclas de movimentação básicas.
-ui_tutorial_yellow=A Nave Amarela serve como uma torre, com pouca velocidade mas consegue atirar várias balas ao mesmo tempo
-ui_tutorial_cyan=Já a Ciano se joga nos inimigos ao clicar com o botão direito do mouse, e causa uma explosão enorme na área de contato
-ui_tutorial_magenta=Por fim, a Magenta. Apesar de ser frágil, ela atira extremamente rápido e podem existir várias em campo simultaneamente 
-
-ui_tutorial_store_planet=Durante sua jornada, você vai encontrar os Planetas-Loja, caracterizados por um outdoor visível pelo mapa e cor única. Lá você pode comprar diversos itens, usando Cascas de Lápis, que terão efeito até o fim da missão.
-ui_tutorial_money=As Cascas de Lápis são obtidas ao derrotar inimigos. Inimigos mais fortes deixam cair elas em maior quantidade, então se quiser os itens mais valiosos, arrisque explorar os planetas mais perigosos!
-
-No fim da sua jornada, todas as Cascas serão convertidas para Caixas. 5 Cascas são equivalentes a 1 Caixa.
-ui_tutorial_store=Já a loja do Menu é onde você consegue comprar upgrades permanentes para sua nave, pelo preço certo.
+ship_mother=Nave Mãe
+ship_magenta=Arma Digital
+ship_cyan=Bomba Meteórica
+ship_yellow=Coisinha Estranha
 
 #
 # SHIP DESCRIPTIONS / CODEX
 #
 
-ui_codex=Album de Figurinhas
+desc_ship_mother=A nave-mãe, uma exploradora do cosmos como nenhuma outra! Ela viu incontáveis mundos e destruiu incontáveis inimigos! Verdadeiramente a mestre do espaço!
+desc_ship_magenta=As armas digitais foram as primeiras armas de fogo já descobertas no universo. Eles foram usados pelos Old Ones para escravizar os Novinhos e fazer amigos, é claro!
+desc_ship_cyan=Olha. Olha a alegria sádica que essa bomba carrega ao ser lançada na sua morte certa. Acho que todos nós podemos aprender uma ou duas coisas com ela.
+desc_ship_yellow=Uma nave amigável não identificada. Não sei muito bem o que é, mas é amigável com certeza! Eu acho... Só não deixa ela invadir os seus sonhos.
+
+ship_blue=Máquina de Gelo
+ship_green=Pílula-Mosca
+ship_orange=Bomba Napalm
+ship_pink=Boom Quicante
+ship_purple=Coisa Feia
+ship_red=Socão
+ship_yellow_enemy=Conectinho
+ship_yellowplug_enemy=Caixa de Fusiveis
+
+desc_ship_blue=Em uma busca por toda a galáxia para combater o aquecimento universal e afastar a morte inevitável do universo através de um Heat Death! Cuidado ou você também vai congelar!
+desc_ship_green=Você com certeza terá uma recaída em qualquer vício em pílulas quando esses caras aparecerem! Você literalmente enfrentará tiros por eles!
+desc_ship_orange=Como se os crimes de guerra e a violação da convenção de Genebra não fossem suficientes, essas coisas desagradáveis também são conhecidas por serem piratas espaciais!
+desc_ship_pink=Já se perguntou como é um canhão antiaéreo que dispara uma bola saltitante? Não? Bem, a equipe de design fez isso de qualquer maneira. Não me culpe, eu sou apenas o escritor.
+desc_ship_purple=Algum Old One esquisitão fez isso. Ele evidentemente não era muito bom em fazer coisas. Meu deus, como é feio!
+desc_ship_red=O gêmeo do mal da arma digital. Proibido na maioria das jurisdições dos impérios galácticos, mas ainda usado pelos jovens inimigos dos Old Ones; os Novinhos!
+desc_ship_yellow_enemy=Cuidado! Não deixa ela se conectar a uma tomada ou ela vai descarregar a bateria do seu celular pra se carregar! (E matar você, enquanto ela se carrega)
+desc_ship_yellowplug_enemy=O engenheiro elétrico que projetou essa coisa definitivamente perdeu a licença. Ele também descobriu o segredo de animar objetos, então acho que se equilibra.
 
 #
 # ITEM NAMES
 #
 
 armor_extra=Armadura Extra
-armor_heavy=Armadura Pesada
+armor_heavy=Armadura Ultra Pesada
 cursed_ammunition=Balas Amaldiçoadas
 cursed_propulsion=Propulsores Amaldiçoados
-fuel_tank_compact=Tanque de Combustível Compacto
-fuel_tank_large=Tanque de Combustível Grande
+fuel_tank_small=Tanque de Combustível Veloz
+fuel_tank_large=Tanque de Combustível Super Veloz
 mothership_ability_upgrade=Upgrade de Habilidade
-mothership_cooldown_upgrade=Upgrade de Cooldown
-mothership_dock_upgrade=Upgrade de Invocação
-mpencil_new=Lapiseira Nova
+mothership_cooldown_upgrade=Upgrade de Velocidade De Invocação
+mothership_dock_upgrade=Upgrade de Hangar
+mpencil_new=Lapiseira Perfeita
 mpencil_used=Lapiseira Usada
-pencil_average=Lápis Normal
+pencil_average=Lápis Mediano
 pencil_broken=Lápis Quebrado
 pencil_perfect=Lápis Perfeito
 pencil_sharpener=Apontador de Lápis
-shield_battery=Bateria de Escudo
+shield_battery=Bateria de Celular
 
 #
 # ITEM DESCRIPTION
 #
 
-desc_armor_extra=Aumenta um pouco da armadura
-
-desc_armor_heavy=Aumenta armadura mas reduz a velocidade de movimento 
-
-desc_cursed_ammunition=Suas balas ficam amaldiçoadas.
-Dobra o seu dano, mas receba dano em dobro.
-
-desc_cursed_propulsion=Seus propulsores ficam amaldiçoados.
-Aumenta bastante a velocidade de movimento, mas reduz vida máxima pela metade.
-
-desc_fuel_tank_compact=Aumenta um pouco a velocidade de movimento
-
-desc_fuel_tank_large=Aumenta bastante a velocidade de movimento
-
-desc_mothership_ability_upgrade=Reduz o tempo de recarga da habilidade R
-
-desc_mothership_cooldown_upgrade=Reduz o tempo entre invocações de aliados
-
-desc_mothership_dock_upgrade=Aumenta a quantidade de aliados que a Nave Mãe controla
-
-desc_mpencil_new=Aumenta a Vida Máxima em 500 pontos
-
-desc_mpencil_used=Aumenta a Vida Máxima em 250 pontos
-
-desc_pencil_average=Recupera 500 pontos de Vida
-
-desc_pencil_broken=Recupera 250 pontos de Vida
-
-desc_pencil_perfect=Recupera 750 pontos de Vida
-
-desc_pencil_sharpener=Dobra o dano da Nave Mãe durante 30 segundos
-
-desc_shield_battery=Aumenta o Escudo Máximo em 150 pontos
+desc_armor_extra=Quando eu disse que você deveria ter mais armadura, quis dizer mais, mas não tanto. Caramba. Você consegue usar isso tudo? Diminui o dano recebido.
+desc_armor_heavy=Tudo bem, agora você já tá fazendo pra zoar. Sim, claro, nada vai passar por essas 25 camadas de aço, mas você não pode nem andar. Diminui o dano recebido, diminui a velocidade.
+desc_cursed_ammunition=Uhh... Acho que você pode ter feito um pacto de sangue ou algo assim... Suas balas ESTÃO amaldiçoadas, mas acho que você perdeu alguns membros. Aumenta o dano, diminui a saúde.
+desc_cursed_propulsion=Pera, que? Você decidiu vender um terço de sua essência vital por um par extra de propulsores? Quer saber... Não é uma ideia tão ruim. Aumenta a velocidade, diminui a saúde.
+desc_fuel_tank_small=Combustível suficiente para atravessar uma ou duas galáxias. Do que isso é feito? Não sei, algo sobre cachorrinhos liquefeitos, nunca ouvi falar. Aumenta a velocidade.
+desc_fuel_tank_large=Combustível suficiente para ir para a Via Láctea e voltar! Não que você queira ir para lá de qualquer maneira... Ouvi dizer que há humanos ali. Nojento. Aumenta muito a velocidade.
+desc_mothership_dock_upgrade=Usando a tecnologia de dobra dimensional (dobras de papel), podemos colocar mais naves no hangar! Aumenta a contagem máxima de invocações ativas.
+desc_mpencil_new=Ugh... Os Novinhos e suas inovações - uma lapiseira. Na minha época, escrevíamos com ossos pontudos encharcados de sangue. Aumenta a vida máxima significativamente.
+desc_mpencil_used=Não julgando você, mas meio que julgando você, você é meio mão de vaca. Tipo, na moral mesmo? Você não podia comprar LÁPIS novo? Precisava ser usado? Uau. Aumenta ligeiramente a vida máxima.
+desc_pencil_average=Nem muito grande, nem muito pequeno. Não precisa ter vergonha dele. Cura instantaneamente por 500 pontos de vida.
+desc_pencil_broken=Se o seu for torto assim, eu iria para o hospital, mas aí sou eu. Cura instantaneamente por 250 pontos de vida.
+desc_pencil_perfect=Cara, esse aqui é perfeito! Muito grande também! Espera - não dessa forma! Cura instantaneamente por 750 pontos de vida.
+desc_pencil_sharpener=Construído com as sobras da lâmina de Excalibur. Você poderia usá-lo para desenhar coisas bem pontiagudas! Aumenta o dano de invocações por 30 segundos!
+desc_shield_battery=Aparentemente, podemos redirecionar a energia de um artefato conhecido como 'Bateria do telefone' para fazer o overclock dos escudos! Aumenta o máximo de escudos em 150.
 
 #
 # UPGRADE NAMES
 #
 
-damage_upgrade=Melhoria De Dano
-life_upgrade=Melhoria De Vida
-shield_upgrade=Melhoria De Escudo
-speed_upgrade=Melhoria De Velocidade
-color_upgrade=Aumento do Inventario de Cores
+damage_upgrade=Upgrade de Dano
+life_upgrade=Upgrade de Vida
+shield_upgrade=Upgrade de Escudo
+speed_upgrade=Upgrade de Velocidade
+color_upgrade=Upgrade de Cor
 
 #
 # UPGRADE DESCRIPTION
 #
 
-desc_damage_upgrade=Aumenta o dano da Nave Mãe
-desc_life_upgrade=Aumenta a Vida Máxima da Nave Mãe
-desc_shield_upgrade=Aumenta o Escudo Máximo da Nave Mãe
-desc_speed_upgrade=Aumenta a Velocidade de Movimento da Nave Mãe
-desc_color_upgrade=Aumenta a quantidade de cores absorvidas pela Nave Mãe
+desc_damage_upgrade=Fogo ardente que brilha vermelho com dor flamejante. Com certeza fará seus inimigos estremecerem quando forem atingidos. Aumenta o dano da nave-mãe.
+desc_life_upgrade=Um tônico que aumenta sua vida máxima. Os efeitos colaterais podem incluir náuseas, tonturas, uma sensação rastejante de pavor e dor extrema.
+desc_shield_upgrade=Cientificamente comprovado a aumentar sua capacidade máxima de proteção, usando a bateria do seu celular.
+desc_speed_upgrade=Tem que ir rápido, boi! Sobrecarrega os sistemas de propulsão na nave para aumentar a velocidade de movimento. 
+desc_color_upgrade=Aumenta a quantidade máxima de cores que você pode conter por vez. Atenção: pode conter tinta com chumbo.
 
 ui_inventory=Inventário
 ui_items=Itens
@@ -222,62 +294,4 @@ ui_items=Itens
 # ENDGAME
 #
 
-ui_endgame_title=Você venceu o jogo!
-
-#
-# SHIP NAMES
-#
-
-ship_mother=Nave-Mãe
-ship_magenta=Thompson
-ship_cyan=A Granada
-ship_yellowOLD=A Torreta
-
-ship_spinner=Spinner
-ship_shockwave=Onda de Choque
-ship_spire=Spire
-
-ship_ace=Ace
-ship_skysplitter=Divisora
-ship_starburst=Super Nova
-
-ship_seeker=Olheiro
-ship_destroyer=Destroyer
-ship_warfront=Ares
-
-desc_ship_mother=Ahh.. A nave-mãe, meu primeiro desenho! Uma nave exploratoria do cosmos como nenhuma outra!
-desc_ship_magenta=A sua melhor amiga sem duvidas, ela absolutamente atira em tudo, claro, sob seu comando!
-desc_ship_cyan=A única nave que você convocará sempre quiser alguem bem especifico morto, bem morto mesmo!
-desc_ship_yellowOLD=Essa dai vai ficar ali pra sempre, ela vai ficar lá atirando... ate um asteroide a atingir!
-
-desc_ship_spinner=Uma nave giratória que dispara em quatro direções! A Ciana é uma boa contramedida contra ele!
-desc_ship_shockwave=Uma nave giratória que libera uma onda de choque de balas! Se esconda nas areas em que as balas não chegam!
-desc_ship_spire=Uma nave giratória que preenche toda a tela com balas, você vai ficar louco! É melhor matar isso rapido!
-
-desc_ship_ace=A nave padrão da Autocracia em todo o cosmos, Ace I! Taxa de tiro lenta, baixo dano, muito roxo!
-desc_ship_skysplitter=Este modelo Ace, Divisora, é forjada nas bordas da galáxia! E ela tem tiros duplos e mais vida!
-desc_ship_starburst=Uma variante mortal do modelo Ace, Super Nova, capaz de disparar tiros muito rápidos, dando danos devastadores!
-
-desc_ship_seeker=A nave Seeker prefere a morte a ver você vivo! Mate-a antes que ela chegue em você!
-desc_ship_destroyer=Uma nave de busca, com uma armadura bem pesada e propulsores muito rápidos! Seu núcleo é instável então se prepare para o impacto!
-desc_ship_warfront=Uma gigantesca nave de busca feita de unobtanium! Incrivelmente lenta e resistente. Não deixe chegar perto ou você vai se arrepender!
-
-#
-#   NEW SHIPS AND DESCRIPTIONS
-#
-
-ship_blue=
-ship_green=
-ship_orange=
-ship_pink=
-ship_purple=
-ship_red=
-ship_yellow=
-
-desc_ship_blue=
-desc_ship_green=
-desc_ship_orange=
-desc_ship_pink=
-desc_ship_purple=
-desc_ship_red=
-desc_ship_yellow=
+ui_endgame_title=10 em 10! Isso aí!

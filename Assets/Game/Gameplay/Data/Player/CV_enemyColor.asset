@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CV_enemyColor
   m_EditorClassIdentifier: 
   _description: 
-  _value: {r: 0, g: 0, b: 0, a: 1}
-  _onChangeEvent: {fileID: 0}
+  _value: {r: 0.49803925, g: 0.49803925, b: 0.49803925, a: 0}
+  _onChangeEvent: {fileID: 11400000, guid: 6b9f0dd09ab978843a9b3ea46bbeea46, type: 2}

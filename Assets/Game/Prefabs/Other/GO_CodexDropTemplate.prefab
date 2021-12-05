@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 2457878437404487259, guid: 6a0ed962061631542a4cb2f6ba5ba9e0, type: 3}
+  onAppear: {fileID: 11400000, guid: 2510a7aa003bf80419caca0f34b031f4, type: 2}
 --- !u!198 &2103707829193402401
 ParticleSystem:
   m_ObjectHideFlags: 0

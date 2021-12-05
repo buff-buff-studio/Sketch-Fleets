@@ -1,4 +1,6 @@
+using ManyTools.UnityExtended.Poolable;
 using SketchFleets.Data;
+using SketchFleets.General;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,13 +18,14 @@ namespace SketchFleets.Entities
         [SerializeField]
         [Range(0f, 100f)]
         private float teleportChance;
+
         [SerializeField]
         private float teleportCooldown;
-        
+
         [Header("Visual Effects")]
         [SerializeField]
         private GameObject teleportEffectPrefab;
-        
+
         private Ship<ShipAttributes> _ship;
         private float _currentTeleportCooldown;
 
@@ -30,13 +33,13 @@ namespace SketchFleets.Entities
 
         #region Properties
 
-        public Bounds TeleportBounds { get; set; }
+        public Collider2D TeleportArea { get; set; }
 
         #endregion
 
         #region Unity Callbacks
 
-        private void Start()
+        private void OnEnable()
         {
             TryGetComponent(out _ship);
             _ship.TookDamage += Teleport;
@@ -49,11 +52,13 @@ namespace SketchFleets.Entities
 
         private void OnDisable()
         {
+            TryGetComponent(out _ship);
+            _currentTeleportCooldown = 0f;
             _ship.TookDamage -= Teleport;
         }
 
         #endregion
-        
+
         #region Private Methods
 
         /// <summary>
@@ -62,12 +67,21 @@ namespace SketchFleets.Entities
         private void Teleport()
         {
             if (!ShouldTeleport()) return;
-            
-            Instantiate(teleportEffectPrefab, transform.position, Quaternion.identity);
-            transform.position = GetRandomPositionWithin(TeleportBounds);
-            Instantiate(teleportEffectPrefab, transform.position, Quaternion.identity);
+
+            InstantiateTeleportEffect();
+            transform.position = GetRandomPositionWithin(TeleportArea.bounds);
+            InstantiateTeleportEffect();
 
             _currentTeleportCooldown = teleportCooldown;
+        }
+
+        /// <summary>
+        /// Instantiates the teleport effect prefab
+        /// </summary>
+        private void InstantiateTeleportEffect()
+        {
+            if (teleportEffectPrefab == null) return;
+            PoolManager.Instance.Request(teleportEffectPrefab).Emerge(transform.position, Quaternion.identity);
         }
 
         /// <summary>
@@ -79,7 +93,7 @@ namespace SketchFleets.Entities
         {
             float x = Random.Range(bounds.min.x, bounds.max.x);
             float y = Random.Range(bounds.min.y, bounds.max.y);
-            
+
             return new Vector2(x, y);
         }
 
@@ -89,7 +103,7 @@ namespace SketchFleets.Entities
         /// <returns>True if the ship should teleport</returns>
         private bool ShouldTeleport()
         {
-            return Random.Range(0f, 100f) < teleportChance && TeleportBounds != default && _currentTeleportCooldown <= 0;
+            return Random.Range(0f, 100f) <= teleportChance && _currentTeleportCooldown <= 0;
         }
 
         #endregion

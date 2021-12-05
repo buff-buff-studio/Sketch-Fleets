@@ -11,7 +11,7 @@ namespace SketchFleets
         [SerializeField] private VersionNotes versionNotes;
         [SerializeField] private TMP_InputField inputField;
 
-        private void Start()
+        private void OnEnable()
         {
             inputField.text = "";
             int i = 1;

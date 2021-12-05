@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3332496207832743166}
   - component: {fileID: 2868061581624237939}
   - component: {fileID: 8042771418613206755}
+  - component: {fileID: 9119404520760197304}
   m_Layer: 5
   m_Name: GO_ToolTipBox
   m_TagString: Untagged
@@ -78,6 +79,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &9119404520760197304
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977739903359747977}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4001581994671146288
 GameObject:
   m_ObjectHideFlags: 0

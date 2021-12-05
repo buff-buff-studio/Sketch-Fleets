@@ -13,6 +13,7 @@ TagManager:
   - PlayerSpawn
   - Drop
   - BounceCollider
+  - TutorialReceiver
   layers:
   - Default
   - TransparentFX

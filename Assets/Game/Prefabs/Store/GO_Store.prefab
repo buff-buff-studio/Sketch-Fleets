@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1345631316089863326, guid: 71e674368c9a1d742b6f4f48bcf14b92, type: 3}
+  m_Sprite: {fileID: 3305905959457765231, guid: 4d0c4608c1e6b6748b39e903d2a80e1c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2953,6 +2953,7 @@ MonoBehaviour:
   tooltipBackground: {fileID: 7522489690781924411}
   changeY: 0
   centered: 0
+  onItemBought: {fileID: 0}
   itemInformationPanel: {fileID: 6888051793734980118}
   itemBuyConfirmation: {fileID: 0}
   itemBuyPrice: {fileID: 7269352717847529721}
@@ -2961,8 +2962,8 @@ MonoBehaviour:
   isUpgradeShop: 0
   currencyIcon: {fileID: 2006094302057412980}
   currencyIconSprites:
-  - {fileID: 21300000, guid: 3c23a35f8cd73404488235a0cc7d2586, type: 3}
-  - {fileID: 7807398946981325395, guid: 0a279c5a0e09a1044948f9615d542a00, type: 3}
+  - {fileID: -6139296588668583971, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
+  - {fileID: -5727671322481934846, guid: d35bcc39a5c427e4faf0c25faeab5824, type: 3}
   coinCountBackground: {fileID: 4779496426019847014}
   buySound: {fileID: 5004278501907214889}
   noMoneySound: {fileID: 198035720293930496}

@@ -35,7 +35,10 @@ namespace SketchFleets.AI
         /// </summary>
         public override void StateUpdate()
         {
-            ParametricOrbit(Time.time * AI.Ship.Attributes.Speed);
+            if (AI.Faction == ShipAttributes.Faction.Friendly)
+            {
+                ParametricOrbit(Time.time * AI.Ship.Attributes.Speed);
+            }
 
             AI.Ship.Look(AI.Faction == ShipAttributes.Faction.Friendly
                 ? _crosshair.position

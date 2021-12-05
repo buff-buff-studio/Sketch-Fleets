@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f06b844695e3e284ebda169c79b2035f, type: 3}
+  m_Name: FOP_BlackHole_YellowDuo
+  m_EditorClassIdentifier: 
+  ships:
+  - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
+  - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
+  - {fileID: 11400000, guid: 3c4fb0b2c40d4bc4eb8d0c95f9002551, type: 2}
+  - {fileID: 11400000, guid: d5f62a202075f1048b4968cc3a5ebf80, type: 2}
+  - {fileID: 11400000, guid: 03c3f4df1f8d2144792699a7423cbff7, type: 2}
+  - {fileID: 11400000, guid: 31f48cf9a1701f944bbeb66a78abb2ce, type: 2}
+  formationObject: {fileID: 474411166298060547, guid: 4b52bfd33ac1b934ea14f0482f31ba94, type: 3}

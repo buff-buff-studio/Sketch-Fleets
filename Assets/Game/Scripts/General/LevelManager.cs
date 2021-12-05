@@ -20,6 +20,10 @@ namespace SketchFleets.General
         [SerializeField]
         private StringReference mapTimer;
 
+        [Header("Count of pencil sharps at start of level")]
+        [SerializeField]
+        public int pencilShellAtStart;
+
         [SerializeField]
         [Tooltip("The seconds passed since the beginning of the level")]
         private IntReference seconds;
@@ -43,6 +47,10 @@ namespace SketchFleets.General
         [SerializeField]
         [Tooltip("The total of enemies killed, displayed in the UI")]
         private IntReference totalEnemiesKilled;
+        
+        [Header("References")]
+        [SerializeField]
+        private BulletTimeManager bulletTimeManager;
 
         [SerializeField]
         private IntReference pencilShell;
@@ -54,6 +62,7 @@ namespace SketchFleets.General
         #region Properties
 
         public Mothership Player { get; private set; }
+        public BulletTimeManager BulletTimeManager => bulletTimeManager;
 
         public bool GameEnded { get; set; }
 
@@ -84,6 +93,7 @@ namespace SketchFleets.General
         {
             pencilShell.Value = Profile.Data.Coins;
             totalEnemiesKilled.Value = Profile.Data.Kills;
+            pencilShellAtStart = pencilShell.Value;
 
             updateTimerRoutine = StartCoroutine(UpdateTimer());
         }
@@ -120,6 +130,11 @@ namespace SketchFleets.General
         {
             yield return new WaitForSeconds(3f);
 
+            //Add coins
+            int n = pencilShell.Value - pencilShellAtStart;
+            ProfileSystem.Profile.Data.TotalCoins += ProfileSystem.ProfileData.ConvertCoinsToTotalCoins(n);
+            PencilBoxText.AddedAmount = n;
+
             SavePlayerProgress();
             ShowWinUI();
 
@@ -154,7 +169,7 @@ namespace SketchFleets.General
         /// <summary>
         /// Saves player progress
         /// </summary>
-        private void SavePlayerProgress()
+        public void SavePlayerProgress()
         {
             Profile.Data.Coins = pencilShell.Value;
             Profile.Data.TimeSeconds = seconds.Value;

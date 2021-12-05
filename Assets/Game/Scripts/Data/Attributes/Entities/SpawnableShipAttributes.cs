@@ -1,4 +1,5 @@
-﻿using ManyTools.Variables;
+﻿using ManyTools.Events;
+using ManyTools.Variables;
 using UnityEngine;
 
 namespace SketchFleets.Data
@@ -17,12 +18,6 @@ namespace SketchFleets.Data
         [Tooltip("The special effect to spawn when this ship is summoned")]
         private GameObject spawnEffect;
         [SerializeField]
-        [Tooltip("How much graphite it takes to summon a ship")]
-        private IntReference graphiteCost = new IntReference(100);
-        [SerializeField]
-        [Tooltip("How much the cost increases per ship")]
-        private IntReference graphiteCostIncrease = new IntReference(15);
-        [SerializeField]
         [Tooltip("How many active ships of this kind can there be at a time")]
         private IntReference maximumShips = new IntReference(10);
         [SerializeField]
@@ -32,16 +27,19 @@ namespace SketchFleets.Data
         [Tooltip("The radius of the ship's orbit around the player, if it orbits him")]
         private FloatReference orbitRadius = new FloatReference(3f);
         
+        [Header("Events")]
+        [SerializeField]
+        private GameEvent onShipSpawned;
+
         #endregion
 
         #region Properties
 
-        public IntReference GraphiteCost => graphiteCost;
         public IntReference SpawnCooldown => spawnCooldown;
         public IntReference MaximumShips => maximumShips;
         public FloatReference OrbitRadius => orbitRadius;
-        public IntReference GraphiteCostIncrease => graphiteCostIncrease;
         public GameObject SpawnEffect => spawnEffect;
+        public GameEvent OnShipSpawned => onShipSpawned;
 
         #endregion
     }

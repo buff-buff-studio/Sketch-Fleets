@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9004720472981596302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1503174508907117015}
+  - component: {fileID: 3128461097686863408}
+  m_Layer: 0
+  m_Name: GO_TutorialMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1503174508907117015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9004720472981596302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.8222237, y: -4.985207, z: -10.343746}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3128461097686863408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9004720472981596302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df05d37eef8429a9312fe48012cc055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steps:
+  - Trigger: {fileID: 11400000, guid: 3cfe2f3e3c1cc2442876be32510f4f8e, type: 2}
+    Popup: {fileID: 8339817050096998054, guid: 6f0da04e21c678a479a3a3607ddbabbf, type: 3}
+    PopupDelay: 0
+  - Trigger: {fileID: 11400000, guid: 4408bec8a576e164d95f3fbc1e8dcf3f, type: 2}
+    Popup: {fileID: 8339817050096998054, guid: 536f87cdff089a340aca71344d26ff79, type: 3}
+    PopupDelay: 0
+  - Trigger: {fileID: 11400000, guid: d44c8b341a3f42a47b4738a0bce1fa18, type: 2}
+    Popup: {fileID: 8339817050096998054, guid: 3bcb4dd11f1e47a45b705c700c123ea4, type: 3}
+    PopupDelay: 0
+  autoBeginFirstStep: 1
+  nextStepIsBlocked:
+    _useConstant: 0
+    _constant: 0
+    _variable: {fileID: 11400000, guid: b684176dafd806d489b338bcd8c4920d, type: 2}

@@ -84,5 +84,13 @@
         public const string mapLevelInteractionFileName = "Map Level Interaction";
 
         #endregion
+
+        #region Variables
+
+        public const int bulletAttributeVariableOrder = 1;
+        public const string bulletAttributeVariableMenuName = "Sketch Fleets/Variables/Bullet Attribute Variable";
+        public const string bulletAttributeVariableFileName = "Bullet Attributes";
+
+        #endregion
     }
 }

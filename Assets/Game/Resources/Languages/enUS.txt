@@ -55,6 +55,13 @@ ui_occupation_university=University
 
 ui_credits_hint=Click the on the developers' photos to know more!
 
+ui_credits_others=Others
+ui_credits_professors=Professors
+ui_non_illustrated_thank_you=Also thanks to
+ui_credits_you=You!
+ui_credits_developer=Developer
+
+
 #
 # QUIT MENU
 #
@@ -100,6 +107,83 @@ ui_button_store=Store
 ui_title_settings=Options
 
 #
+# TUTORIALS
+#
+
+ui_tutorial_colors_title_0=Can I interest you in a TUTORIAL?
+ui_tutorial_colors_desc_0=Ugh, sorry, I think I made it sound like I was offering you drugs there. Anyway, do you need any help? The cosmos is a dangerous place; wouldn't want to go out unprepared, would we?
+ui_tutorial_colors_button_0_1=Sure, hook me up!
+ui_tutorial_colors_button_0_2=Say no to Tutorials.
+
+ui_tutorial_colors_title_1=How to CONTROL a Spaceship
+ui_tutorial_colors_desc_1=MOVE by dragging your ship across the screen. AIM by dragging where your ship is shooting. If you're using JOYSTICK MODE, then just use the JOYSTICKS, dummy. Go ahead and DESTROY a ship to see if you've gotten the hang of it.
+ui_tutorial_colors_button_1=Bloodlust, here I come!
+
+ui_tutorial_colors_title_2=YES! YES! NOW PREPARE THE SUMMONING RITUAL WITH THEIR BLOOD!
+ui_tutorial_colors_desc_2=Uh... I mean COLOR! Prepare the ritual with their COLOR. See the bar at the top? Those are the COLORS you've taken from your fallen enemies. You always gain the COLOR of the last enemy you DESTROYED. Use them to summon an ally!
+ui_tutorial_colors_button_2=But... how?
+
+ui_tutorial_colors_title_3=It's EASY! Tap that button!
+ui_tutorial_colors_desc_3=Whenever you want to summon an ally with a COLOR, just tap the DRAW button on the center-bottom of the screen. It's the one with the arrow.
+ui_tutorial_colors_pointer_3_1=Click on this button over here!
+
+ui_tutorial_colors_title_4=Welcome to DRAW MODE
+ui_tutorial_colors_desc_4=Now, use the color you've taken from your enemies to summon an ally. You can do so by drawing a shape. First, let's try a TRIANGLE.
+
+ui_tutorial_colors_title_5=Welcome to DRAW MODE AGAIN!
+ui_tutorial_colors_desc_5=Excellent job with the triangle. I would have made it a bit pointier, but still. Now, let's try something else. Draw a SQUARE!
+
+ui_tutorial_colors_title_6=Welcome to DR- Yeah, you know.
+ui_tutorial_colors_desc_6=That was a nice square! On to your last drawing lesson: Draw a CIRCLE!
+
+ui_tutorial_colors_title_7=Now blow them up!
+ui_tutorial_colors_desc_7=Circles make for nice bombs, don't they? Tap twice on the screen or press the bomb icon to throw yours.
+
+ui_tutorial_colors_title_8=Great job! You've gone pro!
+ui_tutorial_colors_desc_8=Or terrorist, since you've just thrown a bomb. But that's not important. You've got a whole galactic journey ahead of you! And now, you've got the skills too! Godspeed, my friend!
+ui_tutorial_colors_button_8=Onwards I go!
+
+ui_tutorial_map_title_1=Welcome to the Galaxy!
+ui_tutorial_map_desc_1=This is the galaxy! Your goal is to explore planets until you reach the black hole at its center! Every time you begin a new game, your galaxy will be different. Some galaxies are short, others are long. Some are easy, others are hard!
+ui_tutorial_map_button_1=Don't remember asking
+
+ui_tutorial_map_title_2=Sure, but where do I go?
+ui_tutorial_map_desc_2=Throughout your journey, you'll find a myriad different worlds. You should know some will be easier than others.
+ui_tutorial_map_button_2=What's with all the park analogies?
+
+ui_tutorial_map_planet_green=A walk in the park!
+ui_tutorial_map_planet_orange=A walk in a park but the neighbors don't like you
+ui_tutorial_map_planet_red=A walk in the park where a berserk Pit Bull is loose
+ui_tutorial_map_planet_purple=A walk in the park but it's actually just pain
+
+ui_tutorial_map_title_3=And what are these?
+ui_tutorial_map_desc_3=Oh, yeah, and you'll find these too. Hoard as much money as Jeff Bezos and then visit a Shop planet. Or not. Its not like I'm your mom. There's also the Black Hole. Good luck with that.
+ui_tutorial_map_button_3=Alright, let me go!
+
+ui_tutorial_map_planet_yellow=A walk in the park but capitalism won so it's a shopping mall instead
+ui_tutorial_map_planet_black=A walk in the park where reality itself is collapsing and the Old Ones have returned
+
+ui_tutorial_codex_title=Were you ever addicted to trading cards?
+ui_tutorial_codex_desc=No? You were addicted to actual drugs? Alright, I didn't expect that. Either way, this is where any collected trading card are going to show up. Here, you can read about the philosophically sophisticated lore of Sketch Fleets, its ships and its items.
+ui_tutorial_codex_button=Gotta catch em all?
+
+ui_tutorial_codexdrop_title=Oh, look, that's shiny!
+ui_tutorial_codexdrop_desc=That right there is a Sketch Fleets trading card! Throw yourself at it like there's no tomorrow! Or not... It'll be collected whether you touch it not, no need to stress if you miss one. Visit the Trading Cards option in the menu to see your unlock!
+ui_tutorial_codexdrop_button=GIMME! GIMME!
+
+ui_tutorial_upgradeshop_title=Hold up! Only rich people past this point!
+ui_tutorial_upgradeshop_desc=Whenever you conquer the Black Hole, any Pencil Shavings will be converted into full-on PENCIL BOXES! Awesome, I know. You can use your converted pencil boxes to buy powerful, permanent upgrades. In fact, there seems to be a 100% sale going on right now, why don't you grab a free sample?
+ui_tutorial_upgradeshop_button=Sure, capitalist pig
+
+ui_tutorial_shop_title_1=MONEY!
+ui_tutorial_shop_desc_1=Welcome to the Seventh Sector's Eleventh Shop! You know those PENCIL SHAVINGS that make a nice 'pop' sound when you collect them? Well, you can spend them here to buy temporary items! (Or hoard them until the Black Hole to hopefully convert them into an even better currency!)
+ui_tutorial_shop_button_1=You think I'm Mr.Krabs now?
+
+ui_tutorial_shop_title_2=POOR CHOICE
+ui_tutorial_shop_desc_2=No, truly, that's probably, like, the worst item in the game, by far. Ehh, whatever, It's not like you can't make use of it anyways. If it's a PASSIVE item, it'll automatically apply its benefits. If its an ACTIVE item, make sure to click on the BACKPACK icon in-game, and then click on the item itself twice to activate it!
+ui_tutorial_shop_button_2=Whatever, captain obvious
+
+#
 # SHOP MENU
 #
 
@@ -107,27 +191,6 @@ ui_shop_buy_confirmation=Are you sure you want to buy {0} '{1}'?
 ui_shop_amount=You have {0} '{1}'
 ui_shop_buy=Buy
 ui_shop_buy=Cancel
-
-#
-# TUTORIAL
-#
-
-ui_tutorial_title=Tutorial
-ui_tutorial_r=Press R to recall all summoned ships and regenerate some of your health
-ui_tutorial_space=Use the Spacebar to summon allies! Summoning ships costs health so summon them wisely!
-ui_tutorial_spacebtt=Spacebar
-ui_tutorial_frog1=Buff Buff says:
-ui_tutorial_frog2=Follow these instructions, they will help on your space odyssey...
-ui_tutorial_wasd=Use WASD or the arrow keys to move your ship
-ui_tutorial_yellow=The yellow ship will remain stationary and fire five bullets forward in an arc. Place it wisely!
-ui_tutorial_cyan=The cyan ship will orbit you until you use the right mouse button to throw it your enemies! If it hits them, it will deal lots of damage!
-ui_tutorial_magenta=The magenta ship will orbit you and fire alongside the Mothership. They are your main source of damage, so summon them frequently!
-
-ui_tutorial_store_planet=In your space odyssey, you will find yellow Store-Planets. There you can use Pencil Shavings to buy various items and upgrades that can be consumed or used during your odyssey.
-ui_tutorial_money=Pencil Shavings are obtained by destroying enemies. Stronger enemies drop more Pencil Tips, so if you want luxurious and expensive items, go out there and take risks!
-
-Once you get destroyed or exit the black hole, all Pencil Shavings will be converted to Pencil Boxes. 5 Pencil Shavings are worth 1 Pencil Box.
-ui_tutorial_store=You can buy permanent upgrades using the Pencil Boxes, through The Buff Store in the main menu!
 
 #
 # SHIP NAMES
@@ -154,6 +217,7 @@ ship_pink=Bouncy Boom
 ship_purple=Ugly Thingy
 ship_red=Sucker Punch
 ship_yellow_enemy=Pluggy
+ship_yellowplug_enemy=Fuse Box
 
 desc_ship_blue=On a galaxy-wide quest to combat universal warming and fend off the inevitable heat death of the universe! Careful or it'll freeze you too!
 desc_ship_green=You're sure to relapse any pill addiction you have when these guys show up! You'll literally brave gunfire for them!
@@ -162,6 +226,7 @@ desc_ship_pink=Ever wondered what a flak cannon that fires bouncy ball looks lik
 desc_ship_purple=Some strange weirdo Old One made these. They were evidently not very good at making things. Dear god, its so ugly!
 desc_ship_red=The evil twin of the finger gun. Outlawed in most galactic empire jurisdictions, but still used by the young enemies of the Old Ones; the New Ones!
 desc_ship_yellow_enemy=Careful! Don't let it plug into an outlet or it it'll drain your phone's battery to charge itself! (And kill you, while its at it)
+desc_ship_yellowplug_enemy=Whatever electric engineer designed this thing definitely lost his permit. He also discovered the secret of animating objects, so I guess it balances out.
 
 #
 # ITEM NAMES

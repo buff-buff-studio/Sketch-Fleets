@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using ManyTools.Events;
+using ManyTools.UnityExtended.Editor;
 using ManyTools.UnityExtended.Poolable;
 using ManyTools.Variables;
 using SketchFleets.Data;
@@ -28,21 +30,18 @@ namespace SketchFleets.Systems
         [Tooltip("The area in which a ship can spawn")]
         private Collider2D spawnArea;
 
-        [SerializeField]
-        [Tooltip("The interval between spawning each ship")]
-        private FloatReference spawnInterval = new FloatReference(1.5f);
-
-        [SerializeField]
-        [Tooltip("The interval between spawning each wave")]
-        private FloatReference waveInterval = new FloatReference(1.5f);
-
         [Header("Other Parameters")]
         [SerializeField]
         [Tooltip("The total of enemies killed, displayed in the UI")]
         private IntReference totalEnemiesKilled;
-        
+
         [SerializeField]
         private Collider2D enemyTeleportArea;
+
+        [Header("Events")]
+        [SerializeField]
+        [RequiredField]
+        private GameEvent onWaveEnd;
 
         private int mapWaveCount;
         private int currentWave;
@@ -90,7 +89,6 @@ namespace SketchFleets.Systems
         /// </summary>
         private void HandleWaveProgress()
         {
-            
             if (AreAllWavesOver())
             {
                 AllWavesAreOver?.Invoke();
@@ -98,6 +96,7 @@ namespace SketchFleets.Systems
             else
             {
                 StartNextWave();
+                onWaveEnd.Invoke();
             }
         }
 
@@ -148,11 +147,17 @@ namespace SketchFleets.Systems
         /// </summary>
         private IEnumerator SpawnWave()
         {
-            WaitForSeconds spawnWait = new WaitForSeconds(spawnInterval);
-            yield return new WaitForSeconds(waveInterval);
-            pendingSpawns = mapAttributes.MaxEnemies.Length;
+            WaitForSeconds spawnWait =
+                new WaitForSeconds(mapAttributes.SpawnAndWaveInterval[mapAttributes.Difficulty].Value.x);
 
-            for (int index = 1; index <= mapAttributes.MaxEnemies[mapAttributes.Difficulty]; index++)
+            if (currentWave > 1)
+            {
+                yield return new WaitForSeconds(mapAttributes.SpawnAndWaveInterval[mapAttributes.Difficulty].Value.y);
+            }
+
+            pendingSpawns = mapAttributes.MaxEnemies[mapAttributes.Difficulty];
+
+            for (int index = 0; index < mapAttributes.MaxEnemies[mapAttributes.Difficulty]; index++)
             {
                 SpawnFormation();
                 pendingSpawns--;
@@ -187,7 +192,7 @@ namespace SketchFleets.Systems
         private void SpawnShip(ShipAttributes shipToSpawn, Vector3 spawnPosition, Quaternion spawnRotation)
         {
             if (shipToSpawn == null) return;
-            
+
             PoolMember ship = PoolManager.Instance.Request(shipToSpawn.Prefab);
             ship.Emerge(spawnPosition, spawnRotation);
             RegisterEnemyShip((EnemyShip)ship);
@@ -201,11 +206,11 @@ namespace SketchFleets.Systems
         {
             ship.Spawner = this;
 
-            if (TryGetComponent(out ShipTeleporter teleporter))
+            if (ship.TryGetComponent(out ShipTeleporter teleporter))
             {
-                teleporter.TeleportBounds = enemyTeleportArea.bounds;
+                teleporter.TeleportArea = enemyTeleportArea;
             }
-            
+
             ActiveEnemyShips.Add(ship.transform);
         }
 

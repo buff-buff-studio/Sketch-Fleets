@@ -13,7 +13,7 @@ namespace SketchFleets
 
         public AudioSource increaseSoundEffect;
         
-        private TextMeshProUGUI txtMeshPro;
+        private TMP_Text txtMeshPro;
         private void Start()
         {
             TryGetComponent(out txtMeshPro);
@@ -21,14 +21,24 @@ namespace SketchFleets
 
         float ls = 0;
 
+        float delay = 0;
+
         private void OnEnable()
         {
-            animTime = Time.unscaledTime;
+            delay = 1.25f;
         }
 
         int lscount = 0;
         void Update()
         {
+            if(delay > 0)
+            {
+                txtMeshPro.text = (Profile.Data.TotalCoins - ProfileData.ConvertCoinsToTotalCoins(AddedAmount)).ToString();
+                delay -= Time.unscaledDeltaTime;
+                animTime = Time.unscaledTime;
+                return;
+            }
+
             float time = Time.unscaledTime - animTime;
 
             int c = ProfileData.ConvertCoinsToTotalCoins(AddedAmount);
