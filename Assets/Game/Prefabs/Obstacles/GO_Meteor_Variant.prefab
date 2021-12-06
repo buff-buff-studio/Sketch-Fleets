@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &9083142856000533766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5208673320480033209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bfcfbb589d84392884ecfb95890c37d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeByRealTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -5.968992
+      outSlope: -5.968992
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.15925924
+      value: 0.049382806
+      inSlope: -0.104167186
+      outSlope: -0.104167186
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.21145375
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1.1306901
+      outSlope: 1.1306901
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bulletTimeDuration: 1.35
 --- !u!1001 &7211724003632803703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141,3 +187,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65c5c039c44d228448b30333d2d3bc43, type: 3}
+--- !u!1 &5208673320480033209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3196953256025958094, guid: 65c5c039c44d228448b30333d2d3bc43, type: 3}
+  m_PrefabInstance: {fileID: 7211724003632803703}
+  m_PrefabAsset: {fileID: 0}
