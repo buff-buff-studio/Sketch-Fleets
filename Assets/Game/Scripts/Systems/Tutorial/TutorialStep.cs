@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Threading.Tasks;
 using ManyTools.Events;
 using UnityEngine;
@@ -71,7 +72,7 @@ namespace SketchFleets.Systems.Tutorial
         public void Begin()
         {
             IsNew = false;
-            InstantiatePopUp();
+            Tutorial.StartCoroutine(InstantiatePopUp());
         }
 
         #endregion
@@ -81,11 +82,11 @@ namespace SketchFleets.Systems.Tutorial
         /// <summary>
         /// Instantiates the popup in the canvas
         /// </summary>
-        private async void InstantiatePopUp()
+        private IEnumerator InstantiatePopUp()
         {
             if (PopupDelay > 0)
             {
-                await Task.Delay((int)(PopupDelay * 1000));
+                yield return new WaitForSeconds(5f);
             }
 
             Popup popup = Object.Instantiate(Popup, Canvas.transform).GetComponent<Popup>();
