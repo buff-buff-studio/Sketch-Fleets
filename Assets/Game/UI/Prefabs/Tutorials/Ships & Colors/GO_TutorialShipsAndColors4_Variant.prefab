@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredShapeIndex: 0
+  forceEnterDrawMode: 1
 --- !u!1 &5105810236109480714
 GameObject:
   m_ObjectHideFlags: 0

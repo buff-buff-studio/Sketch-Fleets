@@ -86,7 +86,7 @@ namespace SketchFleets.Systems.Tutorial
         {
             if (PopupDelay > 0)
             {
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(PopupDelay);
             }
 
             Popup popup = Object.Instantiate(Popup, Canvas.transform).GetComponent<Popup>();
