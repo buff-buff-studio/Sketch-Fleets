@@ -5,10 +5,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-
-
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -17,9 +13,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -67,7 +60,7 @@
 This is a first semester interdisciplinary project, for PUC Minas Jogos Digitais (Game Engineering) course. It is a video game built with Unity, using assets and code created by the team, unless otherwise noted. Sketch Fleets is a chaotic bullet-hell arcade game based on a space sketchbook given life, where you explore constellations of diverse and weird planets, facing foes and upgrading yourself along the way. You control a 'mothership', and must summon a fleet of minion ships to aid you in battle!
 
 ### Built With
-Tank Wrecks and its assets were built using the following software:
+Sketch Fleets and its assets were built using the following software:
 * [Unity](https://unity.com/)
 * [Blender](https://www.blender.org/)
 * [Adobe Photoshop](https://www.adobe.com/products/photoshop.html)
