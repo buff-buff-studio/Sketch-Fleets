@@ -31,7 +31,7 @@
 <h3 align="center">Sketch Fleets</h3>
   <p align="center">
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/buff-buff-studio/Sketch-Fleets">
-  <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/buff-buff-studio/Sketch-Fleets">
+  <img alt="Lines of code" src="http://tokei.ekzhang.com/b1/github/buff-buff-studio/Sketch-Fleets">
   <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/buff-buff-studio/Sketch-Fleets?label=version">
   <br />
     </p>
