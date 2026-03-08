@@ -286,7 +286,7 @@ namespace SketchFleets.Inventory
 
             Vector2 dir = new Vector2(-Mathf.Sin(degrees * Mathf.Deg2Rad)/2f,Mathf.Cos(degrees * Mathf.Deg2Rad));
 
-            rb.drag = 0.5f;
+            rb.linearDamping = 0.5f;
             rb.gravityScale = card ? 50f : 75f;
             rb.AddForce(dir * Random.Range(400,500),ForceMode2D.Impulse);
 
