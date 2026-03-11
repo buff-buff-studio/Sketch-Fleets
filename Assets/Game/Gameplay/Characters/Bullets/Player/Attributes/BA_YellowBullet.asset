@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName:
     _useConstant: 1
-    _constant: Purple Bullet
+    _constant: Yellow Bullet
     _variable: {fileID: 0}
-  description: A bullet fired by the Purple Ship
+  description: Electrify the enemies
   prefab: {fileID: 788092735145430477, guid: 00392ca4f103e654d8e0d7f8740c6381, type: 3}
   unlocalizedName: 
   unlocalizedDescription: 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using SketchFleets;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -24,6 +25,13 @@ public sealed class LineDrawer : MonoBehaviour
     
     [SerializeField]
     private ColorsInventory colorsInventory;
+    
+    [SerializeField]
+    private TextMeshProUGUI colorNameLeft, colorNameRight;
+
+    [SerializeField] private TextMeshProUGUI colorDescription;
+
+    [SerializeField] private Image colorPreview;
 
     [SerializeField]
     private float linePointsMinDist;
@@ -104,6 +112,14 @@ public sealed class LineDrawer : MonoBehaviour
         currentLine.SetLineWidht(lineWidht);
         backgroundOverlay.gameObject.SetActive(true);
         SetTrailColor();
+    }
+
+    public void InitializeHUD()
+    {
+        colorsInventory.SetDrawMode(true);
+        colorNameLeft.text = colorNameRight.text = colorsInventory.latestBullet.Name.Value;
+        colorDescription.text = colorsInventory.latestBullet.Description;
+        colorPreview.color = colorsInventory.drawColor;
     }
 
     public static void BulletTime(float time)
@@ -262,6 +278,7 @@ public sealed class LineDrawer : MonoBehaviour
             Time.timeScale = 1;
         }
 
+        colorsInventory.SetDrawMode(false);
         EndEvent.Invoke();
         HUD.SetActive(true);
         gameObject.SetActive(false);

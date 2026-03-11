@@ -290,8 +290,11 @@ namespace SketchFleets
             if (!HUD.activeSelf || _colorsInventory.drawColor == Color.black) return;
             HUD.SetActive(false);
             ColorHUD.SetActive(true);
+            //clear line drawer
+            _lineDrawer.inputTrail.GetComponent<TrailRenderer>().Clear();
             _lineDrawer.gameObject.SetActive(true);
             LineDrawer.BulletTime(slowDownFactor);
+            _lineDrawer.GetComponent<LineDrawer>().InitializeHUD();
         }
 
         public void OpenInventory()

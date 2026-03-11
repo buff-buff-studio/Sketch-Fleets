@@ -12,10 +12,14 @@ namespace SketchFleets
 
         private void Awake()
         {
-            if (PlayerPrefs.GetString("gameVersion") != Application.version.ToString())
+            string storedGameVersion = PlayerPrefs.GetString("gameVersion");
+            string currentApplicationVersion = Application.version.ToString();
+
+            if (storedGameVersion != currentApplicationVersion)
             {
-                PlayerPrefs.SetString("gameVersion", Application.version.ToString());
-                windowManager.SwitchToMenu("Update");
+                PlayerPrefs.SetString("gameVersion", currentApplicationVersion);
+                PlayerPrefs.Save();
+                windowManager.OverlayMenu("UpdateNotes");
             }
         }
     }

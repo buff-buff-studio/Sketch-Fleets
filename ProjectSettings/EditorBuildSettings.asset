@@ -27,4 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Shop.unity
     guid: 04efd53ff688f784cbdf8db480d3cef6
   m_configObjects:
+    com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: 464d4eb096a167445a87ce2a3724af59, type: 2}
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: aeff4fc8ae464c246875f4195e14afc5, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 669a8f9808b13bd4bb107c39aee01358, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 9d78ede363fdc6c4290ff5f3466576ad, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 278193525f1a59748bb9a47bafd36dc9, type: 2}
+  m_UseUCBPForAssetBundles: 0

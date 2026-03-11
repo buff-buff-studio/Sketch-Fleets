@@ -45,6 +45,8 @@ namespace SketchFleets
         [RequiredField]
         private GameEvent onColorAbsorbed;
 
+        private bool onDrawMode = false;
+
         #endregion
 
         #region Properties
@@ -91,6 +93,8 @@ namespace SketchFleets
 
         private void NewColor(Color col, BulletAttributes bullet)
         {
+            if(onDrawMode) return;
+            
             enemyDeathColor.Value = new Color(0.5f, 0.5f, 0.5f, 0f);
             enemyDeathBullet.Value = null;
 
@@ -119,7 +123,12 @@ namespace SketchFleets
 
         private void UpdateColorButton()
         {
-            drawButton.UpdateButton(colorsInventory[colorsInventory.Count - 1].color);
+            drawButton.UpdateButton(colorsInventory[^1].color);
+        }
+
+        public void SetDrawMode(bool value)
+        {
+            onDrawMode = value;
         }
 
         private static ColorInfo SetColorInfo(Color col, BulletAttributes bullet)

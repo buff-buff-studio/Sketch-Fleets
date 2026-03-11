@@ -150,6 +150,9 @@ namespace SketchFleets.General
             SetOtherMenusActive(false);
             victoryMenu.SetActive(true);
             winShellCount.text = Profile.Data.Coins.ToString();
+            
+            //verify if it was the last world
+            
 
             StartCoroutine(LerpGameOverScreen());
         }

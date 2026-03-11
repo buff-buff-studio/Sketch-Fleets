@@ -16,11 +16,11 @@ PlayerSettings:
   productName: Sketch Fleets
   defaultCursor: {fileID: 2800000, guid: 282d37ea05e0874479d4cbada54a338e, type: 3}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.078431375, g: 0.16862746, b: 0.2509804, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
-  m_ShowUnitySplashLogo: 1
+  m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
-  m_SplashScreenAnimation: 1
+  m_SplashScreenAnimation: 0
   m_SplashScreenLogoStyle: 1
   m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
@@ -41,8 +41,6 @@ PlayerSettings:
     height: 1
   m_SplashScreenLogos:
   - logo: {fileID: 21300000, guid: 7c46fcc8606134a48b236fd062261b2d, type: 3}
-    duration: 2
-  - logo: {fileID: 21300000, guid: 51aa8e75932ea5b48915f2ff844ec573, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
@@ -83,8 +81,8 @@ PlayerSettings:
   androidMinimumWindowHeight: 300
   androidFullscreenMode: 1
   androidAutoRotationBehavior: 1
-  androidPredictiveBackSupport: 1
-  androidApplicationEntry: 1
+  androidPredictiveBackSupport: 0
+  androidApplicationEntry: 2
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
   runInBackground: 0
@@ -147,9 +145,17 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 2.2.3.0
+  bundleVersion: 2.3.3
   preloadedAssets:
   - {fileID: 11400000, guid: 278193525f1a59748bb9a47bafd36dc9, type: 2}
+  - {fileID: 2800000, guid: 64af092a570980448a175d1fa2033405, type: 3}
+  - {fileID: 2800000, guid: 3a91cfa545f5d82419134fc0c4e18533, type: 3}
+  - {fileID: 2800000, guid: 018667cb84213db48b1c9a08a1f224e0, type: 3}
+  - {fileID: 2800000, guid: c1f494d00beaaee4e9446f7e7a4eb033, type: 3}
+  - {fileID: 2800000, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
+  - {fileID: 2800000, guid: 586fc404af3a0c9438c403197ec60729, type: 3}
+  - {fileID: 2800000, guid: c90df9bc90310684c9fe892760f15168, type: 3}
+  - {fileID: 2800000, guid: 738005fa37d1a4548bddb168c7544fa6, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -158,7 +164,7 @@ PlayerSettings:
   vrSettings:
     enable360StereoCapture: 0
   isWsaHolographicRemotingEnabled: 0
-  enableFrameTimingStats: 0
+  enableFrameTimingStats: 1
   enableOpenGLProfilerGPURecorders: 1
   allowHDRDisplaySupport: 0
   useHDRDisplay: 0
@@ -271,13 +277,13 @@ PlayerSettings:
   useCustomGradlePropertiesTemplate: 0
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 1
+  AndroidTargetArchitectures: 2
   AndroidAllowedArchitectures: -1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
-  AndroidEnableArmv9SecurityFeatures: 0
+  AndroidKeystoreName: '{inproject}: sketch.keystore'
+  AndroidKeyaliasName: sketch fleets
+  AndroidEnableArmv9SecurityFeatures: 1
   AndroidEnableArm64MTE: 0
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
@@ -288,7 +294,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -492,7 +498,10 @@ PlayerSettings:
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding: []
-  m_BuildTargetDefaultTextureCompressionFormat: []
+  m_BuildTargetDefaultTextureCompressionFormat:
+  - serializedVersion: 3
+    m_BuildTarget: Android
+    m_Formats: 01000000
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
@@ -738,7 +747,7 @@ PlayerSettings:
   ps4attribVROutputEnabled: 0
   monoEnv: 
   splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: 738005fa37d1a4548bddb168c7544fa6, type: 3}
-  splashScreenBackgroundSourcePortrait: {fileID: 0}
+  splashScreenBackgroundSourcePortrait: {fileID: 21300000, guid: 4f6285b239310db449855287f94eac8c, type: 3}
   blurSplashScreenBackground: 1
   spritePackerPolicy: 
   webGLMemorySize: 16
