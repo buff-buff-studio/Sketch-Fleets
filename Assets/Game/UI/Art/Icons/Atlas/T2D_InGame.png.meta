@@ -447,7 +447,7 @@ TextureImporter:
         width: 112
         height: 112
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -456,6 +456,50 @@ TextureImporter:
       bones: []
       spriteID: a7611a3c35145f9a0800000000000000
       internalID: -6199977483985414534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T2D_InGame_0
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 826
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eff65374c026a2b4da7554e2f05106ba
+      internalID: -764850036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T2D_InGame_1
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 632
+        width: 187
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1e42653c8a12af4795540f345652aca
+      internalID: 1357800436
       vertices: []
       indices: 
       edges: []
@@ -472,7 +516,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":2,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Icons_CircleFill: -6199977483985414534
       Icons_ColorSlotFilled: 2948355432680805359
@@ -487,6 +533,8 @@ TextureImporter:
       Icons_WhiteBackground: -7637146275339539218
       Icons_WhiteFill: 6249182699870599711
       Icons_arnilsen: 7430374276754587469
+      T2D_InGame_0: -764850036
+      T2D_InGame_1: 1357800436
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
