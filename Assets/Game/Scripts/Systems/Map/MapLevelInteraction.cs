@@ -32,6 +32,7 @@ namespace SketchFleets.Interaction
         public StringVariable sceneShop;
         public StringVariable sceneGameplay;
         public StringVariable sceneMenu;
+        public StringVariable sceneEndGame;
         #endregion
 
         #region Methods
@@ -114,6 +115,15 @@ namespace SketchFleets.Interaction
                 });
             });
 
+        }
+
+        public void OnGameEnd()
+        {
+            SketchFleets.LoadingGame.SceneLoad = sceneEndGame.Value;
+            LoadScene(sceneEndGame.Value, () =>
+            {
+                Time.timeScale = 1; 
+            });
         }
 
         public void SaveReturningToMenu(MonoBehaviour behaviour)

@@ -10,7 +10,7 @@ namespace SketchFleets.Enemies
     /// <summary>
     /// A class that controls an enemy ship
     /// </summary>
-    public sealed class EnemyShip : Ship<ShipAttributes>
+    public class EnemyShip : Ship<ShipAttributes>
     {
         #region Private Fields
 

@@ -1,7 +1,9 @@
 using System.Collections;
 using ManyTools.UnityExtended;
 using ManyTools.Variables;
+using SketchFleets.Data;
 using SketchFleets.Entities;
+using SketchFleets.Interaction;
 using SketchFleets.ProfileSystem;
 using SketchFleets.Systems;
 using TMPro;
@@ -19,6 +21,12 @@ namespace SketchFleets.General
         [Header("Variables")]
         [SerializeField]
         private StringReference mapTimer;
+        
+        [SerializeField]
+        private MapAttributes mapAttributes;
+
+        [SerializeField] 
+        private MapLevelInteraction mapLevelInteraction;
 
         [Header("Count of pencil sharps at start of level")]
         [SerializeField]
@@ -148,10 +156,16 @@ namespace SketchFleets.General
         private void ShowWinUI()
         {
             SetOtherMenusActive(false);
-            victoryMenu.SetActive(true);
-            winShellCount.text = Profile.Data.Coins.ToString();
             
             //verify if it was the last world
+            if(mapAttributes.Difficulty == 4)
+            {
+                mapLevelInteraction.OnGameEnd();
+                return;
+            }
+            
+            victoryMenu.SetActive(true);
+            winShellCount.text = Profile.Data.Coins.ToString();
             
 
             StartCoroutine(LerpGameOverScreen());

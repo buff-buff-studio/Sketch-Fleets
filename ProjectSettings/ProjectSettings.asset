@@ -145,7 +145,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 2.3.4
+  bundleVersion: 2.4.0
   preloadedAssets:
   - {fileID: 11400000, guid: 278193525f1a59748bb9a47bafd36dc9, type: 2}
   - {fileID: 2800000, guid: 64af092a570980448a175d1fa2033405, type: 3}
@@ -277,7 +277,7 @@ PlayerSettings:
   useCustomGradlePropertiesTemplate: 0
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 2
+  AndroidTargetArchitectures: 3
   AndroidAllowedArchitectures: -1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
