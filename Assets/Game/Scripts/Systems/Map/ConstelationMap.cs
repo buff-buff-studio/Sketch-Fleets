@@ -1,17 +1,27 @@
-using UnityEngine;
-using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 using ManyTools.Events;
 using ManyTools.Variables;
 using SketchFleets.Data;
 using SketchFleets.Interaction;
+using Random = UnityEngine.Random;
 
 /// <summary>
-/// Main map class (Display Constelation | MapLevelInteraction.state)
+/// Renders the constellation map UI, builds the procedural node graph, and drives zoom / focus / path animations.
 /// </summary>
 public class ConstelationMap : MonoBehaviour
 {
+    #region Visual constants
+
+    private const int JunctionPathDiscardPixels = 10;
+    private const float StarIconBaseSize = 50f;
+    private const float BossIconScaleMultiplier = 3f;
+
+    #endregion
+
     #region Private Fields
 
     [Header("Events")]
@@ -19,426 +29,159 @@ public class ConstelationMap : MonoBehaviour
     private GameEvent generationAnimationOver;
     [SerializeField]
     private GameEvent zoomAnimationOver;
-    
-    //Internal input enabled
+
     private bool inputEnabled = true;
-    //Holds generate map size
-    private float mapWidth = 0;
-    private float mapHeight = 0;
-    //Holds all stars
+    private float mapWidth;
+    private float mapHeight;
     private Constelation constelation;
+
     #endregion
 
     #region Public Fields
-    
+
     [Header("Map Parameters")]
     public MapLevelInteraction interaction;
-    //Prefabs
     public GameObject mapPrefab;
     public GameObject pathPrefab;
-    //Objects
     public GameObject pathHolder;
     public RectTransform mapView;
     public MapScrollRect scrollRect;
     public ZoomComponent zoom;
-    //Overlay input disable panel
     public GameObject mapDisabler;
-    //Animaton curves
     public AnimationCurve curve;
     public AnimationCurve focusCurve;
     public AnimationCurve focusCurveScale;
     public AnimationCurve focusCurveScaleProgress;
-    //Testing
-    public static System.Action onMapLoad;
-    //Reference
+
+    public static Action onMapLoad;
+
     public MapAttributes currentMap;
     public IntReference currentLevel;
     public IntReference currentLevelDifficulty;
     public IntReference currentSeed;
-    //Icons
-    public Sprite[] planetIcons;
-    //Parallax
-    [Range(0f,1000f)]
+
+    [Range(0f, 1000f)]
     public float parallaxSpeed = 5f;
+
     #endregion
 
     #region Properties
-    //Input enabled property
+
     public bool InputEnabled
     {
-        get { return inputEnabled;}
-        set {
-            if(inputEnabled != value)
-            {
-                zoom.inputEnabled = value;
-                zoom.horizontal = value;
-                zoom.vertical = value;
+        get => inputEnabled;
+        set
+        {
+            if (inputEnabled == value)
+                return;
 
-                if(mapDisabler != null)
-                    mapDisabler.SetActive(!value);
-                inputEnabled = value;
-            }
+            zoom.inputEnabled = value;
+            zoom.horizontal = value;
+            zoom.vertical = value;
+
+            if (mapDisabler != null)
+                mapDisabler.SetActive(!value);
+            inputEnabled = value;
         }
     }
+
     #endregion
 
     #region Unity Callbacks
-    /// <summary>
-    /// On awake
-    /// </summary>
+
     private void Awake()
     {
-        //Set map
         MapLevelInteraction.map = this;
     }
-    
-    /// <summary>
-    /// Generate map and play animation
-    /// </summary>
-    private void Start() 
-    {
-        //Create new constelation
-        constelation = new Constelation(this,interaction);
 
-        //Init constelation state
+    private void Start()
+    {
+        constelation = new Constelation(this, interaction);
         MapLevelInteraction.state.SetConstelation(constelation);
-        
-        int seed = SketchFleets.ProfileSystem.Profile.GetData().Map.seed == -1 ? (int)System.DateTime.Now.Ticks :SketchFleets.ProfileSystem.Profile.GetData().Map.seed;
-        //Current map system - Generate from seed
+
+        int seed = SketchFleets.ProfileSystem.Profile.GetData().Map.seed == -1
+            ? (int)DateTime.Now.Ticks
+            : SketchFleets.ProfileSystem.Profile.GetData().Map.seed;
         Random.InitState(seed);
         SketchFleets.ProfileSystem.Profile.GetData().Map.seed = seed;
-        
-        //Set map
+
         MapLevelInteraction.map = this;
-        
-        //Map columns count
-        int columns = 12;
-        //Main levels per line
-        int maxPerLine = 5;
-        //Default space between levels
-        float spaceBetweenY = 150;
-        float spaceBetweenX = 180;
-        //Map Randomizer
-        float XMaxRandom = 50;
-        float YMaxRandom = 50;
-        //Map size randomizer
-        float maxMultiplier = 1.5f;
-        float minMultipler = 1.25f;
-        //End with max
-        int endWithMax = 1; //Always end with 1
-        int startWith = 1;
 
-        //Holds last line objects
-        List<Constelation.Star> lastLineStars = new List<Constelation.Star>();
+        GenerateConstellationLayout();
 
-        //Map bounds
-        float margin = 200;
-        float itemHalfSize = 25;
-        float sizeX = 0;
-        float minY = 0;
-        float maxY = 0;
-        
-        //Stars
-        List<Constelation.Star> purplePlanetsCandidates = new List<Constelation.Star>();
-        List<Constelation.Star> allOtherPlanets = new List<Constelation.Star>();    
-
-        for(int i = 0; i < columns; i ++)
-        {
-            //Start new constelation column
-            constelation.NewColumn();
-
-            //Holds current line objects
-            List<Constelation.Star> currentLineStars = new List<Constelation.Star>();
-
-            //Levels in current column
-            float current = (i == 0 ? startWith : Mathf.Min(maxPerLine,   
-                    i <= (columns/2 + (endWithMax)) ? lastLineStars.Count * (Random.value * (maxMultiplier - minMultipler) + minMultipler):
-                    lastLineStars.Count / (Random.value * (maxMultiplier - minMultipler) + minMultipler)
-                ));
-
-            //End with target amount
-            if( i == columns - 1)
-                current = Mathf.Min(current,endWithMax);
-
-            //Limit current between [1,lastLineStars.Count + 1]
-            if(i > 0)
-                current = Mathf.Max(Mathf.Min(current,lastLineStars.Count + 1),1);
-
-            //Count of current line and height
-            int count = (Random.value * 10) < 5 ? Mathf.RoundToInt(current) : Mathf.CeilToInt(current);
-            float height = (count - 1) * spaceBetweenY; 
-
-            //Create constelation points
-            for(int j = 0; j < count; j ++)
-            {
-                GameObject cur;
-                GameObject o = (cur = CreatePoint(new Vector2(itemHalfSize + margin/2,-margin/2) + new Vector2(i * spaceBetweenX,j * spaceBetweenY) + ( i == 0 || i == columns - 1 ? Vector2.zero :
-                new Vector2(
-                    (Random.value * XMaxRandom) - XMaxRandom/2,
-                    (Random.value * YMaxRandom) - YMaxRandom/2
-                )) - new Vector2(0,height/2)));
-
-                
-                //Create start difficulty
-                int difficulty = -1;
-                
-                if(i == 0)
-                    difficulty = 1;
-                else if(i == columns - 1)
-                    difficulty = 4; //Black Hole
-                else if(i == columns - 2 && j%2 == 0)
-                    difficulty = 0; //Shop
-                else if(Random.Range(0,10) > 8 && i > 0 && i != columns - 2)
-                {
-                    difficulty = 0; //Shop
-                }
-                else
-                {
-                    float ppg = ((i - 1) * 1f)/(columns - 1);
-                    int pdifficulty = Mathf.Clamp(Random.Range((int) ppg * 4,(int) (ppg * (columns/2f) + 1)) + 1,1,3);
-
-                    if(pdifficulty == 3 && Random.Range(0,10) > 5 && i > 1 && i != columns - 2)
-                    {
-                        difficulty = 0;
-                    }
-                    else
-                    {
-                        if(Random.Range(0,10) > 7 && i >= columns/2)
-                        {
-                            difficulty = 5;
-                        }
-                        else
-                        {
-                            float pg = (i * 1.35f)/(columns - 1);
-                            difficulty = Mathf.Clamp(Random.Range((int) pg * 4,(int) (pg * (columns/2f) + 1)) + 1,1,3);  
-                        }
-                    }
-                }
-
-                if(i >= columns/2 && difficulty > 0 && difficulty <= 2)
-                    difficulty ++;
- 
-
-                //o.transform.GetChild(0).GetComponent<Text>().text = constelation.Count + "";
-                o.transform.GetChild(0).GetComponent<Text>().text = difficulty + "";
-
-                //Add star
-                Constelation.Star s = new Constelation.Star(o,difficulty);
-                currentLineStars.Add(s);
-                constelation.AddStar(s);
-
-                if(difficulty == 5 && i > columns/2)
-                {
-                    float pg = (i * 1.15f)/(columns - 1);
-                    s.Difficulty = Mathf.Clamp(Random.Range((int) pg * 4,(int) (pg * (columns/2f) + 1)) + 1,1,3);
-                    purplePlanetsCandidates.Add(s);
-
-                    if(i >= columns/2 && s.Difficulty > 0 && s.Difficulty <= 2)
-                        s.Difficulty ++;
-                }
-                else if(difficulty == 1 || difficulty == 2 || difficulty == 3)
-                    if(i >= columns/2)
-                        allOtherPlanets.Add(s);
-
-                //Update bounds
-                if(cur.GetComponent<RectTransform>().anchoredPosition.x > sizeX)
-                    sizeX = cur.GetComponent<RectTransform>().anchoredPosition.x;
-
-                if(cur.GetComponent<RectTransform>().anchoredPosition.y < minY)
-                    minY = cur.GetComponent<RectTransform>().anchoredPosition.y;
-
-                if(cur.GetComponent<RectTransform>().anchoredPosition.y > maxY)
-                    maxY = cur.GetComponent<RectTransform>().anchoredPosition.y;
-            }
-
-            if(i > 0)
-            {
-                //Create paths between stars
-                for(int j = 0; j < currentLineStars.Count; j ++)
-                {
-                    int a = j;
-                    int b = j - 1;
-                    int c = j + 1; 
-
-                    if(b < 0)
-                        b = j + 2;
-
-                    Constelation.Star starA = currentLineStars[j];
-
-                    if(a >= 0 && a < lastLineStars.Count)
-                    {
-                        Constelation.Star starB = lastLineStars[a];
-                        GameObject junction = CreateLine(starA.Object,starB.Object);
-
-                        Constelation.StarJunction junc = new Constelation.StarJunction(starB,starA,junction);
-
-                        starA.fromJunctions.Add(junc);
-                        starB.toJunctions.Add(junc);
-
-                        //Change difficulty if two shops are conected
-                        if(starB.Difficulty == 0 && starA.Difficulty == 0)
-                        {
-                            float pg = (i * 1f)/(columns - 1);
-                            if(i == columns - 2)
-                                starB.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
-                            else
-                                starA.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
-                        }
-                    }
-                    if(c >= 0 && c < lastLineStars.Count)
-                    {
-                        Constelation.Star starB = lastLineStars[c];
-                        GameObject junction = CreateLine(starA.Object,starB.Object);
-
-                        Constelation.StarJunction junc = new Constelation.StarJunction(starB,starA,junction);
-
-                        starA.fromJunctions.Add(junc);
-                        starB.toJunctions.Add(junc);
-
-                        //Change difficulty if two shops are conected
-                        if(starB.Difficulty == 0 && starA.Difficulty == 0)
-                        {
-                            float pg = (i * 1f)/(columns - 1);
-                            if(i == columns - 2)
-                                starB.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
-                            else
-                                starA.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
-                        }
-                    }
-                    if(b >= 0 && b < lastLineStars.Count)
-                    {
-                        Constelation.Star starB = lastLineStars[b];
-                        GameObject junction = CreateLine(starA.Object,starB.Object);
-
-                        Constelation.StarJunction junc = new Constelation.StarJunction(starB,starA,junction);
-
-                        starA.fromJunctions.Add(junc);
-                        starB.toJunctions.Add(junc);
-
-                        //Change difficulty if two shops are conected
-                        if(starB.Difficulty == 0 && starA.Difficulty == 0)
-                        {
-                            float pg = (i * 1f)/(columns - 1);
-                            if(i == columns - 2)
-                                starB.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
-                            else
-                                starA.Difficulty = Mathf.Clamp(Random.Range((int) pg * 3,(int) (pg * (columns/3f) + 1)) + 1,1,3);
-                        }
-                    }
-                }
-            }
-
-            //Clone stars
-            lastLineStars.Clear();
-            lastLineStars.AddRange(currentLineStars);
-        }
-
-        //Purple planets
-        int purplePlanetsCount = Random.Range(3,7);
-
-        while(purplePlanetsCandidates.Count < purplePlanetsCount && allOtherPlanets.Count > 0)
-        {
-            int i = Random.Range(0,allOtherPlanets.Count);
-            purplePlanetsCandidates.Add(allOtherPlanets[i]);
-            allOtherPlanets.RemoveAt(i);
-        }
-  
-        for(int i = 0; i < Mathf.Min(purplePlanetsCount,purplePlanetsCandidates.Count); i ++)
-        {
-            int j = Random.Range(0,purplePlanetsCandidates.Count);
-            purplePlanetsCandidates[j].Difficulty = 5;
-            purplePlanetsCandidates.RemoveAt(j);
-        }
-        
-
-        //Current map height
-        float h = (maxY - minY) + itemHalfSize * 2f;
-
-        //Centralize items
-        foreach(Transform o in this.mapView)
-        {
-            o.GetComponent<RectTransform>().anchoredPosition -= new Vector2(0,-itemHalfSize);
-        }
-
-        //Recalculate size
-        mapView.sizeDelta = new Vector2(sizeX + itemHalfSize + margin,mapHeight = (h + margin));
-        mapWidth = sizeX + itemHalfSize + margin;
-
-        //Set view rect to the start
         scrollRect.verticalNormalizedPosition = 0.5f;
         scrollRect.horizontalNormalizedPosition = 0f;
 
-        //Play Open Animation
-        //OpenAnimation(null);
-        //OpenInstantly();
-
-        //Open first
         MapLevelInteraction.state.Open(MapLevelInteraction.state.GetCurrentStar());
-
-        //Init current state
         MapLevelInteraction.state.Init();
 
-        if(onMapLoad != null)
-            onMapLoad();
+        onMapLoad?.Invoke();
     }
 
     /// <summary>
-    /// Update map and animations
+    /// Parallax camera drift, zoom bounds, node idle motion, and path line updates.
     /// </summary>
-    private void Update() 
+    private void Update()
     {
-        //Camera PARALLAX
-        Camera.main.transform.position += new Vector3(parallaxSpeed,0,0) * Time.deltaTime;
+        Camera.main.transform.position += new Vector3(parallaxSpeed, 0, 0) * Time.deltaTime;
 
-        //Update minimum zoom possible
-        RectTransform scrollRect = this.scrollRect.GetComponent<RectTransform>();     
-        float zoom = scrollRect.rect.width/mapWidth;
-        float z = Mathf.Min(zoom,1f);
-        this.zoom.SetMinZoom(z);
+        RectTransform scrollRectTransform = scrollRect.GetComponent<RectTransform>();
+        float fitZoom = scrollRectTransform.rect.width / mapWidth;
+        float z = Mathf.Min(fitZoom, 1f);
+        zoom.SetMinZoom(z);
 
-        // float cz = Zoom.GetCurrentZoom(); //Adds an strange view behaviour
         float cz = z;
-        
-        //Update needed height for current zoom
-        if(mapHeight * cz >= scrollRect.rect.height)
-            mapView.sizeDelta = new Vector2(mapView.sizeDelta.x,mapHeight);
+        if (mapHeight * cz >= scrollRectTransform.rect.height)
+            mapView.sizeDelta = new Vector2(mapView.sizeDelta.x, mapHeight);
         else
-            mapView.sizeDelta = new Vector2(mapView.sizeDelta.x,mapHeight * 
-            (scrollRect.rect.height/(mapHeight * cz)));
+            mapView.sizeDelta = new Vector2(mapView.sizeDelta.x,
+                mapHeight * (scrollRectTransform.rect.height / (mapHeight * cz)));
 
-        //Update scales
-        foreach(Constelation.Star star in constelation)
-        {   
-            if(star.Difficulty == 4)
-                star.Object.GetComponent<RectTransform>().sizeDelta = 3f * new Vector2(50,50) * (star.scale + (Mathf.Sin(Time.time * Mathf.Deg2Rad * 90 + ((star.Id - 5)%10) * 10) + 0.75f) * 0.1f);
+        foreach (Constelation.Star star in constelation)
+        {
+            RectTransform rt = star.Object.GetComponent<RectTransform>();
+            float phase = Time.time * Mathf.Deg2Rad * 90f + ((star.Id - 5) % 10) * 10f;
+            float wobble = (Mathf.Sin(phase) + 0.75f) * 0.1f;
+
+            PlanetAttributes planetDef = GetPlanetAttributesForStarType(star.Difficulty);
+            if (planetDef != null && planetDef.PlanetDifficulty == PlanetDifficulty.Boss)
+                rt.sizeDelta = BossIconScaleMultiplier * new Vector2(StarIconBaseSize, StarIconBaseSize) *
+                    (star.scale + wobble);
             else
-                star.Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * (star.scale + (Mathf.Sin(Time.time * Mathf.Deg2Rad * 60 + ((star.Id - 5)%10) * 10) + 0.75f) * 0.1f);
-            
-            
-            star.Object.GetComponent<RectTransform>().anchoredPosition = star.position + new Vector2(Mathf.Sin(Time.time * Mathf.Deg2Rad * 90 + ((star.Id - 5)%10) * 10),Mathf.Cos(Time.time * Mathf.Deg2Rad * 45 + ((star.Id - 5)%10) * 10)) * (((SketchFleets.ProfileSystem.Profile.GetData().Map.seed * star.Id << (star.Id%7))%10) - 5); 
-            //star.Object.GetComponent<RectTransform>().localEulerAngles = new Vector3(0,0,Mathf.Sin(-Time.time * Mathf.Deg2Rad * ((star.Id << 3)%20) + 30) * ((MapLevelInteraction.state.seed << star.Id%7)%10 + 10) * 10f);
-            
-            foreach(Constelation.StarJunction j in star.toJunctions)
-            {
-                UpdateLine(j.junction,j.starB.Object,j.starA.Object);
-            }
+                rt.sizeDelta = new Vector2(StarIconBaseSize, StarIconBaseSize) * (star.scale +
+                    (Mathf.Sin(Time.time * Mathf.Deg2Rad * 60f + ((star.Id - 5) % 10) * 10f) + 0.75f) * 0.1f);
+
+            int seedMix = SketchFleets.ProfileSystem.Profile.GetData().Map.seed;
+            float drift = (((seedMix * star.Id) << (star.Id % 7)) % 10) - 5;
+            rt.anchoredPosition = star.position + new Vector2(
+                Mathf.Sin(Time.time * Mathf.Deg2Rad * 90f + ((star.Id - 5) % 10) * 10f),
+                Mathf.Cos(Time.time * Mathf.Deg2Rad * 45f + ((star.Id - 5) % 10) * 10f)) * drift;
+
+            foreach (Constelation.StarJunction j in star.toJunctions)
+                UpdateLine(j.junction, j.starB.Object, j.starA.Object);
         }
     }
-    #endregion  
+
+    #endregion
 
     #region Public Methods
-    /// <summary>
-    /// On click on a star (Temporary)
-    /// </summary>
-    /// <param name="starNumber">Get star from index</param>
+
+    /// <summary>Planet asset at <paramref name="planetIndex"/> in <see cref="MapAttributes.Planets"/> (same as <see cref="Constelation.Star.Difficulty"/>).</summary>
+    public PlanetAttributes GetPlanetAttributesForStarType(int planetIndex)
+    {
+        PlanetAttributes[] planets = currentMap != null ? currentMap.Planets : null;
+        if (planets == null || planetIndex < 0 || planetIndex >= planets.Length)
+            return null;
+        return planets[planetIndex];
+    }
+
     public void OnClickStar(int starNumber)
     {
-        if(!InputEnabled)
+        if (!InputEnabled)
             return;
 
-        //Choose current star
         Constelation.Star star = constelation.GetStar(starNumber);
-        MapLevelInteraction.state.Choose(star.Id); 
+        MapLevelInteraction.state.Choose(star.Id);
         interaction.OnClickOnMapStar(starNumber);
     }
 
@@ -452,586 +195,697 @@ public class ConstelationMap : MonoBehaviour
         Constelation.Star star = constelation.GetStar(starNumber);
         star.SetMode(Constelation.StarMode.PASSED_THROUGH_SELECTED);
 
-        //Add to open queue
-        foreach(Constelation.StarJunction j in star.toJunctions)
-        {
+        foreach (Constelation.StarJunction j in star.toJunctions)
             MapLevelInteraction.state.AddToOpenQueue(j.starB.Id);
-        }
 
-        //Sum all positions
-        List<GameObject> objects = new List<GameObject>();
-
-        foreach(Constelation.StarJunction jc in star.toJunctions)
+        var objects = new List<GameObject>();
+        foreach (Constelation.StarJunction jc in star.toJunctions)
         {
-            if(jc.starA.Object != star.Object)
+            if (jc.starA.Object != star.Object)
                 objects.Add(jc.starA.Object);
             else
                 objects.Add(jc.starB.Object);
         }
 
-        //Disable current
         star.SetEnabled(false);
-
-        //Add star to sum
         objects.Add(star.Object);
 
-        FocusInto(objects.ToArray(),2f,1f,true,() => {
-            OpenStarPaths(starNumber);
-        });
+        FocusInto(objects.ToArray(), 2f, 1f, true, () => OpenStarPaths(starNumber));
     }
 
     public void OpenInstantly()
     {
         InputEnabled = true;
-        for(int i = 0; i < constelation.Count; i ++)
+        for (int i = 0; i < constelation.Count; i++)
         {
             Constelation.Star s = constelation.GetStar(i);
             s.Object.transform.localScale = Vector3.one * curve.Evaluate(1);
 
-            foreach(Constelation.StarJunction j in s.toJunctions)
+            foreach (Constelation.StarJunction j in s.toJunctions)
             {
-                if(MapLevelInteraction.state.IsOpen(j.starA.Id) && MapLevelInteraction.state.IsOpen(j.starB.Id) && MapLevelInteraction.state.IsChoosen(j.starA.Id))
+                if (MapLevelInteraction.state.IsOpen(j.starA.Id) && MapLevelInteraction.state.IsOpen(j.starB.Id) &&
+                    MapLevelInteraction.state.IsChoosen(j.starA.Id))
                 {
                     RectTransform back = j.junction.GetComponent<RectTransform>();
                     RectTransform prog = j.junction.transform.GetChild(0).GetComponent<RectTransform>();
-
-                    int discard = 10; //Amount to discard from each side
-
-                    float p = discard + (back.sizeDelta.x - discard * 2) * 1;
-                    prog.sizeDelta = new Vector2(p,prog.sizeDelta.y); 
-                }         
+                    ApplyJunctionProgress(back, prog, 1f);
+                }
             }
         }
 
-        //Sum all positions
         Constelation.Star star = constelation.GetStar(MapLevelInteraction.state.GetCurrentStar());
-        List<GameObject> objects = new List<GameObject>();
-
-        foreach(Constelation.StarJunction jc in star.toJunctions)
+        var objects = new List<GameObject>();
+        foreach (Constelation.StarJunction jc in star.toJunctions)
         {
-            if(jc.starA.Object != star.Object)
+            if (jc.starA.Object != star.Object)
                 objects.Add(jc.starA.Object);
             else
                 objects.Add(jc.starB.Object);
         }
 
-        //Add star to sum
         objects.Add(star.Object);
 
-        //Zoom and focus star
         zoom.SetZoomInstantly(1f);
         FocusIntoInstantly(objects.ToArray());
         InputEnabled = true;
     }
 
-    /// <summary>
-    /// Play open star paths animation for a star
-    /// </summary>
-    /// <param name="star">Open paths of star</param>
     public void OpenStarPaths(int star)
-    {   
+    {
         StartCoroutine(_OpenStarPaths(star));
     }
 
-    /// <summary>
-    /// Open map screen animation
-    /// </summary>
-    /// <param name="callback">On end callback</param>
-    public void OpenAnimation(System.Action callback)
+    public void OpenAnimation(Action callback)
     {
         StartCoroutine(_OpenAnimation(callback));
     }
 
-    
-    /// <summary>
-    /// Close map screen animation
-    /// </summary>
-    /// <param name="callback">On end callback</param>
-    public void CloseAnimation(System.Action callback)
+    public void CloseAnimation(Action callback)
     {
         StartCoroutine(_CloseAnimation(callback));
     }
 
-    /// <summary>
-    /// Focus view into a single object
-    /// </summary>
-    /// <param name="target">Target object</param>
-    /// <param name="time">Duration time</param>
-    /// <param name="targetZoom">Zoom level target</param>
-    /// <param name="smooth">Switch smooth curves option</param>
-    /// <param name="callback">On end callback</param>
-    public void FocusInto(GameObject target,float time,float targetZoom,bool smooth,System.Action callback)
+    public void FocusInto(GameObject target, float time, float targetZoom, bool smooth, Action callback)
     {
-        StartCoroutine(_FocusInto(new GameObject[]{target},time,targetZoom,smooth,callback));
+        StartCoroutine(_FocusInto(new[] { target }, time, targetZoom, smooth, callback));
     }
 
-    /// <summary>
-    /// Focus view into center of a group of targets
-    /// </summary>
-    /// <param name="target">Multiple targets object to calculate center point</param>
-    /// <param name="time">Duration time</param>
-    /// <param name="targetZoom">Zoom level target</param>
-    /// <param name="smooth">Switch smooth curves option</param>
-    /// <param name="callback">On end callback</param>
-    public void FocusInto(GameObject[] target,float time,float targetZoom,bool smooth,System.Action callback)
+    public void FocusInto(GameObject[] target, float time, float targetZoom, bool smooth, Action callback)
     {
-        StartCoroutine(_FocusInto(target,time,targetZoom,smooth,callback));
+        StartCoroutine(_FocusInto(target, time, targetZoom, smooth, callback));
     }
 
-    /// <summary>
-    /// Focus into objects instantly
-    /// </summary>
-    /// <param name="star">Objects to focus</param>
     public void FocusIntoInstantly(GameObject[] target)
     {
-        Vector2 sum = Vector2.zero;
-        for(int i = 0; i < target.Length; i ++)
-        {
-            sum += (Vector2)scrollRect.transform.InverseTransformPoint(mapView.position)
-            - (Vector2)scrollRect.transform.InverseTransformPoint(target[i].transform.position);;
-        }
-
-        mapView.anchoredPosition = sum/target.Length;
+        mapView.anchoredPosition = _GetAnchoredPosition(target);
     }
 
-    /// <summary>
-    /// Focus into object with easing
-    /// </summary>
-    /// <param name="star">Single object to focus</param>
-    /// /// <param name="t">Lerp factor</param>
-    public void FocusIntoLerp(GameObject star,float t)
+    public void FocusIntoLerp(GameObject star, float t)
     {
-       mapView.anchoredPosition = Vector2.Lerp(mapView.anchoredPosition,(Vector2)scrollRect.transform.InverseTransformPoint(mapView.position)
-            - (Vector2)scrollRect.transform.InverseTransformPoint(star.transform.position),t);
-            
+        mapView.anchoredPosition = Vector2.Lerp(mapView.anchoredPosition,
+            (Vector2)scrollRect.transform.InverseTransformPoint(mapView.position)
+            - (Vector2)scrollRect.transform.InverseTransformPoint(star.transform.position), t);
     }
 
-    /// <summary>
-    /// Focus into object with fixed lerp
-    /// </summary>
-    /// <param name="star">Single object to focus</param>
-    /// <param name="start">Starting anchored position</param>
-    /// <param name="t">Lerp factor</param>
-    public void FocusIntoLerp(GameObject star,Vector2 start,float t)
+    public void FocusIntoLerp(GameObject star, Vector2 start, float t)
     {
         Vector2 target = (Vector2)scrollRect.transform.InverseTransformPoint(mapView.position)
             - (Vector2)scrollRect.transform.InverseTransformPoint(star.transform.position);
-        
-       mapView.anchoredPosition = start + (target - start) * t;
+        mapView.anchoredPosition = start + (target - start) * t;
     }
 
-    /// <summary>
-    /// Lerp to target anchored position
-    /// </summary>
-    /// <param name="target">Target anchored position</param>
-    /// <param name="start">Starting anchored position</param>
-    /// <param name="t">Lerp factor</param>
-    public void FocusLerpTarget(Vector2 target,Vector2 start,float t)
+    public void FocusLerpTarget(Vector2 target, Vector2 start, float t)
     {
-       mapView.anchoredPosition = start + (target - start) * t;
+        mapView.anchoredPosition = start + (target - start) * t;
     }
+
+    /// <summary>Same as <see cref="OpenStarPaths"/> but without coroutine delay.</summary>
+    public void OpenStarPathsInstantly(int star)
+    {
+        Constelation.Star s = constelation.GetStar(star);
+        InputEnabled = false;
+        MapLevelInteraction.state.Open(s.Id);
+
+        foreach (Constelation.StarJunction j in s.toJunctions)
+        {
+            if (!MapLevelInteraction.state.IsChoosen(j.starA.Id))
+                continue;
+
+            MapLevelInteraction.state.Open(j.starA.Id);
+            MapLevelInteraction.state.Open(j.starB.Id);
+
+            RectTransform back = j.junction.GetComponent<RectTransform>();
+            RectTransform prog = j.junction.transform.GetChild(0).GetComponent<RectTransform>();
+            ApplyJunctionProgress(back, prog, 1f);
+        }
+
+        InputEnabled = true;
+    }
+
+    public void ReturnToMenu()
+    {
+        interaction.ReturnToMenu(this);
+    }
+
     #endregion
 
-    #region Private Method
-    
-    /// <summary>
-    /// Internal play open star paths animation for a star
-    /// </summary>
-    /// <param name="star">Star index</param>
-    /// <returns></returns>
+    #region Constellation generation
+
+    /// <summary>Builds columns from <see cref="MapAttributes.Planets"/> using spawn ranges; wires paths; fits scroll content.</summary>
+    private void GenerateConstellationLayout()
+    {
+        // Validação inicial do asset
+        if (currentMap == null)
+        {
+            Debug.LogError("ConstelationMap: assign a MapAttributes asset on currentMap.");
+            return;
+        }
+
+        // --- Configurações locais (extraídas para clareza) ---
+        ConstellationMapGenerationConfig generation = currentMap.ConstellationGeneration;
+        PlanetAttributes[] planets = currentMap.Planets;
+
+        // Entradas obrigatórias no array de planetas
+        PlanetAttributes easy = ConstellationMapPlanetPicker.FindFirst(planets, PlanetDifficulty.Easy);
+        PlanetAttributes boss = ConstellationMapPlanetPicker.FindFirst(planets, PlanetDifficulty.Boss);
+        PlanetAttributes store = ConstellationMapPlanetPicker.FindFirst(planets, PlanetDifficulty.Store);
+        PlanetAttributes mediumFallback = ConstellationMapPlanetPicker.FindFirst(planets, PlanetDifficulty.Medium);
+
+        if (planets == null || planets.Length == 0 || easy == null || boss == null || store == null)
+        {
+            Debug.LogError("ConstelationMap: MapAttributes.Planets must define at least Easy, Store, and Boss entries.");
+            return;
+        }
+
+        // Índice do easy (usado como fallback em casos inesperados)
+        int easyIndex = ConstellationMapPlanetPicker.IndexOf(planets, easy);
+        if (mediumFallback == null)
+            mediumFallback = easy; // garante fallback
+
+        // Extração de variáveis de geração para legibilidade
+        int columns = generation.columns;
+        float spaceBetweenY = generation.spaceBetweenY;
+        float spaceBetweenX = generation.spaceBetweenX;
+        float xMaxRandom = generation.randomOffsetX;
+        float yMaxRandom = generation.randomOffsetY;
+        float maxMultiplier = generation.columnWidthMultiplierMax;
+        float minMultiplier = generation.columnWidthMultiplierMin;
+        int endWithMax = generation.endColumnNodes;
+        int startWith = generation.startColumnNodes;
+        float margin = generation.margin;
+        float itemHalfSize = generation.itemHalfSize;
+
+        // Estado temporário para ajustar layout
+        var lastLineStars = new List<Constelation.Star>();
+        float sizeX = 0f;
+        float minY = 0f;
+        float maxY = 0f;
+
+        // Garantia: pelo menos uma loja antes da coluna do boss
+        bool storePlacedInBossPreColumn = false;
+
+        // --- Loop por colunas ---
+        for (int col = 0; col < columns; col++)
+        {
+            constelation.NewColumn();
+            var currentLineStars = new List<Constelation.Star>();
+
+            // Contador de quantas vezes cada planeta foi usado nesta coluna (limite de duplicatas)
+            var usedCountsInColumn = new Dictionary<PlanetAttributes, int>();
+
+            // Progressão horizontal do mapa em % (0..100)
+            float mapPercent = ConstellationMapPlanetPicker.ColumnToMapPercent(col, columns);
+
+            // Determina quantos nós (estrelas) terá esta coluna
+            int count;
+            if (col == 0)
+            {
+                // Coluna inicial: sempre conter pelo menos startWith nós
+                count = Mathf.Max(1, startWith);
+            }
+            else if (col == columns - 1)
+            {
+                // Coluna final: apenas o boss
+                count = 1;
+            }
+            else
+            {
+                // Heurística: largura da coluna baseada na coluna anterior com alguma aleatoriedade
+                float estimate = (col <= columns / 2 + endWithMax)
+                    ? lastLineStars.Count * (Random.value * (maxMultiplier - minMultiplier) + minMultiplier)
+                    : lastLineStars.Count / (Random.value * (maxMultiplier - minMultiplier) + minMultiplier);
+
+                estimate = Mathf.Min(generation.maxNodesPerColumn, estimate);
+                if (col > 0)
+                    estimate = Mathf.Max(Mathf.Min(estimate, lastLineStars.Count + 1), 1);
+
+                count = (Random.value * 10f < 5f) ? Mathf.RoundToInt(estimate) : Mathf.CeilToInt(estimate);
+                count = Mathf.Max(count, 1);
+            }
+
+            // Decide se haverá uma loja nesta coluna (exclui primeira e última coluna)
+            int storeRow = -1;
+            // Only attempt to place a store in this column if the store asset allows spawning here
+            float columnMapPercent = ConstellationMapPlanetPicker.ColumnToMapPercent(col, columns);
+            bool storeAllowedHere = ConstellationMapPlanetPicker.IsPercentInSpawnRange(columnMapPercent, store.SpawnOnMapRangePercent);
+            if (col > 0 && col < columns - 1 && storeAllowedHere)
+            {
+                // Chance base para loja (pode ser ajustada ou exposta)
+                const float baseStoreChance = 0.15f;
+
+                // Se já não garantimos uma loja e estamos na penúltima coluna, aumentamos chance
+                float effectiveChance = (col == columns - 2 && !storePlacedInBossPreColumn)
+                    ? 0.7f // torna muito provável
+                    : baseStoreChance;
+
+                if (Random.value < effectiveChance)
+                {
+                    storeRow = Random.Range(0, count);
+                    if (col == columns - 2)
+                        storePlacedInBossPreColumn = true;
+                }
+            }
+
+            // Altura para centralizar os nós da coluna
+            float height = (count - 1) * spaceBetweenY;
+
+            // --- Loop por linhas (nós) na coluna ---
+            for (int row = 0; row < count; row++)
+            {
+                // Pequeno jitter para posição (exceto colunas de início/fim)
+                Vector2 jitter = (col == 0 || col == columns - 1)
+                    ? Vector2.zero
+                    : new Vector2(Random.value * xMaxRandom - xMaxRandom / 2f,
+                        Random.value * yMaxRandom - yMaxRandom / 2f);
+
+                Vector2 pos = new Vector2(itemHalfSize + margin / 2f, -margin / 2f)
+                    + new Vector2(col * spaceBetweenX, row * spaceBetweenY)
+                    + jitter
+                    - new Vector2(0f, height / 2f);
+
+                GameObject o = CreatePoint(pos);
+
+                // Escolha do planeta (atributo) para este nó
+                PlanetAttributes chosen;
+                if (col == 0)
+                {
+                    // Sempre easy na primeira coluna
+                    chosen = easy;
+                }
+                else if (col == columns - 1)
+                {
+                    // Última coluna: boss
+                    chosen = boss;
+                }
+                else if (row == storeRow)
+                {
+                    // Loja escolhida explicitamente para esta célula
+                    chosen = store;
+                }
+                else
+                {
+                    // Seleção procedimental respeitando spawn ranges, pesos e duplicatas
+                    chosen = ConstellationMapPlanetPicker.PickCombatForColumn(
+                        planets,
+                        mapPercent,
+                        mediumFallback,
+                        col,
+                        columns,
+                        currentMap,
+                        count,
+                        usedCountsInColumn
+                    );
+
+                    // Nota: a lógica de Special (chance de spawn) foi centralizada em
+                    // ConstellationMapPlanetPicker.PickCombatForColumn para evitar
+                    // verificações duplicadas aqui.
+                }
+
+                // Resolve índice (usado no visual e no armazenamento do star)
+                int planetIndex = ConstellationMapPlanetPicker.IndexOf(planets, chosen);
+                if (planetIndex < 0)
+                    planetIndex = easyIndex;
+
+                // Exibe índice (debug / visualização do mapa)
+                o.transform.GetChild(0).GetComponent<Text>().text = planetIndex.ToString();
+
+                // Cria a estrela na constelação
+                var star = new Constelation.Star(o, planetIndex, this);
+                currentLineStars.Add(star);
+                constelation.AddStar(star);
+
+                // Conta uso para limitar duplicatas (máx ~ 2/3 do número de nós da coluna)
+                if (chosen != null)
+                {
+                    usedCountsInColumn[chosen] = usedCountsInColumn.ContainsKey(chosen)
+                        ? usedCountsInColumn[chosen] + 1
+                        : 1;
+                }
+
+                // Atualiza bounds do mapa
+                RectTransform curRt = o.GetComponent<RectTransform>();
+                if (curRt.anchoredPosition.x > sizeX)
+                    sizeX = curRt.anchoredPosition.x;
+                if (curRt.anchoredPosition.y < minY)
+                    minY = curRt.anchoredPosition.y;
+                if (curRt.anchoredPosition.y > maxY)
+                    maxY = curRt.anchoredPosition.y;
+            }
+
+            // Conecta coluna atual com a anterior (cria junções)
+            if (col > 0)
+                ConnectColumnToPrevious(col, columns, currentLineStars, lastLineStars);
+
+            // Prepara para próxima iteração
+            lastLineStars.Clear();
+            lastLineStars.AddRange(currentLineStars);
+        }
+
+        // Se ainda não garantimos uma loja antes do boss, tentamos forçar uma numa coluna
+        // que respeite o range de spawn do store. Procuramos preferencialmente na penúltima
+        // coluna, caso contrário buscarmos da direita para a esquerda (excluindo a coluna 0).
+        if (!storePlacedInBossPreColumn && columns > 1)
+        {
+            int penultimate = columns - 2;
+            int chosenColumn = -1;
+
+            // Helper local para checar se o store permite spawn na coluna
+            bool StoreAllowsColumn(int columnIndex)
+            {
+                float mp = ConstellationMapPlanetPicker.ColumnToMapPercent(columnIndex, columns);
+                return ConstellationMapPlanetPicker.IsPercentInSpawnRange(mp, store.SpawnOnMapRangePercent);
+            }
+
+            if (penultimate >= 0 && StoreAllowsColumn(penultimate) && constelation.GetColumnStarCount(penultimate) > 0)
+            {
+                chosenColumn = penultimate;
+            }
+            else
+            {
+                for (int c = penultimate; c >= 1; c--)
+                {
+                    if (!StoreAllowsColumn(c))
+                        continue;
+                    if (constelation.GetColumnStarCount(c) > 0)
+                    {
+                        chosenColumn = c;
+                        break;
+                    }
+                }
+            }
+
+            if (chosenColumn >= 0)
+            {
+                Constelation.Star starToChange = constelation.GetStar(chosenColumn, Random.Range(0, constelation.GetColumnStarCount(chosenColumn)));
+                starToChange.Difficulty = ConstellationMapPlanetPicker.IndexOf(planets, store);
+                starToChange.Object.transform.GetChild(0).GetComponent<Text>().text = starToChange.Difficulty.ToString();
+            }
+        }
+
+        // Ajusta tamanho do view e offsets finais
+        float h = (maxY - minY) + itemHalfSize * 2f;
+        foreach (Transform t in mapView)
+            t.GetComponent<RectTransform>().anchoredPosition -= new Vector2(0f, -itemHalfSize);
+
+        mapView.sizeDelta = new Vector2(sizeX + itemHalfSize + margin, mapHeight = h + margin);
+        mapWidth = sizeX + itemHalfSize + margin;
+    }
+
+    private void ConnectColumnToPrevious(int columnIndex, int columns, List<Constelation.Star> currentLineStars,
+        List<Constelation.Star> lastLineStars)
+    {
+        for (int j = 0; j < currentLineStars.Count; j++)
+        {
+            int a = j;
+            int b = j - 1;
+            int c = j + 1;
+            if (b < 0)
+                b = j + 2;
+
+            Constelation.Star starA = currentLineStars[j];
+
+            if (a >= 0 && a < lastLineStars.Count)
+                AddJunction(starA, lastLineStars[a], columnIndex, columns);
+            if (c >= 0 && c < lastLineStars.Count)
+                AddJunction(starA, lastLineStars[c], columnIndex, columns);
+            if (b >= 0 && b < lastLineStars.Count)
+                AddJunction(starA, lastLineStars[b], columnIndex, columns);
+        }
+    }
+
+    private void AddJunction(Constelation.Star starA, Constelation.Star starB, int columnIndex, int columns)
+    {
+        GameObject junction = CreateLine(starA.Object, starB.Object);
+        var junc = new Constelation.StarJunction(starB, starA, junction);
+        starA.fromJunctions.Add(junc);
+        starB.toJunctions.Add(junc);
+
+        // Removed the logic that replaces store planets with combat planets.
+        // Store placement is now handled exclusively in GenerateConstellationLayout.
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    private static void ApplyJunctionProgress(RectTransform back, RectTransform prog, float t)
+    {
+        float p = JunctionPathDiscardPixels + (back.sizeDelta.x - JunctionPathDiscardPixels * 2f) * t;
+        prog.sizeDelta = new Vector2(p, prog.sizeDelta.y);
+    }
+
     private IEnumerator _OpenStarPaths(int star)
     {
         Constelation.Star s = constelation.GetStar(star);
+        InputEnabled = false;
+        MapLevelInteraction.state.Open(s.Id);
+        s.Object.transform.localScale = Vector3.one * curve.Evaluate(1);
+
+        float time = Time.time;
+        while (true)
         {
-            InputEnabled = false;
+            float progTime = (Time.time - time) * 2f;
+            if (progTime >= 1f)
+                break;
 
-            //Guarantee
-            MapLevelInteraction.state.Open(s.Id);
-
-            s.Object.transform.localScale = Vector3.one * curve.Evaluate(1);
-
-            float time = Time.time;
-
-            while(true)
+            foreach (Constelation.StarJunction j in s.toJunctions)
             {
-                float progTime = (Time.time - time) * 2f;
+                if (!MapLevelInteraction.state.IsChoosen(j.starA.Id))
+                    continue;
 
-                if(progTime >= 1f)
-                    break;
-
-                foreach(Constelation.StarJunction j in s.toJunctions)
-                {       
-                    if(!MapLevelInteraction.state.IsChoosen(j.starA.Id))
-                        continue;
-
-                    RectTransform back = j.junction.GetComponent<RectTransform>();
-                    RectTransform prog = j.junction.transform.GetChild(0).GetComponent<RectTransform>();
-
-                    int discard = 10; //Amount to discard from each side
-
-                    float p = discard + (back.sizeDelta.x - discard * 2) * progTime;
-                    prog.sizeDelta = new Vector2(p,prog.sizeDelta.y);         
-                }
-                
-                yield return new WaitForEndOfFrame();
-            }
-
-            foreach(Constelation.StarJunction j in s.toJunctions)
-            {
-                if(!MapLevelInteraction.state.IsChoosen(j.starA.Id))
-                        continue;
-
-                //Open linked starts
-                MapLevelInteraction.state.Open(j.starA.Id);
-                MapLevelInteraction.state.Open(j.starB.Id);
-          
                 RectTransform back = j.junction.GetComponent<RectTransform>();
                 RectTransform prog = j.junction.transform.GetChild(0).GetComponent<RectTransform>();
-
-                int discard = 10; //Amount to discard from each side
-
-                float p = discard + (back.sizeDelta.x - discard * 2) * 1;
-                prog.sizeDelta = new Vector2(p,prog.sizeDelta.y);      
+                ApplyJunctionProgress(back, prog, progTime);
             }
 
-            InputEnabled = true;
+            yield return new WaitForEndOfFrame();
         }
-    }
 
-    /// <summary>
-    /// Open start paths instantly
-    /// </summary>
-    /// <param name="star"></param>
-    /// <returns></returns>
-    public void OpenStarPathsIntantly(int star)
-    {
-        Constelation.Star s = constelation.GetStar(star);
+        foreach (Constelation.StarJunction j in s.toJunctions)
         {
-            InputEnabled = false;
-            //Guarantee
-            MapLevelInteraction.state.Open(s.Id);
+            if (!MapLevelInteraction.state.IsChoosen(j.starA.Id))
+                continue;
 
-            //s.Object.transform.localScale = Vector3.one * curve.Evaluate(1);
+            MapLevelInteraction.state.Open(j.starA.Id);
+            MapLevelInteraction.state.Open(j.starB.Id);
 
-            foreach(Constelation.StarJunction j in s.toJunctions)
-            {
-                if(!MapLevelInteraction.state.IsChoosen(j.starA.Id))
-                        continue;
-
-                //Open linked starts
-                MapLevelInteraction.state.Open(j.starA.Id);
-                MapLevelInteraction.state.Open(j.starB.Id);
-          
-                RectTransform back = j.junction.GetComponent<RectTransform>();
-                RectTransform prog = j.junction.transform.GetChild(0).GetComponent<RectTransform>();
-
-                int discard = 10; //Amount to discard from each side
-
-                float p = discard + (back.sizeDelta.x - discard * 2) * 1;
-                prog.sizeDelta = new Vector2(p,prog.sizeDelta.y);      
-            }
-
-            InputEnabled = true;
+            RectTransform back = j.junction.GetComponent<RectTransform>();
+            RectTransform prog = j.junction.transform.GetChild(0).GetComponent<RectTransform>();
+            ApplyJunctionProgress(back, prog, 1f);
         }
+
+        InputEnabled = true;
     }
 
-    /// <summary>
-    /// Get target anchored position for objects
-    /// </summary>
-    /// <param name="star">Objects to focus</param>
-    /// <returns></returns>
     private Vector2 _GetAnchoredPosition(GameObject[] star)
     {
         Vector2 sum = Vector2.zero;
-        for(int i = 0; i < star.Length; i ++)
+        for (int i = 0; i < star.Length; i++)
         {
             sum += (Vector2)scrollRect.transform.InverseTransformPoint(mapView.position)
-            - (Vector2)scrollRect.transform.InverseTransformPoint(star[i].transform.position);;
+                - (Vector2)scrollRect.transform.InverseTransformPoint(star[i].transform.position);
         }
 
-        return sum/star.Length;
+        return sum / star.Length;
     }
-    
 
-    /// <summary>
-    /// Internal open map screen animation
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator _OpenAnimation(System.Action callback)
+    private IEnumerator _OpenAnimation(Action callback)
     {
         float time = Time.time;
-
         int lastcolumn = 0;
-
         InputEnabled = false;
-        while(true)
+
+        while (true)
         {
             float progTime = (Time.time - time) * 4f;
             int column = Mathf.FloorToInt(progTime);
             float curProgress = progTime - Mathf.FloorToInt(progTime);
-            
-            if(lastcolumn != column)
+
+            if (lastcolumn != column)
             {
-                for(int i = 0; i < constelation.GetColumnStarCount(lastcolumn); i ++)
+                for (int i = 0; i < constelation.GetColumnStarCount(lastcolumn); i++)
                 {
-                    Constelation.Star s = constelation.GetStar(lastcolumn,i);
+                    Constelation.Star s = constelation.GetStar(lastcolumn, i);
                     s.Object.transform.localScale = Vector3.one * curve.Evaluate(1);
 
-                    foreach(Constelation.StarJunction j in s.toJunctions)
+                    foreach (Constelation.StarJunction j in s.toJunctions)
                     {
-                        if(MapLevelInteraction.state.IsOpen(j.starA.Id) && MapLevelInteraction.state.IsOpen(j.starB.Id) && MapLevelInteraction.state.IsChoosen(j.starA.Id))
+                        if (MapLevelInteraction.state.IsOpen(j.starA.Id) && MapLevelInteraction.state.IsOpen(j.starB.Id) &&
+                            MapLevelInteraction.state.IsChoosen(j.starA.Id))
                         {
                             RectTransform back = j.junction.GetComponent<RectTransform>();
                             RectTransform prog = j.junction.transform.GetChild(0).GetComponent<RectTransform>();
-
-                            int discard = 10; //Amount to discard from each side
-
-                            float p = discard + (back.sizeDelta.x - discard * 2) * 1;
-                            prog.sizeDelta = new Vector2(p,prog.sizeDelta.y); 
-                        }         
+                            ApplyJunctionProgress(back, prog, 1f);
+                        }
                     }
                 }
             }
 
             lastcolumn = column;
 
-            if(column < constelation.Columns)
+            if (column < constelation.Columns)
             {
-                for(int i = 0; i < constelation.GetColumnStarCount(column); i ++)
+                for (int i = 0; i < constelation.GetColumnStarCount(column); i++)
                 {
-                    Constelation.Star s = constelation.GetStar(column,i);
+                    Constelation.Star s = constelation.GetStar(column, i);
                     s.Object.transform.localScale = Vector3.one * curve.Evaluate(curProgress);
-                    
-                    
-                    foreach(Constelation.StarJunction j in s.toJunctions)
+
+                    foreach (Constelation.StarJunction j in s.toJunctions)
                     {
-                        if(MapLevelInteraction.state.IsOpen(j.starA.Id) && MapLevelInteraction.state.IsOpen(j.starB.Id) && MapLevelInteraction.state.IsChoosen(j.starA.Id))
+                        if (MapLevelInteraction.state.IsOpen(j.starA.Id) && MapLevelInteraction.state.IsOpen(j.starB.Id) &&
+                            MapLevelInteraction.state.IsChoosen(j.starA.Id))
                         {
                             RectTransform back = j.junction.GetComponent<RectTransform>();
                             RectTransform prog = j.junction.transform.GetChild(0).GetComponent<RectTransform>();
-
-                            int discard = 10; //Amount to discard from each side
-
-                            float p = discard + (back.sizeDelta.x - discard * 2) * curProgress;
-                            prog.sizeDelta = new Vector2(p,prog.sizeDelta.y);    
-                        }      
+                            ApplyJunctionProgress(back, prog, curProgress);
+                        }
                     }
-                    
                 }
 
-                float progress = progTime/constelation.Columns;
-                //Remove zoom
-                //zoom.SimulateScroll(-0.25f * Time.deltaTime,new Vector2(Screen.width,Screen.height)/2f);
-                
-                float needed = scrollRect.GetComponent<RectTransform>().rect.width/mapWidth;
-                zoom.SetCurrentZoom(progress == 0 ? 1 : Mathf.Min(1f,needed * 1/Mathf.Clamp01(progress + 0.1f/(mapWidth/2000))));
+                float progress = progTime / constelation.Columns;
+                float needed = scrollRect.GetComponent<RectTransform>().rect.width / mapWidth;
+                zoom.SetCurrentZoom(progress == 0
+                    ? 1
+                    : Mathf.Min(1f, needed * 1 / Mathf.Clamp01(progress + 0.1f / (mapWidth / 2000f))));
             }
             else
                 break;
-            
+
             yield return new WaitForEndOfFrame();
         }
 
         generationAnimationOver.Invoke();
-
         yield return new WaitForSeconds(0.5f);
-
-        //Focus into current level
-        FocusInto(constelation.GetStar(MapLevelInteraction.state.GetCurrentStar()).Object,2f,2f,false,null);
-
-        if(callback != null)
-            callback.Invoke();
+        FocusInto(constelation.GetStar(MapLevelInteraction.state.GetCurrentStar()).Object, 2f, 2f, false, null);
+        callback?.Invoke();
     }
 
-    /// <summary>
-    /// Internal close map screen animation
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator _CloseAnimation(System.Action callback)
+    private IEnumerator _CloseAnimation(Action callback)
     {
         float time = Time.time;
+        float startZoom = zoom.GetCurrentZoom();
+        var imagesToFade = new List<Image>();
 
-        float zoom = this.zoom.GetCurrentZoom();
-
-        List<Image> imagesToFade = new List<Image>();
-
-        for(int i = 0; i < constelation.Count; i ++)
+        for (int i = 0; i < constelation.Count; i++)
         {
             Constelation.Star s = constelation.GetStar(i);
             imagesToFade.Add(s.Object.GetComponent<Image>());
             GameObject sa = s.Object.transform.GetChild(1).gameObject;
             GameObject sb = s.Object.transform.GetChild(2).gameObject;
 
-            if(sa.activeInHierarchy)
+            if (sa.activeInHierarchy)
                 imagesToFade.Add(sa.GetComponent<Image>());
-            if(sb.activeInHierarchy)
+            if (sb.activeInHierarchy)
                 imagesToFade.Add(sb.GetComponent<Image>());
 
-            foreach(Constelation.StarJunction j in s.toJunctions)
+            foreach (Constelation.StarJunction j in s.toJunctions)
             {
-                if(MapLevelInteraction.state.IsOpen(j.starA.Id) && MapLevelInteraction.state.IsOpen(j.starB.Id) && MapLevelInteraction.state.IsChoosen(j.starA.Id))
-                {
+                if (MapLevelInteraction.state.IsOpen(j.starA.Id) && MapLevelInteraction.state.IsOpen(j.starB.Id) &&
+                    MapLevelInteraction.state.IsChoosen(j.starA.Id))
                     imagesToFade.Add(j.junction.transform.GetChild(0).GetComponent<Image>());
-                }
             }
         }
-        
+
         InputEnabled = false;
-        while(true)
+        while (true)
         {
             float progT = Mathf.Clamp01(Time.time - time);
-            
-            Color c = new Color(1,1,1,1 - progT);
-            foreach(Image i in imagesToFade)
-                i.color = c; 
-                
-            //Zoom out
-            this.zoom.SetZoomInstantly(Mathf.Lerp(zoom,this.zoom.GetMinZoom(),Mathf.Clamp01(progT * 0.15f)));
+            Color c = new Color(1, 1, 1, 1 - progT);
+            foreach (Image img in imagesToFade)
+                img.color = c;
 
-            if(progT >= 1f)
+            zoom.SetZoomInstantly(Mathf.Lerp(startZoom, zoom.GetMinZoom(), Mathf.Clamp01(progT * 0.15f)));
+
+            if (progT >= 1f)
                 break;
-
             yield return new WaitForEndOfFrame();
         }
 
         InputEnabled = true;
-
-        if(callback != null)
-            callback.Invoke();
+        callback?.Invoke();
     }
 
-
-    /// <summary>
-    /// Internal focus view into a map object
-    /// </summary>
-    /// <param name="target"></param>
-    /// <param name="time"></param>
-    /// <param name="targetZoom"></param>
-    /// <param name="smooth"></param>
-    /// <returns></returns>
-    private IEnumerator _FocusInto(GameObject[] target,float time,float targetZoom,bool smooth,System.Action callback)
+    private IEnumerator _FocusInto(GameObject[] target, float time, float targetZoom, bool smooth, Action callback)
     {
-        //Initial state
-        Vector2 cur =  mapView.anchoredPosition;
+        Vector2 cur = mapView.anchoredPosition;
         float f = Time.time;
-        float zoom = this.zoom.GetCurrentZoom();
-
-        //End target zoom
+        float startZoomLevel = zoom.GetCurrentZoom();
         float tm = Mathf.Sqrt(time);
 
-        //Set to end
-        this.zoom.SetZoomInstantly(targetZoom);
+        zoom.SetZoomInstantly(targetZoom);
         FocusIntoInstantly(target);
-
-        //Force update
         scrollRect.PublicUpdateBounds();
 
-        //Get actual target
         Vector2 targetPos = mapView.anchoredPosition;
-
-        //Reset
-        this.zoom.SetZoomInstantly(zoom);
+        zoom.SetZoomInstantly(startZoomLevel);
         mapView.anchoredPosition = cur;
-
-        //Force update
         scrollRect.PublicUpdateBounds();
 
-        //Get factor to smooth scale
-        float distance = Vector2.Distance(targetPos/targetZoom,cur/zoom);
-        float scaleFactor = smooth ? Mathf.Clamp01((distance - 200f)/200f) : 0;
+        float distance = Vector2.Distance(targetPos / targetZoom, cur / startZoomLevel);
+        float scaleFactor = smooth ? Mathf.Clamp01((distance - 200f) / 200f) : 0;
 
-       
-        if(Vector2.Distance(cur,_GetAnchoredPosition(target)) < 5 && Mathf.Abs(zoom - targetZoom) < 0.05f)
-        {
+        if (Vector2.Distance(cur, _GetAnchoredPosition(target)) < 5 && Mathf.Abs(startZoomLevel - targetZoom) < 0.05f)
             yield return new WaitForSeconds(1f);
-        }
-        else while(true)
+        else
         {
-            float pog = Mathf.Clamp01((Time.time - f)/time);
-            float rs = 1f - ((time - (pog * tm)*(pog * tm)))/time;
+            while (true)
+            {
+                float pog = Mathf.Clamp01((Time.time - f) / time);
+                float rs = 1f - (time - (pog * tm) * (pog * tm)) / time;
 
-            FocusLerpTarget(targetPos,cur,smooth ? focusCurve.Evaluate(rs) : rs);
-            this.zoom.SetZoomInstantly(zoom + (targetZoom - zoom - focusCurveScale.Evaluate(rs) * targetZoom/2f * scaleFactor) * focusCurveScaleProgress.Evaluate(rs));
+                FocusLerpTarget(targetPos, cur, smooth ? focusCurve.Evaluate(rs) : rs);
+                zoom.SetZoomInstantly(startZoomLevel +
+                    (targetZoom - startZoomLevel - focusCurveScale.Evaluate(rs) * targetZoom / 2f * scaleFactor) *
+                    focusCurveScaleProgress.Evaluate(rs));
 
-            InputEnabled = false;
-            yield return new WaitForEndOfFrame();
-
-            if(Time.time - f > time)
-                break;
+                InputEnabled = false;
+                yield return new WaitForEndOfFrame();
+                if (Time.time - f > time)
+                    break;
+            }
         }
 
         zoomAnimationOver.Invoke();
-        InputEnabled = true; 
-
-        if(callback != null) 
-            callback.Invoke();
+        InputEnabled = true;
+        callback?.Invoke();
     }
 
-    /// <summary>
-    /// Create a point in a 2D space
-    /// </summary>
-    /// <param name="position"></param>
-    /// <returns></returns>
     private GameObject CreatePoint(Vector2 position)
     {
-        GameObject cube = GameObject.Instantiate(mapPrefab);
+        GameObject cube = Instantiate(mapPrefab);
         cube.transform.SetParent(mapView.transform);
-        cube.GetComponent<RectTransform>().anchoredPosition = new Vector3(position.x,position.y,0);
+        cube.GetComponent<RectTransform>().anchoredPosition = new Vector3(position.x, position.y, 0);
         cube.SetActive(true);
         return cube;
     }
 
-    /// <summary>
-    /// Crate a line between two objects in a 2D space
-    /// </summary>
-    /// <param name="pointA"></param>
-    /// <param name="pointB"></param>
-    private GameObject CreateLine(GameObject pointA,GameObject pointB)
+    private GameObject CreateLine(GameObject pointA, GameObject pointB)
     {
-        GameObject path = GameObject.Instantiate(pathPrefab);
+        GameObject path = Instantiate(pathPrefab);
         path.transform.SetParent(mapView.transform);
-        path.transform.localPosition = (pointA.transform.localPosition + pointB.transform.localPosition)/2f;
-        path.GetComponent<RectTransform>().sizeDelta = new Vector2(Vector2.Distance(pointA.transform.localPosition,pointB.transform.localPosition),10);
-        path.transform.localEulerAngles = new Vector3(0,0,GetAngleBetween(pointA,pointB));
-        
-        //GetAngleBetween
+        path.transform.localPosition = (pointA.transform.localPosition + pointB.transform.localPosition) / 2f;
+        path.GetComponent<RectTransform>().sizeDelta =
+            new Vector2(Vector2.Distance(pointA.transform.localPosition, pointB.transform.localPosition), 10);
+        path.transform.localEulerAngles = new Vector3(0, 0, GetAngleBetween(pointA, pointB));
         path.transform.SetParent(pathHolder.transform);
         path.SetActive(true);
-
         return path;
     }
-    
-    /// <summary>
-    /// Update path positions
-    /// </summary>
-    /// <param name="path"></param>
-    /// <param name="pointA"></param>
-    /// <param name="pointB"></param>
-    private void UpdateLine(GameObject path,GameObject pointA,GameObject pointB)
+
+    private void UpdateLine(GameObject path, GameObject pointA, GameObject pointB)
     {
-        path.transform.localPosition = ((pointA.transform.localPosition + pointB.transform.localPosition)/2f - pathHolder.transform.localPosition);
-        path.GetComponent<RectTransform>().sizeDelta = new Vector2(Vector2.Distance(pointA.transform.localPosition,pointB.transform.localPosition),10);
-        path.transform.localEulerAngles = new Vector3(0,0,GetAngleBetween(pointA,pointB));
+        path.transform.localPosition =
+            (pointA.transform.localPosition + pointB.transform.localPosition) / 2f - pathHolder.transform.localPosition;
+        path.GetComponent<RectTransform>().sizeDelta =
+            new Vector2(Vector2.Distance(pointA.transform.localPosition, pointB.transform.localPosition), 10);
+        path.transform.localEulerAngles = new Vector3(0, 0, GetAngleBetween(pointA, pointB));
     }
 
-
-    /// <summary>
-    /// Get the angle between two objects in a 2D space
-    /// </summary>
-    /// <param name="a"></param>
-    /// <param name="b"></param>
-    /// <returns></returns>
-    private static float GetAngleBetween(GameObject a,GameObject b)
+    private static float GetAngleBetween(GameObject a, GameObject b)
     {
         Vector3 dir = b.transform.position - a.transform.position;
         dir = b.transform.InverseTransformDirection(dir);
         return Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-    }
-
-    public void ReturnToMenu()
-    {
-        interaction.ReturnToMenu(this);
-        //UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/Menu");
     }
 
     #endregion

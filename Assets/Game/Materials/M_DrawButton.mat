@@ -64,10 +64,10 @@ Material:
     - _UIMaskSoftnessY: 1
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
-    - _BluMult: {r: 0.22411765, g: 0.22411765, b: 0.22411765, a: 1}
+    - _BluMult: {r: 0.225, g: 0.22589998, b: 0.45, a: 1}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
-    - _GreMult: {r: 0.4482353, g: 0.4482353, b: 0.4482353, a: 1}
-    - _RedMult: {r: 0.35858825, g: 0.35858825, b: 0.35858825, a: 1}
+    - _GreMult: {r: 0.9, g: 0, b: 0, a: 1}
+    - _RedMult: {r: 0.35999998, g: 0.36143997, b: 0.71999997, a: 1}
     - _WhiteMult: {r: 1, g: 1, b: 1, a: 0}
     - _WhitePow: {r: 0.5, g: 0.9, b: 1.35, a: 0}
     - _WhiteRef: {r: 0, g: 0, b: 0, a: 0}

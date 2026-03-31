@@ -1,11 +1,27 @@
 {
   "dependencies": {
+    "com.boxqkrtm.ide.cursor": {
+      "version": "https://github.com/boxqkrtm/com.unity.ide.cursor.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.9"
+      },
+      "hash": "fd8ff1fb700caf062eb5cce364c1d0a85f99ebe6"
+    },
     "com.ninito.unityprojectlinter": {
       "version": "https://github.com/ninito-ph/UnityProjectLinter.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "2d741069d12bc56196e11cb478a4d63ad5481fe4"
+    },
+    "com.quickeye.icon-browser": {
+      "version": "https://github.com/ErnSur/unity-editor-icons.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "07434fccd016a2fabab284e0aff30a592881c318"
     },
     "com.unity.2d.animation": {
       "version": "13.0.4",

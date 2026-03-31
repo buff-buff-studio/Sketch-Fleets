@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26078aeca2af8004aaec2d9ffca04c96, type: 3}
+  m_Name: MA_OrangePlanet
+  m_EditorClassIdentifier: Assembly-CSharp::SketchFleets.Data.PlanetAttributes
+  objectName:
+    _useConstant: 1
+    _constant: Orange Planet
+    _variable: {fileID: 0}
+  description: 
+  prefab: {fileID: 0}
+  unlocalizedName: 
+  unlocalizedDescription: 
+  icon: {fileID: -9181772123159090412, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
+  background: {fileID: 1697325641738806054, guid: a791246be69376b4dbe027ccc7876d48, type: 3}
+  color: {r: 1, g: 0.54901963, b: 0, a: 1}
+  difficulty: 2
+  spawnOnMapRange:
+    _useConstant: 1
+    _constant: {x: 0, y: 75}
+    _variable: {fileID: 0}
+  enemyPool: {fileID: 11400000, guid: 0a0349ef1e55e234eb7594e268d6b89a, type: 2}
+  obstaclePool: {fileID: 11400000, guid: d2b1241bbd8de8940871989b5e190119, type: 2}
+  maxEnemies:
+    _useConstant: 1
+    _constant: 6
+    _variable: {fileID: 0}
+  minMaxWaves:
+    _useConstant: 1
+    _constant: {x: 3, y: 4}
+    _variable: {fileID: 0}
+  spawnAndWaveInterval:
+    _useConstant: 1
+    _constant: {x: 4.75, y: 6}
+    _variable: {fileID: 0}

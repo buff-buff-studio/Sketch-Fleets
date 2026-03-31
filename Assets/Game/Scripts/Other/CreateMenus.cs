@@ -39,6 +39,10 @@
         public const string difficultyAttributesMenuName = "Sketch Fleets/Attributes/Difficulty Attributes";
         public const string difficultyAttributesFileName = "Difficulty Attributes";
 
+        public const int planetAttributesOrder = 30;
+        public const string planetAttributesMenuName = "Sketch Fleets/Attributes/Planet Attributes";
+        public const string planetAttributesFileName = "Planet Attributes";
+
         #endregion
 
         #region Status Effects

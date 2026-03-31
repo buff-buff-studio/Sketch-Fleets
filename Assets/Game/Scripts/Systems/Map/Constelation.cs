@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SketchFleets.Data;
 using SketchFleets.Interaction;
 
 /// <summary>
@@ -121,6 +122,7 @@ public class Constelation : IEnumerable
         #region Private Fields
         private int id = -1;
         private int difficulty = 0;
+        private readonly ConstelationMap ownerMap;
         #endregion
 
         #region Public Fields
@@ -152,11 +154,12 @@ public class Constelation : IEnumerable
             set{
                 difficulty = value;
 
-                this.scale = (difficulty == 0 ? 0.5f : difficulty * 0.15f) + Random.Range(0.8f,1.75f);
-                Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50) * scale;
+                PlanetAttributes planet = ownerMap != null ? ownerMap.GetPlanetAttributesForStarType(difficulty) : null;
+                float tierPart = planet != null ? TierPartForPlanet(planet) : (difficulty == 0 ? 0.5f : difficulty * 0.15f);
+                this.scale = tierPart + Random.Range(0.8f, 1.75f);
+                Object.GetComponent<RectTransform>().sizeDelta = new Vector2(50, 50) * scale;
 
-                //Change icon
-                Object.GetComponent<Image>().sprite = MapLevelInteraction.map.planetIcons[difficulty];
+                ApplyPlanetVisualsFromAttributes();
             }
         }
         #endregion
@@ -165,13 +168,51 @@ public class Constelation : IEnumerable
         /// <summary>
         /// Create new star from GameObject
         /// </summary>
-        /// <param name="Object"></param>
-        public Star(GameObject Object,int difficulty)
+        /// <param name="ownerMap">Used to resolve <see cref="PlanetAttributes"/> for this star type (sprite / map color).</param>
+        public Star(GameObject Object, int difficulty, ConstelationMap ownerMap)
         {
             this.Object = Object;
+            this.ownerMap = ownerMap;
             this.Difficulty = difficulty;
             this.position = Object.GetComponent<RectTransform>().anchoredPosition;
             SetEnabled(false);
+        }
+
+        private static float TierPartForPlanet(PlanetAttributes planet)
+        {
+            switch (planet.PlanetDifficulty)
+            {
+                case PlanetDifficulty.Store: return 0.5f;
+                case PlanetDifficulty.Easy: return 0.15f;
+                case PlanetDifficulty.Medium: return 0.30f;
+                case PlanetDifficulty.Hard: return 0.45f;
+                case PlanetDifficulty.Extreme: return 0.60f;
+                case PlanetDifficulty.Boss: return 0.75f;
+                default: return 0.5f;
+            }
+        }
+
+        private void ApplyPlanetVisualsFromAttributes()
+        {
+            if (ownerMap == null)
+                return;
+
+            PlanetAttributes planet = ownerMap.GetPlanetAttributesForStarType(difficulty);
+            if (planet == null)
+                return;
+
+            Image img = Object.GetComponent<Image>();
+            if (img == null)
+                return;
+
+            if (planet.PlanetSprite != null)
+                img.sprite = planet.PlanetSprite;
+            else
+            {
+                Color c = planet.PlanetColor;
+                c.a = img.color.a;
+                img.color = c;
+            }
         }
         
         /// <summary>

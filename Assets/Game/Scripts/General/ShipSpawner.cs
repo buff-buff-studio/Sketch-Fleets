@@ -148,16 +148,16 @@ namespace SketchFleets.Systems
         private IEnumerator SpawnWave()
         {
             WaitForSeconds spawnWait =
-                new WaitForSeconds(mapAttributes.SpawnAndWaveInterval[mapAttributes.Difficulty].Value.x);
+                new WaitForSeconds(mapAttributes.SpawnAndWaveInterval.Value.x);
 
             if (currentWave > 1)
             {
-                yield return new WaitForSeconds(mapAttributes.SpawnAndWaveInterval[mapAttributes.Difficulty].Value.y);
+                yield return new WaitForSeconds(mapAttributes.SpawnAndWaveInterval.Value.y);
             }
 
-            pendingSpawns = mapAttributes.MaxEnemies[mapAttributes.Difficulty];
+            pendingSpawns = mapAttributes.MaxEnemies;
 
-            for (int index = 0; index < mapAttributes.MaxEnemies[mapAttributes.Difficulty]; index++)
+            for (int index = 0; index < mapAttributes.MaxEnemies; index++)
             {
                 SpawnFormation();
                 pendingSpawns--;
@@ -239,8 +239,8 @@ namespace SketchFleets.Systems
         /// <returns>The maximum number of waves for the map</returns>
         private int GenerateMapWaveCount()
         {
-            return (int)Random.Range(mapAttributes.MinMaxWaves[mapAttributes.Difficulty].Value.x, mapAttributes
-                .MinMaxWaves[mapAttributes.Difficulty].Value.y);
+            return (int)Random.Range(mapAttributes.MinMaxWaves.Value.x, mapAttributes
+                .MinMaxWaves.Value.y);
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace SketchFleets.Systems
         /// <returns>A drawn ship attribute</returns>
         private ShipFormation DrawFormationFromPool()
         {
-            ShipFormation draw = mapAttributes.EnemyPool[mapAttributes.Difficulty].Draw();
+            ShipFormation draw = mapAttributes.EnemyPool.Draw();
 
             if (draw == null)
             {

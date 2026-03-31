@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26078aeca2af8004aaec2d9ffca04c96, type: 3}
+  m_Name: MA_PurplePlanet
+  m_EditorClassIdentifier: Assembly-CSharp::SketchFleets.Data.PlanetAttributes
+  objectName:
+    _useConstant: 1
+    _constant: Purple Planet
+    _variable: {fileID: 0}
+  description: 
+  prefab: {fileID: 0}
+  unlocalizedName: 
+  unlocalizedDescription: 
+  icon: {fileID: -2192022562841302822, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
+  background: {fileID: 6627263685300159480, guid: 8481be88698edd249aa604246e6ac056, type: 3}
+  color: {r: 0.5803922, g: 0, b: 0.827451, a: 1}
+  difficulty: 4
+  spawnOnMapRange:
+    _useConstant: 1
+    _constant: {x: 50, y: 100}
+    _variable: {fileID: 0}
+  specialSpawnChance: 0
+  enemyPool: {fileID: 11400000, guid: 204ef1cf3dbec504d823d0045df82d66, type: 2}
+  obstaclePool: {fileID: 11400000, guid: 746e4e835d193ee4392f46948ea9849b, type: 2}
+  maxEnemies:
+    _useConstant: 1
+    _constant: 14
+    _variable: {fileID: 0}
+  minMaxWaves:
+    _useConstant: 1
+    _constant: {x: 4, y: 5}
+    _variable: {fileID: 0}
+  spawnAndWaveInterval:
+    _useConstant: 1
+    _constant: {x: 4.5, y: 4.5}
+    _variable: {fileID: 0}

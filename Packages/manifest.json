@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "com.boxqkrtm.ide.cursor": "https://github.com/boxqkrtm/com.unity.ide.cursor.git",
     "com.ninito.unityprojectlinter": "https://github.com/ninito-ph/UnityProjectLinter.git",
+    "com.quickeye.icon-browser": "https://github.com/ErnSur/unity-editor-icons.git",
     "com.unity.2d.pixel-perfect": "5.1.1",
     "com.unity.2d.psdimporter": "12.0.1",
     "com.unity.2d.spriteshape": "13.0.0",

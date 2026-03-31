@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26078aeca2af8004aaec2d9ffca04c96, type: 3}
+  m_Name: MA_BlackPlanet
+  m_EditorClassIdentifier: Assembly-CSharp::SketchFleets.Data.PlanetAttributes
+  objectName:
+    _useConstant: 1
+    _constant: Black Hole
+    _variable: {fileID: 0}
+  description: 
+  prefab: {fileID: 0}
+  unlocalizedName: 
+  unlocalizedDescription: 
+  icon: {fileID: 5215539951979972166, guid: 190b841d184da71428d0b3e6f5755bcd, type: 3}
+  background: {fileID: 3198431837983792613, guid: e7d03bdea34d3844d99e3a6e6e653a9b, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 1}
+  difficulty: 5
+  spawnOnMapRange:
+    _useConstant: 1
+    _constant: {x: 90, y: 100}
+    _variable: {fileID: 0}
+  enemyPool: {fileID: 11400000, guid: 3f9fb16d77f89d54a8cd188afa684b83, type: 2}
+  obstaclePool: {fileID: 11400000, guid: f30fa76c0f0149243a7403d6db229d80, type: 2}
+  maxEnemies:
+    _useConstant: 1
+    _constant: 4
+    _variable: {fileID: 0}
+  minMaxWaves:
+    _useConstant: 1
+    _constant: {x: 2, y: 2}
+    _variable: {fileID: 0}
+  spawnAndWaveInterval:
+    _useConstant: 1
+    _constant: {x: 6.5, y: 7}
+    _variable: {fileID: 0}

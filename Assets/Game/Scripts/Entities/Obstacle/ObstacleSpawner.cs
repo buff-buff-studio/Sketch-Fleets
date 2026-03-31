@@ -35,7 +35,7 @@ namespace SketchFleets.Systems
 
         #region Properties
 
-        private AttributePool ObstaclePool => mapAttributes.ObstaclePool[mapAttributes.Difficulty];
+        private AttributePool ObstaclePool => mapAttributes.ObstaclePool;
 
         #endregion
 

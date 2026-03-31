@@ -1,22 +1,40 @@
 using UnityEngine;
 using UnityEditor;
 
-#if UNITY_EDITOR
-[CustomPropertyDrawer(typeof(ColorHEXCodeAttribute))]
-public class ColorHEXCode : PropertyDrawer
+namespace SketchFleets.Plugins
 {
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+#if UNITY_EDITOR
+    [CustomPropertyDrawer(typeof(ColorHEXCodeAttribute))]
+    public class ColorHEXCode : PropertyDrawer
     {
-        Rect htmlField = new Rect(position.x, position.y, position.width - 100, position.height);
-        Rect colorField = new Rect(position.x + htmlField.width, position.y, position.width - htmlField.width, position.height);
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            EditorGUI.BeginProperty(position, label, property);
 
-        string htmlValue = EditorGUI.TextField(htmlField, label, "#" + ColorUtility.ToHtmlStringRGBA(property.colorValue));
+            Rect htmlField = new Rect(position.x, position.y, position.width - 100, position.height);
+            Rect colorField = new Rect(position.x + htmlField.width, position.y, position.width - htmlField.width,
+                position.height);
 
-        Color newCol;
-        if (ColorUtility.TryParseHtmlString(htmlValue, out newCol))
-            property.colorValue = newCol;
+            string htmlValue = EditorGUI.TextField(htmlField, label,
+                "#" + ColorUtility.ToHtmlStringRGBA(property.colorValue));
 
-        property.colorValue = EditorGUI.ColorField(colorField, property.colorValue);
+            EditorGUI.BeginChangeCheck();
+
+            Color newCol;
+            if (ColorUtility.TryParseHtmlString(htmlValue, out newCol))
+                property.colorValue = newCol;
+
+            newCol = EditorGUI.ColorField(colorField, property.colorValue);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                property.colorValue = newCol;
+                property.serializedObject.ApplyModifiedProperties();
+
+                EditorUtility.SetDirty(property.serializedObject.targetObject);
+            }
+            EditorGUI.EndProperty();
+        }
     }
-}
 #endif
+}

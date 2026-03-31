@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using ManyTools.Variables;
 using ManyTools;
+using SketchFleets.Data;
 
 /// <summary>
 /// Holds interaction between map and level
@@ -63,7 +64,16 @@ namespace SketchFleets.Interaction
                 {
                 }
 
-                if (state.constelation.GetStar(clickedStar).Difficulty == 0 || onlyShop)
+                bool openShop = onlyShop;
+                if (!openShop && map.currentMap != null && map.currentMap.Planets != null)
+                {
+                    int idx = state.constelation.GetStar(clickedStar).Difficulty;
+                    PlanetAttributes[] planets = map.currentMap.Planets;
+                    if (idx >= 0 && idx < planets.Length && planets[idx] != null)
+                        openShop = planets[idx].PlanetDifficulty == PlanetDifficulty.Store;
+                }
+
+                if (openShop)
                 {
                     //Open level
                     SketchFleets.LoadingGame.SceneLoad = sceneShop.Value;

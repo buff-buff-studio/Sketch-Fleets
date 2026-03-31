@@ -20,7 +20,7 @@ namespace SketchFleets
         {
             StartCoroutine(LoadingScene());
 
-            LoadIcon.color = map.MapColor[map.Difficulty];
+            LoadIcon.color = map.MapColor;
         }
 
         IEnumerator LoadingScene()

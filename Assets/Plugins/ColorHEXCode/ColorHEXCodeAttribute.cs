@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class ColorHEXCodeAttribute : PropertyAttribute
+namespace SketchFleets.Plugins
 {
+    public class ColorHEXCodeAttribute : PropertyAttribute
+    {
+    }
 }
